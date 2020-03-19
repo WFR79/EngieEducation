@@ -1,0 +1,1261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SynapseAdvancedControls.CellEditKeyEngine" Collapsed="true">
+    <Position X="36" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQCABIAAAIAhAACgAAAAAIAMAAAECAAggAIAIIAAAEA=</HashCode>
+      <FileName>CellEditing\CellEditKeyEngine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.ComboBoxItem" Collapsed="true">
+    <Position X="29" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQEIAAEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CellEditing\CellEditors.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.AutoCompleteCellEditor" Collapsed="true">
+    <Position X="29" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CellEditing\CellEditors.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.EnumCellEditor" Collapsed="true">
+    <Position X="36" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CellEditing\CellEditors.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.IntUpDown" Collapsed="true">
+    <Position X="34.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>CellEditing\CellEditors.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.UintUpDown" Collapsed="true">
+    <Position X="25.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>CellEditing\CellEditors.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.BooleanCellEditor" Collapsed="true">
+    <Position X="30.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CellEditing\CellEditors.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.BooleanCellEditor2" Collapsed="true">
+    <Position X="32.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>CellEditing\CellEditors.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.FloatCellEditor" Collapsed="true">
+    <Position X="25.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>CellEditing\CellEditors.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.EditorRegistry" Collapsed="true">
+    <Position X="34.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQIAAABAQAAQAAgAAAAAAABAIAAAAQAAAAAAAA=</HashCode>
+      <FileName>CellEditing\EditorRegistry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.DataListView" Collapsed="true">
+    <Position X="17.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABgAAAAAAAAAAgIhAAACAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DataListView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.AbstractDragSource" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>DragDrop\DragSource.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.SimpleDragSource" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="27.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAQAAAAAQAAAQEAAAAAAAAAAAQAA=</HashCode>
+      <FileName>DragDrop\DragSource.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.AbstractDropSink" Collapsed="true">
+    <Position X="0.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQQAAAAAIAEAAAAAEFAAAAgAAAAMAAAAA=</HashCode>
+      <FileName>DragDrop\DropSink.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.SimpleDropSink" Collapsed="true">
+    <Position X="0.5" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ZS0gAiQEBAoQDA8YQBMAMCAFgwQHBALcAEBEiEAAAQA=</HashCode>
+      <FileName>DragDrop\DropSink.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.RearrangingDropSink" Collapsed="true">
+    <Position X="0.5" Y="20.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>DragDrop\DropSink.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.OlvDropEventArgs" Collapsed="true">
+    <Position X="19.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IACgGiAAIBoAAAAAAAAAAAAAAALAAAAKgAQECIAEgAA=</HashCode>
+      <FileName>DragDrop\DropSink.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.ModelDropEventArgs" Collapsed="true">
+    <Position X="19.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAEAAAAAAAAAAAAAAAEQAAAAAAAAAAIAAAAAgAQAAEA=</HashCode>
+      <FileName>DragDrop\DropSink.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.OLVDataObject" Collapsed="true">
+    <Position X="25.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAEAEABAAAAAAAEAAAAAAAAAIAAgACgAAAAAAAQBA=</HashCode>
+      <FileName>DragDrop\OLVDataObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.FastDataListView" Collapsed="true">
+    <Position X="15" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgIAAAACAAAEQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FastDataListView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.FastObjectListView" Collapsed="true">
+    <Position X="15" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEQAAAAAAAAAAA=</HashCode>
+      <FileName>FastObjectListView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.FastObjectListDataSource" Collapsed="true">
+    <Position X="2.75" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAgAQAQAABAgAAASQ4AQAAIEAAAAAAAAAEIAgAA=</HashCode>
+      <FileName>FastObjectListView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.Cluster" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAEAQEBAAAAAQAgAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filtering\Cluster.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.ClusteringStrategy" Collapsed="true">
+    <Position X="16.75" Y="16.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAhBABAgAQAAIKAQBAQAAAAAAoIA=</HashCode>
+      <FileName>Filtering\ClusteringStrategy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.ClustersFromGroupsStrategy" Collapsed="true">
+    <Position X="15.5" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQBAAAAAAAAAAA=</HashCode>
+      <FileName>Filtering\ClustersFromGroupsStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.DateTimeClusteringStrategy" Collapsed="true">
+    <Position X="17.75" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAACAAAAAAAACAAAAQgAAAQBAAAAAAAAAAA=</HashCode>
+      <FileName>Filtering\DateTimeClusteringStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.FilterMenuBuilder" Collapsed="true">
+    <Position X="23.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>SAEAADAQgEEAAQAIAAgQIAAAAFQAAAAAAAAAoAAAAAE=</HashCode>
+      <FileName>Filtering\FilterMenuBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.AbstractModelFilter" Collapsed="true">
+    <Position X="6.75" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filtering\Filters.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.ModelFilter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAABAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filtering\Filters.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.CompositeFilter" Collapsed="true">
+    <Position X="4" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAIAAAACAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filtering\Filters.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.CompositeAllFilter" Collapsed="true">
+    <Position X="2.75" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filtering\Filters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.CompositeAnyFilter" Collapsed="true">
+    <Position X="5" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filtering\Filters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.AbstractListFilter" Collapsed="true">
+    <Position X="11.25" Y="18.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filtering\Filters.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.ListFilter" Collapsed="true">
+    <Position X="10" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAgAAAAIAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filtering\Filters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.TailFilter" Collapsed="true">
+    <Position X="12.25" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAQAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filtering\Filters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.TextMatchFilter" Collapsed="true">
+    <Position X="6.75" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAACAAAABAAABAAgAQACABABAAAAyEIAAIgSgAA=</HashCode>
+      <FileName>Filtering\TextMatchFilter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.OLVColumnAttribute" Collapsed="true">
+    <Position X="22" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EgAAQTAAZAEgWGAASFwIIEYECGBGAQKAQEEGAQJAAEE=</HashCode>
+      <FileName>Implementation\Attributes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.ColumnComparer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="25.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAQAAAAAAAAAAAAAQAAAAAAAAABQAAAAAAA=</HashCode>
+      <FileName>Implementation\Comparers.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.OLVGroupComparer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="29" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>Implementation\Comparers.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.ModelObjectComparer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="25.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAQAAAAAAAAAAAAAQAAAAAAAAABQAAAAAAA=</HashCode>
+      <FileName>Implementation\Comparers.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.DataSourceAdapter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="32.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AZggAAAwAGAAAgACQAYCBCAEICACACUEhAEAQKBAgQg=</HashCode>
+      <FileName>Implementation\DataSourceAdapter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.ObjectListView" Collapsed="true">
+    <Position X="15" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>5/7+//3///fX/+//+///f/3//f/37N////+//7+///8=</HashCode>
+      <FileName>Implementation\Enums.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.TreeListView" Collapsed="true">
+    <Position X="12.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ASgQyXBAABICBAAAAIAAACCEMAKBQAOAABDAgAUpAQA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.CellEditEventArgs" Collapsed="true">
+    <Position X="34.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABEAEAAFQAAAABAABABQEAQAQAAAECAAAAAgAAAAAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.CancellableEventArgs" Collapsed="true">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.BeforeSortingEventArgs" Collapsed="true">
+    <Position X="10.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAIAAAAAAAAAEAAAQAAAAABAAAAAAAABAAIAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.AfterSortingEventArgs" Collapsed="true">
+    <Position X="27.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQABAAAAAQQAAAAAAEAAAQAAAAABAAAAAAgABQAIAE=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.FilterEventArgs" Collapsed="true">
+    <Position X="22" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.ItemsChangedEventArgs" Collapsed="true">
+    <Position X="22" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAEAAAQAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.ItemsAddingEventArgs" Collapsed="true">
+    <Position X="12.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.ItemsChangingEventArgs" Collapsed="true">
+    <Position X="14.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAIAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.ItemsRemovingEventArgs" Collapsed="true">
+    <Position X="17" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.AfterSearchingEventArgs" Collapsed="true">
+    <Position X="25.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAIAEAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAEA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.BeforeSearchingEventArgs" Collapsed="true">
+    <Position X="3.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.CellEventArgs" Collapsed="true">
+    <Position X="5.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAMABAAAAQgAZAFAAGUARAAAAAgAgAAIAIAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.CellClickEventArgs" Collapsed="true">
+    <Position X="0.75" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.CellRightClickEventArgs" Collapsed="true">
+    <Position X="3" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.CellOverEventArgs" Collapsed="true">
+    <Position X="5.25" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.FreezeEventArgs" Collapsed="true">
+    <Position X="27.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.ToolTipShowingEventArgs" Collapsed="true">
+    <Position X="7.5" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAEGAAAAAAAAAAAgAACAIAAAACAAHAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.HyperlinkEventArgs" Collapsed="true">
+    <Position X="30.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAMAAAAAAAgARABAAEUAQIAAAAiAgAAIAIAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.IsHyperlinkEventArgs" Collapsed="true">
+    <Position X="36" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAQAAAAAAIiAgACIAIAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.FormatRowEventArgs" Collapsed="true">
+    <Position X="8.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAgAQAAAAEAAAAAQAAgAkEAIAAAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.FormatCellEventArgs" Collapsed="true">
+    <Position X="8.5" Y="16" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAABABAAAUAQAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.HyperlinkClickedEventArgs" Collapsed="true">
+    <Position X="9.75" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.HotItemChangedEventArgs" Collapsed="true">
+    <Position X="27.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIgAAAGJACRCAAEEABEAAAAJACBAAAAAAgIAAAAAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.SubItemCheckingEventArgs" Collapsed="true">
+    <Position X="1.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAEAAAAAAAABAABABQEAQAQAAAEAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.CreateGroupsEventArgs" Collapsed="true">
+    <Position X="30.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAEAAAAAAAAAAgAAAAIAAAAAAAAAAAIAAAACAAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.GroupTaskClickedEventArgs" Collapsed="true">
+    <Position X="36" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.GroupStateChangedEventArgs" Collapsed="true">
+    <Position X="34.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAgEAACggAgAAIAAAAAEAAAIAAAAAAAAAAAAAAAII=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.TreeBranchExpandingEventArgs" Collapsed="true">
+    <Position X="5.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAgAAAAIAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.TreeBranchExpandedEventArgs" Collapsed="true">
+    <Position X="36" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAgAAAAIAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.TreeBranchCollapsingEventArgs" Collapsed="true">
+    <Position X="8" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAgAAAAIAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.TreeBranchCollapsedEventArgs" Collapsed="true">
+    <Position X="34.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAAgAAAAIAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.GroupingParameters" Collapsed="true">
+    <Position X="32.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIMAAAACBEAEAoQAAAKAACAAUhAAgRIQAIAE=</HashCode>
+      <FileName>Implementation\GroupingParameters.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.OLVGroup" Collapsed="true">
+    <Position X="27.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>bEYChOwmAAQgiCQEQBgEAMwAEAAMAEQMgEFAFODAGhM=</HashCode>
+      <FileName>Implementation\Groups.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.Munger" Collapsed="true">
+    <Position X="27.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAJAAAAAQEABCAAAAAhAAAAACAAAAAAAIAAAE=</HashCode>
+      <FileName>Implementation\Munger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.SimpleMunger" Collapsed="true">
+    <Position X="29" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIACAAJAAAgAAEACAAAAAABAAAIAAAAAEAAAAAEAA=</HashCode>
+      <FileName>Implementation\Munger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.MungerException" Collapsed="true">
+    <Position X="29" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAIAAAACAAAAAAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>Implementation\Munger.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.NativeMethods" Collapsed="true">
+    <Position X="30.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>cChxFKmMjlNGI/LfZWKToPLMK45gioYxDANnzL7yfN4=</HashCode>
+      <FileName>Implementation\NativeMethods.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.NullableDictionary&lt;TKey, TValue&gt;" Collapsed="true">
+    <Position X="32.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAEAAAACAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\NullableDictionary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.OLVListItem" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAABEAACAAAAAAAAQABAAEgAQAAIAASAAAgE=</HashCode>
+      <FileName>Implementation\OLVListItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.OLVListSubItem" Collapsed="true">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAABAIAAAQCAgACSAAAAk=</HashCode>
+      <FileName>Implementation\OLVListSubItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.OlvListViewHitTestInfo" Collapsed="true">
+    <Position X="34.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgEAAEAgAAABEAAZABAAGAAQAEAAAgAAAAAAIAAA=</HashCode>
+      <FileName>Implementation\OlvListViewHitTestInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.AbstractVirtualGroups" Collapsed="true">
+    <Position X="5.5" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAEAAAAAAAAAAAEAAAACAAAAAA=</HashCode>
+      <FileName>Implementation\VirtualGroups.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.FastListGroupingStrategy" Collapsed="true">
+    <Position X="5.5" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAACAAAAAAAAAAAAAAAAEAAAACAAAAAA=</HashCode>
+      <FileName>Implementation\VirtualGroups.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.OwnerDataCallbackImpl" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAgAIAAAQAAAAAAAEAEACAAA=</HashCode>
+      <FileName>Implementation\VirtualGroups.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.AbstractVirtualListDataSource" Collapsed="true">
+    <Position X="1.75" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAgAAAAAAgAAASQgAQAAAEAAAAAAAAAIAAgAA=</HashCode>
+      <FileName>Implementation\VirtualListDataSource.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.VirtualListVersion1DataSource" Collapsed="true">
+    <Position X="0.5" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAABCAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\VirtualListDataSource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.OLVColumn" Collapsed="true">
+    <Position X="17.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MgARTxAAJEcEWCbkoNwJbE6WTnSOEnOKQhSWGDJgsFk=</HashCode>
+      <FileName>OLVColumn.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.GraphicAdornment" Collapsed="true">
+    <Position X="16" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACgAIAABAAAAIABACCiAIAgAACAAgAAABAIAAAAgAE=</HashCode>
+      <FileName>Rendering\Adornments.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.ImageAdornment" Collapsed="true">
+    <Position X="13.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAIAAAAAAAEAAAAAAEAAAABAAAEABAAAAAAA=</HashCode>
+      <FileName>Rendering\Adornments.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.TextAdornment" Collapsed="true">
+    <Position X="18.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAIggAAEIAAgBIAIAAIASEACIABAACIIAAMACCADAsA=</HashCode>
+      <FileName>Rendering\Adornments.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.AbstractDecoration" Collapsed="true">
+    <Position X="5.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAABAgAAAQAABAAAAAQBAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rendering\Decorations.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.TintedColumnDecoration" Collapsed="true">
+    <Position X="0.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAEAAAAgAAAAAAAAAAAAAAAAAAAAAQAAIAAAA=</HashCode>
+      <FileName>Rendering\Decorations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.BorderDecoration" Collapsed="true">
+    <Position X="6.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YAgAgCABAAAgA4AAAAIAgAAAAAAAAAAAAAIAACBIgAA=</HashCode>
+      <FileName>Rendering\Decorations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.RowBorderDecoration" Collapsed="true">
+    <Position X="5.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAgAAAAIAAAAAAAAAAAAAAAAAAAAAAAAABAAIA=</HashCode>
+      <FileName>Rendering\Decorations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.CellBorderDecoration" Collapsed="true">
+    <Position X="7.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Rendering\Decorations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.EditingCellBorderDecoration" Collapsed="true">
+    <Position X="9.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Rendering\Decorations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.LightBoxDecoration" Collapsed="true">
+    <Position X="3" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rendering\Decorations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.ImageDecoration" Collapsed="true">
+    <Position X="12.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAgAAAQAABAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rendering\Decorations.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.TextDecoration" Collapsed="true">
+    <Position X="17.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAgAAAQAABAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rendering\Decorations.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.AbstractOverlay" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="23.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAIAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rendering\Overlays.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.ImageOverlay" Collapsed="true">
+    <Position X="15" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAABAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rendering\Overlays.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.TextOverlay" Collapsed="true">
+    <Position X="19.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAgAAAAAAABAAAAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rendering\Overlays.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.BillboardOverlay" Collapsed="true">
+    <Position X="19.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAIAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rendering\Overlays.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.AbstractRenderer" Collapsed="true">
+    <Position X="5.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAABAAAAAABAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rendering\Renderers.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.Version1Renderer" Collapsed="true">
+    <Position X="0.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rendering\Renderers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.BaseRenderer" Collapsed="true">
+    <Position X="6.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AxLAQSEQZQhhAmA5IRBAASSQUhQgkFAAgJDGAAMDE8I=</HashCode>
+      <FileName>Rendering\Renderers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.HighlightTextRenderer" Collapsed="true">
+    <Position X="9.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAggCAEAAEAAAIAwAAKAEAIQABAAEAAAAAAAAAAKAAA=</HashCode>
+      <FileName>Rendering\Renderers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.MappedImageRenderer" Collapsed="true">
+    <Position X="3" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAEBAAAQAAAAgAABAAEAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Rendering\Renderers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.CheckStateRenderer" Collapsed="true">
+    <Position X="5.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQBIAAAAAAAAAAAAAAAAAAAAAAACBAAAAIAAAA=</HashCode>
+      <FileName>Rendering\Renderers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.ImageRenderer" Collapsed="true">
+    <Position X="7.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAIAAAAAgIAAAAABBABAAAAAEIAA=</HashCode>
+      <FileName>Rendering\Renderers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.HotItemStyle" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="29" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAQAAAAEAAgAAEAIAABAAAAAAAAAAIAEAACADAAA=</HashCode>
+      <FileName>Rendering\Styles.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.CellStyle" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAQAAAAEAAgAAAAIAAAAAAAAAAAAAAAEAAAADAAA=</HashCode>
+      <FileName>Rendering\Styles.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="SynapseAdvancedControls.HyperlinkStyle" Collapsed="true">
+    <Position X="32.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAiAAAAAgAIAAAAAAAAIBAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Rendering\Styles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.HeaderStateStyle" Collapsed="true">
+    <Position X="25.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAQAAAAEAAAAAAAAAAAACACAAAgAgAAEAAAADAAA=</HashCode>
+      <FileName>Rendering\Styles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.HeaderFormatStyle" Collapsed="true">
+    <Position X="23.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAgAAAAAAAAAAICAAIAIAAAABAAAAQAEAAA=</HashCode>
+      <FileName>Rendering\Styles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.GlassPanelForm" Collapsed="true">
+    <Position X="30.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgCkgAAARAoAAEAyEAAAAAIAAAAIAhCAAQIERAgAASA=</HashCode>
+      <FileName>SubControls\GlassPanelForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.HeaderControl" Collapsed="true">
+    <Position X="22" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAAIOQAUABAAAACQiBQCKRgAACECAAoAwAAQxJAACaE=</HashCode>
+      <FileName>SubControls\HeaderControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.ToolStripCheckedListBox" Collapsed="true">
+    <Position X="30.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AkAACAgAACCACAAAAAAAAIAAwAAIAAQCAAAAAAAAAAA=</HashCode>
+      <FileName>SubControls\ToolStripCheckedListBox.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.ToolTipControl" Collapsed="true">
+    <Position X="32.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CkoAByAwQQAggEvSAAIQiIWIBELAYOIpiAKQUIQDqEA=</HashCode>
+      <FileName>SubControls\ToolTipControl.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.ColumnSelectionForm" Collapsed="true">
+    <Position X="27.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAFDAAQTAUAACIBAoWEAAAAAAoAAAAAIEAAgA=</HashCode>
+      <FileName>Utilities\ColumnSelectionForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.Generator" Collapsed="true">
+    <Position X="29" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Utilities\Generator.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.TypedObjectListView&lt;T&gt;" Collapsed="true">
+    <Position X="23.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAwABEAAAAAACIAIAQEAABEAAAAAEEggAAAAACQAA=</HashCode>
+      <FileName>Utilities\TypedObjectListView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.TypedColumn&lt;T&gt;" Collapsed="true">
+    <Position X="22" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAEAEAABAAEAQCAAAQAAEAEAAAAgAAAAAAAA=</HashCode>
+      <FileName>Utilities\TypedObjectListView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.VirtualObjectListView" Collapsed="true">
+    <Position X="13.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AVkQQAAAAGIEAQAkKkHAEAgRH4gBgAGOCCEigAAgIAQ=</HashCode>
+      <FileName>VirtualObjectListView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.Design.ObjectListViewDesigner" Collapsed="true">
+    <Position X="34.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAABACAEAQAEAAAAAAAgAQCAAAAAAAMIQAABEAA=</HashCode>
+      <FileName>ObjectListView.DesignTime.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.Design.OLVColumnCollectionEditor" Collapsed="true">
+    <Position X="23.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAABAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ObjectListView.DesignTime.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.Design.OverlayConverter" Collapsed="true">
+    <Position X="22" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAIAAAAAAAA=</HashCode>
+      <FileName>ObjectListView.DesignTime.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.Properties.Resources" Collapsed="true">
+    <Position X="25.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAABEAAAgQAAAAAAAAAAQAIAAIg=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SynapseAdvancedControls.DataTreeListView" Collapsed="true">
+    <Position X="12.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgIAAAACAAEGAAAAAEAAAAAAABAAQAA=</HashCode>
+      <FileName>DataTreeListView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="SynapseAdvancedControls.IDragSource" Collapsed="true">
+    <Position X="25.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>DragDrop\DragSource.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SynapseAdvancedControls.IDropSink" Collapsed="true">
+    <Position X="27.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQQAAAAAIAEAAAAAEFAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>DragDrop\DropSink.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SynapseAdvancedControls.IModelFilter" Collapsed="true">
+    <Position X="5.5" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filtering\Filters.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SynapseAdvancedControls.IListFilter" Collapsed="true">
+    <Position X="11.25" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filtering\Filters.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SynapseAdvancedControls.ICluster" Collapsed="true">
+    <Position X="22" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAQAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Filtering\ICluster.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SynapseAdvancedControls.IClusteringStrategy" Collapsed="true">
+    <Position X="23.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABBAAAAAAAAAAAQBAQAAAAAAAAA=</HashCode>
+      <FileName>Filtering\IClusteringStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SynapseAdvancedControls.IVirtualGroups" Collapsed="true">
+    <Position X="23.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAEAAAAAAAAAAAEAAAACAAAAAA=</HashCode>
+      <FileName>Implementation\VirtualGroups.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SynapseAdvancedControls.IOwnerDataCallback" Collapsed="true">
+    <Position X="36" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAgAIAAAQAAAAAAAEAEAAAAA=</HashCode>
+      <FileName>Implementation\VirtualGroups.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SynapseAdvancedControls.IVirtualListDataSource" Collapsed="true">
+    <Position X="25.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAgAAASAgAQAAAEAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Implementation\VirtualListDataSource.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SynapseAdvancedControls.IFilterableDataSource" Collapsed="true">
+    <Position X="29" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\VirtualListDataSource.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SynapseAdvancedControls.IDecoration" Collapsed="true">
+    <Position X="14.75" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rendering\Decorations.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SynapseAdvancedControls.IOverlay" Collapsed="true">
+    <Position X="13.75" Y="13.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rendering\Overlays.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SynapseAdvancedControls.ITransparentOverlay" Collapsed="true">
+    <Position X="12.5" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rendering\Overlays.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SynapseAdvancedControls.IRenderer" Collapsed="true">
+    <Position X="22" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAABAAAAAABAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rendering\Renderers.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SynapseAdvancedControls.IItemStyle" Collapsed="true">
+    <Position X="30.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAADAAA=</HashCode>
+      <FileName>Rendering\Styles.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="SynapseAdvancedControls.CellEditAtEdgeBehaviour" Collapsed="true">
+    <Position X="22" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAACAAAAAAAAAAAAAAAAAAQAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>CellEditing\CellEditKeyEngine.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SynapseAdvancedControls.CellEditCharacterBehaviour" Collapsed="true">
+    <Position X="23.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAEAAAAQCAIAAAAAAIAAAAAAAUAQIABAAEAgAAAgACA=</HashCode>
+      <FileName>CellEditing\CellEditKeyEngine.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SynapseAdvancedControls.DropTargetLocation" Collapsed="true">
+    <Position X="27.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAABAAAAAAAAAAAEAAQBBAAAAAIgAAEAAAA=</HashCode>
+      <FileName>DragDrop\DropSink.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SynapseAdvancedControls.DateTimePortion" Collapsed="true">
+    <Position X="25.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAJAAAAAAAAAAAAAIAAAAAACIEAAAAAAAAAAA=</HashCode>
+      <FileName>Filtering\DateTimeClusteringStrategy.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SynapseAdvancedControls.GroupState" Collapsed="true">
+    <Position X="32.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAABAAEAQAARAAIQAAAAQAAAAAAEAAAAA=</HashCode>
+      <FileName>Implementation\Groups.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SynapseAdvancedControls.GroupMask" Collapsed="true">
+    <Position X="29" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAgAAAwABAAAAAAAUAAAIAgQAAAAAEACAgAAAFAAA=</HashCode>
+      <FileName>Implementation\Groups.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SynapseAdvancedControls.GroupMetricsMask" Collapsed="true">
+    <Position X="30.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAAAQAAAAAAEAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Groups.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SynapseAdvancedControls.HitTestLocation" Collapsed="true">
+    <Position X="34.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ASAAEEAAAAAAAAQAEAAAAAAAAAAAABAAAAAACAAAEAA=</HashCode>
+      <FileName>Implementation\OlvListViewHitTestInfo.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Delegate Name="SynapseAdvancedControls.EditorCreatorDelegate" Collapsed="true">
+    <Position X="23.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAQAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CellEditing\EditorRegistry.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="SynapseAdvancedControls.AspectGetterDelegate" Collapsed="true">
+    <Position X="22" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Delegates.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="SynapseAdvancedControls.AspectPutterDelegate" Collapsed="true">
+    <Position X="23.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Implementation\Delegates.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="SynapseAdvancedControls.AspectToStringConverterDelegate" Collapsed="true">
+    <Position X="25.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Delegates.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="SynapseAdvancedControls.CellToolTipGetterDelegate" Collapsed="true">
+    <Position X="32.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Implementation\Delegates.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="SynapseAdvancedControls.CheckStateGetterDelegate" Collapsed="true">
+    <Position X="34.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Delegates.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="SynapseAdvancedControls.BooleanCheckStateGetterDelegate" Collapsed="true">
+    <Position X="27.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Delegates.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="SynapseAdvancedControls.CheckStatePutterDelegate" Collapsed="true">
+    <Position X="36" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Delegates.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="SynapseAdvancedControls.BooleanCheckStatePutterDelegate" Collapsed="true">
+    <Position X="29" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Delegates.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="SynapseAdvancedControls.ColumnRightClickEventHandler" Collapsed="true">
+    <Position X="22" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Delegates.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="SynapseAdvancedControls.HeaderDrawingDelegate" Collapsed="true">
+    <Position X="30.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQABgAAAAACAQAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Implementation\Delegates.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="SynapseAdvancedControls.GroupFormatterDelegate" Collapsed="true">
+    <Position X="25.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAABAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Delegates.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="SynapseAdvancedControls.GroupKeyGetterDelegate" Collapsed="true">
+    <Position X="27.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Delegates.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="SynapseAdvancedControls.GroupKeyToTitleConverterDelegate" Collapsed="true">
+    <Position X="29" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Delegates.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="SynapseAdvancedControls.HeaderToolTipGetterDelegate" Collapsed="true">
+    <Position X="32.5" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Delegates.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="SynapseAdvancedControls.ImageGetterDelegate" Collapsed="true">
+    <Position X="34.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Delegates.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="SynapseAdvancedControls.RenderDelegate" Collapsed="true">
+    <Position X="36" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAgACAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Delegates.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="SynapseAdvancedControls.RowGetterDelegate" Collapsed="true">
+    <Position X="23.75" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Delegates.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="SynapseAdvancedControls.RowFormatterDelegate" Collapsed="true">
+    <Position X="22" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Delegates.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="SynapseAdvancedControls.SortDelegate" Collapsed="true">
+    <Position X="25.5" Y="13" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Implementation\Delegates.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Delegate Name="SynapseAdvancedControls.CellEditEventHandler" Collapsed="true">
+    <Position X="30.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Implementation\Events.cs</FileName>
+    </TypeIdentifier>
+  </Delegate>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

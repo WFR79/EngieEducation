@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5DEBE201-4E95-4559-BACC-AF81EFDAF7AE}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Module_Education</RootNamespace>
+    <AssemblyName>Module_Education</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\MyColumnCollectionDGAgent.cs" />
+    <Compile Include="Classes\MyColumnCollectionDGFormation.cs" />
+    <Compile Include="Classes\ProgressReport.cs" />
+    <Compile Include="DataAccessLayer\AgentDataAccess.cs" />
+    <Compile Include="DataAccessLayer\CompetenceDataAccess.cs" />
+    <Compile Include="DataAccessLayer\EquipeDataAccess.cs" />
+    <Compile Include="DataAccessLayer\FormationDataAccess.cs" />
+    <Compile Include="DataAccessLayer\FunctionDataAccess.cs" />
+    <Compile Include="DataAccessLayer\HabilitationDataAccess.cs" />
+    <Compile Include="DataAccessLayer\ProviderDataAccess.cs" />
+    <Compile Include="DataAccessLayer\RoleAstreinteDataAccess.cs" />
+    <Compile Include="DataAccessLayer\RoleEPIDataAccess.cs" />
+    <Compile Include="DataAccessLayer\SessionUniteDataAccess.cs" />
+    <Compile Include="DataAccessLayer\UniteDataAccess.cs" />
+    <Compile Include="DataAccessLayer\UserStatusDataAccess.cs" />
+    <Compile Include="Forms\MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserControls\ButtonRefresh.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserControls\ButtonRefresh.Designer.cs">
+      <DependentUpon>ButtonRefresh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserControls\UC_Agent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserControls\UC_Agent.Designer.cs">
+      <DependentUpon>UC_Agent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserControls\UC_Authentification.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserControls\UC_Authentification.Designer.cs">
+      <DependentUpon>UC_Authentification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserControls\Uc_Filtering.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserControls\Uc_Filtering.Designer.cs">
+      <DependentUpon>Uc_Filtering.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserControls\UC_Formation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserControls\UC_Formation.Designer.cs">
+      <DependentUpon>UC_Formation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\ExportExcel.cs" />
+    <Compile Include="Helper\Logger.cs" />
+    <Compile Include="Models\CFNFormationDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CFNFormationDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CFNFormationDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CFNFormationDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CFNFormationDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Agent.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_AgentStatus.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Agent_Formation.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_CategorieFormation.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Competence.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_CompetenceGroup.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_CompetenceSubGroup.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Departement.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Equipe.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Formation.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_FormationDossier.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_FormationDossierType.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_FormationProvider.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_FormationResultat.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_FormationSession.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Former.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Function.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_GroupLearner.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_GroupLearner_Agent.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Habilitation.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Log.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Matrice.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Matrice_Agent.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Matrice_Formation.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Matrice_GrLearner.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_MovementAgent.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_MovementStatusStep.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_MovementStep.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_MovementStepAgent.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_MovementType.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Provider.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Role.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_RoleAstreinte.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_RoleEPI.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Service.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_SessionUnite.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_UnitePrice.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserControls\ButtonRefresh.resx">
+      <DependentUpon>ButtonRefresh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserControls\UC_Agent.resx">
+      <DependentUpon>UC_Agent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserControls\UC_Authentification.resx">
+      <DependentUpon>UC_Authentification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserControls\Uc_Filtering.resx">
+      <DependentUpon>Uc_Filtering.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserControls\UC_Formation.resx">
+      <DependentUpon>UC_Formation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EntityDeploy Include="Models\CFNFormationDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CFNFormationDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\CFNFormationDataModel.edmx.diagram">
+      <DependentUpon>CFNFormationDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\Module_Education.csprojAssemblyReference.cache" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\CFNFormationDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CFNFormationDataModel.edmx</DependentUpon>
+      <LastGenOutput>CFNFormationDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\CFNFormationDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CFNFormationDataModel.edmx</DependentUpon>
+      <LastGenOutput>CFNFormationDataModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="Resources\1x\baseline_reorder_black_18dp.png" />
+    <Content Include="Resources\engieICO.ico" />
+    <Content Include="Resources\img\1x\baseline_person_black_18dp.png" />
+    <Content Include="Resources\img\1x\baseline_person_black_36dp.png" />
+    <Content Include="Resources\img\1x\outline_clear_black_36dp.png" />
+    <Content Include="Resources\img\baseline_class_black_18dp.png" />
+    <Content Include="Resources\img\baseline_people_black_18dp.png" />
+    <Content Include="Resources\img\baseline_person_black_18dp.png" />
+    <Content Include="Resources\img\baseline_person_black_36dp.png" />
+    <Content Include="Resources\img\engie-digital.jpg" />
+    <Content Include="Resources\img\engie.ico.png" />
+    <Content Include="Resources\img\engieIco.jpg" />
+    <Content Include="Resources\img\exit.png" />
+    <Content Include="Resources\img\Hideshowmenu.png" />
+    <Content Include="Resources\img\outline_clear_black_24dp.png" />
+    <Content Include="Resources\RjPf8oan_reasonably_small.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="Resources\2x\" />
+    <Folder Include="Resources\img\2x\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+</Project>

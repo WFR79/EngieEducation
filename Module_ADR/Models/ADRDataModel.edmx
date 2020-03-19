@@ -1,0 +1,973 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ADRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="ADR_Analysis_Parameters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParameterText" Type="nvarchar(max)" />
+          <Property Name="OrderCrit" Type="int" Nullable="false" />
+          <Property Name="CriticalityId" Type="int" Nullable="false" />
+          <Property Name="IsNA" Type="bit" Nullable="false" />
+          <Property Name="AnalysisId" Type="int" />
+        </EntityType>
+        <EntityType Name="ADR_Analysis_Result">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="OrderNbs" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="OrderShortDesc" Type="nvarchar(max)" />
+          <Property Name="Activity" Type="nvarchar(max)" />
+          <Property Name="Criticality" Type="int" Nullable="false" />
+          <Property Name="WorkCenter" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="FuncLocation" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MaintencaneItem" Type="nvarchar" MaxLength="50" />
+          <Property Name="AnalysisNbs" Type="nvarchar" MaxLength="32" Nullable="false" />
+          <Property Name="AnalysisId" Type="int" />
+          <Property Name="AnalysisInOrder" Type="bit" Nullable="false" />
+          <Property Name="AnalysisInPlan" Type="bit" Nullable="false" />
+          <Property Name="IsManual" Type="bit" />
+          <Property Name="RevisionPhase" Type="nvarchar" MaxLength="50" />
+          <Property Name="Workspace" Type="nvarchar" MaxLength="50" />
+          <Property Name="Preparator" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="ADR_Analysis_Template">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CriticalityId1" Type="int" Nullable="false" />
+          <Property Name="CriticalityId2" Type="int" Nullable="false" />
+          <Property Name="CriticalityId3" Type="int" Nullable="false" />
+          <Property Name="CriticalityId4" Type="int" Nullable="false" />
+          <Property Name="CriticalityId5" Type="int" Nullable="false" />
+          <Property Name="CriticalityId6" Type="int" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ADR_Criticality">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemText" Type="nvarchar(max)" />
+          <Property Name="CriticalityHelperId" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime2" Precision="7" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="25" />
+          <Property Name="IsDisabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ADR_Criticality_Helper">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DescriptionId" Type="int" Nullable="false" />
+          <Property Name="ItemText" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime2" Precision="7" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="25" />
+          <Property Name="IsDisabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ADR_Criticality_Helper_Parameters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemText" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsDisabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ADR_Criticality_MesureParade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ItemText" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreateBy" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="ModifiedBy" Type="nvarchar" MaxLength="25" />
+          <Property Name="ModifiedDate" Type="datetime2" Precision="7" />
+          <Property Name="CreationDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CriticalityRiskId" Type="int" Nullable="false" />
+          <Property Name="WorkCenterId" Type="int" Nullable="false" />
+          <Property Name="IsDisabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ADR_Historique">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Date" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="TypeAction" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Origine" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Destination" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ADR_Parameter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParameterName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ParameterValue" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Environment" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="ADR_SAPOrders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderNbs" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="OrderShortDesc" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AnalysisNbs" Type="nvarchar" MaxLength="32" />
+          <Property Name="FuncLocation" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WorkCenter" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Revision" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Criticality" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="FinishDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="ExecutionDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaintenancePlant" Type="nvarchar(max)" />
+          <Property Name="MaintencaneItem" Type="nvarchar(max)" />
+          <Property Name="RevisionPhase" Type="nvarchar" MaxLength="50" />
+          <Property Name="Preparator" Type="nvarchar" MaxLength="50" />
+          <Property Name="Workspace" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsManual" Type="bit" />
+        </EntityType>
+        <EntityType Name="ADR_WorkCenter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkCenter" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="IsDisabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ADR_WorkCenterUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WorkCenterId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="IsDisabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Analysis_Parameters_On_Criticality">
+          <End Role="ADR_Criticality" Type="Self.ADR_Criticality" Multiplicity="1" />
+          <End Role="ADR_Analysis_Parameters" Type="Self.ADR_Analysis_Parameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_Criticality">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_Analysis_Parameters">
+              <PropertyRef Name="CriticalityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Analysis_Template_Criticality1">
+          <End Role="ADR_Criticality" Type="Self.ADR_Criticality" Multiplicity="1" />
+          <End Role="ADR_Analysis_Template" Type="Self.ADR_Analysis_Template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_Criticality">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_Analysis_Template">
+              <PropertyRef Name="CriticalityId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Analysis_Template_Criticality2">
+          <End Role="ADR_Criticality" Type="Self.ADR_Criticality" Multiplicity="1" />
+          <End Role="ADR_Analysis_Template" Type="Self.ADR_Analysis_Template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_Criticality">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_Analysis_Template">
+              <PropertyRef Name="CriticalityId2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Analysis_Template_Criticality3">
+          <End Role="ADR_Criticality" Type="Self.ADR_Criticality" Multiplicity="1" />
+          <End Role="ADR_Analysis_Template" Type="Self.ADR_Analysis_Template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_Criticality">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_Analysis_Template">
+              <PropertyRef Name="CriticalityId3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Analysis_Template_Criticality4">
+          <End Role="ADR_Criticality" Type="Self.ADR_Criticality" Multiplicity="1" />
+          <End Role="ADR_Analysis_Template" Type="Self.ADR_Analysis_Template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_Criticality">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_Analysis_Template">
+              <PropertyRef Name="CriticalityId4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Analysis_Template_Criticality5">
+          <End Role="ADR_Criticality" Type="Self.ADR_Criticality" Multiplicity="1" />
+          <End Role="ADR_Analysis_Template" Type="Self.ADR_Analysis_Template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_Criticality">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_Analysis_Template">
+              <PropertyRef Name="CriticalityId5" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Analysis_Template_Criticality6">
+          <End Role="ADR_Criticality" Type="Self.ADR_Criticality" Multiplicity="1" />
+          <End Role="ADR_Analysis_Template" Type="Self.ADR_Analysis_Template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_Criticality">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_Analysis_Template">
+              <PropertyRef Name="CriticalityId6" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Criticality_Criticality_Helper">
+          <End Role="ADR_Criticality_Helper" Type="Self.ADR_Criticality_Helper" Multiplicity="1" />
+          <End Role="ADR_Criticality" Type="Self.ADR_Criticality" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_Criticality_Helper">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_Criticality">
+              <PropertyRef Name="CriticalityHelperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Criticality_Helper_Criticality_Helper_Parameters">
+          <End Role="ADR_Criticality_Helper_Parameters" Type="Self.ADR_Criticality_Helper_Parameters" Multiplicity="1" />
+          <End Role="ADR_Criticality_Helper" Type="Self.ADR_Criticality_Helper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_Criticality_Helper_Parameters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_Criticality_Helper">
+              <PropertyRef Name="DescriptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Criticality_MesureParade_On_Criticality">
+          <End Role="ADR_Criticality_Helper_Parameters" Type="Self.ADR_Criticality_Helper_Parameters" Multiplicity="1" />
+          <End Role="ADR_Criticality_MesureParade" Type="Self.ADR_Criticality_MesureParade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_Criticality_Helper_Parameters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_Criticality_MesureParade">
+              <PropertyRef Name="CriticalityRiskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Criticality_MesureParade_On_WorkCenter">
+          <End Role="ADR_WorkCenter" Type="Self.ADR_WorkCenter" Multiplicity="1" />
+          <End Role="ADR_Criticality_MesureParade" Type="Self.ADR_Criticality_MesureParade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_WorkCenter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_Criticality_MesureParade">
+              <PropertyRef Name="WorkCenterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parameter_On_Analysis">
+          <End Role="ADR_Analysis_Result" Type="Self.ADR_Analysis_Result" Multiplicity="0..1" />
+          <End Role="ADR_Analysis_Parameters" Type="Self.ADR_Analysis_Parameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_Analysis_Result">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_Analysis_Parameters">
+              <PropertyRef Name="AnalysisId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkCenterUser_WorkCenter">
+          <End Role="ADR_WorkCenter" Type="Self.ADR_WorkCenter" Multiplicity="1" />
+          <End Role="ADR_WorkCenterUser" Type="Self.ADR_WorkCenterUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_WorkCenter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_WorkCenterUser">
+              <PropertyRef Name="WorkCenterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ADRModelStoreContainer">
+          <EntitySet Name="ADR_Analysis_Parameters" EntityType="Self.ADR_Analysis_Parameters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ADR_Analysis_Result" EntityType="Self.ADR_Analysis_Result" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ADR_Analysis_Template" EntityType="Self.ADR_Analysis_Template" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ADR_Criticality" EntityType="Self.ADR_Criticality" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ADR_Criticality_Helper" EntityType="Self.ADR_Criticality_Helper" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ADR_Criticality_Helper_Parameters" EntityType="Self.ADR_Criticality_Helper_Parameters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ADR_Criticality_MesureParade" EntityType="Self.ADR_Criticality_MesureParade" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ADR_Historique" EntityType="Self.ADR_Historique" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ADR_Parameter" EntityType="Self.ADR_Parameter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ADR_SAPOrders" EntityType="Self.ADR_SAPOrders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ADR_WorkCenter" EntityType="Self.ADR_WorkCenter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ADR_WorkCenterUser" EntityType="Self.ADR_WorkCenterUser" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Analysis_Parameters_On_Criticality" Association="Self.FK_Analysis_Parameters_On_Criticality">
+            <End Role="ADR_Criticality" EntitySet="ADR_Criticality" />
+            <End Role="ADR_Analysis_Parameters" EntitySet="ADR_Analysis_Parameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Analysis_Template_Criticality1" Association="Self.FK_Analysis_Template_Criticality1">
+            <End Role="ADR_Criticality" EntitySet="ADR_Criticality" />
+            <End Role="ADR_Analysis_Template" EntitySet="ADR_Analysis_Template" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Analysis_Template_Criticality2" Association="Self.FK_Analysis_Template_Criticality2">
+            <End Role="ADR_Criticality" EntitySet="ADR_Criticality" />
+            <End Role="ADR_Analysis_Template" EntitySet="ADR_Analysis_Template" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Analysis_Template_Criticality3" Association="Self.FK_Analysis_Template_Criticality3">
+            <End Role="ADR_Criticality" EntitySet="ADR_Criticality" />
+            <End Role="ADR_Analysis_Template" EntitySet="ADR_Analysis_Template" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Analysis_Template_Criticality4" Association="Self.FK_Analysis_Template_Criticality4">
+            <End Role="ADR_Criticality" EntitySet="ADR_Criticality" />
+            <End Role="ADR_Analysis_Template" EntitySet="ADR_Analysis_Template" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Analysis_Template_Criticality5" Association="Self.FK_Analysis_Template_Criticality5">
+            <End Role="ADR_Criticality" EntitySet="ADR_Criticality" />
+            <End Role="ADR_Analysis_Template" EntitySet="ADR_Analysis_Template" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Analysis_Template_Criticality6" Association="Self.FK_Analysis_Template_Criticality6">
+            <End Role="ADR_Criticality" EntitySet="ADR_Criticality" />
+            <End Role="ADR_Analysis_Template" EntitySet="ADR_Analysis_Template" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Criticality_Criticality_Helper" Association="Self.FK_Criticality_Criticality_Helper">
+            <End Role="ADR_Criticality_Helper" EntitySet="ADR_Criticality_Helper" />
+            <End Role="ADR_Criticality" EntitySet="ADR_Criticality" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Criticality_Helper_Criticality_Helper_Parameters" Association="Self.FK_Criticality_Helper_Criticality_Helper_Parameters">
+            <End Role="ADR_Criticality_Helper_Parameters" EntitySet="ADR_Criticality_Helper_Parameters" />
+            <End Role="ADR_Criticality_Helper" EntitySet="ADR_Criticality_Helper" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Criticality_MesureParade_On_Criticality" Association="Self.FK_Criticality_MesureParade_On_Criticality">
+            <End Role="ADR_Criticality_Helper_Parameters" EntitySet="ADR_Criticality_Helper_Parameters" />
+            <End Role="ADR_Criticality_MesureParade" EntitySet="ADR_Criticality_MesureParade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Criticality_MesureParade_On_WorkCenter" Association="Self.FK_Criticality_MesureParade_On_WorkCenter">
+            <End Role="ADR_WorkCenter" EntitySet="ADR_WorkCenter" />
+            <End Role="ADR_Criticality_MesureParade" EntitySet="ADR_Criticality_MesureParade" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parameter_On_Analysis" Association="Self.FK_Parameter_On_Analysis">
+            <End Role="ADR_Analysis_Result" EntitySet="ADR_Analysis_Result" />
+            <End Role="ADR_Analysis_Parameters" EntitySet="ADR_Analysis_Parameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkCenterUser_WorkCenter" Association="Self.FK_WorkCenterUser_WorkCenter">
+            <End Role="ADR_WorkCenter" EntitySet="ADR_WorkCenter" />
+            <End Role="ADR_WorkCenterUser" EntitySet="ADR_WorkCenterUser" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ADRModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityType Name="ADR_Analysis_Parameters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParameterText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrderCrit" Type="Int32" Nullable="false" />
+          <Property Name="CriticalityId" Type="Int32" Nullable="false" />
+          <Property Name="IsNA" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ADR_Criticality" Relationship="Self.FK_Analysis_Parameters_On_Criticality" FromRole="ADR_Analysis_Parameters" ToRole="ADR_Criticality" />
+          <Property Name="AnalysisId" Type="Int32" />
+          <NavigationProperty Name="ADR_Analysis_Result" Relationship="ADRModel.FK_Parameter_On_Analysis" FromRole="ADR_Analysis_Parameters" ToRole="ADR_Analysis_Result" />
+        </EntityType>
+        <EntityType Name="ADR_Analysis_Result">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreateBy" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrderNbs" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WorkCenter" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FuncLocation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MaintencaneItem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AnalysisNbs" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AnalysisId" Type="Int32" />
+          <Property Name="Activity" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Criticality" Type="Int32" Nullable="false" />
+          <Property Name="OrderShortDesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AnalysisInOrder" Type="Boolean" Nullable="false" />
+          <Property Name="AnalysisInPlan" Type="Boolean" Nullable="false" />
+          <Property Name="IsManual" Type="Boolean" />
+          <NavigationProperty Name="ADR_Analysis_Parameters" Relationship="ADRModel.FK_Parameter_On_Analysis" FromRole="ADR_Analysis_Result" ToRole="ADR_Analysis_Parameters" />
+          <Property Name="RevisionPhase" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Workspace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Preparator" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ADR_Analysis_Template">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CriticalityId1" Type="Int32" Nullable="false" />
+          <Property Name="CriticalityId2" Type="Int32" Nullable="false" />
+          <Property Name="CriticalityId3" Type="Int32" Nullable="false" />
+          <Property Name="CriticalityId4" Type="Int32" Nullable="false" />
+          <Property Name="CriticalityId5" Type="Int32" Nullable="false" />
+          <Property Name="CriticalityId6" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ADR_Criticality" Relationship="Self.FK_Analysis_Template_Criticality1" FromRole="ADR_Analysis_Template" ToRole="ADR_Criticality" />
+          <NavigationProperty Name="ADR_Criticality1" Relationship="Self.FK_Analysis_Template_Criticality2" FromRole="ADR_Analysis_Template" ToRole="ADR_Criticality" />
+          <NavigationProperty Name="ADR_Criticality2" Relationship="Self.FK_Analysis_Template_Criticality3" FromRole="ADR_Analysis_Template" ToRole="ADR_Criticality" />
+          <NavigationProperty Name="ADR_Criticality3" Relationship="Self.FK_Analysis_Template_Criticality4" FromRole="ADR_Analysis_Template" ToRole="ADR_Criticality" />
+          <NavigationProperty Name="ADR_Criticality4" Relationship="Self.FK_Analysis_Template_Criticality5" FromRole="ADR_Analysis_Template" ToRole="ADR_Criticality" />
+          <NavigationProperty Name="ADR_Criticality5" Relationship="Self.FK_Analysis_Template_Criticality6" FromRole="ADR_Analysis_Template" ToRole="ADR_Criticality" />
+        </EntityType>
+        <EntityType Name="ADR_Criticality">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CriticalityHelperId" Type="Int32" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="7" />
+          <Property Name="CreateBy" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ADR_Analysis_Parameters" Relationship="Self.FK_Analysis_Parameters_On_Criticality" FromRole="ADR_Criticality" ToRole="ADR_Analysis_Parameters" />
+          <NavigationProperty Name="ADR_Analysis_Template" Relationship="Self.FK_Analysis_Template_Criticality1" FromRole="ADR_Criticality" ToRole="ADR_Analysis_Template" />
+          <NavigationProperty Name="ADR_Analysis_Template1" Relationship="Self.FK_Analysis_Template_Criticality2" FromRole="ADR_Criticality" ToRole="ADR_Analysis_Template" />
+          <NavigationProperty Name="ADR_Analysis_Template2" Relationship="Self.FK_Analysis_Template_Criticality3" FromRole="ADR_Criticality" ToRole="ADR_Analysis_Template" />
+          <NavigationProperty Name="ADR_Analysis_Template3" Relationship="Self.FK_Analysis_Template_Criticality4" FromRole="ADR_Criticality" ToRole="ADR_Analysis_Template" />
+          <NavigationProperty Name="ADR_Analysis_Template4" Relationship="Self.FK_Analysis_Template_Criticality5" FromRole="ADR_Criticality" ToRole="ADR_Analysis_Template" />
+          <NavigationProperty Name="ADR_Analysis_Template5" Relationship="Self.FK_Analysis_Template_Criticality6" FromRole="ADR_Criticality" ToRole="ADR_Analysis_Template" />
+          <NavigationProperty Name="ADR_Criticality_Helper" Relationship="Self.FK_Criticality_Criticality_Helper" FromRole="ADR_Criticality" ToRole="ADR_Criticality_Helper" />
+        </EntityType>
+        <EntityType Name="ADR_Criticality_Helper">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DescriptionId" Type="Int32" Nullable="false" />
+          <Property Name="ItemText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="7" />
+          <Property Name="CreateBy" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ADR_Criticality" Relationship="Self.FK_Criticality_Criticality_Helper" FromRole="ADR_Criticality_Helper" ToRole="ADR_Criticality" />
+          <NavigationProperty Name="ADR_Criticality_Helper_Parameters" Relationship="ADRModel.FK_Criticality_Helper_Criticality_Helper_Parameters" FromRole="ADR_Criticality_Helper" ToRole="ADR_Criticality_Helper_Parameters" />
+        </EntityType>
+        <EntityType Name="ADR_WorkCenter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkCenter" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ADR_WorkCenterUser" Relationship="Self.FK_WorkCenterUser_WorkCenter" FromRole="ADR_WorkCenter" ToRole="ADR_WorkCenterUser" />
+          <NavigationProperty Name="ADR_Criticality_MesureParade" Relationship="ADRModel.FK_Criticality_MesureParade_On_WorkCenter" FromRole="ADR_WorkCenter" ToRole="ADR_Criticality_MesureParade" />
+        </EntityType>
+        <EntityType Name="ADR_WorkCenterUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WorkCenterId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ADR_WorkCenter" Relationship="Self.FK_WorkCenterUser_WorkCenter" FromRole="ADR_WorkCenterUser" ToRole="ADR_WorkCenter" />
+          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Analysis_Parameters_On_Criticality">
+          <End Role="ADR_Criticality" Type="Self.ADR_Criticality" Multiplicity="1" />
+          <End Role="ADR_Analysis_Parameters" Type="Self.ADR_Analysis_Parameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_Criticality">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_Analysis_Parameters">
+              <PropertyRef Name="CriticalityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Analysis_Template_Criticality1">
+          <End Role="ADR_Criticality" Type="Self.ADR_Criticality" Multiplicity="1" />
+          <End Role="ADR_Analysis_Template" Type="Self.ADR_Analysis_Template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_Criticality">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_Analysis_Template">
+              <PropertyRef Name="CriticalityId1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Analysis_Template_Criticality2">
+          <End Role="ADR_Criticality" Type="Self.ADR_Criticality" Multiplicity="1" />
+          <End Role="ADR_Analysis_Template" Type="Self.ADR_Analysis_Template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_Criticality">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_Analysis_Template">
+              <PropertyRef Name="CriticalityId2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Analysis_Template_Criticality3">
+          <End Role="ADR_Criticality" Type="Self.ADR_Criticality" Multiplicity="1" />
+          <End Role="ADR_Analysis_Template" Type="Self.ADR_Analysis_Template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_Criticality">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_Analysis_Template">
+              <PropertyRef Name="CriticalityId3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Analysis_Template_Criticality4">
+          <End Role="ADR_Criticality" Type="Self.ADR_Criticality" Multiplicity="1" />
+          <End Role="ADR_Analysis_Template" Type="Self.ADR_Analysis_Template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_Criticality">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_Analysis_Template">
+              <PropertyRef Name="CriticalityId4" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Analysis_Template_Criticality5">
+          <End Role="ADR_Criticality" Type="Self.ADR_Criticality" Multiplicity="1" />
+          <End Role="ADR_Analysis_Template" Type="Self.ADR_Analysis_Template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_Criticality">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_Analysis_Template">
+              <PropertyRef Name="CriticalityId5" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Analysis_Template_Criticality6">
+          <End Role="ADR_Criticality" Type="Self.ADR_Criticality" Multiplicity="1" />
+          <End Role="ADR_Analysis_Template" Type="Self.ADR_Analysis_Template" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_Criticality">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_Analysis_Template">
+              <PropertyRef Name="CriticalityId6" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Criticality_Criticality_Helper">
+          <End Role="ADR_Criticality_Helper" Type="Self.ADR_Criticality_Helper" Multiplicity="1" />
+          <End Role="ADR_Criticality" Type="Self.ADR_Criticality" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_Criticality_Helper">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_Criticality">
+              <PropertyRef Name="CriticalityHelperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WorkCenterUser_WorkCenter">
+          <End Role="ADR_WorkCenter" Type="Self.ADR_WorkCenter" Multiplicity="1" />
+          <End Role="ADR_WorkCenterUser" Type="Self.ADR_WorkCenterUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_WorkCenter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_WorkCenterUser">
+              <PropertyRef Name="WorkCenterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ADREntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ADR_Analysis_Parameters" EntityType="Self.ADR_Analysis_Parameters" />
+          <EntitySet Name="ADR_Analysis_Result" EntityType="Self.ADR_Analysis_Result" />
+          <EntitySet Name="ADR_Analysis_Template" EntityType="Self.ADR_Analysis_Template" />
+          <EntitySet Name="ADR_Criticality" EntityType="Self.ADR_Criticality" />
+          <EntitySet Name="ADR_Criticality_Helper" EntityType="Self.ADR_Criticality_Helper" />
+          <EntitySet Name="ADR_WorkCenter" EntityType="Self.ADR_WorkCenter" />
+          <EntitySet Name="ADR_WorkCenterUser" EntityType="Self.ADR_WorkCenterUser" />
+          <AssociationSet Name="FK_Analysis_Parameters_On_Criticality" Association="Self.FK_Analysis_Parameters_On_Criticality">
+            <End Role="ADR_Criticality" EntitySet="ADR_Criticality" />
+            <End Role="ADR_Analysis_Parameters" EntitySet="ADR_Analysis_Parameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Analysis_Template_Criticality1" Association="Self.FK_Analysis_Template_Criticality1">
+            <End Role="ADR_Criticality" EntitySet="ADR_Criticality" />
+            <End Role="ADR_Analysis_Template" EntitySet="ADR_Analysis_Template" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Analysis_Template_Criticality2" Association="Self.FK_Analysis_Template_Criticality2">
+            <End Role="ADR_Criticality" EntitySet="ADR_Criticality" />
+            <End Role="ADR_Analysis_Template" EntitySet="ADR_Analysis_Template" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Analysis_Template_Criticality3" Association="Self.FK_Analysis_Template_Criticality3">
+            <End Role="ADR_Criticality" EntitySet="ADR_Criticality" />
+            <End Role="ADR_Analysis_Template" EntitySet="ADR_Analysis_Template" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Analysis_Template_Criticality4" Association="Self.FK_Analysis_Template_Criticality4">
+            <End Role="ADR_Criticality" EntitySet="ADR_Criticality" />
+            <End Role="ADR_Analysis_Template" EntitySet="ADR_Analysis_Template" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Analysis_Template_Criticality5" Association="Self.FK_Analysis_Template_Criticality5">
+            <End Role="ADR_Criticality" EntitySet="ADR_Criticality" />
+            <End Role="ADR_Analysis_Template" EntitySet="ADR_Analysis_Template" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Analysis_Template_Criticality6" Association="Self.FK_Analysis_Template_Criticality6">
+            <End Role="ADR_Criticality" EntitySet="ADR_Criticality" />
+            <End Role="ADR_Analysis_Template" EntitySet="ADR_Analysis_Template" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Criticality_Criticality_Helper" Association="Self.FK_Criticality_Criticality_Helper">
+            <End Role="ADR_Criticality_Helper" EntitySet="ADR_Criticality_Helper" />
+            <End Role="ADR_Criticality" EntitySet="ADR_Criticality" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WorkCenterUser_WorkCenter" Association="Self.FK_WorkCenterUser_WorkCenter">
+            <End Role="ADR_WorkCenter" EntitySet="ADR_WorkCenter" />
+            <End Role="ADR_WorkCenterUser" EntitySet="ADR_WorkCenterUser" />
+          </AssociationSet>
+          <EntitySet Name="ADR_Criticality_Helper_Parameters" EntityType="ADRModel.ADR_Criticality_Helper_Parameters" />
+          <AssociationSet Name="FK_Criticality_Helper_Criticality_Helper_Parameters" Association="ADRModel.FK_Criticality_Helper_Criticality_Helper_Parameters">
+            <End Role="ADR_Criticality_Helper_Parameters" EntitySet="ADR_Criticality_Helper_Parameters" />
+            <End Role="ADR_Criticality_Helper" EntitySet="ADR_Criticality_Helper" />
+          </AssociationSet>
+          <EntitySet Name="ADR_Criticality_MesureParade" EntityType="ADRModel.ADR_Criticality_MesureParade" />
+          <AssociationSet Name="FK_Criticality_MesureParade_On_Criticality" Association="ADRModel.FK_Criticality_MesureParade_On_Criticality">
+            <End Role="ADR_Criticality_Helper_Parameters" EntitySet="ADR_Criticality_Helper_Parameters" />
+            <End Role="ADR_Criticality_MesureParade" EntitySet="ADR_Criticality_MesureParade" />
+          </AssociationSet>
+          <EntitySet Name="ADR_SAPOrders" EntityType="ADRModel.ADR_SAPOrders" />
+          <AssociationSet Name="FK_Criticality_MesureParade_On_WorkCenter" Association="ADRModel.FK_Criticality_MesureParade_On_WorkCenter">
+            <End Role="ADR_WorkCenter" EntitySet="ADR_WorkCenter" />
+            <End Role="ADR_Criticality_MesureParade" EntitySet="ADR_Criticality_MesureParade" />
+          </AssociationSet>
+          <EntitySet Name="ADR_Historique" EntityType="ADRModel.ADR_Historique" />
+          <EntitySet Name="ADR_Parameter" EntityType="ADRModel.ADR_Parameter" />
+          <AssociationSet Name="FK_Parameter_On_Analysis" Association="ADRModel.FK_Parameter_On_Analysis">
+            <End Role="ADR_Analysis_Result" EntitySet="ADR_Analysis_Result" />
+            <End Role="ADR_Analysis_Parameters" EntitySet="ADR_Analysis_Parameters" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="ADR_Criticality_Helper_Parameters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemText" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ADR_Criticality_Helper" Relationship="ADRModel.FK_Criticality_Helper_Criticality_Helper_Parameters" FromRole="ADR_Criticality_Helper_Parameters" ToRole="ADR_Criticality_Helper" />
+          <NavigationProperty Name="ADR_Criticality_MesureParade" Relationship="ADRModel.FK_Criticality_MesureParade_On_Criticality" FromRole="ADR_Criticality_Helper_Parameters" ToRole="ADR_Criticality_MesureParade" />
+        </EntityType>
+        <Association Name="FK_Criticality_Helper_Criticality_Helper_Parameters">
+          <End Type="ADRModel.ADR_Criticality_Helper_Parameters" Role="ADR_Criticality_Helper_Parameters" Multiplicity="1" />
+          <End Type="ADRModel.ADR_Criticality_Helper" Role="ADR_Criticality_Helper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_Criticality_Helper_Parameters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_Criticality_Helper">
+              <PropertyRef Name="DescriptionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ADR_Criticality_MesureParade">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ItemText" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateBy" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CriticalityRiskId" Type="Int32" Nullable="false" />
+          <Property Name="IsDisabled" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ADR_Criticality_Helper_Parameters" Relationship="ADRModel.FK_Criticality_MesureParade_On_Criticality" FromRole="ADR_Criticality_MesureParade" ToRole="ADR_Criticality_Helper_Parameters" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="7" />
+          <Property Name="WorkCenterId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ADR_WorkCenter" Relationship="ADRModel.FK_Criticality_MesureParade_On_WorkCenter" FromRole="ADR_Criticality_MesureParade" ToRole="ADR_WorkCenter" />
+        </EntityType>
+        <Association Name="FK_Criticality_MesureParade_On_Criticality">
+          <End Type="ADRModel.ADR_Criticality_Helper_Parameters" Role="ADR_Criticality_Helper_Parameters" Multiplicity="1" />
+          <End Type="ADRModel.ADR_Criticality_MesureParade" Role="ADR_Criticality_MesureParade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_Criticality_Helper_Parameters">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_Criticality_MesureParade">
+              <PropertyRef Name="CriticalityRiskId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ADR_SAPOrders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderNbs" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="OrderShortDesc" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AnalysisNbs" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="FuncLocation" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WorkCenter" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Revision" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Criticality" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FinishDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExecutionDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaintenancePlant" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MaintencaneItem" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="RevisionPhase" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Workspace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsManual" Type="Boolean" />
+          <Property Name="Preparator" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Criticality_MesureParade_On_WorkCenter">
+          <End Type="ADRModel.ADR_WorkCenter" Role="ADR_WorkCenter" Multiplicity="1" />
+          <End Type="ADRModel.ADR_Criticality_MesureParade" Role="ADR_Criticality_MesureParade" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_WorkCenter">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_Criticality_MesureParade">
+              <PropertyRef Name="WorkCenterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ADR_Historique">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="TypeAction" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Origine" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Destination" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ADR_Parameter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParameterName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ParameterValue" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Environment" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Parameter_On_Analysis">
+          <End Type="ADRModel.ADR_Analysis_Result" Role="ADR_Analysis_Result" Multiplicity="0..1" />
+          <End Type="ADRModel.ADR_Analysis_Parameters" Role="ADR_Analysis_Parameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ADR_Analysis_Result">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ADR_Analysis_Parameters">
+              <PropertyRef Name="AnalysisId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ADRModelStoreContainer" CdmEntityContainer="ADREntities">
+          <EntitySetMapping Name="ADR_Analysis_Parameters">
+            <EntityTypeMapping TypeName="ADRModel.ADR_Analysis_Parameters">
+              <MappingFragment StoreEntitySet="ADR_Analysis_Parameters">
+                <ScalarProperty Name="AnalysisId" ColumnName="AnalysisId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParameterText" ColumnName="ParameterText" />
+                <ScalarProperty Name="OrderCrit" ColumnName="OrderCrit" />
+                <ScalarProperty Name="CriticalityId" ColumnName="CriticalityId" />
+                <ScalarProperty Name="IsNA" ColumnName="IsNA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADR_Analysis_Result">
+            <EntityTypeMapping TypeName="ADRModel.ADR_Analysis_Result">
+              <MappingFragment StoreEntitySet="ADR_Analysis_Result">
+                <ScalarProperty Name="Preparator" ColumnName="Preparator" />
+                <ScalarProperty Name="Workspace" ColumnName="Workspace" />
+                <ScalarProperty Name="RevisionPhase" ColumnName="RevisionPhase" />
+                <ScalarProperty Name="IsManual" ColumnName="IsManual" />
+                <ScalarProperty Name="AnalysisInPlan" ColumnName="AnalysisInPlan" />
+                <ScalarProperty Name="AnalysisInOrder" ColumnName="AnalysisInOrder" />
+                <ScalarProperty Name="OrderShortDesc" ColumnName="OrderShortDesc" />
+                <ScalarProperty Name="Criticality" ColumnName="Criticality" />
+                <ScalarProperty Name="Activity" ColumnName="Activity" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="OrderNbs" ColumnName="OrderNbs" />
+                <ScalarProperty Name="WorkCenter" ColumnName="WorkCenter" />
+                <ScalarProperty Name="FuncLocation" ColumnName="FuncLocation" />
+                <ScalarProperty Name="MaintencaneItem" ColumnName="MaintencaneItem" />
+                <ScalarProperty Name="AnalysisNbs" ColumnName="AnalysisNbs" />
+                <ScalarProperty Name="AnalysisId" ColumnName="AnalysisId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADR_Analysis_Template">
+            <EntityTypeMapping TypeName="ADRModel.ADR_Analysis_Template">
+              <MappingFragment StoreEntitySet="ADR_Analysis_Template">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CriticalityId1" ColumnName="CriticalityId1" />
+                <ScalarProperty Name="CriticalityId2" ColumnName="CriticalityId2" />
+                <ScalarProperty Name="CriticalityId3" ColumnName="CriticalityId3" />
+                <ScalarProperty Name="CriticalityId4" ColumnName="CriticalityId4" />
+                <ScalarProperty Name="CriticalityId5" ColumnName="CriticalityId5" />
+                <ScalarProperty Name="CriticalityId6" ColumnName="CriticalityId6" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADR_Criticality">
+            <EntityTypeMapping TypeName="ADRModel.ADR_Criticality">
+              <MappingFragment StoreEntitySet="ADR_Criticality">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ItemText" ColumnName="ItemText" />
+                <ScalarProperty Name="CriticalityHelperId" ColumnName="CriticalityHelperId" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADR_Criticality_Helper">
+            <EntityTypeMapping TypeName="ADRModel.ADR_Criticality_Helper">
+              <MappingFragment StoreEntitySet="ADR_Criticality_Helper">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DescriptionId" ColumnName="DescriptionId" />
+                <ScalarProperty Name="ItemText" ColumnName="ItemText" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADR_WorkCenter">
+            <EntityTypeMapping TypeName="ADRModel.ADR_WorkCenter">
+              <MappingFragment StoreEntitySet="ADR_WorkCenter">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WorkCenter" ColumnName="WorkCenter" />
+                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADR_WorkCenterUser">
+            <EntityTypeMapping TypeName="ADRModel.ADR_WorkCenterUser">
+              <MappingFragment StoreEntitySet="ADR_WorkCenterUser">
+                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WorkCenterId" ColumnName="WorkCenterId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADR_Criticality_Helper_Parameters">
+            <EntityTypeMapping TypeName="ADRModel.ADR_Criticality_Helper_Parameters">
+              <MappingFragment StoreEntitySet="ADR_Criticality_Helper_Parameters">
+                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
+                <ScalarProperty Name="ItemText" ColumnName="ItemText" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADR_Criticality_MesureParade">
+            <EntityTypeMapping TypeName="ADRModel.ADR_Criticality_MesureParade">
+              <MappingFragment StoreEntitySet="ADR_Criticality_MesureParade">
+                <ScalarProperty Name="WorkCenterId" ColumnName="WorkCenterId" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsDisabled" ColumnName="IsDisabled" />
+                <ScalarProperty Name="CriticalityRiskId" ColumnName="CriticalityRiskId" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CreateBy" ColumnName="CreateBy" />
+                <ScalarProperty Name="ItemText" ColumnName="ItemText" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADR_SAPOrders">
+            <EntityTypeMapping TypeName="ADRModel.ADR_SAPOrders">
+              <MappingFragment StoreEntitySet="ADR_SAPOrders">
+                <ScalarProperty Name="Preparator" ColumnName="Preparator" />
+                <ScalarProperty Name="IsManual" ColumnName="IsManual" />
+                <ScalarProperty Name="Workspace" ColumnName="Workspace" />
+                <ScalarProperty Name="RevisionPhase" ColumnName="RevisionPhase" />
+                <ScalarProperty Name="MaintencaneItem" ColumnName="MaintencaneItem" />
+                <ScalarProperty Name="MaintenancePlant" ColumnName="MaintenancePlant" />
+                <ScalarProperty Name="ExecutionDate" ColumnName="ExecutionDate" />
+                <ScalarProperty Name="FinishDate" ColumnName="FinishDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Criticality" ColumnName="Criticality" />
+                <ScalarProperty Name="Revision" ColumnName="Revision" />
+                <ScalarProperty Name="WorkCenter" ColumnName="WorkCenter" />
+                <ScalarProperty Name="FuncLocation" ColumnName="FuncLocation" />
+                <ScalarProperty Name="AnalysisNbs" ColumnName="AnalysisNbs" />
+                <ScalarProperty Name="OrderShortDesc" ColumnName="OrderShortDesc" />
+                <ScalarProperty Name="OrderNbs" ColumnName="OrderNbs" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADR_Historique">
+            <EntityTypeMapping TypeName="ADRModel.ADR_Historique">
+              <MappingFragment StoreEntitySet="ADR_Historique">
+                <ScalarProperty Name="Destination" ColumnName="Destination" />
+                <ScalarProperty Name="Origine" ColumnName="Origine" />
+                <ScalarProperty Name="TypeAction" ColumnName="TypeAction" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ADR_Parameter">
+            <EntityTypeMapping TypeName="ADRModel.ADR_Parameter">
+              <MappingFragment StoreEntitySet="ADR_Parameter">
+                <ScalarProperty Name="Environment" ColumnName="Environment" />
+                <ScalarProperty Name="ParameterValue" ColumnName="ParameterValue" />
+                <ScalarProperty Name="ParameterName" ColumnName="ParameterName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,459 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{06630191-B427-498A-80B8-A81C2505999E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Module_ADR</RootNamespace>
+    <AssemblyName>Module_ADR</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ADR Icone.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.1, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.1\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="MoreLinq, Version=2.10.21623.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
+      <HintPath>..\packages\morelinq.2.10.0\lib\net40\MoreLinq.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.License, Version=1.3.7.40, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.PDF.5.4.0\lib\net40\Spire.License.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Pdf, Version=5.4.15.20040, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\FreeSpire.PDF.5.4.0\lib\net40\Spire.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\portable-net40+sl4+win8+wp8\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connected Services\PMADRService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="CustomController\OrientedTextLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomEntities\UserWorkCenter.cs" />
+    <Compile Include="DataAccessLayer\Repos\HistoriqueRepository.cs" />
+    <Compile Include="DataAccessLayer\Repos\MesureAndParadeRepository.cs" />
+    <Compile Include="DataAccessLayer\Repos\AnalysisParametersRepository.cs" />
+    <Compile Include="DataAccessLayer\Repos\AnalysisResultRepositoty.cs" />
+    <Compile Include="DataAccessLayer\Repos\AnalysisResultOnParamRepository.cs" />
+    <Compile Include="DataAccessLayer\Repos\AnalysisTemplateRepository.cs" />
+    <Compile Include="DataAccessLayer\Repos\CriticalityHelperParametersRepository.cs" />
+    <Compile Include="DataAccessLayer\Repos\CriticalityHelperRepository.cs" />
+    <Compile Include="DataAccessLayer\Repos\CriticalityRepository.cs" />
+    <Compile Include="DataAccessLayer\Repos\Interface\IRepository.cs" />
+    <Compile Include="DataAccessLayer\Repos\ParamterRepository.cs" />
+    <Compile Include="DataAccessLayer\Repos\RepositoryBase.cs" />
+    <Compile Include="DataAccessLayer\Repos\SAPOrdersRepository.cs" />
+    <Compile Include="DataAccessLayer\Repos\WorkCenterRepository.cs" />
+    <Compile Include="DataAccessLayer\Repos\WorkCenterUserRepository.cs" />
+    <Compile Include="Forms\FrmAnalyse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmAnalyse.Designer.cs">
+      <DependentUpon>FrmAnalyse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmChangeWK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmChangeWK.Designer.cs">
+      <DependentUpon>FrmChangeWK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmChoosCriticality.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmChoosCriticality.Designer.cs">
+      <DependentUpon>FrmChoosCriticality.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmDeleteAnalyse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmDeleteAnalyse.Designer.cs">
+      <DependentUpon>FrmDeleteAnalyse.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmFirstStart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmFirstStart.Designer.cs">
+      <DependentUpon>FrmFirstStart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmHistorique.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmHistorique.Designer.cs">
+      <DependentUpon>FrmHistorique.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmImportSap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmImportSap.Designer.cs">
+      <DependentUpon>FrmImportSap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmMesureParade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmMesureParade.Designer.cs">
+      <DependentUpon>FrmMesureParade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmWait.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmWait.Designer.cs">
+      <DependentUpon>FrmWait.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\AnalyseEnum.cs" />
+    <Compile Include="Helper\GenerateHistorique.cs" />
+    <Compile Include="Helper\ModeEnum.cs" />
+    <Compile Include="Helper\OrderEnum.cs" />
+    <Compile Include="Helper\ADRHelper.cs" />
+    <Compile Include="Helper\TypeAssistant.cs" />
+    <Compile Include="Models\ADRDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ADRDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADRDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ADRDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADRDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ADRDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADR_Analysis_Parameters.cs">
+      <DependentUpon>ADRDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADR_Analysis_Result.cs">
+      <DependentUpon>ADRDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADR_Analysis_Template.cs">
+      <DependentUpon>ADRDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADR_Criticality.cs">
+      <DependentUpon>ADRDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADR_Criticality_Helper.cs">
+      <DependentUpon>ADRDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADR_Criticality_Helper_Parameters.cs">
+      <DependentUpon>ADRDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADR_Criticality_MesureParade.cs">
+      <DependentUpon>ADRDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADR_Historique.cs">
+      <DependentUpon>ADRDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADR_Parameter.cs">
+      <DependentUpon>ADRDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADR_SAPOrders.cs">
+      <DependentUpon>ADRDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADR_WorkCenter.cs">
+      <DependentUpon>ADRDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADR_WorkCenterUser.cs">
+      <DependentUpon>ADRDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\PMADRServices.cs" />
+    <EmbeddedResource Include="Forms\FrmAnalyse.resx">
+      <DependentUpon>FrmAnalyse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmChangeWK.resx">
+      <DependentUpon>FrmChangeWK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmChoosCriticality.resx">
+      <DependentUpon>FrmChoosCriticality.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmDeleteAnalyse.resx">
+      <DependentUpon>FrmDeleteAnalyse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmFirstStart.resx">
+      <DependentUpon>FrmFirstStart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmHistorique.resx">
+      <DependentUpon>FrmHistorique.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmImportSap.resx">
+      <DependentUpon>FrmImportSap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmMain.resx">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmMesureParade.resx">
+      <DependentUpon>FrmMesureParade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmWait.resx">
+      <DependentUpon>FrmWait.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\formLabels.en-US.resources" />
+    <EmbeddedResource Include="Resources\formLabels.fr-BE.resources" />
+    <EmbeddedResource Include="Resources\formLabels.nl-BE.resources" />
+    <EmbeddedResource Include="Resources\formLabels.resources" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Models\ADRDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ADRDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Connected Services\PMADRService\Enumerations.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\PMADRService\Faults.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\PMADRService\Module_ADR.PMADRService.GetMPItemattachmentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PMADRService\Module_ADR.PMADRService.GetOrderattachmentResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PMADRService\Module_ADR.PMADRService.GetOrderdetailsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PMADRService\PMADRSERVICE.wsdl" />
+    <None Include="Connected Services\PMADRService\PMADRSERVICE.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\PMADRService\Types.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\PMADRService\TypesRestrictions.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Models\ADRDataModel.edmx.diagram">
+      <DependentUpon>ADRDataModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Resources\corp.din506.p12">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\corp.eam565.p12">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\corp.hdm523.p12">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Template.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\TemplatePlan.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SuiteSecurity\SynapseCore.csproj">
+      <Project>{7FA90113-C38C-4325-8E08-EBAE035CC562}</Project>
+      <Name>SynapseCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SynapseListViewPrinter\SynapseListViewPrinter.csproj">
+      <Project>{e73a10bd-2b5a-4bac-897f-3a58cfc07631}</Project>
+      <Name>SynapseListViewPrinter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SynapseListView\SynapseListView.csproj">
+      <Project>{18FEDA0C-D147-4286-B39A-01204808106A}</Project>
+      <Name>SynapseListView</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SynapseRoomPicker\SynapseRoomPicker.csproj">
+      <Project>{CD18C584-FAF4-45EC-8D3B-DE4560AD876C}</Project>
+      <Name>SynapseRoomPicker</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Banner.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo-Engie.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Search.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ADR Icone.ico" />
+    <None Include="Resources\Loader point.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\Filter.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Connected Services\PMADRService\configuration91.svcinfo" />
+    <None Include="Connected Services\PMADRService\configuration.svcinfo" />
+    <None Include="Connected Services\PMADRService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="Resources\formLabels.en-US.txt" />
+    <Content Include="Resources\formLabels.nl-BE.txt" />
+    <Content Include="Resources\formLabels.txt" />
+    <None Include="Resources\NA.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Models\ADRDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ADRDataModel.edmx</DependentUpon>
+      <LastGenOutput>ADRDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ADRDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ADRDataModel.edmx</DependentUpon>
+      <LastGenOutput>ADRDataModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\PMADRService\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>"$(SolutionDir)\SynapseResourceBuilder\bin\debug\SynapseResourceBuilder.exe" "scan:$(ProjectDir)*" "target:$(ProjectDir)*" db:no
+xcopy "$(ProjectDir)Resources\*.*" "$(TargetDir)Resources\*.*" /Y</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

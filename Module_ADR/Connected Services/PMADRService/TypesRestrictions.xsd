@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:types="http://www.electrabel.com/p-i/20190703/Types/" elementFormDefault="qualified" targetNamespace="http://www.electrabel.com/p-i/20190703/Types/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="Numc2">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="2" />
+      <xs:pattern value="\d*" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Numc3">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+      <xs:pattern value="\d*" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Numc4">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="4" />
+      <xs:pattern value="\d*" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Numc5">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="5" />
+      <xs:pattern value="\d*" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Numc6">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="6" />
+      <xs:pattern value="\d*" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Numc8">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="8" />
+      <xs:pattern value="\d*" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Numc10">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="10" />
+      <xs:pattern value="\d*" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Numc12">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="12" />
+      <xs:pattern value="\d*" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Numc16">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="16" />
+      <xs:pattern value="\d*" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Numc22">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="22" />
+      <xs:pattern value="\d*" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Char1">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Char2">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Char3">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Char4">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="4" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Char5">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="5" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Char6">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="6" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Char8">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="8" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Char10">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Char12">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="12" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Char14">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="14" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Char15">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="15" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Char16">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="16" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Char18">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="18" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Char20">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Char22">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="22" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Char30">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="30" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Char40">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="40" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Char50">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="50" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Char60">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="60" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Char65">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="65" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Char70">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="70" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Char220">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="220" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Char250">
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="250" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="UUID">
+    <xs:restriction base="xs:string">
+      <xs:pattern value="[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

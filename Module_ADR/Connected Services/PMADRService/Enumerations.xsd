@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:enums="http://www.electrabel.com/p-i/20190703/Enumerations/" elementFormDefault="qualified" targetNamespace="http://www.electrabel.com/p-i/20190703/Enumerations/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:simpleType name="Application">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ECWA" />
+      <xs:enumeration value="EMS_TOOLING" />
+      <xs:enumeration value="ADR" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Profile">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="EBL" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

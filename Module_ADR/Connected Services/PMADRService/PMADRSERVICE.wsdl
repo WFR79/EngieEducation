@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:ns="http://www.electrabel.com/p-i/20190703/Types/" xmlns:params="http://www.electrabel.com/p-i/20190703/PMADRSERVICE/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:faults="http://www.electrabel.com/p-i/20190703/Faults/" xmlns:ns1="http://www.electrabel.com/p-i/20190703/Enumerations/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://www.electrabel.com/p-i/20190703/PMADRSERVICE/" name="PMADRSERVICE" targetNamespace="http://www.electrabel.com/p-i/20190703/PMADRSERVICE/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://www.electrabel.com/p-i/20190703/PMADRSERVICE/">
+      <xsd:include schemaLocation="PMADRSERVICE.xsd" />
+    </xsd:schema>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://www.electrabel.com/p-i/20190703/Faults/">
+      <xsd:include schemaLocation="Faults.xsd" />
+    </xsd:schema>
+  </types>
+  <message name="FunctionalError">
+    <part name="error" element="faults:FunctionalError" />
+  </message>
+  <message name="TechnicalError">
+    <part name="error" element="faults:TechnicalError" />
+  </message>
+  <message name="GetOrderdetails">
+    <part name="parameter" element="tns:GetOrderdetails" />
+  </message>
+  <message name="GetOrderdetailsResponse">
+    <part name="response" element="tns:GetOrderdetailsResponse" />
+  </message>
+  <message name="GetOrderattachment">
+    <part name="parameter" element="tns:GetOrderattachment" />
+  </message>
+  <message name="GetOrderattachmentResponse">
+    <part name="response" element="tns:GetOrderattachmentResponse" />
+  </message>
+  <message name="GetMPItemattachment">
+    <part name="parameter" element="tns:GetMPItemattachment" />
+  </message>
+  <message name="GetMPItemattachmentResponse">
+    <part name="response" element="tns:GetMPItemattachmentResponse" />
+  </message>
+  <portType name="PMADRSERVICEPort">
+    <operation name="GetOrderdetails">
+      <input name="GetOrderdetails" message="tns:GetOrderdetails" />
+      <output name="GetOrderdetailsResponse" message="tns:GetOrderdetailsResponse" />
+      <fault name="FunctionalError" message="tns:FunctionalError" />
+      <fault name="TechnicalError" message="tns:TechnicalError" />
+    </operation>
+    <operation name="GetOrderattachment">
+      <input name="GetOrderattachment" message="tns:GetOrderattachment" />
+      <output name="GetOrderattachmentResponse" message="tns:GetOrderattachmentResponse" />
+      <fault name="FunctionalError" message="tns:FunctionalError" />
+      <fault name="TechnicalError" message="tns:TechnicalError" />
+    </operation>
+    <operation name="GetMPItemattachment">
+      <input name="GetMPItemattachment" message="tns:GetMPItemattachment" />
+      <output name="GetMPItemattachmentResponse" message="tns:GetMPItemattachmentResponse" />
+      <fault name="FunctionalError" message="tns:FunctionalError" />
+      <fault name="TechnicalError" message="tns:TechnicalError" />
+    </operation>
+  </portType>
+  <binding name="PMADRSERVICEBinding" type="tns:PMADRSERVICEPort">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="GetOrderdetails">
+      <soap:operation soapAction="" style="document" />
+      <input name="GetOrderdetails">
+        <soap:body use="literal" />
+      </input>
+      <output name="GetOrderdetailsResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="FunctionalError">
+        <soap:fault use="literal" name="FunctionalError" namespace="" />
+      </fault>
+      <fault name="TechnicalError">
+        <soap:fault use="literal" name="TechnicalError" namespace="" />
+      </fault>
+    </operation>
+    <operation name="GetOrderattachment">
+      <soap:operation soapAction="" style="document" />
+      <input name="GetOrderattachment">
+        <soap:body use="literal" />
+      </input>
+      <output name="GetOrderattachmentResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="FunctionalError">
+        <soap:fault use="literal" name="FunctionalError" namespace="" />
+      </fault>
+      <fault name="TechnicalError">
+        <soap:fault use="literal" name="TechnicalError" namespace="" />
+      </fault>
+    </operation>
+    <operation name="GetMPItemattachment">
+      <soap:operation soapAction="" style="document" />
+      <input name="GetMPItemattachment">
+        <soap:body use="literal" />
+      </input>
+      <output name="GetMPItemattachmentResponse">
+        <soap:body use="literal" />
+      </output>
+      <fault name="FunctionalError">
+        <soap:fault use="literal" name="FunctionalError" namespace="" />
+      </fault>
+      <fault name="TechnicalError">
+        <soap:fault use="literal" name="TechnicalError" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="PMADRSERVICE">
+    <port name="PMADRSERVICEPort" binding="tns:PMADRSERVICEBinding">
+      <soap:address location="http://www.electrabel.com/p-i/20190703/PMADRSERVICE/" />
+    </port>
+  </service>
+</definitions>

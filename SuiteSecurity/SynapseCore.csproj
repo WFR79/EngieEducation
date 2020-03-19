@@ -1,0 +1,380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{7FA90113-C38C-4325-8E08-EBAE035CC562}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <OutputType>Library</OutputType>
+    <RootNamespace>SynapseCore</RootNamespace>
+    <AssemblyName>SynapseCore</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <DebugType>Full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\SynapseCore.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>None</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Release\SynapseCore.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ClosedXML">
+      <HintPath>..\..\lib\ClosedXML.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.0.5022.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\lib\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="ZedGraph">
+      <HintPath>..\..\lib\ZedGraph.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Config.cs" />
+    <Compile Include="Controls\ControlExtension.cs" />
+    <Compile Include="Controls\EntityExtensions.cs" />
+    <Compile Include="Controls\FormStyling\ChildPropertyChangedEventArgs.cs" />
+    <Compile Include="Controls\FormStyling\FormButtonStyle.cs" />
+    <Compile Include="Controls\FormStyling\FormStyleLibrary.cs" />
+    <Compile Include="Controls\FormStyling\FormStyleManager.cs" />
+    <Compile Include="Controls\FormStyling\FormStyleProperty.cs" />
+    <Compile Include="Controls\FormStyling\SerializableImage.cs" />
+    <Compile Include="Controls\frm_About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\frm_About.Designer.cs">
+      <DependentUpon>frm_About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\frm_EnterUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\frm_EnterUser.Designer.cs">
+      <DependentUpon>frm_EnterUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\frm_SynapseObjectEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\frm_SynapseObjectEdit.Designer.cs">
+      <DependentUpon>frm_SynapseObjectEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ReadWriteCsv.cs" />
+    <Compile Include="Controls\RichTextBoxExtended.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\FormStyling\StyleObject.cs" />
+    <Compile Include="Controls\SynapseColors.cs" />
+    <Compile Include="Controls\SynapseErrorProvider.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SynapseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Controls\SynapseGraphic.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SynapseGraphic.Designer.cs">
+      <DependentUpon>SynapseGraphic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SynapseListFilter.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SynapseListFilter.Designer.cs">
+      <DependentUpon>SynapseListFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SynapseTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\SynapseTracability.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\SynapseTracability.Designer.cs">
+      <DependentUpon>SynapseTracability.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SynapseValidationControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\uc_EntityHistory.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\uc_EntityHistory.Designer.cs">
+      <DependentUpon>uc_EntityHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\uc_Field.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\uc_Field.Designer.cs">
+      <DependentUpon>uc_Field.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\uc_LabelBag.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\uc_LabelBag.Designer.cs">
+      <DependentUpon>uc_LabelBag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\SynapseCustomBorderForm.cs" />
+    <Compile Include="Database\ApplicationRoleHelper.cs" />
+    <Compile Include="Database\Connection.cs" />
+    <Compile Include="Database\ConnectionManager.cs" />
+    <Compile Include="Database\DataTableExtensions.cs" />
+    <Compile Include="Database\DBConnectionAttribute.cs" />
+    <Compile Include="Database\DBFunctions.cs" />
+    <Compile Include="Database\DBLoggingAttribute.cs" />
+    <Compile Include="Database\EntityFieldType.cs" />
+    <Compile Include="Database\EntityFrameworkHelper.cs" />
+    <Compile Include="Database\LabelIdAttribute.cs" />
+    <Compile Include="Controls\DrawUtil.cs" />
+    <Compile Include="Entities\ComboBoxObject.cs" />
+    <Compile Include="Entities\ControlSecurity.cs" />
+    <Compile Include="Entities\EntityCollection.cs" />
+    <Compile Include="Database\LabelBag.cs" />
+    <Compile Include="Entities\LogEntry.cs" />
+    <Compile Include="Entities\LogValue.cs" />
+    <Compile Include="Entities\SynapseControl.cs" />
+    <Compile Include="Entities\SynapseEntity.cs" />
+    <Compile Include="Entities\SynapseInterface.cs" />
+    <Compile Include="Entities\SynapseLabel.cs" />
+    <Compile Include="Entities\SynapseLanguage.cs" />
+    <Compile Include="Entities\SynapseModule.cs" />
+    <Compile Include="Entities\SynapseOlvConfig.cs" />
+    <Compile Include="Entities\SynapseProfile.cs" />
+    <Compile Include="Entities\SynapseProfile_Control.cs" />
+    <Compile Include="Entities\SynapseStatistic.cs" />
+    <Compile Include="Entities\SynapseUser.cs" />
+    <Compile Include="Entities\SynapseUser_Profile.cs" />
+    <Compile Include="FormSecu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormSecu.Designer.cs">
+      <DependentUpon>FormSecu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FormStyling\FormStyle.cs" />
+    <Compile Include="Controls\FormWithNonClientArea.cs" />
+    <Compile Include="Controls\SynapseStyledForm.cs">
+      <SubType>form</SubType>
+    </Compile>
+    <Compile Include="Controls\NativeMethods.cs" />
+    <Compile Include="Graph\Resources.Designer.cs">
+      <DependentUpon>Resources.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Graph\SynapseGraph.cs" />
+    <Compile Include="Graph\SynapseGraphPoint.cs" />
+    <Compile Include="Graph\SynapseGraphTrace.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SimpleAes.cs" />
+    <Compile Include="Security\Tools.cs" />
+    <Compile Include="Security\User.cs" />
+    <Compile Include="SynapseCoreException.cs" />
+    <Compile Include="SynapseException.cs" />
+    <Compile Include="Translate.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Database\CheckConnection.dgml" />
+    <None Include="error.png" />
+    <None Include="error.ico" />
+    <None Include="FilterAdd.png" />
+    <None Include="FilterDelete.png" />
+    <None Include="excel.png" />
+    <None Include="Print.png" />
+    <None Include="Resources\FilterAdd.png" />
+    <None Include="Resources\FilterRemove.png" />
+    <None Include="Resources\FilterNew.png" />
+    <Content Include="Controls\RichTextBoxExtended.bmp" />
+    <None Include="Resources\doc_excel_csv.png" />
+    <None Include="Resources\csv.png" />
+    <Content Include="Resources\Image1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Controls\frm_About.resx">
+      <DependentUpon>frm_About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frm_EnterUser.resx">
+      <DependentUpon>frm_EnterUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\frm_SynapseObjectEdit.resx">
+      <DependentUpon>frm_SynapseObjectEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\RichTextBoxExtended.resx">
+      <DependentUpon>RichTextBoxExtended.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SynapseForm.resx">
+      <DependentUpon>SynapseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SynapseGraphic.resx">
+      <DependentUpon>SynapseGraphic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SynapseListFilter.resx">
+      <DependentUpon>SynapseListFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SynapseTracability.resx">
+      <DependentUpon>SynapseTracability.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\SynapseValidationControl.resx">
+      <DependentUpon>SynapseValidationControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\uc_EntityHistory.resx">
+      <DependentUpon>uc_EntityHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\uc_Field.resx">
+      <DependentUpon>uc_Field.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\uc_LabelBag.resx">
+      <DependentUpon>uc_LabelBag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Graph\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\about.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="png_lang\fr.png" />
+    <None Include="SynapseStyle.fsl">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="png_lang\nl.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="png_lang\us.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Border.png" />
+    <Content Include="Resources\Close.png" />
+    <Content Include="Resources\CloseDisabled.png" />
+    <Content Include="Resources\CloseHot.png" />
+    <Content Include="Resources\ClosePressed.png" />
+    <Content Include="Resources\Maximize.png" />
+    <Content Include="Resources\MaximizeDisabled.png" />
+    <Content Include="Resources\MaximizeHot.png" />
+    <Content Include="Resources\MaximizePressed.png" />
+    <Content Include="Resources\Minimize.png" />
+    <Content Include="Resources\MinimizeDisabled.png" />
+    <Content Include="Resources\MinimizeHot.png" />
+    <Content Include="Resources\MinimizePressed.png" />
+    <None Include="Resources\Print-Grid-32.png" />
+    <None Include="Resources\preview.png" />
+    <Content Include="Resources\report.png" />
+    <Content Include="Resources\Restore.png" />
+    <Content Include="Resources\RestoreDisabled.png" />
+    <Content Include="Resources\RestoreHot.png" />
+    <Content Include="Resources\RestorePressed.png" />
+    <None Include="search2.png" />
+    <None Include="Resources\UnfilterNew.png" />
+    <None Include="Resources\ViewRestore.png" />
+    <None Include="Resources\ViewSave.png" />
+    <Content Include="Synapse.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GenInstaller\GenInstaller.csproj">
+      <Project>{C791D78A-FB6A-441F-A55E-95A3FD8265DA}</Project>
+      <Name>GenInstaller</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SynapseListViewPrinter\SynapseListViewPrinter.csproj">
+      <Project>{E73A10BD-2B5A-4BAC-897F-3A58CFC07631}</Project>
+      <Name>SynapseListViewPrinter</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SynapseListView\SynapseListView.csproj">
+      <Project>{18FEDA0C-D147-4286-B39A-01204808106A}</Project>
+      <Name>SynapseListView</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
+</Project>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="eb2da926ebb34feb8bc91e98dbaf7692" Name="Diagram1">
+        <EntityTypeShape EntityType="ADRModel.ADR_Analysis_Parameters" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADRModel.ADR_Analysis_Result" Width="1.875" PointX="7.125" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADRModel.ADR_Analysis_Template" Width="1.5" PointX="7.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADRModel.ADR_Criticality" Width="1.5" PointX="5.25" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADRModel.ADR_Criticality_Helper" Width="2.375" PointX="1.125" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADRModel.ADR_WorkCenter" Width="1.5" PointX="9.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ADRModel.ADR_WorkCenterUser" Width="1.5" PointX="12" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="ADRModel.FK_Analysis_Parameters_On_Criticality" ManuallyRouted="false" />
+        <AssociationConnector Association="ADRModel.FK_Analysis_Template_Criticality1" ManuallyRouted="false" />
+        <AssociationConnector Association="ADRModel.FK_Analysis_Template_Criticality2" ManuallyRouted="false" />
+        <AssociationConnector Association="ADRModel.FK_Analysis_Template_Criticality3" ManuallyRouted="false" />
+        <AssociationConnector Association="ADRModel.FK_Analysis_Template_Criticality4" ManuallyRouted="false" />
+        <AssociationConnector Association="ADRModel.FK_Analysis_Template_Criticality5" ManuallyRouted="false" />
+        <AssociationConnector Association="ADRModel.FK_Analysis_Template_Criticality6" ManuallyRouted="false" />
+        <AssociationConnector Association="ADRModel.FK_Criticality_Criticality_Helper" ManuallyRouted="false" />
+        <AssociationConnector Association="ADRModel.FK_WorkCenterUser_WorkCenter" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ADRModel.ADR_Criticality_Helper_Parameters" Width="2.75" PointX="0.5" PointY="3.375" />
+        <AssociationConnector Association="ADRModel.FK_Criticality_Helper_Criticality_Helper_Parameters" />
+        <EntityTypeShape EntityType="ADRModel.ADR_Criticality_MesureParade" Width="1.5" PointX="3.375" PointY="0.5" />
+        <AssociationConnector Association="ADRModel.FK_Criticality_MesureParade_On_Criticality" />
+        <EntityTypeShape EntityType="ADRModel.ADR_SAPOrders" Width="1.5" PointX="4.375" PointY="7.75" />
+        <AssociationConnector Association="ADRModel.FK_Criticality_MesureParade_On_WorkCenter" />
+        <EntityTypeShape EntityType="ADRModel.ADR_Historique" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="ADRModel.ADR_Parameter" Width="2" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="ADRModel.FK_Parameter_On_Analysis" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

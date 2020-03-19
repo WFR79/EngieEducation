@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="21c23dfb54e746c6b7e92a028688022d" Name="Diagram1" ZoomLevel="47">
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Agent" Width="1.5" PointX="7.5" PointY="3.625" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Agent_Formation" Width="1.5" PointX="9.75" PointY="9.75" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_AgentStatus" Width="1.5" PointX="5.25" PointY="20.25" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_CategorieFormation" Width="1.5" PointX="9.75" PointY="26.5" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Competence" Width="1.5" PointX="5.25" PointY="27.625" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_CompetenceGroup" Width="1.5" PointX="0.75" PointY="28" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_CompetenceSubGroup" Width="1.5" PointX="3" PointY="27.75" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Departement" Width="1.5" PointX="0.75" PointY="6.875" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Equipe" Width="1.5" PointX="5.25" PointY="6.75" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Formation" Width="1.5" PointX="7.5" PointY="25.875" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_FormationDossier" Width="1.5" PointX="20" PointY="1.75" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_FormationDossierType" Width="1.5" PointX="17.75" PointY="2.75" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_FormationProvider" Width="1.5" PointX="17" PointY="21.5" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_FormationResultat" Width="1.5" PointX="9.75" PointY="32.125" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_FormationSession" Width="1.5" PointX="12.75" PointY="27.5" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Former" Width="1.5" PointX="17" PointY="12.25" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Function" Width="1.5" PointX="5.25" PointY="15.5" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_GroupLearner" Width="1.5" PointX="7.5" PointY="0.75" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_GroupLearner_Agent" Width="1.5" PointX="9.75" PointY="3.75" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Habilitation" Width="1.5" PointX="5.25" PointY="13.25" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Log" Width="1.5" PointX="0.75" PointY="1.375" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Matrice" Width="1.5" PointX="7.5" PointY="12.75" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Matrice_Agent" Width="1.5" PointX="9.75" PointY="6.75" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Matrice_Formation" Width="1.5" PointX="9.75" PointY="21.125" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Matrice_GrLearner" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_MovementAgent" Width="1.5" PointX="12.75" PointY="6.125" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_MovementStatusStep" Width="1.5" PointX="12.75" PointY="3.625" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_MovementStep" Width="1.5" PointX="12.75" PointY="12.875" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_MovementStepAgent" Width="1.5" PointX="15" PointY="6.5" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_MovementType" Width="1.5" PointX="10.5" PointY="13.125" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Provider" Width="1.5" PointX="14.75" PointY="13.5" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Role" Width="1.5" PointX="5.25" PointY="10.5" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_RoleAstreinte" Width="1.5" PointX="5.25" PointY="22.625" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_RoleEPI" Width="1.5" PointX="5.25" PointY="17.875" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Service" Width="1.5" PointX="3" PointY="6.5" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_SessionUnite" Width="1.5" PointX="10.5" PointY="24" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_UnitePrice" Width="1.5" PointX="2.75" PointY="1.375" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Agent_AgentEPI" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Agent_AgentStatus" />
+        <AssociationConnector Association="SYNAPSEModel.FK_AgentFormation_Agent" />
+        <AssociationConnector Association="SYNAPSEModel.FK_GroupLearnerAgent_Agent" />
+        <AssociationConnector Association="SYNAPSEModel.FK_MatriceUser_Agent" />
+        <AssociationConnector Association="SYNAPSEModel.FK_MovementAgent_AgentAdmin" />
+        <AssociationConnector Association="SYNAPSEModel.FK_MovementAgent_AgentMoved" />
+        <AssociationConnector Association="SYNAPSEModel.FK_User_Equipe" />
+        <AssociationConnector Association="SYNAPSEModel.FK_User_Function" />
+        <AssociationConnector Association="SYNAPSEModel.FK_User_Habilitation" />
+        <AssociationConnector Association="SYNAPSEModel.FK_User_LineManager" />
+        <AssociationConnector Association="SYNAPSEModel.FK_User_Role" />
+        <AssociationConnector Association="SYNAPSEModel.FK_User_RoleAstreinte" />
+        <AssociationConnector Association="SYNAPSEModel.FK_AgentFormation_Formation" />
+        <AssociationConnector Association="SYNAPSEModel.FK_CategorieFormation_Formation" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Competence_Competence" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Formation_Competence" />
+        <AssociationConnector Association="SYNAPSEModel.FK_CompetenceSubGroup_CompetenceGroup" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Service_Departement" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Equipe_Equipe" />
+        <AssociationConnector Association="SYNAPSEModel.FK_FormationProvider_FormationProvider" />
+        <AssociationConnector Association="SYNAPSEModel.FK_FormationResultat_Formation" />
+        <AssociationConnector Association="SYNAPSEModel.FK_FormationSession_Formation" />
+        <AssociationConnector Association="SYNAPSEModel.FK_MatriceFormation_Formation" />
+        <AssociationConnector Association="SYNAPSEModel.FK_FormationDossier_FormationDossierType" />
+        <AssociationConnector Association="SYNAPSEModel.FK_FormationProvider_Provider" />
+        <AssociationConnector Association="SYNAPSEModel.FK_FormationSession_SessionUnite" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Former_Provider" />
+        <AssociationConnector Association="SYNAPSEModel.FK_GroupLearnerAgent_GroupLearner" />
+        <AssociationConnector Association="SYNAPSEModel.FK_MatriceGrLearner_GroupLearner" />
+        <AssociationConnector Association="SYNAPSEModel.FK_MatriceFormation_Matrice" />
+        <AssociationConnector Association="SYNAPSEModel.FK_MatriceGrLearner_Matrice" />
+        <AssociationConnector Association="SYNAPSEModel.FK_MatriceUser_Matrice" />
+        <AssociationConnector Association="SYNAPSEModel.FK_MovementStepAgent_MovementAgent" />
+        <AssociationConnector Association="SYNAPSEModel.FK_MovementUser_ServiceActual" />
+        <AssociationConnector Association="SYNAPSEModel.FK_MovementUser_ServiceFutur" />
+        <AssociationConnector Association="SYNAPSEModel.FK_MovementStepUser_MovementStatusStep" />
+        <AssociationConnector Association="SYNAPSEModel.FK_MovementStep_MovementType" />
+        <AssociationConnector Association="SYNAPSEModel.FK_MovementStepAgent_MovementStep" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Role_Role" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

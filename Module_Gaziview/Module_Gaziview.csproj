@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3D261F42-6CFB-45E5-9851-8D025DD1C019}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Module_Gaziview</RootNamespace>
+    <AssemblyName>Module_Gaziview</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>GAZIVIEW.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="MonthCalendarControl">
+      <HintPath>..\..\lib\MonthCalendarControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="ZedGraph, Version=5.1.5.28844, Culture=neutral, PublicKeyToken=02a83cbd123fcd60, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\ZedGraph.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CustomWeekPicker.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Entities\o_Constant.cs" />
+    <Compile Include="Entities\o_Chain.cs" />
+    <Compile Include="Entities\o_EmissionReport.cs" />
+    <Compile Include="Entities\o_GasEmission.cs" />
+    <Compile Include="Entities\o_Unit.cs" />
+    <Compile Include="frm_BDFHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_BDFHistory.Designer.cs">
+      <DependentUpon>frm_BDFHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_GasEmissionDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_GasEmissionDetails.Designer.cs">
+      <DependentUpon>frm_GasEmissionDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_GasEmissions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_GasEmissions.Designer.cs">
+      <DependentUpon>frm_GasEmissions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Graphics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Graphics.Designer.cs">
+      <DependentUpon>frm_Graphics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ImportOldData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ImportOldData.Designer.cs">
+      <DependentUpon>frm_ImportOldData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Main.Designer.cs">
+      <DependentUpon>frm_Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Params.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Params.Designer.cs">
+      <DependentUpon>frm_Params.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_Reports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_Reports.Designer.cs">
+      <DependentUpon>frm_Reports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="GAZIVIEW.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Warning.png" />
+    <None Include="Resources\previous.png" />
+    <None Include="Resources\next.png" />
+    <None Include="Resources\calendar.png" />
+    <Content Include="Resources\formLabels.en-US.txt" />
+    <Content Include="Resources\formLabels.fr-BE.txt" />
+    <Content Include="Resources\formLabels.nl-BE.txt" />
+    <Content Include="Resources\formLabels.txt" />
+    <Content Include="Resources\GAZIVIEW.ico" />
+    <Content Include="Resources\formLabels.en-US.resources">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\formLabels.fr-BE.resources">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\formLabels.nl-BE.resources">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\formLabels.resources">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\Save.png" />
+    <None Include="Resources\banner.png" />
+    <None Include="Resources\test.bmp" />
+    <EmbeddedResource Include="frm_BDFHistory.resx">
+      <DependentUpon>frm_BDFHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_GasEmissionDetails.resx">
+      <DependentUpon>frm_GasEmissionDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_GasEmissions.resx">
+      <DependentUpon>frm_GasEmissions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Graphics.resx">
+      <DependentUpon>frm_Graphics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ImportOldData.resx">
+      <DependentUpon>frm_ImportOldData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Main.resx">
+      <DependentUpon>frm_Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Params.resx">
+      <DependentUpon>frm_Params.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_Reports.resx">
+      <DependentUpon>frm_Reports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Content Include="Reports\EmissionSumary.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\DataSources\Module_Gaziview.Entities.o_EmissionReport.datasource" />
+    <None Include="Properties\DataSources\Module_Gaziview.Entities.o_GasEmission.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SuiteSecurity\SynapseCore.csproj">
+      <Project>{7FA90113-C38C-4325-8E08-EBAE035CC562}</Project>
+      <Name>SynapseCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SynapseListView\SynapseListView.csproj">
+      <Project>{18FEDA0C-D147-4286-B39A-01204808106A}</Project>
+      <Name>SynapseListView</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

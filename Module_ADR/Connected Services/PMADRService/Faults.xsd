@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:faults="http://www.electrabel.com/p-i/20190703/Faults/" elementFormDefault="qualified" targetNamespace="http://www.electrabel.com/p-i/20190703/Faults/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="AbstractException" type="faults:AbstractException" />
+  <xs:element name="TechnicalError" type="faults:TechnicalError" />
+  <xs:element name="TimeOut" type="faults:TimeOut" />
+  <xs:element name="FunctionalError" type="faults:FunctionalError" />
+  <xs:element name="ApplicationError" type="faults:ApplicationError" />
+  <xs:element name="Exception" type="faults:Exception" />
+  <xs:element name="ExceptionList" type="faults:ExceptionList" />
+  <xs:complexType name="AbstractException" abstract="true">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ApplicationError">
+    <xs:complexContent mixed="false">
+      <xs:extension base="faults:AbstractException">
+        <xs:sequence>
+          <xs:element minOccurs="0" form="qualified" name="ExceptionList" type="faults:ExceptionList" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="Exception">
+    <xs:sequence>
+      <xs:element form="qualified" name="Type" type="xs:string" />
+      <xs:element minOccurs="0" form="qualified" name="ID" type="xs:string" />
+      <xs:element minOccurs="0" form="qualified" name="Number" type="xs:string" />
+      <xs:element form="qualified" name="Message" type="xs:string" />
+      <xs:element minOccurs="0" form="qualified" name="ObjectType" type="xs:string" />
+      <xs:element minOccurs="0" form="qualified" name="ObjectKey" type="xs:string" />
+      <xs:element minOccurs="0" form="qualified" name="LogNo" type="xs:string" />
+      <xs:element minOccurs="0" form="qualified" name="LogMsgNo" type="xs:string" />
+      <xs:element minOccurs="0" form="qualified" name="MessageV1" type="xs:string" />
+      <xs:element minOccurs="0" form="qualified" name="MessageV2" type="xs:string" />
+      <xs:element minOccurs="0" form="qualified" name="MessageV3" type="xs:string" />
+      <xs:element minOccurs="0" form="qualified" name="MessageV4" type="xs:string" />
+      <xs:element minOccurs="0" form="qualified" name="Parameter" type="xs:string" />
+      <xs:element minOccurs="0" form="qualified" name="Row" type="xs:string" />
+      <xs:element minOccurs="0" form="qualified" name="Field" type="xs:string" />
+      <xs:element minOccurs="0" form="qualified" name="System" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="ExceptionList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" form="qualified" name="Exception" type="faults:Exception" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="FunctionalError">
+    <xs:complexContent mixed="false">
+      <xs:extension base="faults:AbstractException">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TechnicalError">
+    <xs:complexContent mixed="false">
+      <xs:extension base="faults:AbstractException">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="TimeOut">
+    <xs:complexContent mixed="false">
+      <xs:extension base="faults:AbstractException">
+        <xs:sequence />
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>

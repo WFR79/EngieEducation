@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4D0793A3-B23D-4553-A67E-71FBADB9BFB0}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SynapseDeploymentTool</RootNamespace>
+    <AssemblyName>SynapseDeploymentTool</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ACCTOPRD.cs" />
+    <Compile Include="extensions.cs" />
+    <Compile Include="frm_DataMig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_DataMig.Designer.cs">
+      <DependentUpon>frm_DataMig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ACCEntities\LabelBag.cs" />
+    <Compile Include="frm_diff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_diff.Designer.cs">
+      <DependentUpon>frm_diff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ReleaseNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ReleaseNote.Designer.cs">
+      <DependentUpon>frm_ReleaseNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ACCEntities\SynapseControl.cs" />
+    <Compile Include="ACCEntities\SynapseLabel.cs" />
+    <Compile Include="ACCEntities\SynapseModule.cs" />
+    <Compile Include="ACCEntities\SynapseProfile.cs" />
+    <Compile Include="ACCEntities\SynapseProfile_Control.cs" />
+    <Compile Include="ACCEntities\SynapseUser.cs" />
+    <Compile Include="ACCEntities\SynapseUser_Profile.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GenInstaller\GenInstaller.csproj">
+      <Project>{C791D78A-FB6A-441F-A55E-95A3FD8265DA}</Project>
+      <Name>GenInstaller</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SuiteSecurity\SynapseCore.csproj">
+      <Project>{7FA90113-C38C-4325-8E08-EBAE035CC562}</Project>
+      <Name>SynapseCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SynapseListView\SynapseListView.csproj">
+      <Project>{18FEDA0C-D147-4286-B39A-01204808106A}</Project>
+      <Name>SynapseListView</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frm_DataMig.resx">
+      <DependentUpon>frm_DataMig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_diff.resx">
+      <DependentUpon>frm_diff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ReleaseNote.resx">
+      <DependentUpon>frm_ReleaseNote.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="app.Debug.config">
+      <DependentUpon>app.config</DependentUpon>
+    </None>
+    <None Include="app.Release.config">
+      <DependentUpon>app.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

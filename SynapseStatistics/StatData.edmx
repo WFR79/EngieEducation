@@ -1,0 +1,519 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SYNAPSEModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="SYNAPSEModelStoreContainer">
+          <EntitySet Name="Synapse_Module" EntityType="SYNAPSEModel.Store.Synapse_Module" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Synapse_Security_Control" EntityType="SYNAPSEModel.Store.Synapse_Security_Control" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Synapse_Security_Profile" EntityType="SYNAPSEModel.Store.Synapse_Security_Profile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Synapse_Security_Profile Control" EntityType="SYNAPSEModel.Store.Synapse_Security_Profile Control" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Synapse_Security_User" EntityType="SYNAPSEModel.Store.Synapse_Security_User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Synapse_Security_User Profile" EntityType="SYNAPSEModel.Store.Synapse_Security_User Profile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Synapse_Statistics" EntityType="SYNAPSEModel.Store.Synapse_Statistics" store:Type="Tables" store:Schema="dbo" store:Name="Synapse_Statistics">
+            <DefiningQuery>SELECT 
+      [Synapse_Statistics].[ID] AS [ID], 
+      [Synapse_Statistics].[USERID] AS [USERID], 
+      [Synapse_Statistics].[FK_MODULE_ID] AS [FK_MODULE_ID], 
+      [Synapse_Statistics].[FORMNAME] AS [FORMNAME], 
+      [Synapse_Statistics].[OPEN_TIME] AS [OPEN_TIME], 
+      [Synapse_Statistics].[CLOSE_TIME] AS [CLOSE_TIME], 
+      [Synapse_Statistics].[ACTIVITY_TIME] AS [ACTIVITY_TIME], 
+      [Synapse_Statistics].[OPENED_TIME] AS [OPENED_TIME]
+      FROM [dbo].[Synapse_Statistics] AS [Synapse_Statistics]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Synapse_Security_Profile Control_Synapse_Security_Control" Association="SYNAPSEModel.Store.FK_Synapse_Security_Profile Control_Synapse_Security_Control">
+            <End Role="Synapse_Security_Control" EntitySet="Synapse_Security_Control" />
+            <End Role="Synapse_Security_Profile Control" EntitySet="Synapse_Security_Profile Control" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Synapse_Security_Profile Control_Synapse_Security_Profile" Association="SYNAPSEModel.Store.FK_Synapse_Security_Profile Control_Synapse_Security_Profile">
+            <End Role="Synapse_Security_Profile" EntitySet="Synapse_Security_Profile" />
+            <End Role="Synapse_Security_Profile Control" EntitySet="Synapse_Security_Profile Control" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Synapse_Security_Profile_Synapse_Module" Association="SYNAPSEModel.Store.FK_Synapse_Security_Profile_Synapse_Module">
+            <End Role="Synapse_Module" EntitySet="Synapse_Module" />
+            <End Role="Synapse_Security_Profile" EntitySet="Synapse_Security_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Synapse_Security_User Profile_Synapse_Security_Profile" Association="SYNAPSEModel.Store.FK_Synapse_Security_User Profile_Synapse_Security_Profile">
+            <End Role="Synapse_Security_Profile" EntitySet="Synapse_Security_Profile" />
+            <End Role="Synapse_Security_User Profile" EntitySet="Synapse_Security_User Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Synapse_Security_User Profile_Synapse_Security_User" Association="SYNAPSEModel.Store.FK_Synapse_Security_User Profile_Synapse_Security_User">
+            <End Role="Synapse_Security_User" EntitySet="Synapse_Security_User" />
+            <End Role="Synapse_Security_User Profile" EntitySet="Synapse_Security_User Profile" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Synapse_Module">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LABELID" Type="bigint" />
+          <Property Name="PATH" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="TECHNICALNAME" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="VERSION" Type="nvarchar" MaxLength="10" />
+          <Property Name="MODULECATEGORY" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="VERSIONDATE" Type="nvarchar" MaxLength="50" />
+          <Property Name="DESCLABELID" Type="bigint" />
+          <Property Name="DEVSOURCE" Type="nvarchar" MaxLength="250" />
+          <Property Name="PRODSOURCE" Type="nvarchar" MaxLength="250" />
+          <Property Name="IS_ACTIVE" Type="bit" />
+          <Property Name="IS_REQUESTABLE" Type="bit" />
+        </EntityType>
+        <EntityType Name="Synapse_Security_Control">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FORM_NAME" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CTRL_TYPE" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CTRL_NAME" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="FK_MODULE_ID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Synapse_Security_Profile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FK_MODULEID" Type="bigint" Nullable="false" />
+          <Property Name="FK_LABELID" Type="bigint" />
+          <Property Name="TECHNICALNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="IS_OWNER" Type="bit" Nullable="false" />
+          <Property Name="LEVEL" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Synapse_Security_Profile Control">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FK_PROFILEID" Type="bigint" Nullable="false" />
+          <Property Name="FK_CONTROLID" Type="bigint" Nullable="false" />
+          <Property Name="IS_VISIBLE" Type="bit" Nullable="false" />
+          <Property Name="IS_ACTIVE" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Synapse_Security_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="USERID" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="FIRSTNAME" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LASTNAME" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CULTURE" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Synapse_Security_User Profile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FK_SECURITY_PROFILE" Type="bigint" Nullable="false" />
+          <Property Name="FK_SECURITY_USER" Type="bigint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'SYNAPSE.dbo.Synapse_Statistics' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Synapse_Statistics">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="USERID" />
+            <PropertyRef Name="FK_MODULE_ID" />
+            <PropertyRef Name="FORMNAME" />
+            <PropertyRef Name="OPEN_TIME" />
+            <PropertyRef Name="CLOSE_TIME" />
+            <PropertyRef Name="ACTIVITY_TIME" />
+            <PropertyRef Name="OPENED_TIME" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="USERID" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="FK_MODULE_ID" Type="bigint" Nullable="false" />
+          <Property Name="FORMNAME" Type="nvarchar" Nullable="false" MaxLength="150" />
+          <Property Name="OPEN_TIME" Type="datetime" Nullable="false" />
+          <Property Name="CLOSE_TIME" Type="datetime" Nullable="false" />
+          <Property Name="ACTIVITY_TIME" Type="bigint" Nullable="false" />
+          <Property Name="OPENED_TIME" Type="bigint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Synapse_Security_Profile Control_Synapse_Security_Control">
+          <End Role="Synapse_Security_Control" Type="SYNAPSEModel.Store.Synapse_Security_Control" Multiplicity="1" />
+          <End Role="Synapse_Security_Profile Control" Type="SYNAPSEModel.Store.Synapse_Security_Profile Control" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Synapse_Security_Control">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Synapse_Security_Profile Control">
+              <PropertyRef Name="FK_CONTROLID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Synapse_Security_Profile Control_Synapse_Security_Profile">
+          <End Role="Synapse_Security_Profile" Type="SYNAPSEModel.Store.Synapse_Security_Profile" Multiplicity="1" />
+          <End Role="Synapse_Security_Profile Control" Type="SYNAPSEModel.Store.Synapse_Security_Profile Control" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Synapse_Security_Profile">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Synapse_Security_Profile Control">
+              <PropertyRef Name="FK_PROFILEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Synapse_Security_Profile_Synapse_Module">
+          <End Role="Synapse_Module" Type="SYNAPSEModel.Store.Synapse_Module" Multiplicity="1" />
+          <End Role="Synapse_Security_Profile" Type="SYNAPSEModel.Store.Synapse_Security_Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Synapse_Module">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Synapse_Security_Profile">
+              <PropertyRef Name="FK_MODULEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Synapse_Security_User Profile_Synapse_Security_Profile">
+          <End Role="Synapse_Security_Profile" Type="SYNAPSEModel.Store.Synapse_Security_Profile" Multiplicity="1" />
+          <End Role="Synapse_Security_User Profile" Type="SYNAPSEModel.Store.Synapse_Security_User Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Synapse_Security_Profile">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Synapse_Security_User Profile">
+              <PropertyRef Name="FK_SECURITY_PROFILE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Synapse_Security_User Profile_Synapse_Security_User">
+          <End Role="Synapse_Security_User" Type="SYNAPSEModel.Store.Synapse_Security_User" Multiplicity="1" />
+          <End Role="Synapse_Security_User Profile" Type="SYNAPSEModel.Store.Synapse_Security_User Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Synapse_Security_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Synapse_Security_User Profile">
+              <PropertyRef Name="FK_SECURITY_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SYNAPSEModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="StatDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Synapse_Security_Control" EntityType="SYNAPSEModel.Synapse_Security_Control" />
+          <EntitySet Name="Synapse_Security_Profile" EntityType="SYNAPSEModel.Synapse_Security_Profile" />
+          <EntitySet Name="Synapse_Security_Profile_Control" EntityType="SYNAPSEModel.Synapse_Security_Profile_Control" />
+          <EntitySet Name="Synapse_Security_User" EntityType="SYNAPSEModel.Synapse_Security_User" />
+          <EntitySet Name="Synapse_Security_User_Profile" EntityType="SYNAPSEModel.Synapse_Security_User_Profile" />
+          <EntitySet Name="Synapse_Statistics" EntityType="SYNAPSEModel.Synapse_Statistics" />
+          <AssociationSet Name="FK_Synapse_Security_Profile_Control_Synapse_Security_Control" Association="SYNAPSEModel.FK_Synapse_Security_Profile_Control_Synapse_Security_Control">
+            <End Role="Synapse_Security_Control" EntitySet="Synapse_Security_Control" />
+            <End Role="Synapse_Security_Profile_Control" EntitySet="Synapse_Security_Profile_Control" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Synapse_Security_Profile_Control_Synapse_Security_Profile" Association="SYNAPSEModel.FK_Synapse_Security_Profile_Control_Synapse_Security_Profile">
+            <End Role="Synapse_Security_Profile" EntitySet="Synapse_Security_Profile" />
+            <End Role="Synapse_Security_Profile_Control" EntitySet="Synapse_Security_Profile_Control" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Synapse_Security_User_Profile_Synapse_Security_Profile" Association="SYNAPSEModel.FK_Synapse_Security_User_Profile_Synapse_Security_Profile">
+            <End Role="Synapse_Security_Profile" EntitySet="Synapse_Security_Profile" />
+            <End Role="Synapse_Security_User_Profile" EntitySet="Synapse_Security_User_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Synapse_Security_User_Profile_Synapse_Security_User" Association="SYNAPSEModel.FK_Synapse_Security_User_Profile_Synapse_Security_User">
+            <End Role="Synapse_Security_User" EntitySet="Synapse_Security_User" />
+            <End Role="Synapse_Security_User_Profile" EntitySet="Synapse_Security_User_Profile" />
+          </AssociationSet>
+          <EntitySet Name="Synapse_Module" EntityType="SYNAPSEModel.Synapse_Module" />
+          <AssociationSet Name="FK_Synapse_Security_Profile_Synapse_Module" Association="SYNAPSEModel.FK_Synapse_Security_Profile_Synapse_Module">
+            <End Role="Synapse_Module" EntitySet="Synapse_Module" />
+            <End Role="Synapse_Security_Profile" EntitySet="Synapse_Security_Profile" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Synapse_Security_Control">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FORM_NAME" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CTRL_TYPE" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CTRL_NAME" Type="String" Nullable="false" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="FK_MODULE_ID" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Synapse_Security_Profile_Control" Relationship="SYNAPSEModel.FK_Synapse_Security_Profile_Control_Synapse_Security_Control" FromRole="Synapse_Security_Control" ToRole="Synapse_Security_Profile_Control" />
+        </EntityType>
+        <EntityType Name="Synapse_Security_Profile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_MODULEID" Type="Int64" Nullable="false" />
+          <Property Name="FK_LABELID" Type="Int64" />
+          <Property Name="TECHNICALNAME" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="IS_OWNER" Type="Boolean" Nullable="false" />
+          <Property Name="LEVEL" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Synapse_Security_Profile_Control" Relationship="SYNAPSEModel.FK_Synapse_Security_Profile_Control_Synapse_Security_Profile" FromRole="Synapse_Security_Profile" ToRole="Synapse_Security_Profile_Control" />
+          <NavigationProperty Name="Synapse_Security_User_Profile" Relationship="SYNAPSEModel.FK_Synapse_Security_User_Profile_Synapse_Security_Profile" FromRole="Synapse_Security_Profile" ToRole="Synapse_Security_User_Profile" />
+          <NavigationProperty Name="Synapse_Module" Relationship="SYNAPSEModel.FK_Synapse_Security_Profile_Synapse_Module" FromRole="Synapse_Security_Profile" ToRole="Synapse_Module" />
+        </EntityType>
+        <EntityType Name="Synapse_Security_Profile_Control">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_PROFILEID" Type="Int64" Nullable="false" />
+          <Property Name="FK_CONTROLID" Type="Int64" Nullable="false" />
+          <Property Name="IS_VISIBLE" Type="Boolean" Nullable="false" />
+          <Property Name="IS_ACTIVE" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Synapse_Security_Control" Relationship="SYNAPSEModel.FK_Synapse_Security_Profile_Control_Synapse_Security_Control" FromRole="Synapse_Security_Profile_Control" ToRole="Synapse_Security_Control" />
+          <NavigationProperty Name="Synapse_Security_Profile" Relationship="SYNAPSEModel.FK_Synapse_Security_Profile_Control_Synapse_Security_Profile" FromRole="Synapse_Security_Profile_Control" ToRole="Synapse_Security_Profile" />
+        </EntityType>
+        <EntityType Name="Synapse_Security_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERID" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FIRSTNAME" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LASTNAME" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CULTURE" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Synapse_Security_User_Profile" Relationship="SYNAPSEModel.FK_Synapse_Security_User_Profile_Synapse_Security_User" FromRole="Synapse_Security_User" ToRole="Synapse_Security_User_Profile" />
+        </EntityType>
+        <EntityType Name="Synapse_Security_User_Profile">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_SECURITY_PROFILE" Type="Int64" Nullable="false" />
+          <Property Name="FK_SECURITY_USER" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Synapse_Security_Profile" Relationship="SYNAPSEModel.FK_Synapse_Security_User_Profile_Synapse_Security_Profile" FromRole="Synapse_Security_User_Profile" ToRole="Synapse_Security_Profile" />
+          <NavigationProperty Name="Synapse_Security_User" Relationship="SYNAPSEModel.FK_Synapse_Security_User_Profile_Synapse_Security_User" FromRole="Synapse_Security_User_Profile" ToRole="Synapse_Security_User" />
+        </EntityType>
+        <EntityType Name="Synapse_Statistics">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="USERID" />
+            <PropertyRef Name="FK_MODULE_ID" />
+            <PropertyRef Name="FORMNAME" />
+            <PropertyRef Name="OPEN_TIME" />
+            <PropertyRef Name="CLOSE_TIME" />
+            <PropertyRef Name="ACTIVITY_TIME" />
+            <PropertyRef Name="OPENED_TIME" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERID" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="FK_MODULE_ID" Type="Int64" Nullable="false" />
+          <Property Name="FORMNAME" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
+          <Property Name="OPEN_TIME" Type="DateTime" Nullable="false" />
+          <Property Name="CLOSE_TIME" Type="DateTime" Nullable="false" />
+          <Property Name="ACTIVITY_TIME" Type="Int64" Nullable="false" />
+          <Property Name="OPENED_TIME" Type="Int64" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Synapse_Security_Profile_Control_Synapse_Security_Control">
+          <End Role="Synapse_Security_Control" Type="SYNAPSEModel.Synapse_Security_Control" Multiplicity="1" />
+          <End Role="Synapse_Security_Profile_Control" Type="SYNAPSEModel.Synapse_Security_Profile_Control" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Synapse_Security_Control">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Synapse_Security_Profile_Control">
+              <PropertyRef Name="FK_CONTROLID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Synapse_Security_Profile_Control_Synapse_Security_Profile">
+          <End Role="Synapse_Security_Profile" Type="SYNAPSEModel.Synapse_Security_Profile" Multiplicity="1" />
+          <End Role="Synapse_Security_Profile_Control" Type="SYNAPSEModel.Synapse_Security_Profile_Control" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Synapse_Security_Profile">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Synapse_Security_Profile_Control">
+              <PropertyRef Name="FK_PROFILEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Synapse_Security_User_Profile_Synapse_Security_Profile">
+          <End Role="Synapse_Security_Profile" Type="SYNAPSEModel.Synapse_Security_Profile" Multiplicity="1" />
+          <End Role="Synapse_Security_User_Profile" Type="SYNAPSEModel.Synapse_Security_User_Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Synapse_Security_Profile">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Synapse_Security_User_Profile">
+              <PropertyRef Name="FK_SECURITY_PROFILE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Synapse_Security_User_Profile_Synapse_Security_User">
+          <End Role="Synapse_Security_User" Type="SYNAPSEModel.Synapse_Security_User" Multiplicity="1" />
+          <End Role="Synapse_Security_User_Profile" Type="SYNAPSEModel.Synapse_Security_User_Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Synapse_Security_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Synapse_Security_User_Profile">
+              <PropertyRef Name="FK_SECURITY_USER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Synapse_Module">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int64" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="LABELID" />
+          <Property Type="String" Name="PATH" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TECHNICALNAME" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VERSION" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MODULECATEGORY" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VERSIONDATE" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int64" Name="DESCLABELID" />
+          <Property Type="String" Name="DEVSOURCE" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PRODSOURCE" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IS_ACTIVE" />
+          <Property Type="Boolean" Name="IS_REQUESTABLE" />
+          <NavigationProperty Name="Synapse_Security_Profile" Relationship="SYNAPSEModel.FK_Synapse_Security_Profile_Synapse_Module" FromRole="Synapse_Module" ToRole="Synapse_Security_Profile" />
+        </EntityType>
+        <Association Name="FK_Synapse_Security_Profile_Synapse_Module">
+          <End Type="SYNAPSEModel.Synapse_Module" Role="Synapse_Module" Multiplicity="1" />
+          <End Type="SYNAPSEModel.Synapse_Security_Profile" Role="Synapse_Security_Profile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Synapse_Module">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Synapse_Security_Profile">
+              <PropertyRef Name="FK_MODULEID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SYNAPSEModelStoreContainer" CdmEntityContainer="StatDataEntities">
+          <EntitySetMapping Name="Synapse_Security_Control"><EntityTypeMapping TypeName="SYNAPSEModel.Synapse_Security_Control"><MappingFragment StoreEntitySet="Synapse_Security_Control">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="FORM_NAME" ColumnName="FORM_NAME" />
+            <ScalarProperty Name="CTRL_TYPE" ColumnName="CTRL_TYPE" />
+            <ScalarProperty Name="CTRL_NAME" ColumnName="CTRL_NAME" />
+            <ScalarProperty Name="FK_MODULE_ID" ColumnName="FK_MODULE_ID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Synapse_Security_Profile"><EntityTypeMapping TypeName="SYNAPSEModel.Synapse_Security_Profile"><MappingFragment StoreEntitySet="Synapse_Security_Profile">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="FK_MODULEID" ColumnName="FK_MODULEID" />
+            <ScalarProperty Name="FK_LABELID" ColumnName="FK_LABELID" />
+            <ScalarProperty Name="TECHNICALNAME" ColumnName="TECHNICALNAME" />
+            <ScalarProperty Name="IS_OWNER" ColumnName="IS_OWNER" />
+            <ScalarProperty Name="LEVEL" ColumnName="LEVEL" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Synapse_Security_Profile_Control"><EntityTypeMapping TypeName="SYNAPSEModel.Synapse_Security_Profile_Control"><MappingFragment StoreEntitySet="Synapse_Security_Profile Control">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="FK_PROFILEID" ColumnName="FK_PROFILEID" />
+            <ScalarProperty Name="FK_CONTROLID" ColumnName="FK_CONTROLID" />
+            <ScalarProperty Name="IS_VISIBLE" ColumnName="IS_VISIBLE" />
+            <ScalarProperty Name="IS_ACTIVE" ColumnName="IS_ACTIVE" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Synapse_Security_User"><EntityTypeMapping TypeName="SYNAPSEModel.Synapse_Security_User"><MappingFragment StoreEntitySet="Synapse_Security_User">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="USERID" ColumnName="USERID" />
+            <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+            <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+            <ScalarProperty Name="CULTURE" ColumnName="CULTURE" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Synapse_Security_User_Profile"><EntityTypeMapping TypeName="SYNAPSEModel.Synapse_Security_User_Profile"><MappingFragment StoreEntitySet="Synapse_Security_User Profile">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="FK_SECURITY_PROFILE" ColumnName="FK_SECURITY_PROFILE" />
+            <ScalarProperty Name="FK_SECURITY_USER" ColumnName="FK_SECURITY_USER" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Synapse_Statistics"><EntityTypeMapping TypeName="SYNAPSEModel.Synapse_Statistics"><MappingFragment StoreEntitySet="Synapse_Statistics">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="USERID" ColumnName="USERID" />
+            <ScalarProperty Name="FK_MODULE_ID" ColumnName="FK_MODULE_ID" />
+            <ScalarProperty Name="FORMNAME" ColumnName="FORMNAME" />
+            <ScalarProperty Name="OPEN_TIME" ColumnName="OPEN_TIME" />
+            <ScalarProperty Name="CLOSE_TIME" ColumnName="CLOSE_TIME" />
+            <ScalarProperty Name="ACTIVITY_TIME" ColumnName="ACTIVITY_TIME" />
+            <ScalarProperty Name="OPENED_TIME" ColumnName="OPENED_TIME" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Synapse_Module">
+            <EntityTypeMapping TypeName="SYNAPSEModel.Synapse_Module">
+              <MappingFragment StoreEntitySet="Synapse_Module">
+                <ScalarProperty Name="IS_REQUESTABLE" ColumnName="IS_REQUESTABLE" />
+                <ScalarProperty Name="IS_ACTIVE" ColumnName="IS_ACTIVE" />
+                <ScalarProperty Name="PRODSOURCE" ColumnName="PRODSOURCE" />
+                <ScalarProperty Name="DEVSOURCE" ColumnName="DEVSOURCE" />
+                <ScalarProperty Name="DESCLABELID" ColumnName="DESCLABELID" />
+                <ScalarProperty Name="VERSIONDATE" ColumnName="VERSIONDATE" />
+                <ScalarProperty Name="MODULECATEGORY" ColumnName="MODULECATEGORY" />
+                <ScalarProperty Name="VERSION" ColumnName="VERSION" />
+                <ScalarProperty Name="TECHNICALNAME" ColumnName="TECHNICALNAME" />
+                <ScalarProperty Name="PATH" ColumnName="PATH" />
+                <ScalarProperty Name="LABELID" ColumnName="LABELID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="StatData">
+        <EntityTypeShape EntityType="SYNAPSEModel.Synapse_Security_Control" Width="1.5" PointX="5.5" PointY="5.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Synapse_Security_Profile" Width="1.5" PointX="0.75" PointY="3.5" Height="2.5571907552083322" IsExpanded="true" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Synapse_Security_Profile_Control" Width="1.5" PointX="3" PointY="3.5" Height="2.3648893229166665" IsExpanded="true" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Synapse_Security_User" Width="1.5" PointX="1.125" PointY="6.75" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Synapse_Security_User_Profile" Width="1.5" PointX="3" PointY="0.75" Height="1.9802864583333317" IsExpanded="true" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Synapse_Statistics" Width="1.5" PointX="5.75" PointY="1.875" Height="2.5571907552083322" IsExpanded="true" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Synapse_Security_Profile_Control_Synapse_Security_Control" ManuallyRouted="false">
+          <ConnectorPoint PointX="5.5" PointY="6.893739106770834" />
+          <ConnectorPoint PointX="3.75" PointY="6.893739106770834" />
+          <ConnectorPoint PointX="3.75" PointY="5.8648893229166665" />
+        </AssociationConnector>
+        <AssociationConnector Association="SYNAPSEModel.FK_Synapse_Security_Profile_Control_Synapse_Security_Profile" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="4.6824446614583337" />
+          <ConnectorPoint PointX="2.4166666666666665" PointY="4.6824446614583328" />
+          <ConnectorPoint PointX="2.5833333333333335" PointY="4.6824446614583337" />
+          <ConnectorPoint PointX="3" PointY="4.6824446614583337" />
+        </AssociationConnector>
+        <AssociationConnector Association="SYNAPSEModel.FK_Synapse_Security_User_Profile_Synapse_Security_Profile" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="3.5" />
+          <ConnectorPoint PointX="2.4410744349011204" PointY="3.3089255650988787" />
+          <ConnectorPoint PointX="2.5589255650988791" PointY="3.1910744349011209" />
+          <ConnectorPoint PointX="2.625" PointY="3.125" />
+          <ConnectorPoint PointX="2.625" PointY="1.7401432291666659" />
+          <ConnectorPoint PointX="3" PointY="1.7401432291666659" />
+        </AssociationConnector>
+        <AssociationConnector Association="SYNAPSEModel.FK_Synapse_Security_User_Profile_Synapse_Security_User" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.875" PointY="6.75" />
+          <ConnectorPoint PointX="1.875" PointY="6.4994921875" />
+          <ConnectorPoint PointX="2.5" PointY="6.4994921875" />
+          <ConnectorPoint PointX="2.5" PointY="2.2664668437499995" />
+          <ConnectorPoint PointX="2.5416666666666665" PointY="2.2664668437499991" />
+          <ConnectorPoint PointX="2.7083333333333335" PointY="2.2664668437499995" />
+          <ConnectorPoint PointX="3" PointY="2.2664668437499995" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="SYNAPSEModel.Synapse_Module" Width="1.5" PointX="0.75" PointY="0.75" Height="3.5186979166666674" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Synapse_Security_Profile_Synapse_Module" >
+          <ConnectorPoint PointX="0.75" PointY="2.5093489583333337" />
+          <ConnectorPoint PointX="0.5" PointY="2.5093489583333337" />
+          <ConnectorPoint PointX="0.5" PointY="4.87474609375" />
+          <ConnectorPoint PointX="0.75" PointY="4.87474609375" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

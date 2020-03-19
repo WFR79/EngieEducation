@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:types="http://www.electrabel.com/p-i/20190703/Types/" xmlns:enums="http://www.electrabel.com/p-i/20190703/Enumerations/" targetNamespace="http://www.electrabel.com/p-i/20190703/Types/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="Enumerations.xsd" namespace="http://www.electrabel.com/p-i/20190703/Enumerations/" />
+  <xs:include schemaLocation="TypesRestrictions.xsd" />
+  <xs:complexType name="Channel">
+    <xs:sequence>
+      <xs:element name="Application" type="enums:Application" />
+      <xs:element name="Profile" type="enums:Profile" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="Attachment">
+    <xs:sequence>
+      <xs:element name="FileName" type="types:Char60" />
+      <xs:element name="Content" type="xs:string" />
+      <xs:element name="Description" type="types:Char30" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InputDataOrderdetails">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderDataI" type="types:OrderDataI" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrderDetailsFindResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderDataO" type="types:OrderDataO" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InputDataAttachment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CreateAttachment" type="types:CreateAttachment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrderAttachmentFindResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AttchMessage" type="types:AttchMessage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="InputMPIAttachment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CreateMPIAttachment" type="types:CreateMPIAttachment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="MPIAttachmentFindResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AttchMessage" type="types:AttchMessage" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OperationCallData">
+    <xs:sequence>
+      <xs:element name="MessageID" type="types:UUID" />
+      <xs:element minOccurs="0" name="UserID" type="xs:string" />
+      <xs:element minOccurs="0" name="Language" type="types:Char65" />
+      <xs:element minOccurs="0" name="SessionID" type="types:Char10" />
+      <xs:element minOccurs="0" name="CorrelationID" type="xs:string" />
+      <xs:element minOccurs="0" name="OperationTimeStamp" type="xs:dateTime" />
+      <xs:element name="Channel" type="types:Channel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrderDataI">
+    <xs:sequence>
+      <xs:element name="MainWorkCenter" type="types:Char8" />
+      <xs:element name="RiskLevel" type="types:Char1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="OrderDataO">
+    <xs:sequence>
+      <xs:element name="OrderNumber" type="types:Char12" />
+      <xs:element name="OrderDescription" type="types:Char40" />
+      <xs:element name="FunctionalLocation" type="types:Char40" />
+      <xs:element name="MainWorkCenter" type="types:Char8" />
+      <xs:element name="Revision" type="types:Char8" />
+      <xs:element name="BasicStartDate" type="types:Char10" />
+      <xs:element name="BasicFinishDate" type="types:Char10" />
+      <xs:element name="UltimateExecutionDate" type="types:Char10" />
+      <xs:element name="RiskLevel" type="types:Char1" />
+      <xs:element name="MaintenancePlan" type="types:Char12" />
+      <xs:element name="MaintenanceItem" type="types:Char16" />
+      <xs:element name="WorkCenter" type="types:Char8" />
+      <xs:element name="RevisionPhase" type="types:Char20" />
+      <xs:element name="ZPPartnerName" type="types:Char40" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CreateAttachment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Attachment" type="types:Attachment" />
+      <xs:element name="OrderNumber" type="types:Char12" />
+      <xs:element name="UserID" type="types:Char12" />
+      <xs:element name="STETime" type="types:Char40" />
+      <xs:element name="STEText" type="types:Char250" />
+      <xs:element name="STEOff" type="types:Char1" />
+      <xs:element name="PPText" type="types:Char250" />
+      <xs:element name="PPOff" type="types:Char1" />
+      <xs:element name="RICText" type="types:Char250" />
+      <xs:element name="RICOff" type="types:Char1" />
+      <xs:element name="AQText" type="types:Char250" />
+      <xs:element name="AQOff" type="types:Char1" />
+      <xs:element name="ISText" type="types:Char250" />
+      <xs:element name="ISOff" type="types:Char1" />
+      <xs:element name="RPText" type="types:Char250" />
+      <xs:element name="RPOff" type="types:Char1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="CreateMPIAttachment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Attachment" type="types:Attachment" />
+      <xs:element name="MaintenanceItem" type="types:Char16" />
+      <xs:element name="UserID" type="types:Char12" />
+      <xs:element name="RiskLevel" type="types:Char1" />
+      <xs:element name="STETime" type="types:Char40" />
+      <xs:element name="STEText" type="types:Char250" />
+      <xs:element name="STEOff" type="types:Char1" />
+      <xs:element name="PPText" type="types:Char250" />
+      <xs:element name="PPOff" type="types:Char1" />
+      <xs:element name="RICText" type="types:Char250" />
+      <xs:element name="RICOff" type="types:Char1" />
+      <xs:element name="AQText" type="types:Char250" />
+      <xs:element name="AQOff" type="types:Char1" />
+      <xs:element name="ISText" type="types:Char250" />
+      <xs:element name="ISOff" type="types:Char1" />
+      <xs:element name="RPText" type="types:Char250" />
+      <xs:element name="RPOff" type="types:Char1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="AttchMessage">
+    <xs:sequence>
+      <xs:element name="AckMessage" type="types:Char30" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>

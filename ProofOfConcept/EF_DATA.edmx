@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SYNAPSEModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="SYNAPSEModelStoreContainer">
+          <EntitySet Name="Synapse_Security_User" EntityType="SYNAPSEModel.Store.Synapse_Security_User" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Synapse_Security_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="USERID" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="FIRSTNAME" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LASTNAME" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CULTURE" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SYNAPSEModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="SYNAPSEEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Synapse_Security_User" EntityType="SYNAPSEModel.Synapse_Security_User" />
+        </EntityContainer>
+        <EntityType Name="Synapse_Security_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERID" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FIRSTNAME" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LASTNAME" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CULTURE" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SYNAPSEModelStoreContainer" CdmEntityContainer="SYNAPSEEntities">
+          <EntitySetMapping Name="Synapse_Security_User"><EntityTypeMapping TypeName="SYNAPSEModel.Synapse_Security_User"><MappingFragment StoreEntitySet="Synapse_Security_User">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="USERID" ColumnName="USERID" />
+            <ScalarProperty Name="FIRSTNAME" ColumnName="FIRSTNAME" />
+            <ScalarProperty Name="LASTNAME" ColumnName="LASTNAME" />
+            <ScalarProperty Name="CULTURE" ColumnName="CULTURE" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="EF_DATA">
+        <EntityTypeShape EntityType="SYNAPSEModel.Synapse_Security_User" Width="1.5" PointX="0.75" PointY="0.75" Height="1.9802864583333331" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:types="http://www.electrabel.com/p-i/20190703/Types/" xmlns:params="http://www.electrabel.com/p-i/20190703/PMADRSERVICE/" elementFormDefault="qualified" targetNamespace="http://www.electrabel.com/p-i/20190703/PMADRSERVICE/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="TypesRestrictions.xsd" namespace="http://www.electrabel.com/p-i/20190703/Types/" />
+  <xs:import schemaLocation="Types.xsd" namespace="http://www.electrabel.com/p-i/20190703/Types/" />
+  <xs:element name="GetOrderdetails" type="params:GetOrderdetails" />
+  <xs:element name="GetOrderdetailsResponse" type="params:GetOrderdetailsResponse" />
+  <xs:complexType name="GetOrderdetails">
+    <xs:sequence>
+      <xs:element name="OperationCallData" type="types:OperationCallData" />
+      <xs:element name="InputDataOrderdetails" type="types:InputDataOrderdetails" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetOrderdetailsResponse">
+    <xs:sequence>
+      <xs:element name="OrderDetailsFindResponse" type="types:OrderDetailsFindResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetOrderattachment" type="params:GetOrderattachment" />
+  <xs:element name="GetOrderattachmentResponse" type="params:GetOrderattachmentResponse" />
+  <xs:complexType name="GetOrderattachment">
+    <xs:sequence>
+      <xs:element name="OperationCallData" type="types:OperationCallData" />
+      <xs:element name="InputDataAttachment" type="types:InputDataAttachment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetOrderattachmentResponse">
+    <xs:sequence>
+      <xs:element name="OrderAttachmentFindResponse" type="types:OrderAttachmentFindResponse" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GetMPItemattachment" type="params:GetMPItemattachment" />
+  <xs:element name="GetMPItemattachmentResponse" type="params:GetMPItemattachmentResponse" />
+  <xs:complexType name="GetMPItemattachment">
+    <xs:sequence>
+      <xs:element name="OperationCallData" type="types:OperationCallData" />
+      <xs:element name="InputMPIAttachment" type="types:InputMPIAttachment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="GetMPItemattachmentResponse">
+    <xs:sequence>
+      <xs:element name="MPIAttachmentFindResponse" type="types:MPIAttachmentFindResponse" />
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
