@@ -62,5 +62,6 @@ namespace Module_Education.Models
         public virtual DbSet<Education_Service> Education_Service { get; set; }
         public virtual DbSet<Education_SessionUnite> Education_SessionUnite { get; set; }
         public virtual DbSet<Education_UnitePrice> Education_UnitePrice { get; set; }
+        public virtual DbSet<Education_FormationCategory> Education_FormationCategory { get; set; }
     }
 }

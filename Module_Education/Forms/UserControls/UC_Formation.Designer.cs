@@ -39,6 +39,8 @@
             this.btn_Previous = new System.Windows.Forms.Button();
             this.cb_FiltreDgEducation_Formations = new System.Windows.Forms.ComboBox();
             this.tabPageEducation_FormationFiche = new System.Windows.Forms.TabPage();
+            this.lblYearOfCreation = new System.Windows.Forms.Label();
+            this.txtYearOfCreation = new System.Windows.Forms.TextBox();
             this.labelComptence = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -77,8 +79,8 @@
             this.tabPage2_Matrices = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.txtYearOfCreation = new System.Windows.Forms.TextBox();
-            this.lblYearOfCreation = new System.Windows.Forms.Label();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.advancedDataGridView1 = new Zuby.ADGV.AdvancedDataGridView();
             this.tabControl_Education_Formations.SuspendLayout();
             this.tabPage1_Education_Formation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dG_Education_Formations)).BeginInit();
@@ -90,10 +92,13 @@
             this.tabPageCertificationsAgent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2_Matrices.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.advancedDataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl_Education_Formations
             // 
+            this.tabControl_Education_Formations.Controls.Add(this.tabPage1);
             this.tabControl_Education_Formations.Controls.Add(this.tabPage1_Education_Formation);
             this.tabControl_Education_Formations.Controls.Add(this.tabPageEducation_FormationFiche);
             this.tabControl_Education_Formations.Controls.Add(this.tabPage2_Matrices);
@@ -268,6 +273,23 @@
             this.tabPageEducation_FormationFiche.ToolTipText = "Fiche de la Education_Formation";
             this.tabPageEducation_FormationFiche.UseVisualStyleBackColor = true;
             this.tabPageEducation_FormationFiche.Click += new System.EventHandler(this.tabPageEducation_FormationFiche_Click);
+            // 
+            // lblYearOfCreation
+            // 
+            this.lblYearOfCreation.AutoSize = true;
+            this.lblYearOfCreation.Location = new System.Drawing.Point(14, 257);
+            this.lblYearOfCreation.Name = "lblYearOfCreation";
+            this.lblYearOfCreation.Size = new System.Drawing.Size(96, 14);
+            this.lblYearOfCreation.TabIndex = 111;
+            this.lblYearOfCreation.Text = "Année de création";
+            // 
+            // txtYearOfCreation
+            // 
+            this.txtYearOfCreation.Location = new System.Drawing.Point(14, 274);
+            this.txtYearOfCreation.Name = "txtYearOfCreation";
+            this.txtYearOfCreation.Size = new System.Drawing.Size(69, 20);
+            this.txtYearOfCreation.TabIndex = 110;
+            this.txtYearOfCreation.Leave += new System.EventHandler(this.txtYearOfCreation_Leave);
             // 
             // labelComptence
             // 
@@ -671,22 +693,24 @@
             this.treeView1.Size = new System.Drawing.Size(975, 322);
             this.treeView1.TabIndex = 0;
             // 
-            // txtYearOfCreation
+            // tabPage1
             // 
-            this.txtYearOfCreation.Location = new System.Drawing.Point(14, 274);
-            this.txtYearOfCreation.Name = "txtYearOfCreation";
-            this.txtYearOfCreation.Size = new System.Drawing.Size(69, 20);
-            this.txtYearOfCreation.TabIndex = 110;
-            this.txtYearOfCreation.Leave += new System.EventHandler(this.txtYearOfCreation_Leave);
+            this.tabPage1.Controls.Add(this.advancedDataGridView1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 23);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(1041, 615);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // lblYearOfCreation
+            // advancedDataGridView1
             // 
-            this.lblYearOfCreation.AutoSize = true;
-            this.lblYearOfCreation.Location = new System.Drawing.Point(14, 257);
-            this.lblYearOfCreation.Name = "lblYearOfCreation";
-            this.lblYearOfCreation.Size = new System.Drawing.Size(96, 14);
-            this.lblYearOfCreation.TabIndex = 111;
-            this.lblYearOfCreation.Text = "Année de création";
+            this.advancedDataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.advancedDataGridView1.FilterAndSortEnabled = true;
+            this.advancedDataGridView1.Location = new System.Drawing.Point(3, 49);
+            this.advancedDataGridView1.Name = "advancedDataGridView1";
+            this.advancedDataGridView1.Size = new System.Drawing.Size(1012, 519);
+            this.advancedDataGridView1.TabIndex = 0;
             // 
             // UCEducation_Formation
             // 
@@ -711,6 +735,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2_Matrices.ResumeLayout(false);
             this.tabPage2_Matrices.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.advancedDataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -768,5 +794,7 @@
         private System.Windows.Forms.Label labelComptence;
         private System.Windows.Forms.Label lblYearOfCreation;
         private System.Windows.Forms.TextBox txtYearOfCreation;
+        private System.Windows.Forms.TabPage tabPage1;
+        private Zuby.ADGV.AdvancedDataGridView advancedDataGridView1;
     }
 }

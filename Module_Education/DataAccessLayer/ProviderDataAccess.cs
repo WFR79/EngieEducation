@@ -18,5 +18,7 @@ namespace Module_Education
         {
             return db.Education_Provider.ToList();
         }
+
+       
     }
 }

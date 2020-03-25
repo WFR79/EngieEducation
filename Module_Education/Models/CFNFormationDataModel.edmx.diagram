@@ -82,6 +82,9 @@
         <AssociationConnector Association="SYNAPSEModel.FK_MovementStep_MovementType" />
         <AssociationConnector Association="SYNAPSEModel.FK_MovementStepAgent_MovementStep" />
         <AssociationConnector Association="SYNAPSEModel.FK_Role_Role" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Education_Formation_Education_UnitePrice" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_FormationCategory" Width="1.5" PointX="3.375" PointY="3.875" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Education_Formation_Category" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -42,6 +42,8 @@ namespace Module_Education.Models
         public Nullable<bool> Formation_Actif { get; set; }
         public string Formation_Remarks { get; set; }
         public Nullable<long> Formation_Competence { get; set; }
+        public Nullable<long> Formation_UnitePrice { get; set; }
+        public Nullable<long> Formation_Category { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_Agent_Formation> Education_Agent_Formation { get; set; }
@@ -56,5 +58,7 @@ namespace Module_Education.Models
         public virtual ICollection<Education_FormationSession> Education_FormationSession { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_Matrice_Formation> Education_Matrice_Formation { get; set; }
+        public virtual Education_UnitePrice Education_UnitePrice { get; set; }
+        public virtual Education_FormationCategory Education_FormationCategory { get; set; }
     }
 }

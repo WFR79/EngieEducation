@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Module_Education.Models;
 using Module_Education.UserControls;
+using Synapse;
+using SynapseCore.Controls;
 
 namespace Module_Education
 {
@@ -36,13 +38,13 @@ namespace Module_Education
 
         #region UCEducation_Formation
         public delegate void controlcall(object sender, EventArgs e);
-        public delegate void functioncall(string message);
+        public delegate void functioncall(long message);
         public delegate void refreshForm();
 
 
-        private event controlcall formControlPointer;
-        private event refreshForm refreshFormPointer;
-        private event functioncall formFunctionPointer;
+        private event controlcall ReceiverClickButton;
+        private event refreshForm ReceiverRefreshListeAgent;
+        private event functioncall ReceiverFromFicheFormation;
 
         public int UserIDSelected;
         #endregion
@@ -62,11 +64,14 @@ namespace Module_Education
 
             Thread y = new Thread(LoadEducation_FormationsThread);
             y.Start();
-
+            LoadMainWindow();
             //MenuBtnEducation_Formation.PerformClick();
         }
 
+        private void LoadMainWindow() {
+            lblHelloUsername.Text = "Hello " + Environment.UserName;
 
+        }
         #region Event
 
         protected override void OnResize(EventArgs e)
@@ -184,13 +189,14 @@ namespace Module_Education
                 UCEducation_Formation.Instance.Dock = DockStyle.Fill;
                 UCEducation_Formation.Instance.BringToFront();
 
-                formControlPointer += new controlcall(clickButtonAgentMenu);
-                UCEducation_Formation.Instance.userControlPointer = formControlPointer;
-                formFunctionPointer += new functioncall(Replicate);
-                UCEducation_Formation.Instance.userFunctionPointer = formFunctionPointer;
+                ReceiverClickButton += new controlcall(clickButtonAgentMenu);
+                UCEducation_Formation.Instance.MainWindowPointerMenuBtnAgent = ReceiverClickButton;
 
-                refreshFormPointer += new refreshForm(refreshFormAgent);
-                UCEducation_Formation.Instance.refreshFormPointer = refreshFormPointer;
+                ReceiverFromFicheFormation += new functioncall(AgentSelectedInFormationCard);
+                UCEducation_Formation.Instance.PointerFormation = ReceiverFromFicheFormation;
+
+                ReceiverRefreshListeAgent += new refreshForm(refreshFormAgent);
+                UCEducation_Formation.Instance.PointerUCAgent_Refresh = ReceiverRefreshListeAgent;
 
             }
             else
@@ -240,10 +246,9 @@ namespace Module_Education
             MenuBtnAgent.PerformClick();
         }
 
-        private void Replicate(string message)
+        private void AgentSelectedInFormationCard(long matricule)
         {
-            UC_Agent.UserIDSelected = Convert.ToInt32(message);
-
+            UC_Agent.Agent_Matricule = matricule;
         }
 
 
@@ -318,6 +323,10 @@ namespace Module_Education
             {
                 //do something else
             }
+        }
+
+        private void lblHelloUsername_Click(object sender, EventArgs e)
+        {
         }
     }
 }

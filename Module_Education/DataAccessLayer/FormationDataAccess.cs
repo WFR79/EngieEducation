@@ -35,41 +35,41 @@ namespace Module_Education
 
         public List<Education_Formation> LoadAllEducation_FormationsFiltered(string filter, string columnToFilter)
         {
-            string sequenceMaxQuery = "Select * FROM dbo.Education_Formation";
-            switch (columnToFilter)
+            try
             {
-                case "SAP":
+                var sequenceMaxQuery = "SELECT * " +
+                                  " FROM dbo.Education_Formation ";
+                switch (columnToFilter)
+                {
+                    case "Formation_SAP":
                     columnToFilter = "Formation_SAP";
-                    sequenceMaxQuery = "SELECT * " +
+                        sequenceMaxQuery += "WHERE " + filter ; 
+                        break;
+                    case "Formation_ShortTitle":
+                        columnToFilter = "Formation_ShortTitle";
+                        sequenceMaxQuery += "WHERE " + columnToFilter + " " + filter; 
+                        break;
+                    case "Titre Long":
+                        columnToFilter = "Formation_LongTitle"; sequenceMaxQuery = "SELECT * " +
+                               " FROM dbo.Education_Formation " +
+                               "WHERE " + columnToFilter + " LIKE ('%" + filter + "%')";
+                    break;
+                    case "Formation_DurationInDays":
+                        columnToFilter = "Formation_DurationInDays";
+                        sequenceMaxQuery = "SELECT * " +
                               " FROM dbo.Education_Formation " +
-                              "WHERE " + columnToFilter + " LIKE ('%" + filter + "%')";
+                              "WHERE " +  filter;
                     break;
-                case "Titre Court":
-                    columnToFilter = "Formation_ShortTitle";
-                    sequenceMaxQuery = "SELECT * " +
-                          " FROM dbo.Education_Formation " +
-                          "WHERE " + columnToFilter + " LIKE ('%" + filter + "%')";
-                    break;
-                case "Titre Long":
-                    columnToFilter = "Formation_LongTitle"; sequenceMaxQuery = "SELECT * " +
-                           " FROM dbo.Education_Formation " +
-                           "WHERE " + columnToFilter + " LIKE ('%" + filter + "%')";
-                    break;
-                case "Durée (Jours)":
-                    columnToFilter = "Formation_DurationInDays";
-                    sequenceMaxQuery = "SELECT * " +
-                          " FROM dbo.Education_Formation " +
-                          "WHERE " + columnToFilter + " LIKE ('" + filter + "%')";
-                    break;
+                }
+
+                var sequenceQueryResult = db.Database.SqlQuery<Education_Formation>(sequenceMaxQuery).ToList();
+                //var query = db.Education_Formation.Find(filter);
+                return sequenceQueryResult;
             }
-
-
-
-            //var sequenceQueryResult = db.Database.SqlQuery<string>(sequenceMaxQuery).FirstOrDefault();
-
-            var sequenceQueryResult = db.Database.SqlQuery<Education_Formation>(sequenceMaxQuery).ToList();
-            //var query = db.Education_Formation.Find(filter);
-            return sequenceQueryResult;
+            catch (Exception ex)
+            {
+                return null;
+            }
 
         }
 

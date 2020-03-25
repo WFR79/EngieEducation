@@ -40,7 +40,7 @@
             this.tbFicheAgent = new System.Windows.Forms.TabPage();
             this.tabControl_Education_FormationAndCertificationsOfUser = new System.Windows.Forms.TabControl();
             this.tabPageEducation_FormationsAgent = new System.Windows.Forms.TabPage();
-            this.dg_AgentEducation_Formation = new System.Windows.Forms.DataGridView();
+            this.dg_TABFormationsOfAgent = new System.Windows.Forms.DataGridView();
             this.tabPageCertificationsAgent = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.labelNameOfUser = new System.Windows.Forms.TextBox();
@@ -72,7 +72,7 @@
             this.tbFicheAgent.SuspendLayout();
             this.tabControl_Education_FormationAndCertificationsOfUser.SuspendLayout();
             this.tabPageEducation_FormationsAgent.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dg_AgentEducation_Formation)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_TABFormationsOfAgent)).BeginInit();
             this.tabPageCertificationsAgent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ProfilePic)).BeginInit();
@@ -216,7 +216,7 @@
             // tabPageEducation_FormationsAgent
             // 
             this.tabPageEducation_FormationsAgent.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageEducation_FormationsAgent.Controls.Add(this.dg_AgentEducation_Formation);
+            this.tabPageEducation_FormationsAgent.Controls.Add(this.dg_TABFormationsOfAgent);
             this.tabPageEducation_FormationsAgent.Font = new System.Drawing.Font("Arial", 10F);
             this.tabPageEducation_FormationsAgent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(199)))), ((int)(((byte)(234)))));
             this.tabPageEducation_FormationsAgent.Location = new System.Drawing.Point(4, 28);
@@ -224,26 +224,26 @@
             this.tabPageEducation_FormationsAgent.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageEducation_FormationsAgent.Size = new System.Drawing.Size(782, 347);
             this.tabPageEducation_FormationsAgent.TabIndex = 0;
-            this.tabPageEducation_FormationsAgent.Text = "Education_Formations";
+            this.tabPageEducation_FormationsAgent.Text = "Formations";
             // 
-            // dg_AgentEducation_Formation
+            // dg_TABFormationsOfAgent
             // 
-            this.dg_AgentEducation_Formation.AllowUserToAddRows = false;
-            this.dg_AgentEducation_Formation.AllowUserToDeleteRows = false;
-            this.dg_AgentEducation_Formation.AllowUserToResizeColumns = false;
-            this.dg_AgentEducation_Formation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dg_TABFormationsOfAgent.AllowUserToAddRows = false;
+            this.dg_TABFormationsOfAgent.AllowUserToDeleteRows = false;
+            this.dg_TABFormationsOfAgent.AllowUserToResizeColumns = false;
+            this.dg_TABFormationsOfAgent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.dg_AgentEducation_Formation.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dg_AgentEducation_Formation.BackgroundColor = System.Drawing.Color.DarkGray;
-            this.dg_AgentEducation_Formation.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dg_AgentEducation_Formation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_AgentEducation_Formation.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(199)))), ((int)(((byte)(234)))));
-            this.dg_AgentEducation_Formation.Location = new System.Drawing.Point(10, 9);
-            this.dg_AgentEducation_Formation.Name = "dg_AgentEducation_Formation";
-            this.dg_AgentEducation_Formation.ReadOnly = true;
-            this.dg_AgentEducation_Formation.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dg_AgentEducation_Formation.Size = new System.Drawing.Size(766, 332);
-            this.dg_AgentEducation_Formation.TabIndex = 18;
+            this.dg_TABFormationsOfAgent.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dg_TABFormationsOfAgent.BackgroundColor = System.Drawing.Color.DarkGray;
+            this.dg_TABFormationsOfAgent.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dg_TABFormationsOfAgent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dg_TABFormationsOfAgent.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(199)))), ((int)(((byte)(234)))));
+            this.dg_TABFormationsOfAgent.Location = new System.Drawing.Point(10, 9);
+            this.dg_TABFormationsOfAgent.Name = "dg_TABFormationsOfAgent";
+            this.dg_TABFormationsOfAgent.ReadOnly = true;
+            this.dg_TABFormationsOfAgent.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dg_TABFormationsOfAgent.Size = new System.Drawing.Size(766, 279);
+            this.dg_TABFormationsOfAgent.TabIndex = 18;
             // 
             // tabPageCertificationsAgent
             // 
@@ -487,10 +487,11 @@
             // 
             // pictureBox_ProfilePic
             // 
-            //this.pictureBox_ProfilePic.BackgroundImage = global::Module_Education.Properties.Resources.baseline_person_black_36dp;
+            this.pictureBox_ProfilePic.Image = global::Module_Education.Properties.Resources.baseline_person_black_36dp;
             this.pictureBox_ProfilePic.Location = new System.Drawing.Point(11, 11);
             this.pictureBox_ProfilePic.Name = "pictureBox_ProfilePic";
-            this.pictureBox_ProfilePic.Size = new System.Drawing.Size(128, 128);
+            this.pictureBox_ProfilePic.Size = new System.Drawing.Size(112, 112);
+            this.pictureBox_ProfilePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox_ProfilePic.TabIndex = 0;
             this.pictureBox_ProfilePic.TabStop = false;
             // 
@@ -515,7 +516,7 @@
             this.tbFicheAgent.PerformLayout();
             this.tabControl_Education_FormationAndCertificationsOfUser.ResumeLayout(false);
             this.tabPageEducation_FormationsAgent.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dg_AgentEducation_Formation)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dg_TABFormationsOfAgent)).EndInit();
             this.tabPageCertificationsAgent.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ProfilePic)).EndInit();
@@ -543,7 +544,7 @@
         private System.Windows.Forms.Label labelDateOfEntry;
         private System.Windows.Forms.Label labelRemarks;
         private System.Windows.Forms.RichTextBox richTextBoxRemarks;
-        private System.Windows.Forms.DataGridView dg_AgentEducation_Formation;
+        private System.Windows.Forms.DataGridView dg_TABFormationsOfAgent;
         private System.Windows.Forms.CheckBox checkBox_IsWorkManager;
         private System.Windows.Forms.CheckBox checkBoxSecouriste;
         private System.Windows.Forms.ComboBox comboBoxAstreinte;

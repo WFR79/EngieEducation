@@ -22,28 +22,31 @@ namespace Module_Education.Classes
             return _obj;
         }
         [DisplayName("Titre Court")]
-        public string Column_ShortTitle { get; set; }
+        public string Formation_ShortTitle { get; set; }
         
         //[DisplayName("Titre Long")]
         //public string Column_LongTitle { get; set; }
 
         [DisplayName("SAP")]
-        public string Column_SAP { get; set; }
+        public string Formation_SAP { get; set; }
 
         [DisplayName("Durée (Jours)")]
-        public double? Column_DurationInDays {get; set; }
+        public double? Formation_DurationInDays { get; set; }
 
         [DisplayName("Année Création")]
-        public int?Column_YearOfCreation{ get; set; }
+        public int? Formation_YearOfCreation { get; set; }
 
         [DisplayName("Capacité Minimale")]
-        public int? Column_CapaciteMin { get; set; }
+        public int? Formation_CapaciteMin { get; set; }
         [DisplayName("Capacité Optimale")]
-        public int? Column_CapaciteOptimale { get; set; }
+        public int? Formation_CapaciteOptimale { get; set; }
         [DisplayName("Capacité Maximale")]
-        public int? Column_CapaciteMax { get; set; }
+        public int? Formation_CapaciteMax { get; set; }
         [DisplayName("Fournisseur")]
-        public int? Column_Provider { get; set; }
+        public int? Formation_Provider { get; set; }
+
+        [DisplayName("Interne")]
+        public Boolean? Formation_IsInterne { get; set; }
 
         //[DisplayName("Responsable")]
         //public string Column_ShortTitle { get; set; }

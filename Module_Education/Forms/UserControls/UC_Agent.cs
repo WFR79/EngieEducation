@@ -22,13 +22,15 @@ namespace Module_Education
         private EquipeDataAccess dbEquipe = new EquipeDataAccess();
         private Education_FormationDataAccess dbEducation_Formation = new Education_FormationDataAccess();
 
+
         private UserStatusDataAccess dbUserStatus = new UserStatusDataAccess();
         private Education_HabilitationDataAccess dbEducation_Habilitation = new Education_HabilitationDataAccess();
         private FunctionDataAccess dbFunction = new FunctionDataAccess();
         private RoleEPIDataAccess dbEPI = new RoleEPIDataAccess();
         private RoleAstreinteDataAccess dbAstreinte = new RoleAstreinteDataAccess();
 
-        IPagedList<Education_Formation> listPaged;
+        IPagedList<Education_Formation> listPagedFormation;
+
         IPagedList<Education_Agent> listUserPaged;
 
         private Education_Agent CurrentUser = new Education_Agent();
@@ -37,9 +39,13 @@ namespace Module_Education
 
         private static UC_Agent _instance;
         public static long UserIDSelected;
-        private event refreshForm refreshFormPointer;
+        public static long Agent_Matricule;
 
-        public delegate void refreshForm(long userId);
+        private event refreshForm receiverFromFormationCard;
+
+        //public delegate void refreshForm(long userId);
+        public delegate void refreshForm(long Agent_Matricle);
+
         public Delegate userControlPointer;
         public Delegate userFunctionPointer;
         int pageNumber = 1;
@@ -67,11 +73,16 @@ namespace Module_Education
             //    this.UserRecord_LoadUser(UserIDSelected);
             //}
             LoadDatagridAgentAsync();
-            refreshFormPointer += new refreshForm(refreshFormAgent);
-            UCEducation_Formation.Instance.refreshFormPointer = refreshFormPointer;
+            receiverFromFormationCard += new refreshForm(refreshFormAgent);
+            UCEducation_Formation.Instance.PointerUCAgent_Refresh = receiverFromFormationCard;
             TabPage page = (TabPage)this.tabControlAgentList.Controls[1];
 
             this.EnableTab(page, false);
+        }
+
+        private void refreshFormAgent(string Agent_Matricle)
+        {
+            throw new NotImplementedException();
         }
 
         public void LoadComboboxs()
@@ -183,14 +194,10 @@ namespace Module_Education
                             .Include("RoleEPI")
                             .Include("UserStatus")
                             .Include("User_Education_Formation")
-                                                    .Include("Education_Habilitation")
+                            .Include("Education_Habilitation")
                             .Include("User1")
                             .Include("User2")
-                            //.Include("User3")
-                            //.Include("User11")
-
                             .OrderBy(p => p.Agent_Id).ToPagedList(pagNumber, pageSize); ;
-                            //dG_Education_Formations.DataSource = lEducation_Formations.ToPagedList(1, 100); ;
                             progressReport.PercentCompleted = 100;
                             progress.Report(progressReport);
                         }
@@ -282,6 +289,27 @@ namespace Module_Education
 
             return dataSource;
         }
+
+        private object GetDataSource(IPagedList<Education_Formation> listPagedFormation)
+        {
+            object dataSource = listPagedFormation.Select(o => new MyColumnCollectionDGFormation(o)
+            {
+                Formation_ShortTitle = o.Formation_ShortTitle,
+                Formation_DurationInDays = o.Formation_DurationInDays,
+                Formation_SAP = o.Formation_SAP,
+                //Column_LongTitle = o.Education_Formation_LongTitle,
+                Formation_YearOfCreation = o.Formation_YearOfCreation,
+                Formation_CapaciteMin = o.Formation_MinCapacity,
+                Formation_CapaciteMax = o.Formation_MaxCapacity,
+                Formation_IsInterne = o.Formation_IsInterne,
+                Formation_CapaciteOptimale = o.Formation_OptimalCapacity,
+
+
+            }).ToList();
+
+            return dataSource;
+        }
+
         #endregion
 
         #region Tab Fiche
@@ -322,6 +350,86 @@ namespace Module_Education
             }
         }
 
+        private void UserRecord_LoadUserByMatricule(long agentMatricule)
+        {
+            DeleteButtonSavingAgent();
+            TabPage page = (TabPage)this.tabControlAgentList.Controls[1];
+            this.EnableTab(page, true);
+
+            Education_Agent userRecord = db.LoadSingleUserWithMatricule(agentMatricule);
+            CurrentUser = userRecord;
+            if (userRecord != null)
+            {
+                UserRecord_FillLabels(userRecord);
+                UserRecord_FillLabelsActif(userRecord);
+
+                UserRecord_FillMatricule(userRecord);
+                UserRecord_FillAdmin(userRecord);
+                UserRecord_SelectEquipe(userRecord);
+                UserRecord_PickDateOfEntry(userRecord);
+                UserRecord_PickUser_DateSeniority(userRecord);
+                UserRecord_PickDateFunction(userRecord);
+                UserRecord_FillRemarks(userRecord);
+                UserRecord_SelectRespHiérarchique(userRecord);
+                UserRecord_SelectStatut(userRecord);
+                UserRecord_SelectFunction(userRecord);
+
+                UserRecord_SelectRoleEPI(userRecord);
+                UserRecord_SelectRoleAstreinte(userRecord);
+
+                UserRecord_SelectEducation_Habilitation(userRecord);
+                UserRecord_CheckRescueCheckBox(userRecord);
+                UserRecord_CheckIsWorksManager(userRecord);
+
+                UserRecord_LoadEducation_FormationsOfUser(userRecord);
+                CreateButtonSavingAgent();
+            }
+        }
+
+        private async Task<IPagedList<Education_Formation>> LoadDataGridFormationAsync(int pagNumber = 1, int pageSize = 50)
+        {
+            try
+            {
+                List<Education_Formation> List = new List<Education_Formation>();
+                var progressReport = new ProgressReport();
+                if (pageNumber == 0)
+                {
+                    pageNumber = 1;
+                }
+                return await Task.Factory.StartNew(() =>
+                {
+
+                    List = dbEducation_Formation.LoadAllEducation_FormationOfSingleAgent(CurrentUser);
+
+                    return listPagedFormation.OrderBy(p => p.Formation_Id).ToPagedList(pagNumber, pageSize); ;
+
+
+                });
+
+            }
+            catch (StackOverflowException ex)
+            {
+                Logger.LogError(ex, "UC Education_Formation");
+                throw;
+            }
+            //dG_Education_Formations.AutoGenerateColumns = false;
+            //StylingDatagrid(dG_Education_Formations);
+        }
+
+
+        private async Task LoadFormationDatagridAsync(Education_Agent currentAgent)
+        {
+            listPagedFormation = await LoadDataGridFormationAsync();
+            btn_NextAgent.Enabled = listUserPaged.HasPreviousPage;
+            btn_PreviousAgent.Enabled = listUserPaged.HasNextPage;
+
+            dg_TABFormationsOfAgent.DataSource = GetDataSource(listPagedFormation);
+            //dG_Agents.DataSource = listUserPaged;
+            dg_TABFormationsOfAgent.Refresh();
+
+
+        }
+
         private void SaveAgent(object sender, EventArgs e)
         {
             db.SaveAgent(CurrentUser);
@@ -338,7 +446,7 @@ namespace Module_Education
 
         }
 
-        private void refreshFormAgent(long userId)
+        private void refreshFormAgentId(int userId)
         {
             tabControlAgentList.SelectedIndex = 1;
             TabPage page = (TabPage)this.tabControlAgentList.Controls[1];
@@ -346,9 +454,21 @@ namespace Module_Education
             UserRecord_LoadUser(userId);
 
         }
+
+        private void refreshFormAgent(long AgentMatricule)
+        {
+            tabControlAgentList.SelectedIndex = 1;
+            TabPage page = (TabPage)this.tabControlAgentList.Controls[1];
+            this.EnableTab(page, true);
+            UserRecord_LoadUserByMatricule(AgentMatricule);
+
+        }
+
+
         #endregion
 
         #region Controls Management
+
 
         private void UserRecord_CheckIsWorksManager(Education_Agent userRecord)
         {
@@ -380,7 +500,7 @@ namespace Module_Education
                 }
             }
 
-            labelActif.Text = userRecord.Agent_Etat == null | false ? "Inactif" : "Actif"; 
+            labelActif.Text = userRecord.Agent_Etat == null | false ? "Inactif" : "Actif";
         }
 
         public void UserRecord_FillLabels(Education_Agent userRecord)
@@ -488,7 +608,7 @@ namespace Module_Education
             //{
             //    Console.WriteLine(ctrl.Controls);
             //}
-            dg_AgentEducation_Formation.DataSource = listEducation_Formation;
+            dg_TABFormationsOfAgent.DataSource = listEducation_Formation;
         }
 
         public void CreateButtonSavingAgent()
@@ -802,3 +922,4 @@ namespace Module_Education
         }
     }
 }
+

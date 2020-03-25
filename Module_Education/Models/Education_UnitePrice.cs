@@ -14,7 +14,16 @@ namespace Module_Education.Models
     
     public partial class Education_UnitePrice
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Education_UnitePrice()
+        {
+            this.Education_Formation = new HashSet<Education_Formation>();
+        }
+    
         public long UnitePrice_Id { get; set; }
         public string UnitePrice_Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Education_Formation> Education_Formation { get; set; }
     }
 }
