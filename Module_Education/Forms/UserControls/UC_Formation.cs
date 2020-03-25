@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using Module_Education.DataAccessLayer;
 
 namespace Module_Education
 {
@@ -20,7 +21,7 @@ namespace Module_Education
         private SessionUniteDataAccess dbSessionUnite = new SessionUniteDataAccess();
         private ProviderDataAccess dbProvider = new ProviderDataAccess();
         private CompetenceDataAccess dbCompetence = new CompetenceDataAccess();
-
+        private FormationResultatDataAccess dbFormationResulat = new FormationResultatDataAccess();
 
         CFNEducation_FormationEntities dbEntities = new CFNEducation_FormationEntities();
 
@@ -33,10 +34,10 @@ namespace Module_Education
 
         Education_Formation CurrentFormation;
 
-        public Delegate userControlPointer;
-        public Delegate refreshFormPointer;
+        public Delegate MainWindowPointerMenuBtnAgent;
+        public Delegate PointerUCAgent_Refresh;
 
-        public Delegate userFunctionPointer;
+        public Delegate PointerFormation;
         int pageNumber = 1;
 
 
@@ -161,8 +162,8 @@ namespace Module_Education
             listPaged = lEducation_Formations.OrderBy(p => p.Formation_Id).ToPagedList(1, 100);
 
             //source.ResetBindings(true);
-            dG_Education_Formations.DataSource = GetDataSource(listPaged);
-            dG_Education_Formations.Refresh();
+            AdvDg_Formations.DataSource = GetDataSource(listPaged);
+            AdvDg_Formations.Refresh();
             StylingDatagrid(dG_Education_Formations);
 
         }
@@ -188,8 +189,8 @@ namespace Module_Education
                             .Include("Education_FormationProvider")
                             .Include("Education_FormationResultat")
                             .Include("Education_FormationSession")
-                            .Include("Matrice_Education_Formation")
-                            .Include("User_Education_Formation")
+                            .Include("Education_Matrice_Formation")
+                            .Include("Education_UnitePrice")
 
                             .OrderBy(p => p.Formation_Id).ToPagedList(pagNumber, pageSize);
                             //dG_Education_Formations.DataSource = lEducation_Formations.ToPagedList(1, 100); ;
@@ -272,13 +273,14 @@ namespace Module_Education
 
         private async void UC_Education_Formation_Load(object sender, EventArgs e)
         {
-            dG_Education_Formations.SelectionChanged -= dG_Education_Formations_SelectionChanged; // Remove the handler.
+            AdvDg_Formations.SelectionChanged -= dG_Education_Formations_SelectionChanged; // Remove the handler.
+            //dG_Education_Formations.SelectionChanged -= dG_Education_Formations_SelectionChanged; // Remove the handler.
 
             listPaged = await LoadDatagriEducation_Formations();
-            dG_Education_Formations.DataSource = GetDataSource(listPaged);
-            dG_Education_Formations.Refresh();
-            dG_Education_Formations.SelectionChanged += dG_Education_Formations_SelectionChanged; // ReAdd the handler.
-            LoadCbListColumnsToFilter(dG_Education_Formations.Columns, dG_Education_Formations);
+            AdvDg_Formations.DataSource = GetDataSource(listPaged);
+            AdvDg_Formations.Refresh();
+            AdvDg_Formations.SelectionChanged += dG_Education_Formations_SelectionChanged; // ReAdd the handler.
+            LoadCbListColumnsToFilter(AdvDg_Formations.Columns, AdvDg_Formations);
 
             StylingDatagrid(dG_Education_Formations);
         }
@@ -287,15 +289,41 @@ namespace Module_Education
         {
             object dataSource = listPaged.Select(o => new MyColumnCollectionDGFormation(o)
             {
-                Column_ShortTitle = o.Formation_ShortTitle,
-                Column_DurationInDays = o.Formation_DurationInDays,
-                Column_SAP = o.Formation_SAP,
+                Formation_ShortTitle = o.Formation_ShortTitle,
+                Formation_DurationInDays = o.Formation_DurationInDays,
+                Formation_SAP = o.Formation_SAP,
                 //Column_LongTitle = o.Education_Formation_LongTitle,
-                Column_YearOfCreation = o.Formation_YearOfCreation,
-                Column_CapaciteMin = o.Formation_MinCapacity,
-                Column_CapaciteMax= o.Formation_MaxCapacity,
+                Formation_YearOfCreation = o.Formation_YearOfCreation,
+                Formation_CapaciteMin = o.Formation_MinCapacity,
+                Formation_CapaciteMax= o.Formation_MaxCapacity,
 
-                Column_CapaciteOptimale = o.Formation_OptimalCapacity,
+                Formation_CapaciteOptimale = o.Formation_OptimalCapacity,
+
+
+            }).ToList();
+
+            return dataSource;
+        }
+
+        private object GetDataSource(IPagedList<Education_Agent> listPaged)
+        {
+            object dataSource = listPaged.Select(o => new MyColumnCollectionDGAgent(o)
+            {
+                ColumnUser_Matricule = o.Agent_Matricule,
+                ColumnFirstName = o.Agent_FirstName,
+                ColumnUser_Name = o.Agent_Name,
+
+                ColumnFunction = o.Education_Function == null ? null : o.Education_Function.Function_Name,// If (o.Function == null) { null } else {o.Function.Function_Name}
+                ColumnAdmin = o.Agent_Admin,
+                ColumnResponsable = o.Agent_LineManager == null ? null : dbEntities.Education_Agent.Where(x => x.Agent_Id == o.Agent_LineManager).FirstOrDefault().Agent_FullName,
+
+                ColumnChargeTravaux = o.Agent_IsWorksManager,
+                ColumnDateSenioritiy = o.Agent_DateSeniority,
+                ColumnDateEntry = o.Agent_DateOfEntry,
+                ColumnDateFunction = o.Agent_DateFunction,
+                ColumnEducation_Habilitation = o.Education_Habilitation == null ? null : o.Education_Habilitation.Habilitation_Name,
+                ColumnStatut = o.Education_AgentStatus == null ? null : o.Education_AgentStatus.AgentStatus_Name,
+                ColumnEtat = o.Agent_Etat
 
 
             }).ToList();
@@ -317,7 +345,7 @@ namespace Module_Education
                 };
                 //source.ResetBindings(true);
                 dG_Agents.DataSource = source;
-                dG_Education_Formations.Refresh();
+                AdvDg_Formations.Refresh();
                 dG_Agents.Refresh();
             }
             catch (Exception ex)
@@ -328,7 +356,7 @@ namespace Module_Education
 
         private void Refresh_Datagrid(object sender, EventArgs e)
         {
-            dG_Education_Formations.Refresh();
+            AdvDg_Formations.Refresh();
 
         }
 
@@ -339,8 +367,8 @@ namespace Module_Education
                 listPaged = await LoadDatagriEducation_Formations(++pageNumber);
                 btn_Previous.Enabled = listPaged.HasPreviousPage;
                 btn_Next.Enabled = listPaged.HasNextPage;
-                dG_Education_Formations.DataSource = GetDataSource(listPaged);
-                dG_Education_Formations.Refresh();
+                AdvDg_Formations.DataSource = GetDataSource(listPaged);
+                AdvDg_Formations.Refresh();
             }
 
         }
@@ -352,8 +380,8 @@ namespace Module_Education
                 listPaged = await LoadDatagriEducation_Formations(--pageNumber);
                 btn_Next.Enabled = listPaged.HasNextPage;
                 btn_Previous.Enabled = listPaged.HasPreviousPage;
-                dG_Education_Formations.DataSource = GetDataSource(listPaged);
-                dG_Education_Formations.Refresh();
+                AdvDg_Formations.DataSource = GetDataSource(listPaged);
+                AdvDg_Formations.Refresh();
             }
         }
 
@@ -374,9 +402,9 @@ namespace Module_Education
                 Console.WriteLine(matches);
 
                 object[] arr = { userIdAgent, null };
-                userFunctionPointer.DynamicInvoke(userIdAgent.ToString());
-                userControlPointer.DynamicInvoke(arr);
-                refreshFormPointer.DynamicInvoke(Convert.ToInt64(userIdAgent));
+                PointerFormation.DynamicInvoke(userIdAgent.ToString());
+                MainWindowPointerMenuBtnAgent.DynamicInvoke(arr);
+                PointerUCAgent_Refresh.DynamicInvoke(Convert.ToInt64(userIdAgent));
             }
             catch (Exception ex)
             {
@@ -419,9 +447,9 @@ namespace Module_Education
 
             object[] arr = { UserIDSelected, null };
 
-            userFunctionPointer.DynamicInvoke(UserIDSelected.ToString());
-            userControlPointer.DynamicInvoke(arr);
-            refreshFormPointer.DynamicInvoke(UserIDSelected);
+            PointerFormation.DynamicInvoke(UserIDSelected);
+            MainWindowPointerMenuBtnAgent.DynamicInvoke(arr);
+            PointerUCAgent_Refresh.DynamicInvoke(UserIDSelected);
         }
 
         private void labelSAPEducation_Formation_Click(object sender, EventArgs e)
@@ -500,11 +528,14 @@ namespace Module_Education
                 //Education_FormationRecord_PickUser_DateSeniority(CurrentEducation_Formation);
                 //Education_FormationRecord_PickDateFunction(CurrentEducation_Formation);
                 Education_FormationRecord_FillRemarks(CurrentFormation);
+                Education_FormationRecord_FillResulats(CurrentFormation);
+                Education_FormationRecord_FillPrice(CurrentFormation);
 
                 Education_FormationRecord_SelectDurationInDays(CurrentFormation);
                 Education_FormationRecord_SelectMinCapacity(CurrentFormation);
                 Education_FormationRecord_SelectMaxCapacity(CurrentFormation);
-
+                Education_FormationRecord_FillCbListPRoviders(CurrentFormation);
+                LoadDatagriAgentsOfCurrentFormation();
                 //Education_FormationRecord_SelectRoleEPI(CurrentEducation_Formation);
                 //Education_FormationRecord_SelectRoleAstreinte(userReCurrentEducation_Formationcord);
 
@@ -512,6 +543,53 @@ namespace Module_Education
                 //Education_FormationRecord_SelectEducation_Habilitation(CurrentEducation_Formation);
                 //UserRecord_LoadEducation_FormationsOfUser(userRecord);
                 CreateButtonSavingAgent();
+            }
+        }
+
+        private void Education_FormationRecord_FillPrice(Education_Formation currentFormation)
+        {
+            comboBoxResultatByYear.Items.Clear();
+            if (currentFormation.Education_UnitePrice != null)
+                foreach (Education_FormationResultat formationResult in currentFormation.Education_FormationResultat)
+                {
+                    comboBoxResultatByYear.Items.Add(formationResult.FormationResultat_Resultat);
+                    comboBoxResultatYear.Items.Add(formationResult.FormationResultat_Year);
+                }
+            comboBoxResultatByYear.SelectedIndex = comboBoxResultatByYear.Items.Count - 1;
+            comboBoxResultatYear.SelectedIndex = comboBoxResultatYear.Items.Count - 1;
+        }
+
+        private void Education_FormationRecord_FillResulats(Education_Formation currentFormation)
+        {
+            comboBoxResultatByYear.Items.Clear();
+            if (currentFormation.Education_FormationResultat != null)
+                foreach (Education_FormationResultat formationResult in currentFormation.Education_FormationResultat)
+                {
+                    comboBoxResultatByYear.Items.Add(formationResult.FormationResultat_Resultat);
+                    comboBoxResultatYear.Items.Add(formationResult.FormationResultat_Year);
+                }
+            comboBoxResultatByYear.SelectedIndex = comboBoxResultatByYear.Items.Count -1 ;
+            comboBoxResultatYear.SelectedIndex = comboBoxResultatYear.Items.Count - 1 ;
+
+        }
+
+        private async void LoadDatagriAgentsOfCurrentFormation()
+        {
+            try
+            {
+                listUserPaged = await LoadDatagriUsers(CurrentFormation.Formation_SAP.ToString());
+                BindingSource source = new BindingSource
+                {
+                    DataSource = listUserPaged.ToList()
+                };
+                //source.ResetBindings(true);
+                advDv_AgentsOfFormation.DataSource = GetDataSource(listUserPaged);
+                advDv_AgentsOfFormation.Refresh();
+                advDv_AgentsOfFormation.Refresh();
+            }
+            catch (Exception ex)
+            {
+
             }
         }
 
@@ -524,11 +602,25 @@ namespace Module_Education
             }
         }
 
-
         private void Education_FormationRecord_SelectCompetence(Education_Formation currentEducation_Formation)
         {
             if (currentEducation_Formation.Education_Competence != null)
-                comboBoxProvider.SelectedIndex = comboBoxProvider.FindStringExact(currentEducation_Formation.Education_Competence.Competence_Name);
+                comboBoxCompetence.SelectedIndex = comboBoxCompetence.FindStringExact(currentEducation_Formation.Education_Competence.Competence_Name);
+        }
+
+        private void Education_FormationRecord_FillCbListPRoviders(Education_Formation currentEducation_Formation)
+        {
+            cbListProvider.Items.Clear();
+            if (currentEducation_Formation.Education_FormationProvider != null)
+                foreach (Education_FormationProvider formationProvider in currentEducation_Formation.Education_FormationProvider)
+                {
+                    cbListProvider.Items.Add(formationProvider.Education_Provider.Provider_Name);
+                    if (formationProvider.FormationProvider_IsActual == true)
+                    {
+                        int index = cbListProvider.Items.IndexOf(formationProvider.Education_Provider.Provider_Name);
+                        cbListProvider.SetItemChecked(index, true);
+                    }
+                }
         }
 
         private void Education_FormationRecord_SelectDurationInDays(Education_Formation currentEducation_Formation)
@@ -618,12 +710,13 @@ namespace Module_Education
         private void CreateButtonSavingAgent()
         {
             Button ButtonSaveAgent = new Button();
-            ButtonSaveAgent.Location = new Point(827, 22);
+            ButtonSaveAgent.Location = new Point(482, 397);
             ButtonSaveAgent.Text = "Sauver";
             ButtonSaveAgent.Name = "ButtonSaveAgent";
 
             ButtonSaveAgent.FlatAppearance.BorderSize = 0;
             ButtonSaveAgent.AutoSize = true;
+            ButtonSaveAgent.FlatStyle = FlatStyle.Flat;
             ButtonSaveAgent.Enabled = false;
             ButtonSaveAgent.TabIndex = 90;
             ButtonSaveAgent.BackColor = Color.FromArgb(106, 199, 234);
@@ -638,10 +731,12 @@ namespace Module_Education
 
             // 
             Button ButtonCancelModificationAgent = new Button();
-            ButtonCancelModificationAgent.Location = new Point(926, 22);
+            ButtonCancelModificationAgent.Location = new Point(582, 397);
             ButtonCancelModificationAgent.Text = "Annuler";
             ButtonCancelModificationAgent.Name = "ButtonCancel";
             ButtonCancelModificationAgent.TabIndex = 91;
+            ButtonCancelModificationAgent.FlatStyle = FlatStyle.Flat;
+
             ButtonCancelModificationAgent.AutoSize = true;
             ButtonCancelModificationAgent.Enabled = false;
             ButtonCancelModificationAgent.BackColor = Color.OrangeRed;
@@ -660,9 +755,9 @@ namespace Module_Education
 
             MainWindow.globalListEducation_Formations = await db.LoadAllEducation_FormationsAsync();
 
-            dG_Education_Formations.Refresh();
+            AdvDg_Formations.Refresh();
             listPaged = await LoadDatagriEducation_Formations();
-            dG_Education_Formations.DataSource = GetDataSource(listPaged);
+            AdvDg_Formations.DataSource = GetDataSource(listPaged);
 
         }
 
@@ -687,8 +782,6 @@ namespace Module_Education
         {
 
         }
-
-      
 
         private void comboBoxDurationInDays_Leave(object sender, EventArgs e)
         {
@@ -815,7 +908,6 @@ namespace Module_Education
             }
             return buttonSave;
         }
-
        
         private void txtYearOfCreation_Leave(object sender, EventArgs e)
         {
@@ -849,5 +941,165 @@ namespace Module_Education
 
             }
         }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AdvDg_Formations_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                DataGridView dgv = (DataGridView)sender;
+
+                dgv.ClearSelection();
+                dgv.Rows[dgv.HitTest(e.X, e.Y).RowIndex].Selected = true;
+
+                if (dgv.SelectedCells[1].Value != null)
+                {
+                    if (e.Button == MouseButtons.Right)
+                    {
+                        dgv.ClearSelection();
+                        dgv.Rows[dgv.HitTest(e.X, e.Y).RowIndex].Selected = true;
+
+                        ContextMenu m = new ContextMenu();
+                        m.MenuItems.Add(new MenuItem("Fiche de la formation", EditEducation_Formation_CLick));
+
+                        int currentMouseOverRow = dgv.HitTest(e.X, e.Y).RowIndex;
+
+                        //if (currentMouseOverRow >= 0)
+                        //{
+                        //    m.MenuItems.Add(new MenuItem(string.Format("Do something to row {0}", currentMouseOverRow.ToString())));
+                        //}
+
+                        m.Show(dgv, new Point(e.X, e.Y));
+                        Education_FormationIDSelected = dgv.SelectedCells[1].Value.ToString();
+
+                    }
+                }
+                else
+                {
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void AdvDg_Formations_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+
+        }
+
+        private void AdvDg_Formations_FilterStringChanged(object sender, Zuby.ADGV.AdvancedDataGridView.FilterEventArgs e)
+        {
+            var filter = e.FilterString;
+            LoadDatagriEducation_FormationsFiltered(filter, "");
+
+
+        }
+
+        private void advDv_AgentsOfFormation_MouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                DataGridView dgv = (DataGridView)sender;
+
+                dgv.ClearSelection();
+                dgv.Rows[dgv.HitTest(e.X, e.Y).RowIndex].Selected = true;
+
+                if (dgv.SelectedCells[0].Value != null)
+                {
+                    if (e.Button == MouseButtons.Right)
+                    {
+                        dgv.ClearSelection();
+                        dgv.Rows[dgv.HitTest(e.X, e.Y).RowIndex].Selected = true;
+
+                        ContextMenu m = new ContextMenu();
+                        m.MenuItems.Add(new MenuItem("Modifier l'agent", EditUser_CLick));
+
+                        int currentMouseOverRow = dgv.HitTest(e.X, e.Y).RowIndex;
+
+                        //if (currentMouseOverRow >= 0)
+                        //{
+                        //    m.MenuItems.Add(new MenuItem(string.Format("Do something to row {0}", currentMouseOverRow.ToString())));
+                        //}
+
+                        m.Show(dgv, new Point(e.X, e.Y));
+                        UserIDSelected = Convert.ToInt64(dgv.SelectedCells[0].Value);
+
+                    }
+                }
+                else
+                {
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            var elementSelected = (Education_Provider) comboBoxProvider.SelectedItem;
+
+            var itemFound = CurrentFormation.Education_FormationProvider
+                .Where(w => w.FormationProvider_Formation == CurrentFormation.Formation_Id && w.FormationProvider_Provider == elementSelected.Provider_Id).FirstOrDefault();
+            if (itemFound == null)
+            {
+                Education_FormationProvider newRecord = new Education_FormationProvider()
+                {
+                    FormationProvider_Provider = elementSelected.Provider_Id,
+                    FormationProvider_Formation = CurrentFormation.Formation_Id,
+                    FormationProvider_IsActual = false
+
+                };
+                CurrentFormation.Education_FormationProvider.Add(newRecord);
+                ActivateModification(true);
+                cbListProvider.Items.Add(elementSelected.Provider_Name);
+            }
+            else
+            {
+                MessageBox.Show("Fournisseur est déja présent dans la liste","", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) ;
+            
+            }
+        }
+
+        private void btnBrowseDoc_Click(object sender, EventArgs e)
+        {
+
+            this.openFileDialog1 = new OpenFileDialog();
+            this.openFileDialog1.ShowDialog();
+        }
+
+        private void comboBoxResultatYear_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = comboBoxResultatYear.SelectedIndex;
+            comboBoxResultatByYear.SelectedIndex = index;
+        }
+
+        private void textBoxPrice_Leave(object sender, EventArgs e)
+        {
+            var price = comboBoxResultatYear.SelectedItem;
+
+        }
+
+        private void comboBoxResultatByYear_Leave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxResultatByYear_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int index = comboBoxResultatByYear.SelectedIndex;
+            comboBoxResultatYear.SelectedIndex = index;
+        }
+
     }
+}
 }

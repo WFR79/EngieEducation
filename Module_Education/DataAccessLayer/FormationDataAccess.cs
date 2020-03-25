@@ -39,27 +39,42 @@ namespace Module_Education
             {
                 var sequenceMaxQuery = "SELECT * " +
                                   " FROM dbo.Education_Formation ";
-                switch (columnToFilter)
+                if (columnToFilter != "")
                 {
-                    case "Formation_SAP":
-                    columnToFilter = "Formation_SAP";
-                        sequenceMaxQuery += "WHERE " + filter ; 
-                        break;
-                    case "Formation_ShortTitle":
-                        columnToFilter = "Formation_ShortTitle";
-                        sequenceMaxQuery += "WHERE " + columnToFilter + " " + filter; 
-                        break;
-                    case "Titre Long":
-                        columnToFilter = "Formation_LongTitle"; sequenceMaxQuery = "SELECT * " +
-                               " FROM dbo.Education_Formation " +
-                               "WHERE " + columnToFilter + " LIKE ('%" + filter + "%')";
-                    break;
-                    case "Formation_DurationInDays":
-                        columnToFilter = "Formation_DurationInDays";
+                    switch (columnToFilter)
+                    {
+                        case "Formation_SAP":
+                            columnToFilter = "Formation_SAP";
+                            sequenceMaxQuery += "WHERE " + filter;
+                            break;
+                        case "Formation_ShortTitle":
+                            columnToFilter = "Formation_ShortTitle";
+                            sequenceMaxQuery += "WHERE " + columnToFilter + " " + filter;
+                            break;
+                        case "Titre Long":
+                            columnToFilter = "Formation_LongTitle"; sequenceMaxQuery = "SELECT * " +
+                                   " FROM dbo.Education_Formation " +
+                                   "WHERE " + columnToFilter + " LIKE ('%" + filter + "%')";
+                            break;
+                        case "Formation_DurationInDays":
+                            columnToFilter = "Formation_DurationInDays";
+                            sequenceMaxQuery = "SELECT * " +
+                                  " FROM dbo.Education_Formation " +
+                                  "WHERE " + filter;
+                            break;
+                    }
+                }
+                else
+                {
+                    if (filter == "")
+                    {
                         sequenceMaxQuery = "SELECT * " +
-                              " FROM dbo.Education_Formation " +
-                              "WHERE " +  filter;
-                    break;
+                                     " FROM dbo.Education_Formation ";
+                                     }
+                    else
+                    {
+                        sequenceMaxQuery += "WHERE " + filter;
+                    }
                 }
 
                 var sequenceQueryResult = db.Database.SqlQuery<Education_Formation>(sequenceMaxQuery).ToList();
