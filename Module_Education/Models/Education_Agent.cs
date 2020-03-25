@@ -49,6 +49,7 @@ namespace Module_Education.Models
         public Nullable<int> Agent_NiveauPS { get; set; }
         public string Agent_Admin { get; set; }
         public Nullable<long> Agent_Role { get; set; }
+        public Nullable<bool> Agent_RescueBonus { get; set; }
     
         public virtual Education_RoleEPI Education_RoleEPI { get; set; }
         public virtual Education_AgentStatus Education_AgentStatus { get; set; }

@@ -15,6 +15,41 @@ namespace Module_Education
     public partial class UC_Agent : UserControl
     {
         #region déclarations
+
+        #region public events
+
+        public class SortEventArgs : EventArgs
+        {
+            public string SortString { get; set; }
+            public bool Cancel { get; set; }
+
+            public SortEventArgs()
+            {
+                SortString = null;
+                Cancel = false;
+            }
+        }
+
+        public class FilterEventArgs : EventArgs
+        {
+            public string FilterString { get; set; }
+            public bool Cancel { get; set; }
+
+            public FilterEventArgs()
+            {
+                FilterString = null;
+                Cancel = false;
+            }
+        }
+
+        public event EventHandler<SortEventArgs> SortStringChanged;
+
+        public event EventHandler<FilterEventArgs> FilterStringChanged;
+
+        #endregion
+
+
+        #region Repositories
         public BindingSource ds_Agents = new BindingSource();
 
         CFNEducation_FormationEntities dbEntities = new CFNEducation_FormationEntities();
@@ -28,6 +63,8 @@ namespace Module_Education
         private FunctionDataAccess dbFunction = new FunctionDataAccess();
         private RoleEPIDataAccess dbEPI = new RoleEPIDataAccess();
         private RoleAstreinteDataAccess dbAstreinte = new RoleAstreinteDataAccess();
+        #endregion
+
 
         IPagedList<Education_Formation> listPagedFormation;
 
@@ -49,6 +86,18 @@ namespace Module_Education
         public Delegate userControlPointer;
         public Delegate userFunctionPointer;
         int pageNumber = 1;
+
+        #endregion
+
+        #region class properties
+
+        private List<string> _sortOrderList = new List<string>();
+        private List<string> _filterOrderList = new List<string>();
+        private List<string> _filteredColumns = new List<string>();
+
+        private bool _loadedFilter = false;
+        private string _sortString = null;
+        private string _filterString = null;
 
         #endregion
 
@@ -133,7 +182,7 @@ namespace Module_Education
                     progressBarDgAgent.Value = report.PercentCompleted;
                     progressBarDgAgent.Update();
                 };
-                listUserPaged = await LoadTaskDatagridAgent(progress);
+                listUserPaged = await LoadTaskDatagridAgent();
 
 
 
@@ -166,7 +215,7 @@ namespace Module_Education
 
         }
 
-        private async Task<IPagedList<Education_Agent>> LoadTaskDatagridAgent(IProgress<ProgressReport> progress, int pagNumber = 1, int pageSize = 50)
+        private async Task<IPagedList<Education_Agent>> LoadTaskDatagridAgent(int pagNumber = 1, int pageSize = 50)
         {
             try
             {
@@ -199,7 +248,7 @@ namespace Module_Education
                             .Include("User2")
                             .OrderBy(p => p.Agent_Id).ToPagedList(pagNumber, pageSize); ;
                             progressReport.PercentCompleted = 100;
-                            progress.Report(progressReport);
+                            //progress.Report(progressReport);
                         }
                         else
                         {
@@ -234,7 +283,7 @@ namespace Module_Education
                     progressBarDgAgent.Update();
                 };
 
-                listUserPaged = await LoadTaskDatagridAgent(progress, ++pageNumber);
+                listUserPaged = await LoadTaskDatagridAgent(++pageNumber);
                 btn_NextAgent.Enabled = listUserPaged.HasPreviousPage;
                 btn_PreviousAgent.Enabled = listUserPaged.HasNextPage;
 
@@ -255,7 +304,7 @@ namespace Module_Education
                     progressBarDgAgent.Value = report.PercentCompleted;
                     progressBarDgAgent.Update();
                 };
-                listUserPaged = await LoadTaskDatagridAgent(progress, --pageNumber);
+                listUserPaged = await LoadTaskDatagridAgent(--pageNumber);
                 btn_NextAgent.Enabled = listUserPaged.HasPreviousPage;
                 btn_PreviousAgent.Enabled = listUserPaged.HasNextPage;
 
@@ -615,9 +664,10 @@ namespace Module_Education
         {
             // Creating and setting the properties of Button 
             Button ButtonSaveAgent = new Button();
-            ButtonSaveAgent.Location = new Point(827, 51);
+            ButtonSaveAgent.Location = new Point(482, 397);
             ButtonSaveAgent.Text = "Sauver";
             ButtonSaveAgent.Name = "ButtonSaveAgent";
+            ButtonSaveAgent.FlatStyle = FlatStyle.Flat;
 
             ButtonSaveAgent.FlatAppearance.BorderSize = 0;
             ButtonSaveAgent.AutoSize = true;
@@ -634,15 +684,17 @@ namespace Module_Education
 
             // Creating and setting the properties of Button 
             Button ButtonCancelModificationAgent = new Button();
-            ButtonCancelModificationAgent.Location = new Point(926, 51);
+            ButtonCancelModificationAgent.Location = new Point(582, 397);
             ButtonCancelModificationAgent.Text = "Annuler";
             ButtonCancelModificationAgent.Name = "ButtonCancel";
+            ButtonCancelModificationAgent.FlatStyle = FlatStyle.Flat;
+            ButtonCancelModificationAgent.FlatAppearance.BorderSize = 0;
 
             ButtonCancelModificationAgent.AutoSize = true;
             ButtonCancelModificationAgent.Enabled = false;
             ButtonCancelModificationAgent.BackColor = Color.OrangeRed;
             ButtonCancelModificationAgent.BackColor = Color.Gray;
-            ButtonSaveAgent.ForeColor = Color.LightGray;
+            ButtonCancelModificationAgent.ForeColor = Color.LightGray;
             ButtonCancelModificationAgent.Font = new Font("Arial", 18);
 
             // Adding this button to the tab 
@@ -679,7 +731,7 @@ namespace Module_Education
                 ctl.Enabled = enable;
         }
 
-        private void ActivateModification()
+        private void ActivateModification(bool enable)
         {
             isModified = true;
 
@@ -693,11 +745,11 @@ namespace Module_Education
 
             }
 
-            buttonSave.Enabled = true;
+            buttonSave.Enabled = enable;
             buttonSave.BackColor = Color.FromArgb(106, 199, 234);
             buttonSave.ForeColor = Color.LightGray;
 
-            buttonCancel.Enabled = true;
+            buttonCancel.Enabled = enable;
             buttonCancel.BackColor = Color.FromArgb(195, 29, 29);
             buttonCancel.ForeColor = Color.LightGray;
 
@@ -798,7 +850,7 @@ namespace Module_Education
             if (CurrentUser.Agent_Remarks != richTextBoxRemarks.Text)
             {
                 CurrentUser.Agent_Remarks = richTextBoxRemarks.Text;
-                ActivateModification();
+                ActivateModification(true);
             }
         }
 
@@ -807,7 +859,7 @@ namespace Module_Education
             if (CurrentUser.Agent_LineManager != ((Education_Agent)comboBoxRespHierarchique.SelectedItem).Agent_Id)
             {
                 CurrentUser.Agent_LineManager = ((Education_Agent)comboBoxRespHierarchique.SelectedItem).Agent_Id;
-                ActivateModification();
+                ActivateModification(true);
             }
         }
 
@@ -816,7 +868,7 @@ namespace Module_Education
             if (CurrentUser.Agent_Habilitation != ((Education_Habilitation)comboBoxEducation_Habilitation.SelectedItem).Habilitation_Id)
             {
                 CurrentUser.Agent_Habilitation = ((Education_Habilitation)comboBoxEducation_Habilitation.SelectedItem).Habilitation_Id;
-                ActivateModification();
+                ActivateModification(true);
             }
         }
 
@@ -827,7 +879,7 @@ namespace Module_Education
                 if (CurrentUser.Agent_Function != ((Education_Function)comboBoxFunction.SelectedItem).Function_Id)
                 {
                     CurrentUser.Agent_Function = ((Education_Function)comboBoxFunction.SelectedItem).Function_Id;
-                    ActivateModification();
+                    ActivateModification(true);
                 }
             }
             catch (Exception ex)
@@ -843,7 +895,7 @@ namespace Module_Education
                 if (CurrentUser.Agent_Admin != textBoxAdmin.Text)
                 {
                     CurrentUser.Agent_Admin = textBoxAdmin.Text;
-                    ActivateModification();
+                    ActivateModification(true);
                 }
             }
             catch (Exception ex)
@@ -859,7 +911,7 @@ namespace Module_Education
                 if (CurrentUser.Agent_RoleEPI != ((Education_RoleEPI)comboBoxEPI.SelectedItem).RoleEPI_Id)
                 {
                     CurrentUser.Agent_RoleEPI = ((Education_RoleEPI)comboBoxEPI.SelectedItem).RoleEPI_Id;
-                    ActivateModification();
+                    ActivateModification(true);
                 }
             }
             catch (Exception ex)
@@ -875,7 +927,7 @@ namespace Module_Education
                 if (CurrentUser.Agent_RoleAstreinte != ((Education_RoleAstreinte)comboBoxAstreinte.SelectedItem).RoleAstreinte_Id)
                 {
                     CurrentUser.Agent_RoleAstreinte = ((Education_RoleAstreinte)comboBoxAstreinte.SelectedItem).RoleAstreinte_Id;
-                    ActivateModification();
+                    ActivateModification(true);
                 }
             }
             catch (Exception ex)
@@ -891,7 +943,7 @@ namespace Module_Education
                 if (CurrentUser.Agent_IsRescueWorker != checkBoxSecouriste.Checked)
                 {
                     CurrentUser.Agent_IsRescueWorker = checkBoxSecouriste.Checked;
-                    ActivateModification();
+                    ActivateModification(true);
                 }
             }
             catch (Exception ex)
@@ -907,7 +959,7 @@ namespace Module_Education
                 if (CurrentUser.Agent_IsWorksManager != checkBox_IsWorkManager.Checked)
                 {
                     CurrentUser.Agent_IsWorksManager = checkBox_IsWorkManager.Checked;
-                    ActivateModification();
+                    ActivateModification(true);
                 }
             }
             catch (Exception ex)
@@ -920,6 +972,80 @@ namespace Module_Education
         {
 
         }
+
+        private void cbCheck_PrimeRescuer_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox cb = (CheckBox) sender;
+            CurrentUser.Agent_RescueBonus = cb.Checked;
+            ActivateModification(true);
+        }
+
+        private void checkBoxSecouriste_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox cb = (CheckBox)sender;
+            CurrentUser.Agent_IsRescueWorker = cb.Checked;
+            ActivateModification(true);
+
+        }
+
+        private void checkBox_IsWorkManager_CheckStateChanged(object sender, EventArgs e)
+        {
+            CheckBox cb = (CheckBox)sender;
+            CurrentUser.Agent_IsWorksManager = cb.Checked;
+            ActivateModification(true);
+        }
+
+        private void checkBox_IsWorkManager_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox cb = (CheckBox)sender;
+            CurrentUser.Agent_IsWorksManager = cb.Checked;
+            ActivateModification(true);
+
+        }
+
+       
+
+        private void dG_Agents_MouseHover(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dG_Agents_FilterStringChanged_1(object sender, Zuby.ADGV.AdvancedDataGridView.FilterEventArgs e)
+        {
+            _filterString = e.FilterString;
+            TriggerFilterStringChanged();
+
+        }
+
+        public async void TriggerFilterStringChanged()
+        {
+            //call event handler if one is attached
+            FilterEventArgs filterEventArgs = new FilterEventArgs
+            {
+                FilterString = _filterString,
+                Cancel = false
+            };
+            if (FilterStringChanged != null)
+                FilterStringChanged.Invoke(this, filterEventArgs);
+            //sort datasource
+            if (filterEventArgs.Cancel == false)
+            {
+                //listUserPaged = await LoadDatagridAgentAsync();
+                listUserPaged = await LoadTaskDatagridAgent();
+
+
+
+                dG_Agents.DataSource = GetDataSource(listUserPaged);
+                BindingSource datasource = new BindingSource()
+                {
+                    DataSource = listUserPaged
+
+                };
+                if (datasource != null)
+                    datasource.Filter = filterEventArgs.FilterString;
+            }
+        }
+
     }
 }
 

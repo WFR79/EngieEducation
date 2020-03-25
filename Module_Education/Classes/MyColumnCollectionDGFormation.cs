@@ -38,12 +38,18 @@ namespace Module_Education.Classes
 
         [DisplayName("Capacité Minimale")]
         public int? Formation_CapaciteMin { get; set; }
+
         [DisplayName("Capacité Optimale")]
         public int? Formation_CapaciteOptimale { get; set; }
+
         [DisplayName("Capacité Maximale")]
         public int? Formation_CapaciteMax { get; set; }
-        [DisplayName("Fournisseur")]
-        public int? Formation_Provider { get; set; }
+
+        //[DisplayName("Fournisseur")]
+        //public int? Formation_Provider { get; set; }
+
+        [DisplayName("Prix")]
+        public double? Formation_Price { get; set; }
 
         [DisplayName("Interne")]
         public Boolean? Formation_IsInterne { get; set; }

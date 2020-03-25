@@ -33,6 +33,7 @@
           <Property Name="Agent_NiveauPS" Type="int" />
           <Property Name="Agent_Admin" Type="nvarchar" MaxLength="50" />
           <Property Name="Agent_Role" Type="bigint" />
+          <Property Name="Agent_RescueBonus" Type="bit" />
         </EntityType>
         <EntityType Name="Education_Agent_Formation">
           <Key>
@@ -1334,6 +1335,7 @@
           <NavigationProperty Name="Education_Agent2" Relationship="SYNAPSEModel.FK_User_LineManager" FromRole="Education_Agent1" ToRole="Education_Agent" />
           <NavigationProperty Name="Education_Role" Relationship="SYNAPSEModel.FK_User_Role" FromRole="Education_Agent" ToRole="Education_Role" />
           <NavigationProperty Name="Education_RoleAstreinte" Relationship="SYNAPSEModel.FK_User_RoleAstreinte" FromRole="Education_Agent" ToRole="Education_RoleAstreinte" />
+          <Property Name="Agent_RescueBonus" Type="Boolean" />
         </EntityType>
         <EntityType Name="Education_Agent_Formation">
           <Key>
@@ -2252,6 +2254,7 @@
           <EntitySetMapping Name="Education_Agent">
             <EntityTypeMapping TypeName="SYNAPSEModel.Education_Agent">
               <MappingFragment StoreEntitySet="Education_Agent">
+                <ScalarProperty Name="Agent_RescueBonus" ColumnName="Agent_RescueBonus" />
                 <ScalarProperty Name="Agent_Role" ColumnName="Agent_Role" />
                 <ScalarProperty Name="Agent_Admin" ColumnName="Agent_Admin" />
                 <ScalarProperty Name="Agent_NiveauPS" ColumnName="Agent_NiveauPS" />

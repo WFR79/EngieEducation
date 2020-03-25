@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Module_Education.Classes;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Module_Education.Classes
 {
     public class AdvancedDataGridView : DataGridView
     {
+        [System.ComponentModel.DesignerCategory("")]
 
         #region public events
 

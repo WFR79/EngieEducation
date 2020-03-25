@@ -210,7 +210,7 @@
             this.HelpButton = true;
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CFN_Education_Formations";
+            this.Text = "Module Education";
             this.panelMain.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

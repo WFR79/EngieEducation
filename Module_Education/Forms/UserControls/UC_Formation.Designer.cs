@@ -28,15 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.tabControl_Education_Formations = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.label10 = new System.Windows.Forms.Label();
+            this.lblTiteLstFormation = new System.Windows.Forms.Label();
             this.AdvDg_Formations = new Zuby.ADGV.AdvancedDataGridView();
             this.tabPageEducation_FormationFiche = new System.Windows.Forms.TabPage();
             this.btnBrowseDoc = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.picAddProvider = new System.Windows.Forms.PictureBox();
             this.cbListProvider = new System.Windows.Forms.CheckedListBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.labelCapOpt = new System.Windows.Forms.Label();
             this.lblYearOfCreation = new System.Windows.Forms.Label();
             this.txtYearOfCreation = new System.Windows.Forms.TextBox();
             this.labelComptence = new System.Windows.Forms.Label();
@@ -90,11 +91,14 @@
             this.openFileOrFolderDialog1 = new WindowsFormsApplication1.OpenFileOrFolderDialog();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.toolTipListProvider = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAddProvider = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl_Education_Formations.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AdvDg_Formations)).BeginInit();
             this.tabPageEducation_FormationFiche.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAddProvider)).BeginInit();
             this.tabControl_Education_FormationAndCertificationsOfUser.SuspendLayout();
             this.tabPageEducation_FormationsAgent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.advDv_AgentsOfFormation)).BeginInit();
@@ -123,7 +127,7 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.label10);
+            this.tabPage1.Controls.Add(this.lblTiteLstFormation);
             this.tabPage1.Controls.Add(this.AdvDg_Formations);
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
@@ -132,17 +136,17 @@
             this.tabPage1.Text = "Liste";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // label10
+            // lblTiteLstFormation
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(101)))));
-            this.label10.Location = new System.Drawing.Point(9, 11);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(217, 24);
-            this.label10.TabIndex = 12;
-            this.label10.Text = "Liste des formations";
-            this.label10.Click += new System.EventHandler(this.label10_Click);
+            this.lblTiteLstFormation.AutoSize = true;
+            this.lblTiteLstFormation.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTiteLstFormation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(101)))));
+            this.lblTiteLstFormation.Location = new System.Drawing.Point(9, 11);
+            this.lblTiteLstFormation.Name = "lblTiteLstFormation";
+            this.lblTiteLstFormation.Size = new System.Drawing.Size(217, 24);
+            this.lblTiteLstFormation.TabIndex = 12;
+            this.lblTiteLstFormation.Text = "Liste des formations";
+            this.lblTiteLstFormation.Click += new System.EventHandler(this.label10_Click);
             // 
             // AdvDg_Formations
             // 
@@ -161,9 +165,9 @@
             // tabPageEducation_FormationFiche
             // 
             this.tabPageEducation_FormationFiche.Controls.Add(this.btnBrowseDoc);
-            this.tabPageEducation_FormationFiche.Controls.Add(this.pictureBox2);
+            this.tabPageEducation_FormationFiche.Controls.Add(this.picAddProvider);
             this.tabPageEducation_FormationFiche.Controls.Add(this.cbListProvider);
-            this.tabPageEducation_FormationFiche.Controls.Add(this.label11);
+            this.tabPageEducation_FormationFiche.Controls.Add(this.labelCapOpt);
             this.tabPageEducation_FormationFiche.Controls.Add(this.lblYearOfCreation);
             this.tabPageEducation_FormationFiche.Controls.Add(this.txtYearOfCreation);
             this.tabPageEducation_FormationFiche.Controls.Add(this.labelComptence);
@@ -218,16 +222,17 @@
             this.btnBrowseDoc.UseVisualStyleBackColor = true;
             this.btnBrowseDoc.Click += new System.EventHandler(this.btnBrowseDoc_Click);
             // 
-            // pictureBox2
+            // picAddProvider
             // 
-            this.pictureBox2.Image = global::Module_Education.Properties.Resources.add_512;
-            this.pictureBox2.Location = new System.Drawing.Point(201, 228);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(30, 24);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 115;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.picAddProvider.Image = global::Module_Education.Properties.Resources.add_512;
+            this.picAddProvider.Location = new System.Drawing.Point(201, 228);
+            this.picAddProvider.Name = "picAddProvider";
+            this.picAddProvider.Size = new System.Drawing.Size(30, 24);
+            this.picAddProvider.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picAddProvider.TabIndex = 115;
+            this.picAddProvider.TabStop = false;
+            this.picAddProvider.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.picAddProvider.MouseHover += new System.EventHandler(this.pictureBox2_MouseHover);
             // 
             // cbListProvider
             // 
@@ -236,22 +241,24 @@
             this.cbListProvider.Name = "cbListProvider";
             this.cbListProvider.Size = new System.Drawing.Size(185, 64);
             this.cbListProvider.TabIndex = 113;
+            this.cbListProvider.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.cbListProvider_ItemCheck);
+            this.cbListProvider.MouseHover += new System.EventHandler(this.cbListProvider_MouseHover);
             // 
-            // label11
+            // labelCapOpt
             // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.label11.Location = new System.Drawing.Point(236, 208);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(90, 14);
-            this.label11.TabIndex = 112;
-            this.label11.Text = "Capacit maximale";
+            this.labelCapOpt.AutoSize = true;
+            this.labelCapOpt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.labelCapOpt.Location = new System.Drawing.Point(234, 208);
+            this.labelCapOpt.Name = "labelCapOpt";
+            this.labelCapOpt.Size = new System.Drawing.Size(85, 14);
+            this.labelCapOpt.TabIndex = 112;
+            this.labelCapOpt.Text = "Capacit optimale";
             // 
             // lblYearOfCreation
             // 
             this.lblYearOfCreation.AutoSize = true;
             this.lblYearOfCreation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblYearOfCreation.Location = new System.Drawing.Point(14, 167);
+            this.lblYearOfCreation.Location = new System.Drawing.Point(11, 167);
             this.lblYearOfCreation.Name = "lblYearOfCreation";
             this.lblYearOfCreation.Size = new System.Drawing.Size(96, 14);
             this.lblYearOfCreation.TabIndex = 111;
@@ -269,7 +276,7 @@
             // 
             this.labelComptence.AutoSize = true;
             this.labelComptence.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.labelComptence.Location = new System.Drawing.Point(14, 120);
+            this.labelComptence.Location = new System.Drawing.Point(11, 120);
             this.labelComptence.Name = "labelComptence";
             this.labelComptence.Size = new System.Drawing.Size(67, 14);
             this.labelComptence.TabIndex = 109;
@@ -339,7 +346,7 @@
             // 
             this.labelProvider.AutoSize = true;
             this.labelProvider.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.labelProvider.Location = new System.Drawing.Point(14, 211);
+            this.labelProvider.Location = new System.Drawing.Point(11, 211);
             this.labelProvider.Name = "labelProvider";
             this.labelProvider.Size = new System.Drawing.Size(65, 14);
             this.labelProvider.TabIndex = 102;
@@ -403,6 +410,7 @@
             this.comboBoxCapaciteOptimale.Name = "comboBoxCapaciteOptimale";
             this.comboBoxCapaciteOptimale.Size = new System.Drawing.Size(185, 22);
             this.comboBoxCapaciteOptimale.TabIndex = 59;
+            this.comboBoxCapaciteOptimale.Leave += new System.EventHandler(this.comboBoxCapaciteOptimale_Leave);
             // 
             // comboBoxDurationhours
             // 
@@ -819,6 +827,20 @@
             // 
             this.openFileDialog2.FileName = "openFileDialog2";
             // 
+            // toolTipListProvider
+            // 
+            this.toolTipListProvider.AutoPopDelay = 5000;
+            this.toolTipListProvider.InitialDelay = 250;
+            this.toolTipListProvider.IsBalloon = true;
+            this.toolTipListProvider.ReshowDelay = 100;
+            // 
+            // toolTipAddProvider
+            // 
+            this.toolTipAddProvider.AutoPopDelay = 5000;
+            this.toolTipAddProvider.InitialDelay = 250;
+            this.toolTipAddProvider.IsBalloon = true;
+            this.toolTipAddProvider.ReshowDelay = 100;
+            // 
             // UCEducation_Formation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -827,14 +849,16 @@
             this.Controls.Add(this.tabControl_Education_Formations);
             this.Name = "UCEducation_Formation";
             this.Size = new System.Drawing.Size(1067, 600);
+            this.toolTipAddProvider.SetToolTip(this, "\r\n");
             this.Load += new System.EventHandler(this.UC_Education_Formation_Load);
+            this.MouseHover += new System.EventHandler(this.UCEducation_Formation_MouseHover);
             this.tabControl_Education_Formations.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AdvDg_Formations)).EndInit();
             this.tabPageEducation_FormationFiche.ResumeLayout(false);
             this.tabPageEducation_FormationFiche.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAddProvider)).EndInit();
             this.tabControl_Education_FormationAndCertificationsOfUser.ResumeLayout(false);
             this.tabPageEducation_FormationsAgent.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.advDv_AgentsOfFormation)).EndInit();
@@ -904,15 +928,18 @@
         private System.Windows.Forms.TextBox txtYearOfCreation;
         private System.Windows.Forms.TabPage tabPage1;
         private Zuby.ADGV.AdvancedDataGridView AdvDg_Formations;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblTiteLstFormation;
+        private System.Windows.Forms.Label labelCapOpt;
         private Zuby.ADGV.AdvancedDataGridView advDv_AgentsOfFormation;
         private System.Windows.Forms.CheckedListBox cbListProvider;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox picAddProvider;
         private System.Windows.Forms.Button btnBrowseDoc;
         private WindowsFormsApplication1.OpenFileOrFolderDialog openFileOrFolderDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.OpenFileDialog openFileDialog2;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.ToolTip toolTipListProvider;
+        private System.Windows.Forms.ToolTip toolTipAddProvider;
+        private System.Windows.Forms.ToolTip toolTip2;
     }
 }

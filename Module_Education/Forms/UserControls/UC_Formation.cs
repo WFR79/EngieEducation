@@ -56,7 +56,7 @@ namespace Module_Education
             InitializeComponent();
             //
             LoadComboboxs();
-            this.ActiveControl = this.comboBoxDurationhours;   
+            this.ActiveControl = this.comboBoxDurationhours;
         }
 
         public void LoadComboboxs()
@@ -88,7 +88,7 @@ namespace Module_Education
 
             // YearOfCreation
 
-            
+
 
             //Education_Habilitation
             comboBoxProvider.DataSource = dbProvider.AllProviders();
@@ -226,7 +226,7 @@ namespace Module_Education
 
                         var selectedEducation_FormationId = dbList.Education_Formation.Where(x => x.Formation_SAP.Equals(selectedEducation_FormationSAP)).FirstOrDefault();
 
-                        
+
                         var listUsersEducation_Formation = dbList.Education_Agent_Formation
                         .Where(p => p.AgentFormation_Formation == selectedEducation_FormationId.Formation_Id).ToList();
 
@@ -292,10 +292,11 @@ namespace Module_Education
                 Formation_ShortTitle = o.Formation_ShortTitle,
                 Formation_DurationInDays = o.Formation_DurationInDays,
                 Formation_SAP = o.Formation_SAP,
-                //Column_LongTitle = o.Education_Formation_LongTitle,
+                Formation_IsInterne = o.Formation_IsInterne,
+                Formation_Price = o.Formation_Price,
                 Formation_YearOfCreation = o.Formation_YearOfCreation,
                 Formation_CapaciteMin = o.Formation_MinCapacity,
-                Formation_CapaciteMax= o.Formation_MaxCapacity,
+                Formation_CapaciteMax = o.Formation_MaxCapacity,
 
                 Formation_CapaciteOptimale = o.Formation_OptimalCapacity,
 
@@ -534,6 +535,8 @@ namespace Module_Education
                 Education_FormationRecord_SelectDurationInDays(CurrentFormation);
                 Education_FormationRecord_SelectMinCapacity(CurrentFormation);
                 Education_FormationRecord_SelectMaxCapacity(CurrentFormation);
+                Education_FormationRecord_SelectOptCapacity(CurrentFormation);
+
                 Education_FormationRecord_FillCbListPRoviders(CurrentFormation);
                 LoadDatagriAgentsOfCurrentFormation();
                 //Education_FormationRecord_SelectRoleEPI(CurrentEducation_Formation);
@@ -548,8 +551,23 @@ namespace Module_Education
 
         private void Education_FormationRecord_FillPrice(Education_Formation currentFormation)
         {
+            //comboBoxResultatByYear.Items.Clear();
+            //if (currentFormation.Education_UnitePrice != null)
+            //    foreach (Education_FormationResultat formationResult in currentFormation.Education_FormationResultat)
+            //    {
+            //        comboBoxResultatByYear.Items.Add(formationResult.FormationResultat_Resultat);
+            //        comboBoxResultatYear.Items.Add(formationResult.FormationResultat_Year);
+            //    }
+            //comboBoxResultatByYear.SelectedIndex = comboBoxResultatByYear.Items.Count - 1;
+            //comboBoxResultatYear.SelectedIndex = comboBoxResultatYear.Items.Count - 1;
+        }
+
+        private void Education_FormationRecord_FillResulats(Education_Formation currentFormation)
+        {
             comboBoxResultatByYear.Items.Clear();
-            if (currentFormation.Education_UnitePrice != null)
+            comboBoxResultatYear.Items.Clear();
+
+            if (currentFormation.Education_FormationResultat != null)
                 foreach (Education_FormationResultat formationResult in currentFormation.Education_FormationResultat)
                 {
                     comboBoxResultatByYear.Items.Add(formationResult.FormationResultat_Resultat);
@@ -557,19 +575,6 @@ namespace Module_Education
                 }
             comboBoxResultatByYear.SelectedIndex = comboBoxResultatByYear.Items.Count - 1;
             comboBoxResultatYear.SelectedIndex = comboBoxResultatYear.Items.Count - 1;
-        }
-
-        private void Education_FormationRecord_FillResulats(Education_Formation currentFormation)
-        {
-            comboBoxResultatByYear.Items.Clear();
-            if (currentFormation.Education_FormationResultat != null)
-                foreach (Education_FormationResultat formationResult in currentFormation.Education_FormationResultat)
-                {
-                    comboBoxResultatByYear.Items.Add(formationResult.FormationResultat_Resultat);
-                    comboBoxResultatYear.Items.Add(formationResult.FormationResultat_Year);
-                }
-            comboBoxResultatByYear.SelectedIndex = comboBoxResultatByYear.Items.Count -1 ;
-            comboBoxResultatYear.SelectedIndex = comboBoxResultatYear.Items.Count - 1 ;
 
         }
 
@@ -597,7 +602,7 @@ namespace Module_Education
         {
             if (currentEducation_Formation.Formation_YearOfCreation != null)
             {
-                txtYearOfCreation.Text =currentEducation_Formation.Formation_YearOfCreation.ToString();
+                txtYearOfCreation.Text = currentEducation_Formation.Formation_YearOfCreation.ToString();
 
             }
         }
@@ -653,6 +658,13 @@ namespace Module_Education
             if (currentEducation_Formation.Formation_MinCapacity != null)
                 comboBoxMaxCapacity.SelectedIndex = comboBoxMaxCapacity
                     .FindStringExact(currentEducation_Formation.Formation_MinCapacity.ToString());
+        }
+
+        private void Education_FormationRecord_SelectOptCapacity(Education_Formation currentFormation)
+        {
+            if (currentFormation.Formation_OptimalCapacity != null)
+                comboBoxCapaciteOptimale.SelectedIndex = comboBoxCapaciteOptimale
+                    .FindStringExact(currentFormation.Formation_OptimalCapacity.ToString());
         }
 
         public void Education_FormationRecord_FillRemarks(Education_Formation currentEducation_Formation)
@@ -788,7 +800,7 @@ namespace Module_Education
             int days = 0;
             if (comboBoxDurationInDays.SelectedItem != null | comboBoxDurationInDays.Text != "")
             {
-                if(comboBoxDurationInDays.SelectedItem != null)
+                if (comboBoxDurationInDays.SelectedItem != null)
                     days = Convert.ToInt32(comboBoxDurationInDays.SelectedItem.ToString());
                 else
                     days = Convert.ToInt32(comboBoxDurationInDays.Text.ToString());
@@ -830,7 +842,7 @@ namespace Module_Education
                 double hoursFloat = 0;
                 if (comboBoxDurationhours.SelectedItem != null | comboBoxDurationhours.Text != "")
                 {
-                    if(comboBoxDurationhours.SelectedItem != null)
+                    if (comboBoxDurationhours.SelectedItem != null)
                         hours = Convert.ToInt32(comboBoxDurationhours.SelectedItem.ToString());
                     else
                         hours = Convert.ToInt32(comboBoxDurationhours.Text.ToString());
@@ -854,6 +866,33 @@ namespace Module_Education
             if (CurrentFormation.Formation_Competence != ((Education_Competence)comboBoxCompetence.SelectedItem).Competence_Id)
             {
                 CurrentFormation.Formation_Competence = ((Education_Competence)comboBoxCompetence.SelectedItem).Competence_Id;
+                ActivateModification(true);
+            }
+        }
+
+        private void comboBoxCapaciteOptimale_Leave(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(comboBoxCapaciteOptimale.Text) != CurrentFormation.Formation_OptimalCapacity)
+            {
+                CurrentFormation.Formation_OptimalCapacity = Convert.ToInt32(comboBoxCapaciteOptimale.Text);
+                ActivateModification(true);
+            }
+        }
+
+        private void comboBoxCapaciteMax_Leave(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(comboBoxMaxCapacity.Text) != CurrentFormation.Formation_MaxCapacity)
+            {
+                CurrentFormation.Formation_MaxCapacity = Convert.ToInt32(comboBoxMaxCapacity.Text);
+                ActivateModification(true);
+            }
+        }
+
+        private void comboBoxCapaciteMin_Leave(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(comboBoxCapaciteOptimale.Text) != CurrentFormation.Formation_OptimalCapacity)
+            {
+                CurrentFormation.Formation_OptimalCapacity = Convert.ToInt32(comboBoxCapaciteOptimale.Text);
                 ActivateModification(true);
             }
         }
@@ -882,7 +921,7 @@ namespace Module_Education
                 buttonCancel.Enabled = enable;
                 buttonCancel.BackColor = Color.Gray;
                 buttonCancel.ForeColor = Color.LightGray;
-                
+
 
             }
         }
@@ -908,7 +947,7 @@ namespace Module_Education
             }
             return buttonSave;
         }
-       
+
         private void txtYearOfCreation_Leave(object sender, EventArgs e)
         {
             try
@@ -934,7 +973,7 @@ namespace Module_Education
             catch (Exception ex)
             {
                 MessageBox.Show("Mauvais format pour l'année de la date de création");
-                txtYearOfCreation.Text = CurrentFormation.Formation_YearOfCreation.ToString() ;
+                txtYearOfCreation.Text = CurrentFormation.Formation_YearOfCreation.ToString();
                 TextBox tbSender = (TextBox)sender;
 
                 tbSender.Focus();
@@ -1046,7 +1085,7 @@ namespace Module_Education
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            var elementSelected = (Education_Provider) comboBoxProvider.SelectedItem;
+            var elementSelected = (Education_Provider)comboBoxProvider.SelectedItem;
 
             var itemFound = CurrentFormation.Education_FormationProvider
                 .Where(w => w.FormationProvider_Formation == CurrentFormation.Formation_Id && w.FormationProvider_Provider == elementSelected.Provider_Id).FirstOrDefault();
@@ -1065,8 +1104,8 @@ namespace Module_Education
             }
             else
             {
-                MessageBox.Show("Fournisseur est déja présent dans la liste","", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) ;
-            
+                MessageBox.Show("Fournisseur est déja présent dans la liste", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
             }
         }
 
@@ -1079,8 +1118,15 @@ namespace Module_Education
 
         private void comboBoxResultatYear_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int index = comboBoxResultatYear.SelectedIndex;
-            comboBoxResultatByYear.SelectedIndex = index;
+            try
+            {
+                int index = comboBoxResultatYear.SelectedIndex;
+                comboBoxResultatByYear.SelectedIndex = index;
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private void textBoxPrice_Leave(object sender, EventArgs e)
@@ -1096,10 +1142,56 @@ namespace Module_Education
 
         private void comboBoxResultatByYear_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int index = comboBoxResultatByYear.SelectedIndex;
-            comboBoxResultatYear.SelectedIndex = index;
+            try
+            {
+
+                int index = comboBoxResultatByYear.SelectedIndex;
+                if (index <= comboBoxResultatByYear.Items.Count)
+
+                    comboBoxResultatYear.SelectedIndex = index;
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
+        private void cbListProvider_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            for (int ix = 0; ix < cbListProvider.Items.Count; ++ix)
+                if (ix != e.Index) cbListProvider.SetItemChecked(ix, false);
+        }
+
+        private void cbListProvider_MouseHover(object sender, EventArgs e)
+        {
+            Point pos = cbListProvider.PointToClient(MousePosition);
+            int tIndex = cbListProvider.IndexFromPoint(pos);
+
+            if (tIndex > -1)
+            {
+                pos = this.PointToClient(MousePosition);
+                toolTipListProvider.ToolTipTitle = "Informations";
+                toolTipListProvider.SetToolTip(cbListProvider, cbListProvider.Items[tIndex].ToString());
+            }
+        }
+
+        private void pictureBox2_MouseHover(object sender, EventArgs e)
+        {
+            Point pos = picAddProvider.PointToClient(MousePosition);
+
+
+            pos = this.PointToClient(MousePosition);
+            toolTipAddProvider.ToolTipTitle = "Ajout d'un fournisseur";
+            toolTipAddProvider.SetToolTip(picAddProvider, "Sélectionnez un fournisseur à ajouter à la liste.");
+
+        }
+
+        private void UCEducation_Formation_MouseHover(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }
-}
+
