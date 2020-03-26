@@ -12,45 +12,45 @@ namespace Module_Education.Classes
     class MyColumnCollectionDGAgent
     {
         [DisplayName("Matricule")]
-        public int? ColumnUser_Matricule { get; set; }
+        public int? Agent_Matricule { get; set; }
 
         //[DisplayName("User ID")]
         //public long ColumnUserId { get; set; }
         [DisplayName("Prénom")]
-        public string ColumnFirstName { get; set; }
+        public string Agent_FirstName { get; set; }
 
         [DisplayName("Nom")]
-        public string ColumnUser_Name { get; set; }
+        public string Agent_Name { get; set; }
 
         [DisplayName("Fonction")]
-        public string ColumnFunction { get; set; }
+        public string Function_Name { get; set; }
 
         [DisplayName("Responsable")]
-        public string ColumnResponsable { get; set; }
+        public string Agent_Responsable { get; set; }
 
         [DisplayName("Admin")]
-        public string ColumnAdmin { get; set; }
+        public string Agent_Admin { get; set; }
 
-        [DisplayName("Education_Habilitation")]
-        public string ColumnEducation_Habilitation { get; set; }
+        [DisplayName("Habilitation")]
+        public string Agent_Habilitation { get; set; }
 
         [DisplayName("Chargé de travaux")]
-        public bool? ColumnChargeTravaux { get; set; }
+        public bool? Agent_IsWorkManager { get; set; }
 
         [DisplayName("Date d'entrée")]
-        public DateTime? ColumnDateEntry { get; set; }
+        public DateTime? Agent_DateOfEntry { get; set; }
 
         [DisplayName("Date d'ancienneté")]
-        public DateTime? ColumnDateSenioritiy { get; set; }
+        public DateTime? Agent_DateSeniority { get; set; }
 
         [DisplayName("Dernière prise de fonction")]
-        public DateTime? ColumnDateFunction { get; set; }
+        public DateTime? Agent_DateFunction { get; set; }
 
         [DisplayName("Statut")]
-        public string ColumnStatut { get; set; }
+        public string Agent_Status { get; set; }
 
         [DisplayName("Etat")]
-        public bool? ColumnEtat { get; set; }
+        public bool? Agent_Etat { get; set; }
 
         private Education_Agent _obj;
 

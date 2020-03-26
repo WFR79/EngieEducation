@@ -9,6 +9,7 @@ using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Module_Education.Classes;
+using System.Text.RegularExpressions;
 
 namespace Module_Education
 {
@@ -67,7 +68,7 @@ namespace Module_Education
 
 
         IPagedList<Education_Formation> listPagedFormation;
-
+        List<Education_Agent> listAgentFiltered;
         IPagedList<Education_Agent> listUserPaged;
 
         private Education_Agent CurrentUser = new Education_Agent();
@@ -317,21 +318,21 @@ namespace Module_Education
         {
             object dataSource = listPaged.Select(o => new MyColumnCollectionDGAgent(o)
             {
-                ColumnUser_Matricule = o.Agent_Matricule,
-                ColumnFirstName = o.Agent_FirstName,
-                ColumnUser_Name = o.Agent_Name,
+                Agent_Matricule = o.Agent_Matricule,
+                Agent_FirstName = o.Agent_FirstName,
+                Agent_Name = o.Agent_Name,
 
-                ColumnFunction = o.Education_Function == null ? null : o.Education_Function.Function_Name,// If (o.Function == null) { null } else {o.Function.Function_Name}
-                ColumnAdmin = o.Agent_Admin,
-                ColumnResponsable = o.Agent_LineManager == null ? null : dbEntities.Education_Agent.Where(x => x.Agent_Id == o.Agent_LineManager).FirstOrDefault().Agent_FullName,
+                Function_Name = o.Agent_Function == null ? null : dbEntities.Education_Function.Where(x => x.Function_Id == o.Agent_Function).FirstOrDefault().Function_Name,// If (o.Function == null) { null } else {o.Function.Function_Name}
+                Agent_Admin = o.Agent_Admin,
+                Agent_Responsable = o.Agent_LineManager == null ? null : dbEntities.Education_Agent.Where(x => x.Agent_Id == o.Agent_LineManager).FirstOrDefault().Agent_FullName,
 
-                ColumnChargeTravaux = o.Agent_IsWorksManager,
-                ColumnDateSenioritiy = o.Agent_DateSeniority,
-                ColumnDateEntry = o.Agent_DateOfEntry,
-                ColumnDateFunction = o.Agent_DateFunction,
-                ColumnEducation_Habilitation = o.Education_Habilitation == null ? null : o.Education_Habilitation.Habilitation_Name,
-                ColumnStatut = o.Education_AgentStatus == null ? null : o.Education_AgentStatus.AgentStatus_Name,
-                ColumnEtat = o.Agent_Etat
+                Agent_IsWorkManager = o.Agent_IsWorksManager,
+                Agent_DateSeniority = o.Agent_DateSeniority,
+                Agent_DateOfEntry = o.Agent_DateOfEntry,
+                Agent_DateFunction = o.Agent_DateFunction,
+                Agent_Habilitation = o.Education_Habilitation == null ? null : o.Education_Habilitation.Habilitation_Name,
+                Agent_Status = o.Education_AgentStatus == null ? null : o.Education_AgentStatus.AgentStatus_Name,
+                Agent_Etat = o.Agent_Etat
 
 
             }).ToList();
@@ -790,54 +791,55 @@ namespace Module_Education
 
         }
 
-        private void dG_Agents_MouseClick(object sender, MouseEventArgs e)
-        {
-            try
-            {
-                DataGridView dgv = (DataGridView)sender;
-
-                dgv.ClearSelection();
-                dgv.Rows[dgv.HitTest(e.X, e.Y).RowIndex].Selected = true;
-
-                if (dgv.SelectedCells[0].Value != null)
-                {
-                    if (e.Button == MouseButtons.Right)
-                    {
-                        dgv.ClearSelection();
-                        dgv.Rows[dgv.HitTest(e.X, e.Y).RowIndex].Selected = true;
-
-                        ContextMenu m = new ContextMenu();
-                        m.MenuItems.Add(new MenuItem("Modifier l'agent", EditUser_CLick));
-
-                        int currentMouseOverRow = dgv.HitTest(e.X, e.Y).RowIndex;
-
-                        //if (currentMouseOverRow >= 0)
-                        //{
-                        //    m.MenuItems.Add(new MenuItem(string.Format("Do something to row {0}", currentMouseOverRow.ToString())));
-                        //}
-
-                        m.Show(dgv, new Point(e.X, e.Y));
-                        UserIDSelected = Convert.ToInt64(dgv.SelectedCells[0].Value);
-
-                    }
-                }
-                else
-                {
-
-
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-        }
+      
 
         private void EditUser_CLick(Object sender, System.EventArgs e)
         {
             //DataGridView dgv = (DataGridView)sender;
             tabControlAgentList.SelectedIndex = 1;
             UserRecord_LoadUser(UserIDSelected);
+        }
+        private void VisualisationUser_CLick(Object sender, System.EventArgs e)
+        {
+            //DataGridView dgv = (DataGridView)sender;
+            tabControlAgentList.SelectedIndex = 1;
+            UserRecord_LoadUserVisualisation(UserIDSelected);
+        }
+
+        private void UserRecord_LoadUserVisualisation(long userIDSelected)
+        {
+            DeleteButtonSavingAgent();
+            TabPage page = (TabPage)this.tabControlAgentList.Controls[1];
+            this.EnableTab(page, true);
+            Frm
+            Education_Agent userRecord = db.LoadSingleUserWithMatricule(userIDSelected);
+            CurrentUser = userRecord;
+            if (userRecord != null)
+            {
+                UserRecord_FillLabels(userRecord);
+                UserRecord_FillLabelsActif(userRecord);
+
+                UserRecord_FillMatricule(userRecord);
+                UserRecord_FillAdmin(userRecord);
+                UserRecord_SelectEquipe(userRecord);
+                UserRecord_PickDateOfEntry(userRecord);
+                UserRecord_PickUser_DateSeniority(userRecord);
+                UserRecord_PickDateFunction(userRecord);
+                UserRecord_FillRemarks(userRecord);
+                UserRecord_SelectRespHiérarchique(userRecord);
+                UserRecord_SelectStatut(userRecord);
+                UserRecord_SelectFunction(userRecord);
+
+                UserRecord_SelectRoleEPI(userRecord);
+                UserRecord_SelectRoleAstreinte(userRecord);
+
+                UserRecord_SelectEducation_Habilitation(userRecord);
+                UserRecord_CheckRescueCheckBox(userRecord);
+                UserRecord_CheckIsWorksManager(userRecord);
+
+                UserRecord_LoadEducation_FormationsOfUser(userRecord);
+                CreateButtonSavingAgent();
+            }
         }
 
         private void UC_Agent_Enter(object sender, EventArgs e)
@@ -1003,8 +1005,6 @@ namespace Module_Education
 
         }
 
-       
-
         private void dG_Agents_MouseHover(object sender, EventArgs e)
         {
 
@@ -1014,7 +1014,6 @@ namespace Module_Education
         {
             _filterString = e.FilterString;
             TriggerFilterStringChanged();
-
         }
 
         public async void TriggerFilterStringChanged()
@@ -1030,12 +1029,14 @@ namespace Module_Education
             //sort datasource
             if (filterEventArgs.Cancel == false)
             {
-                //listUserPaged = await LoadDatagridAgentAsync();
-                listUserPaged = await LoadTaskDatagridAgent();
+                if (listAgentFiltered == null)
+                    listAgentFiltered = MainWindow.globalListAgents;
+                listAgentFiltered =  db.LoadAgentsFiltered(_filterString, listAgentFiltered);
+
+                //listAgentFiltered = await LoadDatagridAgentAsync();
 
 
-
-                dG_Agents.DataSource = GetDataSource(listUserPaged);
+                dG_Agents.DataSource = GetDataSource(listAgentFiltered.ToPagedList(1,100));
                 BindingSource datasource = new BindingSource()
                 {
                     DataSource = listUserPaged
@@ -1043,9 +1044,103 @@ namespace Module_Education
                 };
                 if (datasource != null)
                     datasource.Filter = filterEventArgs.FilterString;
+
+                dG_Agents.Refresh();
+                btnClearFilters.Enabled = true;
+
             }
         }
 
+        private void picExportExcel_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Export vers le ficher excel en cours...", null, MessageBoxButtons.AbortRetryIgnore, MessageBoxIcon.Information);
+            ExportToExcel exportExcel = new ExportToExcel();
+
+            var fileExportedParth = exportExcel.Export(dG_Agents);
+            MessageBox.Show("Export terminé dans le dossier : " + fileExportedParth, null, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (!Regex.IsMatch(tbNbrRows.Text, @"^\d+$"))
+            {
+                if(tbNbrRows.Text.Length > 0)
+                    tbNbrRows.Text = tbNbrRows.Text.Remove(tbNbrRows.Text.Length - 1);
+            }
+        }
+
+        private void btnClearFilters_Click(object sender, EventArgs e)
+        {
+            listAgentFiltered = db.LoadAgentsFiltered("", listAgentFiltered);
+            btnClearFilters.Enabled = false;
+
+        }
+
+        private void tbNbrRows_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (listAgentFiltered == null)
+                    listAgentFiltered = MainWindow.globalListAgents;
+                dG_Agents.DataSource = GetDataSource(listAgentFiltered.ToPagedList(1, Convert.ToInt32(tbNbrRows.Text)));
+                BindingSource datasource = new BindingSource()
+                {
+                    DataSource = listUserPaged
+
+                };
+               
+                dG_Agents.Refresh();
+            }
+        }
+
+        private void dG_Agents_MouseClick_1(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                DataGridView dgv = (DataGridView)sender;
+
+                dgv.ClearSelection();
+                dgv.Rows[dgv.HitTest(e.X, e.Y).RowIndex].Selected = true;
+
+                if (dgv.SelectedCells[0].Value != null)
+                {
+                    if (e.Button == MouseButtons.Right)
+                    {
+                        dgv.ClearSelection();
+                        dgv.Rows[dgv.HitTest(e.X, e.Y).RowIndex].Selected = true;
+
+                        ContextMenu m = new ContextMenu();
+                        m.MenuItems.Add(new MenuItem("Modifier l'agent", EditUser_CLick));
+                        m.MenuItems.Add(new MenuItem("Visualisation de l'agent", VisualisationUser_CLick));
+
+                        int currentMouseOverRow = dgv.HitTest(e.X, e.Y).RowIndex;
+
+                        //if (currentMouseOverRow >= 0)
+                        //{
+                        //    m.MenuItems.Add(new MenuItem(string.Format("Do something to row {0}", currentMouseOverRow.ToString())));
+                        //}
+
+                        m.Show(dgv, new Point(e.X, e.Y));
+                        UserIDSelected = Convert.ToInt64(dgv.SelectedCells[0].Value);
+
+                    }
+                }
+                else
+                {
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
     }
 }
 

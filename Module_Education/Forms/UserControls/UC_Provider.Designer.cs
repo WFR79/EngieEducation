@@ -1,6 +1,6 @@
-﻿namespace Module_Education
+﻿namespace Module_Education.Forms.UserControls
 {
-    partial class UCEducation_Formation
+    partial class UC_Provider
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.tabControl_Education_Formations = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tbNbrRows = new System.Windows.Forms.TextBox();
@@ -93,11 +92,6 @@
             this.btn_Next = new System.Windows.Forms.Button();
             this.btn_Previous = new System.Windows.Forms.Button();
             this.cb_FiltreDgEducation_Formations = new System.Windows.Forms.ComboBox();
-            this.openFileOrFolderDialog1 = new WindowsFormsApplication1.OpenFileOrFolderDialog();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
-            this.toolTipListProvider = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTipAddProvider = new System.Windows.Forms.ToolTip(this.components);
             this.tabControl_Education_Formations.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picExportExcel)).BeginInit();
@@ -127,8 +121,8 @@
             this.tabControl_Education_Formations.Location = new System.Drawing.Point(3, 3);
             this.tabControl_Education_Formations.Name = "tabControl_Education_Formations";
             this.tabControl_Education_Formations.SelectedIndex = 0;
-            this.tabControl_Education_Formations.Size = new System.Drawing.Size(1067, 565);
-            this.tabControl_Education_Formations.TabIndex = 0;
+            this.tabControl_Education_Formations.Size = new System.Drawing.Size(1067, 597);
+            this.tabControl_Education_Formations.TabIndex = 1;
             // 
             // tabPage1
             // 
@@ -139,7 +133,7 @@
             this.tabPage1.Controls.Add(this.AdvDg_Formations);
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1059, 538);
+            this.tabPage1.Size = new System.Drawing.Size(1059, 570);
             this.tabPage1.TabIndex = 3;
             this.tabPage1.Text = "Liste";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -171,7 +165,6 @@
             this.picExportExcel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picExportExcel.TabIndex = 20;
             this.picExportExcel.TabStop = false;
-            this.picExportExcel.Click += new System.EventHandler(this.picExportExcel_Click);
             // 
             // lblTiteLstFormation
             // 
@@ -183,7 +176,6 @@
             this.lblTiteLstFormation.Size = new System.Drawing.Size(217, 24);
             this.lblTiteLstFormation.TabIndex = 12;
             this.lblTiteLstFormation.Text = "Liste des formations";
-            this.lblTiteLstFormation.Click += new System.EventHandler(this.label10_Click);
             // 
             // AdvDg_Formations
             // 
@@ -193,11 +185,8 @@
             this.AdvDg_Formations.FilterAndSortEnabled = true;
             this.AdvDg_Formations.Location = new System.Drawing.Point(13, 48);
             this.AdvDg_Formations.Name = "AdvDg_Formations";
-            this.AdvDg_Formations.Size = new System.Drawing.Size(1012, 459);
+            this.AdvDg_Formations.Size = new System.Drawing.Size(1012, 491);
             this.AdvDg_Formations.TabIndex = 0;
-            this.AdvDg_Formations.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.AdvDg_Formations_FilterStringChanged);
-            this.AdvDg_Formations.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.AdvDg_Formations_HelpRequested);
-            this.AdvDg_Formations.MouseClick += new System.Windows.Forms.MouseEventHandler(this.AdvDg_Formations_MouseClick);
             // 
             // tabPageEducation_FormationFiche
             // 
@@ -249,7 +238,6 @@
             this.tabPageEducation_FormationFiche.Text = "Fiche";
             this.tabPageEducation_FormationFiche.ToolTipText = "Fiche de la Education_Formation";
             this.tabPageEducation_FormationFiche.UseVisualStyleBackColor = true;
-            this.tabPageEducation_FormationFiche.Click += new System.EventHandler(this.tabPageEducation_FormationFiche_Click);
             // 
             // tbVendor
             // 
@@ -257,7 +245,6 @@
             this.tbVendor.Name = "tbVendor";
             this.tbVendor.Size = new System.Drawing.Size(186, 20);
             this.tbVendor.TabIndex = 119;
-            this.tbVendor.MouseLeave += new System.EventHandler(this.tbVendor_MouseLeave);
             // 
             // lblVendor
             // 
@@ -277,7 +264,6 @@
             this.btnBrowseDoc.TabIndex = 116;
             this.btnBrowseDoc.Text = "Documents...";
             this.btnBrowseDoc.UseVisualStyleBackColor = true;
-            this.btnBrowseDoc.Click += new System.EventHandler(this.btnBrowseDoc_Click);
             // 
             // picAddProvider
             // 
@@ -288,8 +274,6 @@
             this.picAddProvider.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picAddProvider.TabIndex = 115;
             this.picAddProvider.TabStop = false;
-            this.picAddProvider.Click += new System.EventHandler(this.pictureBox2_Click);
-            this.picAddProvider.MouseHover += new System.EventHandler(this.pictureBox2_MouseHover);
             // 
             // cbListProvider
             // 
@@ -298,7 +282,6 @@
             this.cbListProvider.Name = "cbListProvider";
             this.cbListProvider.Size = new System.Drawing.Size(185, 64);
             this.cbListProvider.TabIndex = 113;
-            this.cbListProvider.MouseHover += new System.EventHandler(this.cbListProvider_MouseHover);
             // 
             // labelCapOpt
             // 
@@ -326,7 +309,6 @@
             this.txtYearOfCreation.Name = "txtYearOfCreation";
             this.txtYearOfCreation.Size = new System.Drawing.Size(69, 20);
             this.txtYearOfCreation.TabIndex = 110;
-            this.txtYearOfCreation.Leave += new System.EventHandler(this.txtYearOfCreation_Leave);
             // 
             // labelComptence
             // 
@@ -436,7 +418,6 @@
             this.comboBoxResultatYear.Name = "comboBoxResultatYear";
             this.comboBoxResultatYear.Size = new System.Drawing.Size(96, 22);
             this.comboBoxResultatYear.TabIndex = 76;
-            this.comboBoxResultatYear.SelectedIndexChanged += new System.EventHandler(this.comboBoxResultatYear_SelectedIndexChanged);
             // 
             // comboBoxResultatByYear
             // 
@@ -446,8 +427,6 @@
             this.comboBoxResultatByYear.Name = "comboBoxResultatByYear";
             this.comboBoxResultatByYear.Size = new System.Drawing.Size(83, 22);
             this.comboBoxResultatByYear.TabIndex = 75;
-            this.comboBoxResultatByYear.SelectedIndexChanged += new System.EventHandler(this.comboBoxResultatByYear_SelectedIndexChanged);
-            this.comboBoxResultatByYear.Leave += new System.EventHandler(this.comboBoxResultatByYear_Leave);
             // 
             // comboBoxUnite
             // 
@@ -466,7 +445,6 @@
             this.comboBoxCapaciteOptimale.Name = "comboBoxCapaciteOptimale";
             this.comboBoxCapaciteOptimale.Size = new System.Drawing.Size(185, 22);
             this.comboBoxCapaciteOptimale.TabIndex = 59;
-            this.comboBoxCapaciteOptimale.Leave += new System.EventHandler(this.comboBoxCapaciteOptimale_Leave);
             // 
             // comboBoxDurationhours
             // 
@@ -476,7 +454,6 @@
             this.comboBoxDurationhours.Name = "comboBoxDurationhours";
             this.comboBoxDurationhours.Size = new System.Drawing.Size(72, 22);
             this.comboBoxDurationhours.TabIndex = 56;
-            this.comboBoxDurationhours.Leave += new System.EventHandler(this.comboBoxDurationhours_Leave);
             // 
             // checkBoxIsExterne
             // 
@@ -541,7 +518,6 @@
             this.advDv_AgentsOfFormation.Name = "advDv_AgentsOfFormation";
             this.advDv_AgentsOfFormation.Size = new System.Drawing.Size(523, 207);
             this.advDv_AgentsOfFormation.TabIndex = 0;
-            this.advDv_AgentsOfFormation.MouseClick += new System.Windows.Forms.MouseEventHandler(this.advDv_AgentsOfFormation_MouseClick);
             // 
             // tabPageCertificationsAgent
             // 
@@ -601,7 +577,6 @@
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(83, 20);
             this.textBoxPrice.TabIndex = 73;
-            this.textBoxPrice.Leave += new System.EventHandler(this.textBoxPrice_Leave);
             // 
             // comboBoxDurationInDays
             // 
@@ -611,7 +586,6 @@
             this.comboBoxDurationInDays.Name = "comboBoxDurationInDays";
             this.comboBoxDurationInDays.Size = new System.Drawing.Size(72, 22);
             this.comboBoxDurationInDays.TabIndex = 55;
-            this.comboBoxDurationInDays.Leave += new System.EventHandler(this.comboBoxDurationInDays_Leave);
             // 
             // comboBoxProvider
             // 
@@ -648,7 +622,6 @@
             this.comboBoxCompetence.Name = "comboBoxCompetence";
             this.comboBoxCompetence.Size = new System.Drawing.Size(185, 22);
             this.comboBoxCompetence.TabIndex = 58;
-            this.comboBoxCompetence.Leave += new System.EventHandler(this.comboBoxCompetence_Leave);
             // 
             // checkBoxIsInterne
             // 
@@ -717,7 +690,6 @@
             this.labelSAPEducation_Formation.Size = new System.Drawing.Size(41, 18);
             this.labelSAPEducation_Formation.TabIndex = 37;
             this.labelSAPEducation_Formation.Text = "SAP";
-            this.labelSAPEducation_Formation.Click += new System.EventHandler(this.labelSAPEducation_Formation_Click);
             // 
             // tabPage2_Matrices
             // 
@@ -783,7 +755,6 @@
             this.tbFiltre.Name = "tbFiltre";
             this.tbFiltre.Size = new System.Drawing.Size(261, 20);
             this.tbFiltre.TabIndex = 10;
-            this.tbFiltre.TextChanged += new System.EventHandler(this.tbFiltre_TextChanged);
             // 
             // dG_Education_Formations
             // 
@@ -805,7 +776,6 @@
             this.dG_Education_Formations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dG_Education_Formations.Size = new System.Drawing.Size(1040, 278);
             this.dG_Education_Formations.TabIndex = 9;
-            this.dG_Education_Formations.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dG_Education_Formations_MouseClick);
             // 
             // label1
             // 
@@ -833,8 +803,6 @@
             this.dG_Agents.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dG_Agents.Size = new System.Drawing.Size(1040, 251);
             this.dG_Agents.TabIndex = 15;
-            this.dG_Agents.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dG_Agents_CellContentDoubleClick);
-            this.dG_Agents.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dG_Agents_MouseClick);
             // 
             // btn_Next
             // 
@@ -845,7 +813,6 @@
             this.btn_Next.TabIndex = 14;
             this.btn_Next.Text = "Suivant";
             this.btn_Next.UseVisualStyleBackColor = true;
-            this.btn_Next.Click += new System.EventHandler(this.btn_Next_Click);
             // 
             // btn_Previous
             // 
@@ -856,7 +823,6 @@
             this.btn_Previous.TabIndex = 13;
             this.btn_Previous.Text = "Précédent";
             this.btn_Previous.UseVisualStyleBackColor = true;
-            this.btn_Previous.Click += new System.EventHandler(this.btn_Previous_Click);
             // 
             // cb_FiltreDgEducation_Formations
             // 
@@ -867,48 +833,13 @@
             this.cb_FiltreDgEducation_Formations.TabIndex = 12;
             this.cb_FiltreDgEducation_Formations.Text = "Colonne à filtrer";
             // 
-            // openFileOrFolderDialog1
-            // 
-            this.openFileOrFolderDialog1.AcceptFiles = true;
-            this.openFileOrFolderDialog1.FileNameLabel = null;
-            this.openFileOrFolderDialog1.Path = null;
-            this.openFileOrFolderDialog1.ShowReadOnly = false;
-            this.openFileOrFolderDialog1.Title = null;
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // openFileDialog2
-            // 
-            this.openFileDialog2.FileName = "openFileDialog2";
-            // 
-            // toolTipListProvider
-            // 
-            this.toolTipListProvider.AutoPopDelay = 5000;
-            this.toolTipListProvider.InitialDelay = 250;
-            this.toolTipListProvider.IsBalloon = true;
-            this.toolTipListProvider.ReshowDelay = 100;
-            // 
-            // toolTipAddProvider
-            // 
-            this.toolTipAddProvider.AutoPopDelay = 5000;
-            this.toolTipAddProvider.InitialDelay = 250;
-            this.toolTipAddProvider.IsBalloon = true;
-            this.toolTipAddProvider.ReshowDelay = 100;
-            // 
-            // UCEducation_Formation
+            // UC_Provider
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Controls.Add(this.tabControl_Education_Formations);
-            this.DoubleBuffered = true;
-            this.Name = "UCEducation_Formation";
+            this.Name = "UC_Provider";
             this.Size = new System.Drawing.Size(1067, 600);
-            this.toolTipAddProvider.SetToolTip(this, "\r\n");
-            this.Load += new System.EventHandler(this.UC_Education_Formation_Load);
-            this.MouseHover += new System.EventHandler(this.UCEducation_Formation_MouseHover);
             this.tabControl_Education_Formations.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -935,26 +866,47 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabControl_Education_Formations;
-        private System.Windows.Forms.TabPage tabPage1_Education_Formation;
-        private System.Windows.Forms.Label labelEducation_Formation;
-        private System.Windows.Forms.TextBox tbFiltre;
-        private System.Windows.Forms.DataGridView dG_Education_Formations;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dG_Agents;
-        private System.Windows.Forms.Button btn_Next;
-        private System.Windows.Forms.Button btn_Previous;
-        private System.Windows.Forms.ComboBox cb_FiltreDgEducation_Formations;
-        private System.Windows.Forms.TabPage tabPage2_Matrices;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TextBox tbNbrRows;
+        private System.Windows.Forms.Label lblNbrRows;
+        private System.Windows.Forms.PictureBox picExportExcel;
+        private System.Windows.Forms.Label lblTiteLstFormation;
+        private Zuby.ADGV.AdvancedDataGridView AdvDg_Formations;
         private System.Windows.Forms.TabPage tabPageEducation_FormationFiche;
+        private System.Windows.Forms.TextBox tbVendor;
+        private System.Windows.Forms.Label lblVendor;
+        private System.Windows.Forms.Button btnBrowseDoc;
+        private System.Windows.Forms.PictureBox picAddProvider;
+        private System.Windows.Forms.CheckedListBox cbListProvider;
+        private System.Windows.Forms.Label labelCapOpt;
+        private System.Windows.Forms.Label lblYearOfCreation;
+        private System.Windows.Forms.TextBox txtYearOfCreation;
+        private System.Windows.Forms.Label labelComptence;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelProvider;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelDurationInDays;
+        private System.Windows.Forms.ComboBox comboBoxResultatYear;
+        private System.Windows.Forms.ComboBox comboBoxResultatByYear;
+        private System.Windows.Forms.ComboBox comboBoxUnite;
+        private System.Windows.Forms.ComboBox comboBoxCapaciteOptimale;
+        private System.Windows.Forms.ComboBox comboBoxDurationhours;
+        private System.Windows.Forms.CheckBox checkBoxIsExterne;
         private System.Windows.Forms.TextBox tbLongTitle;
         private System.Windows.Forms.TabControl tabControl_Education_FormationAndCertificationsOfUser;
         private System.Windows.Forms.TabPage tabPageEducation_FormationsAgent;
+        private Zuby.ADGV.AdvancedDataGridView advDv_AgentsOfFormation;
         private System.Windows.Forms.TabPage tabPageCertificationsAgent;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TextBox tbShortTitleEducation_Formation;
         private System.Windows.Forms.TextBox textBoxPrice;
+        private System.Windows.Forms.ComboBox comboBoxDurationInDays;
         private System.Windows.Forms.ComboBox comboBoxProvider;
         private System.Windows.Forms.ComboBox comboBoxMinCapacity;
         private System.Windows.Forms.ComboBox comboBoxMaxCapacity;
@@ -965,43 +917,17 @@
         private System.Windows.Forms.RichTextBox richTextBoxRemarks;
         private System.Windows.Forms.Label labelActifEducation_Formation;
         private System.Windows.Forms.Label labelSAPEducation_Formation;
-        private System.Windows.Forms.CheckBox checkBoxIsExterne;
-        private System.Windows.Forms.ComboBox comboBoxDurationhours;
-        private System.Windows.Forms.ComboBox comboBoxDurationInDays;
-        private System.Windows.Forms.ComboBox comboBoxCapaciteOptimale;
-        private System.Windows.Forms.ComboBox comboBoxUnite;
-        private System.Windows.Forms.ComboBox comboBoxResultatYear;
-        private System.Windows.Forms.ComboBox comboBoxResultatByYear;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label labelDurationInDays;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label labelProvider;
-        private System.Windows.Forms.Label labelComptence;
-        private System.Windows.Forms.Label lblYearOfCreation;
-        private System.Windows.Forms.TextBox txtYearOfCreation;
-        private System.Windows.Forms.TabPage tabPage1;
-        private Zuby.ADGV.AdvancedDataGridView AdvDg_Formations;
-        private System.Windows.Forms.Label lblTiteLstFormation;
-        private System.Windows.Forms.Label labelCapOpt;
-        private Zuby.ADGV.AdvancedDataGridView advDv_AgentsOfFormation;
-        private System.Windows.Forms.CheckedListBox cbListProvider;
-        private System.Windows.Forms.PictureBox picAddProvider;
-        private System.Windows.Forms.Button btnBrowseDoc;
-        private WindowsFormsApplication1.OpenFileOrFolderDialog openFileOrFolderDialog1;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.OpenFileDialog openFileDialog2;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.ToolTip toolTipListProvider;
-        private System.Windows.Forms.ToolTip toolTipAddProvider;
-        private System.Windows.Forms.TextBox tbVendor;
-        private System.Windows.Forms.Label lblVendor;
-        private System.Windows.Forms.PictureBox picExportExcel;
-        private System.Windows.Forms.TextBox tbNbrRows;
-        private System.Windows.Forms.Label lblNbrRows;
+        private System.Windows.Forms.TabPage tabPage2_Matrices;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TabPage tabPage1_Education_Formation;
+        private System.Windows.Forms.Label labelEducation_Formation;
+        private System.Windows.Forms.TextBox tbFiltre;
+        private System.Windows.Forms.DataGridView dG_Education_Formations;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dG_Agents;
+        private System.Windows.Forms.Button btn_Next;
+        private System.Windows.Forms.Button btn_Previous;
+        private System.Windows.Forms.ComboBox cb_FiltreDgEducation_Formations;
     }
 }

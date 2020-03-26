@@ -1,4 +1,5 @@
 ﻿using Module_Education.Models;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -62,6 +63,12 @@ namespace Module_Education
                                   " FROM dbo.Education_Formation " +
                                   "WHERE " + filter;
                             break;
+                        case "Formation_CapaciteMax":
+                            columnToFilter = "Formation_MaxCapacity";
+                            sequenceMaxQuery = "SELECT * " +
+                                  " FROM dbo.Education_Formation " +
+                                  "WHERE " + filter;
+                            break;
                     }
                 }
                 else
@@ -70,7 +77,7 @@ namespace Module_Education
                     {
                         sequenceMaxQuery = "SELECT * " +
                                      " FROM dbo.Education_Formation ";
-                                     }
+                    }
                     else
                     {
                         sequenceMaxQuery += "WHERE " + filter;
@@ -167,5 +174,62 @@ namespace Module_Education
         {
             return db.Education_Formation.Where(w => w.Formation_SAP == Education_FormationSAPSelected).FirstOrDefault();
         }
+
+        public List<Education_Formation> LoadFormationFiltered(string filter, List<Education_Formation> lisglobalFormation)
+        {
+            IPagedList<Education_Formation> formationTemp;
+            int StartIndex = filter.IndexOf("[");
+            int EndIndex = filter.IndexOf("]");
+
+            var filterColumn = filter.Substring(StartIndex + 1, EndIndex - StartIndex - 1);
+
+            int StartIndexValue = filter.IndexOf("IN");
+            int EndIndexValue = filter.LastIndexOf(')'); ;
+            var filterValue = filter.Substring(StartIndexValue, EndIndexValue - StartIndexValue);
+
+
+            var sequenceMaxQuery = "SELECT * " +
+                                  " FROM dbo.Education_Formation t1 ";
+            sequenceMaxQuery += " WHERE " + filter;
+
+            var sequenceQueryResult = db.Database.SqlQuery<Education_Formation>(sequenceMaxQuery).ToList();
+
+            if (filter.Contains("Agent_Matricule") || filter.Contains("Agent_Name") ||
+                filter.Contains("Agent_FirstName") || filter.Contains("Agent_Etat") || filter.Contains("Agent_DateOfEntry"))
+            {
+                sequenceMaxQuery += " WHERE " + filterColumn + " " + filterValue;
+                sequenceQueryResult = db.Database.SqlQuery<Education_Formation>(sequenceMaxQuery).ToList();
+            }
+
+
+            if (filter.Contains("Function_Name"))
+            {
+                var sequenceFunctQuery = "SELECT * " +
+                                  " FROM dbo.Education_Function ";
+                sequenceFunctQuery += "WHERE Function_Name" + " " + filterValue;
+                var sequenceQueryFunction = db.Database.SqlQuery<Education_Function>(sequenceFunctQuery).ToList();
+
+                filterValue = " IN ( ";
+                List<Education_Agent> listTemp = new List<Education_Agent>();
+                for (int i = 0; i < sequenceQueryFunction.Count; i++)
+                {
+                    if (i < sequenceQueryFunction.Count - 1)
+                        filterValue += "'" + sequenceQueryFunction[i].Function_Name + "'" + " ,";
+                    else
+                        filterValue += "'" + sequenceQueryFunction[i].Function_Name + "'";
+
+                }
+
+                filterValue += " )";
+                sequenceMaxQuery += "INNER JOIN dbo.Education_Function t2 on t2.function_Id = t1.Agent_Function ";
+                sequenceMaxQuery += " WHERE " + filterColumn + " " + filterValue;
+                sequenceQueryResult = db.Database.SqlQuery<Education_Formation>(sequenceMaxQuery).ToList();
+
+
+            }
+            //var query = db.Education_Formation.Find(filter);
+            return sequenceQueryResult;
+        }
+
     }
 }

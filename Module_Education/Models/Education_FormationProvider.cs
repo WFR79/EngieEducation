@@ -18,6 +18,7 @@ namespace Module_Education.Models
         public Nullable<long> FormationProvider_Provider { get; set; }
         public Nullable<long> FormationProvider_Formation { get; set; }
         public Nullable<bool> FormationProvider_IsActual { get; set; }
+        public Nullable<long> FormationProvider_Vendor { get; set; }
     
         public virtual Education_Formation Education_Formation { get; set; }
         public virtual Education_Provider Education_Provider { get; set; }

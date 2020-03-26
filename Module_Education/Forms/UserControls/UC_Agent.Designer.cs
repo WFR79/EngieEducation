@@ -29,14 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle13 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle14 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle15 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle16 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle17 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle18 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle1 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle2 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle3 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle4 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle5 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle6 = new SynapseAdvancedControls.HeaderStateStyle();
             this.tabControlAgentList = new System.Windows.Forms.TabControl();
             this.tbListeAgents = new System.Windows.Forms.TabPage();
+            this.btnClearFilters = new System.Windows.Forms.Button();
+            this.tbNbrRows = new System.Windows.Forms.TextBox();
+            this.lblNbrRows = new System.Windows.Forms.Label();
+            this.picExportExcel = new System.Windows.Forms.PictureBox();
+            this.dG_Agents = new Zuby.ADGV.AdvancedDataGridView();
             this.progressBarDgAgent = new System.Windows.Forms.ProgressBar();
             this.btn_NextAgent = new System.Windows.Forms.Button();
             this.btn_PreviousAgent = new System.Windows.Forms.Button();
@@ -75,12 +80,16 @@
             this.labelActif = new System.Windows.Forms.Label();
             this.labelMatricule = new System.Windows.Forms.Label();
             this.pictureBox_ProfilePic = new System.Windows.Forms.PictureBox();
-            this.equipeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.headerFormatStyle1 = new SynapseAdvancedControls.HeaderFormatStyle();
             this.headerFormatStyle2 = new SynapseAdvancedControls.HeaderFormatStyle();
-            this.dG_Agents = new Zuby.ADGV.AdvancedDataGridView();
+            this.equipeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.toolTipExcel = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tabControlAgentList.SuspendLayout();
             this.tbListeAgents.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picExportExcel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dG_Agents)).BeginInit();
             this.tbFicheAgent.SuspendLayout();
             this.tabControl_Education_FormationAndCertificationsOfUser.SuspendLayout();
             this.tabPageEducation_FormationsAgent.SuspendLayout();
@@ -89,7 +98,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ProfilePic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipeBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dG_Agents)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlAgentList
@@ -107,6 +115,10 @@
             // 
             // tbListeAgents
             // 
+            this.tbListeAgents.Controls.Add(this.btnClearFilters);
+            this.tbListeAgents.Controls.Add(this.tbNbrRows);
+            this.tbListeAgents.Controls.Add(this.lblNbrRows);
+            this.tbListeAgents.Controls.Add(this.picExportExcel);
             this.tbListeAgents.Controls.Add(this.dG_Agents);
             this.tbListeAgents.Controls.Add(this.progressBarDgAgent);
             this.tbListeAgents.Controls.Add(this.btn_NextAgent);
@@ -121,12 +133,67 @@
             this.tbListeAgents.Text = "Liste";
             this.tbListeAgents.UseVisualStyleBackColor = true;
             // 
+            // btnClearFilters
+            // 
+            this.btnClearFilters.Enabled = false;
+            this.btnClearFilters.Location = new System.Drawing.Point(210, 15);
+            this.btnClearFilters.Name = "btnClearFilters";
+            this.btnClearFilters.Size = new System.Drawing.Size(110, 23);
+            this.btnClearFilters.TabIndex = 22;
+            this.btnClearFilters.Text = "Effacer filtres";
+            this.btnClearFilters.UseVisualStyleBackColor = true;
+            this.btnClearFilters.Click += new System.EventHandler(this.btnClearFilters_Click);
+            // 
+            // tbNbrRows
+            // 
+            this.tbNbrRows.Location = new System.Drawing.Point(904, 15);
+            this.tbNbrRows.Name = "tbNbrRows";
+            this.tbNbrRows.Size = new System.Drawing.Size(36, 20);
+            this.tbNbrRows.TabIndex = 21;
+            this.tbNbrRows.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.tbNbrRows.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbNbrRows_KeyDown);
+            // 
+            // lblNbrRows
+            // 
+            this.lblNbrRows.AutoSize = true;
+            this.lblNbrRows.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.lblNbrRows.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(101)))));
+            this.lblNbrRows.Location = new System.Drawing.Point(735, 17);
+            this.lblNbrRows.Name = "lblNbrRows";
+            this.lblNbrRows.Size = new System.Drawing.Size(169, 16);
+            this.lblNbrRows.TabIndex = 20;
+            this.lblNbrRows.Text = "Nombre de lignes à afficher:";
+            // 
+            // picExportExcel
+            // 
+            this.picExportExcel.Image = global::Module_Education.Properties.Resources.Excel_icon;
+            this.picExportExcel.Location = new System.Drawing.Point(1005, 9);
+            this.picExportExcel.Name = "picExportExcel";
+            this.picExportExcel.Size = new System.Drawing.Size(32, 32);
+            this.picExportExcel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picExportExcel.TabIndex = 19;
+            this.picExportExcel.TabStop = false;
+            this.toolTipExcel.SetToolTip(this.picExportExcel, "Exportez le tableau vers un fichier Excel");
+            this.picExportExcel.Click += new System.EventHandler(this.picExportExcel_Click);
+            // 
+            // dG_Agents
+            // 
+            this.dG_Agents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dG_Agents.FilterAndSortEnabled = true;
+            this.dG_Agents.Location = new System.Drawing.Point(13, 47);
+            this.dG_Agents.Name = "dG_Agents";
+            this.dG_Agents.Size = new System.Drawing.Size(1040, 435);
+            this.dG_Agents.TabIndex = 18;
+            this.dG_Agents.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.dG_Agents_FilterStringChanged_1);
+            this.dG_Agents.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dG_Agents_MouseClick_1);
+            // 
             // progressBarDgAgent
             // 
-            this.progressBarDgAgent.Location = new System.Drawing.Point(344, 12);
+            this.progressBarDgAgent.Location = new System.Drawing.Point(704, 491);
             this.progressBarDgAgent.Name = "progressBarDgAgent";
-            this.progressBarDgAgent.Size = new System.Drawing.Size(349, 23);
+            this.progressBarDgAgent.Size = new System.Drawing.Size(236, 23);
             this.progressBarDgAgent.TabIndex = 17;
+            this.progressBarDgAgent.Visible = false;
             // 
             // btn_NextAgent
             // 
@@ -163,7 +230,7 @@
             // 
             // tbFiltre
             // 
-            this.tbFiltre.Location = new System.Drawing.Point(10, 488);
+            this.tbFiltre.Location = new System.Drawing.Point(13, 491);
             this.tbFiltre.Name = "tbFiltre";
             this.tbFiltre.Size = new System.Drawing.Size(261, 20);
             this.tbFiltre.TabIndex = 7;
@@ -555,31 +622,35 @@
             this.pictureBox_ProfilePic.TabIndex = 0;
             this.pictureBox_ProfilePic.TabStop = false;
             // 
+            // headerFormatStyle1
+            // 
+            this.headerFormatStyle1.Hot = headerStateStyle1;
+            this.headerFormatStyle1.Normal = headerStateStyle2;
+            this.headerFormatStyle1.Pressed = headerStateStyle3;
+            // 
+            // headerFormatStyle2
+            // 
+            this.headerFormatStyle2.Hot = headerStateStyle4;
+            this.headerFormatStyle2.Normal = headerStateStyle5;
+            this.headerFormatStyle2.Pressed = headerStateStyle6;
+            // 
             // equipeBindingSource
             // 
             this.equipeBindingSource.DataMember = "Equipe";
             // 
-            // headerFormatStyle1
+            // toolTipExcel
             // 
-            this.headerFormatStyle1.Hot = headerStateStyle13;
-            this.headerFormatStyle1.Normal = headerStateStyle14;
-            this.headerFormatStyle1.Pressed = headerStateStyle15;
+            this.toolTipExcel.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipExcel.ToolTipTitle = "Exporter le tableau vers excel";
             // 
-            // headerFormatStyle2
+            // toolTip1
             // 
-            this.headerFormatStyle2.Hot = headerStateStyle16;
-            this.headerFormatStyle2.Normal = headerStateStyle17;
-            this.headerFormatStyle2.Pressed = headerStateStyle18;
+            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
-            // dG_Agents
+            // contextMenuStrip1
             // 
-            this.dG_Agents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dG_Agents.FilterAndSortEnabled = true;
-            this.dG_Agents.Location = new System.Drawing.Point(13, 47);
-            this.dG_Agents.Name = "dG_Agents";
-            this.dG_Agents.Size = new System.Drawing.Size(1040, 435);
-            this.dG_Agents.TabIndex = 18;
-            this.dG_Agents.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.dG_Agents_FilterStringChanged_1);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // UC_Agent
             // 
@@ -593,6 +664,8 @@
             this.tabControlAgentList.ResumeLayout(false);
             this.tbListeAgents.ResumeLayout(false);
             this.tbListeAgents.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picExportExcel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dG_Agents)).EndInit();
             this.tbFicheAgent.ResumeLayout(false);
             this.tbFicheAgent.PerformLayout();
             this.tabControl_Education_FormationAndCertificationsOfUser.ResumeLayout(false);
@@ -602,7 +675,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ProfilePic)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.equipeBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dG_Agents)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -640,7 +712,6 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btn_NextAgent;
         private System.Windows.Forms.Button btn_PreviousAgent;
-        private System.Windows.Forms.ProgressBar progressBarDgAgent;
         private System.Windows.Forms.CheckBox cbCheck_PrimeRescuer;
         private System.Windows.Forms.DataGridView dg_TABFormationsOfAgent;
         private System.Windows.Forms.Label lblSeniority;
@@ -653,5 +724,13 @@
         private SynapseAdvancedControls.HeaderFormatStyle headerFormatStyle1;
         private SynapseAdvancedControls.HeaderFormatStyle headerFormatStyle2;
         private Zuby.ADGV.AdvancedDataGridView dG_Agents;
+        private System.Windows.Forms.PictureBox picExportExcel;
+        private System.Windows.Forms.ToolTip toolTipExcel;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.TextBox tbNbrRows;
+        private System.Windows.Forms.Label lblNbrRows;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.Button btnClearFilters;
+        private System.Windows.Forms.ProgressBar progressBarDgAgent;
     }
 }

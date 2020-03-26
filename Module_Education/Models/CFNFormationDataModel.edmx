@@ -164,6 +164,7 @@
           <Property Name="FormationProvider_Provider" Type="bigint" />
           <Property Name="FormationProvider_Formation" Type="bigint" />
           <Property Name="FormationProvider_IsActual" Type="bit" />
+          <Property Name="FormationProvider_Vendor" Type="bigint" />
         </EntityType>
         <EntityType Name="Education_FormationResultat">
           <Key>
@@ -1484,6 +1485,7 @@
           <NavigationProperty Name="Education_Formation" Relationship="SYNAPSEModel.FK_FormationProvider_FormationProvider" FromRole="Education_FormationProvider" ToRole="Education_Formation" />
           <NavigationProperty Name="Education_Provider" Relationship="SYNAPSEModel.FK_FormationProvider_Provider" FromRole="Education_FormationProvider" ToRole="Education_Provider" />
           <Property Name="FormationProvider_IsActual" Type="Boolean" />
+          <Property Name="FormationProvider_Vendor" Type="Int64" />
         </EntityType>
         <EntityType Name="Education_FormationResultat">
           <Key>
@@ -2410,6 +2412,7 @@
           <EntitySetMapping Name="Education_FormationProvider">
             <EntityTypeMapping TypeName="SYNAPSEModel.Education_FormationProvider">
               <MappingFragment StoreEntitySet="Education_FormationProvider">
+                <ScalarProperty Name="FormationProvider_Vendor" ColumnName="FormationProvider_Vendor" />
                 <ScalarProperty Name="FormationProvider_IsActual" ColumnName="FormationProvider_IsActual" />
                 <ScalarProperty Name="FormationProvider_Formation" ColumnName="FormationProvider_Formation" />
                 <ScalarProperty Name="FormationProvider_Provider" ColumnName="FormationProvider_Provider" />

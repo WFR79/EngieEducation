@@ -51,6 +51,10 @@
     <Reference Include="ISNuclear.Core.Synapse.Interfaces">
       <HintPath>..\ISNuclear.Core.Synapse.Interfaces\bin\Debug\ISNuclear.Core.Synapse.Interfaces.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
@@ -81,6 +85,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Classes\ColumnHeaderCell.cs" />
+    <Compile Include="Classes\ExportToExcel.cs" />
     <Compile Include="Classes\MenuStrip.cs" />
     <Compile Include="Classes\MenuStrip.Designer.cs">
       <DependentUpon>MenuStrip.cs</DependentUpon>
@@ -89,6 +94,12 @@
     <Compile Include="Classes\MyColumnCollectionDGFormation.cs" />
     <Compile Include="Classes\ProgressReport.cs" />
     <Compile Include="Classes\TreeNodeItemSelector.cs" />
+    <Compile Include="Forms\UserControls\UC_Provider.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserControls\UC_Provider.Designer.cs">
+      <DependentUpon>UC_Provider.cs</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\AgentDataAccess.cs" />
     <Compile Include="Repositories\CompetenceDataAccess.cs" />
     <Compile Include="Repositories\EquipeDataAccess.cs" />
@@ -310,6 +321,9 @@
     <EmbeddedResource Include="Forms\UserControls\UC_Formation.resx">
       <DependentUpon>UC_Formation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserControls\UC_Provider.resx">
+      <DependentUpon>UC_Provider.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -366,6 +380,7 @@
     <Content Include="Resources\Images\ColumnHeader_OrderedDESC.png" />
     <Content Include="Resources\Images\ColumnHeader_SavedFilters.png" />
     <Content Include="Resources\Images\ColumnHeader_UnFiltered.png" />
+    <None Include="Resources\Images\Excel-icon.png" />
     <Content Include="Resources\Images\MenuStrip_OrderASCbool.png" />
     <Content Include="Resources\Images\MenuStrip_OrderASCnum.png" />
     <Content Include="Resources\Images\MenuStrip_OrderASCtxt.png" />
