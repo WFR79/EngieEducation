@@ -227,6 +227,33 @@ namespace Module_Education
 
 
             }
+
+            if (filter.Contains("Formation_Dossier"))
+            {
+                var sequenceFunctQuery = "SELECT * " +
+                                  " FROM dbo.Education_FormationDossier ";
+                sequenceFunctQuery += "WHERE FormationDossier_Formation" + " " + filterValue;
+                var sequenceQueryFunction = db.Database.SqlQuery<Education_Function>(sequenceFunctQuery).ToList();
+
+                filterValue = " IN ( ";
+                List<Education_Agent> listTemp = new List<Education_Agent>();
+                for (int i = 0; i < sequenceQueryFunction.Count; i++)
+                {
+                    if (i < sequenceQueryFunction.Count - 1)
+                        filterValue += "'" + sequenceQueryFunction[i].Function_Name + "'" + " ,";
+                    else
+                        filterValue += "'" + sequenceQueryFunction[i].Function_Name + "'";
+
+                }
+
+                filterValue += " )";
+                sequenceMaxQuery += "INNER JOIN dbo.Education_Function t2 on t2.function_Id = t1.Agent_Function ";
+                sequenceMaxQuery += " WHERE " + filterColumn + " " + filterValue;
+                sequenceQueryResult = db.Database.SqlQuery<Education_Formation>(sequenceMaxQuery).ToList();
+
+
+            }
+
             //var query = db.Education_Formation.Find(filter);
             return sequenceQueryResult;
         }

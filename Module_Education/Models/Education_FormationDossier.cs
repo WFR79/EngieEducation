@@ -30,5 +30,6 @@ namespace Module_Education.Models
         public Nullable<bool> FormationDossier_Scenario { get; set; }
     
         public virtual Education_FormationDossierType Education_FormationDossierType { get; set; }
+        public virtual Education_Formation Education_Formation { get; set; }
     }
 }

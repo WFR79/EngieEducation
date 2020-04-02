@@ -29,22 +29,31 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.tabControl_Education_Formations = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tbNbrRows = new System.Windows.Forms.TextBox();
-            this.lblNbrRows = new System.Windows.Forms.Label();
-            this.picExportExcel = new System.Windows.Forms.PictureBox();
-            this.lblTiteLstFormation = new System.Windows.Forms.Label();
-            this.AdvDg_Formations = new Zuby.ADGV.AdvancedDataGridView();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
+            this.toolTipListProvider = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipAddProvider = new System.Windows.Forms.ToolTip(this.components);
+            this.openFileOrFolderDialog2 = new WindowsFormsApplication1.OpenFileOrFolderDialog();
+            this.openFileOrFolderDialog3 = new WindowsFormsApplication1.OpenFileOrFolderDialog();
+            this.openFileOrFolderDialog4 = new WindowsFormsApplication1.OpenFileOrFolderDialog();
+            this.tabPage2_Matrices = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.treeView1 = new System.Windows.Forms.TreeView();
             this.tabPageEducation_FormationFiche = new System.Windows.Forms.TabPage();
+            this.lblShowHidePanelDossierPed = new System.Windows.Forms.Label();
+            this.panelDossierPedagogique = new System.Windows.Forms.Panel();
+            this.label11 = new System.Windows.Forms.Label();
             this.tbVendor = new System.Windows.Forms.TextBox();
+            this.txtYearOfCreation = new System.Windows.Forms.TextBox();
+            this.tbLongTitle = new System.Windows.Forms.TextBox();
+            this.tbShortTitleEducation_Formation = new System.Windows.Forms.TextBox();
+            this.textBoxPrice = new System.Windows.Forms.TextBox();
+            this.richTextBoxRemarks = new System.Windows.Forms.RichTextBox();
             this.lblVendor = new System.Windows.Forms.Label();
-            this.btnBrowseDoc = new System.Windows.Forms.Button();
             this.picAddProvider = new System.Windows.Forms.PictureBox();
             this.cbListProvider = new System.Windows.Forms.CheckedListBox();
             this.labelCapOpt = new System.Windows.Forms.Label();
             this.lblYearOfCreation = new System.Windows.Forms.Label();
-            this.txtYearOfCreation = new System.Windows.Forms.TextBox();
             this.labelComptence = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -61,15 +70,30 @@
             this.comboBoxCapaciteOptimale = new System.Windows.Forms.ComboBox();
             this.comboBoxDurationhours = new System.Windows.Forms.ComboBox();
             this.checkBoxIsExterne = new System.Windows.Forms.CheckBox();
-            this.tbLongTitle = new System.Windows.Forms.TextBox();
             this.tabControl_Education_FormationAndCertificationsOfUser = new System.Windows.Forms.TabControl();
             this.tabPageEducation_FormationsAgent = new System.Windows.Forms.TabPage();
             this.advDv_AgentsOfFormation = new Zuby.ADGV.AdvancedDataGridView();
             this.tabPageCertificationsAgent = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tbShortTitleEducation_Formation = new System.Windows.Forms.TextBox();
-            this.textBoxPrice = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.tbTest = new System.Windows.Forms.TextBox();
+            this.btnTest = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.tbSyllabus = new System.Windows.Forms.TextBox();
+            this.btnSyllabus = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.labelInfofiche = new System.Windows.Forms.Label();
+            this.tbScenario = new System.Windows.Forms.TextBox();
+            this.btnScenario = new System.Windows.Forms.Button();
+            this.tbInfoFiche = new System.Windows.Forms.TextBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.btnBrowseDoc = new System.Windows.Forms.Button();
+            this.dbDossierOk = new System.Windows.Forms.CheckBox();
+            this.cbInfoFiche = new System.Windows.Forms.ComboBox();
+            this.lblPrioritéInfoFiche = new System.Windows.Forms.Label();
+            this.lblTypeDssier = new System.Windows.Forms.Label();
+            this.cbTypeDossier = new System.Windows.Forms.ComboBox();
             this.comboBoxDurationInDays = new System.Windows.Forms.ComboBox();
             this.comboBoxProvider = new System.Windows.Forms.ComboBox();
             this.comboBoxMinCapacity = new System.Windows.Forms.ComboBox();
@@ -78,30 +102,22 @@
             this.checkBoxIsInterne = new System.Windows.Forms.CheckBox();
             this.checkBox_AnnualOrder = new System.Windows.Forms.CheckBox();
             this.labelRemarks = new System.Windows.Forms.Label();
-            this.richTextBoxRemarks = new System.Windows.Forms.RichTextBox();
             this.labelActifEducation_Formation = new System.Windows.Forms.Label();
             this.labelSAPEducation_Formation = new System.Windows.Forms.Label();
-            this.tabPage2_Matrices = new System.Windows.Forms.TabPage();
-            this.label4 = new System.Windows.Forms.Label();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.tabPage1_Education_Formation = new System.Windows.Forms.TabPage();
-            this.labelEducation_Formation = new System.Windows.Forms.Label();
-            this.tbFiltre = new System.Windows.Forms.TextBox();
-            this.dG_Education_Formations = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dG_Agents = new System.Windows.Forms.DataGridView();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label12 = new System.Windows.Forms.Label();
+            this.lblMax = new System.Windows.Forms.Label();
+            this.lblMin = new System.Windows.Forms.Label();
+            this.lblNbrRowsFormations = new System.Windows.Forms.Label();
             this.btn_Next = new System.Windows.Forms.Button();
             this.btn_Previous = new System.Windows.Forms.Button();
-            this.cb_FiltreDgEducation_Formations = new System.Windows.Forms.ComboBox();
-            this.openFileOrFolderDialog1 = new WindowsFormsApplication1.OpenFileOrFolderDialog();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
-            this.toolTipListProvider = new System.Windows.Forms.ToolTip(this.components);
-            this.toolTipAddProvider = new System.Windows.Forms.ToolTip(this.components);
-            this.tabControl_Education_Formations.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picExportExcel)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AdvDg_Formations)).BeginInit();
+            this.tbNbrRows = new System.Windows.Forms.TextBox();
+            this.lblNbrRows = new System.Windows.Forms.Label();
+            this.picExportExcel = new System.Windows.Forms.PictureBox();
+            this.lblTiteLstFormation = new System.Windows.Forms.Label();
+            this.AdvDg_Formations = new Zuby.ADGV.AdvancedDataGridView();
+            this.tabControl_Education_Formations = new System.Windows.Forms.TabControl();
+            this.tabPage2_Matrices.SuspendLayout();
             this.tabPageEducation_FormationFiche.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAddProvider)).BeginInit();
             this.tabControl_Education_FormationAndCertificationsOfUser.SuspendLayout();
@@ -109,106 +125,105 @@
             ((System.ComponentModel.ISupportInitialize)(this.advDv_AgentsOfFormation)).BeginInit();
             this.tabPageCertificationsAgent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.tabPage2_Matrices.SuspendLayout();
-            this.tabPage1_Education_Formation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dG_Education_Formations)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dG_Agents)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picExportExcel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AdvDg_Formations)).BeginInit();
+            this.tabControl_Education_Formations.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl_Education_Formations
+            // openFileDialog1
             // 
-            this.tabControl_Education_Formations.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.tabControl_Education_Formations.Controls.Add(this.tabPage1);
-            this.tabControl_Education_Formations.Controls.Add(this.tabPageEducation_FormationFiche);
-            this.tabControl_Education_Formations.Controls.Add(this.tabPage2_Matrices);
-            this.tabControl_Education_Formations.Controls.Add(this.tabPage1_Education_Formation);
-            this.tabControl_Education_Formations.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.tabControl_Education_Formations.Location = new System.Drawing.Point(3, 3);
-            this.tabControl_Education_Formations.Name = "tabControl_Education_Formations";
-            this.tabControl_Education_Formations.SelectedIndex = 0;
-            this.tabControl_Education_Formations.Size = new System.Drawing.Size(1067, 565);
-            this.tabControl_Education_Formations.TabIndex = 0;
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // tabPage1
+            // openFileDialog2
             // 
-            this.tabPage1.Controls.Add(this.tbNbrRows);
-            this.tabPage1.Controls.Add(this.lblNbrRows);
-            this.tabPage1.Controls.Add(this.picExportExcel);
-            this.tabPage1.Controls.Add(this.lblTiteLstFormation);
-            this.tabPage1.Controls.Add(this.AdvDg_Formations);
-            this.tabPage1.Location = new System.Drawing.Point(4, 23);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1059, 538);
-            this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "Liste";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.openFileDialog2.FileName = "openFileDialog2";
             // 
-            // tbNbrRows
+            // toolTipListProvider
             // 
-            this.tbNbrRows.Location = new System.Drawing.Point(902, 16);
-            this.tbNbrRows.Name = "tbNbrRows";
-            this.tbNbrRows.Size = new System.Drawing.Size(36, 20);
-            this.tbNbrRows.TabIndex = 23;
+            this.toolTipListProvider.AutoPopDelay = 5000;
+            this.toolTipListProvider.InitialDelay = 250;
+            this.toolTipListProvider.IsBalloon = true;
+            this.toolTipListProvider.ReshowDelay = 100;
             // 
-            // lblNbrRows
+            // toolTipAddProvider
             // 
-            this.lblNbrRows.AutoSize = true;
-            this.lblNbrRows.Font = new System.Drawing.Font("Arial", 9.25F);
-            this.lblNbrRows.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(101)))));
-            this.lblNbrRows.Location = new System.Drawing.Point(735, 17);
-            this.lblNbrRows.Name = "lblNbrRows";
-            this.lblNbrRows.Size = new System.Drawing.Size(169, 16);
-            this.lblNbrRows.TabIndex = 22;
-            this.lblNbrRows.Text = "Nombre de lignes à afficher:";
+            this.toolTipAddProvider.AutoPopDelay = 5000;
+            this.toolTipAddProvider.InitialDelay = 250;
+            this.toolTipAddProvider.IsBalloon = true;
+            this.toolTipAddProvider.ReshowDelay = 100;
             // 
-            // picExportExcel
+            // openFileOrFolderDialog2
             // 
-            this.picExportExcel.Image = global::Module_Education.Properties.Resources.Excel_icon;
-            this.picExportExcel.Location = new System.Drawing.Point(1005, 9);
-            this.picExportExcel.Name = "picExportExcel";
-            this.picExportExcel.Size = new System.Drawing.Size(32, 32);
-            this.picExportExcel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picExportExcel.TabIndex = 20;
-            this.picExportExcel.TabStop = false;
-            this.picExportExcel.Click += new System.EventHandler(this.picExportExcel_Click);
+            this.openFileOrFolderDialog2.AcceptFiles = true;
+            this.openFileOrFolderDialog2.FileNameLabel = null;
+            this.openFileOrFolderDialog2.Path = null;
+            this.openFileOrFolderDialog2.ShowReadOnly = false;
+            this.openFileOrFolderDialog2.Title = null;
             // 
-            // lblTiteLstFormation
+            // openFileOrFolderDialog3
             // 
-            this.lblTiteLstFormation.AutoSize = true;
-            this.lblTiteLstFormation.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTiteLstFormation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(101)))));
-            this.lblTiteLstFormation.Location = new System.Drawing.Point(9, 11);
-            this.lblTiteLstFormation.Name = "lblTiteLstFormation";
-            this.lblTiteLstFormation.Size = new System.Drawing.Size(217, 24);
-            this.lblTiteLstFormation.TabIndex = 12;
-            this.lblTiteLstFormation.Text = "Liste des formations";
-            this.lblTiteLstFormation.Click += new System.EventHandler(this.label10_Click);
+            this.openFileOrFolderDialog3.AcceptFiles = true;
+            this.openFileOrFolderDialog3.FileNameLabel = null;
+            this.openFileOrFolderDialog3.Path = null;
+            this.openFileOrFolderDialog3.ShowReadOnly = false;
+            this.openFileOrFolderDialog3.Title = null;
             // 
-            // AdvDg_Formations
+            // openFileOrFolderDialog4
             // 
-            this.AdvDg_Formations.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.AdvDg_Formations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.AdvDg_Formations.FilterAndSortEnabled = true;
-            this.AdvDg_Formations.Location = new System.Drawing.Point(13, 48);
-            this.AdvDg_Formations.Name = "AdvDg_Formations";
-            this.AdvDg_Formations.Size = new System.Drawing.Size(1012, 459);
-            this.AdvDg_Formations.TabIndex = 0;
-            this.AdvDg_Formations.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.AdvDg_Formations_FilterStringChanged);
-            this.AdvDg_Formations.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.AdvDg_Formations_HelpRequested);
-            this.AdvDg_Formations.MouseClick += new System.Windows.Forms.MouseEventHandler(this.AdvDg_Formations_MouseClick);
+            this.openFileOrFolderDialog4.AcceptFiles = true;
+            this.openFileOrFolderDialog4.FileNameLabel = null;
+            this.openFileOrFolderDialog4.Path = null;
+            this.openFileOrFolderDialog4.ShowReadOnly = false;
+            this.openFileOrFolderDialog4.Title = null;
+            // 
+            // tabPage2_Matrices
+            // 
+            this.tabPage2_Matrices.Controls.Add(this.label4);
+            this.tabPage2_Matrices.Controls.Add(this.treeView1);
+            this.tabPage2_Matrices.Location = new System.Drawing.Point(4, 23);
+            this.tabPage2_Matrices.Name = "tabPage2_Matrices";
+            this.tabPage2_Matrices.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2_Matrices.Size = new System.Drawing.Size(1059, 543);
+            this.tabPage2_Matrices.TabIndex = 1;
+            this.tabPage2_Matrices.Text = "Matrices";
+            this.tabPage2_Matrices.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(101)))));
+            this.label4.Location = new System.Drawing.Point(13, 7);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(361, 24);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "Matrices de Education_Formations";
+            // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(15, 57);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(975, 322);
+            this.treeView1.TabIndex = 0;
             // 
             // tabPageEducation_FormationFiche
             // 
+            this.tabPageEducation_FormationFiche.Controls.Add(this.lblShowHidePanelDossierPed);
+            this.tabPageEducation_FormationFiche.Controls.Add(this.panelDossierPedagogique);
+            this.tabPageEducation_FormationFiche.Controls.Add(this.label11);
             this.tabPageEducation_FormationFiche.Controls.Add(this.tbVendor);
+            this.tabPageEducation_FormationFiche.Controls.Add(this.txtYearOfCreation);
+            this.tabPageEducation_FormationFiche.Controls.Add(this.tbLongTitle);
+            this.tabPageEducation_FormationFiche.Controls.Add(this.tbShortTitleEducation_Formation);
+            this.tabPageEducation_FormationFiche.Controls.Add(this.textBoxPrice);
+            this.tabPageEducation_FormationFiche.Controls.Add(this.richTextBoxRemarks);
             this.tabPageEducation_FormationFiche.Controls.Add(this.lblVendor);
-            this.tabPageEducation_FormationFiche.Controls.Add(this.btnBrowseDoc);
             this.tabPageEducation_FormationFiche.Controls.Add(this.picAddProvider);
             this.tabPageEducation_FormationFiche.Controls.Add(this.cbListProvider);
             this.tabPageEducation_FormationFiche.Controls.Add(this.labelCapOpt);
             this.tabPageEducation_FormationFiche.Controls.Add(this.lblYearOfCreation);
-            this.tabPageEducation_FormationFiche.Controls.Add(this.txtYearOfCreation);
             this.tabPageEducation_FormationFiche.Controls.Add(this.labelComptence);
             this.tabPageEducation_FormationFiche.Controls.Add(this.label9);
             this.tabPageEducation_FormationFiche.Controls.Add(this.label8);
@@ -225,10 +240,7 @@
             this.tabPageEducation_FormationFiche.Controls.Add(this.comboBoxCapaciteOptimale);
             this.tabPageEducation_FormationFiche.Controls.Add(this.comboBoxDurationhours);
             this.tabPageEducation_FormationFiche.Controls.Add(this.checkBoxIsExterne);
-            this.tabPageEducation_FormationFiche.Controls.Add(this.tbLongTitle);
             this.tabPageEducation_FormationFiche.Controls.Add(this.tabControl_Education_FormationAndCertificationsOfUser);
-            this.tabPageEducation_FormationFiche.Controls.Add(this.tbShortTitleEducation_Formation);
-            this.tabPageEducation_FormationFiche.Controls.Add(this.textBoxPrice);
             this.tabPageEducation_FormationFiche.Controls.Add(this.comboBoxDurationInDays);
             this.tabPageEducation_FormationFiche.Controls.Add(this.comboBoxProvider);
             this.tabPageEducation_FormationFiche.Controls.Add(this.comboBoxMinCapacity);
@@ -237,13 +249,13 @@
             this.tabPageEducation_FormationFiche.Controls.Add(this.checkBoxIsInterne);
             this.tabPageEducation_FormationFiche.Controls.Add(this.checkBox_AnnualOrder);
             this.tabPageEducation_FormationFiche.Controls.Add(this.labelRemarks);
-            this.tabPageEducation_FormationFiche.Controls.Add(this.richTextBoxRemarks);
             this.tabPageEducation_FormationFiche.Controls.Add(this.labelActifEducation_Formation);
             this.tabPageEducation_FormationFiche.Controls.Add(this.labelSAPEducation_Formation);
+            this.tabPageEducation_FormationFiche.Font = new System.Drawing.Font("Arial", 9.25F);
             this.tabPageEducation_FormationFiche.Location = new System.Drawing.Point(4, 23);
             this.tabPageEducation_FormationFiche.Name = "tabPageEducation_FormationFiche";
             this.tabPageEducation_FormationFiche.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageEducation_FormationFiche.Size = new System.Drawing.Size(1059, 538);
+            this.tabPageEducation_FormationFiche.Size = new System.Drawing.Size(1059, 543);
             this.tabPageEducation_FormationFiche.TabIndex = 2;
             this.tabPageEducation_FormationFiche.Tag = "Fiche de la Education_Formation";
             this.tabPageEducation_FormationFiche.Text = "Fiche";
@@ -251,244 +263,51 @@
             this.tabPageEducation_FormationFiche.UseVisualStyleBackColor = true;
             this.tabPageEducation_FormationFiche.Click += new System.EventHandler(this.tabPageEducation_FormationFiche_Click);
             // 
+            // lblShowHidePanelDossierPed
+            // 
+            this.lblShowHidePanelDossierPed.AutoSize = true;
+            this.lblShowHidePanelDossierPed.Location = new System.Drawing.Point(459, 48);
+            this.lblShowHidePanelDossierPed.Name = "lblShowHidePanelDossierPed";
+            this.lblShowHidePanelDossierPed.Size = new System.Drawing.Size(70, 16);
+            this.lblShowHidePanelDossierPed.TabIndex = 130;
+            this.lblShowHidePanelDossierPed.Text = "Show/Hide";
+            this.lblShowHidePanelDossierPed.Click += new System.EventHandler(this.lblShowHidePanelDossierPed_Click);
+            // 
+            // panelDossierPedagogique
+            // 
+            this.panelDossierPedagogique.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.panelDossierPedagogique.AutoScroll = true;
+            this.panelDossierPedagogique.AutoSize = true;
+            this.panelDossierPedagogique.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panelDossierPedagogique.Location = new System.Drawing.Point(280, 208);
+            this.panelDossierPedagogique.Name = "panelDossierPedagogique";
+            this.panelDossierPedagogique.Size = new System.Drawing.Size(0, 0);
+            this.panelDossierPedagogique.TabIndex = 129;
+            // 
+            // label11
+            // 
+            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label11.Location = new System.Drawing.Point(449, 64);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(565, 1);
+            this.label11.TabIndex = 126;
+            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // tbVendor
             // 
             this.tbVendor.Location = new System.Drawing.Point(236, 316);
             this.tbVendor.Name = "tbVendor";
-            this.tbVendor.Size = new System.Drawing.Size(186, 20);
-            this.tbVendor.TabIndex = 119;
+            this.tbVendor.Size = new System.Drawing.Size(186, 22);
+            this.tbVendor.TabIndex = 68;
             this.tbVendor.MouseLeave += new System.EventHandler(this.tbVendor_MouseLeave);
-            // 
-            // lblVendor
-            // 
-            this.lblVendor.AutoSize = true;
-            this.lblVendor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblVendor.Location = new System.Drawing.Point(236, 300);
-            this.lblVendor.Name = "lblVendor";
-            this.lblVendor.Size = new System.Drawing.Size(48, 14);
-            this.lblVendor.TabIndex = 118;
-            this.lblVendor.Text = "Vendeur";
-            // 
-            // btnBrowseDoc
-            // 
-            this.btnBrowseDoc.Location = new System.Drawing.Point(17, 346);
-            this.btnBrowseDoc.Name = "btnBrowseDoc";
-            this.btnBrowseDoc.Size = new System.Drawing.Size(93, 23);
-            this.btnBrowseDoc.TabIndex = 116;
-            this.btnBrowseDoc.Text = "Documents...";
-            this.btnBrowseDoc.UseVisualStyleBackColor = true;
-            this.btnBrowseDoc.Click += new System.EventHandler(this.btnBrowseDoc_Click);
-            // 
-            // picAddProvider
-            // 
-            this.picAddProvider.Image = global::Module_Education.Properties.Resources.add_512;
-            this.picAddProvider.Location = new System.Drawing.Point(201, 228);
-            this.picAddProvider.Name = "picAddProvider";
-            this.picAddProvider.Size = new System.Drawing.Size(30, 24);
-            this.picAddProvider.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picAddProvider.TabIndex = 115;
-            this.picAddProvider.TabStop = false;
-            this.picAddProvider.Click += new System.EventHandler(this.pictureBox2_Click);
-            this.picAddProvider.MouseHover += new System.EventHandler(this.pictureBox2_MouseHover);
-            // 
-            // cbListProvider
-            // 
-            this.cbListProvider.FormattingEnabled = true;
-            this.cbListProvider.Location = new System.Drawing.Point(14, 262);
-            this.cbListProvider.Name = "cbListProvider";
-            this.cbListProvider.Size = new System.Drawing.Size(185, 64);
-            this.cbListProvider.TabIndex = 113;
-            this.cbListProvider.MouseHover += new System.EventHandler(this.cbListProvider_MouseHover);
-            // 
-            // labelCapOpt
-            // 
-            this.labelCapOpt.AutoSize = true;
-            this.labelCapOpt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.labelCapOpt.Location = new System.Drawing.Point(234, 208);
-            this.labelCapOpt.Name = "labelCapOpt";
-            this.labelCapOpt.Size = new System.Drawing.Size(85, 14);
-            this.labelCapOpt.TabIndex = 112;
-            this.labelCapOpt.Text = "Capacit optimale";
-            // 
-            // lblYearOfCreation
-            // 
-            this.lblYearOfCreation.AutoSize = true;
-            this.lblYearOfCreation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblYearOfCreation.Location = new System.Drawing.Point(11, 167);
-            this.lblYearOfCreation.Name = "lblYearOfCreation";
-            this.lblYearOfCreation.Size = new System.Drawing.Size(96, 14);
-            this.lblYearOfCreation.TabIndex = 111;
-            this.lblYearOfCreation.Text = "Année de création";
             // 
             // txtYearOfCreation
             // 
             this.txtYearOfCreation.Location = new System.Drawing.Point(14, 184);
             this.txtYearOfCreation.Name = "txtYearOfCreation";
-            this.txtYearOfCreation.Size = new System.Drawing.Size(69, 20);
-            this.txtYearOfCreation.TabIndex = 110;
+            this.txtYearOfCreation.Size = new System.Drawing.Size(69, 22);
+            this.txtYearOfCreation.TabIndex = 58;
             this.txtYearOfCreation.Leave += new System.EventHandler(this.txtYearOfCreation_Leave);
-            // 
-            // labelComptence
-            // 
-            this.labelComptence.AutoSize = true;
-            this.labelComptence.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.labelComptence.Location = new System.Drawing.Point(11, 120);
-            this.labelComptence.Name = "labelComptence";
-            this.labelComptence.Size = new System.Drawing.Size(67, 14);
-            this.labelComptence.TabIndex = 109;
-            this.labelComptence.Text = "Compétence";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.label9.Location = new System.Drawing.Point(234, 254);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(90, 14);
-            this.label9.TabIndex = 108;
-            this.label9.Text = "Capacit maximale";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.label8.Location = new System.Drawing.Point(234, 163);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(92, 14);
-            this.label8.TabIndex = 107;
-            this.label8.Text = "Capacité minimale";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.label7.Location = new System.Drawing.Point(326, 120);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(39, 14);
-            this.label7.TabIndex = 106;
-            this.label7.Text = "Année";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.label6.Location = new System.Drawing.Point(234, 118);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 14);
-            this.label6.TabIndex = 105;
-            this.label6.Text = "Résultat";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.label3.Location = new System.Drawing.Point(323, 76);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 14);
-            this.label3.TabIndex = 104;
-            this.label3.Text = "Unité";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.label2.Location = new System.Drawing.Point(234, 76);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(25, 14);
-            this.label2.TabIndex = 103;
-            this.label2.Text = "Prix";
-            // 
-            // labelProvider
-            // 
-            this.labelProvider.AutoSize = true;
-            this.labelProvider.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.labelProvider.Location = new System.Drawing.Point(11, 211);
-            this.labelProvider.Name = "labelProvider";
-            this.labelProvider.Size = new System.Drawing.Size(65, 14);
-            this.labelProvider.TabIndex = 102;
-            this.labelProvider.Text = "Fournisseur";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.label5.Location = new System.Drawing.Point(89, 76);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 14);
-            this.label5.TabIndex = 84;
-            this.label5.Text = "Heures";
-            // 
-            // labelDurationInDays
-            // 
-            this.labelDurationInDays.AutoSize = true;
-            this.labelDurationInDays.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.labelDurationInDays.Location = new System.Drawing.Point(11, 77);
-            this.labelDurationInDays.Name = "labelDurationInDays";
-            this.labelDurationInDays.Size = new System.Drawing.Size(34, 14);
-            this.labelDurationInDays.TabIndex = 83;
-            this.labelDurationInDays.Text = "Jours";
-            // 
-            // comboBoxResultatYear
-            // 
-            this.comboBoxResultatYear.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.comboBoxResultatYear.FormattingEnabled = true;
-            this.comboBoxResultatYear.Location = new System.Drawing.Point(326, 135);
-            this.comboBoxResultatYear.Name = "comboBoxResultatYear";
-            this.comboBoxResultatYear.Size = new System.Drawing.Size(96, 22);
-            this.comboBoxResultatYear.TabIndex = 76;
-            this.comboBoxResultatYear.SelectedIndexChanged += new System.EventHandler(this.comboBoxResultatYear_SelectedIndexChanged);
-            // 
-            // comboBoxResultatByYear
-            // 
-            this.comboBoxResultatByYear.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.comboBoxResultatByYear.FormattingEnabled = true;
-            this.comboBoxResultatByYear.Location = new System.Drawing.Point(237, 135);
-            this.comboBoxResultatByYear.Name = "comboBoxResultatByYear";
-            this.comboBoxResultatByYear.Size = new System.Drawing.Size(83, 22);
-            this.comboBoxResultatByYear.TabIndex = 75;
-            this.comboBoxResultatByYear.SelectedIndexChanged += new System.EventHandler(this.comboBoxResultatByYear_SelectedIndexChanged);
-            this.comboBoxResultatByYear.Leave += new System.EventHandler(this.comboBoxResultatByYear_Leave);
-            // 
-            // comboBoxUnite
-            // 
-            this.comboBoxUnite.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.comboBoxUnite.FormattingEnabled = true;
-            this.comboBoxUnite.Location = new System.Drawing.Point(326, 95);
-            this.comboBoxUnite.Name = "comboBoxUnite";
-            this.comboBoxUnite.Size = new System.Drawing.Size(96, 22);
-            this.comboBoxUnite.TabIndex = 74;
-            // 
-            // comboBoxCapaciteOptimale
-            // 
-            this.comboBoxCapaciteOptimale.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.comboBoxCapaciteOptimale.FormattingEnabled = true;
-            this.comboBoxCapaciteOptimale.Location = new System.Drawing.Point(237, 224);
-            this.comboBoxCapaciteOptimale.Name = "comboBoxCapaciteOptimale";
-            this.comboBoxCapaciteOptimale.Size = new System.Drawing.Size(185, 22);
-            this.comboBoxCapaciteOptimale.TabIndex = 59;
-            this.comboBoxCapaciteOptimale.Leave += new System.EventHandler(this.comboBoxCapaciteOptimale_Leave);
-            // 
-            // comboBoxDurationhours
-            // 
-            this.comboBoxDurationhours.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.comboBoxDurationhours.FormattingEnabled = true;
-            this.comboBoxDurationhours.Location = new System.Drawing.Point(92, 93);
-            this.comboBoxDurationhours.Name = "comboBoxDurationhours";
-            this.comboBoxDurationhours.Size = new System.Drawing.Size(72, 22);
-            this.comboBoxDurationhours.TabIndex = 56;
-            this.comboBoxDurationhours.Leave += new System.EventHandler(this.comboBoxDurationhours_Leave);
-            // 
-            // checkBoxIsExterne
-            // 
-            this.checkBoxIsExterne.AutoSize = true;
-            this.checkBoxIsExterne.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.checkBoxIsExterne.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.checkBoxIsExterne.Location = new System.Drawing.Point(321, 370);
-            this.checkBoxIsExterne.Name = "checkBoxIsExterne";
-            this.checkBoxIsExterne.Size = new System.Drawing.Size(101, 18);
-            this.checkBoxIsExterne.TabIndex = 81;
-            this.checkBoxIsExterne.Text = "Rôle secouriste";
-            this.checkBoxIsExterne.UseVisualStyleBackColor = true;
             // 
             // tbLongTitle
             // 
@@ -505,81 +324,6 @@
             this.tbLongTitle.Size = new System.Drawing.Size(200, 14);
             this.tbLongTitle.TabIndex = 101;
             this.tbLongTitle.Text = "LongTitle";
-            // 
-            // tabControl_Education_FormationAndCertificationsOfUser
-            // 
-            this.tabControl_Education_FormationAndCertificationsOfUser.Controls.Add(this.tabPageEducation_FormationsAgent);
-            this.tabControl_Education_FormationAndCertificationsOfUser.Controls.Add(this.tabPageCertificationsAgent);
-            this.tabControl_Education_FormationAndCertificationsOfUser.Controls.Add(this.tabPage2);
-            this.tabControl_Education_FormationAndCertificationsOfUser.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.tabControl_Education_FormationAndCertificationsOfUser.Location = new System.Drawing.Point(475, 64);
-            this.tabControl_Education_FormationAndCertificationsOfUser.Name = "tabControl_Education_FormationAndCertificationsOfUser";
-            this.tabControl_Education_FormationAndCertificationsOfUser.SelectedIndex = 0;
-            this.tabControl_Education_FormationAndCertificationsOfUser.Size = new System.Drawing.Size(560, 254);
-            this.tabControl_Education_FormationAndCertificationsOfUser.TabIndex = 76;
-            // 
-            // tabPageEducation_FormationsAgent
-            // 
-            this.tabPageEducation_FormationsAgent.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPageEducation_FormationsAgent.Controls.Add(this.advDv_AgentsOfFormation);
-            this.tabPageEducation_FormationsAgent.Font = new System.Drawing.Font("Arial", 10F);
-            this.tabPageEducation_FormationsAgent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(199)))), ((int)(((byte)(234)))));
-            this.tabPageEducation_FormationsAgent.Location = new System.Drawing.Point(4, 28);
-            this.tabPageEducation_FormationsAgent.Name = "tabPageEducation_FormationsAgent";
-            this.tabPageEducation_FormationsAgent.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageEducation_FormationsAgent.Size = new System.Drawing.Size(552, 222);
-            this.tabPageEducation_FormationsAgent.TabIndex = 0;
-            this.tabPageEducation_FormationsAgent.Text = "Agents de la formation";
-            // 
-            // advDv_AgentsOfFormation
-            // 
-            this.advDv_AgentsOfFormation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.advDv_AgentsOfFormation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.advDv_AgentsOfFormation.FilterAndSortEnabled = true;
-            this.advDv_AgentsOfFormation.Location = new System.Drawing.Point(6, 9);
-            this.advDv_AgentsOfFormation.Name = "advDv_AgentsOfFormation";
-            this.advDv_AgentsOfFormation.Size = new System.Drawing.Size(523, 207);
-            this.advDv_AgentsOfFormation.TabIndex = 0;
-            this.advDv_AgentsOfFormation.MouseClick += new System.Windows.Forms.MouseEventHandler(this.advDv_AgentsOfFormation_MouseClick);
-            // 
-            // tabPageCertificationsAgent
-            // 
-            this.tabPageCertificationsAgent.Controls.Add(this.dataGridView1);
-            this.tabPageCertificationsAgent.Font = new System.Drawing.Font("Arial", 10F);
-            this.tabPageCertificationsAgent.Location = new System.Drawing.Point(4, 28);
-            this.tabPageCertificationsAgent.Name = "tabPageCertificationsAgent";
-            this.tabPageCertificationsAgent.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCertificationsAgent.Size = new System.Drawing.Size(552, 222);
-            this.tabPageCertificationsAgent.TabIndex = 1;
-            this.tabPageCertificationsAgent.Text = "Certifications";
-            this.tabPageCertificationsAgent.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.DarkGray;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(199)))), ((int)(((byte)(234)))));
-            this.dataGridView1.Location = new System.Drawing.Point(6, 9);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.Size = new System.Drawing.Size(526, 207);
-            this.dataGridView1.TabIndex = 20;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 28);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(552, 222);
-            this.tabPage2.TabIndex = 2;
-            this.tabPage2.Text = "Documents";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tbShortTitleEducation_Formation
             // 
@@ -599,9 +343,551 @@
             // 
             this.textBoxPrice.Location = new System.Drawing.Point(237, 95);
             this.textBoxPrice.Name = "textBoxPrice";
-            this.textBoxPrice.Size = new System.Drawing.Size(83, 20);
-            this.textBoxPrice.TabIndex = 73;
+            this.textBoxPrice.Size = new System.Drawing.Size(83, 22);
+            this.textBoxPrice.TabIndex = 60;
             this.textBoxPrice.Leave += new System.EventHandler(this.textBoxPrice_Leave);
+            // 
+            // richTextBoxRemarks
+            // 
+            this.richTextBoxRemarks.AutoWordSelection = true;
+            this.richTextBoxRemarks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(199)))), ((int)(((byte)(234)))));
+            this.richTextBoxRemarks.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.richTextBoxRemarks.Location = new System.Drawing.Point(16, 413);
+            this.richTextBoxRemarks.Name = "richTextBoxRemarks";
+            this.richTextBoxRemarks.Size = new System.Drawing.Size(417, 45);
+            this.richTextBoxRemarks.TabIndex = 82;
+            this.richTextBoxRemarks.Text = "";
+            // 
+            // lblVendor
+            // 
+            this.lblVendor.AutoSize = true;
+            this.lblVendor.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.lblVendor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.lblVendor.Location = new System.Drawing.Point(236, 300);
+            this.lblVendor.Name = "lblVendor";
+            this.lblVendor.Size = new System.Drawing.Size(55, 16);
+            this.lblVendor.TabIndex = 118;
+            this.lblVendor.Text = "Vendeur";
+            // 
+            // picAddProvider
+            // 
+            this.picAddProvider.Image = global::Module_Education.Properties.Resources.add_512;
+            this.picAddProvider.Location = new System.Drawing.Point(201, 228);
+            this.picAddProvider.Name = "picAddProvider";
+            this.picAddProvider.Size = new System.Drawing.Size(30, 24);
+            this.picAddProvider.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picAddProvider.TabIndex = 115;
+            this.picAddProvider.TabStop = false;
+            this.picAddProvider.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.picAddProvider.MouseHover += new System.EventHandler(this.pictureBox2_MouseHover);
+            // 
+            // cbListProvider
+            // 
+            this.cbListProvider.FormattingEnabled = true;
+            this.cbListProvider.Location = new System.Drawing.Point(14, 262);
+            this.cbListProvider.Name = "cbListProvider";
+            this.cbListProvider.Size = new System.Drawing.Size(185, 55);
+            this.cbListProvider.TabIndex = 113;
+            this.cbListProvider.MouseHover += new System.EventHandler(this.cbListProvider_MouseHover);
+            // 
+            // labelCapOpt
+            // 
+            this.labelCapOpt.AutoSize = true;
+            this.labelCapOpt.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.labelCapOpt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.labelCapOpt.Location = new System.Drawing.Point(234, 208);
+            this.labelCapOpt.Name = "labelCapOpt";
+            this.labelCapOpt.Size = new System.Drawing.Size(105, 16);
+            this.labelCapOpt.TabIndex = 112;
+            this.labelCapOpt.Text = "Capacit optimale";
+            // 
+            // lblYearOfCreation
+            // 
+            this.lblYearOfCreation.AutoSize = true;
+            this.lblYearOfCreation.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.lblYearOfCreation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.lblYearOfCreation.Location = new System.Drawing.Point(11, 167);
+            this.lblYearOfCreation.Name = "lblYearOfCreation";
+            this.lblYearOfCreation.Size = new System.Drawing.Size(113, 16);
+            this.lblYearOfCreation.TabIndex = 111;
+            this.lblYearOfCreation.Text = "Année de création";
+            // 
+            // labelComptence
+            // 
+            this.labelComptence.AutoSize = true;
+            this.labelComptence.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.labelComptence.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.labelComptence.Location = new System.Drawing.Point(11, 120);
+            this.labelComptence.Name = "labelComptence";
+            this.labelComptence.Size = new System.Drawing.Size(81, 16);
+            this.labelComptence.TabIndex = 109;
+            this.labelComptence.Text = "Compétence";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.label9.Location = new System.Drawing.Point(234, 254);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(112, 16);
+            this.label9.TabIndex = 108;
+            this.label9.Text = "Capacit maximale";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.label8.Location = new System.Drawing.Point(234, 163);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(115, 16);
+            this.label8.TabIndex = 107;
+            this.label8.Text = "Capacité minimale";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.label7.Location = new System.Drawing.Point(326, 119);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(45, 16);
+            this.label7.TabIndex = 106;
+            this.label7.Text = "Année";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.label6.Location = new System.Drawing.Point(234, 118);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(56, 16);
+            this.label6.TabIndex = 105;
+            this.label6.Text = "Résultat";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.label3.Location = new System.Drawing.Point(323, 76);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 16);
+            this.label3.TabIndex = 104;
+            this.label3.Text = "Unité";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.label2.Location = new System.Drawing.Point(234, 76);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(31, 16);
+            this.label2.TabIndex = 103;
+            this.label2.Text = "Prix";
+            // 
+            // labelProvider
+            // 
+            this.labelProvider.AutoSize = true;
+            this.labelProvider.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.labelProvider.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.labelProvider.Location = new System.Drawing.Point(11, 211);
+            this.labelProvider.Name = "labelProvider";
+            this.labelProvider.Size = new System.Drawing.Size(76, 16);
+            this.labelProvider.TabIndex = 102;
+            this.labelProvider.Text = "Fournisseur";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.label5.Location = new System.Drawing.Point(89, 76);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(49, 16);
+            this.label5.TabIndex = 84;
+            this.label5.Text = "Heures";
+            // 
+            // labelDurationInDays
+            // 
+            this.labelDurationInDays.AutoSize = true;
+            this.labelDurationInDays.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.labelDurationInDays.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.labelDurationInDays.Location = new System.Drawing.Point(11, 77);
+            this.labelDurationInDays.Name = "labelDurationInDays";
+            this.labelDurationInDays.Size = new System.Drawing.Size(39, 16);
+            this.labelDurationInDays.TabIndex = 83;
+            this.labelDurationInDays.Text = "Jours";
+            // 
+            // comboBoxResultatYear
+            // 
+            this.comboBoxResultatYear.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.comboBoxResultatYear.FormattingEnabled = true;
+            this.comboBoxResultatYear.Location = new System.Drawing.Point(326, 136);
+            this.comboBoxResultatYear.Name = "comboBoxResultatYear";
+            this.comboBoxResultatYear.Size = new System.Drawing.Size(96, 22);
+            this.comboBoxResultatYear.TabIndex = 64;
+            this.comboBoxResultatYear.SelectedIndexChanged += new System.EventHandler(this.comboBoxResultatYear_SelectedIndexChanged);
+            // 
+            // comboBoxResultatByYear
+            // 
+            this.comboBoxResultatByYear.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.comboBoxResultatByYear.FormattingEnabled = true;
+            this.comboBoxResultatByYear.Location = new System.Drawing.Point(237, 136);
+            this.comboBoxResultatByYear.Name = "comboBoxResultatByYear";
+            this.comboBoxResultatByYear.Size = new System.Drawing.Size(83, 22);
+            this.comboBoxResultatByYear.TabIndex = 63;
+            this.comboBoxResultatByYear.SelectedIndexChanged += new System.EventHandler(this.comboBoxResultatByYear_SelectedIndexChanged);
+            this.comboBoxResultatByYear.Leave += new System.EventHandler(this.comboBoxResultatByYear_Leave);
+            // 
+            // comboBoxUnite
+            // 
+            this.comboBoxUnite.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.comboBoxUnite.FormattingEnabled = true;
+            this.comboBoxUnite.Location = new System.Drawing.Point(326, 95);
+            this.comboBoxUnite.Name = "comboBoxUnite";
+            this.comboBoxUnite.Size = new System.Drawing.Size(96, 22);
+            this.comboBoxUnite.TabIndex = 62;
+            // 
+            // comboBoxCapaciteOptimale
+            // 
+            this.comboBoxCapaciteOptimale.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.comboBoxCapaciteOptimale.FormattingEnabled = true;
+            this.comboBoxCapaciteOptimale.Location = new System.Drawing.Point(237, 224);
+            this.comboBoxCapaciteOptimale.Name = "comboBoxCapaciteOptimale";
+            this.comboBoxCapaciteOptimale.Size = new System.Drawing.Size(185, 22);
+            this.comboBoxCapaciteOptimale.TabIndex = 66;
+            this.comboBoxCapaciteOptimale.Leave += new System.EventHandler(this.comboBoxCapaciteOptimale_Leave);
+            // 
+            // comboBoxDurationhours
+            // 
+            this.comboBoxDurationhours.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.comboBoxDurationhours.FormattingEnabled = true;
+            this.comboBoxDurationhours.Location = new System.Drawing.Point(92, 93);
+            this.comboBoxDurationhours.Name = "comboBoxDurationhours";
+            this.comboBoxDurationhours.Size = new System.Drawing.Size(72, 22);
+            this.comboBoxDurationhours.TabIndex = 56;
+            this.comboBoxDurationhours.Leave += new System.EventHandler(this.comboBoxDurationhours_Leave);
+            // 
+            // checkBoxIsExterne
+            // 
+            this.checkBoxIsExterne.AutoSize = true;
+            this.checkBoxIsExterne.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.checkBoxIsExterne.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.checkBoxIsExterne.Location = new System.Drawing.Point(321, 370);
+            this.checkBoxIsExterne.Name = "checkBoxIsExterne";
+            this.checkBoxIsExterne.Size = new System.Drawing.Size(117, 20);
+            this.checkBoxIsExterne.TabIndex = 71;
+            this.checkBoxIsExterne.Text = "Rôle secouriste";
+            this.checkBoxIsExterne.UseVisualStyleBackColor = true;
+            // 
+            // tabControl_Education_FormationAndCertificationsOfUser
+            // 
+            this.tabControl_Education_FormationAndCertificationsOfUser.Controls.Add(this.tabPageEducation_FormationsAgent);
+            this.tabControl_Education_FormationAndCertificationsOfUser.Controls.Add(this.tabPageCertificationsAgent);
+            this.tabControl_Education_FormationAndCertificationsOfUser.Controls.Add(this.tabPage2);
+            this.tabControl_Education_FormationAndCertificationsOfUser.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.tabControl_Education_FormationAndCertificationsOfUser.Location = new System.Drawing.Point(454, 77);
+            this.tabControl_Education_FormationAndCertificationsOfUser.Name = "tabControl_Education_FormationAndCertificationsOfUser";
+            this.tabControl_Education_FormationAndCertificationsOfUser.SelectedIndex = 0;
+            this.tabControl_Education_FormationAndCertificationsOfUser.Size = new System.Drawing.Size(577, 385);
+            this.tabControl_Education_FormationAndCertificationsOfUser.TabIndex = 76;
+            // 
+            // tabPageEducation_FormationsAgent
+            // 
+            this.tabPageEducation_FormationsAgent.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageEducation_FormationsAgent.Controls.Add(this.advDv_AgentsOfFormation);
+            this.tabPageEducation_FormationsAgent.Font = new System.Drawing.Font("Arial", 10F);
+            this.tabPageEducation_FormationsAgent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(199)))), ((int)(((byte)(234)))));
+            this.tabPageEducation_FormationsAgent.Location = new System.Drawing.Point(4, 28);
+            this.tabPageEducation_FormationsAgent.Name = "tabPageEducation_FormationsAgent";
+            this.tabPageEducation_FormationsAgent.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageEducation_FormationsAgent.Size = new System.Drawing.Size(569, 353);
+            this.tabPageEducation_FormationsAgent.TabIndex = 0;
+            this.tabPageEducation_FormationsAgent.Text = "Agents de la formation";
+            // 
+            // advDv_AgentsOfFormation
+            // 
+            this.advDv_AgentsOfFormation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.advDv_AgentsOfFormation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.advDv_AgentsOfFormation.FilterAndSortEnabled = true;
+            this.advDv_AgentsOfFormation.Location = new System.Drawing.Point(6, 9);
+            this.advDv_AgentsOfFormation.Name = "advDv_AgentsOfFormation";
+            this.advDv_AgentsOfFormation.Size = new System.Drawing.Size(550, 307);
+            this.advDv_AgentsOfFormation.TabIndex = 0;
+            this.advDv_AgentsOfFormation.MouseClick += new System.Windows.Forms.MouseEventHandler(this.advDv_AgentsOfFormation_MouseClick);
+            // 
+            // tabPageCertificationsAgent
+            // 
+            this.tabPageCertificationsAgent.Controls.Add(this.dataGridView1);
+            this.tabPageCertificationsAgent.Font = new System.Drawing.Font("Arial", 10F);
+            this.tabPageCertificationsAgent.Location = new System.Drawing.Point(4, 28);
+            this.tabPageCertificationsAgent.Name = "tabPageCertificationsAgent";
+            this.tabPageCertificationsAgent.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageCertificationsAgent.Size = new System.Drawing.Size(569, 353);
+            this.tabPageCertificationsAgent.TabIndex = 1;
+            this.tabPageCertificationsAgent.Text = "Certifications";
+            this.tabPageCertificationsAgent.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.DarkGray;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(199)))), ((int)(((byte)(234)))));
+            this.dataGridView1.Location = new System.Drawing.Point(6, 9);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.Size = new System.Drawing.Size(557, 319);
+            this.dataGridView1.TabIndex = 20;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.label13);
+            this.tabPage2.Controls.Add(this.tbTest);
+            this.tabPage2.Controls.Add(this.btnTest);
+            this.tabPage2.Controls.Add(this.label10);
+            this.tabPage2.Controls.Add(this.tbSyllabus);
+            this.tabPage2.Controls.Add(this.btnSyllabus);
+            this.tabPage2.Controls.Add(this.label1);
+            this.tabPage2.Controls.Add(this.labelInfofiche);
+            this.tabPage2.Controls.Add(this.tbScenario);
+            this.tabPage2.Controls.Add(this.btnScenario);
+            this.tabPage2.Controls.Add(this.tbInfoFiche);
+            this.tabPage2.Controls.Add(this.checkBox1);
+            this.tabPage2.Controls.Add(this.btnBrowseDoc);
+            this.tabPage2.Controls.Add(this.dbDossierOk);
+            this.tabPage2.Controls.Add(this.cbInfoFiche);
+            this.tabPage2.Controls.Add(this.lblPrioritéInfoFiche);
+            this.tabPage2.Controls.Add(this.lblTypeDssier);
+            this.tabPage2.Controls.Add(this.cbTypeDossier);
+            this.tabPage2.Location = new System.Drawing.Point(4, 28);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(569, 353);
+            this.tabPage2.TabIndex = 2;
+            this.tabPage2.Text = "Documents";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Bold);
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.label13.Location = new System.Drawing.Point(6, 233);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(33, 16);
+            this.label13.TabIndex = 157;
+            this.label13.Text = "Test";
+            // 
+            // tbTest
+            // 
+            this.tbTest.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.tbTest.Location = new System.Drawing.Point(6, 252);
+            this.tbTest.Multiline = true;
+            this.tbTest.Name = "tbTest";
+            this.tbTest.Size = new System.Drawing.Size(407, 20);
+            this.tbTest.TabIndex = 156;
+            // 
+            // btnTest
+            // 
+            this.btnTest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            this.btnTest.FlatAppearance.BorderSize = 0;
+            this.btnTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTest.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Bold);
+            this.btnTest.ForeColor = System.Drawing.Color.White;
+            this.btnTest.Location = new System.Drawing.Point(419, 255);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(93, 23);
+            this.btnTest.TabIndex = 155;
+            this.btnTest.Text = "Parcourir";
+            this.btnTest.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnTest.UseVisualStyleBackColor = false;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Bold);
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.label10.Location = new System.Drawing.Point(6, 191);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(62, 16);
+            this.label10.TabIndex = 154;
+            this.label10.Text = "Syllabus";
+            // 
+            // tbSyllabus
+            // 
+            this.tbSyllabus.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.tbSyllabus.Location = new System.Drawing.Point(6, 210);
+            this.tbSyllabus.Multiline = true;
+            this.tbSyllabus.Name = "tbSyllabus";
+            this.tbSyllabus.Size = new System.Drawing.Size(407, 20);
+            this.tbSyllabus.TabIndex = 153;
+            // 
+            // btnSyllabus
+            // 
+            this.btnSyllabus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            this.btnSyllabus.FlatAppearance.BorderSize = 0;
+            this.btnSyllabus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSyllabus.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Bold);
+            this.btnSyllabus.ForeColor = System.Drawing.Color.White;
+            this.btnSyllabus.Location = new System.Drawing.Point(419, 210);
+            this.btnSyllabus.Name = "btnSyllabus";
+            this.btnSyllabus.Size = new System.Drawing.Size(93, 23);
+            this.btnSyllabus.TabIndex = 152;
+            this.btnSyllabus.Text = "Parcourir";
+            this.btnSyllabus.UseVisualStyleBackColor = false;
+            this.btnSyllabus.Click += new System.EventHandler(this.btnSyllabus_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.label1.Location = new System.Drawing.Point(6, 149);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 16);
+            this.label1.TabIndex = 151;
+            this.label1.Text = "Scénario";
+            // 
+            // labelInfofiche
+            // 
+            this.labelInfofiche.AutoSize = true;
+            this.labelInfofiche.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Bold);
+            this.labelInfofiche.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.labelInfofiche.Location = new System.Drawing.Point(6, 6);
+            this.labelInfofiche.Name = "labelInfofiche";
+            this.labelInfofiche.Size = new System.Drawing.Size(67, 16);
+            this.labelInfofiche.TabIndex = 150;
+            this.labelInfofiche.Text = "Info fiche";
+            // 
+            // tbScenario
+            // 
+            this.tbScenario.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.tbScenario.Location = new System.Drawing.Point(6, 168);
+            this.tbScenario.Multiline = true;
+            this.tbScenario.Name = "tbScenario";
+            this.tbScenario.Size = new System.Drawing.Size(407, 20);
+            this.tbScenario.TabIndex = 145;
+            // 
+            // btnScenario
+            // 
+            this.btnScenario.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            this.btnScenario.FlatAppearance.BorderSize = 0;
+            this.btnScenario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnScenario.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Bold);
+            this.btnScenario.ForeColor = System.Drawing.Color.White;
+            this.btnScenario.Location = new System.Drawing.Point(419, 168);
+            this.btnScenario.Name = "btnScenario";
+            this.btnScenario.Size = new System.Drawing.Size(93, 23);
+            this.btnScenario.TabIndex = 144;
+            this.btnScenario.Text = "Parcourir";
+            this.btnScenario.UseVisualStyleBackColor = false;
+            this.btnScenario.Click += new System.EventHandler(this.btnScenario_Click);
+            // 
+            // tbInfoFiche
+            // 
+            this.tbInfoFiche.Font = new System.Drawing.Font("Arial", 12F);
+            this.tbInfoFiche.Location = new System.Drawing.Point(6, 23);
+            this.tbInfoFiche.Multiline = true;
+            this.tbInfoFiche.Name = "tbInfoFiche";
+            this.tbInfoFiche.Size = new System.Drawing.Size(407, 20);
+            this.tbInfoFiche.TabIndex = 139;
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.checkBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.checkBox1.Location = new System.Drawing.Point(264, 84);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(67, 20);
+            this.checkBox1.TabIndex = 143;
+            this.checkBox1.Text = "Hubbel";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // btnBrowseDoc
+            // 
+            this.btnBrowseDoc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            this.btnBrowseDoc.FlatAppearance.BorderSize = 0;
+            this.btnBrowseDoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBrowseDoc.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Bold);
+            this.btnBrowseDoc.ForeColor = System.Drawing.Color.White;
+            this.btnBrowseDoc.Location = new System.Drawing.Point(419, 23);
+            this.btnBrowseDoc.Name = "btnBrowseDoc";
+            this.btnBrowseDoc.Size = new System.Drawing.Size(93, 23);
+            this.btnBrowseDoc.TabIndex = 136;
+            this.btnBrowseDoc.Text = "Parcourir";
+            this.btnBrowseDoc.UseVisualStyleBackColor = false;
+            this.btnBrowseDoc.Click += new System.EventHandler(this.btnBrowseDoc_Click_1);
+            // 
+            // dbDossierOk
+            // 
+            this.dbDossierOk.AutoSize = true;
+            this.dbDossierOk.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.dbDossierOk.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.dbDossierOk.Location = new System.Drawing.Point(264, 60);
+            this.dbDossierOk.Name = "dbDossierOk";
+            this.dbDossierOk.Size = new System.Drawing.Size(99, 20);
+            this.dbDossierOk.TabIndex = 142;
+            this.dbDossierOk.Text = "Dossier Ok?";
+            this.dbDossierOk.UseVisualStyleBackColor = true;
+            // 
+            // cbInfoFiche
+            // 
+            this.cbInfoFiche.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.cbInfoFiche.FormattingEnabled = true;
+            this.cbInfoFiche.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "NA"});
+            this.cbInfoFiche.Location = new System.Drawing.Point(6, 64);
+            this.cbInfoFiche.Name = "cbInfoFiche";
+            this.cbInfoFiche.Size = new System.Drawing.Size(83, 22);
+            this.cbInfoFiche.TabIndex = 137;
+            // 
+            // lblPrioritéInfoFiche
+            // 
+            this.lblPrioritéInfoFiche.AutoSize = true;
+            this.lblPrioritéInfoFiche.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Bold);
+            this.lblPrioritéInfoFiche.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.lblPrioritéInfoFiche.Location = new System.Drawing.Point(3, 46);
+            this.lblPrioritéInfoFiche.Name = "lblPrioritéInfoFiche";
+            this.lblPrioritéInfoFiche.Size = new System.Drawing.Size(55, 16);
+            this.lblPrioritéInfoFiche.TabIndex = 140;
+            this.lblPrioritéInfoFiche.Text = "Priorité";
+            // 
+            // lblTypeDssier
+            // 
+            this.lblTypeDssier.AutoSize = true;
+            this.lblTypeDssier.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Bold);
+            this.lblTypeDssier.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.lblTypeDssier.Location = new System.Drawing.Point(3, 90);
+            this.lblTypeDssier.Name = "lblTypeDssier";
+            this.lblTypeDssier.Size = new System.Drawing.Size(176, 16);
+            this.lblTypeDssier.TabIndex = 141;
+            this.lblTypeDssier.Text = "Type Dossier pédagogique";
+            // 
+            // cbTypeDossier
+            // 
+            this.cbTypeDossier.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbTypeDossier.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbTypeDossier.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.cbTypeDossier.FormattingEnabled = true;
+            this.cbTypeDossier.Location = new System.Drawing.Point(6, 111);
+            this.cbTypeDossier.Name = "cbTypeDossier";
+            this.cbTypeDossier.Size = new System.Drawing.Size(185, 22);
+            this.cbTypeDossier.TabIndex = 138;
             // 
             // comboBoxDurationInDays
             // 
@@ -620,7 +906,7 @@
             this.comboBoxProvider.Location = new System.Drawing.Point(14, 228);
             this.comboBoxProvider.Name = "comboBoxProvider";
             this.comboBoxProvider.Size = new System.Drawing.Size(185, 22);
-            this.comboBoxProvider.TabIndex = 57;
+            this.comboBoxProvider.TabIndex = 59;
             // 
             // comboBoxMinCapacity
             // 
@@ -629,15 +915,15 @@
             this.comboBoxMinCapacity.Location = new System.Drawing.Point(237, 180);
             this.comboBoxMinCapacity.Name = "comboBoxMinCapacity";
             this.comboBoxMinCapacity.Size = new System.Drawing.Size(185, 22);
-            this.comboBoxMinCapacity.TabIndex = 77;
+            this.comboBoxMinCapacity.TabIndex = 65;
             // 
             // comboBoxMaxCapacity
             // 
             this.comboBoxMaxCapacity.FormattingEnabled = true;
             this.comboBoxMaxCapacity.Location = new System.Drawing.Point(237, 270);
             this.comboBoxMaxCapacity.Name = "comboBoxMaxCapacity";
-            this.comboBoxMaxCapacity.Size = new System.Drawing.Size(185, 22);
-            this.comboBoxMaxCapacity.TabIndex = 78;
+            this.comboBoxMaxCapacity.Size = new System.Drawing.Size(185, 23);
+            this.comboBoxMaxCapacity.TabIndex = 67;
             // 
             // comboBoxCompetence
             // 
@@ -646,31 +932,31 @@
             this.comboBoxCompetence.FormattingEnabled = true;
             this.comboBoxCompetence.Location = new System.Drawing.Point(14, 136);
             this.comboBoxCompetence.Name = "comboBoxCompetence";
-            this.comboBoxCompetence.Size = new System.Drawing.Size(185, 22);
-            this.comboBoxCompetence.TabIndex = 58;
+            this.comboBoxCompetence.Size = new System.Drawing.Size(185, 23);
+            this.comboBoxCompetence.TabIndex = 57;
             this.comboBoxCompetence.Leave += new System.EventHandler(this.comboBoxCompetence_Leave);
             // 
             // checkBoxIsInterne
             // 
             this.checkBoxIsInterne.AutoSize = true;
-            this.checkBoxIsInterne.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.checkBoxIsInterne.Font = new System.Drawing.Font("Arial", 9.25F);
             this.checkBoxIsInterne.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
             this.checkBoxIsInterne.Location = new System.Drawing.Point(237, 370);
             this.checkBoxIsInterne.Name = "checkBoxIsInterne";
-            this.checkBoxIsInterne.Size = new System.Drawing.Size(59, 18);
-            this.checkBoxIsInterne.TabIndex = 80;
+            this.checkBoxIsInterne.Size = new System.Drawing.Size(66, 20);
+            this.checkBoxIsInterne.TabIndex = 70;
             this.checkBoxIsInterne.Text = "Interne";
             this.checkBoxIsInterne.UseVisualStyleBackColor = true;
             // 
             // checkBox_AnnualOrder
             // 
             this.checkBox_AnnualOrder.AutoSize = true;
-            this.checkBox_AnnualOrder.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.checkBox_AnnualOrder.Font = new System.Drawing.Font("Arial", 9.25F);
             this.checkBox_AnnualOrder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
             this.checkBox_AnnualOrder.Location = new System.Drawing.Point(237, 346);
             this.checkBox_AnnualOrder.Name = "checkBox_AnnualOrder";
-            this.checkBox_AnnualOrder.Size = new System.Drawing.Size(123, 18);
-            this.checkBox_AnnualOrder.TabIndex = 79;
+            this.checkBox_AnnualOrder.Size = new System.Drawing.Size(146, 20);
+            this.checkBox_AnnualOrder.TabIndex = 69;
             this.checkBox_AnnualOrder.Text = "Commande Annuelle";
             this.checkBox_AnnualOrder.UseVisualStyleBackColor = true;
             // 
@@ -679,22 +965,11 @@
             this.labelRemarks.AutoSize = true;
             this.labelRemarks.Font = new System.Drawing.Font("Arial", 10F);
             this.labelRemarks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.labelRemarks.Location = new System.Drawing.Point(14, 401);
+            this.labelRemarks.Location = new System.Drawing.Point(14, 392);
             this.labelRemarks.Name = "labelRemarks";
             this.labelRemarks.Size = new System.Drawing.Size(81, 16);
             this.labelRemarks.TabIndex = 46;
             this.labelRemarks.Text = "Remarques";
-            // 
-            // richTextBoxRemarks
-            // 
-            this.richTextBoxRemarks.AutoWordSelection = true;
-            this.richTextBoxRemarks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(199)))), ((int)(((byte)(234)))));
-            this.richTextBoxRemarks.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.richTextBoxRemarks.Location = new System.Drawing.Point(16, 422);
-            this.richTextBoxRemarks.Name = "richTextBoxRemarks";
-            this.richTextBoxRemarks.Size = new System.Drawing.Size(417, 70);
-            this.richTextBoxRemarks.TabIndex = 82;
-            this.richTextBoxRemarks.Text = "";
             // 
             // labelActifEducation_Formation
             // 
@@ -719,201 +994,184 @@
             this.labelSAPEducation_Formation.Text = "SAP";
             this.labelSAPEducation_Formation.Click += new System.EventHandler(this.labelSAPEducation_Formation_Click);
             // 
-            // tabPage2_Matrices
+            // tabPage1
             // 
-            this.tabPage2_Matrices.Controls.Add(this.label4);
-            this.tabPage2_Matrices.Controls.Add(this.treeView1);
-            this.tabPage2_Matrices.Location = new System.Drawing.Point(4, 23);
-            this.tabPage2_Matrices.Name = "tabPage2_Matrices";
-            this.tabPage2_Matrices.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2_Matrices.Size = new System.Drawing.Size(1059, 538);
-            this.tabPage2_Matrices.TabIndex = 1;
-            this.tabPage2_Matrices.Text = "Matrices";
-            this.tabPage2_Matrices.UseVisualStyleBackColor = true;
+            this.tabPage1.BackColor = System.Drawing.Color.Transparent;
+            this.tabPage1.Controls.Add(this.label12);
+            this.tabPage1.Controls.Add(this.lblMax);
+            this.tabPage1.Controls.Add(this.lblMin);
+            this.tabPage1.Controls.Add(this.lblNbrRowsFormations);
+            this.tabPage1.Controls.Add(this.btn_Next);
+            this.tabPage1.Controls.Add(this.btn_Previous);
+            this.tabPage1.Controls.Add(this.tbNbrRows);
+            this.tabPage1.Controls.Add(this.lblNbrRows);
+            this.tabPage1.Controls.Add(this.picExportExcel);
+            this.tabPage1.Controls.Add(this.lblTiteLstFormation);
+            this.tabPage1.Controls.Add(this.AdvDg_Formations);
+            this.tabPage1.Location = new System.Drawing.Point(4, 23);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(1059, 543);
+            this.tabPage1.TabIndex = 3;
+            this.tabPage1.Text = "Liste";
             // 
-            // label4
+            // label12
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(101)))));
-            this.label4.Location = new System.Drawing.Point(13, 7);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(361, 24);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "Matrices de Education_Formations";
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(461, 521);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(11, 14);
+            this.label12.TabIndex = 32;
+            this.label12.Text = "-";
             // 
-            // treeView1
+            // lblMax
             // 
-            this.treeView1.Location = new System.Drawing.Point(15, 57);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(975, 322);
-            this.treeView1.TabIndex = 0;
+            this.lblMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblMax.AutoSize = true;
+            this.lblMax.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            this.lblMax.Location = new System.Drawing.Point(471, 521);
+            this.lblMax.Name = "lblMax";
+            this.lblMax.Size = new System.Drawing.Size(35, 14);
+            this.lblMax.TabIndex = 31;
+            this.lblMax.Text = "label3";
+            this.lblMax.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tabPage1_Education_Formation
+            // lblMin
             // 
-            this.tabPage1_Education_Formation.Controls.Add(this.labelEducation_Formation);
-            this.tabPage1_Education_Formation.Controls.Add(this.tbFiltre);
-            this.tabPage1_Education_Formation.Controls.Add(this.dG_Education_Formations);
-            this.tabPage1_Education_Formation.Controls.Add(this.label1);
-            this.tabPage1_Education_Formation.Controls.Add(this.dG_Agents);
-            this.tabPage1_Education_Formation.Controls.Add(this.btn_Next);
-            this.tabPage1_Education_Formation.Controls.Add(this.btn_Previous);
-            this.tabPage1_Education_Formation.Controls.Add(this.cb_FiltreDgEducation_Formations);
-            this.tabPage1_Education_Formation.Location = new System.Drawing.Point(4, 23);
-            this.tabPage1_Education_Formation.Name = "tabPage1_Education_Formation";
-            this.tabPage1_Education_Formation.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1_Education_Formation.Size = new System.Drawing.Size(1059, 538);
-            this.tabPage1_Education_Formation.TabIndex = 0;
-            this.tabPage1_Education_Formation.UseVisualStyleBackColor = true;
+            this.lblMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblMin.AutoSize = true;
+            this.lblMin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            this.lblMin.Location = new System.Drawing.Point(426, 521);
+            this.lblMin.Name = "lblMin";
+            this.lblMin.Size = new System.Drawing.Size(35, 14);
+            this.lblMin.TabIndex = 30;
+            this.lblMin.Text = "label2";
+            this.lblMin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // labelEducation_Formation
+            // lblNbrRowsFormations
             // 
-            this.labelEducation_Formation.AutoSize = true;
-            this.labelEducation_Formation.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelEducation_Formation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(101)))));
-            this.labelEducation_Formation.Location = new System.Drawing.Point(13, 7);
-            this.labelEducation_Formation.Name = "labelEducation_Formation";
-            this.labelEducation_Formation.Size = new System.Drawing.Size(337, 24);
-            this.labelEducation_Formation.TabIndex = 11;
-            this.labelEducation_Formation.Text = "Liste des Education_Formations";
-            // 
-            // tbFiltre
-            // 
-            this.tbFiltre.Location = new System.Drawing.Point(273, 328);
-            this.tbFiltre.Name = "tbFiltre";
-            this.tbFiltre.Size = new System.Drawing.Size(261, 20);
-            this.tbFiltre.TabIndex = 10;
-            this.tbFiltre.TextChanged += new System.EventHandler(this.tbFiltre_TextChanged);
-            // 
-            // dG_Education_Formations
-            // 
-            this.dG_Education_Formations.AllowUserToAddRows = false;
-            this.dG_Education_Formations.AllowUserToDeleteRows = false;
-            this.dG_Education_Formations.AllowUserToOrderColumns = true;
-            this.dG_Education_Formations.BackgroundColor = System.Drawing.Color.DarkGray;
-            this.dG_Education_Formations.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dG_Education_Formations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dG_Education_Formations.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(199)))), ((int)(((byte)(234)))));
-            this.dG_Education_Formations.Location = new System.Drawing.Point(6, 44);
-            this.dG_Education_Formations.Name = "dG_Education_Formations";
-            this.dG_Education_Formations.ReadOnly = true;
-            this.dG_Education_Formations.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dG_Education_Formations.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(26)))), ((int)(((byte)(56)))));
-            this.dG_Education_Formations.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(199)))), ((int)(((byte)(238)))));
-            this.dG_Education_Formations.RowTemplate.Height = 26;
-            this.dG_Education_Formations.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dG_Education_Formations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dG_Education_Formations.Size = new System.Drawing.Size(1040, 278);
-            this.dG_Education_Formations.TabIndex = 9;
-            this.dG_Education_Formations.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dG_Education_Formations_MouseClick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(101)))));
-            this.label1.Location = new System.Drawing.Point(13, 356);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(466, 24);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Liste des agents de la Education_Formations";
-            // 
-            // dG_Agents
-            // 
-            this.dG_Agents.AllowUserToAddRows = false;
-            this.dG_Agents.AllowUserToDeleteRows = false;
-            this.dG_Agents.AllowUserToResizeColumns = false;
-            this.dG_Agents.BackgroundColor = System.Drawing.Color.DarkGray;
-            this.dG_Agents.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dG_Agents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dG_Agents.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(199)))), ((int)(((byte)(234)))));
-            this.dG_Agents.Location = new System.Drawing.Point(6, 383);
-            this.dG_Agents.Name = "dG_Agents";
-            this.dG_Agents.ReadOnly = true;
-            this.dG_Agents.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dG_Agents.Size = new System.Drawing.Size(1040, 251);
-            this.dG_Agents.TabIndex = 15;
-            this.dG_Agents.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dG_Agents_CellContentDoubleClick);
-            this.dG_Agents.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dG_Agents_MouseClick);
+            this.lblNbrRowsFormations.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblNbrRowsFormations.AutoSize = true;
+            this.lblNbrRowsFormations.Enabled = false;
+            this.lblNbrRowsFormations.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.lblNbrRowsFormations.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            this.lblNbrRowsFormations.Location = new System.Drawing.Point(17, 511);
+            this.lblNbrRowsFormations.Name = "lblNbrRowsFormations";
+            this.lblNbrRowsFormations.Size = new System.Drawing.Size(42, 16);
+            this.lblNbrRowsFormations.TabIndex = 29;
+            this.lblNbrRowsFormations.Text = "label1";
             // 
             // btn_Next
             // 
+            this.btn_Next.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_Next.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.btn_Next.Location = new System.Drawing.Point(634, 328);
+            this.btn_Next.Location = new System.Drawing.Point(509, 517);
             this.btn_Next.Name = "btn_Next";
             this.btn_Next.Size = new System.Drawing.Size(75, 23);
-            this.btn_Next.TabIndex = 14;
+            this.btn_Next.TabIndex = 28;
             this.btn_Next.Text = "Suivant";
             this.btn_Next.UseVisualStyleBackColor = true;
-            this.btn_Next.Click += new System.EventHandler(this.btn_Next_Click);
+            this.btn_Next.Click += new System.EventHandler(this.btn_NextAgent_Click);
             // 
             // btn_Previous
             // 
+            this.btn_Previous.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_Previous.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.btn_Previous.Location = new System.Drawing.Point(553, 328);
+            this.btn_Previous.Location = new System.Drawing.Point(349, 517);
             this.btn_Previous.Name = "btn_Previous";
             this.btn_Previous.Size = new System.Drawing.Size(75, 23);
-            this.btn_Previous.TabIndex = 13;
+            this.btn_Previous.TabIndex = 27;
             this.btn_Previous.Text = "Précédent";
             this.btn_Previous.UseVisualStyleBackColor = true;
-            this.btn_Previous.Click += new System.EventHandler(this.btn_Previous_Click);
+            this.btn_Previous.Click += new System.EventHandler(this.btn_PreviousAgent_Click);
             // 
-            // cb_FiltreDgEducation_Formations
+            // tbNbrRows
             // 
-            this.cb_FiltreDgEducation_Formations.FormattingEnabled = true;
-            this.cb_FiltreDgEducation_Formations.Location = new System.Drawing.Point(17, 328);
-            this.cb_FiltreDgEducation_Formations.Name = "cb_FiltreDgEducation_Formations";
-            this.cb_FiltreDgEducation_Formations.Size = new System.Drawing.Size(250, 22);
-            this.cb_FiltreDgEducation_Formations.TabIndex = 12;
-            this.cb_FiltreDgEducation_Formations.Text = "Colonne à filtrer";
+            this.tbNbrRows.Location = new System.Drawing.Point(902, 16);
+            this.tbNbrRows.Name = "tbNbrRows";
+            this.tbNbrRows.Size = new System.Drawing.Size(36, 20);
+            this.tbNbrRows.TabIndex = 23;
+            this.tbNbrRows.Text = "50";
+            this.tbNbrRows.TextChanged += new System.EventHandler(this.tbNbrRows_TextChanged);
+            this.tbNbrRows.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbNbrRows_KeyDown);
             // 
-            // openFileOrFolderDialog1
+            // lblNbrRows
             // 
-            this.openFileOrFolderDialog1.AcceptFiles = true;
-            this.openFileOrFolderDialog1.FileNameLabel = null;
-            this.openFileOrFolderDialog1.Path = null;
-            this.openFileOrFolderDialog1.ShowReadOnly = false;
-            this.openFileOrFolderDialog1.Title = null;
+            this.lblNbrRows.AutoSize = true;
+            this.lblNbrRows.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.lblNbrRows.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(101)))));
+            this.lblNbrRows.Location = new System.Drawing.Point(735, 17);
+            this.lblNbrRows.Name = "lblNbrRows";
+            this.lblNbrRows.Size = new System.Drawing.Size(169, 16);
+            this.lblNbrRows.TabIndex = 22;
+            this.lblNbrRows.Text = "Nombre de lignes à afficher:";
             // 
-            // openFileDialog1
+            // picExportExcel
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
+            this.picExportExcel.Image = global::Module_Education.Properties.Resources.Excel_icon;
+            this.picExportExcel.Location = new System.Drawing.Point(993, 6);
+            this.picExportExcel.Name = "picExportExcel";
+            this.picExportExcel.Size = new System.Drawing.Size(32, 32);
+            this.picExportExcel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picExportExcel.TabIndex = 20;
+            this.picExportExcel.TabStop = false;
+            this.picExportExcel.Click += new System.EventHandler(this.picExportExcel_Click);
             // 
-            // openFileDialog2
+            // lblTiteLstFormation
             // 
-            this.openFileDialog2.FileName = "openFileDialog2";
+            this.lblTiteLstFormation.AutoSize = true;
+            this.lblTiteLstFormation.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTiteLstFormation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(101)))));
+            this.lblTiteLstFormation.Location = new System.Drawing.Point(9, 11);
+            this.lblTiteLstFormation.Name = "lblTiteLstFormation";
+            this.lblTiteLstFormation.Size = new System.Drawing.Size(217, 24);
+            this.lblTiteLstFormation.TabIndex = 12;
+            this.lblTiteLstFormation.Text = "Liste des formations";
+            this.lblTiteLstFormation.Click += new System.EventHandler(this.label10_Click);
             // 
-            // toolTipListProvider
+            // AdvDg_Formations
             // 
-            this.toolTipListProvider.AutoPopDelay = 5000;
-            this.toolTipListProvider.InitialDelay = 250;
-            this.toolTipListProvider.IsBalloon = true;
-            this.toolTipListProvider.ReshowDelay = 100;
+            this.AdvDg_Formations.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AdvDg_Formations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.AdvDg_Formations.FilterAndSortEnabled = true;
+            this.AdvDg_Formations.Location = new System.Drawing.Point(13, 48);
+            this.AdvDg_Formations.Name = "AdvDg_Formations";
+            this.AdvDg_Formations.Size = new System.Drawing.Size(1012, 459);
+            this.AdvDg_Formations.TabIndex = 0;
+            this.AdvDg_Formations.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.AdvDg_Formations_FilterStringChanged);
+            this.AdvDg_Formations.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.AdvDg_Formations_HelpRequested);
+            this.AdvDg_Formations.MouseClick += new System.Windows.Forms.MouseEventHandler(this.AdvDg_Formations_MouseClick);
             // 
-            // toolTipAddProvider
+            // tabControl_Education_Formations
             // 
-            this.toolTipAddProvider.AutoPopDelay = 5000;
-            this.toolTipAddProvider.InitialDelay = 250;
-            this.toolTipAddProvider.IsBalloon = true;
-            this.toolTipAddProvider.ReshowDelay = 100;
+            this.tabControl_Education_Formations.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.tabControl_Education_Formations.Controls.Add(this.tabPage1);
+            this.tabControl_Education_Formations.Controls.Add(this.tabPageEducation_FormationFiche);
+            this.tabControl_Education_Formations.Controls.Add(this.tabPage2_Matrices);
+            this.tabControl_Education_Formations.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.tabControl_Education_Formations.Location = new System.Drawing.Point(3, 3);
+            this.tabControl_Education_Formations.Name = "tabControl_Education_Formations";
+            this.tabControl_Education_Formations.SelectedIndex = 0;
+            this.tabControl_Education_Formations.Size = new System.Drawing.Size(1067, 570);
+            this.tabControl_Education_Formations.TabIndex = 0;
             // 
             // UCEducation_Formation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.tabControl_Education_Formations);
             this.DoubleBuffered = true;
             this.Name = "UCEducation_Formation";
-            this.Size = new System.Drawing.Size(1067, 600);
+            this.Size = new System.Drawing.Size(1067, 573);
             this.toolTipAddProvider.SetToolTip(this, "\r\n");
             this.Load += new System.EventHandler(this.UC_Education_Formation_Load);
             this.MouseHover += new System.EventHandler(this.UCEducation_Formation_MouseHover);
-            this.tabControl_Education_Formations.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picExportExcel)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AdvDg_Formations)).EndInit();
+            this.tabPage2_Matrices.ResumeLayout(false);
+            this.tabPage2_Matrices.PerformLayout();
             this.tabPageEducation_FormationFiche.ResumeLayout(false);
             this.tabPageEducation_FormationFiche.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAddProvider)).EndInit();
@@ -922,58 +1180,45 @@
             ((System.ComponentModel.ISupportInitialize)(this.advDv_AgentsOfFormation)).EndInit();
             this.tabPageCertificationsAgent.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.tabPage2_Matrices.ResumeLayout(false);
-            this.tabPage2_Matrices.PerformLayout();
-            this.tabPage1_Education_Formation.ResumeLayout(false);
-            this.tabPage1_Education_Formation.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dG_Education_Formations)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dG_Agents)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picExportExcel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AdvDg_Formations)).EndInit();
+            this.tabControl_Education_Formations.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TabControl tabControl_Education_Formations;
-        private System.Windows.Forms.TabPage tabPage1_Education_Formation;
-        private System.Windows.Forms.Label labelEducation_Formation;
-        private System.Windows.Forms.TextBox tbFiltre;
-        private System.Windows.Forms.DataGridView dG_Education_Formations;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dG_Agents;
-        private System.Windows.Forms.Button btn_Next;
-        private System.Windows.Forms.Button btn_Previous;
-        private System.Windows.Forms.ComboBox cb_FiltreDgEducation_Formations;
+        private WindowsFormsApplication1.OpenFileOrFolderDialog openFileOrFolderDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog2;
+        private System.Windows.Forms.ToolTip toolTipListProvider;
+        private System.Windows.Forms.ToolTip toolTipAddProvider;
+        private WindowsFormsApplication1.OpenFileOrFolderDialog openFileOrFolderDialog2;
+        private WindowsFormsApplication1.OpenFileOrFolderDialog openFileOrFolderDialog3;
+        private WindowsFormsApplication1.OpenFileOrFolderDialog openFileOrFolderDialog4;
         private System.Windows.Forms.TabPage tabPage2_Matrices;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.TabPage tabPageEducation_FormationFiche;
+        private System.Windows.Forms.Label lblShowHidePanelDossierPed;
+        private System.Windows.Forms.Panel panelDossierPedagogique;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox tbVendor;
+        private System.Windows.Forms.TextBox txtYearOfCreation;
         private System.Windows.Forms.TextBox tbLongTitle;
-        private System.Windows.Forms.TabControl tabControl_Education_FormationAndCertificationsOfUser;
-        private System.Windows.Forms.TabPage tabPageEducation_FormationsAgent;
-        private System.Windows.Forms.TabPage tabPageCertificationsAgent;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox tbShortTitleEducation_Formation;
         private System.Windows.Forms.TextBox textBoxPrice;
-        private System.Windows.Forms.ComboBox comboBoxProvider;
-        private System.Windows.Forms.ComboBox comboBoxMinCapacity;
-        private System.Windows.Forms.ComboBox comboBoxMaxCapacity;
-        private System.Windows.Forms.ComboBox comboBoxCompetence;
-        private System.Windows.Forms.CheckBox checkBoxIsInterne;
-        private System.Windows.Forms.CheckBox checkBox_AnnualOrder;
-        private System.Windows.Forms.Label labelRemarks;
         private System.Windows.Forms.RichTextBox richTextBoxRemarks;
-        private System.Windows.Forms.Label labelActifEducation_Formation;
-        private System.Windows.Forms.Label labelSAPEducation_Formation;
-        private System.Windows.Forms.CheckBox checkBoxIsExterne;
-        private System.Windows.Forms.ComboBox comboBoxDurationhours;
-        private System.Windows.Forms.ComboBox comboBoxDurationInDays;
-        private System.Windows.Forms.ComboBox comboBoxCapaciteOptimale;
-        private System.Windows.Forms.ComboBox comboBoxUnite;
-        private System.Windows.Forms.ComboBox comboBoxResultatYear;
-        private System.Windows.Forms.ComboBox comboBoxResultatByYear;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label labelDurationInDays;
+        private System.Windows.Forms.Label lblVendor;
+        private System.Windows.Forms.PictureBox picAddProvider;
+        private System.Windows.Forms.CheckedListBox cbListProvider;
+        private System.Windows.Forms.Label labelCapOpt;
+        private System.Windows.Forms.Label lblYearOfCreation;
+        private System.Windows.Forms.Label labelComptence;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -981,27 +1226,60 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label labelProvider;
-        private System.Windows.Forms.Label labelComptence;
-        private System.Windows.Forms.Label lblYearOfCreation;
-        private System.Windows.Forms.TextBox txtYearOfCreation;
-        private System.Windows.Forms.TabPage tabPage1;
-        private Zuby.ADGV.AdvancedDataGridView AdvDg_Formations;
-        private System.Windows.Forms.Label lblTiteLstFormation;
-        private System.Windows.Forms.Label labelCapOpt;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelDurationInDays;
+        private System.Windows.Forms.ComboBox comboBoxResultatYear;
+        private System.Windows.Forms.ComboBox comboBoxResultatByYear;
+        private System.Windows.Forms.ComboBox comboBoxUnite;
+        private System.Windows.Forms.ComboBox comboBoxCapaciteOptimale;
+        private System.Windows.Forms.ComboBox comboBoxDurationhours;
+        private System.Windows.Forms.CheckBox checkBoxIsExterne;
+        private System.Windows.Forms.TabControl tabControl_Education_FormationAndCertificationsOfUser;
+        private System.Windows.Forms.TabPage tabPageEducation_FormationsAgent;
         private Zuby.ADGV.AdvancedDataGridView advDv_AgentsOfFormation;
-        private System.Windows.Forms.CheckedListBox cbListProvider;
-        private System.Windows.Forms.PictureBox picAddProvider;
-        private System.Windows.Forms.Button btnBrowseDoc;
-        private WindowsFormsApplication1.OpenFileOrFolderDialog openFileOrFolderDialog1;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
-        private System.Windows.Forms.OpenFileDialog openFileDialog2;
+        private System.Windows.Forms.TabPage tabPageCertificationsAgent;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.ToolTip toolTipListProvider;
-        private System.Windows.Forms.ToolTip toolTipAddProvider;
-        private System.Windows.Forms.TextBox tbVendor;
-        private System.Windows.Forms.Label lblVendor;
-        private System.Windows.Forms.PictureBox picExportExcel;
+        private System.Windows.Forms.ComboBox comboBoxDurationInDays;
+        private System.Windows.Forms.ComboBox comboBoxProvider;
+        private System.Windows.Forms.ComboBox comboBoxMinCapacity;
+        private System.Windows.Forms.ComboBox comboBoxMaxCapacity;
+        private System.Windows.Forms.ComboBox comboBoxCompetence;
+        private System.Windows.Forms.CheckBox checkBoxIsInterne;
+        private System.Windows.Forms.CheckBox checkBox_AnnualOrder;
+        private System.Windows.Forms.Label labelRemarks;
+        private System.Windows.Forms.Label labelActifEducation_Formation;
+        private System.Windows.Forms.Label labelSAPEducation_Formation;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblMax;
+        private System.Windows.Forms.Label lblMin;
+        private System.Windows.Forms.Label lblNbrRowsFormations;
+        private System.Windows.Forms.Button btn_Next;
+        private System.Windows.Forms.Button btn_Previous;
         private System.Windows.Forms.TextBox tbNbrRows;
         private System.Windows.Forms.Label lblNbrRows;
+        private System.Windows.Forms.PictureBox picExportExcel;
+        private System.Windows.Forms.Label lblTiteLstFormation;
+        private Zuby.ADGV.AdvancedDataGridView AdvDg_Formations;
+        private System.Windows.Forms.TabControl tabControl_Education_Formations;
+        private System.Windows.Forms.Label labelInfofiche;
+        private System.Windows.Forms.TextBox tbScenario;
+        private System.Windows.Forms.TextBox tbInfoFiche;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.Button btnBrowseDoc;
+        private System.Windows.Forms.CheckBox dbDossierOk;
+        private System.Windows.Forms.ComboBox cbInfoFiche;
+        private System.Windows.Forms.Label lblPrioritéInfoFiche;
+        private System.Windows.Forms.Label lblTypeDssier;
+        private System.Windows.Forms.ComboBox cbTypeDossier;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox tbTest;
+        public System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox tbSyllabus;
+        public System.Windows.Forms.Button btnSyllabus;
+        public System.Windows.Forms.Button btnScenario;
     }
 }

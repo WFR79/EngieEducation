@@ -25,12 +25,15 @@ namespace Module_Education
         private TextBox textBox1;
         public static List<Education_Formation> globalListEducation_Formations;
         public static List<Education_Agent> globalListAgents;
+        public static List<Education_Provider> globalListProviders;
+
         private Button bouttonMenuPressed;
         private Thread thread2 = null;
         bool IsMenuShown = true;
 
         #region size Management
         private FormWindowState prevState;
+        private long AgentIdSeleted;
         private Size panel1Size;
         private Size panelMainSize;
         private Size flowPanelMenuSize;
@@ -38,15 +41,19 @@ namespace Module_Education
 
         #region UCEducation_Formation
         public delegate void controlcall(object sender, EventArgs e);
-        public delegate void functioncall(long message);
-        public delegate void refreshForm();
+        public delegate void menuAgentClick(string formationSAPNum);
 
+        public delegate void functioncall(long message);
+        public delegate void refreshFicheAgent(long UserId);
+
+
+        private event menuAgentClick ReceiverClickButtonFormation;
 
         private event controlcall ReceiverClickButton;
-        private event refreshForm ReceiverRefreshListeAgent;
+        private event refreshFicheAgent ReceiverRefreshListeAgent;
         private event functioncall ReceiverFromFicheFormation;
 
-        public int UserIDSelected;
+        public long UserIDSelected;
         #endregion
 
         public MainWindow()
@@ -55,7 +62,7 @@ namespace Module_Education
             //panelMain.Controls.Add(UC_Agent.Instance);
             
             InitializeComponent();
-            this.Size = new Size(1286, 639);
+            this.Size = new Size(1486, 839);
 
             prevState = this.WindowState;
             panel1Size = panel1.Size;
@@ -152,26 +159,6 @@ namespace Module_Education
         }
 
         #region Adding UC to MainPAnel
-        private void MenuAgenClick(object sender, EventArgs e)
-        {
-            Control button = ((Control)sender);
-
-            //Add module1 to panel control
-            if (!panelMain.Controls.Contains(UC_Agent.Instance))
-            {
-                panelMain.Controls.Add(UC_Agent.Instance);
-                UC_Agent.Instance.Dock = DockStyle.Fill;
-                UC_Agent.Instance.BringToFront();
-                UC_Agent.UserIDSelected = UserIDSelected;
-            }
-            else
-            {
-                UC_Agent.Instance.BringToFront();
-            }
-            button.BackColor = Color.FromArgb(67, 100, 214);
-            bouttonMenuPressed = (Button)button;
-            UnselectButtons();
-        }
 
         private void tableLayoutPanel1_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
         {
@@ -180,7 +167,7 @@ namespace Module_Education
 
         public void MenuBtnEducation_Formation_Click(object sender, EventArgs e)
         {
-            Control button = ((Control)sender);
+            Button button = ((Button)sender);
             //Add module1 to panel control
             //flowPanelMenu.Hide();
             if (!panelMain.Controls.Contains(UCEducation_Formation.Instance))
@@ -192,11 +179,14 @@ namespace Module_Education
                 ReceiverClickButton += new controlcall(clickButtonAgentMenu);
                 UCEducation_Formation.Instance.MainWindowPointerMenuBtnAgent = ReceiverClickButton;
 
+                ReceiverClickButtonFormation += new menuAgentClick(clickButtonFormationMenu);
+                UC_Agent.Instance.PointerButtonMenuFormation = ReceiverClickButtonFormation;
+
                 ReceiverFromFicheFormation += new functioncall(AgentSelectedInFormationCard);
                 UCEducation_Formation.Instance.PointerFormation = ReceiverFromFicheFormation;
 
-                ReceiverRefreshListeAgent += new refreshForm(refreshFormAgent);
-                UCEducation_Formation.Instance.PointerUCAgent_Refresh = ReceiverRefreshListeAgent;
+                ReceiverRefreshListeAgent += new refreshFicheAgent(refreshFormAgent);
+                UCEducation_Formation.Instance.PointerRefreshFicheAgent = ReceiverRefreshListeAgent;
 
             }
             else
@@ -206,9 +196,76 @@ namespace Module_Education
             }
 
             button.BackColor = Color.FromArgb(67, 100, 214);
+            button.FlatStyle = FlatStyle.Flat;
+            button.FlatAppearance.BorderColor = Color.White;
+            button.FlatAppearance.BorderSize = 1;
             bouttonMenuPressed = (Button)button;
             UnselectButtons();
             // Add the control to the panel  
+        }
+
+        private void MenuAgenClick(object sender, EventArgs e)
+        {
+            Button button = ((Button)sender);
+
+            //Add module1 to panel control
+            if (!panelMain.Controls.Contains(UC_Agent.Instance))
+            {
+                panelMain.Controls.Add(UC_Agent.Instance);
+                UC_Agent.Instance.Dock = DockStyle.Fill;
+                UC_Agent.Instance.BringToFront();
+                UC_Agent.UserIDSelected = UserIDSelected;
+
+                ReceiverClickButtonFormation += new menuAgentClick(clickButtonFormationMenu);
+                UC_Agent.Instance.PointerButtonMenuFormation = ReceiverClickButtonFormation;
+
+                ReceiverRefreshListeAgent += new refreshFicheAgent(refreshFormAgent);
+                UCEducation_Formation.Instance.PointerUCAgent_Refresh = ReceiverRefreshListeAgent;
+
+
+            }
+            else
+            {
+                UC_Agent.Instance.BringToFront();
+            }
+            button.BackColor = Color.FromArgb(67, 100, 214);
+            button.FlatStyle = FlatStyle.Flat;
+            button.FlatAppearance.BorderColor = Color.White;
+            button.FlatAppearance.BorderSize = 1;
+            bouttonMenuPressed = (Button)button;
+            UnselectButtons();
+        }
+
+        private void btnMenu_Provider_Click(object sender, EventArgs e)
+        {
+            Button button = ((Button)sender);
+
+            //Add module1 to panel control
+            if (!panelMain.Controls.Contains(UC_Agent.Instance))
+            {
+                panelMain.Controls.Add(UC_Agent.Instance);
+                UC_Agent.Instance.Dock = DockStyle.Fill;
+                UC_Agent.Instance.BringToFront();
+                UC_Agent.UserIDSelected = UserIDSelected;
+
+                ReceiverClickButtonFormation += new menuAgentClick(clickButtonFormationMenu);
+                UC_Agent.Instance.PointerButtonMenuFormation = ReceiverClickButtonFormation;
+
+                ReceiverRefreshListeAgent += new refreshFicheAgent(refreshFormAgent);
+                UCEducation_Formation.Instance.PointerUCAgent_Refresh = ReceiverRefreshListeAgent;
+
+
+            }
+            else
+            {
+                UC_Agent.Instance.BringToFront();
+            }
+            button.BackColor = Color.FromArgb(67, 100, 214);
+            button.FlatStyle = FlatStyle.Flat;
+            button.FlatAppearance.BorderColor = Color.White;
+            button.FlatAppearance.BorderSize = 1;
+            bouttonMenuPressed = (Button)button;
+            UnselectButtons();
         }
 
         private void MenuBtnAuthentification_Click(object sender, EventArgs e)
@@ -228,23 +285,41 @@ namespace Module_Education
         /// </summary>
         private void UnselectButtons()
         {
-            foreach (Control ctrl in this.flowPanelMenu.Controls)
+            foreach (Button btn in this.flowPanelMenu.Controls)
             {
-                if (ctrl.Name != bouttonMenuPressed.Name)
-                    ctrl.BackColor = Color.FromArgb(24, 26, 56);
+                if (btn.Name != bouttonMenuPressed.Name)
+                {
+                    btn.BackColor = Color.FromArgb(0, 115, 204);
+                    btn.FlatAppearance.BorderSize = 0;
+
+                }
             }
         }
 
 
-        private void refreshFormAgent()
+        private void refreshFormAgent(long UserId)
         {
-            MessageBox.Show("REFRESH");
+            UserIDSelected = UserId;
+            MenuBtnAgent.PerformClick();
+
+            UC_Agent.Instance.UserRecord_LoadUser(UserId);
+
+            //MessageBox.Show("REFRESH");
         }
 
         private void clickButtonAgentMenu(object sender, EventArgs e)
         {
             MenuBtnAgent.PerformClick();
         }
+
+        private void clickButtonFormationMenu(string formationSAPNum)
+        {
+            UCEducation_Formation.FormationIDSelected = formationSAPNum;
+            MenuBtnEducation_Formation.PerformClick();
+            UCEducation_Formation.Instance.LoadFicheEducation_Formation(formationSAPNum);
+
+        }
+
 
         private void AgentSelectedInFormationCard(long matricule)
         {
@@ -293,6 +368,7 @@ namespace Module_Education
 
             AgentDataAccess db = new AgentDataAccess();
             globalListAgents = db.LoadAllAgents();
+            
 
         }
 
@@ -328,5 +404,7 @@ namespace Module_Education
         private void lblHelloUsername_Click(object sender, EventArgs e)
         {
         }
+
+       
     }
 }

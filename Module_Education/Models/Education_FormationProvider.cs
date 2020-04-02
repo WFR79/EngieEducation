@@ -19,6 +19,14 @@ namespace Module_Education.Models
         public Nullable<long> FormationProvider_Formation { get; set; }
         public Nullable<bool> FormationProvider_IsActual { get; set; }
         public Nullable<long> FormationProvider_Vendor { get; set; }
+        public string FormationProvider_ContactName { get; set; }
+        public string FormationProvider_ContactTel { get; set; }
+        public string FormationProvider_Contact_Email { get; set; }
+        public string FormationProvider_Country { get; set; }
+        public string FormationProvider_Former { get; set; }
+        public string FormationProvider_Materiel { get; set; }
+        public string FormationProvider_AccessFormer { get; set; }
+        public string FormationProvider_CodePO { get; set; }
     
         public virtual Education_Formation Education_Formation { get; set; }
         public virtual Education_Provider Education_Provider { get; set; }

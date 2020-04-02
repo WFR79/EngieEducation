@@ -54,6 +54,8 @@ namespace Module_Education.Classes
         [DisplayName("Interne")]
         public Boolean? Formation_IsInterne { get; set; }
 
+        [DisplayName("Info Fiche")]
+        public string FormationDossier { get; set; }
         //[DisplayName("Responsable")]
         //public string Column_ShortTitle { get; set; }
 

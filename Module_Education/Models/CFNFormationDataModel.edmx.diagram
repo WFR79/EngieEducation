@@ -85,6 +85,7 @@
         <AssociationConnector Association="SYNAPSEModel.FK_Education_Formation_Education_UnitePrice" />
         <EntityTypeShape EntityType="SYNAPSEModel.Education_FormationCategory" Width="1.5" PointX="3.375" PointY="3.875" />
         <AssociationConnector Association="SYNAPSEModel.FK_Education_Formation_Category" />
+        <AssociationConnector Association="SYNAPSEModel.FK_FormationDossier_Formation" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

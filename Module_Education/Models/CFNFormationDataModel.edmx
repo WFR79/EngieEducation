@@ -165,6 +165,14 @@
           <Property Name="FormationProvider_Formation" Type="bigint" />
           <Property Name="FormationProvider_IsActual" Type="bit" />
           <Property Name="FormationProvider_Vendor" Type="bigint" />
+          <Property Name="FormationProvider_ContactName" Type="nvarchar(max)" />
+          <Property Name="FormationProvider_ContactTel" Type="nvarchar(max)" />
+          <Property Name="FormationProvider_Contact_Email" Type="nvarchar(max)" />
+          <Property Name="FormationProvider_Country" Type="nvarchar(max)" />
+          <Property Name="FormationProvider_Former" Type="nvarchar" MaxLength="50" />
+          <Property Name="FormationProvider_Materiel" Type="nvarchar(max)" />
+          <Property Name="FormationProvider_AccessFormer" Type="nvarchar(max)" />
+          <Property Name="FormationProvider_CodePO" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Education_FormationResultat">
           <Key>
@@ -499,6 +507,18 @@
             </Principal>
             <Dependent Role="Education_Formation">
               <PropertyRef Name="Formation_Competence" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormationDossier_Formation">
+          <End Role="Education_Formation" Type="Self.Education_Formation" Multiplicity="0..1" />
+          <End Role="Education_FormationDossier" Type="Self.Education_FormationDossier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_Formation">
+              <PropertyRef Name="Formation_Id" />
+            </Principal>
+            <Dependent Role="Education_FormationDossier">
+              <PropertyRef Name="FormationDossier_Formation" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -957,6 +977,10 @@
             <End Role="Education_Competence" EntitySet="Education_Competence" />
             <End Role="Education_Formation" EntitySet="Education_Formation" />
           </AssociationSet>
+          <AssociationSet Name="FK_FormationDossier_Formation" Association="Self.FK_FormationDossier_Formation">
+            <End Role="Education_Formation" EntitySet="Education_Formation" />
+            <End Role="Education_FormationDossier" EntitySet="Education_FormationDossier" />
+          </AssociationSet>
           <AssociationSet Name="FK_FormationDossier_FormationDossierType" Association="Self.FK_FormationDossier_FormationDossierType">
             <End Role="Education_FormationDossierType" EntitySet="Education_FormationDossierType" />
             <End Role="Education_FormationDossier" EntitySet="Education_FormationDossier" />
@@ -1293,6 +1317,10 @@
             <End Role="Education_FormationCategory" EntitySet="Education_FormationCategory" />
             <End Role="Education_Formation" EntitySet="Education_Formation" />
           </AssociationSet>
+          <AssociationSet Name="FK_FormationDossier_Formation" Association="SYNAPSEModel.FK_FormationDossier_Formation">
+            <End Role="Education_Formation" EntitySet="Education_Formation" />
+            <End Role="Education_FormationDossier" EntitySet="Education_FormationDossier" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Education_Agent">
           <Key>
@@ -1445,6 +1473,7 @@
           <NavigationProperty Name="Education_UnitePrice" Relationship="SYNAPSEModel.FK_Education_Formation_Education_UnitePrice" FromRole="Education_Formation" ToRole="Education_UnitePrice" />
           <Property Name="Formation_Category" Type="Int64" />
           <NavigationProperty Name="Education_FormationCategory" Relationship="SYNAPSEModel.FK_Education_Formation_Category" FromRole="Education_Formation" ToRole="Education_FormationCategory" />
+          <NavigationProperty Name="Education_FormationDossier" Relationship="SYNAPSEModel.FK_FormationDossier_Formation" FromRole="Education_Formation" ToRole="Education_FormationDossier" />
         </EntityType>
         <EntityType Name="Education_FormationDossier">
           <Key>
@@ -1465,6 +1494,7 @@
           <Property Name="FormationDossier_InOrder" Type="Boolean" />
           <Property Name="FormationDossier_Scenario" Type="Boolean" />
           <NavigationProperty Name="Education_FormationDossierType" Relationship="SYNAPSEModel.FK_FormationDossier_FormationDossierType" FromRole="Education_FormationDossier" ToRole="Education_FormationDossierType" />
+          <NavigationProperty Name="Education_Formation" Relationship="SYNAPSEModel.FK_FormationDossier_Formation" FromRole="Education_FormationDossier" ToRole="Education_Formation" />
         </EntityType>
         <EntityType Name="Education_FormationDossierType">
           <Key>
@@ -1486,6 +1516,14 @@
           <NavigationProperty Name="Education_Provider" Relationship="SYNAPSEModel.FK_FormationProvider_Provider" FromRole="Education_FormationProvider" ToRole="Education_Provider" />
           <Property Name="FormationProvider_IsActual" Type="Boolean" />
           <Property Name="FormationProvider_Vendor" Type="Int64" />
+          <Property Name="FormationProvider_ContactName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FormationProvider_ContactTel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FormationProvider_Contact_Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FormationProvider_Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FormationProvider_Former" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FormationProvider_Materiel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FormationProvider_AccessFormer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FormationProvider_CodePO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Education_FormationResultat">
           <Key>
@@ -2247,6 +2285,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_FormationDossier_Formation">
+          <End Type="SYNAPSEModel.Education_Formation" Role="Education_Formation" Multiplicity="0..1" />
+          <End Type="SYNAPSEModel.Education_FormationDossier" Role="Education_FormationDossier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_Formation">
+              <PropertyRef Name="Formation_Id" />
+            </Principal>
+            <Dependent Role="Education_FormationDossier">
+              <PropertyRef Name="FormationDossier_Formation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2412,6 +2462,14 @@
           <EntitySetMapping Name="Education_FormationProvider">
             <EntityTypeMapping TypeName="SYNAPSEModel.Education_FormationProvider">
               <MappingFragment StoreEntitySet="Education_FormationProvider">
+                <ScalarProperty Name="FormationProvider_CodePO" ColumnName="FormationProvider_CodePO" />
+                <ScalarProperty Name="FormationProvider_AccessFormer" ColumnName="FormationProvider_AccessFormer" />
+                <ScalarProperty Name="FormationProvider_Materiel" ColumnName="FormationProvider_Materiel" />
+                <ScalarProperty Name="FormationProvider_Former" ColumnName="FormationProvider_Former" />
+                <ScalarProperty Name="FormationProvider_Country" ColumnName="FormationProvider_Country" />
+                <ScalarProperty Name="FormationProvider_Contact_Email" ColumnName="FormationProvider_Contact_Email" />
+                <ScalarProperty Name="FormationProvider_ContactTel" ColumnName="FormationProvider_ContactTel" />
+                <ScalarProperty Name="FormationProvider_ContactName" ColumnName="FormationProvider_ContactName" />
                 <ScalarProperty Name="FormationProvider_Vendor" ColumnName="FormationProvider_Vendor" />
                 <ScalarProperty Name="FormationProvider_IsActual" ColumnName="FormationProvider_IsActual" />
                 <ScalarProperty Name="FormationProvider_Formation" ColumnName="FormationProvider_Formation" />

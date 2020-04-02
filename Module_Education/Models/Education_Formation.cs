@@ -23,6 +23,7 @@ namespace Module_Education.Models
             this.Education_FormationResultat = new HashSet<Education_FormationResultat>();
             this.Education_FormationSession = new HashSet<Education_FormationSession>();
             this.Education_Matrice_Formation = new HashSet<Education_Matrice_Formation>();
+            this.Education_FormationDossier = new HashSet<Education_FormationDossier>();
         }
     
         public long Formation_Id { get; set; }
@@ -60,5 +61,7 @@ namespace Module_Education.Models
         public virtual ICollection<Education_Matrice_Formation> Education_Matrice_Formation { get; set; }
         public virtual Education_UnitePrice Education_UnitePrice { get; set; }
         public virtual Education_FormationCategory Education_FormationCategory { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Education_FormationDossier> Education_FormationDossier { get; set; }
     }
 }

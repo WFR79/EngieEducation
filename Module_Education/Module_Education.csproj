@@ -86,14 +86,26 @@
     </Compile>
     <Compile Include="Classes\ColumnHeaderCell.cs" />
     <Compile Include="Classes\ExportToExcel.cs" />
+    <Compile Include="Classes\Extensions\AutoClosingMessageBox.cs" />
+    <Compile Include="Classes\FileExtensions.cs" />
     <Compile Include="Classes\MenuStrip.cs" />
     <Compile Include="Classes\MenuStrip.Designer.cs">
       <DependentUpon>MenuStrip.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\MyColumnCollectionDGAgent.cs" />
     <Compile Include="Classes\MyColumnCollectionDGFormation.cs" />
+    <Compile Include="Classes\MyColumnCollectionDGProvider.cs" />
     <Compile Include="Classes\ProgressReport.cs" />
+    <Compile Include="Classes\TextBoxExtensions.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Classes\TreeNodeItemSelector.cs" />
+    <Compile Include="Forms\FrmAgent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmAgent.Designer.cs">
+      <DependentUpon>FrmAgent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\UserControls\UC_Provider.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -105,6 +117,8 @@
     <Compile Include="Repositories\EquipeDataAccess.cs" />
     <Compile Include="Repositories\FormationCategoryDataAccess.cs" />
     <Compile Include="Repositories\FormationDataAccess.cs" />
+    <Compile Include="Repositories\FormationDossierRepository.cs" />
+    <Compile Include="Repositories\FormationDossierTypeRepository.cs" />
     <Compile Include="Repositories\FormationProviderRepository.cs" />
     <Compile Include="Repositories\FormationResultatDataAccess.cs" />
     <Compile Include="Repositories\FormationSessionDataAccess.cs" />
@@ -151,12 +165,6 @@
     </Compile>
     <Compile Include="Forms\UserControls\UC_Authentification.Designer.cs">
       <DependentUpon>UC_Authentification.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\UserControls\Uc_Filtering.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Forms\UserControls\Uc_Filtering.Designer.cs">
-      <DependentUpon>Uc_Filtering.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\UserControls\UC_Formation.cs">
       <SubType>UserControl</SubType>
@@ -300,6 +308,9 @@
     <EmbeddedResource Include="Forms\FormCustomFilter.resx">
       <DependentUpon>FormCustomFilter.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmAgent.resx">
+      <DependentUpon>FrmAgent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -314,9 +325,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserControls\UC_Authentification.resx">
       <DependentUpon>UC_Authentification.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UserControls\Uc_Filtering.resx">
-      <DependentUpon>Uc_Filtering.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserControls\UC_Formation.resx">
       <DependentUpon>UC_Formation.cs</DependentUpon>
@@ -370,7 +378,7 @@
       <LastGenOutput>CFNFormationDataModel.cs</LastGenOutput>
     </Content>
     <Content Include="Resources\1x\baseline_reorder_black_18dp.png" />
-    <Content Include="Resources\engieICO.ico" />
+    <Content Include="Resources\Images\engieICO.ico" />
     <None Include="Resources\Images\add-512.png" />
     <Content Include="Resources\Images\AdvancedDataGridView_logo.png" />
     <Content Include="Resources\Images\ColumnHeader_Filtered.png" />
@@ -406,8 +414,8 @@
     <Content Include="Resources\img\exit.png" />
     <Content Include="Resources\img\Hideshowmenu.png" />
     <Content Include="Resources\img\outline_clear_black_24dp.png" />
-    <None Include="Resources\MenuStrip_OrderASCnum.bmp" />
-    <Content Include="Resources\RjPf8oan_reasonably_small.jpg" />
+    <None Include="Resources\Images\MenuStrip_OrderASCnum.bmp" />
+    <Content Include="Resources\Images\RjPf8oan_reasonably_small.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -415,6 +423,7 @@
   <ItemGroup>
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="Resources\2x\" />
+    <Folder Include="Resources\Files\" />
     <Folder Include="Resources\img\2x\" />
   </ItemGroup>
   <ItemGroup>
