@@ -925,11 +925,11 @@ namespace Module_Education
             try
             {
                 DataGridView dgv = (DataGridView)sender;
+                ListOfMatriculeSelected.Clear();
 
                 //dgv.ClearSelection();
                 if (dG_Agents.SelectedRows.Count > 1)
                 {
-                    ListOfMatriculeSelected.Clear();
                     var selectedRows = dG_Agents.SelectedRows
                                        .OfType<DataGridViewRow>()
                                        .Where(row => !row.IsNewRow)
@@ -972,6 +972,7 @@ namespace Module_Education
                         {
                             dgv.ClearSelection();
                             dgv.Rows[dgv.HitTest(e.X, e.Y).RowIndex].Selected = true;
+                            ListOfMatriculeSelected.Add(Convert.ToInt64(UserIDSelected));
 
                             ContextMenu m = new ContextMenu();
                             m.MenuItems.Add(new MenuItem("Modifier l'agent", EditUser_CLick));

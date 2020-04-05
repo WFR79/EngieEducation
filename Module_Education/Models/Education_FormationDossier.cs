@@ -27,9 +27,12 @@ namespace Module_Education.Models
         public string FormationDossier_Syllabus { get; set; }
         public string FormationDossier_SyllabusHyperLink { get; set; }
         public Nullable<bool> FormationDossier_InOrder { get; set; }
-        public Nullable<bool> FormationDossier_Scenario { get; set; }
+        public string FormationDossier_Scenario { get; set; }
+        public string FormationDossier_ScenarioHyperLink { get; set; }
+        public string FormationDossier_Test { get; set; }
+        public string FormationDossier_TestHyperLink { get; set; }
     
-        public virtual Education_FormationDossierType Education_FormationDossierType { get; set; }
         public virtual Education_Formation Education_Formation { get; set; }
+        public virtual Education_FormationDossierType Education_FormationDossierType { get; set; }
     }
 }

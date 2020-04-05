@@ -62,7 +62,7 @@ namespace Module_Education
             //panelMain.Controls.Add(UC_Agent.Instance);
             
             InitializeComponent();
-            this.Size = new Size(1486, 839);
+            this.Size = new Size(1366, 768);
 
             prevState = this.WindowState;
             panel1Size = panel1.Size;
@@ -241,24 +241,23 @@ namespace Module_Education
             Button button = ((Button)sender);
 
             //Add module1 to panel control
-            if (!panelMain.Controls.Contains(UC_Agent.Instance))
+            if (!panelMain.Controls.Contains(UC_Provider.Instance))
             {
-                panelMain.Controls.Add(UC_Agent.Instance);
-                UC_Agent.Instance.Dock = DockStyle.Fill;
-                UC_Agent.Instance.BringToFront();
-                UC_Agent.UserIDSelected = UserIDSelected;
+                panelMain.Controls.Add(UC_Provider.Instance);
+                UC_Provider.Instance.Dock = DockStyle.Fill;
+                UC_Provider.Instance.BringToFront();
 
-                ReceiverClickButtonFormation += new menuAgentClick(clickButtonFormationMenu);
-                UC_Agent.Instance.PointerButtonMenuFormation = ReceiverClickButtonFormation;
+                //ReceiverClickButtonFormation += new menuAgentClick(clickButtonFormationMenu);
+                //UC_Provider.Instance.PointerButtonMenuFormation = ReceiverClickButtonFormation;
 
-                ReceiverRefreshListeAgent += new refreshFicheAgent(refreshFormAgent);
-                UCEducation_Formation.Instance.PointerUCAgent_Refresh = ReceiverRefreshListeAgent;
+                //ReceiverRefreshListeAgent += new refreshFicheAgent(refreshFormAgent);
+                //UC_Provider.Instance.PointerUCAgent_Refresh = ReceiverRefreshListeAgent;
 
 
             }
             else
             {
-                UC_Agent.Instance.BringToFront();
+                UC_Provider.Instance.BringToFront();
             }
             button.BackColor = Color.FromArgb(67, 100, 214);
             button.FlatStyle = FlatStyle.Flat;
@@ -296,7 +295,6 @@ namespace Module_Education
             }
         }
 
-
         private void refreshFormAgent(long UserId)
         {
             UserIDSelected = UserId;
@@ -320,14 +318,11 @@ namespace Module_Education
 
         }
 
-
         private void AgentSelectedInFormationCard(long matricule)
         {
             UC_Agent.Agent_Matricule = matricule;
         }
 
-
-        
         #endregion
 
         #region Timer

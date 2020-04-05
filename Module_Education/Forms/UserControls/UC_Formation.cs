@@ -27,7 +27,7 @@ namespace Module_Education
         static extern IntPtr FindWindowByCaption(IntPtr ZeroOnly, string lpWindowName);
         [DllImport("user32.Dll")]
         static extern int PostMessage(IntPtr hWnd, UInt32 msg, int wParam, int lParam);
-        const UInt32 WM_CLOSE = 0x0010; 
+        const UInt32 WM_CLOSE = 0x0010;
         #endregion
 
         public BindingSource ds_Education_Formations = new BindingSource();
@@ -38,8 +38,6 @@ namespace Module_Education
         private FormationResultatDataAccess dbFormationResulat = new FormationResultatDataAccess();
         private FormationDossierRepository dbFormationDossier = new FormationDossierRepository();
         private FormationDossierTypeRepository dbFormationDossierType = new FormationDossierTypeRepository();
-
-        
 
         CFNEducation_FormationEntities dbEntities = new CFNEducation_FormationEntities();
 
@@ -80,22 +78,20 @@ namespace Module_Education
         }
 
         public event EventHandler<SortEventArgs> SortStringChanged;
-
         public event EventHandler<FilterEventArgs> FilterStringChanged;
 
         #endregion
         private string _filterString = null;
-
         Education_Formation CurrentFormation;
 
         public Delegate MainWindowPointerMenuBtnAgent;
-        public Delegate PointerUCAgent_Refresh; 
+        public Delegate PointerUCAgent_Refresh;
         public Delegate PointerRefreshFicheAgent; // Edit user from fiche formation
+        public agentEditLoad ReceiverLoadEditAgent { get; private set; }
 
         public Delegate PointerPointMenuBtnFormation;
-
-
         public Delegate PointerFormation;
+
         int pageNumber = 1;
 
 
@@ -109,7 +105,6 @@ namespace Module_Education
             }
         }
 
-        public agentEditLoad ReceiverLoadEditAgent { get; private set; }
         public delegate void agentEditLoad(string formationSAPNum);
 
         public UCEducation_Formation()
@@ -125,9 +120,9 @@ namespace Module_Education
 
         private void InitReceiverEventFromOtherUCs()
         {
-            
 
-           
+
+
         }
 
         private void InitVertScrollBarPanelDoc()
@@ -373,6 +368,8 @@ namespace Module_Education
 
         private object GetDataSource(IPagedList<Education_Formation> listPaged)
         {
+            //using (CFNEducation_FormationEntities dbTemp = new CFNEducation_FormationEntities())
+            //{
             object dataSource = listPaged.Select(o => new MyColumnCollectionDGFormation(o)
             {
                 Formation_ShortTitle = o.Formation_ShortTitle,
@@ -393,6 +390,7 @@ namespace Module_Education
             lblMin.Text = listPaged.FirstItemOnPage.ToString();
             lblMax.Text = listPaged.LastItemOnPage.ToString();
             return dataSource;
+            //}
         }
 
         private object GetDataSource(IPagedList<Education_Agent> listPaged)
@@ -561,6 +559,13 @@ namespace Module_Education
                 Education_FormationRecord_FillCbListPRoviders(CurrentFormation);
                 //Doc
                 Education_FormationRecord_LoadDocInfoFiche(CurrentFormation);
+                Education_FormationRecord_LoadDocSyllabus(CurrentFormation);
+                Education_FormationRecord_LoadDocTest(CurrentFormation);
+                Education_FormationRecord_LoadDocScenario(CurrentFormation);
+                Education_FormationRecord_SelectPriority(CurrentFormation);
+                Education_FormationRecord_InOrder(CurrentFormation);
+                Education_FormationRecord_Hubbel(CurrentFormation);
+                Education_FormationRecord_SelectDossierType(CurrentFormation);
                 //
                 LoadDatagriAgentsOfCurrentFormation();
                 //Education_FormationRecord_SelectRoleEPI(CurrentEducation_Formation);
@@ -572,6 +577,8 @@ namespace Module_Education
                 CreateButtonSavingAgent();
             }
         }
+
+
 
         private void Education_FormationRecord_FillVendor(Education_Formation currentFormation)
         {
@@ -675,7 +682,6 @@ namespace Module_Education
                 //source.ResetBindings(true);
                 advDv_AgentsOfFormation.DataSource = GetDataSource(listUserPaged);
                 advDv_AgentsOfFormation.Refresh();
-                advDv_AgentsOfFormation.Refresh();
             }
             catch (Exception ex)
             {
@@ -696,6 +702,12 @@ namespace Module_Education
         {
             if (currentEducation_Formation.Education_Competence != null)
                 comboBoxCompetence.SelectedIndex = comboBoxCompetence.FindStringExact(currentEducation_Formation.Education_Competence.Competence_Name);
+        }
+
+        private void Education_FormationRecord_SelectDossierType(Education_Formation currentEducation_Formation)
+        {
+            if (currentEducation_Formation.Education_FormationDossier != null)
+                cbTypeDossier.SelectedIndex = cbTypeDossier.FindStringExact(currentEducation_Formation.Education_FormationDossier.FirstOrDefault().Education_FormationDossierType.FormationDossierType_Name);
         }
 
         private void Education_FormationRecord_FillCbListPRoviders(Education_Formation currentEducation_Formation)
@@ -885,14 +897,65 @@ namespace Module_Education
 
         private void Education_FormationRecord_LoadDocInfoFiche(Education_Formation Education_FormationRecord)
         {
-
             if (Education_FormationRecord.Education_FormationDossier != null)
             {
                 tbInfoFiche.Text = Education_FormationRecord.Education_FormationDossier
                     .Where(w => w.FormationDossier_Formation == Education_FormationRecord.Formation_Id).FirstOrDefault().FormationDossier_InfoFicheHyperLink;
             }
-           
+        }
 
+        private void Education_FormationRecord_LoadDocScenario(Education_Formation Education_FormationRecord)
+        {
+            if (Education_FormationRecord.Education_FormationDossier != null)
+            {
+                tbScenario.Text = Education_FormationRecord.Education_FormationDossier
+                    .Where(w => w.FormationDossier_Formation == Education_FormationRecord.Formation_Id).FirstOrDefault().FormationDossier_ScenarioHyperLink;
+            }
+        }
+
+        private void Education_FormationRecord_LoadDocTest(Education_Formation Education_FormationRecord)
+        {
+            if (Education_FormationRecord.Education_FormationDossier != null)
+            {
+                tbTest.Text = Education_FormationRecord.Education_FormationDossier
+                    .Where(w => w.FormationDossier_Formation == Education_FormationRecord.Formation_Id).FirstOrDefault().FormationDossier_TestHyperLink;
+            }
+        }
+
+        private void Education_FormationRecord_LoadDocSyllabus(Education_Formation Education_FormationRecord)
+        {
+            if (Education_FormationRecord.Education_FormationDossier != null)
+            {
+                tbSyllabus.Text = Education_FormationRecord.Education_FormationDossier
+                    .Where(w => w.FormationDossier_Formation == Education_FormationRecord.Formation_Id).FirstOrDefault().FormationDossier_SyllabusHyperLink;
+            }
+        }
+
+        private void Education_FormationRecord_SelectPriority(Education_Formation currentFormation)
+        {
+            if (currentFormation.Education_FormationDossier != null)
+            {
+                cbPriority.Text = currentFormation.Education_FormationDossier
+                    .Where(w => w.FormationDossier_Formation == currentFormation.Formation_Id).FirstOrDefault().FormationDossier_Priority;
+            }
+        }
+
+        private void Education_FormationRecord_InOrder(Education_Formation currentFormation)
+        {
+            if (currentFormation.Education_FormationDossier != null)
+            {
+                checkDossierOk.Checked = (bool)currentFormation.Education_FormationDossier
+                    .Where(w => w.FormationDossier_Formation == currentFormation.Formation_Id).FirstOrDefault().FormationDossier_InOrder;
+            }
+        }
+
+        private void Education_FormationRecord_Hubbel(Education_Formation currentFormation)
+        {
+            if (currentFormation.Education_FormationDossier != null)
+            {
+                checkHubbel.Checked = (bool)currentFormation.Education_FormationDossier
+                    .Where(w => w.FormationDossier_Formation == currentFormation.Formation_Id).FirstOrDefault().FormationDossier_Hubbel;
+            }
         }
 
 
@@ -950,11 +1013,12 @@ namespace Module_Education
             db.SaveEducation_Formation(CurrentFormation);
             ActivateModification(false);
 
-            MainWindow.globalListEducation_Formations = await db.LoadAllEducation_FormationsAsync();
 
-            AdvDg_Formations.Refresh();
+            //MainWindow.globalListEducation_Formations = await db.LoadAllEducation_FormationsAsync();
+
+            //AdvDg_Formations.Refresh();
             listPaged = await LoadDatagriEducation_Formations();
-            AdvDg_Formations.DataSource = GetDataSource(listPaged);
+            //AdvDg_Formations.DataSource = GetDataSource(listPaged);
 
         }
 
@@ -1086,15 +1150,15 @@ namespace Module_Education
         {
             var price = comboBoxResultatYear.SelectedItem;
 
-            if(CurrentFormation.Formation_Price != null && !Regex.IsMatch(textBoxPrice.Text, @"^\d+$"))
-                if (Convert.ToInt32(textBoxPrice.Text) != CurrentFormation.Formation_Price )
+            if (CurrentFormation.Formation_Price != null && Regex.IsMatch(textBoxPrice.Text, @"[0-9a-z]+"))
+                if (Convert.ToInt32(textBoxPrice.Text) != CurrentFormation.Formation_Price)
                 {
                     CurrentFormation.Formation_Price = Convert.ToInt32(textBoxPrice.Text);
                     CurrentFormation.Formation_UnitePrice = ((Education_UnitePrice)comboBoxUnite.SelectedItem).UnitePrice_Id;
 
                     ActivateModification(true);
                 }
-                ActivateModification(true);
+            ActivateModification(true);
 
         }
 
@@ -1378,7 +1442,7 @@ namespace Module_Education
         private void btnBrowseDoc_Click(object sender, EventArgs e)
         {
 
-           
+
         }
 
         private void comboBoxResultatYear_SelectedIndexChanged(object sender, EventArgs e)
@@ -1473,15 +1537,15 @@ namespace Module_Education
         {
             IntPtr hWnd = FindWindowByCaption(IntPtr.Zero, "Export Excel");
 
-                hWnd = FindWindowByCaption(IntPtr.Zero, "Export Excel");
-                if (hWnd != IntPtr.Zero)
-                    PostMessage(hWnd, WM_CLOSE, 0, 0);
-            
+            hWnd = FindWindowByCaption(IntPtr.Zero, "Export Excel");
+            if (hWnd != IntPtr.Zero)
+                PostMessage(hWnd, WM_CLOSE, 0, 0);
+
         }
 
         private void lblShowHidePanelDossierPed_Click(object sender, EventArgs e)
         {
-            if (panelDossierPedagogique.Visible)
+            if (panelDossierPedagogique.Visible == true)
             {
 
                 tabControl_Education_FormationAndCertificationsOfUser.Visible = false;
@@ -1546,10 +1610,12 @@ namespace Module_Education
             }
         }
 
+        #region Documents
         private void btnScenario_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.CheckFileExists = true;
+            openFileDialog1.Title = "Scénario";
             openFileDialog1.AddExtension = true;
             openFileDialog1.Multiselect = true;
             openFileDialog1.Filter = "txt files (*.txt)|*.txt| PDF files (*.pdf)|*.pdf";
@@ -1559,11 +1625,11 @@ namespace Module_Education
                 foreach (string fileName in openFileDialog1.FileNames)
                 {
                     Process.Start(fileName);
-                    tbInfoFiche.Text = fileName;
+                    tbScenario.Text = fileName;
 
                     FileExtensions fileExtensions = new FileExtensions();
                     string fileSavedPath = fileExtensions.SaveFile(fileName, CurrentFormation.Formation_SAP);
-                    dbFormationDossier.SaveInfoFiche(CurrentFormation, fileSavedPath);
+                    dbFormationDossier.SaveScenario(CurrentFormation, fileSavedPath);
 
 
                 }
@@ -1575,6 +1641,8 @@ namespace Module_Education
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.CheckFileExists = true;
             openFileDialog1.AddExtension = true;
+            openFileDialog1.Title = "Syllabus";
+
             openFileDialog1.Multiselect = true;
             openFileDialog1.Filter = "txt files (*.txt)|*.txt| PDF files (*.pdf)|*.pdf";
 
@@ -1583,11 +1651,11 @@ namespace Module_Education
                 foreach (string fileName in openFileDialog1.FileNames)
                 {
                     Process.Start(fileName);
-                    tbInfoFiche.Text = fileName;
+                    tbSyllabus.Text = fileName;
 
                     FileExtensions fileExtensions = new FileExtensions();
                     string fileSavedPath = fileExtensions.SaveFile(fileName, CurrentFormation.Formation_SAP);
-                    dbFormationDossier.SaveInfoFiche(CurrentFormation, fileSavedPath);
+                    dbFormationDossier.SaveSyllabus(CurrentFormation, fileSavedPath);
 
 
                 }
@@ -1598,7 +1666,8 @@ namespace Module_Education
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
             openFileDialog1.CheckFileExists = true;
-            openFileDialog1.AddExtension = true;
+            openFileDialog1.AddExtension = true; openFileDialog1.Title = "Test";
+
             openFileDialog1.Multiselect = true;
             openFileDialog1.Filter = "txt files (*.txt)|*.txt| PDF files (*.pdf)|*.pdf";
 
@@ -1607,11 +1676,11 @@ namespace Module_Education
                 foreach (string fileName in openFileDialog1.FileNames)
                 {
                     Process.Start(fileName);
-                    tbInfoFiche.Text = fileName;
+                    tbTest.Text = fileName;
 
                     FileExtensions fileExtensions = new FileExtensions();
                     string fileSavedPath = fileExtensions.SaveFile(fileName, CurrentFormation.Formation_SAP);
-                    dbFormationDossier.SaveInfoFiche(CurrentFormation, fileSavedPath);
+                    dbFormationDossier.SaveTestDoc(CurrentFormation, fileSavedPath);
 
 
                 }
@@ -1641,6 +1710,88 @@ namespace Module_Education
                 }
             }
         }
+
+        private void cbTypeDossier_Leave(object sender, EventArgs e)
+        {
+            if (CurrentFormation.Education_FormationDossier.Where(x => x.FormationDossier_Formation == CurrentFormation.Formation_Id).FirstOrDefault().FormationDossier_TypeDossier
+            != ((Education_FormationDossierType)cbTypeDossier.SelectedItem).FormationDossierType_Id)
+            {
+                var DossierOfFormation = CurrentFormation.Education_FormationDossier.Where(x => x.FormationDossier_Formation == CurrentFormation.Formation_Id).FirstOrDefault();
+
+                DossierOfFormation.FormationDossier_TypeDossier = ((Education_FormationDossierType)cbTypeDossier.SelectedItem).FormationDossierType_Id;
+                ActivateModification(true);
+            }
+        }
+
+        private void tabControl_Education_Formations_Selected(object sender, TabControlEventArgs e)
+        {
+            if (e.TabPageIndex == 0)
+            {
+
+                AdvDg_Formations.DataSource = GetDataSource(listPaged);
+            }
+        }
+
+        private void cbInfoFiche_Leave(object sender, EventArgs e)
+        {
+            if (CurrentFormation.Education_FormationDossier.Where(x => x.FormationDossier_Formation == CurrentFormation.Formation_Id).FirstOrDefault().FormationDossier_Priority
+           != cbPriority.Text)
+            {
+                var DossierOfFormation = CurrentFormation.Education_FormationDossier.Where(x => x.FormationDossier_Formation == CurrentFormation.Formation_Id).FirstOrDefault();
+
+                DossierOfFormation.FormationDossier_Priority = cbPriority.Text;
+                ActivateModification(true);
+            }
+        }
+
+        private void checkDossierOk_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var DossierOfFormation = CurrentFormation.Education_FormationDossier.Where(x => x.FormationDossier_Formation == CurrentFormation.Formation_Id).FirstOrDefault();
+                if (checkDossierOk.Checked)
+                {
+                    DossierOfFormation.FormationDossier_InOrder = true;
+                    ActivateModification(true);
+                }
+                else
+                {
+                    DossierOfFormation.FormationDossier_InOrder = false;
+                    ActivateModification(true);
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void checkHubbel_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var DossierOfFormation = CurrentFormation.Education_FormationDossier.Where(x => x.FormationDossier_Formation == CurrentFormation.Formation_Id).FirstOrDefault();
+                if (checkHubbel.Checked)
+                {
+                    DossierOfFormation.FormationDossier_Hubbel = true;
+                    ActivateModification(true);
+                }
+                else
+                {
+                    DossierOfFormation.FormationDossier_Hubbel = false;
+                    ActivateModification(true);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        } 
+        #endregion
     }
 }
 

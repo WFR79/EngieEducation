@@ -87,10 +87,10 @@
             this.tbScenario = new System.Windows.Forms.TextBox();
             this.btnScenario = new System.Windows.Forms.Button();
             this.tbInfoFiche = new System.Windows.Forms.TextBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkHubbel = new System.Windows.Forms.CheckBox();
             this.btnBrowseDoc = new System.Windows.Forms.Button();
-            this.dbDossierOk = new System.Windows.Forms.CheckBox();
-            this.cbInfoFiche = new System.Windows.Forms.ComboBox();
+            this.checkDossierOk = new System.Windows.Forms.CheckBox();
+            this.cbPriority = new System.Windows.Forms.ComboBox();
             this.lblPrioritéInfoFiche = new System.Windows.Forms.Label();
             this.lblTypeDssier = new System.Windows.Forms.Label();
             this.cbTypeDossier = new System.Windows.Forms.ComboBox();
@@ -662,10 +662,10 @@
             this.tabPage2.Controls.Add(this.tbScenario);
             this.tabPage2.Controls.Add(this.btnScenario);
             this.tabPage2.Controls.Add(this.tbInfoFiche);
-            this.tabPage2.Controls.Add(this.checkBox1);
+            this.tabPage2.Controls.Add(this.checkHubbel);
             this.tabPage2.Controls.Add(this.btnBrowseDoc);
-            this.tabPage2.Controls.Add(this.dbDossierOk);
-            this.tabPage2.Controls.Add(this.cbInfoFiche);
+            this.tabPage2.Controls.Add(this.checkDossierOk);
+            this.tabPage2.Controls.Add(this.cbPriority);
             this.tabPage2.Controls.Add(this.lblPrioritéInfoFiche);
             this.tabPage2.Controls.Add(this.lblTypeDssier);
             this.tabPage2.Controls.Add(this.cbTypeDossier);
@@ -692,8 +692,8 @@
             // 
             this.tbTest.Font = new System.Drawing.Font("Arial", 8.25F);
             this.tbTest.Location = new System.Drawing.Point(6, 252);
-            this.tbTest.Multiline = true;
             this.tbTest.Name = "tbTest";
+            this.tbTest.ReadOnly = true;
             this.tbTest.Size = new System.Drawing.Size(407, 20);
             this.tbTest.TabIndex = 156;
             // 
@@ -728,8 +728,8 @@
             // 
             this.tbSyllabus.Font = new System.Drawing.Font("Arial", 8.25F);
             this.tbSyllabus.Location = new System.Drawing.Point(6, 210);
-            this.tbSyllabus.Multiline = true;
             this.tbSyllabus.Name = "tbSyllabus";
+            this.tbSyllabus.ReadOnly = true;
             this.tbSyllabus.Size = new System.Drawing.Size(407, 20);
             this.tbSyllabus.TabIndex = 153;
             // 
@@ -774,8 +774,8 @@
             // 
             this.tbScenario.Font = new System.Drawing.Font("Arial", 8.25F);
             this.tbScenario.Location = new System.Drawing.Point(6, 168);
-            this.tbScenario.Multiline = true;
             this.tbScenario.Name = "tbScenario";
+            this.tbScenario.ReadOnly = true;
             this.tbScenario.Size = new System.Drawing.Size(407, 20);
             this.tbScenario.TabIndex = 145;
             // 
@@ -796,24 +796,25 @@
             // 
             // tbInfoFiche
             // 
-            this.tbInfoFiche.Font = new System.Drawing.Font("Arial", 12F);
+            this.tbInfoFiche.Font = new System.Drawing.Font("Arial", 8.25F);
             this.tbInfoFiche.Location = new System.Drawing.Point(6, 23);
-            this.tbInfoFiche.Multiline = true;
             this.tbInfoFiche.Name = "tbInfoFiche";
+            this.tbInfoFiche.ReadOnly = true;
             this.tbInfoFiche.Size = new System.Drawing.Size(407, 20);
             this.tbInfoFiche.TabIndex = 139;
             // 
-            // checkBox1
+            // checkHubbel
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Arial", 9.25F);
-            this.checkBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.checkBox1.Location = new System.Drawing.Point(264, 84);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(67, 20);
-            this.checkBox1.TabIndex = 143;
-            this.checkBox1.Text = "Hubbel";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkHubbel.AutoSize = true;
+            this.checkHubbel.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.checkHubbel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.checkHubbel.Location = new System.Drawing.Point(264, 84);
+            this.checkHubbel.Name = "checkHubbel";
+            this.checkHubbel.Size = new System.Drawing.Size(67, 20);
+            this.checkHubbel.TabIndex = 143;
+            this.checkHubbel.Text = "Hubbel";
+            this.checkHubbel.UseVisualStyleBackColor = true;
+            this.checkHubbel.CheckedChanged += new System.EventHandler(this.checkHubbel_CheckedChanged);
             // 
             // btnBrowseDoc
             // 
@@ -830,31 +831,33 @@
             this.btnBrowseDoc.UseVisualStyleBackColor = false;
             this.btnBrowseDoc.Click += new System.EventHandler(this.btnBrowseDoc_Click_1);
             // 
-            // dbDossierOk
+            // checkDossierOk
             // 
-            this.dbDossierOk.AutoSize = true;
-            this.dbDossierOk.Font = new System.Drawing.Font("Arial", 9.25F);
-            this.dbDossierOk.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.dbDossierOk.Location = new System.Drawing.Point(264, 60);
-            this.dbDossierOk.Name = "dbDossierOk";
-            this.dbDossierOk.Size = new System.Drawing.Size(99, 20);
-            this.dbDossierOk.TabIndex = 142;
-            this.dbDossierOk.Text = "Dossier Ok?";
-            this.dbDossierOk.UseVisualStyleBackColor = true;
+            this.checkDossierOk.AutoSize = true;
+            this.checkDossierOk.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.checkDossierOk.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.checkDossierOk.Location = new System.Drawing.Point(264, 60);
+            this.checkDossierOk.Name = "checkDossierOk";
+            this.checkDossierOk.Size = new System.Drawing.Size(99, 20);
+            this.checkDossierOk.TabIndex = 142;
+            this.checkDossierOk.Text = "Dossier Ok?";
+            this.checkDossierOk.UseVisualStyleBackColor = true;
+            this.checkDossierOk.CheckedChanged += new System.EventHandler(this.checkDossierOk_CheckedChanged);
             // 
-            // cbInfoFiche
+            // cbPriority
             // 
-            this.cbInfoFiche.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.cbInfoFiche.FormattingEnabled = true;
-            this.cbInfoFiche.Items.AddRange(new object[] {
+            this.cbPriority.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.cbPriority.FormattingEnabled = true;
+            this.cbPriority.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
             "NA"});
-            this.cbInfoFiche.Location = new System.Drawing.Point(6, 64);
-            this.cbInfoFiche.Name = "cbInfoFiche";
-            this.cbInfoFiche.Size = new System.Drawing.Size(83, 22);
-            this.cbInfoFiche.TabIndex = 137;
+            this.cbPriority.Location = new System.Drawing.Point(6, 64);
+            this.cbPriority.Name = "cbPriority";
+            this.cbPriority.Size = new System.Drawing.Size(83, 22);
+            this.cbPriority.TabIndex = 137;
+            this.cbPriority.Leave += new System.EventHandler(this.cbInfoFiche_Leave);
             // 
             // lblPrioritéInfoFiche
             // 
@@ -888,6 +891,7 @@
             this.cbTypeDossier.Name = "cbTypeDossier";
             this.cbTypeDossier.Size = new System.Drawing.Size(185, 22);
             this.cbTypeDossier.TabIndex = 138;
+            this.cbTypeDossier.Leave += new System.EventHandler(this.cbTypeDossier_Leave);
             // 
             // comboBoxDurationInDays
             // 
@@ -901,6 +905,8 @@
             // 
             // comboBoxProvider
             // 
+            this.comboBoxProvider.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.comboBoxProvider.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxProvider.Font = new System.Drawing.Font("Arial", 8.25F);
             this.comboBoxProvider.FormattingEnabled = true;
             this.comboBoxProvider.Location = new System.Drawing.Point(14, 228);
@@ -1157,6 +1163,7 @@
             this.tabControl_Education_Formations.SelectedIndex = 0;
             this.tabControl_Education_Formations.Size = new System.Drawing.Size(1067, 570);
             this.tabControl_Education_Formations.TabIndex = 0;
+            this.tabControl_Education_Formations.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl_Education_Formations_Selected);
             // 
             // UCEducation_Formation
             // 
@@ -1266,10 +1273,10 @@
         private System.Windows.Forms.Label labelInfofiche;
         private System.Windows.Forms.TextBox tbScenario;
         private System.Windows.Forms.TextBox tbInfoFiche;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkHubbel;
         private System.Windows.Forms.Button btnBrowseDoc;
-        private System.Windows.Forms.CheckBox dbDossierOk;
-        private System.Windows.Forms.ComboBox cbInfoFiche;
+        private System.Windows.Forms.CheckBox checkDossierOk;
+        private System.Windows.Forms.ComboBox cbPriority;
         private System.Windows.Forms.Label lblPrioritéInfoFiche;
         private System.Windows.Forms.Label lblTypeDssier;
         private System.Windows.Forms.ComboBox cbTypeDossier;

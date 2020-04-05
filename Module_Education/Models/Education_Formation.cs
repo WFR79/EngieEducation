@@ -19,11 +19,11 @@ namespace Module_Education.Models
         {
             this.Education_Agent_Formation = new HashSet<Education_Agent_Formation>();
             this.Education_CategorieFormation = new HashSet<Education_CategorieFormation>();
+            this.Education_FormationDossier = new HashSet<Education_FormationDossier>();
             this.Education_FormationProvider = new HashSet<Education_FormationProvider>();
             this.Education_FormationResultat = new HashSet<Education_FormationResultat>();
             this.Education_FormationSession = new HashSet<Education_FormationSession>();
             this.Education_Matrice_Formation = new HashSet<Education_Matrice_Formation>();
-            this.Education_FormationDossier = new HashSet<Education_FormationDossier>();
         }
     
         public long Formation_Id { get; set; }
@@ -51,6 +51,10 @@ namespace Module_Education.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_CategorieFormation> Education_CategorieFormation { get; set; }
         public virtual Education_Competence Education_Competence { get; set; }
+        public virtual Education_FormationCategory Education_FormationCategory { get; set; }
+        public virtual Education_UnitePrice Education_UnitePrice { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Education_FormationDossier> Education_FormationDossier { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_FormationProvider> Education_FormationProvider { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -59,9 +63,5 @@ namespace Module_Education.Models
         public virtual ICollection<Education_FormationSession> Education_FormationSession { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_Matrice_Formation> Education_Matrice_Formation { get; set; }
-        public virtual Education_UnitePrice Education_UnitePrice { get; set; }
-        public virtual Education_FormationCategory Education_FormationCategory { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Education_FormationDossier> Education_FormationDossier { get; set; }
     }
 }

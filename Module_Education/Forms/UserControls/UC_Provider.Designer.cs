@@ -1,4 +1,4 @@
-﻿namespace Module_Education.Forms.UserControls
+﻿namespace Module_Education
 {
     partial class UC_Provider
     {
@@ -92,8 +92,8 @@
             // 
             // tabControlAgentList
             // 
-            this.tabControlAgentList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.tabControlAgentList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlAgentList.Controls.Add(this.tbListeAgents);
             this.tabControlAgentList.Controls.Add(this.tbFicheAgent);
@@ -216,7 +216,7 @@
             // 
             // dG_Providers
             // 
-            this.dG_Providers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dG_Providers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dG_Providers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dG_Providers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -427,7 +427,7 @@
             this.dg_TABFormationsOfAgent.AllowUserToAddRows = false;
             this.dg_TABFormationsOfAgent.AllowUserToDeleteRows = false;
             this.dg_TABFormationsOfAgent.AllowUserToResizeColumns = false;
-            this.dg_TABFormationsOfAgent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dg_TABFormationsOfAgent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dg_TABFormationsOfAgent.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dg_TABFormationsOfAgent.BackgroundColor = System.Drawing.Color.DarkGray;

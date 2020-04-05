@@ -146,7 +146,10 @@
           <Property Name="FormationDossier_Syllabus" Type="nvarchar(max)" />
           <Property Name="FormationDossier_SyllabusHyperLink" Type="nvarchar(max)" />
           <Property Name="FormationDossier_InOrder" Type="bit" />
-          <Property Name="FormationDossier_Scenario" Type="bit" />
+          <Property Name="FormationDossier_Scenario" Type="nvarchar(max)" />
+          <Property Name="FormationDossier_ScenarioHyperLink" Type="nvarchar(max)" />
+          <Property Name="FormationDossier_Test" Type="nvarchar(max)" />
+          <Property Name="FormationDossier_TestHyperLink" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Education_FormationDossierType">
           <Key>
@@ -1121,6 +1124,7 @@
           <EntitySet Name="Education_Departement" EntityType="SYNAPSEModel.Education_Departement" />
           <EntitySet Name="Education_Equipe" EntityType="SYNAPSEModel.Education_Equipe" />
           <EntitySet Name="Education_Formation" EntityType="SYNAPSEModel.Education_Formation" />
+          <EntitySet Name="Education_FormationCategory" EntityType="SYNAPSEModel.Education_FormationCategory" />
           <EntitySet Name="Education_FormationDossier" EntityType="SYNAPSEModel.Education_FormationDossier" />
           <EntitySet Name="Education_FormationDossierType" EntityType="SYNAPSEModel.Education_FormationDossierType" />
           <EntitySet Name="Education_FormationProvider" EntityType="SYNAPSEModel.Education_FormationProvider" />
@@ -1228,6 +1232,18 @@
             <End Role="Education_Service" EntitySet="Education_Service" />
             <End Role="Education_Equipe" EntitySet="Education_Equipe" />
           </AssociationSet>
+          <AssociationSet Name="FK_Education_Formation_Category" Association="SYNAPSEModel.FK_Education_Formation_Category">
+            <End Role="Education_FormationCategory" EntitySet="Education_FormationCategory" />
+            <End Role="Education_Formation" EntitySet="Education_Formation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Education_Formation_Education_UnitePrice" Association="SYNAPSEModel.FK_Education_Formation_Education_UnitePrice">
+            <End Role="Education_UnitePrice" EntitySet="Education_UnitePrice" />
+            <End Role="Education_Formation" EntitySet="Education_Formation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormationDossier_Formation" Association="SYNAPSEModel.FK_FormationDossier_Formation">
+            <End Role="Education_Formation" EntitySet="Education_Formation" />
+            <End Role="Education_FormationDossier" EntitySet="Education_FormationDossier" />
+          </AssociationSet>
           <AssociationSet Name="FK_FormationProvider_FormationProvider" Association="SYNAPSEModel.FK_FormationProvider_FormationProvider">
             <End Role="Education_Formation" EntitySet="Education_Formation" />
             <End Role="Education_FormationProvider" EntitySet="Education_FormationProvider" />
@@ -1308,19 +1324,6 @@
             <End Role="Education_Role" EntitySet="Education_Role" />
             <End Role="Education_Role1" EntitySet="Education_Role" />
           </AssociationSet>
-          <AssociationSet Name="FK_Education_Formation_Education_UnitePrice" Association="SYNAPSEModel.FK_Education_Formation_Education_UnitePrice">
-            <End Role="Education_UnitePrice" EntitySet="Education_UnitePrice" />
-            <End Role="Education_Formation" EntitySet="Education_Formation" />
-          </AssociationSet>
-          <EntitySet Name="Education_FormationCategory" EntityType="SYNAPSEModel.Education_FormationCategory" />
-          <AssociationSet Name="FK_Education_Formation_Category" Association="SYNAPSEModel.FK_Education_Formation_Category">
-            <End Role="Education_FormationCategory" EntitySet="Education_FormationCategory" />
-            <End Role="Education_Formation" EntitySet="Education_Formation" />
-          </AssociationSet>
-          <AssociationSet Name="FK_FormationDossier_Formation" Association="SYNAPSEModel.FK_FormationDossier_Formation">
-            <End Role="Education_Formation" EntitySet="Education_Formation" />
-            <End Role="Education_FormationDossier" EntitySet="Education_FormationDossier" />
-          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Education_Agent">
           <Key>
@@ -1350,6 +1353,7 @@
           <Property Name="Agent_NiveauPS" Type="Int32" />
           <Property Name="Agent_Admin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Agent_Role" Type="Int64" />
+          <Property Name="Agent_RescueBonus" Type="Boolean" />
           <NavigationProperty Name="Education_RoleEPI" Relationship="SYNAPSEModel.FK_Agent_AgentEPI" FromRole="Education_Agent" ToRole="Education_RoleEPI" />
           <NavigationProperty Name="Education_AgentStatus" Relationship="SYNAPSEModel.FK_Agent_AgentStatus" FromRole="Education_Agent" ToRole="Education_AgentStatus" />
           <NavigationProperty Name="Education_Agent_Formation" Relationship="SYNAPSEModel.FK_AgentFormation_Agent" FromRole="Education_Agent" ToRole="Education_Agent_Formation" />
@@ -1364,7 +1368,6 @@
           <NavigationProperty Name="Education_Agent2" Relationship="SYNAPSEModel.FK_User_LineManager" FromRole="Education_Agent1" ToRole="Education_Agent" />
           <NavigationProperty Name="Education_Role" Relationship="SYNAPSEModel.FK_User_Role" FromRole="Education_Agent" ToRole="Education_Role" />
           <NavigationProperty Name="Education_RoleAstreinte" Relationship="SYNAPSEModel.FK_User_RoleAstreinte" FromRole="Education_Agent" ToRole="Education_RoleAstreinte" />
-          <Property Name="Agent_RescueBonus" Type="Boolean" />
         </EntityType>
         <EntityType Name="Education_Agent_Formation">
           <Key>
@@ -1462,18 +1465,26 @@
           <Property Name="Formation_Actif" Type="Boolean" />
           <Property Name="Formation_Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Formation_Competence" Type="Int64" />
+          <Property Name="Formation_UnitePrice" Type="Int64" />
+          <Property Name="Formation_Category" Type="Int64" />
           <NavigationProperty Name="Education_Agent_Formation" Relationship="SYNAPSEModel.FK_AgentFormation_Formation" FromRole="Education_Formation" ToRole="Education_Agent_Formation" />
           <NavigationProperty Name="Education_CategorieFormation" Relationship="SYNAPSEModel.FK_CategorieFormation_Formation" FromRole="Education_Formation" ToRole="Education_CategorieFormation" />
           <NavigationProperty Name="Education_Competence" Relationship="SYNAPSEModel.FK_Formation_Competence" FromRole="Education_Formation" ToRole="Education_Competence" />
+          <NavigationProperty Name="Education_FormationCategory" Relationship="SYNAPSEModel.FK_Education_Formation_Category" FromRole="Education_Formation" ToRole="Education_FormationCategory" />
+          <NavigationProperty Name="Education_UnitePrice" Relationship="SYNAPSEModel.FK_Education_Formation_Education_UnitePrice" FromRole="Education_Formation" ToRole="Education_UnitePrice" />
+          <NavigationProperty Name="Education_FormationDossier" Relationship="SYNAPSEModel.FK_FormationDossier_Formation" FromRole="Education_Formation" ToRole="Education_FormationDossier" />
           <NavigationProperty Name="Education_FormationProvider" Relationship="SYNAPSEModel.FK_FormationProvider_FormationProvider" FromRole="Education_Formation" ToRole="Education_FormationProvider" />
           <NavigationProperty Name="Education_FormationResultat" Relationship="SYNAPSEModel.FK_FormationResultat_Formation" FromRole="Education_Formation" ToRole="Education_FormationResultat" />
           <NavigationProperty Name="Education_FormationSession" Relationship="SYNAPSEModel.FK_FormationSession_Formation" FromRole="Education_Formation" ToRole="Education_FormationSession" />
           <NavigationProperty Name="Education_Matrice_Formation" Relationship="SYNAPSEModel.FK_MatriceFormation_Formation" FromRole="Education_Formation" ToRole="Education_Matrice_Formation" />
-          <Property Name="Formation_UnitePrice" Type="Int64" />
-          <NavigationProperty Name="Education_UnitePrice" Relationship="SYNAPSEModel.FK_Education_Formation_Education_UnitePrice" FromRole="Education_Formation" ToRole="Education_UnitePrice" />
-          <Property Name="Formation_Category" Type="Int64" />
-          <NavigationProperty Name="Education_FormationCategory" Relationship="SYNAPSEModel.FK_Education_Formation_Category" FromRole="Education_Formation" ToRole="Education_FormationCategory" />
-          <NavigationProperty Name="Education_FormationDossier" Relationship="SYNAPSEModel.FK_FormationDossier_Formation" FromRole="Education_Formation" ToRole="Education_FormationDossier" />
+        </EntityType>
+        <EntityType Name="Education_FormationCategory">
+          <Key>
+            <PropertyRef Name="FormationCategory_Id" />
+          </Key>
+          <Property Name="FormationCategory_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormationCategory_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Education_Formation" Relationship="SYNAPSEModel.FK_Education_Formation_Category" FromRole="Education_FormationCategory" ToRole="Education_Formation" />
         </EntityType>
         <EntityType Name="Education_FormationDossier">
           <Key>
@@ -1492,9 +1503,12 @@
           <Property Name="FormationDossier_Syllabus" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FormationDossier_SyllabusHyperLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FormationDossier_InOrder" Type="Boolean" />
-          <Property Name="FormationDossier_Scenario" Type="Boolean" />
-          <NavigationProperty Name="Education_FormationDossierType" Relationship="SYNAPSEModel.FK_FormationDossier_FormationDossierType" FromRole="Education_FormationDossier" ToRole="Education_FormationDossierType" />
+          <Property Name="FormationDossier_Scenario" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FormationDossier_ScenarioHyperLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FormationDossier_Test" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FormationDossier_TestHyperLink" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Education_Formation" Relationship="SYNAPSEModel.FK_FormationDossier_Formation" FromRole="Education_FormationDossier" ToRole="Education_Formation" />
+          <NavigationProperty Name="Education_FormationDossierType" Relationship="SYNAPSEModel.FK_FormationDossier_FormationDossierType" FromRole="Education_FormationDossier" ToRole="Education_FormationDossierType" />
         </EntityType>
         <EntityType Name="Education_FormationDossierType">
           <Key>
@@ -1512,8 +1526,6 @@
           <Property Name="FormationProvider_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FormationProvider_Provider" Type="Int64" />
           <Property Name="FormationProvider_Formation" Type="Int64" />
-          <NavigationProperty Name="Education_Formation" Relationship="SYNAPSEModel.FK_FormationProvider_FormationProvider" FromRole="Education_FormationProvider" ToRole="Education_Formation" />
-          <NavigationProperty Name="Education_Provider" Relationship="SYNAPSEModel.FK_FormationProvider_Provider" FromRole="Education_FormationProvider" ToRole="Education_Provider" />
           <Property Name="FormationProvider_IsActual" Type="Boolean" />
           <Property Name="FormationProvider_Vendor" Type="Int64" />
           <Property Name="FormationProvider_ContactName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -1524,6 +1536,8 @@
           <Property Name="FormationProvider_Materiel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FormationProvider_AccessFormer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FormationProvider_CodePO" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Education_Formation" Relationship="SYNAPSEModel.FK_FormationProvider_FormationProvider" FromRole="Education_FormationProvider" ToRole="Education_Formation" />
+          <NavigationProperty Name="Education_Provider" Relationship="SYNAPSEModel.FK_FormationProvider_Provider" FromRole="Education_FormationProvider" ToRole="Education_Provider" />
         </EntityType>
         <EntityType Name="Education_FormationResultat">
           <Key>
@@ -2013,6 +2027,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Education_Formation_Category">
+          <End Type="SYNAPSEModel.Education_FormationCategory" Role="Education_FormationCategory" Multiplicity="0..1" />
+          <End Type="SYNAPSEModel.Education_Formation" Role="Education_Formation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_FormationCategory">
+              <PropertyRef Name="FormationCategory_Id" />
+            </Principal>
+            <Dependent Role="Education_Formation">
+              <PropertyRef Name="Formation_Category" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Education_Formation_Education_UnitePrice">
+          <End Type="SYNAPSEModel.Education_UnitePrice" Role="Education_UnitePrice" Multiplicity="0..1" />
+          <End Type="SYNAPSEModel.Education_Formation" Role="Education_Formation" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_UnitePrice">
+              <PropertyRef Name="UnitePrice_Id" />
+            </Principal>
+            <Dependent Role="Education_Formation">
+              <PropertyRef Name="Formation_UnitePrice" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormationDossier_Formation">
+          <End Type="SYNAPSEModel.Education_Formation" Role="Education_Formation" Multiplicity="0..1" />
+          <End Type="SYNAPSEModel.Education_FormationDossier" Role="Education_FormationDossier" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_Formation">
+              <PropertyRef Name="Formation_Id" />
+            </Principal>
+            <Dependent Role="Education_FormationDossier">
+              <PropertyRef Name="FormationDossier_Formation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_FormationProvider_FormationProvider">
           <End Type="SYNAPSEModel.Education_Formation" Role="Education_Formation" Multiplicity="0..1" />
           <End Type="SYNAPSEModel.Education_FormationProvider" Role="Education_FormationProvider" Multiplicity="*" />
@@ -2253,50 +2303,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Education_Formation_Education_UnitePrice">
-          <End Type="SYNAPSEModel.Education_UnitePrice" Role="Education_UnitePrice" Multiplicity="0..1" />
-          <End Type="SYNAPSEModel.Education_Formation" Role="Education_Formation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Education_UnitePrice">
-              <PropertyRef Name="UnitePrice_Id" />
-            </Principal>
-            <Dependent Role="Education_Formation">
-              <PropertyRef Name="Formation_UnitePrice" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Education_FormationCategory">
-          <Key>
-            <PropertyRef Name="FormationCategory_Id" />
-          </Key>
-          <Property Name="FormationCategory_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FormationCategory_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Education_Formation" Relationship="SYNAPSEModel.FK_Education_Formation_Category" FromRole="Education_FormationCategory" ToRole="Education_Formation" />
-        </EntityType>
-        <Association Name="FK_Education_Formation_Category">
-          <End Type="SYNAPSEModel.Education_FormationCategory" Role="Education_FormationCategory" Multiplicity="0..1" />
-          <End Type="SYNAPSEModel.Education_Formation" Role="Education_Formation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Education_FormationCategory">
-              <PropertyRef Name="FormationCategory_Id" />
-            </Principal>
-            <Dependent Role="Education_Formation">
-              <PropertyRef Name="Formation_Category" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_FormationDossier_Formation">
-          <End Type="SYNAPSEModel.Education_Formation" Role="Education_Formation" Multiplicity="0..1" />
-          <End Type="SYNAPSEModel.Education_FormationDossier" Role="Education_FormationDossier" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Education_Formation">
-              <PropertyRef Name="Formation_Id" />
-            </Principal>
-            <Dependent Role="Education_FormationDossier">
-              <PropertyRef Name="FormationDossier_Formation" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2430,9 +2436,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Education_FormationCategory">
+            <EntityTypeMapping TypeName="SYNAPSEModel.Education_FormationCategory">
+              <MappingFragment StoreEntitySet="Education_FormationCategory">
+                <ScalarProperty Name="FormationCategory_Name" ColumnName="FormationCategory_Name" />
+                <ScalarProperty Name="FormationCategory_Id" ColumnName="FormationCategory_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Education_FormationDossier">
             <EntityTypeMapping TypeName="SYNAPSEModel.Education_FormationDossier">
               <MappingFragment StoreEntitySet="Education_FormationDossier">
+                <ScalarProperty Name="FormationDossier_TestHyperLink" ColumnName="FormationDossier_TestHyperLink" />
+                <ScalarProperty Name="FormationDossier_Test" ColumnName="FormationDossier_Test" />
+                <ScalarProperty Name="FormationDossier_ScenarioHyperLink" ColumnName="FormationDossier_ScenarioHyperLink" />
                 <ScalarProperty Name="FormationDossier_Scenario" ColumnName="FormationDossier_Scenario" />
                 <ScalarProperty Name="FormationDossier_InOrder" ColumnName="FormationDossier_InOrder" />
                 <ScalarProperty Name="FormationDossier_SyllabusHyperLink" ColumnName="FormationDossier_SyllabusHyperLink" />
@@ -2703,14 +2720,6 @@
               <MappingFragment StoreEntitySet="Education_UnitePrice">
                 <ScalarProperty Name="UnitePrice_Name" ColumnName="UnitePrice_Name" />
                 <ScalarProperty Name="UnitePrice_Id" ColumnName="UnitePrice_Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Education_FormationCategory">
-            <EntityTypeMapping TypeName="SYNAPSEModel.Education_FormationCategory">
-              <MappingFragment StoreEntitySet="Education_FormationCategory">
-                <ScalarProperty Name="FormationCategory_Name" ColumnName="FormationCategory_Name" />
-                <ScalarProperty Name="FormationCategory_Id" ColumnName="FormationCategory_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

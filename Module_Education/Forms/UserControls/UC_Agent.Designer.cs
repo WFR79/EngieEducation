@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle19 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle20 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle21 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle22 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle23 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle24 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle31 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle32 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle33 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle34 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle35 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle36 = new SynapseAdvancedControls.HeaderStateStyle();
             this.tabControlAgentList = new System.Windows.Forms.TabControl();
             this.tbListeAgents = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
@@ -430,6 +430,7 @@
             // 
             this.cbCheck_PrimeRescuer.AutoSize = true;
             this.cbCheck_PrimeRescuer.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.cbCheck_PrimeRescuer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
             this.cbCheck_PrimeRescuer.Location = new System.Drawing.Point(370, 275);
             this.cbCheck_PrimeRescuer.Name = "cbCheck_PrimeRescuer";
             this.cbCheck_PrimeRescuer.Size = new System.Drawing.Size(127, 20);
@@ -607,6 +608,7 @@
             // 
             this.checkBoxSecouriste.AutoSize = true;
             this.checkBoxSecouriste.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.checkBoxSecouriste.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
             this.checkBoxSecouriste.Location = new System.Drawing.Point(370, 251);
             this.checkBoxSecouriste.Name = "checkBoxSecouriste";
             this.checkBoxSecouriste.Size = new System.Drawing.Size(117, 20);
@@ -620,6 +622,7 @@
             // 
             this.checkBox_IsWorkManager.AutoSize = true;
             this.checkBox_IsWorkManager.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.checkBox_IsWorkManager.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
             this.checkBox_IsWorkManager.Location = new System.Drawing.Point(370, 227);
             this.checkBox_IsWorkManager.Name = "checkBox_IsWorkManager";
             this.checkBox_IsWorkManager.Size = new System.Drawing.Size(131, 20);
@@ -707,15 +710,15 @@
             // 
             // headerFormatStyle1
             // 
-            this.headerFormatStyle1.Hot = headerStateStyle19;
-            this.headerFormatStyle1.Normal = headerStateStyle20;
-            this.headerFormatStyle1.Pressed = headerStateStyle21;
+            this.headerFormatStyle1.Hot = headerStateStyle31;
+            this.headerFormatStyle1.Normal = headerStateStyle32;
+            this.headerFormatStyle1.Pressed = headerStateStyle33;
             // 
             // headerFormatStyle2
             // 
-            this.headerFormatStyle2.Hot = headerStateStyle22;
-            this.headerFormatStyle2.Normal = headerStateStyle23;
-            this.headerFormatStyle2.Pressed = headerStateStyle24;
+            this.headerFormatStyle2.Hot = headerStateStyle34;
+            this.headerFormatStyle2.Normal = headerStateStyle35;
+            this.headerFormatStyle2.Pressed = headerStateStyle36;
             // 
             // equipeBindingSource
             // 

@@ -16,7 +16,7 @@ namespace Module_Education.Models
     public partial class CFNEducation_FormationEntities : DbContext
     {
         public CFNEducation_FormationEntities()
-            : base("name=SYNAPSEEntities")
+            : base("name=Entities")
         {
         }
     
@@ -35,6 +35,7 @@ namespace Module_Education.Models
         public virtual DbSet<Education_Departement> Education_Departement { get; set; }
         public virtual DbSet<Education_Equipe> Education_Equipe { get; set; }
         public virtual DbSet<Education_Formation> Education_Formation { get; set; }
+        public virtual DbSet<Education_FormationCategory> Education_FormationCategory { get; set; }
         public virtual DbSet<Education_FormationDossier> Education_FormationDossier { get; set; }
         public virtual DbSet<Education_FormationDossierType> Education_FormationDossierType { get; set; }
         public virtual DbSet<Education_FormationProvider> Education_FormationProvider { get; set; }
@@ -62,6 +63,5 @@ namespace Module_Education.Models
         public virtual DbSet<Education_Service> Education_Service { get; set; }
         public virtual DbSet<Education_SessionUnite> Education_SessionUnite { get; set; }
         public virtual DbSet<Education_UnitePrice> Education_UnitePrice { get; set; }
-        public virtual DbSet<Education_FormationCategory> Education_FormationCategory { get; set; }
     }
 }

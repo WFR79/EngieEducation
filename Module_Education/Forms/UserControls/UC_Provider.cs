@@ -12,18 +12,33 @@ using Module_Education.Models;
 using Module_Education.Helper;
 using Module_Education.Classes;
 
-namespace Module_Education.Forms.UserControls
+namespace Module_Education
 {
     public partial class UC_Provider : UserControl
     {
         #region Declarations
         IPagedList<Education_Provider> listProvidersPaged;
         int pageSize = 50;
+
+        private static UC_Provider _instance;
+
         #endregion
         public UC_Provider()
         {
             InitializeComponent();
         }
+
+        public static UC_Provider Instance
+        {
+            get
+            {
+                if (_instance == null)
+                    _instance = new UC_Provider();
+                return _instance;
+            }
+        }
+
+
         private async Task<IPagedList<Education_Provider>> LoadDatagriEducation_Providers(int pagNumber = 1, int pageSize = 100)
         {
             try

@@ -18,7 +18,7 @@ namespace Module_Education.Repositories
 
         public List<Education_FormationDossierType> LoadAllTypeDossier()
         {
-            return db.Education_FormationDossierType.ToList();,
+            return db.Education_FormationDossierType.ToList();
         
         }
     }
