@@ -11,6 +11,7 @@ using Module_Education.Classes;
 using System.Text.RegularExpressions;
 using Module_Education.Forms;
 using Module_Education.Classes.Extensions;
+using System.Diagnostics;
 
 namespace Module_Education
 {
@@ -65,6 +66,9 @@ namespace Module_Education
         private FunctionDataAccess dbFunction = new FunctionDataAccess();
         private RoleEPIDataAccess dbEPI = new RoleEPIDataAccess();
         private RoleAstreinteDataAccess dbAstreinte = new RoleAstreinteDataAccess();
+        private InRouteRepository dbInRoute = new InRouteRepository();
+
+
         #endregion
 
         #region Pagination
@@ -153,6 +157,8 @@ namespace Module_Education
                 ReceiverRefreshListeAgent += new refreshFicheAgent(UserRecord_LoadUser);
                 UCEducation_Formation.Instance.PointerUCAgent_Refresh = ReceiverRefreshListeAgent;
 
+               
+
             }
         }
 
@@ -191,6 +197,10 @@ namespace Module_Education
             //Astreinte
             comboBoxAstreinte.DataSource = dbAstreinte.LoadAllRoleAstreinte();
             comboBoxAstreinte.ValueMember = "RoleAstreinte_Name";
+
+            // En trajet
+            comboTrajet.DataSource = dbInRoute.LoadAllInRoute();
+            comboTrajet.ValueMember = "InRoute_Name";
         }
 
         #region Tab Liste
@@ -365,7 +375,7 @@ namespace Module_Education
                 Function_Name = o.Agent_Function == null ? null : dbEntities.Education_Function.Where(x => x.Function_Id == o.Agent_Function).FirstOrDefault().Function_Name,// If (o.Function == null) { null } else {o.Function.Function_Name}
                 Agent_Admin = o.Agent_Admin,
                 Agent_Responsable = o.Agent_LineManager == null ? null : dbEntities.Education_Agent.Where(x => x.Agent_Id == o.Agent_LineManager).FirstOrDefault().Agent_FullName,
-
+                Agent_InRoute = o.Agent_InRoute,
                 Agent_IsWorkManager = o.Agent_IsWorksManager,
                 Agent_DateSeniority = o.Agent_DateSeniority,
                 Agent_DateOfEntry = o.Agent_DateOfEntry,
@@ -430,6 +440,8 @@ namespace Module_Education
                 UserRecord_FillRemarks(userRecord);
                 UserRecord_SelectRespHiérarchique(userRecord);
                 UserRecord_SelectStatut(userRecord);
+                UserRecord_SelectInRoute(userRecord);
+
                 UserRecord_SelectFunction(userRecord);
 
                 UserRecord_SelectRoleEPI(userRecord);
@@ -650,6 +662,16 @@ namespace Module_Education
             if (userRecord.Education_AgentStatus != null)
                 comboBoxStatut.SelectedIndex = comboBoxStatut.FindStringExact(userRecord.Education_AgentStatus.AgentStatus_Name);
         }
+
+        public void UserRecord_SelectInRoute(Education_Agent userRecord)
+        {
+            if (userRecord.Education_InRoute != null)
+            {
+                comboTrajet.SelectedIndex = comboTrajet.FindStringExact(userRecord.Education_InRoute.InRoute_Name);
+                cbTrajet.Checked = (bool)userRecord.Agent_InRoute;
+            }
+        }
+
 
         public void UserRecord_SelectRespHiérarchique(Education_Agent userRecord)
         {
@@ -1042,6 +1064,8 @@ namespace Module_Education
                 UserRecord_FillRemarks(userRecord);
                 UserRecord_SelectRespHiérarchique(userRecord);
                 UserRecord_SelectStatut(userRecord);
+                UserRecord_SelectInRoute(userRecord);
+
                 UserRecord_SelectFunction(userRecord);
 
                 UserRecord_SelectRoleEPI(userRecord);
@@ -1274,6 +1298,8 @@ namespace Module_Education
 
                 var fileExportedParth = exportExcel.Export(dG_Agents);
                 AutoClosingMessageBox messageboxEndExport = new AutoClosingMessageBox("Export Terminé", "Export Excel", 1000, MessageBoxIcon.Information);
+                Process.Start(fileExportedParth);
+
             }
             catch (Exception ex)
             {
@@ -1332,7 +1358,41 @@ namespace Module_Education
             TbExtension.OnFocusTextbox((TextBox)sender);
         }
 
+        private void cbTrajet_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbTrajet.Checked == true)
+            {
+                if (CurrentUser.Agent_InRoute != true)
+                {
+                    CurrentUser.Agent_InRoute = true;
+                    ActivateModification(true);
+                }
+                comboTrajet.Visible = true;
+                //CurrentUser.Education_InRoute.InRoute_Id = comboTrajet.FindStringExact(CurrentUser.Education_InRoute.InRoute_Name);
+            }
+            else
+            {
+                if (CurrentUser.Agent_InRoute == true)
+                {
+                    CurrentUser.Agent_InRoute = false;
 
+                    ActivateModification(true);
+                }
+                comboTrajet.Visible = false;
+
+            }
+        }
+
+        private void comboTrajet_Leave(object sender, EventArgs e)
+        {
+            if (CurrentUser.Agent_InRouteId != ((Education_InRoute)comboTrajet.SelectedItem).InRoute_Id)
+            {
+                CurrentUser.Agent_InRouteId = ((Education_InRoute)comboTrajet.SelectedItem).InRoute_Id;
+                ActivateModification(true);
+            }
+        }
+
+      
     }
 
 }

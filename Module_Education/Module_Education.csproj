@@ -95,6 +95,7 @@
     <Compile Include="Classes\MyColumnCollectionDGAgent.cs" />
     <Compile Include="Classes\MyColumnCollectionDGFormation.cs" />
     <Compile Include="Classes\MyColumnCollectionDGProvider.cs" />
+    <Compile Include="Classes\MyColumnCollectionFrmFormation.cs" />
     <Compile Include="Classes\ProgressReport.cs" />
     <Compile Include="Classes\TextBoxExtensions.cs">
       <SubType>Component</SubType>
@@ -106,11 +107,23 @@
     <Compile Include="Forms\FrmAgent.Designer.cs">
       <DependentUpon>FrmAgent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmFormation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmFormation.Designer.cs">
+      <DependentUpon>FrmFormation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\UserControls\UC_Provider.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Forms\UserControls\UC_Provider.Designer.cs">
       <DependentUpon>UC_Provider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_InRoute.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_ProviderContact.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Repositories\AgentDataAccess.cs" />
     <Compile Include="Repositories\CompetenceDataAccess.cs" />
@@ -119,14 +132,17 @@
     <Compile Include="Repositories\FormationDataAccess.cs" />
     <Compile Include="Repositories\FormationDossierRepository.cs" />
     <Compile Include="Repositories\FormationDossierTypeRepository.cs" />
+    <Compile Include="Repositories\FormationProvider.cs" />
     <Compile Include="Repositories\FormationProviderRepository.cs" />
     <Compile Include="Repositories\FormationResultatDataAccess.cs" />
     <Compile Include="Repositories\FormationSessionDataAccess.cs" />
     <Compile Include="Repositories\FunctionDataAccess.cs" />
     <Compile Include="Repositories\HabilitationDataAccess.cs" />
-    <Compile Include="Repositories\ProviderDataAccess.cs" />
+    <Compile Include="Repositories\InRouteRepository.cs" />
+    <Compile Include="Repositories\ProviderDataRepository.cs" />
     <Compile Include="Repositories\RoleAstreinteDataAccess.cs" />
     <Compile Include="Repositories\RoleEPIDataAccess.cs" />
+    <Compile Include="Repositories\RoutesFormationRepository.cs" />
     <Compile Include="Repositories\SessionUniteDataAccess.cs" />
     <Compile Include="Repositories\UniteDataAccess.cs" />
     <Compile Include="Repositories\UserStatusDataAccess.cs" />
@@ -311,6 +327,9 @@
     <EmbeddedResource Include="Forms\FrmAgent.resx">
       <DependentUpon>FrmAgent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmFormation.resx">
+      <DependentUpon>FrmFormation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -378,6 +397,8 @@
       <LastGenOutput>CFNFormationDataModel.cs</LastGenOutput>
     </Content>
     <Content Include="Resources\1x\baseline_reorder_black_18dp.png" />
+    <None Include="Resources\Images\baseline_visibility_black_18dp.png" />
+    <None Include="Resources\Images\baseline_library_add_black_18dp.png" />
     <Content Include="Resources\Images\engieICO.ico" />
     <None Include="Resources\Images\add-512.png" />
     <Content Include="Resources\Images\AdvancedDataGridView_logo.png" />

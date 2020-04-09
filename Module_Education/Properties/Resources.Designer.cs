@@ -83,6 +83,16 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap baseline_library_add_black_18dp {
+            get {
+                object obj = ResourceManager.GetObject("baseline_library_add_black_18dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap baseline_person_black_18dp {
             get {
                 object obj = ResourceManager.GetObject("baseline_person_black_18dp", resourceCulture);
@@ -96,6 +106,16 @@ namespace Module_Education.Properties {
         internal static System.Drawing.Bitmap baseline_person_black_36dp {
             get {
                 object obj = ResourceManager.GetObject("baseline_person_black_36dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap baseline_visibility_black_18dp {
+            get {
+                object obj = ResourceManager.GetObject("baseline_visibility_black_18dp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

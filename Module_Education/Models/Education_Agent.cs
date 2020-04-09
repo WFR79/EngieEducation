@@ -50,11 +50,14 @@ namespace Module_Education.Models
         public string Agent_Admin { get; set; }
         public Nullable<long> Agent_Role { get; set; }
         public Nullable<bool> Agent_RescueBonus { get; set; }
+        public Nullable<bool> Agent_InRoute { get; set; }
+        public Nullable<long> Agent_InRouteId { get; set; }
     
         public virtual Education_RoleEPI Education_RoleEPI { get; set; }
         public virtual Education_AgentStatus Education_AgentStatus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_Agent_Formation> Education_Agent_Formation { get; set; }
+        public virtual Education_InRoute Education_InRoute { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_GroupLearner_Agent> Education_GroupLearner_Agent { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

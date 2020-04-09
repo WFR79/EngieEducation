@@ -16,6 +16,7 @@ using System.Threading;
 using System.Diagnostics;
 using Module_Education.Repositories;
 using Module_Education.Classes.Extensions;
+using Module_Education.Forms;
 
 namespace Module_Education
 {
@@ -30,20 +31,28 @@ namespace Module_Education
         const UInt32 WM_CLOSE = 0x0010;
         #endregion
 
+        #region Treeview
+        TreeNode mySelectedNode;
+        public List<Education_Formation> lFormationToAddToMatrice;
+        string oldLabel = String.Empty;
+        #endregion
         public BindingSource ds_Education_Formations = new BindingSource();
         private Education_FormationDataAccess db = new Education_FormationDataAccess();
         private SessionUniteDataAccess dbSessionUnite = new SessionUniteDataAccess();
-        private ProviderDataAccess dbProvider = new ProviderDataAccess();
+        private ProviderDataRepository dbProvider = new ProviderDataRepository();
         private CompetenceDataAccess dbCompetence = new CompetenceDataAccess();
         private FormationResultatDataAccess dbFormationResulat = new FormationResultatDataAccess();
         private FormationDossierRepository dbFormationDossier = new FormationDossierRepository();
         private FormationDossierTypeRepository dbFormationDossierType = new FormationDossierTypeRepository();
+        private RoutesFormationRepository dbMatrice = new RoutesFormationRepository();
 
         CFNEducation_FormationEntities dbEntities = new CFNEducation_FormationEntities();
 
 
         private static UCEducation_Formation _instance;
         IPagedList<Education_Formation> listPaged;
+        private List<Education_Matrice> listMatrice;
+
         List<Education_Formation> listFormationFiltered;
 
         IPagedList<Education_Agent> listUserPaged;
@@ -88,6 +97,10 @@ namespace Module_Education
         public Delegate PointerUCAgent_Refresh;
         public Delegate PointerRefreshFicheAgent; // Edit user from fiche formation
         public agentEditLoad ReceiverLoadEditAgent { get; private set; }
+        public Delegate PointerProvider;
+        public Delegate MainWindowPointerMenuBtnProvider;
+
+        public delegate void providerEditLoad(long FormationProviderID);
 
         public Delegate PointerPointMenuBtnFormation;
         public Delegate PointerFormation;
@@ -104,6 +117,8 @@ namespace Module_Education
                 return _instance;
             }
         }
+
+        public string FileToProcess { get; private set; }
 
         public delegate void agentEditLoad(string formationSAPNum);
 
@@ -447,7 +462,6 @@ namespace Module_Education
             AdvDg_Formations.Refresh();
 
         }
-
 
         private void label1_Click_1(object sender, EventArgs e)
         {
@@ -1355,7 +1369,7 @@ namespace Module_Education
             {
                 //listUserPaged = await LoadDatagridAgentAsync();
                 var listAgentFiltered = db.LoadFormationFiltered(_filterString, MainWindow.globalListEducation_Formations);
-
+                pageSize = Convert.ToInt32(tbNbrRows.Text);
                 AdvDg_Formations.DataSource = GetDataSource(listAgentFiltered.ToPagedList(1, pageSize));
                 BindingSource datasource = new BindingSource()
                 {
@@ -1523,7 +1537,9 @@ namespace Module_Education
                 ExportToExcel exportExcel = new ExportToExcel();
 
                 var fileExportedParth = exportExcel.Export(AdvDg_Formations);
+
                 AutoClosingMessageBox messageboxEndExport = new AutoClosingMessageBox("Export Terminé", "Export Excel", 1000, MessageBoxIcon.Information);
+                Process.Start(fileExportedParth);
             }
             catch (Exception ex)
             {
@@ -1545,7 +1561,7 @@ namespace Module_Education
 
         private void lblShowHidePanelDossierPed_Click(object sender, EventArgs e)
         {
-            if (panelDossierPedagogique.Visible == true)
+            if (tabControl_Education_FormationAndCertificationsOfUser.Visible == true)
             {
 
                 tabControl_Education_FormationAndCertificationsOfUser.Visible = false;
@@ -1790,7 +1806,322 @@ namespace Module_Education
 
             }
 
-        } 
+        }
+        #endregion
+
+        private void tbInfoFiche_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbInfoFiche_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            if (e.Button == MouseButtons.Left)
+            {
+
+                FileToProcess = tbInfoFiche.Text;
+                ContextMenu m = new ContextMenu();
+                m.MenuItems.Add(new MenuItem("Ouvrir le ficher", ShowFile, Shortcut.AltF9));
+
+            }
+        }
+
+        private void ShowFile(object sender, EventArgs e)
+        {
+            if (FileToProcess != "")
+            {
+                Process.Start(FileToProcess);
+
+            }
+        }
+
+
+
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (tbInfoFiche.Text != "")
+            {
+                Process.Start(tbInfoFiche.Text);
+            }
+            else
+            {
+                AutoClosingMessageBox.Show("Aucun fichier à afficher", "Error", 1000, MessageBoxIcon.Error);
+            }
+        }
+
+        private void pictureBox2_Click_1(object sender, EventArgs e)
+        {
+            if (tbScenario.Text != "")
+            {
+                Process.Start(tbScenario.Text);
+            }
+            else
+            {
+                AutoClosingMessageBox.Show("Aucun fichier à afficher", "Error", 1000, MessageBoxIcon.Error);
+            }
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            if (tbSyllabus.Text != "")
+            {
+                Process.Start(tbSyllabus.Text);
+            }
+            else
+            {
+                AutoClosingMessageBox.Show("Aucun fichier à afficher", "Error", 1000, MessageBoxIcon.Error);
+            }
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            if (tbTest.Text != "")
+            {
+                Process.Start(tbTest.Text);
+            }
+            else
+            {
+                AutoClosingMessageBox.Show("Aucun fichier à afficher", "Error", 1000, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cbListProvider_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+
+                Rectangle r = cbListProvider.GetItemRectangle(e.X);
+                TextBox newAmountTextBox = new TextBox();
+                newAmountTextBox.Location = new Point(r.Left, r.Top);
+
+                ContextMenu m = new ContextMenu();
+
+                Point currentMouseOverRow = e.Location;
+
+
+                m.MenuItems.Add(new MenuItem("Visualiser le fournisseur", EditProvider_CLick));
+
+
+                //m.Show(dgv, new Point(e.X, e.Y));
+            }
+
+
+        }
+
+        private void EditProvider_CLick(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void picViewProvider_Click(object sender, EventArgs e)
+        {
+            var itemChecked = cbListProvider.CheckedItems[0];
+            var ProviderChecked = dbProvider.GetProvider(itemChecked.ToString());
+
+
+            MainWindowPointerMenuBtnProvider.DynamicInvoke(ProviderChecked.Provider_Id);
+            PointerProvider.DynamicInvoke(ProviderChecked.Provider_Id);
+
+        }
+
+        #region Tab Matrice
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            treeW_Provider.BeginUpdate();
+            //treeView2.Nodes.Clear();
+            string yourParentNode;
+            yourParentNode = "";
+
+            treeW_Provider.SelectedNode = mySelectedNode;
+
+
+            TreeNode tn1 = new TreeNode();
+            tn1.Text = "Entrez le nom de la nouvelle matrices";
+
+            if (mySelectedNode.Text == "Trajets")
+                treeW_Provider.Nodes[0].Nodes.Add(tn1); // Add node1.
+            else
+            {
+
+            }
+            treeW_Provider.SelectedNode.Expand();
+            //treeW_Provider.Nodes.Add(yourParentNode);
+            //treeW_Provider.SelectedNode
+            treeW_Provider.EndUpdate();
+        }
+
+        private void treeW_Provider_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+
+            mySelectedNode = treeW_Provider.GetNodeAt(e.X, e.Y);
+            treeW_Provider.SelectedNode = mySelectedNode;
+            if (mySelectedNode != null && treeW_Provider.SelectedNode.Index < 2)
+            {
+                if (mySelectedNode.Text != "Trajets")
+                {
+                    if (e.Button == MouseButtons.Right)
+                    {
+                        ContextMenu m = new ContextMenu();
+                        m.MenuItems.Add(new MenuItem("Modifier le nom de la matrice", EditFormationToMatrice));
+                        m.MenuItems.Add(new MenuItem("Ajouter une formation à la matrice", AddFormationToMatrice));
+                        m.MenuItems.Add(new MenuItem("Attribuer la matrice à un utilisateur", EditFormationToMatrice));
+                        m.MenuItems.Add(new MenuItem("Attribuer la matrice à un groupe d'utilisateur", EditFormationToMatrice));
+
+
+                        m.Show(treeW_Provider, new Point(e.X, e.Y));
+                    }
+                    else
+                    {
+                        //treeW_Provider.LabelEdit = true;
+
+                        //treeW_Provider.SelectedNode.BeginEdit();
+                    }
+                }
+                //mySelectedNode.BeginEdit();
+            }
+            picAddMatrice.Enabled = true;
+        }
+
+        private void EditFormationToMatrice(object sender, EventArgs e)
+        {
+            treeW_Provider.LabelEdit = true;
+
+            treeW_Provider.SelectedNode.BeginEdit();
+        }
+
+        private void AddFormationToMatrice(object sender, EventArgs e)
+        {
+            //lFormationToAddToMatrice.Clear();
+            FrmFormation frmFormation = new FrmFormation();
+            frmFormation.ShowDialog();
+            if (lFormationToAddToMatrice != null)
+            {
+                if (lFormationToAddToMatrice.Count > 0)
+                {
+                    foreach (var formation in lFormationToAddToMatrice)
+                        treeW_Provider.SelectedNode.Nodes.Add(formation.Formation_ShortTitle); // Add node1.
+
+                }
+            }
+            treeW_Provider.SelectedNode.Expand();
+        }
+
+        private void treeW_Provider_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
+        {
+            TreeView tw = (TreeView)sender;
+            if (e.Label != null && e.Label != tw.SelectedNode.Text)
+                MessageBox.Show("Matrice sauvegardé", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void treeW_Provider_BeforeLabelEdit(object sender, NodeLabelEditEventArgs e)
+        {
+            oldLabel = mySelectedNode.Text;
+        }
+
+        private void LoadAllMatrice()
+        {
+            LoadComboboxRecurrency();
+            listMatrice = dbMatrice.LoadAllMatrice();
+            treeW_Provider.SelectedNode = treeW_Provider.Nodes[0];
+           for(int i = 0; i< listMatrice.Count; i++)
+            {
+                treeW_Provider.SelectedNode.Nodes.Add(listMatrice[i].Matrice_Description); // Add node1.
+                foreach (var formation in listMatrice[i].Education_Matrice_Formation)
+                {
+                    treeW_Provider.SelectedNode.Nodes[i].Nodes.Add(formation.Education_Formation.Formation_ShortTitle);
+                }
+            }
+            treeW_Provider.SelectedNode.Expand();
+        }
+
+
+        private void SaveRoutesFormation(object sender, EventArgs e)
+        {
+            List<Education_Matrice> newListeMatrice = new List<Education_Matrice>();
+            TreeNodeCollection coll = treeW_Provider.Nodes;
+            foreach (TreeNode root in coll)
+            {
+                foreach (TreeNode matrice in root.Nodes)
+                {
+                    if (checkIfMatriceExists(matrice))
+                    {
+                        foreach (TreeNode formation in matrice.Nodes)
+                        {
+
+                        }
+                    }
+                    else
+                    {
+                        Education_Matrice newMatrice = new Education_Matrice()
+                        {
+                            Matrice_Description = matrice.Text,
+                        };
+                        listMatrice.Add(dbMatrice.SaveMatrice(newMatrice));
+
+                        foreach (TreeNode formation in matrice.Nodes)
+                        {
+                            var formItem = dbEntities.Education_Formation.Where(x => x.Formation_ShortTitle == formation.Text).FirstOrDefault();
+                            Education_Matrice_Formation newMatriceFormation = new Education_Matrice_Formation()
+                            {
+                                MatriceFormation_Matrice = newMatrice.Matrice_Id,
+                                MatriceFormation_Formation = formItem.Formation_Id
+                            };
+
+                            dbEntities.Education_Matrice_Formation.Add(newMatriceFormation);
+                            dbEntities.SaveChanges();
+                        }
+
+                    }
+
+                }
+            }
+        }
+
+        private bool checkIfMatriceExists(TreeNode matrice)
+        {
+            if (listMatrice != null)
+            {
+                var matriceExist = listMatrice.Where(x => x.Matrice_Description == matrice.Text).FirstOrDefault();
+
+                if (matriceExist != null)
+                    return true;
+                else
+                    return false;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private void AdvDg_Formations_SelectionChanged(object sender, EventArgs e)
+        {
+        }
+
+        
+
+        private void tabControl_Education_Formations_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TabControl tabcontrol = (TabControl)sender;
+            if (tabcontrol.SelectedIndex == 2)
+                LoadAllMatrice();
+
+        }
+
+        private void treeW_Provider_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+            var selectedNode = treeW_Provider.SelectedNode;
+            lblDetailsMatrice.Text = "Details de " + selectedNode.Text;
+
+        }
+
+        private void LoadComboboxRecurrency()
+        {
+            for (int i = 0; i < 112; i++)
+                cbRecurrency.Items.Add(i);
+        }
+
         #endregion
     }
 }

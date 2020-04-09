@@ -24,23 +24,23 @@ namespace Module_Education.Classes
         [DisplayName("Nom")]
         public string Provider_Name { get; set; }
 
-        //[DisplayName("Titre Long")]
-        //public string Column_LongTitle { get; set; }
+        [DisplayName("Contact")]
+        public string Provider_Contact { get; set; }
 
-        //[DisplayName("SAP")]
-        //public string Provider_Name { get; set; }
+        [DisplayName("Email Contact")]
+        public string Provider_EmailContact { get; set; }
 
-        //[DisplayName("Durée (Jours)")]
-        //public double? Provider_Name { get; set; }
+        [DisplayName("Tel Contact")]
+        public string Provider_TelContact { get; set; }
 
-        //[DisplayName("Année Création")]
-        //public int? Provider_Name { get; set; }
+        [DisplayName("Formateur")]
+        public string Provider_FormerContact { get; set; }
 
-        //[DisplayName("Capacité Minimale")]
-        //public int? Provider_Name { get; set; }
+        [DisplayName("Formateur Email")]
+        public string Provider_FormerContactEmail { get; set; }
 
-        //[DisplayName("Capacité Optimale")]
-        //public int? Provider_Name { get; set; }
+        [DisplayName("Tel Formateur")]
+        public string Provider_FormerContactTel { get; set; }
 
         //[DisplayName("Capacité Maximale")]
         //public int? Provider_Name { get; set; }

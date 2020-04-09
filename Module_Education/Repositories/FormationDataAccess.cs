@@ -190,10 +190,9 @@ namespace Module_Education
 
             var sequenceMaxQuery = "SELECT * " +
                                   " FROM dbo.Education_Formation t1 ";
-            sequenceMaxQuery += " WHERE " + filter;
+            //sequenceMaxQuery += " WHERE " + filter;
 
-            var sequenceQueryResult = db.Database.SqlQuery<Education_Formation>(sequenceMaxQuery).ToList();
-
+            var sequenceQueryResult = new List<Education_Formation>();
             if (filter.Contains("Agent_Matricule") || filter.Contains("Agent_Name") ||
                 filter.Contains("Agent_FirstName") || filter.Contains("Agent_Etat") || filter.Contains("Agent_DateOfEntry"))
             {
@@ -228,6 +227,15 @@ namespace Module_Education
 
             }
 
+            if (filter.Contains("Formation_DurationInDays"))
+            {
+                var sequenceFunctQuery = "SELECT * " +
+                                  " FROM dbo.Education_Formation ";
+                sequenceFunctQuery += "WHERE Formation_DurationInDays" + " " + filterValue;
+                sequenceQueryResult = db.Database.SqlQuery<Education_Formation>(sequenceFunctQuery).ToList();
+            }
+
+
             if (filter.Contains("Formation_Dossier"))
             {
                 var sequenceFunctQuery = "SELECT * " +
@@ -253,7 +261,11 @@ namespace Module_Education
 
 
             }
-
+            else
+            {
+                sequenceMaxQuery += " WHERE " + filter;
+                 sequenceQueryResult = db.Database.SqlQuery<Education_Formation>(sequenceMaxQuery).ToList();
+            }
             //var query = db.Education_Formation.Find(filter);
             return sequenceQueryResult;
         }

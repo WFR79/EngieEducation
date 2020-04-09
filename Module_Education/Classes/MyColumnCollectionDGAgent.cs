@@ -52,6 +52,9 @@ namespace Module_Education.Classes
         [DisplayName("Etat")]
         public bool? Agent_Etat { get; set; }
 
+        [DisplayName("En trajet")]
+        public bool? Agent_InRoute { get; set; }
+
         private Education_Agent _obj;
 
         public MyColumnCollectionDGAgent(Education_Agent obj)

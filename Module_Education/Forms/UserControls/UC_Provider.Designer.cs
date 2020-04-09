@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControlAgentList = new System.Windows.Forms.TabControl();
+            this.tabControlProvider = new System.Windows.Forms.TabControl();
             this.tbListeAgents = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
             this.lblMax = new System.Windows.Forms.Label();
@@ -45,39 +45,39 @@
             this.lblTiteLstAgent = new System.Windows.Forms.Label();
             this.tbFiltre = new System.Windows.Forms.TextBox();
             this.tbFicheAgent = new System.Windows.Forms.TabPage();
-            this.lblRoleEPI = new System.Windows.Forms.Label();
-            this.lblFunction = new System.Windows.Forms.Label();
-            this.lblEquipe = new System.Windows.Forms.Label();
-            this.lblSeniority = new System.Windows.Forms.Label();
-            this.lblentrylastFunction = new System.Windows.Forms.Label();
-            this.lblDateEntry = new System.Windows.Forms.Label();
-            this.labelDurationInDays = new System.Windows.Forms.Label();
-            this.cbCheck_PrimeRescuer = new System.Windows.Forms.CheckBox();
+            this.lblVendor = new System.Windows.Forms.Label();
+            this.tbVendor = new System.Windows.Forms.TextBox();
+            this.lblCodePO = new System.Windows.Forms.Label();
+            this.tbCodePo = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.lblFormerEmail = new System.Windows.Forms.Label();
+            this.tbFormerEmail = new System.Windows.Forms.TextBox();
+            this.lblFormerTel = new System.Windows.Forms.Label();
+            this.lblFormer = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.lblEmailProvider = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblCountry = new System.Windows.Forms.Label();
+            this.lblContactPerson = new System.Windows.Forms.Label();
             this.tabControl_Education_FormationAndCertificationsOfUser = new System.Windows.Forms.TabControl();
             this.tabPageEducation_FormationsAgent = new System.Windows.Forms.TabPage();
             this.dg_TABFormationsOfAgent = new System.Windows.Forms.DataGridView();
             this.tabPageCertificationsAgent = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.labelNameOfUser = new System.Windows.Forms.TextBox();
-            this.textBoxAdmin = new System.Windows.Forms.TextBox();
-            this.comboBoxStatut = new System.Windows.Forms.ComboBox();
-            this.comboBoxFunction = new System.Windows.Forms.ComboBox();
-            this.comboBoxRespHierarchique = new System.Windows.Forms.ComboBox();
-            this.comboBoxEducation_Habilitation = new System.Windows.Forms.ComboBox();
-            this.comboBoxEquipe = new System.Windows.Forms.ComboBox();
-            this.comboBoxAstreinte = new System.Windows.Forms.ComboBox();
-            this.comboBoxEPI = new System.Windows.Forms.ComboBox();
-            this.checkBoxSecouriste = new System.Windows.Forms.CheckBox();
-            this.checkBox_IsWorkManager = new System.Windows.Forms.CheckBox();
-            this.labelRemarks = new System.Windows.Forms.Label();
-            this.richTextBoxRemarks = new System.Windows.Forms.RichTextBox();
-            this.dateTimePickerSeniority = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerLastFunction = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker_DateOfEntry = new System.Windows.Forms.DateTimePicker();
+            this.labelFournisseur = new System.Windows.Forms.TextBox();
+            this.tbNumContact = new System.Windows.Forms.TextBox();
+            this.comboPersonneContact = new System.Windows.Forms.ComboBox();
+            this.cbProviderCountry = new System.Windows.Forms.ComboBox();
+            this.labelRemarksProvider = new System.Windows.Forms.Label();
+            this.rtbRemarksProvider = new System.Windows.Forms.RichTextBox();
             this.labelActif = new System.Windows.Forms.Label();
             this.labelMatricule = new System.Windows.Forms.Label();
-            this.pictureBox_ProfilePic = new System.Windows.Forms.PictureBox();
-            this.tabControlAgentList.SuspendLayout();
+            this.tabControlProvider.SuspendLayout();
             this.tbListeAgents.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picExportExcel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dG_Providers)).BeginInit();
@@ -87,22 +87,21 @@
             ((System.ComponentModel.ISupportInitialize)(this.dg_TABFormationsOfAgent)).BeginInit();
             this.tabPageCertificationsAgent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ProfilePic)).BeginInit();
             this.SuspendLayout();
             // 
-            // tabControlAgentList
+            // tabControlProvider
             // 
-            this.tabControlAgentList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.tabControlProvider.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControlAgentList.Controls.Add(this.tbListeAgents);
-            this.tabControlAgentList.Controls.Add(this.tbFicheAgent);
-            this.tabControlAgentList.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.tabControlAgentList.Location = new System.Drawing.Point(0, 0);
-            this.tabControlAgentList.Name = "tabControlAgentList";
-            this.tabControlAgentList.SelectedIndex = 0;
-            this.tabControlAgentList.Size = new System.Drawing.Size(1067, 555);
-            this.tabControlAgentList.TabIndex = 1;
+            this.tabControlProvider.Controls.Add(this.tbListeAgents);
+            this.tabControlProvider.Controls.Add(this.tbFicheAgent);
+            this.tabControlProvider.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.tabControlProvider.Location = new System.Drawing.Point(0, 0);
+            this.tabControlProvider.Name = "tabControlProvider";
+            this.tabControlProvider.SelectedIndex = 0;
+            this.tabControlProvider.Size = new System.Drawing.Size(1067, 555);
+            this.tabControlProvider.TabIndex = 1;
             // 
             // tbListeAgents
             // 
@@ -216,7 +215,7 @@
             // 
             // dG_Providers
             // 
-            this.dG_Providers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.dG_Providers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dG_Providers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dG_Providers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -228,6 +227,7 @@
             this.dG_Providers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dG_Providers.Size = new System.Drawing.Size(1040, 419);
             this.dG_Providers.TabIndex = 18;
+            this.dG_Providers.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dG_Providers_MouseClick);
             // 
             // progressBarDgAgent
             // 
@@ -264,7 +264,7 @@
             // 
             this.lblTiteLstAgent.AutoSize = true;
             this.lblTiteLstAgent.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTiteLstAgent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(101)))));
+            this.lblTiteLstAgent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
             this.lblTiteLstAgent.Location = new System.Drawing.Point(9, 11);
             this.lblTiteLstAgent.Name = "lblTiteLstAgent";
             this.lblTiteLstAgent.Size = new System.Drawing.Size(236, 24);
@@ -280,34 +280,34 @@
             // 
             // tbFicheAgent
             // 
-            this.tbFicheAgent.Controls.Add(this.lblRoleEPI);
-            this.tbFicheAgent.Controls.Add(this.lblFunction);
-            this.tbFicheAgent.Controls.Add(this.lblEquipe);
-            this.tbFicheAgent.Controls.Add(this.lblSeniority);
-            this.tbFicheAgent.Controls.Add(this.lblentrylastFunction);
-            this.tbFicheAgent.Controls.Add(this.lblDateEntry);
-            this.tbFicheAgent.Controls.Add(this.labelDurationInDays);
-            this.tbFicheAgent.Controls.Add(this.cbCheck_PrimeRescuer);
+            this.tbFicheAgent.Controls.Add(this.lblVendor);
+            this.tbFicheAgent.Controls.Add(this.tbVendor);
+            this.tbFicheAgent.Controls.Add(this.lblCodePO);
+            this.tbFicheAgent.Controls.Add(this.tbCodePo);
+            this.tbFicheAgent.Controls.Add(this.label3);
+            this.tbFicheAgent.Controls.Add(this.textBox4);
+            this.tbFicheAgent.Controls.Add(this.label2);
+            this.tbFicheAgent.Controls.Add(this.textBox2);
+            this.tbFicheAgent.Controls.Add(this.lblFormerEmail);
+            this.tbFicheAgent.Controls.Add(this.tbFormerEmail);
+            this.tbFicheAgent.Controls.Add(this.lblFormerTel);
+            this.tbFicheAgent.Controls.Add(this.lblFormer);
+            this.tbFicheAgent.Controls.Add(this.textBox3);
+            this.tbFicheAgent.Controls.Add(this.comboBox1);
+            this.tbFicheAgent.Controls.Add(this.lblEmailProvider);
+            this.tbFicheAgent.Controls.Add(this.textBox1);
+            this.tbFicheAgent.Controls.Add(this.label1);
+            this.tbFicheAgent.Controls.Add(this.lblCountry);
+            this.tbFicheAgent.Controls.Add(this.lblContactPerson);
             this.tbFicheAgent.Controls.Add(this.tabControl_Education_FormationAndCertificationsOfUser);
-            this.tbFicheAgent.Controls.Add(this.labelNameOfUser);
-            this.tbFicheAgent.Controls.Add(this.textBoxAdmin);
-            this.tbFicheAgent.Controls.Add(this.comboBoxStatut);
-            this.tbFicheAgent.Controls.Add(this.comboBoxFunction);
-            this.tbFicheAgent.Controls.Add(this.comboBoxRespHierarchique);
-            this.tbFicheAgent.Controls.Add(this.comboBoxEducation_Habilitation);
-            this.tbFicheAgent.Controls.Add(this.comboBoxEquipe);
-            this.tbFicheAgent.Controls.Add(this.comboBoxAstreinte);
-            this.tbFicheAgent.Controls.Add(this.comboBoxEPI);
-            this.tbFicheAgent.Controls.Add(this.checkBoxSecouriste);
-            this.tbFicheAgent.Controls.Add(this.checkBox_IsWorkManager);
-            this.tbFicheAgent.Controls.Add(this.labelRemarks);
-            this.tbFicheAgent.Controls.Add(this.richTextBoxRemarks);
-            this.tbFicheAgent.Controls.Add(this.dateTimePickerSeniority);
-            this.tbFicheAgent.Controls.Add(this.dateTimePickerLastFunction);
-            this.tbFicheAgent.Controls.Add(this.dateTimePicker_DateOfEntry);
+            this.tbFicheAgent.Controls.Add(this.labelFournisseur);
+            this.tbFicheAgent.Controls.Add(this.tbNumContact);
+            this.tbFicheAgent.Controls.Add(this.comboPersonneContact);
+            this.tbFicheAgent.Controls.Add(this.cbProviderCountry);
+            this.tbFicheAgent.Controls.Add(this.labelRemarksProvider);
+            this.tbFicheAgent.Controls.Add(this.rtbRemarksProvider);
             this.tbFicheAgent.Controls.Add(this.labelActif);
             this.tbFicheAgent.Controls.Add(this.labelMatricule);
-            this.tbFicheAgent.Controls.Add(this.pictureBox_ProfilePic);
             this.tbFicheAgent.Font = new System.Drawing.Font("Arial", 8.25F);
             this.tbFicheAgent.Location = new System.Drawing.Point(4, 23);
             this.tbFicheAgent.Name = "tbFicheAgent";
@@ -317,86 +317,173 @@
             this.tbFicheAgent.Text = "Fiche";
             this.tbFicheAgent.UseVisualStyleBackColor = true;
             // 
-            // lblRoleEPI
+            // lblVendor
             // 
-            this.lblRoleEPI.AutoSize = true;
-            this.lblRoleEPI.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblRoleEPI.Location = new System.Drawing.Point(147, 161);
-            this.lblRoleEPI.Name = "lblRoleEPI";
-            this.lblRoleEPI.Size = new System.Drawing.Size(45, 14);
-            this.lblRoleEPI.TabIndex = 90;
-            this.lblRoleEPI.Text = "Rôle EPI";
+            this.lblVendor.AutoSize = true;
+            this.lblVendor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.lblVendor.Location = new System.Drawing.Point(223, 218);
+            this.lblVendor.Name = "lblVendor";
+            this.lblVendor.Size = new System.Drawing.Size(48, 14);
+            this.lblVendor.TabIndex = 107;
+            this.lblVendor.Text = "Vendeur";
             // 
-            // lblFunction
+            // tbVendor
             // 
-            this.lblFunction.AutoSize = true;
-            this.lblFunction.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblFunction.Location = new System.Drawing.Point(147, 119);
-            this.lblFunction.Name = "lblFunction";
-            this.lblFunction.Size = new System.Drawing.Size(48, 14);
-            this.lblFunction.TabIndex = 89;
-            this.lblFunction.Text = "Fonction";
+            this.tbVendor.Location = new System.Drawing.Point(223, 235);
+            this.tbVendor.Name = "tbVendor";
+            this.tbVendor.Size = new System.Drawing.Size(185, 20);
+            this.tbVendor.TabIndex = 106;
             // 
-            // lblEquipe
+            // lblCodePO
             // 
-            this.lblEquipe.AutoSize = true;
-            this.lblEquipe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblEquipe.Location = new System.Drawing.Point(147, 80);
-            this.lblEquipe.Name = "lblEquipe";
-            this.lblEquipe.Size = new System.Drawing.Size(98, 14);
-            this.lblEquipe.TabIndex = 88;
-            this.lblEquipe.Text = "Equipe/Affectatiion";
+            this.lblCodePO.AutoSize = true;
+            this.lblCodePO.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.lblCodePO.Location = new System.Drawing.Point(223, 179);
+            this.lblCodePO.Name = "lblCodePO";
+            this.lblCodePO.Size = new System.Drawing.Size(49, 14);
+            this.lblCodePO.TabIndex = 105;
+            this.lblCodePO.Text = "Code PO";
             // 
-            // lblSeniority
+            // tbCodePo
             // 
-            this.lblSeniority.AutoSize = true;
-            this.lblSeniority.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblSeniority.Location = new System.Drawing.Point(147, 303);
-            this.lblSeniority.Name = "lblSeniority";
-            this.lblSeniority.Size = new System.Drawing.Size(88, 14);
-            this.lblSeniority.TabIndex = 87;
-            this.lblSeniority.Text = "Date de séniorité";
+            this.tbCodePo.Location = new System.Drawing.Point(223, 196);
+            this.tbCodePo.Name = "tbCodePo";
+            this.tbCodePo.Size = new System.Drawing.Size(185, 20);
+            this.tbCodePo.TabIndex = 104;
             // 
-            // lblentrylastFunction
+            // label3
             // 
-            this.lblentrylastFunction.AutoSize = true;
-            this.lblentrylastFunction.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblentrylastFunction.Location = new System.Drawing.Point(144, 258);
-            this.lblentrylastFunction.Name = "lblentrylastFunction";
-            this.lblentrylastFunction.Size = new System.Drawing.Size(156, 14);
-            this.lblentrylastFunction.TabIndex = 86;
-            this.lblentrylastFunction.Text = "Date dernière prise de fonction";
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.label3.Location = new System.Drawing.Point(16, 268);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(91, 14);
+            this.label3.TabIndex = 103;
+            this.label3.Text = "Accès Formateur";
             // 
-            // lblDateEntry
+            // textBox4
             // 
-            this.lblDateEntry.AutoSize = true;
-            this.lblDateEntry.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblDateEntry.Location = new System.Drawing.Point(144, 211);
-            this.lblDateEntry.Name = "lblDateEntry";
-            this.lblDateEntry.Size = new System.Drawing.Size(63, 14);
-            this.lblDateEntry.TabIndex = 85;
-            this.lblDateEntry.Text = "Date Entrée";
+            this.textBox4.Location = new System.Drawing.Point(16, 285);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(185, 20);
+            this.textBox4.TabIndex = 102;
             // 
-            // labelDurationInDays
+            // label2
             // 
-            this.labelDurationInDays.AutoSize = true;
-            this.labelDurationInDays.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.labelDurationInDays.Location = new System.Drawing.Point(147, 39);
-            this.labelDurationInDays.Name = "labelDurationInDays";
-            this.labelDurationInDays.Size = new System.Drawing.Size(35, 14);
-            this.labelDurationInDays.TabIndex = 84;
-            this.labelDurationInDays.Text = "Statut";
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.label2.Location = new System.Drawing.Point(16, 218);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(44, 14);
+            this.label2.TabIndex = 101;
+            this.label2.Text = "Matériel";
             // 
-            // cbCheck_PrimeRescuer
+            // textBox2
             // 
-            this.cbCheck_PrimeRescuer.AutoSize = true;
-            this.cbCheck_PrimeRescuer.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.cbCheck_PrimeRescuer.Location = new System.Drawing.Point(370, 246);
-            this.cbCheck_PrimeRescuer.Name = "cbCheck_PrimeRescuer";
-            this.cbCheck_PrimeRescuer.Size = new System.Drawing.Size(107, 18);
-            this.cbCheck_PrimeRescuer.TabIndex = 17;
-            this.cbCheck_PrimeRescuer.Text = "Prime Secouriste";
-            this.cbCheck_PrimeRescuer.UseVisualStyleBackColor = true;
+            this.textBox2.Location = new System.Drawing.Point(16, 235);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(185, 20);
+            this.textBox2.TabIndex = 100;
+            // 
+            // lblFormerEmail
+            // 
+            this.lblFormerEmail.AutoSize = true;
+            this.lblFormerEmail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.lblFormerEmail.Location = new System.Drawing.Point(226, 130);
+            this.lblFormerEmail.Name = "lblFormerEmail";
+            this.lblFormerEmail.Size = new System.Drawing.Size(83, 14);
+            this.lblFormerEmail.TabIndex = 99;
+            this.lblFormerEmail.Text = "Email Formateur";
+            // 
+            // tbFormerEmail
+            // 
+            this.tbFormerEmail.Location = new System.Drawing.Point(226, 147);
+            this.tbFormerEmail.Name = "tbFormerEmail";
+            this.tbFormerEmail.Size = new System.Drawing.Size(185, 20);
+            this.tbFormerEmail.TabIndex = 98;
+            // 
+            // lblFormerTel
+            // 
+            this.lblFormerTel.AutoSize = true;
+            this.lblFormerTel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.lblFormerTel.Location = new System.Drawing.Point(226, 87);
+            this.lblFormerTel.Name = "lblFormerTel";
+            this.lblFormerTel.Size = new System.Drawing.Size(72, 14);
+            this.lblFormerTel.TabIndex = 97;
+            this.lblFormerTel.Text = "Tel Formateur";
+            // 
+            // lblFormer
+            // 
+            this.lblFormer.AutoSize = true;
+            this.lblFormer.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.lblFormer.Location = new System.Drawing.Point(226, 45);
+            this.lblFormer.Name = "lblFormer";
+            this.lblFormer.Size = new System.Drawing.Size(56, 14);
+            this.lblFormer.TabIndex = 96;
+            this.lblFormer.Text = "Formateur";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(226, 104);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(185, 20);
+            this.textBox3.TabIndex = 95;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(226, 60);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(185, 22);
+            this.comboBox1.TabIndex = 94;
+            // 
+            // lblEmailProvider
+            // 
+            this.lblEmailProvider.AutoSize = true;
+            this.lblEmailProvider.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.lblEmailProvider.Location = new System.Drawing.Point(16, 130);
+            this.lblEmailProvider.Name = "lblEmailProvider";
+            this.lblEmailProvider.Size = new System.Drawing.Size(85, 14);
+            this.lblEmailProvider.TabIndex = 93;
+            this.lblEmailProvider.Text = "Email de contact";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(16, 147);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(185, 20);
+            this.textBox1.TabIndex = 92;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.label1.Location = new System.Drawing.Point(16, 87);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(98, 14);
+            this.label1.TabIndex = 91;
+            this.label1.Text = "Numéro de contact";
+            // 
+            // lblCountry
+            // 
+            this.lblCountry.AutoSize = true;
+            this.lblCountry.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.lblCountry.Location = new System.Drawing.Point(16, 179);
+            this.lblCountry.Name = "lblCountry";
+            this.lblCountry.Size = new System.Drawing.Size(74, 14);
+            this.lblCountry.TabIndex = 88;
+            this.lblCountry.Text = "Pays d\'origine";
+            // 
+            // lblContactPerson
+            // 
+            this.lblContactPerson.AutoSize = true;
+            this.lblContactPerson.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.lblContactPerson.Location = new System.Drawing.Point(16, 45);
+            this.lblContactPerson.Name = "lblContactPerson";
+            this.lblContactPerson.Size = new System.Drawing.Size(107, 14);
+            this.lblContactPerson.TabIndex = 84;
+            this.lblContactPerson.Text = "Personne de contact";
             // 
             // tabControl_Education_FormationAndCertificationsOfUser
             // 
@@ -408,6 +495,7 @@
             this.tabControl_Education_FormationAndCertificationsOfUser.SelectedIndex = 0;
             this.tabControl_Education_FormationAndCertificationsOfUser.Size = new System.Drawing.Size(457, 248);
             this.tabControl_Education_FormationAndCertificationsOfUser.TabIndex = 35;
+            this.tabControl_Education_FormationAndCertificationsOfUser.Visible = false;
             // 
             // tabPageEducation_FormationsAgent
             // 
@@ -427,7 +515,7 @@
             this.dg_TABFormationsOfAgent.AllowUserToAddRows = false;
             this.dg_TABFormationsOfAgent.AllowUserToDeleteRows = false;
             this.dg_TABFormationsOfAgent.AllowUserToResizeColumns = false;
-            this.dg_TABFormationsOfAgent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.dg_TABFormationsOfAgent.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.dg_TABFormationsOfAgent.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dg_TABFormationsOfAgent.BackgroundColor = System.Drawing.Color.DarkGray;
@@ -440,6 +528,7 @@
             this.dg_TABFormationsOfAgent.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dg_TABFormationsOfAgent.Size = new System.Drawing.Size(437, 197);
             this.dg_TABFormationsOfAgent.TabIndex = 18;
+            this.dg_TABFormationsOfAgent.Visible = false;
             // 
             // tabPageCertificationsAgent
             // 
@@ -469,195 +558,93 @@
             this.dataGridView1.Size = new System.Drawing.Size(437, 197);
             this.dataGridView1.TabIndex = 20;
             // 
-            // labelNameOfUser
+            // labelFournisseur
             // 
-            this.labelNameOfUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.labelNameOfUser.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold);
-            this.labelNameOfUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.labelNameOfUser.Location = new System.Drawing.Point(146, 11);
-            this.labelNameOfUser.Name = "labelNameOfUser";
-            this.labelNameOfUser.Size = new System.Drawing.Size(261, 25);
-            this.labelNameOfUser.TabIndex = 1;
-            this.labelNameOfUser.Text = "Firstname LASTNAME";
+            this.labelFournisseur.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.labelFournisseur.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold);
+            this.labelFournisseur.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.labelFournisseur.Location = new System.Drawing.Point(15, 17);
+            this.labelFournisseur.Name = "labelFournisseur";
+            this.labelFournisseur.Size = new System.Drawing.Size(261, 25);
+            this.labelFournisseur.TabIndex = 1;
+            this.labelFournisseur.Text = "Fournisseur";
             // 
-            // textBoxAdmin
+            // tbNumContact
             // 
-            this.textBoxAdmin.Location = new System.Drawing.Point(370, 54);
-            this.textBoxAdmin.Name = "textBoxAdmin";
-            this.textBoxAdmin.Size = new System.Drawing.Size(185, 20);
-            this.textBoxAdmin.TabIndex = 11;
-            this.textBoxAdmin.Text = "Admin";
+            this.tbNumContact.Location = new System.Drawing.Point(16, 104);
+            this.tbNumContact.Name = "tbNumContact";
+            this.tbNumContact.Size = new System.Drawing.Size(185, 20);
+            this.tbNumContact.TabIndex = 11;
             // 
-            // comboBoxStatut
+            // comboPersonneContact
             // 
-            this.comboBoxStatut.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.comboBoxStatut.FormattingEnabled = true;
-            this.comboBoxStatut.Location = new System.Drawing.Point(147, 54);
-            this.comboBoxStatut.Name = "comboBoxStatut";
-            this.comboBoxStatut.Size = new System.Drawing.Size(185, 22);
-            this.comboBoxStatut.TabIndex = 2;
+            this.comboPersonneContact.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.comboPersonneContact.FormattingEnabled = true;
+            this.comboPersonneContact.Location = new System.Drawing.Point(16, 60);
+            this.comboPersonneContact.Name = "comboPersonneContact";
+            this.comboPersonneContact.Size = new System.Drawing.Size(185, 22);
+            this.comboPersonneContact.TabIndex = 2;
             // 
-            // comboBoxFunction
+            // cbProviderCountry
             // 
-            this.comboBoxFunction.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.comboBoxFunction.FormattingEnabled = true;
-            this.comboBoxFunction.Location = new System.Drawing.Point(147, 134);
-            this.comboBoxFunction.Name = "comboBoxFunction";
-            this.comboBoxFunction.Size = new System.Drawing.Size(185, 22);
-            this.comboBoxFunction.TabIndex = 4;
-            this.comboBoxFunction.Text = "Function";
+            this.cbProviderCountry.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.cbProviderCountry.FormattingEnabled = true;
+            this.cbProviderCountry.Location = new System.Drawing.Point(16, 193);
+            this.cbProviderCountry.Name = "cbProviderCountry";
+            this.cbProviderCountry.Size = new System.Drawing.Size(185, 22);
+            this.cbProviderCountry.TabIndex = 3;
             // 
-            // comboBoxRespHierarchique
+            // labelRemarksProvider
             // 
-            this.comboBoxRespHierarchique.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.comboBoxRespHierarchique.FormattingEnabled = true;
-            this.comboBoxRespHierarchique.Location = new System.Drawing.Point(370, 90);
-            this.comboBoxRespHierarchique.Name = "comboBoxRespHierarchique";
-            this.comboBoxRespHierarchique.Size = new System.Drawing.Size(185, 22);
-            this.comboBoxRespHierarchique.TabIndex = 12;
-            this.comboBoxRespHierarchique.Text = "Responsable Hiérarchique";
+            this.labelRemarksProvider.AutoSize = true;
+            this.labelRemarksProvider.Font = new System.Drawing.Font("Arial", 10F);
+            this.labelRemarksProvider.Location = new System.Drawing.Point(9, 327);
+            this.labelRemarksProvider.Name = "labelRemarksProvider";
+            this.labelRemarksProvider.Size = new System.Drawing.Size(81, 16);
+            this.labelRemarksProvider.TabIndex = 16;
+            this.labelRemarksProvider.Text = "Remarques";
             // 
-            // comboBoxEducation_Habilitation
+            // rtbRemarksProvider
             // 
-            this.comboBoxEducation_Habilitation.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.comboBoxEducation_Habilitation.FormattingEnabled = true;
-            this.comboBoxEducation_Habilitation.Location = new System.Drawing.Point(370, 128);
-            this.comboBoxEducation_Habilitation.Name = "comboBoxEducation_Habilitation";
-            this.comboBoxEducation_Habilitation.Size = new System.Drawing.Size(185, 22);
-            this.comboBoxEducation_Habilitation.TabIndex = 13;
-            this.comboBoxEducation_Habilitation.Text = "Education_Habilitation";
-            // 
-            // comboBoxEquipe
-            // 
-            this.comboBoxEquipe.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.comboBoxEquipe.FormattingEnabled = true;
-            this.comboBoxEquipe.Location = new System.Drawing.Point(147, 94);
-            this.comboBoxEquipe.Name = "comboBoxEquipe";
-            this.comboBoxEquipe.Size = new System.Drawing.Size(185, 22);
-            this.comboBoxEquipe.TabIndex = 3;
-            this.comboBoxEquipe.Text = "Equipe/Affectation";
-            // 
-            // comboBoxAstreinte
-            // 
-            this.comboBoxAstreinte.FormattingEnabled = true;
-            this.comboBoxAstreinte.Location = new System.Drawing.Point(370, 165);
-            this.comboBoxAstreinte.Name = "comboBoxAstreinte";
-            this.comboBoxAstreinte.Size = new System.Drawing.Size(185, 22);
-            this.comboBoxAstreinte.TabIndex = 14;
-            this.comboBoxAstreinte.Text = "Role d\'astreinte";
-            // 
-            // comboBoxEPI
-            // 
-            this.comboBoxEPI.FormattingEnabled = true;
-            this.comboBoxEPI.Location = new System.Drawing.Point(147, 177);
-            this.comboBoxEPI.Name = "comboBoxEPI";
-            this.comboBoxEPI.Size = new System.Drawing.Size(185, 22);
-            this.comboBoxEPI.TabIndex = 5;
-            this.comboBoxEPI.Text = "Rôle EPI";
-            // 
-            // checkBoxSecouriste
-            // 
-            this.checkBoxSecouriste.AutoSize = true;
-            this.checkBoxSecouriste.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.checkBoxSecouriste.Location = new System.Drawing.Point(370, 222);
-            this.checkBoxSecouriste.Name = "checkBoxSecouriste";
-            this.checkBoxSecouriste.Size = new System.Drawing.Size(101, 18);
-            this.checkBoxSecouriste.TabIndex = 16;
-            this.checkBoxSecouriste.Text = "Rôle secouriste";
-            this.checkBoxSecouriste.UseVisualStyleBackColor = true;
-            // 
-            // checkBox_IsWorkManager
-            // 
-            this.checkBox_IsWorkManager.AutoSize = true;
-            this.checkBox_IsWorkManager.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.checkBox_IsWorkManager.Location = new System.Drawing.Point(370, 198);
-            this.checkBox_IsWorkManager.Name = "checkBox_IsWorkManager";
-            this.checkBox_IsWorkManager.Size = new System.Drawing.Size(116, 18);
-            this.checkBox_IsWorkManager.TabIndex = 15;
-            this.checkBox_IsWorkManager.Text = "Chargé de travaux";
-            this.checkBox_IsWorkManager.UseVisualStyleBackColor = true;
-            // 
-            // labelRemarks
-            // 
-            this.labelRemarks.AutoSize = true;
-            this.labelRemarks.Font = new System.Drawing.Font("Arial", 10F);
-            this.labelRemarks.Location = new System.Drawing.Point(144, 357);
-            this.labelRemarks.Name = "labelRemarks";
-            this.labelRemarks.Size = new System.Drawing.Size(81, 16);
-            this.labelRemarks.TabIndex = 16;
-            this.labelRemarks.Text = "Remarques";
-            // 
-            // richTextBoxRemarks
-            // 
-            this.richTextBoxRemarks.AutoWordSelection = true;
-            this.richTextBoxRemarks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(199)))), ((int)(((byte)(234)))));
-            this.richTextBoxRemarks.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.richTextBoxRemarks.Location = new System.Drawing.Point(147, 376);
-            this.richTextBoxRemarks.Name = "richTextBoxRemarks";
-            this.richTextBoxRemarks.Size = new System.Drawing.Size(330, 42);
-            this.richTextBoxRemarks.TabIndex = 15;
-            this.richTextBoxRemarks.Text = "";
-            // 
-            // dateTimePickerSeniority
-            // 
-            this.dateTimePickerSeniority.Location = new System.Drawing.Point(147, 320);
-            this.dateTimePickerSeniority.Name = "dateTimePickerSeniority";
-            this.dateTimePickerSeniority.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerSeniority.TabIndex = 9;
-            // 
-            // dateTimePickerLastFunction
-            // 
-            this.dateTimePickerLastFunction.Location = new System.Drawing.Point(147, 275);
-            this.dateTimePickerLastFunction.Name = "dateTimePickerLastFunction";
-            this.dateTimePickerLastFunction.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePickerLastFunction.TabIndex = 8;
-            // 
-            // dateTimePicker_DateOfEntry
-            // 
-            this.dateTimePicker_DateOfEntry.Location = new System.Drawing.Point(147, 227);
-            this.dateTimePicker_DateOfEntry.Name = "dateTimePicker_DateOfEntry";
-            this.dateTimePicker_DateOfEntry.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker_DateOfEntry.TabIndex = 6;
+            this.rtbRemarksProvider.AutoWordSelection = true;
+            this.rtbRemarksProvider.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(199)))), ((int)(((byte)(234)))));
+            this.rtbRemarksProvider.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.rtbRemarksProvider.Location = new System.Drawing.Point(12, 346);
+            this.rtbRemarksProvider.Name = "rtbRemarksProvider";
+            this.rtbRemarksProvider.Size = new System.Drawing.Size(330, 42);
+            this.rtbRemarksProvider.TabIndex = 15;
+            this.rtbRemarksProvider.Text = "";
             // 
             // labelActif
             // 
             this.labelActif.AutoSize = true;
             this.labelActif.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelActif.ForeColor = System.Drawing.Color.OrangeRed;
-            this.labelActif.Location = new System.Drawing.Point(10, 177);
+            this.labelActif.Location = new System.Drawing.Point(677, 17);
             this.labelActif.Name = "labelActif";
             this.labelActif.Size = new System.Drawing.Size(113, 19);
             this.labelActif.TabIndex = 5;
             this.labelActif.Text = "Actif/NonActif";
+            this.labelActif.Visible = false;
             // 
             // labelMatricule
             // 
             this.labelMatricule.AutoSize = true;
             this.labelMatricule.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMatricule.Location = new System.Drawing.Point(8, 141);
+            this.labelMatricule.Location = new System.Drawing.Point(353, 17);
             this.labelMatricule.Name = "labelMatricule";
             this.labelMatricule.Size = new System.Drawing.Size(71, 18);
             this.labelMatricule.TabIndex = 3;
             this.labelMatricule.Text = "Matricule";
             // 
-            // pictureBox_ProfilePic
-            // 
-            this.pictureBox_ProfilePic.Image = global::Module_Education.Properties.Resources.baseline_person_black_36dp;
-            this.pictureBox_ProfilePic.Location = new System.Drawing.Point(11, 11);
-            this.pictureBox_ProfilePic.Name = "pictureBox_ProfilePic";
-            this.pictureBox_ProfilePic.Size = new System.Drawing.Size(112, 112);
-            this.pictureBox_ProfilePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox_ProfilePic.TabIndex = 0;
-            this.pictureBox_ProfilePic.TabStop = false;
-            // 
             // UC_Provider
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.tabControlAgentList);
+            this.Controls.Add(this.tabControlProvider);
             this.Name = "UC_Provider";
             this.Size = new System.Drawing.Size(1067, 602);
-            this.tabControlAgentList.ResumeLayout(false);
+            this.tabControlProvider.ResumeLayout(false);
             this.tbListeAgents.ResumeLayout(false);
             this.tbListeAgents.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picExportExcel)).EndInit();
@@ -669,14 +656,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.dg_TABFormationsOfAgent)).EndInit();
             this.tabPageCertificationsAgent.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ProfilePic)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TabControl tabControlAgentList;
+        private System.Windows.Forms.TabControl tabControlProvider;
         private System.Windows.Forms.TabPage tbListeAgents;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblMax;
@@ -693,37 +679,37 @@
         private System.Windows.Forms.Label lblTiteLstAgent;
         private System.Windows.Forms.TextBox tbFiltre;
         private System.Windows.Forms.TabPage tbFicheAgent;
-        private System.Windows.Forms.Label lblRoleEPI;
-        private System.Windows.Forms.Label lblFunction;
-        private System.Windows.Forms.Label lblEquipe;
-        private System.Windows.Forms.Label lblSeniority;
-        private System.Windows.Forms.Label lblentrylastFunction;
-        private System.Windows.Forms.Label lblDateEntry;
-        private System.Windows.Forms.Label labelDurationInDays;
-        private System.Windows.Forms.CheckBox cbCheck_PrimeRescuer;
+        private System.Windows.Forms.Label lblCountry;
+        private System.Windows.Forms.Label lblContactPerson;
         private System.Windows.Forms.TabControl tabControl_Education_FormationAndCertificationsOfUser;
         private System.Windows.Forms.TabPage tabPageEducation_FormationsAgent;
         private System.Windows.Forms.DataGridView dg_TABFormationsOfAgent;
         private System.Windows.Forms.TabPage tabPageCertificationsAgent;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox labelNameOfUser;
-        private System.Windows.Forms.TextBox textBoxAdmin;
-        private System.Windows.Forms.ComboBox comboBoxStatut;
-        private System.Windows.Forms.ComboBox comboBoxFunction;
-        private System.Windows.Forms.ComboBox comboBoxRespHierarchique;
-        private System.Windows.Forms.ComboBox comboBoxEducation_Habilitation;
-        private System.Windows.Forms.ComboBox comboBoxEquipe;
-        private System.Windows.Forms.ComboBox comboBoxAstreinte;
-        private System.Windows.Forms.ComboBox comboBoxEPI;
-        private System.Windows.Forms.CheckBox checkBoxSecouriste;
-        private System.Windows.Forms.CheckBox checkBox_IsWorkManager;
-        private System.Windows.Forms.Label labelRemarks;
-        private System.Windows.Forms.RichTextBox richTextBoxRemarks;
-        private System.Windows.Forms.DateTimePicker dateTimePickerSeniority;
-        private System.Windows.Forms.DateTimePicker dateTimePickerLastFunction;
-        private System.Windows.Forms.DateTimePicker dateTimePicker_DateOfEntry;
+        private System.Windows.Forms.TextBox labelFournisseur;
+        private System.Windows.Forms.TextBox tbNumContact;
+        private System.Windows.Forms.ComboBox comboPersonneContact;
+        private System.Windows.Forms.ComboBox cbProviderCountry;
+        private System.Windows.Forms.Label labelRemarksProvider;
+        private System.Windows.Forms.RichTextBox rtbRemarksProvider;
         private System.Windows.Forms.Label labelActif;
         private System.Windows.Forms.Label labelMatricule;
-        private System.Windows.Forms.PictureBox pictureBox_ProfilePic;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblFormerEmail;
+        private System.Windows.Forms.TextBox tbFormerEmail;
+        private System.Windows.Forms.Label lblFormerTel;
+        private System.Windows.Forms.Label lblFormer;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label lblEmailProvider;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label lblVendor;
+        private System.Windows.Forms.TextBox tbVendor;
+        private System.Windows.Forms.Label lblCodePO;
+        private System.Windows.Forms.TextBox tbCodePo;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

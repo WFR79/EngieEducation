@@ -22,5 +22,32 @@ namespace Module_Education.DataAccessLayer
                 .Where(x => x.FormationProvider_Formation == formation.Formation_Id)
                 .ToList();
         }
+
+        public Education_FormationProvider LoadFormationProvider(Education_Provider provider)
+        {
+            return db.Education_FormationProvider
+                .Where(x => x.FormationProvider_Provider == provider.Provider_Id)
+                .FirstOrDefault();
+        }
+        public Education_FormationProvider LoadFormationProviderById(long providerId)
+        {
+            return db.Education_FormationProvider
+                .Where(x => x.Education_Provider.Provider_Id == providerId)
+                .FirstOrDefault();
+        }
+
+        public List<Education_FormationProvider> LoadAllFormationProvider(Education_Provider provider)
+        {
+            return db.Education_FormationProvider
+                .Where(x => x.FormationProvider_Provider == provider.Provider_Id)
+                .ToList();
+        }
+
+        //public List<Education_FormationProvider> LoadAllFormationProvider(Education_Provider provider)
+        //{
+        //    return db.Education_FormationProvider
+        //        .Where(x => x.FormationProvider_Provider == provider.Provider_Id)
+        //        .ToList();
+        //}
     }
 }

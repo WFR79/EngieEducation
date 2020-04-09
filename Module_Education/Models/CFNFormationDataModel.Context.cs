@@ -46,6 +46,7 @@ namespace Module_Education.Models
         public virtual DbSet<Education_GroupLearner> Education_GroupLearner { get; set; }
         public virtual DbSet<Education_GroupLearner_Agent> Education_GroupLearner_Agent { get; set; }
         public virtual DbSet<Education_Habilitation> Education_Habilitation { get; set; }
+        public virtual DbSet<Education_InRoute> Education_InRoute { get; set; }
         public virtual DbSet<Education_Log> Education_Log { get; set; }
         public virtual DbSet<Education_Matrice> Education_Matrice { get; set; }
         public virtual DbSet<Education_Matrice_Agent> Education_Matrice_Agent { get; set; }
@@ -57,6 +58,7 @@ namespace Module_Education.Models
         public virtual DbSet<Education_MovementStepAgent> Education_MovementStepAgent { get; set; }
         public virtual DbSet<Education_MovementType> Education_MovementType { get; set; }
         public virtual DbSet<Education_Provider> Education_Provider { get; set; }
+        public virtual DbSet<Education_ProviderContact> Education_ProviderContact { get; set; }
         public virtual DbSet<Education_Role> Education_Role { get; set; }
         public virtual DbSet<Education_RoleAstreinte> Education_RoleAstreinte { get; set; }
         public virtual DbSet<Education_RoleEPI> Education_RoleEPI { get; set; }

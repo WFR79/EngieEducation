@@ -34,6 +34,8 @@
           <Property Name="Agent_Admin" Type="nvarchar" MaxLength="50" />
           <Property Name="Agent_Role" Type="bigint" />
           <Property Name="Agent_RescueBonus" Type="bit" />
+          <Property Name="Agent_InRoute" Type="bit" />
+          <Property Name="Agent_InRouteId" Type="bigint" />
         </EntityType>
         <EntityType Name="Education_Agent_Formation">
           <Key>
@@ -247,6 +249,13 @@
           <Property Name="Habilitation_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Habilitation_Name" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="Education_InRoute">
+          <Key>
+            <PropertyRef Name="InRoute_Id" />
+          </Key>
+          <Property Name="InRoute_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InRoute_Name" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Education_Log">
           <Key>
             <PropertyRef Name="Log_Id" />
@@ -337,6 +346,16 @@
           </Key>
           <Property Name="Provider_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Provider_Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Education_ProviderContact">
+          <Key>
+            <PropertyRef Name="ProviderContact_Id" />
+          </Key>
+          <Property Name="ProviderContact_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProviderContact_FullName" Type="nvarchar(max)" />
+          <Property Name="ProviderContact_Tel" Type="nvarchar(max)" />
+          <Property Name="ProviderContact_Email" Type="nvarchar(max)" />
+          <Property Name="ProviderContact_Provider" Type="bigint" />
         </EntityType>
         <EntityType Name="Education_Role">
           <Key>
@@ -465,6 +484,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Education_Agent_Education_Agent">
+          <End Role="Education_InRoute" Type="Self.Education_InRoute" Multiplicity="0..1" />
+          <End Role="Education_Agent" Type="Self.Education_Agent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_InRoute">
+              <PropertyRef Name="InRoute_Id" />
+            </Principal>
+            <Dependent Role="Education_Agent">
+              <PropertyRef Name="Agent_InRouteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Education_Formation_Category">
           <End Role="Education_FormationCategory" Type="Self.Education_FormationCategory" Multiplicity="0..1" />
           <End Role="Education_Formation" Type="Self.Education_Formation" Multiplicity="*" />
@@ -486,6 +517,18 @@
             </Principal>
             <Dependent Role="Education_Formation">
               <PropertyRef Name="Formation_UnitePrice" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Education_ProviderContact_Education_Provider">
+          <End Role="Education_Provider" Type="Self.Education_Provider" Multiplicity="0..1" />
+          <End Role="Education_ProviderContact" Type="Self.Education_ProviderContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_Provider">
+              <PropertyRef Name="Provider_Id" />
+            </Principal>
+            <Dependent Role="Education_ProviderContact">
+              <PropertyRef Name="ProviderContact_Provider" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -919,6 +962,7 @@
           <EntitySet Name="Education_GroupLearner" EntityType="Self.Education_GroupLearner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Education_GroupLearner_Agent" EntityType="Self.Education_GroupLearner_Agent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Education_Habilitation" EntityType="Self.Education_Habilitation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Education_InRoute" EntityType="Self.Education_InRoute" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Education_Log" EntityType="Self.Education_Log" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Education_Matrice" EntityType="Self.Education_Matrice" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Education_Matrice_Agent" EntityType="Self.Education_Matrice_Agent" Schema="dbo" store:Type="Tables" />
@@ -930,6 +974,7 @@
           <EntitySet Name="Education_MovementStepAgent" EntityType="Self.Education_MovementStepAgent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Education_MovementType" EntityType="Self.Education_MovementType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Education_Provider" EntityType="Self.Education_Provider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Education_ProviderContact" EntityType="Self.Education_ProviderContact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Education_Role" EntityType="Self.Education_Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Education_RoleAstreinte" EntityType="Self.Education_RoleAstreinte" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Education_RoleEPI" EntityType="Self.Education_RoleEPI" Schema="dbo" store:Type="Tables" />
@@ -964,6 +1009,10 @@
             <End Role="Education_CompetenceGroup" EntitySet="Education_CompetenceGroup" />
             <End Role="Education_CompetenceSubGroup" EntitySet="Education_CompetenceSubGroup" />
           </AssociationSet>
+          <AssociationSet Name="FK_Education_Agent_Education_Agent" Association="Self.FK_Education_Agent_Education_Agent">
+            <End Role="Education_InRoute" EntitySet="Education_InRoute" />
+            <End Role="Education_Agent" EntitySet="Education_Agent" />
+          </AssociationSet>
           <AssociationSet Name="FK_Education_Formation_Category" Association="Self.FK_Education_Formation_Category">
             <End Role="Education_FormationCategory" EntitySet="Education_FormationCategory" />
             <End Role="Education_Formation" EntitySet="Education_Formation" />
@@ -971,6 +1020,10 @@
           <AssociationSet Name="FK_Education_Formation_Education_UnitePrice" Association="Self.FK_Education_Formation_Education_UnitePrice">
             <End Role="Education_UnitePrice" EntitySet="Education_UnitePrice" />
             <End Role="Education_Formation" EntitySet="Education_Formation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Education_ProviderContact_Education_Provider" Association="Self.FK_Education_ProviderContact_Education_Provider">
+            <End Role="Education_Provider" EntitySet="Education_Provider" />
+            <End Role="Education_ProviderContact" EntitySet="Education_ProviderContact" />
           </AssociationSet>
           <AssociationSet Name="FK_Equipe_Equipe" Association="Self.FK_Equipe_Equipe">
             <End Role="Education_Service" EntitySet="Education_Service" />
@@ -1135,6 +1188,7 @@
           <EntitySet Name="Education_GroupLearner" EntityType="SYNAPSEModel.Education_GroupLearner" />
           <EntitySet Name="Education_GroupLearner_Agent" EntityType="SYNAPSEModel.Education_GroupLearner_Agent" />
           <EntitySet Name="Education_Habilitation" EntityType="SYNAPSEModel.Education_Habilitation" />
+          <EntitySet Name="Education_InRoute" EntityType="SYNAPSEModel.Education_InRoute" />
           <EntitySet Name="Education_Log" EntityType="SYNAPSEModel.Education_Log" />
           <EntitySet Name="Education_Matrice" EntityType="SYNAPSEModel.Education_Matrice" />
           <EntitySet Name="Education_Matrice_Agent" EntityType="SYNAPSEModel.Education_Matrice_Agent" />
@@ -1146,6 +1200,7 @@
           <EntitySet Name="Education_MovementStepAgent" EntityType="SYNAPSEModel.Education_MovementStepAgent" />
           <EntitySet Name="Education_MovementType" EntityType="SYNAPSEModel.Education_MovementType" />
           <EntitySet Name="Education_Provider" EntityType="SYNAPSEModel.Education_Provider" />
+          <EntitySet Name="Education_ProviderContact" EntityType="SYNAPSEModel.Education_ProviderContact" />
           <EntitySet Name="Education_Role" EntityType="SYNAPSEModel.Education_Role" />
           <EntitySet Name="Education_RoleAstreinte" EntityType="SYNAPSEModel.Education_RoleAstreinte" />
           <EntitySet Name="Education_RoleEPI" EntityType="SYNAPSEModel.Education_RoleEPI" />
@@ -1163,6 +1218,10 @@
           <AssociationSet Name="FK_AgentFormation_Agent" Association="SYNAPSEModel.FK_AgentFormation_Agent">
             <End Role="Education_Agent" EntitySet="Education_Agent" />
             <End Role="Education_Agent_Formation" EntitySet="Education_Agent_Formation" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Education_Agent_Education_Agent" Association="SYNAPSEModel.FK_Education_Agent_Education_Agent">
+            <End Role="Education_InRoute" EntitySet="Education_InRoute" />
+            <End Role="Education_Agent" EntitySet="Education_Agent" />
           </AssociationSet>
           <AssociationSet Name="FK_GroupLearnerAgent_Agent" Association="SYNAPSEModel.FK_GroupLearnerAgent_Agent">
             <End Role="Education_Agent" EntitySet="Education_Agent" />
@@ -1320,6 +1379,10 @@
             <End Role="Education_MovementStep" EntitySet="Education_MovementStep" />
             <End Role="Education_MovementStepAgent" EntitySet="Education_MovementStepAgent" />
           </AssociationSet>
+          <AssociationSet Name="FK_Education_ProviderContact_Education_Provider" Association="SYNAPSEModel.FK_Education_ProviderContact_Education_Provider">
+            <End Role="Education_Provider" EntitySet="Education_Provider" />
+            <End Role="Education_ProviderContact" EntitySet="Education_ProviderContact" />
+          </AssociationSet>
           <AssociationSet Name="FK_Role_Role" Association="SYNAPSEModel.FK_Role_Role">
             <End Role="Education_Role" EntitySet="Education_Role" />
             <End Role="Education_Role1" EntitySet="Education_Role" />
@@ -1354,9 +1417,12 @@
           <Property Name="Agent_Admin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Agent_Role" Type="Int64" />
           <Property Name="Agent_RescueBonus" Type="Boolean" />
+          <Property Name="Agent_InRoute" Type="Boolean" />
+          <Property Name="Agent_InRouteId" Type="Int64" />
           <NavigationProperty Name="Education_RoleEPI" Relationship="SYNAPSEModel.FK_Agent_AgentEPI" FromRole="Education_Agent" ToRole="Education_RoleEPI" />
           <NavigationProperty Name="Education_AgentStatus" Relationship="SYNAPSEModel.FK_Agent_AgentStatus" FromRole="Education_Agent" ToRole="Education_AgentStatus" />
           <NavigationProperty Name="Education_Agent_Formation" Relationship="SYNAPSEModel.FK_AgentFormation_Agent" FromRole="Education_Agent" ToRole="Education_Agent_Formation" />
+          <NavigationProperty Name="Education_InRoute" Relationship="SYNAPSEModel.FK_Education_Agent_Education_Agent" FromRole="Education_Agent" ToRole="Education_InRoute" />
           <NavigationProperty Name="Education_GroupLearner_Agent" Relationship="SYNAPSEModel.FK_GroupLearnerAgent_Agent" FromRole="Education_Agent" ToRole="Education_GroupLearner_Agent" />
           <NavigationProperty Name="Education_Matrice_Agent" Relationship="SYNAPSEModel.FK_MatriceUser_Agent" FromRole="Education_Agent" ToRole="Education_Matrice_Agent" />
           <NavigationProperty Name="Education_MovementAgent" Relationship="SYNAPSEModel.FK_MovementAgent_AgentAdmin" FromRole="Education_Agent" ToRole="Education_MovementAgent" />
@@ -1619,6 +1685,14 @@
           <Property Name="Habilitation_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Education_Agent" Relationship="SYNAPSEModel.FK_User_Habilitation" FromRole="Education_Habilitation" ToRole="Education_Agent" />
         </EntityType>
+        <EntityType Name="Education_InRoute">
+          <Key>
+            <PropertyRef Name="InRoute_Id" />
+          </Key>
+          <Property Name="InRoute_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InRoute_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Education_Agent" Relationship="SYNAPSEModel.FK_Education_Agent_Education_Agent" FromRole="Education_InRoute" ToRole="Education_Agent" />
+        </EntityType>
         <EntityType Name="Education_Log">
           <Key>
             <PropertyRef Name="Log_Id" />
@@ -1732,6 +1806,18 @@
           <Property Name="Provider_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Education_FormationProvider" Relationship="SYNAPSEModel.FK_FormationProvider_Provider" FromRole="Education_Provider" ToRole="Education_FormationProvider" />
           <NavigationProperty Name="Education_Former" Relationship="SYNAPSEModel.FK_Former_Provider" FromRole="Education_Provider" ToRole="Education_Former" />
+          <NavigationProperty Name="Education_ProviderContact" Relationship="SYNAPSEModel.FK_Education_ProviderContact_Education_Provider" FromRole="Education_Provider" ToRole="Education_ProviderContact" />
+        </EntityType>
+        <EntityType Name="Education_ProviderContact">
+          <Key>
+            <PropertyRef Name="ProviderContact_Id" />
+          </Key>
+          <Property Name="ProviderContact_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProviderContact_FullName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderContact_Tel" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderContact_Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderContact_Provider" Type="Int64" />
+          <NavigationProperty Name="Education_Provider" Relationship="SYNAPSEModel.FK_Education_ProviderContact_Education_Provider" FromRole="Education_ProviderContact" ToRole="Education_Provider" />
         </EntityType>
         <EntityType Name="Education_Role">
           <Key>
@@ -1820,6 +1906,18 @@
             </Principal>
             <Dependent Role="Education_Agent_Formation">
               <PropertyRef Name="AgentFormation_Agent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Education_Agent_Education_Agent">
+          <End Type="SYNAPSEModel.Education_InRoute" Role="Education_InRoute" Multiplicity="0..1" />
+          <End Type="SYNAPSEModel.Education_Agent" Role="Education_Agent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_InRoute">
+              <PropertyRef Name="InRoute_Id" />
+            </Principal>
+            <Dependent Role="Education_Agent">
+              <PropertyRef Name="Agent_InRouteId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2291,6 +2389,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Education_ProviderContact_Education_Provider">
+          <End Type="SYNAPSEModel.Education_Provider" Role="Education_Provider" Multiplicity="0..1" />
+          <End Type="SYNAPSEModel.Education_ProviderContact" Role="Education_ProviderContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_Provider">
+              <PropertyRef Name="Provider_Id" />
+            </Principal>
+            <Dependent Role="Education_ProviderContact">
+              <PropertyRef Name="ProviderContact_Provider" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Role_Role">
           <End Type="SYNAPSEModel.Education_Role" Role="Education_Role" Multiplicity="1" />
           <End Type="SYNAPSEModel.Education_Role" Role="Education_Role1" Multiplicity="0..1" />
@@ -2312,6 +2422,8 @@
           <EntitySetMapping Name="Education_Agent">
             <EntityTypeMapping TypeName="SYNAPSEModel.Education_Agent">
               <MappingFragment StoreEntitySet="Education_Agent">
+                <ScalarProperty Name="Agent_InRouteId" ColumnName="Agent_InRouteId" />
+                <ScalarProperty Name="Agent_InRoute" ColumnName="Agent_InRoute" />
                 <ScalarProperty Name="Agent_RescueBonus" ColumnName="Agent_RescueBonus" />
                 <ScalarProperty Name="Agent_Role" ColumnName="Agent_Role" />
                 <ScalarProperty Name="Agent_Admin" ColumnName="Agent_Admin" />
@@ -2572,6 +2684,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Education_InRoute">
+            <EntityTypeMapping TypeName="SYNAPSEModel.Education_InRoute">
+              <MappingFragment StoreEntitySet="Education_InRoute">
+                <ScalarProperty Name="InRoute_Name" ColumnName="InRoute_Name" />
+                <ScalarProperty Name="InRoute_Id" ColumnName="InRoute_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Education_Log">
             <EntityTypeMapping TypeName="SYNAPSEModel.Education_Log">
               <MappingFragment StoreEntitySet="Education_Log">
@@ -2671,6 +2791,17 @@
               <MappingFragment StoreEntitySet="Education_Provider">
                 <ScalarProperty Name="Provider_Name" ColumnName="Provider_Name" />
                 <ScalarProperty Name="Provider_Id" ColumnName="Provider_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Education_ProviderContact">
+            <EntityTypeMapping TypeName="SYNAPSEModel.Education_ProviderContact">
+              <MappingFragment StoreEntitySet="Education_ProviderContact">
+                <ScalarProperty Name="ProviderContact_Provider" ColumnName="ProviderContact_Provider" />
+                <ScalarProperty Name="ProviderContact_Email" ColumnName="ProviderContact_Email" />
+                <ScalarProperty Name="ProviderContact_Tel" ColumnName="ProviderContact_Tel" />
+                <ScalarProperty Name="ProviderContact_FullName" ColumnName="ProviderContact_FullName" />
+                <ScalarProperty Name="ProviderContact_Id" ColumnName="ProviderContact_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

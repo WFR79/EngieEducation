@@ -19,6 +19,7 @@ namespace Module_Education.Models
         {
             this.Education_FormationProvider = new HashSet<Education_FormationProvider>();
             this.Education_Former = new HashSet<Education_Former>();
+            this.Education_ProviderContact = new HashSet<Education_ProviderContact>();
         }
     
         public long Provider_Id { get; set; }
@@ -28,5 +29,7 @@ namespace Module_Education.Models
         public virtual ICollection<Education_FormationProvider> Education_FormationProvider { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_Former> Education_Former { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Education_ProviderContact> Education_ProviderContact { get; set; }
     }
 }

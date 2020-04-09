@@ -26,6 +26,7 @@ namespace Module_Education
         public static List<Education_Formation> globalListEducation_Formations;
         public static List<Education_Agent> globalListAgents;
         public static List<Education_Provider> globalListProviders;
+        CFNEducation_FormationEntities dbEntities = new CFNEducation_FormationEntities();
 
         private Button bouttonMenuPressed;
         private Thread thread2 = null;
@@ -42,16 +43,22 @@ namespace Module_Education
         #region UCEducation_Formation
         public delegate void controlcall(object sender, EventArgs e);
         public delegate void menuAgentClick(string formationSAPNum);
+        public delegate void menuProviderClick(long providerId);
+
 
         public delegate void functioncall(long message);
         public delegate void refreshFicheAgent(long UserId);
 
+
+        private event menuProviderClick ReceiverClickButtonProvider;
 
         private event menuAgentClick ReceiverClickButtonFormation;
 
         private event controlcall ReceiverClickButton;
         private event refreshFicheAgent ReceiverRefreshListeAgent;
         private event functioncall ReceiverFromFicheFormation;
+        private event menuProviderClick ReceiverClickProvider;
+
 
         public long UserIDSelected;
         #endregion
@@ -188,10 +195,12 @@ namespace Module_Education
                 ReceiverRefreshListeAgent += new refreshFicheAgent(refreshFormAgent);
                 UCEducation_Formation.Instance.PointerRefreshFicheAgent = ReceiverRefreshListeAgent;
 
+
+                ReceiverClickProvider += new menuProviderClick(clickProviderMenuButton);
+                UCEducation_Formation.Instance.MainWindowPointerMenuBtnProvider = ReceiverClickProvider;
             }
             else
             {
-               
                 UCEducation_Formation.Instance.BringToFront();
             }
 
@@ -202,6 +211,12 @@ namespace Module_Education
             bouttonMenuPressed = (Button)button;
             UnselectButtons();
             // Add the control to the panel  
+        }
+
+        private void clickProviderMenuButton(long providerId)
+        {
+            UC_Provider.Instance.providerSelected = dbEntities.Education_Provider.Where(w => w.Provider_Id == providerId).FirstOrDefault();
+            btnMenu_Provider.PerformClick();
         }
 
         private void MenuAgenClick(object sender, EventArgs e)
@@ -253,6 +268,8 @@ namespace Module_Education
                 //ReceiverRefreshListeAgent += new refreshFicheAgent(refreshFormAgent);
                 //UC_Provider.Instance.PointerUCAgent_Refresh = ReceiverRefreshListeAgent;
 
+                ReceiverClickProvider += new menuProviderClick(clickProviderMenuButton);
+                UC_Provider.Instance.MainWindowPointerMenuBtnProvider = ReceiverClickProvider;
 
             }
             else
@@ -381,7 +398,6 @@ namespace Module_Education
                 //do something else
             }
         }
-
 
         private void pictureBoxExit_Click(object sender, EventArgs e)
         {
