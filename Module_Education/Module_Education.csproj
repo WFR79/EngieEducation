@@ -113,6 +113,12 @@
     <Compile Include="Forms\FrmFormation.Designer.cs">
       <DependentUpon>FrmFormation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\UserControls\UC_MatriceFormations.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserControls\UC_MatriceFormations.Designer.cs">
+      <DependentUpon>UC_MatriceFormations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\UserControls\UC_Provider.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -139,6 +145,7 @@
     <Compile Include="Repositories\FunctionDataAccess.cs" />
     <Compile Include="Repositories\HabilitationDataAccess.cs" />
     <Compile Include="Repositories\InRouteRepository.cs" />
+    <Compile Include="Repositories\InRouteFormationRepository.cs" />
     <Compile Include="Repositories\ProviderDataRepository.cs" />
     <Compile Include="Repositories\RoleAstreinteDataAccess.cs" />
     <Compile Include="Repositories\RoleEPIDataAccess.cs" />
@@ -347,6 +354,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserControls\UC_Formation.resx">
       <DependentUpon>UC_Formation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserControls\UC_MatriceFormations.resx">
+      <DependentUpon>UC_MatriceFormations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserControls\UC_Provider.resx">
       <DependentUpon>UC_Provider.cs</DependentUpon>

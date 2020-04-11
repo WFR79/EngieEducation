@@ -17,6 +17,7 @@ namespace Module_Education.Models
         public long MatriceFormation_Id { get; set; }
         public Nullable<long> MatriceFormation_Formation { get; set; }
         public Nullable<long> MatriceFormation_Matrice { get; set; }
+        public Nullable<int> MatriceFormation_Recurrency { get; set; }
     
         public virtual Education_Formation Education_Formation { get; set; }
         public virtual Education_Matrice Education_Matrice { get; set; }

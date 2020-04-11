@@ -1,4 +1,5 @@
-﻿using Module_Education.Models;
+﻿using Module_Education.Forms.UserControls;
+using Module_Education.Models;
 using PagedList;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,28 @@ namespace Module_Education
                 {
                     return await dbFormation.Education_Formation.ToListAsync();
                 }
+            }
+            catch (Exception ex) { throw ex; }
+        }
+
+        public List<Education_Formation> LoadAllEducation_FormationsInFrame(List<Education_Matrice_Formation> listMatriceFormationSelected)
+        {
+            try
+            {
+                List<Education_Formation> listefiltered = new List<Education_Formation>();
+                var lisformation = db.Education_Formation.ToList();
+                Education_Matrice_Formation itemroRemove = new Education_Matrice_Formation();
+                foreach (var itemFormationFormDb in lisformation)
+                {
+
+                    itemroRemove = listMatriceFormationSelected.Where(r => r.Education_Formation.Formation_Id == itemFormationFormDb.Formation_Id)
+                        .FirstOrDefault();
+
+
+                    if(itemroRemove == null)
+                        listefiltered.Add(itemFormationFormDb);
+                }
+                return listefiltered;
             }
             catch (Exception ex) { throw ex; }
         }
@@ -264,7 +287,7 @@ namespace Module_Education
             else
             {
                 sequenceMaxQuery += " WHERE " + filter;
-                 sequenceQueryResult = db.Database.SqlQuery<Education_Formation>(sequenceMaxQuery).ToList();
+                sequenceQueryResult = db.Database.SqlQuery<Education_Formation>(sequenceMaxQuery).ToList();
             }
             //var query = db.Education_Formation.Find(filter);
             return sequenceQueryResult;

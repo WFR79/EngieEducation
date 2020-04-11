@@ -17,6 +17,7 @@ namespace Module_Education.Models
         public long MatriceGrLearner_Id { get; set; }
         public Nullable<long> MatriceGrLearner_Matrice { get; set; }
         public Nullable<long> MatriceGrLearner_GroupeLearner { get; set; }
+        public Nullable<int> MatriceGrLearner_Recurrency { get; set; }
     
         public virtual Education_GroupLearner Education_GroupLearner { get; set; }
         public virtual Education_Matrice Education_Matrice { get; set; }

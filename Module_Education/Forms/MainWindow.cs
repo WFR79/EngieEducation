@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Module_Education.Forms.UserControls;
 using Module_Education.Models;
 using Module_Education.UserControls;
 using Synapse;
@@ -373,6 +374,7 @@ namespace Module_Education
             Education_FormationDataAccess db = new Education_FormationDataAccess();
             globalListEducation_Formations = db.LoadAllEducation_Formations();
 
+
         }
 
         static void LoadUsersThread()
@@ -416,6 +418,34 @@ namespace Module_Education
         {
         }
 
-       
+        private void btnMatriceFormation_Click(object sender, EventArgs e)
+        {
+            Button button = ((Button)sender);
+
+            //Add module1 to panel control
+            if (!panelMain.Controls.Contains(UC_MatriceFormations.Instance))
+            {
+                panelMain.Controls.Add(UC_MatriceFormations.Instance);
+                UC_MatriceFormations.Instance.Dock = DockStyle.Fill;
+                UC_MatriceFormations.Instance.BringToFront();
+
+                //ReceiverClickButtonFormation += new menuAgentClick(clickButtonFormationMenu);
+                //UC_Provider.Instance.PointerButtonMenuFormation = ReceiverClickButtonFormation;
+
+                //ReceiverRefreshListeAgent += new refreshFicheAgent(refreshFormAgent);
+                //UC_Provider.Instance.PointerUCAgent_Refresh = ReceiverRefreshListeAgent;
+
+            }
+            else
+            {
+                UC_MatriceFormations.Instance.BringToFront();
+            }
+            button.BackColor = Color.FromArgb(67, 100, 214);
+            button.FlatStyle = FlatStyle.Flat;
+            button.FlatAppearance.BorderColor = Color.White;
+            button.FlatAppearance.BorderSize = 1;
+            bouttonMenuPressed = (Button)button;
+            UnselectButtons();
+        }
     }
 }

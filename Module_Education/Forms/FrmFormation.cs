@@ -1,4 +1,5 @@
 ﻿using Module_Education.Classes;
+using Module_Education.Forms.UserControls;
 using Module_Education.Models;
 using PagedList;
 using System;
@@ -24,15 +25,13 @@ namespace Module_Education.Forms
 
         private void LoadFormation()
         {
-            IPagedList <Education_Formation> listFormations = dbFormation.LoadAllEducation_Formations().ToPagedList(1,100);
+            IPagedList <Education_Formation> listFormations = dbFormation.LoadAllEducation_FormationsInFrame(UC_MatriceFormations.listMatriceFormationSelected).ToPagedList(1,100);
             //foreach(var item in listFormations)
 
             l_PopUp.DataSource = GetDataSource(listFormations);
         }
         private object GetDataSource(IPagedList<Education_Formation> listPaged)
         {
-            //using (CFNEducation_FormationEntities dbTemp = new CFNEducation_FormationEntities())
-            //{
             object dataSource = listPaged.Select(o => new MyColumnCollectionFrmFormation(o)
             {
                 Formation_ShortTitle = o.Formation_ShortTitle,
@@ -40,10 +39,7 @@ namespace Module_Education.Forms
 
             }).ToList();
 
-            //lblMin.Text = listPaged.FirstItemOnPage.ToString();
-            //lblMax.Text = listPaged.LastItemOnPage.ToString();
             return dataSource;
-            //}
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -53,23 +49,21 @@ namespace Module_Education.Forms
 
         private void btnAddFormations_Click(object sender, EventArgs e)
         {
-            if (l_PopUp.SelectedRows.Count > 1)
+            if (l_PopUp.SelectedRows.Count > 0)
             {
                 var selectedRows = l_PopUp.SelectedRows
                                    .OfType<DataGridViewRow>()
                                    .Where(row => !row.IsNewRow)
                                    .ToArray();
                 Education_FormationDataAccess db = new Education_FormationDataAccess();
-                UCEducation_Formation.Instance.lFormationToAddToMatrice = new List<Education_Formation>();
+                UC_MatriceFormations.Instance.lFormationToAddToMatrice = new List<Education_Formation>();
 
                 foreach (DataGridViewRow row in selectedRows)
                 {
                     var item = db.LoadSingleEducation_Formation(row.Cells[1].Value.ToString());
-                    UCEducation_Formation.Instance.lFormationToAddToMatrice.Add(item);
-
+                    UC_MatriceFormations.Instance.lFormationToAddToMatrice.Add(item);
                 }
             }
-
             this.Close();
         }
     }

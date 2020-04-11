@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Trajets");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Trajets");
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.toolTipListProvider = new System.Windows.Forms.ToolTip(this.components);
@@ -340,11 +340,11 @@
             this.treeW_Provider.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
             this.treeW_Provider.Location = new System.Drawing.Point(17, 77);
             this.treeW_Provider.Name = "treeW_Provider";
-            treeNode1.Name = "Node0";
-            treeNode1.NodeFont = new System.Drawing.Font("Arial", 12.25F, System.Drawing.FontStyle.Bold);
-            treeNode1.Text = "Trajets";
+            treeNode2.Name = "Node0";
+            treeNode2.NodeFont = new System.Drawing.Font("Arial", 12.25F, System.Drawing.FontStyle.Bold);
+            treeNode2.Text = "Trajets";
             this.treeW_Provider.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode2});
             this.treeW_Provider.Size = new System.Drawing.Size(385, 407);
             this.treeW_Provider.TabIndex = 0;
             this.treeW_Provider.BeforeLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.treeW_Provider_BeforeLabelEdit);
@@ -1383,6 +1383,7 @@
             this.button1.TabIndex = 87;
             this.button1.Text = "Sauver ";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.SaveMatriceDetails);
             // 
             // button2
             // 

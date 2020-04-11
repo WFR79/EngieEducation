@@ -289,6 +289,7 @@
           <Property Name="MatriceFormation_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MatriceFormation_Formation" Type="bigint" />
           <Property Name="MatriceFormation_Matrice" Type="bigint" />
+          <Property Name="MatriceFormation_Recurrency" Type="int" />
         </EntityType>
         <EntityType Name="Education_Matrice_GrLearner">
           <Key>
@@ -297,6 +298,7 @@
           <Property Name="MatriceGrLearner_Id" Type="bigint" Nullable="false" />
           <Property Name="MatriceGrLearner_Matrice" Type="bigint" />
           <Property Name="MatriceGrLearner_GroupeLearner" Type="bigint" />
+          <Property Name="MatriceGrLearner_Recurrency" Type="int" />
         </EntityType>
         <EntityType Name="Education_MovementAgent">
           <Key>
@@ -1733,6 +1735,7 @@
           <Property Name="MatriceFormation_Matrice" Type="Int64" />
           <NavigationProperty Name="Education_Formation" Relationship="SYNAPSEModel.FK_MatriceFormation_Formation" FromRole="Education_Matrice_Formation" ToRole="Education_Formation" />
           <NavigationProperty Name="Education_Matrice" Relationship="SYNAPSEModel.FK_MatriceFormation_Matrice" FromRole="Education_Matrice_Formation" ToRole="Education_Matrice" />
+          <Property Name="MatriceFormation_Recurrency" Type="Int32" />
         </EntityType>
         <EntityType Name="Education_Matrice_GrLearner">
           <Key>
@@ -1743,6 +1746,7 @@
           <Property Name="MatriceGrLearner_GroupeLearner" Type="Int64" />
           <NavigationProperty Name="Education_GroupLearner" Relationship="SYNAPSEModel.FK_MatriceGrLearner_GroupLearner" FromRole="Education_Matrice_GrLearner" ToRole="Education_GroupLearner" />
           <NavigationProperty Name="Education_Matrice" Relationship="SYNAPSEModel.FK_MatriceGrLearner_Matrice" FromRole="Education_Matrice_GrLearner" ToRole="Education_Matrice" />
+          <Property Name="MatriceGrLearner_Recurrency" Type="Int32" />
         </EntityType>
         <EntityType Name="Education_MovementAgent">
           <Key>
@@ -2724,6 +2728,7 @@
           <EntitySetMapping Name="Education_Matrice_Formation">
             <EntityTypeMapping TypeName="SYNAPSEModel.Education_Matrice_Formation">
               <MappingFragment StoreEntitySet="Education_Matrice_Formation">
+                <ScalarProperty Name="MatriceFormation_Recurrency" ColumnName="MatriceFormation_Recurrency" />
                 <ScalarProperty Name="MatriceFormation_Matrice" ColumnName="MatriceFormation_Matrice" />
                 <ScalarProperty Name="MatriceFormation_Formation" ColumnName="MatriceFormation_Formation" />
                 <ScalarProperty Name="MatriceFormation_Id" ColumnName="MatriceFormation_Id" />
@@ -2733,6 +2738,7 @@
           <EntitySetMapping Name="Education_Matrice_GrLearner">
             <EntityTypeMapping TypeName="SYNAPSEModel.Education_Matrice_GrLearner">
               <MappingFragment StoreEntitySet="Education_Matrice_GrLearner">
+                <ScalarProperty Name="MatriceGrLearner_Recurrency" ColumnName="MatriceGrLearner_Recurrency" />
                 <ScalarProperty Name="MatriceGrLearner_GroupeLearner" ColumnName="MatriceGrLearner_GroupeLearner" />
                 <ScalarProperty Name="MatriceGrLearner_Matrice" ColumnName="MatriceGrLearner_Matrice" />
                 <ScalarProperty Name="MatriceGrLearner_Id" ColumnName="MatriceGrLearner_Id" />

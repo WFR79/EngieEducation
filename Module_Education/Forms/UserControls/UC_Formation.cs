@@ -36,6 +36,7 @@ namespace Module_Education
         public List<Education_Formation> lFormationToAddToMatrice;
         string oldLabel = String.Empty;
         #endregion
+
         public BindingSource ds_Education_Formations = new BindingSource();
         private Education_FormationDataAccess db = new Education_FormationDataAccess();
         private SessionUniteDataAccess dbSessionUnite = new SessionUniteDataAccess();
@@ -45,6 +46,8 @@ namespace Module_Education
         private FormationDossierRepository dbFormationDossier = new FormationDossierRepository();
         private FormationDossierTypeRepository dbFormationDossierType = new FormationDossierTypeRepository();
         private RoutesFormationRepository dbMatrice = new RoutesFormationRepository();
+        private InRouteFormationRepository dbMatriceFormation = new InRouteFormationRepository();
+
 
         CFNEducation_FormationEntities dbEntities = new CFNEducation_FormationEntities();
 
@@ -58,6 +61,8 @@ namespace Module_Education
         IPagedList<Education_Agent> listUserPaged;
         int pageSize;
         public static long UserIDSelected;
+        public Education_Matrice MatriceSelected;
+
         public static string FormationIDSelected;
 
         #region public events
@@ -129,7 +134,7 @@ namespace Module_Education
 
             this.ActiveControl = this.comboBoxDurationhours;
             InitVertScrollBarPanelDoc();
-
+            tabControl_Education_Formations.SelectedIndex = 2;
             InitReceiverEventFromOtherUCs();
         }
 
@@ -1953,7 +1958,6 @@ namespace Module_Education
 
         private void treeW_Provider_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-
             mySelectedNode = treeW_Provider.GetNodeAt(e.X, e.Y);
             treeW_Provider.SelectedNode = mySelectedNode;
             if (mySelectedNode != null && treeW_Provider.SelectedNode.Index < 2)
@@ -2113,6 +2117,7 @@ namespace Module_Education
         {
             var selectedNode = treeW_Provider.SelectedNode;
             lblDetailsMatrice.Text = "Details de " + selectedNode.Text;
+            MatriceSelected = dbEntities.Education_Matrice.Where(x => x.Matrice_Description == treeW_Provider.SelectedNode.Text).FirstOrDefault();
 
         }
 
@@ -2122,7 +2127,14 @@ namespace Module_Education
                 cbRecurrency.Items.Add(i);
         }
 
+
+        private void SaveMatriceDetails(object sender, EventArgs e)
+        {
+            dbMatriceFormation.SaveMatriceFormation(MatriceSelected, Convert.ToInt32(cbRecurrency.Text));
+        }
+
         #endregion
+
     }
 }
 

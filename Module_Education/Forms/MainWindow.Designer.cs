@@ -33,21 +33,22 @@
             this.panelMain = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblHelloUsername = new System.Windows.Forms.Label();
-            this.pictureBoxExit = new System.Windows.Forms.PictureBox();
-            this.btn_ShowHideMenu = new System.Windows.Forms.PictureBox();
             this.flowPanelMenu = new System.Windows.Forms.FlowLayoutPanel();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
+            this.timerMenu = new System.Windows.Forms.Timer(this.components);
             this.MenuBtnEducation_Formation = new System.Windows.Forms.Button();
             this.MenuBtnAgent = new System.Windows.Forms.Button();
             this.MenuBtnAuthentification = new System.Windows.Forms.Button();
             this.btnMenu_Provider = new System.Windows.Forms.Button();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
-            this.timerMenu = new System.Windows.Forms.Timer(this.components);
+            this.btnMatriceFormation = new System.Windows.Forms.Button();
+            this.pictureBoxExit = new System.Windows.Forms.PictureBox();
+            this.btn_ShowHideMenu = new System.Windows.Forms.PictureBox();
             this.panelMain.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.flowPanelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxExit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_ShowHideMenu)).BeginInit();
-            this.flowPanelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMain
@@ -86,30 +87,6 @@
             this.lblHelloUsername.Text = "label1";
             this.lblHelloUsername.Click += new System.EventHandler(this.lblHelloUsername_Click);
             // 
-            // pictureBoxExit
-            // 
-            this.pictureBoxExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxExit.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBoxExit.Image = global::Module_Education.Properties.Resources.outline_clear_black_24dp2;
-            this.pictureBoxExit.Location = new System.Drawing.Point(595, 4);
-            this.pictureBoxExit.Name = "pictureBoxExit";
-            this.pictureBoxExit.Size = new System.Drawing.Size(52, 47);
-            this.pictureBoxExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxExit.TabIndex = 2;
-            this.pictureBoxExit.TabStop = false;
-            this.pictureBoxExit.Click += new System.EventHandler(this.pictureBoxExit_Click);
-            // 
-            // btn_ShowHideMenu
-            // 
-            this.btn_ShowHideMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_ShowHideMenu.Enabled = false;
-            this.btn_ShowHideMenu.Location = new System.Drawing.Point(403, 9);
-            this.btn_ShowHideMenu.Name = "btn_ShowHideMenu";
-            this.btn_ShowHideMenu.Size = new System.Drawing.Size(37, 37);
-            this.btn_ShowHideMenu.TabIndex = 0;
-            this.btn_ShowHideMenu.TabStop = false;
-            this.btn_ShowHideMenu.Click += new System.EventHandler(this.button_ShowHideMenu_Click);
-            // 
             // flowPanelMenu
             // 
             this.flowPanelMenu.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -119,12 +96,30 @@
             this.flowPanelMenu.Controls.Add(this.MenuBtnAgent);
             this.flowPanelMenu.Controls.Add(this.MenuBtnAuthentification);
             this.flowPanelMenu.Controls.Add(this.btnMenu_Provider);
+            this.flowPanelMenu.Controls.Add(this.btnMatriceFormation);
             this.flowPanelMenu.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowPanelMenu.Location = new System.Drawing.Point(0, 0);
             this.flowPanelMenu.Name = "flowPanelMenu";
             this.flowPanelMenu.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.flowPanelMenu.Size = new System.Drawing.Size(210, 301);
             this.flowPanelMenu.TabIndex = 1;
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // imageList2
+            // 
+            this.imageList2.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList2.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // timerMenu
+            // 
+            this.timerMenu.Interval = 70;
+            this.timerMenu.Tick += new System.EventHandler(this.timerMenu_Tick);
             // 
             // MenuBtnEducation_Formation
             // 
@@ -205,22 +200,48 @@
             this.btnMenu_Provider.UseVisualStyleBackColor = false;
             this.btnMenu_Provider.Click += new System.EventHandler(this.btnMenu_Provider_Click);
             // 
-            // imageList1
+            // btnMatriceFormation
             // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.btnMatriceFormation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            this.btnMatriceFormation.FlatAppearance.BorderSize = 0;
+            this.btnMatriceFormation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMatriceFormation.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMatriceFormation.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnMatriceFormation.Image = ((System.Drawing.Image)(resources.GetObject("btnMatriceFormation.Image")));
+            this.btnMatriceFormation.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnMatriceFormation.Location = new System.Drawing.Point(-5, 208);
+            this.btnMatriceFormation.Margin = new System.Windows.Forms.Padding(0);
+            this.btnMatriceFormation.Name = "btnMatriceFormation";
+            this.btnMatriceFormation.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnMatriceFormation.Size = new System.Drawing.Size(215, 59);
+            this.btnMatriceFormation.TabIndex = 18;
+            this.btnMatriceFormation.Text = "Trajets de formations";
+            this.btnMatriceFormation.UseVisualStyleBackColor = false;
+            this.btnMatriceFormation.Click += new System.EventHandler(this.btnMatriceFormation_Click);
             // 
-            // imageList2
+            // pictureBoxExit
             // 
-            this.imageList2.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList2.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
+            this.pictureBoxExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxExit.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBoxExit.Image = global::Module_Education.Properties.Resources.outline_clear_black_24dp2;
+            this.pictureBoxExit.Location = new System.Drawing.Point(595, 4);
+            this.pictureBoxExit.Name = "pictureBoxExit";
+            this.pictureBoxExit.Size = new System.Drawing.Size(52, 47);
+            this.pictureBoxExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxExit.TabIndex = 2;
+            this.pictureBoxExit.TabStop = false;
+            this.pictureBoxExit.Click += new System.EventHandler(this.pictureBoxExit_Click);
             // 
-            // timerMenu
+            // btn_ShowHideMenu
             // 
-            this.timerMenu.Interval = 70;
-            this.timerMenu.Tick += new System.EventHandler(this.timerMenu_Tick);
+            this.btn_ShowHideMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_ShowHideMenu.Enabled = false;
+            this.btn_ShowHideMenu.Location = new System.Drawing.Point(403, 9);
+            this.btn_ShowHideMenu.Name = "btn_ShowHideMenu";
+            this.btn_ShowHideMenu.Size = new System.Drawing.Size(37, 37);
+            this.btn_ShowHideMenu.TabIndex = 0;
+            this.btn_ShowHideMenu.TabStop = false;
+            this.btn_ShowHideMenu.Click += new System.EventHandler(this.button_ShowHideMenu_Click);
             // 
             // MainWindow
             // 
@@ -237,9 +258,9 @@
             this.panelMain.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.flowPanelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxExit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_ShowHideMenu)).EndInit();
-            this.flowPanelMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -258,6 +279,7 @@
         private System.Windows.Forms.PictureBox pictureBoxExit;
         private System.Windows.Forms.Label lblHelloUsername;
         private System.Windows.Forms.Button btnMenu_Provider;
+        private System.Windows.Forms.Button btnMatriceFormation;
     }
 }
 
