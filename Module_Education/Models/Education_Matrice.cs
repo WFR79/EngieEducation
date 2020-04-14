@@ -24,6 +24,7 @@ namespace Module_Education.Models
     
         public long Matrice_Id { get; set; }
         public string Matrice_Description { get; set; }
+        public Nullable<int> Matrice_Recurrency { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_Matrice_Formation> Education_Matrice_Formation { get; set; }

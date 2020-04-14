@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Module_Education.Repositories
 {
@@ -54,6 +55,57 @@ namespace Module_Education.Repositories
             }
 
             return MatriceFormation;
+        }
+
+        public void RemoveFormationFromTrajet(string formationSAP, string routeName)
+        {
+            Education_Matrice Matrice = db.Education_Matrice
+               .Where(x => x.Matrice_Description == routeName)
+               .FirstOrDefault();
+
+            Education_Matrice_Formation MatriceFormation = db.Education_Matrice_Formation
+                .Where(p => p.Education_Matrice.Matrice_Id == Matrice.Matrice_Id
+                && p.Education_Formation.Formation_SAP == formationSAP)
+                .FirstOrDefault(); ;
+
+            db.Education_Matrice_Formation.Remove(MatriceFormation);
+            db.SaveChanges();
+        }
+
+        public void RemoveAllMatriceForamtion(TreeNodeCollection nodes, string routeName)
+        {
+            Education_Matrice Matrice = db.Education_Matrice
+               .Where(x => x.Matrice_Description == routeName)
+               .FirstOrDefault();
+
+            foreach (TreeNode singleRecord in nodes)
+            {
+                Education_Matrice_Formation MatriceFormation = db.Education_Matrice_Formation
+                    .Where(p => p.Education_Matrice.Matrice_Id == Matrice.Matrice_Id
+                    && p.Education_Formation.Formation_SAP == singleRecord.Name)
+                    .FirstOrDefault(); ;
+
+
+                db.Education_Matrice_Formation.Remove(MatriceFormation);
+                db.SaveChanges();
+            }
+
+            db.Education_Matrice.Remove(Matrice);
+            db.SaveChanges();
+        }
+
+        public void SaveCurrencyOfFormation(string formationSAP, string routeName, int recurrency)
+        {
+            
+
+            Education_Matrice_Formation MatriceFormation = db.Education_Matrice_Formation
+                .Where(p => p.Education_Matrice.Matrice_Description == routeName
+                && p.Education_Formation.Formation_SAP == formationSAP)
+                .FirstOrDefault(); 
+
+            MatriceFormation.MatriceFormation_Recurrency = recurrency;
+
+            db.SaveChanges();
         }
     }
 }

@@ -42,10 +42,13 @@
             this.equipeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.toolTipExcel = new System.Windows.Forms.ToolTip(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.lblFormationMAtrice = new System.Windows.Forms.Label();
+            this.lblFormationMatrice = new System.Windows.Forms.Label();
             this.lblDetailsMatrice = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbRecurrencyFormation = new System.Windows.Forms.ComboBox();
             this.PanelDetailsMatrice = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.lblrecurrenceSemaine = new System.Windows.Forms.Label();
@@ -57,10 +60,18 @@
             this.label4 = new System.Windows.Forms.Label();
             this.treeW_Provider = new System.Windows.Forms.TreeView();
             this.btnRefresh = new System.Windows.Forms.Button();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.lblFormation = new System.Windows.Forms.Label();
+            this.cbFilterFormation = new System.Windows.Forms.ComboBox();
+            this.lblFilerMatrice = new System.Windows.Forms.Label();
+            this.cbFilterMatrice = new System.Windows.Forms.ComboBox();
+            this.tooltipFilterMatrice = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.equipeBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             this.PanelDetailsMatrice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAddMatrice)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // headerFormatStyle1
@@ -89,16 +100,16 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // lblFormationMAtrice
+            // lblFormationMatrice
             // 
-            this.lblFormationMAtrice.AutoSize = true;
-            this.lblFormationMAtrice.Font = new System.Drawing.Font("Arial", 10.25F, System.Drawing.FontStyle.Bold);
-            this.lblFormationMAtrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblFormationMAtrice.Location = new System.Drawing.Point(446, 278);
-            this.lblFormationMAtrice.Name = "lblFormationMAtrice";
-            this.lblFormationMAtrice.Size = new System.Drawing.Size(59, 16);
-            this.lblFormationMAtrice.TabIndex = 29;
-            this.lblFormationMAtrice.Text = "Détails ";
+            this.lblFormationMatrice.AutoSize = true;
+            this.lblFormationMatrice.Font = new System.Drawing.Font("Arial", 10.25F, System.Drawing.FontStyle.Bold);
+            this.lblFormationMatrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.lblFormationMatrice.Location = new System.Drawing.Point(446, 307);
+            this.lblFormationMatrice.Name = "lblFormationMatrice";
+            this.lblFormationMatrice.Size = new System.Drawing.Size(59, 16);
+            this.lblFormationMatrice.TabIndex = 29;
+            this.lblFormationMatrice.Text = "Détails ";
             // 
             // lblDetailsMatrice
             // 
@@ -114,11 +125,25 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Location = new System.Drawing.Point(449, 297);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.cbRecurrencyFormation);
+            this.panel1.Location = new System.Drawing.Point(449, 336);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(596, 159);
             this.panel1.TabIndex = 27;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 7.25F);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.label1.Location = new System.Drawing.Point(96, 38);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.TabIndex = 89;
+            this.label1.Text = "Semaine(s)";
             // 
             // button2
             // 
@@ -131,6 +156,27 @@
             this.button2.TabIndex = 88;
             this.button2.Text = "Sauver ";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.SaveFormationRecurrency);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.label2.Location = new System.Drawing.Point(17, 16);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(74, 16);
+            this.label2.TabIndex = 88;
+            this.label2.Text = "Récurrence";
+            // 
+            // cbRecurrencyFormation
+            // 
+            this.cbRecurrencyFormation.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.cbRecurrencyFormation.FormattingEnabled = true;
+            this.cbRecurrencyFormation.Location = new System.Drawing.Point(20, 34);
+            this.cbRecurrencyFormation.Name = "cbRecurrencyFormation";
+            this.cbRecurrencyFormation.Size = new System.Drawing.Size(72, 22);
+            this.cbRecurrencyFormation.TabIndex = 87;
             // 
             // PanelDetailsMatrice
             // 
@@ -155,6 +201,7 @@
             this.button1.TabIndex = 87;
             this.button1.Text = "Sauver ";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.SaveRecurrencyMatrice);
             // 
             // lblrecurrenceSemaine
             // 
@@ -238,15 +285,16 @@
             this.treeW_Provider.BackColor = System.Drawing.Color.WhiteSmoke;
             this.treeW_Provider.Font = new System.Drawing.Font("Arial", 10.25F);
             this.treeW_Provider.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.treeW_Provider.Location = new System.Drawing.Point(27, 88);
+            this.treeW_Provider.Location = new System.Drawing.Point(27, 143);
             this.treeW_Provider.Name = "treeW_Provider";
             treeNode3.Name = "Node0";
             treeNode3.NodeFont = new System.Drawing.Font("Arial", 12.25F, System.Drawing.FontStyle.Bold);
             treeNode3.Text = "Trajets";
             this.treeW_Provider.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode3});
-            this.treeW_Provider.Size = new System.Drawing.Size(385, 407);
+            this.treeW_Provider.Size = new System.Drawing.Size(385, 352);
             this.treeW_Provider.TabIndex = 21;
+            this.treeW_Provider.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeW_Provider_AfterSelect);
             this.treeW_Provider.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeW_Provider_MouseClick);
             // 
             // btnRefresh
@@ -261,13 +309,74 @@
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel2.Controls.Add(this.lblFormation);
+            this.panel2.Controls.Add(this.cbFilterFormation);
+            this.panel2.Controls.Add(this.lblFilerMatrice);
+            this.panel2.Controls.Add(this.cbFilterMatrice);
+            this.panel2.Location = new System.Drawing.Point(27, 89);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(385, 48);
+            this.panel2.TabIndex = 31;
+            // 
+            // lblFormation
+            // 
+            this.lblFormation.AutoSize = true;
+            this.lblFormation.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.lblFormation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.lblFormation.Location = new System.Drawing.Point(193, 4);
+            this.lblFormation.Name = "lblFormation";
+            this.lblFormation.Size = new System.Drawing.Size(73, 16);
+            this.lblFormation.TabIndex = 89;
+            this.lblFormation.Text = "Formations";
+            // 
+            // cbFilterFormation
+            // 
+            this.cbFilterFormation.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbFilterFormation.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbFilterFormation.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.cbFilterFormation.FormattingEnabled = true;
+            this.cbFilterFormation.Location = new System.Drawing.Point(196, 23);
+            this.cbFilterFormation.Name = "cbFilterFormation";
+            this.cbFilterFormation.Size = new System.Drawing.Size(175, 22);
+            this.cbFilterFormation.TabIndex = 88;
+            this.tooltipFilterMatrice.SetToolTip(this.cbFilterFormation, "Tapez \'Entrer\' pour filtrer les trajets");
+            this.cbFilterFormation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbFilterFormation_KeyDown);
+            // 
+            // lblFilerMatrice
+            // 
+            this.lblFilerMatrice.AutoSize = true;
+            this.lblFilerMatrice.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.lblFilerMatrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.lblFilerMatrice.Location = new System.Drawing.Point(9, 4);
+            this.lblFilerMatrice.Name = "lblFilerMatrice";
+            this.lblFilerMatrice.Size = new System.Drawing.Size(58, 16);
+            this.lblFilerMatrice.TabIndex = 87;
+            this.lblFilerMatrice.Text = "Matrices";
+            // 
+            // cbFilterMatrice
+            // 
+            this.cbFilterMatrice.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbFilterMatrice.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbFilterMatrice.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.cbFilterMatrice.FormattingEnabled = true;
+            this.cbFilterMatrice.Location = new System.Drawing.Point(8, 22);
+            this.cbFilterMatrice.Name = "cbFilterMatrice";
+            this.cbFilterMatrice.Size = new System.Drawing.Size(175, 22);
+            this.cbFilterMatrice.TabIndex = 86;
+            this.tooltipFilterMatrice.SetToolTip(this.cbFilterMatrice, "Tapez \'Entrer\' pour filtrer les trajets");
+            this.cbFilterMatrice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbFilterMatrice_KeyDown);
+            // 
             // UC_MatriceFormations
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnRefresh);
-            this.Controls.Add(this.lblFormationMAtrice);
+            this.Controls.Add(this.lblFormationMatrice);
             this.Controls.Add(this.lblDetailsMatrice);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.PanelDetailsMatrice);
@@ -280,9 +389,12 @@
             this.Size = new System.Drawing.Size(1070, 571);
             ((System.ComponentModel.ISupportInitialize)(this.equipeBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.PanelDetailsMatrice.ResumeLayout(false);
             this.PanelDetailsMatrice.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picAddMatrice)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -296,7 +408,7 @@
         private System.Windows.Forms.BindingSource equipeBindingSource;
         private System.Windows.Forms.ToolTip toolTipExcel;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.Label lblFormationMAtrice;
+        private System.Windows.Forms.Label lblFormationMatrice;
         private System.Windows.Forms.Label lblDetailsMatrice;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button button2;
@@ -311,5 +423,15 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TreeView treeW_Provider;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label lblFormation;
+        private System.Windows.Forms.ComboBox cbFilterFormation;
+        private System.Windows.Forms.Label lblFilerMatrice;
+        private System.Windows.Forms.ComboBox cbFilterMatrice;
+        private System.Windows.Forms.ToolTip tooltipFilterMatrice;
+        private System.Windows.Forms.ToolTip toolTip2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cbRecurrencyFormation;
     }
 }

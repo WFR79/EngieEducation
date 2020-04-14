@@ -121,23 +121,6 @@ namespace Module_Education
         {
 
         }
-
-        private void button_ShowHideMenu_Click(object sender, EventArgs e)
-        {
-            if (flowPanelMenu.Visible)
-            {
-                IsMenuShown = false;
-                timerMenu.Start();
-            }
-            else
-            {
-                flowPanelMenu.Show();
-                IsMenuShown = true;
-                timerMenu.Start();
-
-            }
-
-        }
         #endregion
 
         private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
@@ -146,75 +129,10 @@ namespace Module_Education
         }
 
         #region Adding UC to MainPAnel
-        private void MenuAgenClick(object sender, EventArgs e)
-        {
-            Control button = ((Control)sender);
-
-            //Add module1 to panel control
-            if (!panelMain.Controls.Contains(UC_Agent.Instance))
-            {
-                panelMain.Controls.Add(UC_Agent.Instance);
-                UC_Agent.Instance.Dock = DockStyle.Fill;
-                UC_Agent.Instance.BringToFront();
-                UC_Agent.UserIDSelected = UserIDSelected;
-            }
-            else
-            {
-                UC_Agent.Instance.BringToFront();
-            }
-            button.BackColor = Color.FromArgb(67, 100, 214);
-            bouttonMenuPressed = (Button)button;
-            UnselectButtons();
-        }
 
         private void tableLayoutPanel1_CellPaint(object sender, TableLayoutCellPaintEventArgs e)
         {
 
-        }
-
-        public void MenuBtnEducation_Formation_Click(object sender, EventArgs e)
-        {
-            Control button = ((Control)sender);
-            //Add module1 to panel control
-            //flowPanelMenu.Hide();
-            if (!panelMain.Controls.Contains(UCEducation_Formation.Instance))
-            {
-                panelMain.Controls.Add(UCEducation_Formation.Instance);
-                UCEducation_Formation.Instance.Dock = DockStyle.Fill;
-                UCEducation_Formation.Instance.BringToFront();
-
-                ReceiverClickButton += new controlcall(clickButtonAgentMenu);
-                UCEducation_Formation.Instance.MainWindowPointerMenuBtnAgent = ReceiverClickButton;
-
-                ReceiverFromFicheFormation += new functioncall(AgentSelectedInFormationCard);
-                UCEducation_Formation.Instance.PointerFormation = ReceiverFromFicheFormation;
-
-                ReceiverRefreshListeAgent += new refreshForm(refreshFormAgent);
-                UCEducation_Formation.Instance.PointerUCAgent_Refresh = ReceiverRefreshListeAgent;
-
-            }
-            else
-            {
-
-                UCEducation_Formation.Instance.BringToFront();
-            }
-
-            button.BackColor = Color.FromArgb(67, 100, 214);
-            bouttonMenuPressed = (Button)button;
-            UnselectButtons();
-            // Add the control to the panel  
-        }
-
-        private void MenuBtnAuthentification_Click(object sender, EventArgs e)
-        {
-            if (!panelMain.Controls.Contains(UC_Authentification.Instance))
-            {
-                panelMain.Controls.Add(UC_Authentification.Instance);
-                UC_Authentification.Instance.Dock = DockStyle.Fill;
-                UC_Authentification.Instance.BringToFront();
-            }
-            else
-                UC_Authentification.Instance.BringToFront();
         }
 
         /// <summary>
@@ -250,26 +168,6 @@ namespace Module_Education
         #endregion
 
         #region Timer
-        private void timerMenu_Tick(object sender, EventArgs e)
-        {
-            if (IsMenuShown)
-            {
-                if (flowPanelMenu.Width >= 210)
-                {
-                    timerMenu.Stop();
-                }
-                flowPanelMenu.Width += 35;
-            }
-            else
-            {
-                if (flowPanelMenu.Width <= 0)
-                {
-                    flowPanelMenu.Hide();
-                    timerMenu.Stop();
-                }
-                flowPanelMenu.Width -= 35;
-            }
-        }
         #endregion
 
         #region Threading
@@ -305,18 +203,5 @@ namespace Module_Education
             }
         }
 
-
-        private void pictureBoxExit_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show("Etes-vous sûr de vouloir quitter l'application?", "Confirmation", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                //do something else
-            }
-        }
     }
 }

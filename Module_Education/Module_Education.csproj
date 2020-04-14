@@ -152,6 +152,7 @@
     <Compile Include="Repositories\RoutesFormationRepository.cs" />
     <Compile Include="Repositories\SessionUniteDataAccess.cs" />
     <Compile Include="Repositories\UniteDataAccess.cs" />
+    <Compile Include="Repositories\UnitePriceRepository.cs" />
     <Compile Include="Repositories\UserStatusDataAccess.cs" />
     <Compile Include="Forms\FormCustomFilter.cs">
       <SubType>Form</SubType>

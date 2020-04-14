@@ -49,6 +49,7 @@ namespace Module_Education
 
         public delegate void functioncall(long message);
         public delegate void refreshFicheAgent(long UserId);
+        public delegate void ClickOnFormationMenuBtn(string sapFormation);
 
 
         private event menuProviderClick ReceiverClickButtonProvider;
@@ -58,6 +59,9 @@ namespace Module_Education
         private event controlcall ReceiverClickButton;
         private event refreshFicheAgent ReceiverRefreshListeAgent;
         private event functioncall ReceiverFromFicheFormation;
+
+        private event ClickOnFormationMenuBtn ReceiverFromMatriceFormation;
+
         private event menuProviderClick ReceiverClickProvider;
 
 
@@ -192,6 +196,8 @@ namespace Module_Education
 
                 ReceiverFromFicheFormation += new functioncall(AgentSelectedInFormationCard);
                 UCEducation_Formation.Instance.PointerFormation = ReceiverFromFicheFormation;
+
+                
 
                 ReceiverRefreshListeAgent += new refreshFicheAgent(refreshFormAgent);
                 UCEducation_Formation.Instance.PointerRefreshFicheAgent = ReceiverRefreshListeAgent;
@@ -331,8 +337,9 @@ namespace Module_Education
         private void clickButtonFormationMenu(string formationSAPNum)
         {
             UCEducation_Formation.FormationIDSelected = formationSAPNum;
+            UCEducation_Formation.Instance.LoadFicheEducation_Formation(formationSAPNum); 
             MenuBtnEducation_Formation.PerformClick();
-            UCEducation_Formation.Instance.LoadFicheEducation_Formation(formationSAPNum);
+
 
         }
 
@@ -429,11 +436,9 @@ namespace Module_Education
                 UC_MatriceFormations.Instance.Dock = DockStyle.Fill;
                 UC_MatriceFormations.Instance.BringToFront();
 
-                //ReceiverClickButtonFormation += new menuAgentClick(clickButtonFormationMenu);
-                //UC_Provider.Instance.PointerButtonMenuFormation = ReceiverClickButtonFormation;
+                ReceiverFromMatriceFormation += new ClickOnFormationMenuBtn(clickButtonFormationMenu);
+                UC_MatriceFormations.Instance.PointerFormation = ReceiverFromMatriceFormation;
 
-                //ReceiverRefreshListeAgent += new refreshFicheAgent(refreshFormAgent);
-                //UC_Provider.Instance.PointerUCAgent_Refresh = ReceiverRefreshListeAgent;
 
             }
             else

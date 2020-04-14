@@ -49,7 +49,7 @@ namespace Module_Education
                         .FirstOrDefault();
 
 
-                    if(itemroRemove == null)
+                    if (itemroRemove == null)
                         listefiltered.Add(itemFormationFormDb);
                 }
                 return listefiltered;
@@ -177,27 +177,56 @@ namespace Module_Education
             return Education_FormationFromDB;
         }
 
+        public async void SaveEducation_FormationAsync(Education_Formation currentEducation_Formation)
+        {
+            using (CFNEducation_FormationEntities dbSaveSet = new CFNEducation_FormationEntities())
+            {
+                if (currentEducation_Formation != null)
+                {
+                    var Education_Formation = dbSaveSet.Education_Formation.Where(x => x.Formation_SAP == currentEducation_Formation.Formation_SAP).FirstOrDefault();
+
+                    Education_Formation = currentEducation_Formation;
+                    await dbSaveSet.SaveChangesAsync();
+                }
+                else
+                {
+                    dbSaveSet.Education_Formation.Add(currentEducation_Formation);
+                    await dbSaveSet.SaveChangesAsync();
+                }
+            }
+        }
+
         public async void SaveEducation_Formation(Education_Formation currentEducation_Formation)
         {
-            if (currentEducation_Formation != null)
-            {
-                var Education_Formation = db.Education_Formation.Where(x => x.Formation_SAP == currentEducation_Formation.Formation_SAP).FirstOrDefault();
+                if (currentEducation_Formation != null)
+                {
+                    var Education_Formation = db.Education_Formation.Where(x => x.Formation_SAP == currentEducation_Formation.Formation_SAP).FirstOrDefault();
 
-                Education_Formation = currentEducation_Formation;
-                await db.SaveChangesAsync();
-            }
-            else
-            {
-                db.Education_Formation.Add(currentEducation_Formation);
-                await db.SaveChangesAsync();
-            }
+                    Education_Formation = currentEducation_Formation;
+                    await db.SaveChangesAsync();
+                }
+                else
+                {
+                    db.Education_Formation.Add(currentEducation_Formation);
+                    await db.SaveChangesAsync();
+                }
+            
         }
 
         public Education_Formation LoadSingleEducation_Formation(string Education_FormationSAPSelected)
         {
-            return db.Education_Formation.Where(w => w.Formation_SAP == Education_FormationSAPSelected).FirstOrDefault();
-        }
 
+            return db.Education_Formation.Where(w => w.Formation_SAP == Education_FormationSAPSelected).FirstOrDefault();
+
+        }
+        public async Task<Education_Formation> LoadSingleEducation_FormationAsync(string Education_FormationSAPSelected)
+        {
+            
+                return await db.Education_Formation.Where(w => w.Formation_SAP == Education_FormationSAPSelected)
+                .Include("Education_FormationProvider")
+                .FirstOrDefaultAsync();
+            
+        }
         public List<Education_Formation> LoadFormationFiltered(string filter, List<Education_Formation> lisglobalFormation)
         {
             IPagedList<Education_Formation> formationTemp;

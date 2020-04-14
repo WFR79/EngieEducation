@@ -273,6 +273,7 @@
           </Key>
           <Property Name="Matrice_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Matrice_Description" Type="nvarchar(max)" />
+          <Property Name="Matrice_Recurrency" Type="int" />
         </EntityType>
         <EntityType Name="Education_Matrice_Agent">
           <Key>
@@ -1715,6 +1716,7 @@
           <NavigationProperty Name="Education_Matrice_Formation" Relationship="SYNAPSEModel.FK_MatriceFormation_Matrice" FromRole="Education_Matrice" ToRole="Education_Matrice_Formation" />
           <NavigationProperty Name="Education_Matrice_GrLearner" Relationship="SYNAPSEModel.FK_MatriceGrLearner_Matrice" FromRole="Education_Matrice" ToRole="Education_Matrice_GrLearner" />
           <NavigationProperty Name="Education_Matrice_Agent" Relationship="SYNAPSEModel.FK_MatriceUser_Matrice" FromRole="Education_Matrice" ToRole="Education_Matrice_Agent" />
+          <Property Name="Matrice_Recurrency" Type="Int32" />
         </EntityType>
         <EntityType Name="Education_Matrice_Agent">
           <Key>
@@ -2711,6 +2713,7 @@
           <EntitySetMapping Name="Education_Matrice">
             <EntityTypeMapping TypeName="SYNAPSEModel.Education_Matrice">
               <MappingFragment StoreEntitySet="Education_Matrice">
+                <ScalarProperty Name="Matrice_Recurrency" ColumnName="Matrice_Recurrency" />
                 <ScalarProperty Name="Matrice_Description" ColumnName="Matrice_Description" />
                 <ScalarProperty Name="Matrice_Id" ColumnName="Matrice_Id" />
               </MappingFragment>

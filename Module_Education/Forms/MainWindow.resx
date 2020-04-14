@@ -127,6 +127,17 @@
         YyNOck9gQw5nkDsCG3NYgVz8ENvAHdhoHw84QPyRURtDKX0AiSZyCaNZKaUAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="btnMatriceFormation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAASVJREFUWEft
+        lS1SA0EQRvcAiAgEIiKCA3AEPIKjICKQETkAB+AACEQEAsEREIiIyAgEEhEZAe+rYraGTm9qexOTqn5V
+        T823PTU/PdskSZKcCGN8xCV+4AOOsItoPsQEv/HHuEZvkmg+zAJt8aJWbonmw3irLeo4LNF8mA16xeUK
+        LdF8mDf0iktdXEs0H+YKt2iL62jUTZZofhCaRCvXcaiwLq66qYtoPjkq2upbnOLszzu8wQvs4hoj+b3o
+        DugR0+tqL6dVrTzHS6w5wxfsm3fRbryiLdJHddYTnmNBv4ov7Jv/h3Zl3yvb10+s2/sevVzR5lve0ftg
+        iM9Y0EK9TG2db/GCQ9VOF3RsXqa2zrd4wUOs8catO3ihQ6zxxq1JkiTJCdA0v/w+HBzHVBzrAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
   <data name="MenuBtnAgent.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAASVJREFUWEft
@@ -138,7 +149,7 @@
         TkSuQmCC
 </value>
   </data>
-  <data name="MenuBtnAuthentification.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="MenuBtnGrpAgent.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAASVJREFUWEft
         lS1SA0EQRvcAiAgEIiKCA3AEPIKjICKQETkAB+AACEQEAsEREIiIyAgEEhEZAe+rYraGTm9qexOTqn5V
@@ -150,17 +161,6 @@
 </value>
   </data>
   <data name="btnMenu_Provider.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAASVJREFUWEft
-        lS1SA0EQRvcAiAgEIiKCA3AEPIKjICKQETkAB+AACEQEAsEREIiIyAgEEhEZAe+rYraGTm9qexOTqn5V
-        T823PTU/PdskSZKcCGN8xCV+4AOOsItoPsQEv/HHuEZvkmg+zAJt8aJWbonmw3irLeo4LNF8mA16xeUK
-        LdF8mDf0iktdXEs0H+YKt2iL62jUTZZofhCaRCvXcaiwLq66qYtoPjkq2upbnOLszzu8wQvs4hoj+b3o
-        DugR0+tqL6dVrTzHS6w5wxfsm3fRbryiLdJHddYTnmNBv4ov7Jv/h3Zl3yvb10+s2/sevVzR5lve0ftg
-        iM9Y0EK9TG2db/GCQ9VOF3RsXqa2zrd4wUOs8catO3ihQ6zxxq1JkiTJCdA0v/w+HBzHVBzrAAAAAElF
-        TkSuQmCC
-</value>
-  </data>
-  <data name="btnMatriceFormation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAABGdBTUEAALGPC/xhBQAAASVJREFUWEft
         lS1SA0EQRvcAiAgEIiKCA3AEPIKjICKQETkAB+AACEQEAsEREIiIyAgEEhEZAe+rYraGTm9qexOTqn5V

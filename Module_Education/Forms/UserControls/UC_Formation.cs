@@ -45,6 +45,8 @@ namespace Module_Education
         private FormationResultatDataAccess dbFormationResulat = new FormationResultatDataAccess();
         private FormationDossierRepository dbFormationDossier = new FormationDossierRepository();
         private FormationDossierTypeRepository dbFormationDossierType = new FormationDossierTypeRepository();
+        private UnitePriceRepository dbUnitePrice = new UnitePriceRepository();
+
         private RoutesFormationRepository dbMatrice = new RoutesFormationRepository();
         private InRouteFormationRepository dbMatriceFormation = new InRouteFormationRepository();
 
@@ -64,6 +66,7 @@ namespace Module_Education
         public Education_Matrice MatriceSelected;
 
         public static string FormationIDSelected;
+
 
         #region public events
 
@@ -178,8 +181,8 @@ namespace Module_Education
                 comboBoxMinCapacity.Items.Add(capMin);
             }
             //Unite
-            comboBoxUnite.DataSource = dbSessionUnite.LoadAllSessionUnite();
-            comboBoxUnite.DisplayMember = "SessionUnite_Name";
+            comboBoxUnite.DataSource = dbUnitePrice.LoadUnitePrice();
+            comboBoxUnite.DisplayMember = "UnitePrice_Name";
 
             // YearOfCreation
 
@@ -274,14 +277,14 @@ namespace Module_Education
             {
                 return await Task.Factory.StartNew(() =>
                 {
-                    using (CFNEducation_FormationEntities dbList = new CFNEducation_FormationEntities())
-                    {
+                    //using (CFNEducation_FormationEntities dbList = new CFNEducation_FormationEntities())
+                    //{
                         pageSize = Int32.Parse(tbNbrRows.Text);
 
                         if (MainWindow.globalListEducation_Formations == null)
                         {
 
-                            return dbList.Education_Formation
+                            return dbEntities.Education_Formation
                             .Include("Education_CategorieFormation")
                             .Include("Education_FormationProvider")
                             .Include("Education_FormationResultat")
@@ -298,7 +301,7 @@ namespace Module_Education
                             return MainWindow.globalListEducation_Formations.ToPagedList(pagNumber, pageSize); ;
                             //dG_Education_Formations.DataSource = MainWindow.globalListEducation_Formations.ToPagedList(1, 100); 
                         }
-                    }
+                    //}
 
 
                 }).ConfigureAwait(true);
@@ -350,12 +353,13 @@ namespace Module_Education
 
                                 .Where(w => w.Agent_Id == itemUserEducation_Formation.AgentFormation_Agent).FirstOrDefault());
                         }
-
                         return tempUserList.OrderByDescending(p => p.Agent_Id).ToPagedList(pagNumber, pageSize);
 
                         //dG_Education_Formations.DataSource = lEducation_Formations.ToPagedList(1, 100); ;
-
                     }
+
+
+
 
 
                 }).ConfigureAwait(true);
@@ -548,56 +552,67 @@ namespace Module_Education
 
         public void LoadFicheEducation_Formation(string Education_FormationSAPSelected)
         {
-            //DeleteButtonSavingAgent();
-            TabPage page = (TabPage)this.tabControl_Education_Formations.Controls[1];
-            this.tabControl_Education_Formations.SelectedTab = page;
-            this.EnableTab(page, true);
-
-            CurrentFormation = db.LoadSingleEducation_Formation(FormationIDSelected);
-            if (CurrentFormation != null)
+            try
             {
-                Education_FormationRecord_FillLabels(CurrentFormation);
-                Education_FormationRecord_FillLabelsActif(CurrentFormation);
+                //DeleteButtonSavingAgent();
+                TabPage page = (TabPage)this.tabControl_Education_Formations.Controls[1];
+                this.tabControl_Education_Formations.SelectedTab = page;
+                this.EnableTab(page, true);
 
-                Education_FormationRecord_FillSAP(CurrentFormation);
-                Education_FormationRecord_SelectCompetence(CurrentFormation);
-                Education_FormationRecord_PickDateOfCreation(CurrentFormation);
-                //Education_FormationRecord_PickDateOfEntry(CurrentEducation_Formation);
-                //Education_FormationRecord_PickUser_DateSeniority(CurrentEducation_Formation);
-                //Education_FormationRecord_PickDateFunction(CurrentEducation_Formation);
-                Education_FormationRecord_FillRemarks(CurrentFormation);
-                Education_FormationRecord_FillResulats(CurrentFormation);
-                Education_FormationRecord_FillPrice(CurrentFormation);
-                Education_FormationRecord_FillVendor(CurrentFormation);
+                CurrentFormation = db.LoadSingleEducation_Formation(FormationIDSelected);
+                if (CurrentFormation != null)
+                {
+                    Education_FormationRecord_FillLabels(CurrentFormation);
+                    Education_FormationRecord_FillLabelsActif(CurrentFormation);
 
-                Education_FormationRecord_SelectDurationInDays(CurrentFormation);
-                Education_FormationRecord_SelectMinCapacity(CurrentFormation);
-                Education_FormationRecord_SelectMaxCapacity(CurrentFormation);
-                Education_FormationRecord_SelectOptCapacity(CurrentFormation);
+                    Education_FormationRecord_FillSAP(CurrentFormation);
+                    Education_FormationRecord_SelectCompetence(CurrentFormation);
+                    Education_FormationRecord_PickDateOfCreation(CurrentFormation);
+                    //Education_FormationRecord_PickDateOfEntry(CurrentEducation_Formation);
+                    //Education_FormationRecord_PickUser_DateSeniority(CurrentEducation_Formation);
+                    //Education_FormationRecord_PickDateFunction(CurrentEducation_Formation);
+                    Education_FormationRecord_FillRemarks(CurrentFormation);
+                    Education_FormationRecord_FillResulats(CurrentFormation);
+                    Education_FormationRecord_SelectUnitePrice(CurrentFormation);
+                    Education_FormationRecord_FillFormationPrice(CurrentFormation);
+                    Education_FormationRecord_FillVendor(CurrentFormation);
 
-                Education_FormationRecord_FillCbListPRoviders(CurrentFormation);
-                //Doc
-                Education_FormationRecord_LoadDocInfoFiche(CurrentFormation);
-                Education_FormationRecord_LoadDocSyllabus(CurrentFormation);
-                Education_FormationRecord_LoadDocTest(CurrentFormation);
-                Education_FormationRecord_LoadDocScenario(CurrentFormation);
-                Education_FormationRecord_SelectPriority(CurrentFormation);
-                Education_FormationRecord_InOrder(CurrentFormation);
-                Education_FormationRecord_Hubbel(CurrentFormation);
-                Education_FormationRecord_SelectDossierType(CurrentFormation);
-                //
-                LoadDatagriAgentsOfCurrentFormation();
-                //Education_FormationRecord_SelectRoleEPI(CurrentEducation_Formation);
-                //Education_FormationRecord_SelectRoleAstreinte(userReCurrentEducation_Formationcord);
+                    Education_FormationRecord_SelectDurationInDays(CurrentFormation);
+                    Education_FormationRecord_SelectMinCapacity(CurrentFormation);
+                    Education_FormationRecord_SelectMaxCapacity(CurrentFormation);
+                    Education_FormationRecord_SelectOptCapacity(CurrentFormation);
+
+                    Education_FormationRecord_FillCbListPRoviders(CurrentFormation);
+                    //Doc
+                    Education_FormationRecord_LoadDocInfoFiche(CurrentFormation);
+                    Education_FormationRecord_LoadDocSyllabus(CurrentFormation);
+                    Education_FormationRecord_LoadDocTest(CurrentFormation);
+                    Education_FormationRecord_LoadDocScenario(CurrentFormation);
+                    Education_FormationRecord_SelectPriority(CurrentFormation);
+                    Education_FormationRecord_InOrder(CurrentFormation);
+                    Education_FormationRecord_Hubbel(CurrentFormation);
+                    Education_FormationRecord_SelectDossierType(CurrentFormation);
+                    //
+                    LoadDatagriAgentsOfCurrentFormation();
+                    //Education_FormationRecord_SelectRoleEPI(CurrentEducation_Formation);
+                    //Education_FormationRecord_SelectRoleAstreinte(userReCurrentEducation_Formationcord);
 
 
-                //Education_FormationRecord_SelectEducation_Habilitation(CurrentEducation_Formation);
-                //UserRecord_LoadEducation_FormationsOfUser(userRecord);
-                CreateButtonSavingAgent();
+                    //Education_FormationRecord_SelectEducation_Habilitation(CurrentEducation_Formation);
+                    //UserRecord_LoadEducation_FormationsOfUser(userRecord);
+                    CreateButtonSavingAgent();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.StackTrace);
             }
         }
 
-
+        private void Education_FormationRecord_FillDurationDays(Education_Formation currentFormation)
+        {
+            throw new NotImplementedException();
+        }
 
         private void Education_FormationRecord_FillVendor(Education_Formation currentFormation)
         {
@@ -660,19 +675,6 @@ namespace Module_Education
             LoadFicheEducation_Formation(FormationIDSelected);
         }
 
-        private void Education_FormationRecord_FillPrice(Education_Formation currentFormation)
-        {
-            //comboBoxResultatByYear.Items.Clear();
-            //if (currentFormation.Education_UnitePrice != null)
-            //    foreach (Education_FormationResultat formationResult in currentFormation.Education_FormationResultat)
-            //    {
-            //        comboBoxResultatByYear.Items.Add(formationResult.FormationResultat_Resultat);
-            //        comboBoxResultatYear.Items.Add(formationResult.FormationResultat_Year);
-            //    }
-            //comboBoxResultatByYear.SelectedIndex = comboBoxResultatByYear.Items.Count - 1;
-            //comboBoxResultatYear.SelectedIndex = comboBoxResultatYear.Items.Count - 1;
-        }
-
         private void Education_FormationRecord_FillResulats(Education_Formation currentFormation)
         {
             comboBoxResultatByYear.Items.Clear();
@@ -713,7 +715,10 @@ namespace Module_Education
             if (currentEducation_Formation.Formation_YearOfCreation != null)
             {
                 txtYearOfCreation.Text = currentEducation_Formation.Formation_YearOfCreation.ToString();
-
+            }
+            else
+            {
+                txtYearOfCreation.Text = "";
             }
         }
 
@@ -725,8 +730,18 @@ namespace Module_Education
 
         private void Education_FormationRecord_SelectDossierType(Education_Formation currentEducation_Formation)
         {
-            if (currentEducation_Formation.Education_FormationDossier != null)
-                cbTypeDossier.SelectedIndex = cbTypeDossier.FindStringExact(currentEducation_Formation.Education_FormationDossier.FirstOrDefault().Education_FormationDossierType.FormationDossierType_Name);
+            if (currentEducation_Formation.Education_FormationDossier.Count > 0)
+            {
+                var formationDossier = currentEducation_Formation.Education_FormationDossier
+                     .Where(w => w.FormationDossier_Formation == currentEducation_Formation.Formation_Id).FirstOrDefault();
+                if (formationDossier.Education_FormationDossierType != null)
+                {
+                    cbTypeDossier.SelectedIndex = cbTypeDossier.FindStringExact(currentEducation_Formation.Education_FormationDossier
+                        .FirstOrDefault().Education_FormationDossierType.FormationDossierType_Name);
+
+
+                }
+            }
         }
 
         private void Education_FormationRecord_FillCbListPRoviders(Education_Formation currentEducation_Formation)
@@ -791,38 +806,6 @@ namespace Module_Education
 
                     }
                 }
-
-                //var itemChecked = cbListProvider.Items[e.Index];
-                //if (CurrentFormation.Education_FormationProvider != null)
-                //    foreach (Education_FormationProvider formationProvider in CurrentFormation.Education_FormationProvider)
-                //    {
-                //        if (formationProvider.Education_Provider != null)
-                //        {
-                //            if (formationProvider.Education_Provider.Provider_Name.Equals(itemChecked))
-                //            {
-                //                if (e.NewValue == CheckState.Unchecked)
-                //                    formationProvider.FormationProvider_IsActual = false;
-                //                else
-                //                    formationProvider.FormationProvider_IsActual = true;
-
-                //            }
-                //            else
-                //            {
-                //                if (e.NewValue == CheckState.Unchecked)
-                //                    formationProvider.FormationProvider_IsActual = false;
-                //                else
-                //                    formationProvider.FormationProvider_IsActual = true;
-                //            }
-                //        }
-                //        else
-                //        {
-                //            if (e.NewValue == CheckState.Unchecked)
-                //                formationProvider.FormationProvider_IsActual = false;
-                //            else
-                //                formationProvider.FormationProvider_IsActual = true;
-                //        }
-
-                //    }
                 ActivateModification(true);
 
             }
@@ -855,6 +838,20 @@ namespace Module_Education
             if (currentEducation_Formation.Formation_MinCapacity != null)
                 comboBoxMinCapacity.SelectedIndex = comboBoxMinCapacity
                     .FindStringExact(currentEducation_Formation.Formation_MinCapacity.ToString());
+        }
+
+        private void Education_FormationRecord_SelectUnitePrice(Education_Formation currentEducation_Formation)
+        {
+            if (currentEducation_Formation.Education_UnitePrice != null)
+                comboBoxUnite.SelectedIndex = comboBoxUnite
+                    .FindStringExact(currentEducation_Formation.Education_UnitePrice.UnitePrice_Name.ToString());
+        }
+
+
+        private void Education_FormationRecord_FillFormationPrice(Education_Formation currentEducation_Formation)
+        {
+            if (currentEducation_Formation.Formation_Price != null)
+                textBoxPrice.Text = currentEducation_Formation.Formation_Price.ToString(); ;
         }
 
         private void Education_FormationRecord_SelectMaxCapacity(Education_Formation currentEducation_Formation)
@@ -916,64 +913,102 @@ namespace Module_Education
 
         private void Education_FormationRecord_LoadDocInfoFiche(Education_Formation Education_FormationRecord)
         {
-            if (Education_FormationRecord.Education_FormationDossier != null)
+            if (Education_FormationRecord.Education_FormationDossier.Count > 0)
             {
                 tbInfoFiche.Text = Education_FormationRecord.Education_FormationDossier
                     .Where(w => w.FormationDossier_Formation == Education_FormationRecord.Formation_Id).FirstOrDefault().FormationDossier_InfoFicheHyperLink;
+            }
+            else
+            {
+                tbInfoFiche.Text = "";
+
+
             }
         }
 
         private void Education_FormationRecord_LoadDocScenario(Education_Formation Education_FormationRecord)
         {
-            if (Education_FormationRecord.Education_FormationDossier != null)
+            if (Education_FormationRecord.Education_FormationDossier.Count > 0)
             {
                 tbScenario.Text = Education_FormationRecord.Education_FormationDossier
                     .Where(w => w.FormationDossier_Formation == Education_FormationRecord.Formation_Id).FirstOrDefault().FormationDossier_ScenarioHyperLink;
+            }
+            else
+            {
+                tbScenario.Text = "";
             }
         }
 
         private void Education_FormationRecord_LoadDocTest(Education_Formation Education_FormationRecord)
         {
-            if (Education_FormationRecord.Education_FormationDossier != null)
+            if (Education_FormationRecord.Education_FormationDossier.Count > 0)
             {
                 tbTest.Text = Education_FormationRecord.Education_FormationDossier
                     .Where(w => w.FormationDossier_Formation == Education_FormationRecord.Formation_Id).FirstOrDefault().FormationDossier_TestHyperLink;
+            }
+            else
+            {
+                tbTest.Text = "";
             }
         }
 
         private void Education_FormationRecord_LoadDocSyllabus(Education_Formation Education_FormationRecord)
         {
-            if (Education_FormationRecord.Education_FormationDossier != null)
+            if (Education_FormationRecord.Education_FormationDossier.Count > 0)
             {
                 tbSyllabus.Text = Education_FormationRecord.Education_FormationDossier
                     .Where(w => w.FormationDossier_Formation == Education_FormationRecord.Formation_Id).FirstOrDefault().FormationDossier_SyllabusHyperLink;
+            }
+            else
+            {
+                tbSyllabus.Text = "";
             }
         }
 
         private void Education_FormationRecord_SelectPriority(Education_Formation currentFormation)
         {
-            if (currentFormation.Education_FormationDossier != null)
+            if (currentFormation.Education_FormationDossier.Count > 0)
             {
                 cbPriority.Text = currentFormation.Education_FormationDossier
                     .Where(w => w.FormationDossier_Formation == currentFormation.Formation_Id).FirstOrDefault().FormationDossier_Priority;
+            }
+            else
+            {
+                cbPriority.Text = "";
             }
         }
 
         private void Education_FormationRecord_InOrder(Education_Formation currentFormation)
         {
-            if (currentFormation.Education_FormationDossier != null)
+            if (currentFormation.Education_FormationDossier.Count > 0)
             {
-                checkDossierOk.Checked = (bool)currentFormation.Education_FormationDossier
-                    .Where(w => w.FormationDossier_Formation == currentFormation.Formation_Id).FirstOrDefault().FormationDossier_InOrder;
+                var formationDossier = currentFormation.Education_FormationDossier
+                     .Where(w => w.FormationDossier_Formation == currentFormation.Formation_Id).FirstOrDefault();
+                if (formationDossier.FormationDossier_InOrder != null)
+                {
+                    checkDossierOk.Checked = (bool)currentFormation.Education_FormationDossier
+                        .Where(w => w.FormationDossier_Formation == currentFormation.Formation_Id).FirstOrDefault().FormationDossier_InOrder;
+                }
+            }
+            else
+            {
+                checkDossierOk.Checked = false;
             }
         }
 
         private void Education_FormationRecord_Hubbel(Education_Formation currentFormation)
         {
-            if (currentFormation.Education_FormationDossier != null)
+            if (currentFormation.Education_FormationDossier.Count > 0)
             {
-                checkHubbel.Checked = (bool)currentFormation.Education_FormationDossier
-                    .Where(w => w.FormationDossier_Formation == currentFormation.Formation_Id).FirstOrDefault().FormationDossier_Hubbel;
+                var formationDossier = currentFormation.Education_FormationDossier
+                    .Where(w => w.FormationDossier_Formation == currentFormation.Formation_Id).FirstOrDefault();
+                if (formationDossier.FormationDossier_Hubbel != null)
+                {
+                    checkHubbel.Checked = (bool)currentFormation.Education_FormationDossier
+                     .Where(w => w.FormationDossier_Formation == currentFormation.Formation_Id).FirstOrDefault().FormationDossier_Hubbel;
+                }
+
+
             }
         }
 
@@ -990,7 +1025,7 @@ namespace Module_Education
         private void CreateButtonSavingAgent()
         {
             Button ButtonSaveAgent = new Button();
-            ButtonSaveAgent.Location = new Point(16, 460);
+            ButtonSaveAgent.Location = new Point(16, 489);
             ButtonSaveAgent.Text = "Sauver";
             ButtonSaveAgent.Name = "ButtonSaveAgent";
 
@@ -1010,7 +1045,7 @@ namespace Module_Education
 
             // 
             Button ButtonCancelModificationAgent = new Button();
-            ButtonCancelModificationAgent.Location = new Point(126, 460);
+            ButtonCancelModificationAgent.Location = new Point(116, 489);
             ButtonCancelModificationAgent.Text = "Annuler";
             ButtonCancelModificationAgent.Name = "ButtonCancel";
             ButtonCancelModificationAgent.TabIndex = 91;
@@ -1031,13 +1066,11 @@ namespace Module_Education
         {
             db.SaveEducation_Formation(CurrentFormation);
             ActivateModification(false);
-
-
             //MainWindow.globalListEducation_Formations = await db.LoadAllEducation_FormationsAsync();
 
-            //AdvDg_Formations.Refresh();
             listPaged = await LoadDatagriEducation_Formations();
-            //AdvDg_Formations.DataSource = GetDataSource(listPaged);
+            AdvDg_Formations.DataSource = GetDataSource(listPaged);
+            AdvDg_Formations.Refresh();
 
         }
 
@@ -1065,28 +1098,37 @@ namespace Module_Education
 
         private void comboBoxDurationInDays_Leave(object sender, EventArgs e)
         {
-            int days = 0;
-            if (comboBoxDurationInDays.SelectedItem != null | comboBoxDurationInDays.Text != "")
+            try
             {
-                if (comboBoxDurationInDays.SelectedItem != null)
-                    days = Convert.ToInt32(comboBoxDurationInDays.SelectedItem.ToString());
-                else
-                    days = Convert.ToInt32(comboBoxDurationInDays.Text.ToString());
-            }
-            int hours = 0;
-            double hoursFloat = 0;
-            if (comboBoxDurationhours.SelectedItem != null)
-            {
-                hours = Convert.ToInt32(comboBoxDurationhours.SelectedItem.ToString());
-                hoursFloat = 8 / hours;
-            }
+
+                int days = 0;
+                if (comboBoxDurationInDays.SelectedItem != null | comboBoxDurationInDays.Text != "")
+                {
+                    if (comboBoxDurationInDays.SelectedItem != null)
+                        days = Convert.ToInt32(comboBoxDurationInDays.SelectedItem.ToString());
+                    else
+                        days = Convert.ToInt32(comboBoxDurationInDays.Text.ToString());
+                }
+                int hours = 0;
+                double hoursFloat = 0;
+                if (comboBoxDurationhours.Text != "")
+                {
+                    hours = Convert.ToInt32(comboBoxDurationhours.SelectedItem.ToString());
+                    hoursFloat = (double)hours * 0.125;
+
+                }
 
 
-            double durationFloat = days + hoursFloat;
-            if (durationFloat != CurrentFormation.Formation_DurationInDays)
+                double durationFloat = days + hoursFloat;
+                if (durationFloat != CurrentFormation.Formation_DurationInDays)
+                {
+                    CurrentFormation.Formation_DurationInDays = durationFloat;
+                    ActivateModification(true);
+                }
+            }
+            catch (Exception ex)
             {
-                CurrentFormation.Formation_DurationInDays = durationFloat;
-                ActivateModification(true);
+
             }
         }
 
@@ -1131,11 +1173,15 @@ namespace Module_Education
 
         private void comboBoxCompetence_Leave(object sender, EventArgs e)
         {
-            if (CurrentFormation.Formation_Competence != ((Education_Competence)comboBoxCompetence.SelectedItem).Competence_Id)
+            try
             {
-                CurrentFormation.Formation_Competence = ((Education_Competence)comboBoxCompetence.SelectedItem).Competence_Id;
-                ActivateModification(true);
+                if (CurrentFormation.Formation_Competence != ((Education_Competence)comboBoxCompetence.SelectedItem).Competence_Id)
+                {
+                    CurrentFormation.Formation_Competence = ((Education_Competence)comboBoxCompetence.SelectedItem).Competence_Id;
+                    ActivateModification(true);
+                }
             }
+            catch { }
         }
 
         private void comboBoxCapaciteOptimale_Leave(object sender, EventArgs e)
@@ -1158,9 +1204,9 @@ namespace Module_Education
 
         private void comboBoxCapaciteMin_Leave(object sender, EventArgs e)
         {
-            if (Convert.ToInt32(comboBoxCapaciteOptimale.Text) != CurrentFormation.Formation_OptimalCapacity)
+            if (Convert.ToInt32(comboBoxMinCapacity.Text) != CurrentFormation.Formation_MinCapacity)
             {
-                CurrentFormation.Formation_OptimalCapacity = Convert.ToInt32(comboBoxCapaciteOptimale.Text);
+                CurrentFormation.Formation_MinCapacity = Convert.ToInt32(comboBoxMinCapacity.Text);
                 ActivateModification(true);
             }
         }
@@ -1169,16 +1215,31 @@ namespace Module_Education
         {
             var price = comboBoxResultatYear.SelectedItem;
 
-            if (CurrentFormation.Formation_Price != null && Regex.IsMatch(textBoxPrice.Text, @"[0-9a-z]+"))
-                if (Convert.ToInt32(textBoxPrice.Text) != CurrentFormation.Formation_Price)
+            if (Regex.IsMatch(textBoxPrice.Text, @"[0-9a-z]+"))
+                if (Convert.ToInt32(textBoxPrice.Text) != CurrentFormation.Formation_Price && comboBoxUnite.SelectedItem != null)
                 {
                     CurrentFormation.Formation_Price = Convert.ToInt32(textBoxPrice.Text);
-                    CurrentFormation.Formation_UnitePrice = ((Education_UnitePrice)comboBoxUnite.SelectedItem).UnitePrice_Id;
+
+                    CurrentFormation.Education_UnitePrice.UnitePrice_Id = ((Education_UnitePrice)comboBoxUnite.SelectedItem).UnitePrice_Id;
 
                     ActivateModification(true);
                 }
             ActivateModification(true);
 
+        }
+
+        private void comboBoxUnite_Leave(object sender, EventArgs e)
+        {
+
+            if (CurrentFormation.Education_UnitePrice.UnitePrice_Name != comboBoxUnite.Text)
+            {
+                CurrentFormation.Formation_UnitePrice = ((Education_UnitePrice)comboBoxUnite.SelectedItem).UnitePrice_Id;
+                ActivateModification(true);
+            }
+        }
+
+        private void comboBoxUnite_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
 
         private void comboBoxResultatByYear_Leave(object sender, EventArgs e)
@@ -1188,29 +1249,32 @@ namespace Module_Education
 
         private void tbVendor_MouseLeave(object sender, EventArgs e)
         {
-            var currentActifProvider = CurrentFormation.Education_FormationProvider
-                .Where(w => w.FormationProvider_IsActual == true).FirstOrDefault();
-
-            if (currentActifProvider != null)
+            if (CurrentFormation.Education_FormationProvider.Count > 0)
             {
-                if (currentActifProvider.FormationProvider_Vendor != null)
+                var currentActifProvider = CurrentFormation.Education_FormationProvider
+                    .Where(w => w.FormationProvider_IsActual == true).FirstOrDefault();
+
+                if (currentActifProvider != null)
                 {
-                    if (tbVendor.Text != "")
+                    if (currentActifProvider.FormationProvider_Vendor != null)
                     {
-                        if (Convert.ToInt32(tbVendor.Text) != currentActifProvider.FormationProvider_Vendor)
+                        if (tbVendor.Text != "")
                         {
-                            currentActifProvider.FormationProvider_Vendor = Convert.ToInt32(tbVendor.Text);
-                            ActivateModification(true);
+                            if (Convert.ToInt32(tbVendor.Text) != currentActifProvider.FormationProvider_Vendor)
+                            {
+                                currentActifProvider.FormationProvider_Vendor = Convert.ToInt32(tbVendor.Text);
+                                ActivateModification(true);
+                            }
                         }
                     }
-                }
-                else
-                {
-                    if (tbVendor.Text == "")
-                        currentActifProvider.FormationProvider_Vendor = 0;
                     else
-                        currentActifProvider.FormationProvider_Vendor = Convert.ToInt32(tbVendor.Text);
-                    ActivateModification(true);
+                    {
+                        if (tbVendor.Text == "")
+                            currentActifProvider.FormationProvider_Vendor = 0;
+                        else
+                            currentActifProvider.FormationProvider_Vendor = Convert.ToInt32(tbVendor.Text);
+                        ActivateModification(true);
+                    }
                 }
             }
         }
@@ -1223,10 +1287,14 @@ namespace Module_Education
             if (enable)
             {
                 buttonSave.Enabled = enable;
+                buttonSave.Visible = Visible;
+
                 buttonSave.BackColor = Color.FromArgb(106, 199, 234);
                 buttonSave.ForeColor = Color.White;
 
                 buttonCancel.Enabled = enable;
+                buttonCancel.Visible = Visible;
+
                 buttonCancel.BackColor = Color.FromArgb(195, 29, 29);
                 buttonCancel.ForeColor = Color.White;
             }
@@ -1358,7 +1426,6 @@ namespace Module_Education
 
         }
 
-
         public async void TriggerFilterStringChanged()
         {
             //call event handler if one is attached
@@ -1387,7 +1454,6 @@ namespace Module_Education
                 AdvDg_Formations.Refresh();
             }
         }
-
 
         private void advDv_AgentsOfFormation_MouseClick(object sender, MouseEventArgs e)
         {
@@ -1432,7 +1498,7 @@ namespace Module_Education
             }
         }
 
-        private void pictureBox2_Click(object sender, EventArgs e)
+        private async void AddNewProviderToList(object sender, EventArgs e)
         {
             var elementSelected = (Education_Provider)comboBoxProvider.SelectedItem;
 
@@ -1442,14 +1508,18 @@ namespace Module_Education
             {
                 Education_FormationProvider newRecord = new Education_FormationProvider()
                 {
+                    Education_Provider = elementSelected,
                     FormationProvider_Provider = elementSelected.Provider_Id,
                     FormationProvider_Formation = CurrentFormation.Formation_Id,
-                    FormationProvider_IsActual = false
-
+                    FormationProvider_IsActual = false,
                 };
+
                 CurrentFormation.Education_FormationProvider.Add(newRecord);
-                ActivateModification(true);
+                db.SaveEducation_FormationAsync(CurrentFormation);
+
+
                 cbListProvider.Items.Add(elementSelected.Provider_Name);
+                CurrentFormation = await db.LoadSingleEducation_FormationAsync(FormationIDSelected);
             }
             else
             {
@@ -1492,8 +1562,6 @@ namespace Module_Education
 
             }
         }
-
-
 
         private void cbListProvider_MouseHover(object sender, EventArgs e)
         {
@@ -1580,7 +1648,8 @@ namespace Module_Education
 
         private void tbNbrRows_TextChanged(object sender, EventArgs e)
         {
-            pageSize = Convert.ToInt32(tbNbrRows.Text);
+            if (tbNbrRows.Text != "")
+                pageSize = Convert.ToInt32(tbNbrRows.Text);
 
         }
 
@@ -1610,7 +1679,7 @@ namespace Module_Education
 
         private void tbNbrRows_KeyDown(object sender, KeyEventArgs e)
         {
-            if (!Regex.IsMatch(tbNbrRows.Text, @"^\d+$"))
+            if (Regex.IsMatch(tbNbrRows.Text, @"[0-9]"))
             {
                 if (e.KeyCode == Keys.Enter)
                 {
@@ -1727,7 +1796,7 @@ namespace Module_Education
                     string fileSavedPath = fileExtensions.SaveFile(fileName, CurrentFormation.Formation_SAP);
                     dbFormationDossier.SaveInfoFiche(CurrentFormation, fileSavedPath);
 
-
+                    tbInfoFiche.Text = fileSavedPath;
                 }
             }
         }
@@ -1931,209 +2000,10 @@ namespace Module_Education
         }
 
         #region Tab Matrice
-        private void pictureBox5_Click(object sender, EventArgs e)
-        {
-            treeW_Provider.BeginUpdate();
-            //treeView2.Nodes.Clear();
-            string yourParentNode;
-            yourParentNode = "";
 
-            treeW_Provider.SelectedNode = mySelectedNode;
-
-
-            TreeNode tn1 = new TreeNode();
-            tn1.Text = "Entrez le nom de la nouvelle matrices";
-
-            if (mySelectedNode.Text == "Trajets")
-                treeW_Provider.Nodes[0].Nodes.Add(tn1); // Add node1.
-            else
-            {
-
-            }
-            treeW_Provider.SelectedNode.Expand();
-            //treeW_Provider.Nodes.Add(yourParentNode);
-            //treeW_Provider.SelectedNode
-            treeW_Provider.EndUpdate();
-        }
-
-        private void treeW_Provider_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
-        {
-            mySelectedNode = treeW_Provider.GetNodeAt(e.X, e.Y);
-            treeW_Provider.SelectedNode = mySelectedNode;
-            if (mySelectedNode != null && treeW_Provider.SelectedNode.Index < 2)
-            {
-                if (mySelectedNode.Text != "Trajets")
-                {
-                    if (e.Button == MouseButtons.Right)
-                    {
-                        ContextMenu m = new ContextMenu();
-                        m.MenuItems.Add(new MenuItem("Modifier le nom de la matrice", EditFormationToMatrice));
-                        m.MenuItems.Add(new MenuItem("Ajouter une formation à la matrice", AddFormationToMatrice));
-                        m.MenuItems.Add(new MenuItem("Attribuer la matrice à un utilisateur", EditFormationToMatrice));
-                        m.MenuItems.Add(new MenuItem("Attribuer la matrice à un groupe d'utilisateur", EditFormationToMatrice));
-
-
-                        m.Show(treeW_Provider, new Point(e.X, e.Y));
-                    }
-                    else
-                    {
-                        //treeW_Provider.LabelEdit = true;
-
-                        //treeW_Provider.SelectedNode.BeginEdit();
-                    }
-                }
-                //mySelectedNode.BeginEdit();
-            }
-            picAddMatrice.Enabled = true;
-        }
-
-        private void EditFormationToMatrice(object sender, EventArgs e)
-        {
-            treeW_Provider.LabelEdit = true;
-
-            treeW_Provider.SelectedNode.BeginEdit();
-        }
-
-        private void AddFormationToMatrice(object sender, EventArgs e)
-        {
-            //lFormationToAddToMatrice.Clear();
-            FrmFormation frmFormation = new FrmFormation();
-            frmFormation.ShowDialog();
-            if (lFormationToAddToMatrice != null)
-            {
-                if (lFormationToAddToMatrice.Count > 0)
-                {
-                    foreach (var formation in lFormationToAddToMatrice)
-                        treeW_Provider.SelectedNode.Nodes.Add(formation.Formation_ShortTitle); // Add node1.
-
-                }
-            }
-            treeW_Provider.SelectedNode.Expand();
-        }
-
-        private void treeW_Provider_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
-        {
-            TreeView tw = (TreeView)sender;
-            if (e.Label != null && e.Label != tw.SelectedNode.Text)
-                MessageBox.Show("Matrice sauvegardé", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void treeW_Provider_BeforeLabelEdit(object sender, NodeLabelEditEventArgs e)
-        {
-            oldLabel = mySelectedNode.Text;
-        }
-
-        private void LoadAllMatrice()
-        {
-            LoadComboboxRecurrency();
-            listMatrice = dbMatrice.LoadAllMatrice();
-            treeW_Provider.SelectedNode = treeW_Provider.Nodes[0];
-           for(int i = 0; i< listMatrice.Count; i++)
-            {
-                treeW_Provider.SelectedNode.Nodes.Add(listMatrice[i].Matrice_Description); // Add node1.
-                foreach (var formation in listMatrice[i].Education_Matrice_Formation)
-                {
-                    treeW_Provider.SelectedNode.Nodes[i].Nodes.Add(formation.Education_Formation.Formation_ShortTitle);
-                }
-            }
-            treeW_Provider.SelectedNode.Expand();
-        }
-
-
-        private void SaveRoutesFormation(object sender, EventArgs e)
-        {
-            List<Education_Matrice> newListeMatrice = new List<Education_Matrice>();
-            TreeNodeCollection coll = treeW_Provider.Nodes;
-            foreach (TreeNode root in coll)
-            {
-                foreach (TreeNode matrice in root.Nodes)
-                {
-                    if (checkIfMatriceExists(matrice))
-                    {
-                        foreach (TreeNode formation in matrice.Nodes)
-                        {
-
-                        }
-                    }
-                    else
-                    {
-                        Education_Matrice newMatrice = new Education_Matrice()
-                        {
-                            Matrice_Description = matrice.Text,
-                        };
-                        listMatrice.Add(dbMatrice.SaveMatrice(newMatrice));
-
-                        foreach (TreeNode formation in matrice.Nodes)
-                        {
-                            var formItem = dbEntities.Education_Formation.Where(x => x.Formation_ShortTitle == formation.Text).FirstOrDefault();
-                            Education_Matrice_Formation newMatriceFormation = new Education_Matrice_Formation()
-                            {
-                                MatriceFormation_Matrice = newMatrice.Matrice_Id,
-                                MatriceFormation_Formation = formItem.Formation_Id
-                            };
-
-                            dbEntities.Education_Matrice_Formation.Add(newMatriceFormation);
-                            dbEntities.SaveChanges();
-                        }
-
-                    }
-
-                }
-            }
-        }
-
-        private bool checkIfMatriceExists(TreeNode matrice)
-        {
-            if (listMatrice != null)
-            {
-                var matriceExist = listMatrice.Where(x => x.Matrice_Description == matrice.Text).FirstOrDefault();
-
-                if (matriceExist != null)
-                    return true;
-                else
-                    return false;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        private void AdvDg_Formations_SelectionChanged(object sender, EventArgs e)
-        {
-        }
-
-        
-
-        private void tabControl_Education_Formations_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            TabControl tabcontrol = (TabControl)sender;
-            if (tabcontrol.SelectedIndex == 2)
-                LoadAllMatrice();
-
-        }
-
-        private void treeW_Provider_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-            var selectedNode = treeW_Provider.SelectedNode;
-            lblDetailsMatrice.Text = "Details de " + selectedNode.Text;
-            MatriceSelected = dbEntities.Education_Matrice.Where(x => x.Matrice_Description == treeW_Provider.SelectedNode.Text).FirstOrDefault();
-
-        }
-
-        private void LoadComboboxRecurrency()
-        {
-            for (int i = 0; i < 112; i++)
-                cbRecurrency.Items.Add(i);
-        }
-
-
-        private void SaveMatriceDetails(object sender, EventArgs e)
-        {
-            dbMatriceFormation.SaveMatriceFormation(MatriceSelected, Convert.ToInt32(cbRecurrency.Text));
-        }
 
         #endregion
+
 
     }
 }
