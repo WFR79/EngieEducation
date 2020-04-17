@@ -45,6 +45,69 @@
           <Property Name="AgentFormation_Agent" Type="bigint" Nullable="false" />
           <Property Name="AgentFormation_Formation" Type="bigint" Nullable="false" />
         </EntityType>
+        <EntityType Name="Education_AgentCertifElecFunc">
+          <Key>
+            <PropertyRef Name="AgentCertifElecFunc_Id" />
+          </Key>
+          <Property Name="AgentCertifElecFunc_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AgentCertifElecFunc_SendingDate" Type="datetime" />
+          <Property Name="AgentCertifElecFunc_ReceivedDate" Type="datetime" />
+          <Property Name="AgentCertifElecFunc_IsCertified" Type="bit" />
+          <Property Name="AgentCertifElecFunc_ValidityDate" Type="datetime" />
+          <Property Name="AgentCertifElecFunc_Remark" Type="nvarchar(max)" />
+          <Property Name="AgentCertifElecFunc_Agent" Type="bigint" />
+          <Property Name="AgentCertifElecFunc_Certification" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Education_AgentCertifElecOPP">
+          <Key>
+            <PropertyRef Name="AgentCertifElecOPP_Id" />
+          </Key>
+          <Property Name="AgentCertifElecOPP_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AgentCertifElecOPP_SendingDate" Type="datetime" />
+          <Property Name="AgentCertifElecOPP_ReceivedDate" Type="datetime" />
+          <Property Name="AgentCertifElecOPP_IsCertified" Type="bit" />
+          <Property Name="AgentCertifElecOPP_ValidityDate" Type="datetime" />
+          <Property Name="AgentCertifElecOPP_Remark" Type="nvarchar(max)" />
+          <Property Name="AgentCertifElecOPP_Agent" Type="bigint" />
+          <Property Name="AgentCertifElecOPP_Certification" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Education_AgentPassportBusiness">
+          <Key>
+            <PropertyRef Name="AgentPassportBusiness_Id" />
+          </Key>
+          <Property Name="AgentPassportBusiness_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AgentPassportBusiness_SendingDate" Type="datetime" />
+          <Property Name="AgentPassportBusiness_ReturnDate" Type="datetime" />
+          <Property Name="AgentPassportBusiness_HierarchyCertification" Type="bit" />
+          <Property Name="AgentPassportBusiness_Remark" Type="nvarchar(max)" />
+          <Property Name="AgentPassportBusiness_Agent" Type="bigint" />
+          <Property Name="AgentPassportBusiness_Business" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Education_AgentPassportDesign">
+          <Key>
+            <PropertyRef Name="AgentPassportDesign_Id" />
+          </Key>
+          <Property Name="AgentPassportDesign_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AgentPassportDesign_SendingDate" Type="datetime" />
+          <Property Name="AgentPassportDesign_ReceivedDate" Type="datetime" />
+          <Property Name="AgentPassportDesign_IsCertified" Type="bit" />
+          <Property Name="AgentPassportDesign_Remark" Type="nvarchar(max)" />
+          <Property Name="AgentPassportDesign_Agent" Type="bigint" />
+          <Property Name="AgentPassportDesign_Passport" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Education_AgentPassportSafety">
+          <Key>
+            <PropertyRef Name="AgentPassportSafety_Id" />
+          </Key>
+          <Property Name="AgentPassportSafety_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AgentPassportSafety_Agent" Type="bigint" />
+          <Property Name="AgentPassportSafety_LevelPS" Type="int" />
+          <Property Name="AgentPassportSafety_SendingDate" Type="datetime" />
+          <Property Name="AgentPassportSafety_ReturnDate" Type="datetime" />
+          <Property Name="AgentPassportSafety_HierarchyCertification" Type="bit" />
+          <Property Name="AgentPassportSafety_Remarks" Type="nvarchar(max)" />
+          <Property Name="AgentPassportSafety_PayRemarks" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="Education_AgentStatus">
           <Key>
             <PropertyRef Name="AgentStatus_Id" />
@@ -59,6 +122,20 @@
           <Property Name="CategorieFormation_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CategorieFormation_Name" Type="nvarchar(max)" />
           <Property Name="CategorieFormation_Formation" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Education_CertifElecFunc">
+          <Key>
+            <PropertyRef Name="CertifElecFunc_Id" />
+          </Key>
+          <Property Name="CertifElecFunc_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CertifElecFunc_LevelB" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Education_CertifElecOPP">
+          <Key>
+            <PropertyRef Name="CertifElecOPP_Id" />
+          </Key>
+          <Property Name="CertifElecOPP_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CertifElecOPP_LevelR" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Education_Competence">
           <Key>
@@ -343,6 +420,27 @@
           <Property Name="MovementType_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MovementType_Name" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="Education_PassportBusiness">
+          <Key>
+            <PropertyRef Name="PassportBusiness_Id" />
+          </Key>
+          <Property Name="PassportBusiness_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PassportBusiness_Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Education_PassportDesign">
+          <Key>
+            <PropertyRef Name="PassportDesign_Id" />
+          </Key>
+          <Property Name="PassportDesign_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PassportDesign_Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Education_PassportSafety">
+          <Key>
+            <PropertyRef Name="PassportSafety_Id" />
+          </Key>
+          <Property Name="PassportSafety_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PassportSafety_LevelPS" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="Education_Provider">
           <Key>
             <PropertyRef Name="Provider_Id" />
@@ -451,6 +549,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_AgentPassportSafety_Education_Agent">
+          <End Role="Education_Agent" Type="Self.Education_Agent" Multiplicity="0..1" />
+          <End Role="Education_AgentPassportSafety" Type="Self.Education_AgentPassportSafety" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_Agent">
+              <PropertyRef Name="Agent_Id" />
+            </Principal>
+            <Dependent Role="Education_AgentPassportSafety">
+              <PropertyRef Name="AgentPassportSafety_Agent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CategorieFormation_Formation">
           <End Role="Education_Formation" Type="Self.Education_Formation" Multiplicity="0..1" />
           <End Role="Education_CategorieFormation" Type="Self.Education_CategorieFormation" Multiplicity="*" />
@@ -496,6 +606,102 @@
             </Principal>
             <Dependent Role="Education_Agent">
               <PropertyRef Name="Agent_InRouteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Education_AgentCertifElecFunc_Education_Agent">
+          <End Role="Education_Agent" Type="Self.Education_Agent" Multiplicity="0..1" />
+          <End Role="Education_AgentCertifElecFunc" Type="Self.Education_AgentCertifElecFunc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_Agent">
+              <PropertyRef Name="Agent_Id" />
+            </Principal>
+            <Dependent Role="Education_AgentCertifElecFunc">
+              <PropertyRef Name="AgentCertifElecFunc_Agent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Education_AgentCertifElecFunc_Education_CertifElecFunc">
+          <End Role="Education_CertifElecFunc" Type="Self.Education_CertifElecFunc" Multiplicity="0..1" />
+          <End Role="Education_AgentCertifElecFunc" Type="Self.Education_AgentCertifElecFunc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_CertifElecFunc">
+              <PropertyRef Name="CertifElecFunc_Id" />
+            </Principal>
+            <Dependent Role="Education_AgentCertifElecFunc">
+              <PropertyRef Name="AgentCertifElecFunc_Certification" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Education_AgentCertifElecOPP_Education_Agent">
+          <End Role="Education_Agent" Type="Self.Education_Agent" Multiplicity="0..1" />
+          <End Role="Education_AgentCertifElecOPP" Type="Self.Education_AgentCertifElecOPP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_Agent">
+              <PropertyRef Name="Agent_Id" />
+            </Principal>
+            <Dependent Role="Education_AgentCertifElecOPP">
+              <PropertyRef Name="AgentCertifElecOPP_Agent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Education_AgentCertifElecOPP_Education_CertifElecOPP">
+          <End Role="Education_CertifElecOPP" Type="Self.Education_CertifElecOPP" Multiplicity="0..1" />
+          <End Role="Education_AgentCertifElecOPP" Type="Self.Education_AgentCertifElecOPP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_CertifElecOPP">
+              <PropertyRef Name="CertifElecOPP_Id" />
+            </Principal>
+            <Dependent Role="Education_AgentCertifElecOPP">
+              <PropertyRef Name="AgentCertifElecOPP_Certification" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Education_AgentPassportBusiness_Education_Agent">
+          <End Role="Education_Agent" Type="Self.Education_Agent" Multiplicity="0..1" />
+          <End Role="Education_AgentPassportBusiness" Type="Self.Education_AgentPassportBusiness" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_Agent">
+              <PropertyRef Name="Agent_Id" />
+            </Principal>
+            <Dependent Role="Education_AgentPassportBusiness">
+              <PropertyRef Name="AgentPassportBusiness_Agent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Education_AgentPassportBusiness_Education_PassportBusiness">
+          <End Role="Education_PassportBusiness" Type="Self.Education_PassportBusiness" Multiplicity="0..1" />
+          <End Role="Education_AgentPassportBusiness" Type="Self.Education_AgentPassportBusiness" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_PassportBusiness">
+              <PropertyRef Name="PassportBusiness_Id" />
+            </Principal>
+            <Dependent Role="Education_AgentPassportBusiness">
+              <PropertyRef Name="AgentPassportBusiness_Business" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Education_AgentPassportDesign_Education_Agent">
+          <End Role="Education_Agent" Type="Self.Education_Agent" Multiplicity="0..1" />
+          <End Role="Education_AgentPassportDesign" Type="Self.Education_AgentPassportDesign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_Agent">
+              <PropertyRef Name="Agent_Id" />
+            </Principal>
+            <Dependent Role="Education_AgentPassportDesign">
+              <PropertyRef Name="AgentPassportDesign_Agent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Education_AgentPassportDesign_Education_PassportDesign">
+          <End Role="Education_PassportDesign" Type="Self.Education_PassportDesign" Multiplicity="0..1" />
+          <End Role="Education_AgentPassportDesign" Type="Self.Education_AgentPassportDesign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_PassportDesign">
+              <PropertyRef Name="PassportDesign_Id" />
+            </Principal>
+            <Dependent Role="Education_AgentPassportDesign">
+              <PropertyRef Name="AgentPassportDesign_Passport" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -946,8 +1152,15 @@
         <EntityContainer Name="SYNAPSEModelStoreContainer">
           <EntitySet Name="Education_Agent" EntityType="Self.Education_Agent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Education_Agent_Formation" EntityType="Self.Education_Agent_Formation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Education_AgentCertifElecFunc" EntityType="Self.Education_AgentCertifElecFunc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Education_AgentCertifElecOPP" EntityType="Self.Education_AgentCertifElecOPP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Education_AgentPassportBusiness" EntityType="Self.Education_AgentPassportBusiness" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Education_AgentPassportDesign" EntityType="Self.Education_AgentPassportDesign" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Education_AgentPassportSafety" EntityType="Self.Education_AgentPassportSafety" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Education_AgentStatus" EntityType="Self.Education_AgentStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Education_CategorieFormation" EntityType="Self.Education_CategorieFormation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Education_CertifElecFunc" EntityType="Self.Education_CertifElecFunc" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Education_CertifElecOPP" EntityType="Self.Education_CertifElecOPP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Education_Competence" EntityType="Self.Education_Competence" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Education_CompetenceGroup" EntityType="Self.Education_CompetenceGroup" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Education_CompetenceSubGroup" EntityType="Self.Education_CompetenceSubGroup" Schema="dbo" store:Type="Tables" />
@@ -976,6 +1189,9 @@
           <EntitySet Name="Education_MovementStep" EntityType="Self.Education_MovementStep" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Education_MovementStepAgent" EntityType="Self.Education_MovementStepAgent" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Education_MovementType" EntityType="Self.Education_MovementType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Education_PassportBusiness" EntityType="Self.Education_PassportBusiness" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Education_PassportDesign" EntityType="Self.Education_PassportDesign" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Education_PassportSafety" EntityType="Self.Education_PassportSafety" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Education_Provider" EntityType="Self.Education_Provider" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Education_ProviderContact" EntityType="Self.Education_ProviderContact" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Education_Role" EntityType="Self.Education_Role" Schema="dbo" store:Type="Tables" />
@@ -1000,6 +1216,10 @@
             <End Role="Education_Formation" EntitySet="Education_Formation" />
             <End Role="Education_Agent_Formation" EntitySet="Education_Agent_Formation" />
           </AssociationSet>
+          <AssociationSet Name="FK_AgentPassportSafety_Education_Agent" Association="Self.FK_AgentPassportSafety_Education_Agent">
+            <End Role="Education_Agent" EntitySet="Education_Agent" />
+            <End Role="Education_AgentPassportSafety" EntitySet="Education_AgentPassportSafety" />
+          </AssociationSet>
           <AssociationSet Name="FK_CategorieFormation_Formation" Association="Self.FK_CategorieFormation_Formation">
             <End Role="Education_Formation" EntitySet="Education_Formation" />
             <End Role="Education_CategorieFormation" EntitySet="Education_CategorieFormation" />
@@ -1015,6 +1235,38 @@
           <AssociationSet Name="FK_Education_Agent_Education_Agent" Association="Self.FK_Education_Agent_Education_Agent">
             <End Role="Education_InRoute" EntitySet="Education_InRoute" />
             <End Role="Education_Agent" EntitySet="Education_Agent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Education_AgentCertifElecFunc_Education_Agent" Association="Self.FK_Education_AgentCertifElecFunc_Education_Agent">
+            <End Role="Education_Agent" EntitySet="Education_Agent" />
+            <End Role="Education_AgentCertifElecFunc" EntitySet="Education_AgentCertifElecFunc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Education_AgentCertifElecFunc_Education_CertifElecFunc" Association="Self.FK_Education_AgentCertifElecFunc_Education_CertifElecFunc">
+            <End Role="Education_CertifElecFunc" EntitySet="Education_CertifElecFunc" />
+            <End Role="Education_AgentCertifElecFunc" EntitySet="Education_AgentCertifElecFunc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Education_AgentCertifElecOPP_Education_Agent" Association="Self.FK_Education_AgentCertifElecOPP_Education_Agent">
+            <End Role="Education_Agent" EntitySet="Education_Agent" />
+            <End Role="Education_AgentCertifElecOPP" EntitySet="Education_AgentCertifElecOPP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Education_AgentCertifElecOPP_Education_CertifElecOPP" Association="Self.FK_Education_AgentCertifElecOPP_Education_CertifElecOPP">
+            <End Role="Education_CertifElecOPP" EntitySet="Education_CertifElecOPP" />
+            <End Role="Education_AgentCertifElecOPP" EntitySet="Education_AgentCertifElecOPP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Education_AgentPassportBusiness_Education_Agent" Association="Self.FK_Education_AgentPassportBusiness_Education_Agent">
+            <End Role="Education_Agent" EntitySet="Education_Agent" />
+            <End Role="Education_AgentPassportBusiness" EntitySet="Education_AgentPassportBusiness" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Education_AgentPassportBusiness_Education_PassportBusiness" Association="Self.FK_Education_AgentPassportBusiness_Education_PassportBusiness">
+            <End Role="Education_PassportBusiness" EntitySet="Education_PassportBusiness" />
+            <End Role="Education_AgentPassportBusiness" EntitySet="Education_AgentPassportBusiness" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Education_AgentPassportDesign_Education_Agent" Association="Self.FK_Education_AgentPassportDesign_Education_Agent">
+            <End Role="Education_Agent" EntitySet="Education_Agent" />
+            <End Role="Education_AgentPassportDesign" EntitySet="Education_AgentPassportDesign" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Education_AgentPassportDesign_Education_PassportDesign" Association="Self.FK_Education_AgentPassportDesign_Education_PassportDesign">
+            <End Role="Education_PassportDesign" EntitySet="Education_PassportDesign" />
+            <End Role="Education_AgentPassportDesign" EntitySet="Education_AgentPassportDesign" />
           </AssociationSet>
           <AssociationSet Name="FK_Education_Formation_Category" Association="Self.FK_Education_Formation_Category">
             <End Role="Education_FormationCategory" EntitySet="Education_FormationCategory" />
@@ -1390,6 +1642,52 @@
             <End Role="Education_Role" EntitySet="Education_Role" />
             <End Role="Education_Role1" EntitySet="Education_Role" />
           </AssociationSet>
+          <EntitySet Name="Education_AgentCertifElecFunc" EntityType="SYNAPSEModel.Education_AgentCertifElecFunc" />
+          <EntitySet Name="Education_AgentCertifElecOPP" EntityType="SYNAPSEModel.Education_AgentCertifElecOPP" />
+          <EntitySet Name="Education_AgentPassportBusiness" EntityType="SYNAPSEModel.Education_AgentPassportBusiness" />
+          <EntitySet Name="Education_AgentPassportDesign" EntityType="SYNAPSEModel.Education_AgentPassportDesign" />
+          <EntitySet Name="Education_AgentPassportSafety" EntityType="SYNAPSEModel.Education_AgentPassportSafety" />
+          <EntitySet Name="Education_CertifElecFunc" EntityType="SYNAPSEModel.Education_CertifElecFunc" />
+          <EntitySet Name="Education_CertifElecOPP" EntityType="SYNAPSEModel.Education_CertifElecOPP" />
+          <EntitySet Name="Education_PassportBusiness" EntityType="SYNAPSEModel.Education_PassportBusiness" />
+          <EntitySet Name="Education_PassportDesign" EntityType="SYNAPSEModel.Education_PassportDesign" />
+          <EntitySet Name="Education_PassportSafety" EntityType="SYNAPSEModel.Education_PassportSafety" />
+          <AssociationSet Name="FK_AgentPassportSafety_Education_Agent" Association="SYNAPSEModel.FK_AgentPassportSafety_Education_Agent">
+            <End Role="Education_Agent" EntitySet="Education_Agent" />
+            <End Role="Education_AgentPassportSafety" EntitySet="Education_AgentPassportSafety" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Education_AgentCertifElecFunc_Education_Agent" Association="SYNAPSEModel.FK_Education_AgentCertifElecFunc_Education_Agent">
+            <End Role="Education_Agent" EntitySet="Education_Agent" />
+            <End Role="Education_AgentCertifElecFunc" EntitySet="Education_AgentCertifElecFunc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Education_AgentCertifElecOPP_Education_Agent" Association="SYNAPSEModel.FK_Education_AgentCertifElecOPP_Education_Agent">
+            <End Role="Education_Agent" EntitySet="Education_Agent" />
+            <End Role="Education_AgentCertifElecOPP" EntitySet="Education_AgentCertifElecOPP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Education_AgentPassportBusiness_Education_Agent" Association="SYNAPSEModel.FK_Education_AgentPassportBusiness_Education_Agent">
+            <End Role="Education_Agent" EntitySet="Education_Agent" />
+            <End Role="Education_AgentPassportBusiness" EntitySet="Education_AgentPassportBusiness" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Education_AgentPassportDesign_Education_Agent" Association="SYNAPSEModel.FK_Education_AgentPassportDesign_Education_Agent">
+            <End Role="Education_Agent" EntitySet="Education_Agent" />
+            <End Role="Education_AgentPassportDesign" EntitySet="Education_AgentPassportDesign" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Education_AgentCertifElecFunc_Education_CertifElecFunc" Association="SYNAPSEModel.FK_Education_AgentCertifElecFunc_Education_CertifElecFunc">
+            <End Role="Education_CertifElecFunc" EntitySet="Education_CertifElecFunc" />
+            <End Role="Education_AgentCertifElecFunc" EntitySet="Education_AgentCertifElecFunc" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Education_AgentCertifElecOPP_Education_CertifElecOPP" Association="SYNAPSEModel.FK_Education_AgentCertifElecOPP_Education_CertifElecOPP">
+            <End Role="Education_CertifElecOPP" EntitySet="Education_CertifElecOPP" />
+            <End Role="Education_AgentCertifElecOPP" EntitySet="Education_AgentCertifElecOPP" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Education_AgentPassportBusiness_Education_PassportBusiness" Association="SYNAPSEModel.FK_Education_AgentPassportBusiness_Education_PassportBusiness">
+            <End Role="Education_PassportBusiness" EntitySet="Education_PassportBusiness" />
+            <End Role="Education_AgentPassportBusiness" EntitySet="Education_AgentPassportBusiness" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Education_AgentPassportDesign_Education_PassportDesign" Association="SYNAPSEModel.FK_Education_AgentPassportDesign_Education_PassportDesign">
+            <End Role="Education_PassportDesign" EntitySet="Education_PassportDesign" />
+            <End Role="Education_AgentPassportDesign" EntitySet="Education_AgentPassportDesign" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Education_Agent">
           <Key>
@@ -1437,6 +1735,11 @@
           <NavigationProperty Name="Education_Agent2" Relationship="SYNAPSEModel.FK_User_LineManager" FromRole="Education_Agent1" ToRole="Education_Agent" />
           <NavigationProperty Name="Education_Role" Relationship="SYNAPSEModel.FK_User_Role" FromRole="Education_Agent" ToRole="Education_Role" />
           <NavigationProperty Name="Education_RoleAstreinte" Relationship="SYNAPSEModel.FK_User_RoleAstreinte" FromRole="Education_Agent" ToRole="Education_RoleAstreinte" />
+          <NavigationProperty Name="Education_AgentPassportSafety" Relationship="SYNAPSEModel.FK_AgentPassportSafety_Education_Agent" FromRole="Education_Agent" ToRole="Education_AgentPassportSafety" />
+          <NavigationProperty Name="Education_AgentCertifElecFunc" Relationship="SYNAPSEModel.FK_Education_AgentCertifElecFunc_Education_Agent" FromRole="Education_Agent" ToRole="Education_AgentCertifElecFunc" />
+          <NavigationProperty Name="Education_AgentCertifElecOPP" Relationship="SYNAPSEModel.FK_Education_AgentCertifElecOPP_Education_Agent" FromRole="Education_Agent" ToRole="Education_AgentCertifElecOPP" />
+          <NavigationProperty Name="Education_AgentPassportBusiness" Relationship="SYNAPSEModel.FK_Education_AgentPassportBusiness_Education_Agent" FromRole="Education_Agent" ToRole="Education_AgentPassportBusiness" />
+          <NavigationProperty Name="Education_AgentPassportDesign" Relationship="SYNAPSEModel.FK_Education_AgentPassportDesign_Education_Agent" FromRole="Education_Agent" ToRole="Education_AgentPassportDesign" />
         </EntityType>
         <EntityType Name="Education_Agent_Formation">
           <Key>
@@ -2419,6 +2722,225 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Education_AgentCertifElecFunc">
+          <Key>
+            <PropertyRef Name="AgentCertifElecFunc_Id" />
+          </Key>
+          <Property Name="AgentCertifElecFunc_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgentCertifElecFunc_SendingDate" Type="DateTime" Precision="3" />
+          <Property Name="AgentCertifElecFunc_ReceivedDate" Type="DateTime" Precision="3" />
+          <Property Name="AgentCertifElecFunc_IsCertified" Type="Boolean" />
+          <Property Name="AgentCertifElecFunc_ValidityDate" Type="DateTime" Precision="3" />
+          <Property Name="AgentCertifElecFunc_Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AgentCertifElecFunc_Agent" Type="Int64" />
+          <Property Name="AgentCertifElecFunc_Certification" Type="Int64" />
+          <NavigationProperty Name="Education_Agent" Relationship="SYNAPSEModel.FK_Education_AgentCertifElecFunc_Education_Agent" FromRole="Education_AgentCertifElecFunc" ToRole="Education_Agent" />
+          <NavigationProperty Name="Education_CertifElecFunc" Relationship="SYNAPSEModel.FK_Education_AgentCertifElecFunc_Education_CertifElecFunc" FromRole="Education_AgentCertifElecFunc" ToRole="Education_CertifElecFunc" />
+        </EntityType>
+        <EntityType Name="Education_AgentCertifElecOPP">
+          <Key>
+            <PropertyRef Name="AgentCertifElecOPP_Id" />
+          </Key>
+          <Property Name="AgentCertifElecOPP_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgentCertifElecOPP_SendingDate" Type="DateTime" Precision="3" />
+          <Property Name="AgentCertifElecOPP_ReceivedDate" Type="DateTime" Precision="3" />
+          <Property Name="AgentCertifElecOPP_IsCertified" Type="Boolean" />
+          <Property Name="AgentCertifElecOPP_ValidityDate" Type="DateTime" Precision="3" />
+          <Property Name="AgentCertifElecOPP_Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AgentCertifElecOPP_Agent" Type="Int64" />
+          <Property Name="AgentCertifElecOPP_Certification" Type="Int64" />
+          <NavigationProperty Name="Education_Agent" Relationship="SYNAPSEModel.FK_Education_AgentCertifElecOPP_Education_Agent" FromRole="Education_AgentCertifElecOPP" ToRole="Education_Agent" />
+          <NavigationProperty Name="Education_CertifElecOPP" Relationship="SYNAPSEModel.FK_Education_AgentCertifElecOPP_Education_CertifElecOPP" FromRole="Education_AgentCertifElecOPP" ToRole="Education_CertifElecOPP" />
+        </EntityType>
+        <EntityType Name="Education_AgentPassportBusiness">
+          <Key>
+            <PropertyRef Name="AgentPassportBusiness_Id" />
+          </Key>
+          <Property Name="AgentPassportBusiness_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgentPassportBusiness_SendingDate" Type="DateTime" Precision="3" />
+          <Property Name="AgentPassportBusiness_ReturnDate" Type="DateTime" Precision="3" />
+          <Property Name="AgentPassportBusiness_HierarchyCertification" Type="Boolean" />
+          <Property Name="AgentPassportBusiness_Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AgentPassportBusiness_Agent" Type="Int64" />
+          <Property Name="AgentPassportBusiness_Business" Type="Int64" />
+          <NavigationProperty Name="Education_Agent" Relationship="SYNAPSEModel.FK_Education_AgentPassportBusiness_Education_Agent" FromRole="Education_AgentPassportBusiness" ToRole="Education_Agent" />
+          <NavigationProperty Name="Education_PassportBusiness" Relationship="SYNAPSEModel.FK_Education_AgentPassportBusiness_Education_PassportBusiness" FromRole="Education_AgentPassportBusiness" ToRole="Education_PassportBusiness" />
+        </EntityType>
+        <EntityType Name="Education_AgentPassportDesign">
+          <Key>
+            <PropertyRef Name="AgentPassportDesign_Id" />
+          </Key>
+          <Property Name="AgentPassportDesign_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgentPassportDesign_SendingDate" Type="DateTime" Precision="3" />
+          <Property Name="AgentPassportDesign_ReceivedDate" Type="DateTime" Precision="3" />
+          <Property Name="AgentPassportDesign_IsCertified" Type="Boolean" />
+          <Property Name="AgentPassportDesign_Remark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AgentPassportDesign_Agent" Type="Int64" />
+          <Property Name="AgentPassportDesign_Passport" Type="Int64" />
+          <NavigationProperty Name="Education_Agent" Relationship="SYNAPSEModel.FK_Education_AgentPassportDesign_Education_Agent" FromRole="Education_AgentPassportDesign" ToRole="Education_Agent" />
+          <NavigationProperty Name="Education_PassportDesign" Relationship="SYNAPSEModel.FK_Education_AgentPassportDesign_Education_PassportDesign" FromRole="Education_AgentPassportDesign" ToRole="Education_PassportDesign" />
+        </EntityType>
+        <EntityType Name="Education_AgentPassportSafety">
+          <Key>
+            <PropertyRef Name="AgentPassportSafety_Id" />
+          </Key>
+          <Property Name="AgentPassportSafety_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AgentPassportSafety_Agent" Type="Int64" />
+          <Property Name="AgentPassportSafety_LevelPS" Type="Int32" />
+          <Property Name="AgentPassportSafety_SendingDate" Type="DateTime" Precision="3" />
+          <Property Name="AgentPassportSafety_ReturnDate" Type="DateTime" Precision="3" />
+          <Property Name="AgentPassportSafety_HierarchyCertification" Type="Boolean" />
+          <Property Name="AgentPassportSafety_Remarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AgentPassportSafety_PayRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Education_Agent" Relationship="SYNAPSEModel.FK_AgentPassportSafety_Education_Agent" FromRole="Education_AgentPassportSafety" ToRole="Education_Agent" />
+        </EntityType>
+        <EntityType Name="Education_CertifElecFunc">
+          <Key>
+            <PropertyRef Name="CertifElecFunc_Id" />
+          </Key>
+          <Property Name="CertifElecFunc_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CertifElecFunc_LevelB" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Education_AgentCertifElecFunc" Relationship="SYNAPSEModel.FK_Education_AgentCertifElecFunc_Education_CertifElecFunc" FromRole="Education_CertifElecFunc" ToRole="Education_AgentCertifElecFunc" />
+        </EntityType>
+        <EntityType Name="Education_CertifElecOPP">
+          <Key>
+            <PropertyRef Name="CertifElecOPP_Id" />
+          </Key>
+          <Property Name="CertifElecOPP_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CertifElecOPP_LevelR" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Education_AgentCertifElecOPP" Relationship="SYNAPSEModel.FK_Education_AgentCertifElecOPP_Education_CertifElecOPP" FromRole="Education_CertifElecOPP" ToRole="Education_AgentCertifElecOPP" />
+        </EntityType>
+        <EntityType Name="Education_PassportBusiness">
+          <Key>
+            <PropertyRef Name="PassportBusiness_Id" />
+          </Key>
+          <Property Name="PassportBusiness_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PassportBusiness_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Education_AgentPassportBusiness" Relationship="SYNAPSEModel.FK_Education_AgentPassportBusiness_Education_PassportBusiness" FromRole="Education_PassportBusiness" ToRole="Education_AgentPassportBusiness" />
+        </EntityType>
+        <EntityType Name="Education_PassportDesign">
+          <Key>
+            <PropertyRef Name="PassportDesign_Id" />
+          </Key>
+          <Property Name="PassportDesign_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PassportDesign_Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Education_AgentPassportDesign" Relationship="SYNAPSEModel.FK_Education_AgentPassportDesign_Education_PassportDesign" FromRole="Education_PassportDesign" ToRole="Education_AgentPassportDesign" />
+        </EntityType>
+        <EntityType Name="Education_PassportSafety">
+          <Key>
+            <PropertyRef Name="PassportSafety_Id" />
+          </Key>
+          <Property Name="PassportSafety_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PassportSafety_LevelPS" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AgentPassportSafety_Education_Agent">
+          <End Type="SYNAPSEModel.Education_Agent" Role="Education_Agent" Multiplicity="0..1" />
+          <End Type="SYNAPSEModel.Education_AgentPassportSafety" Role="Education_AgentPassportSafety" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_Agent">
+              <PropertyRef Name="Agent_Id" />
+            </Principal>
+            <Dependent Role="Education_AgentPassportSafety">
+              <PropertyRef Name="AgentPassportSafety_Agent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Education_AgentCertifElecFunc_Education_Agent">
+          <End Type="SYNAPSEModel.Education_Agent" Role="Education_Agent" Multiplicity="0..1" />
+          <End Type="SYNAPSEModel.Education_AgentCertifElecFunc" Role="Education_AgentCertifElecFunc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_Agent">
+              <PropertyRef Name="Agent_Id" />
+            </Principal>
+            <Dependent Role="Education_AgentCertifElecFunc">
+              <PropertyRef Name="AgentCertifElecFunc_Agent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Education_AgentCertifElecOPP_Education_Agent">
+          <End Type="SYNAPSEModel.Education_Agent" Role="Education_Agent" Multiplicity="0..1" />
+          <End Type="SYNAPSEModel.Education_AgentCertifElecOPP" Role="Education_AgentCertifElecOPP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_Agent">
+              <PropertyRef Name="Agent_Id" />
+            </Principal>
+            <Dependent Role="Education_AgentCertifElecOPP">
+              <PropertyRef Name="AgentCertifElecOPP_Agent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Education_AgentPassportBusiness_Education_Agent">
+          <End Type="SYNAPSEModel.Education_Agent" Role="Education_Agent" Multiplicity="0..1" />
+          <End Type="SYNAPSEModel.Education_AgentPassportBusiness" Role="Education_AgentPassportBusiness" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_Agent">
+              <PropertyRef Name="Agent_Id" />
+            </Principal>
+            <Dependent Role="Education_AgentPassportBusiness">
+              <PropertyRef Name="AgentPassportBusiness_Agent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Education_AgentPassportDesign_Education_Agent">
+          <End Type="SYNAPSEModel.Education_Agent" Role="Education_Agent" Multiplicity="0..1" />
+          <End Type="SYNAPSEModel.Education_AgentPassportDesign" Role="Education_AgentPassportDesign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_Agent">
+              <PropertyRef Name="Agent_Id" />
+            </Principal>
+            <Dependent Role="Education_AgentPassportDesign">
+              <PropertyRef Name="AgentPassportDesign_Agent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Education_AgentCertifElecFunc_Education_CertifElecFunc">
+          <End Type="SYNAPSEModel.Education_CertifElecFunc" Role="Education_CertifElecFunc" Multiplicity="0..1" />
+          <End Type="SYNAPSEModel.Education_AgentCertifElecFunc" Role="Education_AgentCertifElecFunc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_CertifElecFunc">
+              <PropertyRef Name="CertifElecFunc_Id" />
+            </Principal>
+            <Dependent Role="Education_AgentCertifElecFunc">
+              <PropertyRef Name="AgentCertifElecFunc_Certification" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Education_AgentCertifElecOPP_Education_CertifElecOPP">
+          <End Type="SYNAPSEModel.Education_CertifElecOPP" Role="Education_CertifElecOPP" Multiplicity="0..1" />
+          <End Type="SYNAPSEModel.Education_AgentCertifElecOPP" Role="Education_AgentCertifElecOPP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_CertifElecOPP">
+              <PropertyRef Name="CertifElecOPP_Id" />
+            </Principal>
+            <Dependent Role="Education_AgentCertifElecOPP">
+              <PropertyRef Name="AgentCertifElecOPP_Certification" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Education_AgentPassportBusiness_Education_PassportBusiness">
+          <End Type="SYNAPSEModel.Education_PassportBusiness" Role="Education_PassportBusiness" Multiplicity="0..1" />
+          <End Type="SYNAPSEModel.Education_AgentPassportBusiness" Role="Education_AgentPassportBusiness" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_PassportBusiness">
+              <PropertyRef Name="PassportBusiness_Id" />
+            </Principal>
+            <Dependent Role="Education_AgentPassportBusiness">
+              <PropertyRef Name="AgentPassportBusiness_Business" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Education_AgentPassportDesign_Education_PassportDesign">
+          <End Type="SYNAPSEModel.Education_PassportDesign" Role="Education_PassportDesign" Multiplicity="0..1" />
+          <End Type="SYNAPSEModel.Education_AgentPassportDesign" Role="Education_AgentPassportDesign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Education_PassportDesign">
+              <PropertyRef Name="PassportDesign_Id" />
+            </Principal>
+            <Dependent Role="Education_AgentPassportDesign">
+              <PropertyRef Name="AgentPassportDesign_Passport" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -2860,6 +3382,114 @@
               <MappingFragment StoreEntitySet="Education_UnitePrice">
                 <ScalarProperty Name="UnitePrice_Name" ColumnName="UnitePrice_Name" />
                 <ScalarProperty Name="UnitePrice_Id" ColumnName="UnitePrice_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Education_AgentCertifElecFunc">
+            <EntityTypeMapping TypeName="SYNAPSEModel.Education_AgentCertifElecFunc">
+              <MappingFragment StoreEntitySet="Education_AgentCertifElecFunc">
+                <ScalarProperty Name="AgentCertifElecFunc_Certification" ColumnName="AgentCertifElecFunc_Certification" />
+                <ScalarProperty Name="AgentCertifElecFunc_Agent" ColumnName="AgentCertifElecFunc_Agent" />
+                <ScalarProperty Name="AgentCertifElecFunc_Remark" ColumnName="AgentCertifElecFunc_Remark" />
+                <ScalarProperty Name="AgentCertifElecFunc_ValidityDate" ColumnName="AgentCertifElecFunc_ValidityDate" />
+                <ScalarProperty Name="AgentCertifElecFunc_IsCertified" ColumnName="AgentCertifElecFunc_IsCertified" />
+                <ScalarProperty Name="AgentCertifElecFunc_ReceivedDate" ColumnName="AgentCertifElecFunc_ReceivedDate" />
+                <ScalarProperty Name="AgentCertifElecFunc_SendingDate" ColumnName="AgentCertifElecFunc_SendingDate" />
+                <ScalarProperty Name="AgentCertifElecFunc_Id" ColumnName="AgentCertifElecFunc_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Education_AgentCertifElecOPP">
+            <EntityTypeMapping TypeName="SYNAPSEModel.Education_AgentCertifElecOPP">
+              <MappingFragment StoreEntitySet="Education_AgentCertifElecOPP">
+                <ScalarProperty Name="AgentCertifElecOPP_Certification" ColumnName="AgentCertifElecOPP_Certification" />
+                <ScalarProperty Name="AgentCertifElecOPP_Agent" ColumnName="AgentCertifElecOPP_Agent" />
+                <ScalarProperty Name="AgentCertifElecOPP_Remark" ColumnName="AgentCertifElecOPP_Remark" />
+                <ScalarProperty Name="AgentCertifElecOPP_ValidityDate" ColumnName="AgentCertifElecOPP_ValidityDate" />
+                <ScalarProperty Name="AgentCertifElecOPP_IsCertified" ColumnName="AgentCertifElecOPP_IsCertified" />
+                <ScalarProperty Name="AgentCertifElecOPP_ReceivedDate" ColumnName="AgentCertifElecOPP_ReceivedDate" />
+                <ScalarProperty Name="AgentCertifElecOPP_SendingDate" ColumnName="AgentCertifElecOPP_SendingDate" />
+                <ScalarProperty Name="AgentCertifElecOPP_Id" ColumnName="AgentCertifElecOPP_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Education_AgentPassportBusiness">
+            <EntityTypeMapping TypeName="SYNAPSEModel.Education_AgentPassportBusiness">
+              <MappingFragment StoreEntitySet="Education_AgentPassportBusiness">
+                <ScalarProperty Name="AgentPassportBusiness_Business" ColumnName="AgentPassportBusiness_Business" />
+                <ScalarProperty Name="AgentPassportBusiness_Agent" ColumnName="AgentPassportBusiness_Agent" />
+                <ScalarProperty Name="AgentPassportBusiness_Remark" ColumnName="AgentPassportBusiness_Remark" />
+                <ScalarProperty Name="AgentPassportBusiness_HierarchyCertification" ColumnName="AgentPassportBusiness_HierarchyCertification" />
+                <ScalarProperty Name="AgentPassportBusiness_ReturnDate" ColumnName="AgentPassportBusiness_ReturnDate" />
+                <ScalarProperty Name="AgentPassportBusiness_SendingDate" ColumnName="AgentPassportBusiness_SendingDate" />
+                <ScalarProperty Name="AgentPassportBusiness_Id" ColumnName="AgentPassportBusiness_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Education_AgentPassportDesign">
+            <EntityTypeMapping TypeName="SYNAPSEModel.Education_AgentPassportDesign">
+              <MappingFragment StoreEntitySet="Education_AgentPassportDesign">
+                <ScalarProperty Name="AgentPassportDesign_Passport" ColumnName="AgentPassportDesign_Passport" />
+                <ScalarProperty Name="AgentPassportDesign_Agent" ColumnName="AgentPassportDesign_Agent" />
+                <ScalarProperty Name="AgentPassportDesign_Remark" ColumnName="AgentPassportDesign_Remark" />
+                <ScalarProperty Name="AgentPassportDesign_IsCertified" ColumnName="AgentPassportDesign_IsCertified" />
+                <ScalarProperty Name="AgentPassportDesign_ReceivedDate" ColumnName="AgentPassportDesign_ReceivedDate" />
+                <ScalarProperty Name="AgentPassportDesign_SendingDate" ColumnName="AgentPassportDesign_SendingDate" />
+                <ScalarProperty Name="AgentPassportDesign_Id" ColumnName="AgentPassportDesign_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Education_AgentPassportSafety">
+            <EntityTypeMapping TypeName="SYNAPSEModel.Education_AgentPassportSafety">
+              <MappingFragment StoreEntitySet="Education_AgentPassportSafety">
+                <ScalarProperty Name="AgentPassportSafety_PayRemarks" ColumnName="AgentPassportSafety_PayRemarks" />
+                <ScalarProperty Name="AgentPassportSafety_Remarks" ColumnName="AgentPassportSafety_Remarks" />
+                <ScalarProperty Name="AgentPassportSafety_HierarchyCertification" ColumnName="AgentPassportSafety_HierarchyCertification" />
+                <ScalarProperty Name="AgentPassportSafety_ReturnDate" ColumnName="AgentPassportSafety_ReturnDate" />
+                <ScalarProperty Name="AgentPassportSafety_SendingDate" ColumnName="AgentPassportSafety_SendingDate" />
+                <ScalarProperty Name="AgentPassportSafety_LevelPS" ColumnName="AgentPassportSafety_LevelPS" />
+                <ScalarProperty Name="AgentPassportSafety_Agent" ColumnName="AgentPassportSafety_Agent" />
+                <ScalarProperty Name="AgentPassportSafety_Id" ColumnName="AgentPassportSafety_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Education_CertifElecFunc">
+            <EntityTypeMapping TypeName="SYNAPSEModel.Education_CertifElecFunc">
+              <MappingFragment StoreEntitySet="Education_CertifElecFunc">
+                <ScalarProperty Name="CertifElecFunc_LevelB" ColumnName="CertifElecFunc_LevelB" />
+                <ScalarProperty Name="CertifElecFunc_Id" ColumnName="CertifElecFunc_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Education_CertifElecOPP">
+            <EntityTypeMapping TypeName="SYNAPSEModel.Education_CertifElecOPP">
+              <MappingFragment StoreEntitySet="Education_CertifElecOPP">
+                <ScalarProperty Name="CertifElecOPP_LevelR" ColumnName="CertifElecOPP_LevelR" />
+                <ScalarProperty Name="CertifElecOPP_Id" ColumnName="CertifElecOPP_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Education_PassportBusiness">
+            <EntityTypeMapping TypeName="SYNAPSEModel.Education_PassportBusiness">
+              <MappingFragment StoreEntitySet="Education_PassportBusiness">
+                <ScalarProperty Name="PassportBusiness_Name" ColumnName="PassportBusiness_Name" />
+                <ScalarProperty Name="PassportBusiness_Id" ColumnName="PassportBusiness_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Education_PassportDesign">
+            <EntityTypeMapping TypeName="SYNAPSEModel.Education_PassportDesign">
+              <MappingFragment StoreEntitySet="Education_PassportDesign">
+                <ScalarProperty Name="PassportDesign_Name" ColumnName="PassportDesign_Name" />
+                <ScalarProperty Name="PassportDesign_Id" ColumnName="PassportDesign_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Education_PassportSafety">
+            <EntityTypeMapping TypeName="SYNAPSEModel.Education_PassportSafety">
+              <MappingFragment StoreEntitySet="Education_PassportSafety">
+                <ScalarProperty Name="PassportSafety_LevelPS" ColumnName="PassportSafety_LevelPS" />
+                <ScalarProperty Name="PassportSafety_Id" ColumnName="PassportSafety_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

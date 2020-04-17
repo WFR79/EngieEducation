@@ -267,7 +267,7 @@
             this.panelDossierPedagogique.AutoScroll = true;
             this.panelDossierPedagogique.AutoSize = true;
             this.panelDossierPedagogique.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panelDossierPedagogique.Location = new System.Drawing.Point(280, 208);
+            this.panelDossierPedagogique.Location = new System.Drawing.Point(211, 208);
             this.panelDossierPedagogique.Name = "panelDossierPedagogique";
             this.panelDossierPedagogique.Size = new System.Drawing.Size(0, 0);
             this.panelDossierPedagogique.TabIndex = 129;
@@ -309,7 +309,7 @@
             this.tbLongTitle.Location = new System.Drawing.Point(14, 49);
             this.tbLongTitle.Name = "tbLongTitle";
             this.tbLongTitle.ReadOnly = true;
-            this.tbLongTitle.Size = new System.Drawing.Size(200, 14);
+            this.tbLongTitle.Size = new System.Drawing.Size(63, 14);
             this.tbLongTitle.TabIndex = 101;
             this.tbLongTitle.Text = "LongTitle";
             // 

@@ -93,7 +93,12 @@
       <DependentUpon>MenuStrip.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\MyColumnCollectionDGAgent.cs" />
+    <Compile Include="Classes\MyColumnCollectionDGCertificateOPP.cs" />
     <Compile Include="Classes\MyColumnCollectionDGFormation.cs" />
+    <Compile Include="Classes\MyColumnCollectionDGPassportBusiness.cs" />
+    <Compile Include="Classes\MyColumnCollectionDGCertificateFunc.cs" />
+    <Compile Include="Classes\MyColumnCollectionDGPassportDesign.cs" />
+    <Compile Include="Classes\MyColumnCollectionDGPassportSafety.cs" />
     <Compile Include="Classes\MyColumnCollectionDGProvider.cs" />
     <Compile Include="Classes\MyColumnCollectionFrmFormation.cs" />
     <Compile Include="Classes\ProgressReport.cs" />
@@ -125,13 +130,44 @@
     <Compile Include="Forms\UserControls\UC_Provider.Designer.cs">
       <DependentUpon>UC_Provider.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Education_AgentCertifElecFunc.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_AgentCertifElecOPP.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_AgentPassportBusiness.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_AgentPassportDesign.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_AgentPassportSafety.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_CertifElecFunc.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_CertifElecOPP.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Education_InRoute.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_PassportBusiness.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_PassportDesign.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_PassportSafety.cs">
       <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Education_ProviderContact.cs">
       <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Repositories\AgentDataAccess.cs" />
+    <Compile Include="Repositories\AgentPassportBusinessRepository.cs" />
     <Compile Include="Repositories\CompetenceDataAccess.cs" />
     <Compile Include="Repositories\EquipeDataAccess.cs" />
     <Compile Include="Repositories\FormationCategoryDataAccess.cs" />
@@ -146,6 +182,7 @@
     <Compile Include="Repositories\HabilitationDataAccess.cs" />
     <Compile Include="Repositories\InRouteRepository.cs" />
     <Compile Include="Repositories\InRouteFormationRepository.cs" />
+    <Compile Include="Repositories\AgentPassportSafetyRepository.cs" />
     <Compile Include="Repositories\ProviderDataRepository.cs" />
     <Compile Include="Repositories\RoleAstreinteDataAccess.cs" />
     <Compile Include="Repositories\RoleEPIDataAccess.cs" />

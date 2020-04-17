@@ -65,5 +65,15 @@ namespace Module_Education.Models
         public virtual DbSet<Education_Service> Education_Service { get; set; }
         public virtual DbSet<Education_SessionUnite> Education_SessionUnite { get; set; }
         public virtual DbSet<Education_UnitePrice> Education_UnitePrice { get; set; }
+        public virtual DbSet<Education_AgentCertifElecFunc> Education_AgentCertifElecFunc { get; set; }
+        public virtual DbSet<Education_AgentCertifElecOPP> Education_AgentCertifElecOPP { get; set; }
+        public virtual DbSet<Education_AgentPassportBusiness> Education_AgentPassportBusiness { get; set; }
+        public virtual DbSet<Education_AgentPassportDesign> Education_AgentPassportDesign { get; set; }
+        public virtual DbSet<Education_AgentPassportSafety> Education_AgentPassportSafety { get; set; }
+        public virtual DbSet<Education_CertifElecFunc> Education_CertifElecFunc { get; set; }
+        public virtual DbSet<Education_CertifElecOPP> Education_CertifElecOPP { get; set; }
+        public virtual DbSet<Education_PassportBusiness> Education_PassportBusiness { get; set; }
+        public virtual DbSet<Education_PassportDesign> Education_PassportDesign { get; set; }
+        public virtual DbSet<Education_PassportSafety> Education_PassportSafety { get; set; }
     }
 }

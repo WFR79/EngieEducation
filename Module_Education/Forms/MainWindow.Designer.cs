@@ -37,10 +37,10 @@
             this.btn_ShowHideMenu = new System.Windows.Forms.PictureBox();
             this.flowPanelMenu = new System.Windows.Forms.FlowLayoutPanel();
             this.MenuBtnEducation_Formation = new System.Windows.Forms.Button();
+            this.btnMatriceFormation = new System.Windows.Forms.Button();
             this.MenuBtnAgent = new System.Windows.Forms.Button();
             this.MenuBtnGrpAgent = new System.Windows.Forms.Button();
             this.btnMenu_Provider = new System.Windows.Forms.Button();
-            this.btnMatriceFormation = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.timerMenu = new System.Windows.Forms.Timer(this.components);
@@ -56,6 +56,7 @@
             this.panelMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelMain.AutoScroll = true;
             this.panelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.panelMain.Controls.Add(this.panel1);
             this.panelMain.Location = new System.Drawing.Point(207, -3);
@@ -149,6 +150,25 @@
             this.MenuBtnEducation_Formation.UseVisualStyleBackColor = false;
             this.MenuBtnEducation_Formation.Click += new System.EventHandler(this.MenuBtnEducation_Formation_Click);
             // 
+            // btnMatriceFormation
+            // 
+            this.btnMatriceFormation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            this.btnMatriceFormation.FlatAppearance.BorderSize = 0;
+            this.btnMatriceFormation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMatriceFormation.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMatriceFormation.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnMatriceFormation.Image = ((System.Drawing.Image)(resources.GetObject("btnMatriceFormation.Image")));
+            this.btnMatriceFormation.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnMatriceFormation.Location = new System.Drawing.Point(-5, 97);
+            this.btnMatriceFormation.Margin = new System.Windows.Forms.Padding(0);
+            this.btnMatriceFormation.Name = "btnMatriceFormation";
+            this.btnMatriceFormation.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.btnMatriceFormation.Size = new System.Drawing.Size(215, 59);
+            this.btnMatriceFormation.TabIndex = 18;
+            this.btnMatriceFormation.Text = "Trajets de formations";
+            this.btnMatriceFormation.UseVisualStyleBackColor = false;
+            this.btnMatriceFormation.Click += new System.EventHandler(this.btnMatriceFormation_Click);
+            // 
             // MenuBtnAgent
             // 
             this.MenuBtnAgent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
@@ -206,25 +226,6 @@
             this.btnMenu_Provider.Text = "Fournisseurs";
             this.btnMenu_Provider.UseVisualStyleBackColor = false;
             this.btnMenu_Provider.Click += new System.EventHandler(this.btnMenu_Provider_Click);
-            // 
-            // btnMatriceFormation
-            // 
-            this.btnMatriceFormation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.btnMatriceFormation.FlatAppearance.BorderSize = 0;
-            this.btnMatriceFormation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMatriceFormation.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMatriceFormation.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnMatriceFormation.Image = ((System.Drawing.Image)(resources.GetObject("btnMatriceFormation.Image")));
-            this.btnMatriceFormation.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnMatriceFormation.Location = new System.Drawing.Point(-5, 97);
-            this.btnMatriceFormation.Margin = new System.Windows.Forms.Padding(0);
-            this.btnMatriceFormation.Name = "btnMatriceFormation";
-            this.btnMatriceFormation.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnMatriceFormation.Size = new System.Drawing.Size(215, 59);
-            this.btnMatriceFormation.TabIndex = 18;
-            this.btnMatriceFormation.Text = "Trajets de formations";
-            this.btnMatriceFormation.UseVisualStyleBackColor = false;
-            this.btnMatriceFormation.Click += new System.EventHandler(this.btnMatriceFormation_Click);
             // 
             // imageList1
             // 
