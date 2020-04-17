@@ -11,7 +11,7 @@ namespace Module_Education.Classes
     public class MyColumnCollectionDGPassportDesign
     {
         [DisplayName("Type Passport")]
-        public int? AgentPassportDesign { get; set; }
+        public string AgentPassportDesign { get; set; }
 
         [DisplayName("Date d'envoi")]
         public DateTime? AgentPassportSafetySendingDate { get; set; }

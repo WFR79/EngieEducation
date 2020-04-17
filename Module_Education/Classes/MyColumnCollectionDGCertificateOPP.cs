@@ -11,7 +11,7 @@ namespace Module_Education.Classes
     public class MyColumnCollectionDGCertificateOPP
     {
         [DisplayName("Niveau R")]
-        public int? AgentCertificateLevelR { get; set; }
+        public string AgentCertificateLevelR { get; set; }
 
         [DisplayName("Date d'envoi")]
         public DateTime? AgentPassportSafetySendingDate { get; set; }

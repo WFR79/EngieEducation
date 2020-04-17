@@ -7,20 +7,18 @@ using System.Threading.Tasks;
 
 namespace Module_Education.Repositories
 {
-    public class AgentPassportSafetyRepository
+    class AgentCertifElecOPPRepository
     {
         private CFNEducation_FormationEntities db = new CFNEducation_FormationEntities();
 
-        public AgentPassportSafetyRepository()
+        public AgentCertifElecOPPRepository()
         {
 
         }
-
-        public List<Education_AgentPassportSafety> LoadPassportSafety(Education_Agent agent)
+        public List<Education_AgentCertifElecOPP> LoadPassportBusinessAgent(Education_Agent agent)
         {
-            return db.Education_AgentPassportSafety.Where(x => x.Education_Agent.Agent_Id == agent.Agent_Id)
+            return db.Education_AgentCertifElecOPP.Where(x => x.Education_Agent.Agent_Id == agent.Agent_Id)
                     .ToList();
         }
-
     }
 }

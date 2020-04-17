@@ -166,8 +166,11 @@
     <Compile Include="Models\Education_ProviderContact.cs">
       <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repositories\AgentCertifElecFuncRepository.cs" />
+    <Compile Include="Repositories\AgentCertifElecOPPRepository.cs" />
     <Compile Include="Repositories\AgentDataAccess.cs" />
     <Compile Include="Repositories\AgentPassportBusinessRepository.cs" />
+    <Compile Include="Repositories\AgentPassportDesignRepository.cs" />
     <Compile Include="Repositories\CompetenceDataAccess.cs" />
     <Compile Include="Repositories\EquipeDataAccess.cs" />
     <Compile Include="Repositories\FormationCategoryDataAccess.cs" />

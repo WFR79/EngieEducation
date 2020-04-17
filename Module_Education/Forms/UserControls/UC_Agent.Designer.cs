@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle7 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle8 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle9 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle10 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle11 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle12 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle13 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle14 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle15 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle16 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle17 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle18 = new SynapseAdvancedControls.HeaderStateStyle();
             this.tabControlAgentList = new System.Windows.Forms.TabControl();
             this.tbListeAgents = new System.Windows.Forms.TabPage();
             this.label4 = new System.Windows.Forms.Label();
@@ -46,7 +46,6 @@
             this.lblNbrRows = new System.Windows.Forms.Label();
             this.picExportExcel = new System.Windows.Forms.PictureBox();
             this.dG_Agents = new Zuby.ADGV.AdvancedDataGridView();
-            this.progressBarDgAgent = new System.Windows.Forms.ProgressBar();
             this.btn_NextAgent = new System.Windows.Forms.Button();
             this.btn_PreviousAgent = new System.Windows.Forms.Button();
             this.lblTiteLstAgent = new System.Windows.Forms.Label();
@@ -123,7 +122,7 @@
             this.tabControlAgentList.Location = new System.Drawing.Point(0, 3);
             this.tabControlAgentList.Name = "tabControlAgentList";
             this.tabControlAgentList.SelectedIndex = 0;
-            this.tabControlAgentList.Size = new System.Drawing.Size(1022, 608);
+            this.tabControlAgentList.Size = new System.Drawing.Size(1208, 657);
             this.tabControlAgentList.TabIndex = 0;
             // 
             // tbListeAgents
@@ -138,7 +137,6 @@
             this.tbListeAgents.Controls.Add(this.lblNbrRows);
             this.tbListeAgents.Controls.Add(this.picExportExcel);
             this.tbListeAgents.Controls.Add(this.dG_Agents);
-            this.tbListeAgents.Controls.Add(this.progressBarDgAgent);
             this.tbListeAgents.Controls.Add(this.btn_NextAgent);
             this.tbListeAgents.Controls.Add(this.btn_PreviousAgent);
             this.tbListeAgents.Controls.Add(this.lblTiteLstAgent);
@@ -146,7 +144,7 @@
             this.tbListeAgents.Location = new System.Drawing.Point(4, 23);
             this.tbListeAgents.Name = "tbListeAgents";
             this.tbListeAgents.Padding = new System.Windows.Forms.Padding(3);
-            this.tbListeAgents.Size = new System.Drawing.Size(1014, 794);
+            this.tbListeAgents.Size = new System.Drawing.Size(1200, 630);
             this.tbListeAgents.TabIndex = 0;
             this.tbListeAgents.Text = "Liste";
             // 
@@ -154,7 +152,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(457, 664);
+            this.label4.Location = new System.Drawing.Point(457, 583);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(11, 14);
             this.label4.TabIndex = 26;
@@ -165,7 +163,7 @@
             this.lblMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblMax.AutoSize = true;
             this.lblMax.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.lblMax.Location = new System.Drawing.Point(467, 664);
+            this.lblMax.Location = new System.Drawing.Point(467, 583);
             this.lblMax.Name = "lblMax";
             this.lblMax.Size = new System.Drawing.Size(35, 14);
             this.lblMax.TabIndex = 25;
@@ -177,7 +175,7 @@
             this.lblMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblMin.AutoSize = true;
             this.lblMin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.lblMin.Location = new System.Drawing.Point(422, 664);
+            this.lblMin.Location = new System.Drawing.Point(422, 583);
             this.lblMin.Name = "lblMin";
             this.lblMin.Size = new System.Drawing.Size(35, 14);
             this.lblMin.TabIndex = 24;
@@ -191,7 +189,7 @@
             this.lblNbrRowsAgent.Enabled = false;
             this.lblNbrRowsAgent.Font = new System.Drawing.Font("Arial", 9.25F);
             this.lblNbrRowsAgent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.lblNbrRowsAgent.Location = new System.Drawing.Point(13, 654);
+            this.lblNbrRowsAgent.Location = new System.Drawing.Point(26, 579);
             this.lblNbrRowsAgent.Name = "lblNbrRowsAgent";
             this.lblNbrRowsAgent.Size = new System.Drawing.Size(42, 16);
             this.lblNbrRowsAgent.TabIndex = 23;
@@ -253,25 +251,16 @@
             this.dG_Agents.ReadOnly = true;
             this.dG_Agents.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dG_Agents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dG_Agents.Size = new System.Drawing.Size(1040, 600);
+            this.dG_Agents.Size = new System.Drawing.Size(1040, 501);
             this.dG_Agents.TabIndex = 18;
             this.dG_Agents.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.dG_Agents_FilterStringChanged_1);
             this.dG_Agents.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dG_Agents_MouseClick_1);
-            // 
-            // progressBarDgAgent
-            // 
-            this.progressBarDgAgent.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.progressBarDgAgent.Location = new System.Drawing.Point(947, 664);
-            this.progressBarDgAgent.Name = "progressBarDgAgent";
-            this.progressBarDgAgent.Size = new System.Drawing.Size(55, 23);
-            this.progressBarDgAgent.TabIndex = 17;
-            this.progressBarDgAgent.Visible = false;
             // 
             // btn_NextAgent
             // 
             this.btn_NextAgent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_NextAgent.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.btn_NextAgent.Location = new System.Drawing.Point(505, 660);
+            this.btn_NextAgent.Location = new System.Drawing.Point(505, 579);
             this.btn_NextAgent.Name = "btn_NextAgent";
             this.btn_NextAgent.Size = new System.Drawing.Size(75, 23);
             this.btn_NextAgent.TabIndex = 16;
@@ -283,7 +272,7 @@
             // 
             this.btn_PreviousAgent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_PreviousAgent.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.btn_PreviousAgent.Location = new System.Drawing.Point(345, 660);
+            this.btn_PreviousAgent.Location = new System.Drawing.Point(345, 579);
             this.btn_PreviousAgent.Name = "btn_PreviousAgent";
             this.btn_PreviousAgent.Size = new System.Drawing.Size(75, 23);
             this.btn_PreviousAgent.TabIndex = 15;
@@ -355,7 +344,7 @@
             this.tbFicheAgent.Location = new System.Drawing.Point(4, 23);
             this.tbFicheAgent.Name = "tbFicheAgent";
             this.tbFicheAgent.Padding = new System.Windows.Forms.Padding(3);
-            this.tbFicheAgent.Size = new System.Drawing.Size(1014, 581);
+            this.tbFicheAgent.Size = new System.Drawing.Size(1200, 630);
             this.tbFicheAgent.TabIndex = 1;
             this.tbFicheAgent.Text = "Fiche";
             // 
@@ -825,15 +814,15 @@
             // 
             // headerFormatStyle1
             // 
-            this.headerFormatStyle1.Hot = headerStateStyle7;
-            this.headerFormatStyle1.Normal = headerStateStyle8;
-            this.headerFormatStyle1.Pressed = headerStateStyle9;
+            this.headerFormatStyle1.Hot = headerStateStyle13;
+            this.headerFormatStyle1.Normal = headerStateStyle14;
+            this.headerFormatStyle1.Pressed = headerStateStyle15;
             // 
             // headerFormatStyle2
             // 
-            this.headerFormatStyle2.Hot = headerStateStyle10;
-            this.headerFormatStyle2.Normal = headerStateStyle11;
-            this.headerFormatStyle2.Pressed = headerStateStyle12;
+            this.headerFormatStyle2.Hot = headerStateStyle16;
+            this.headerFormatStyle2.Normal = headerStateStyle17;
+            this.headerFormatStyle2.Pressed = headerStateStyle18;
             // 
             // equipeBindingSource
             // 
@@ -864,7 +853,7 @@
             this.DoubleBuffered = true;
             this.MinimumSize = new System.Drawing.Size(0, 573);
             this.Name = "UC_Agent";
-            this.Size = new System.Drawing.Size(1042, 614);
+            this.Size = new System.Drawing.Size(1213, 666);
             this.Enter += new System.EventHandler(this.UC_Agent_Enter);
             this.tabControlAgentList.ResumeLayout(false);
             this.tbListeAgents.ResumeLayout(false);
@@ -936,7 +925,6 @@
         private System.Windows.Forms.Label lblNbrRows;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.Button btnClearFilters;
-        private System.Windows.Forms.ProgressBar progressBarDgAgent;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblMax;
         private System.Windows.Forms.Label lblMin;
