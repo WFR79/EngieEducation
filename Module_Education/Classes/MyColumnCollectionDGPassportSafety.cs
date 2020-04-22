@@ -10,8 +10,12 @@ namespace Module_Education.Classes
 {
     public class MyColumnCollectionDGPassportSafety
     {
+        [DisplayName("IdSafetyAgent")]
+       
+        public long AgentPassportSafetyId { get; set; }
+
         [DisplayName("Niveau PS")]
-        public int? AgentPassportSafetyLevelPS { get; set; }
+        public int? PassportSafety_LevelPS { get; set; }
 
         [DisplayName("Date d'envoi")]
         public DateTime? AgentPassportSafetySendingDate { get; set; }

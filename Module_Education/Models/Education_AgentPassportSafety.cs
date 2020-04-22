@@ -22,7 +22,9 @@ namespace Module_Education.Models
         public Nullable<bool> AgentPassportSafety_HierarchyCertification { get; set; }
         public string AgentPassportSafety_Remarks { get; set; }
         public string AgentPassportSafety_PayRemarks { get; set; }
+        public Nullable<long> AgentPassportSafety_Passport { get; set; }
     
         public virtual Education_Agent Education_Agent { get; set; }
+        public virtual Education_PassportSafety Education_PassportSafety { get; set; }
     }
 }

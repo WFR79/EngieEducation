@@ -10,6 +10,8 @@ namespace Module_Education.Classes
 {
     public class MyColumnCollectionDGPassportBusiness
     {
+        [DisplayName("IdSafetyAgent")]
+        public long AgentPassportBusinessId { get; set; }
         [DisplayName("Passport Métier")]
         public string AgentPassportBusinessDesc { get; set; }
 

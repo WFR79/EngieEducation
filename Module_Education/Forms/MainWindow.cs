@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Module_Education.Forms.UserControls;
 using Module_Education.Models;
+using Module_Education.Repositories;
 using Module_Education.UserControls;
 using Synapse;
 using SynapseCore.Controls;
@@ -27,6 +28,9 @@ namespace Module_Education
         public static List<Education_Formation> globalListEducation_Formations;
         public static List<Education_Agent> globalListAgents;
         public static List<Education_Provider> globalListProviders;
+        public static List<Education_Agent> globalListCertificateAgents;
+        public static AgentDataAccess dbAgent = new AgentDataAccess();
+
         CFNEducation_FormationEntities dbEntities = new CFNEducation_FormationEntities();
 
         private Button bouttonMenuPressed;
@@ -39,6 +43,8 @@ namespace Module_Education
         private Size panel1Size;
         private Size panelMainSize;
         private Size flowPanelMenuSize;
+
+        public UserControl ActiveUserControl;
         #endregion
 
         #region UCEducation_Formation
@@ -182,6 +188,7 @@ namespace Module_Education
             Button button = ((Button)sender);
             //Add module1 to panel control
             //flowPanelMenu.Hide();
+            ActiveUserControl = UCEducation_Formation.Instance;
             if (!panelMain.Controls.Contains(UCEducation_Formation.Instance))
             {
                 panelMain.Controls.Add(UCEducation_Formation.Instance);
@@ -386,11 +393,17 @@ namespace Module_Education
 
         static void LoadUsersThread()
         {
-
+            Thread y = new Thread(LoadCertificateAgents);
+            y.Start();
             AgentDataAccess db = new AgentDataAccess();
             globalListAgents = db.LoadAllAgents();
             
 
+        }
+
+        private static void LoadCertificateAgents()
+        {
+            globalListCertificateAgents = dbAgent.LoadAllAgentsCertificate();
         }
 
         #endregion
@@ -451,6 +464,71 @@ namespace Module_Education
             button.FlatAppearance.BorderSize = 1;
             bouttonMenuPressed = (Button)button;
             UnselectButtons();
+        }
+
+        private void MenuBtnCertificate_Click(object sender, EventArgs e)
+        {
+            Button button = ((Button)sender);
+
+            //Add module1 to panel control
+            if (!panelMain.Controls.Contains(UC_Certification.Instance))
+            {
+                panelMain.Controls.Add(UC_Certification.Instance);
+                UC_Certification.Instance.Dock = DockStyle.Fill;
+                UC_Certification.Instance.BringToFront();
+
+                ReceiverFromMatriceFormation += new ClickOnFormationMenuBtn(clickButtonFormationMenu);
+                UC_Certification.Instance.PointerFormation = ReceiverFromMatriceFormation;
+
+                ReceiverFromFicheFormation += new functioncall(AgentSelectedInFormationCard);
+                UC_Certification.Instance.PointerFormation = ReceiverFromFicheFormation;
+
+                ReceiverRefreshListeAgent += new refreshFicheAgent(refreshFormAgent);
+                UC_Certification.Instance.MainWindowPointerMenuBtnAgent = ReceiverRefreshListeAgent;
+            }
+            else
+            {
+                UC_Certification.Instance.BringToFront();
+            }
+            button.BackColor = Color.FromArgb(67, 100, 214);
+            button.FlatStyle = FlatStyle.Flat;
+            button.FlatAppearance.BorderColor = Color.White;
+            button.FlatAppearance.BorderSize = 1;
+            bouttonMenuPressed = (Button)button;
+            UnselectButtons();
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+        //    if (flowPanelMenu.Visible && ActiveUserControl != null)
+        //    {
+        //        switch (ActiveUserControl.Name)
+        //        {
+        //            case "UCEducation_Formation":
+        //                this.panelMain.Dock = DockStyle.Fill;
+        //                //ActiveUserControl.Size = newSize;
+        //                UCEducation_Formation.Instance.Dock = DockStyle.Left;
+        //                break;
+        //        }
+        //        flowPanelMenu.Visible = false;
+        //    }
+
+        //    else
+        //    {
+        //        if (ActiveUserControl != null)
+        //        {
+        //            switch (ActiveUserControl.Name)
+        //            {
+        //                case "UCEducation_Formation":
+        //                    UCEducation_Formation.Instance.Dock = DockStyle.Right;
+        //                    int xCalculated = (UCEducation_Formation.Instance.Location.X - 30);
+        //                    break;
+        //            }
+        //        }
+                
+        //        flowPanelMenu.Visible = true;
+
+        //    }
         }
     }
 }

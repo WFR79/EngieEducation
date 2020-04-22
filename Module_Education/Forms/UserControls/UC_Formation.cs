@@ -122,6 +122,7 @@ namespace Module_Education
             {
                 if (_instance == null)
                     _instance = new UCEducation_Formation();
+
                 return _instance;
             }
         }

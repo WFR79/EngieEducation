@@ -1,6 +1,7 @@
 ﻿using Module_Education.Classes;
 using Module_Education.Forms.UserControls;
 using Module_Education.Models;
+using Module_Education.Repositories;
 using PagedList;
 using System;
 using System.Collections.Generic;

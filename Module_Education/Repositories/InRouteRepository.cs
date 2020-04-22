@@ -19,5 +19,30 @@ namespace Module_Education
         {
             return db.Education_InRoute.ToList();
         }
+        public Education_Matrice AddNewMatrice(string nameMatrice, int recurrency)
+        {
+
+            Education_Matrice matrice = db.Education_Matrice
+                 .Where(x => x.Matrice_Description == nameMatrice)
+                 .FirstOrDefault();
+            if (matrice == null)
+            {
+                Education_Matrice newRecord = new Education_Matrice
+                {
+
+                    Matrice_Recurrency = recurrency,
+                    Matrice_Description = nameMatrice
+                };
+                db.Education_Matrice.Add(newRecord);
+                db.SaveChanges();
+
+                return newRecord;
+            }
+            else
+            {
+                return null;
+            }
+
+        }
     }
 }

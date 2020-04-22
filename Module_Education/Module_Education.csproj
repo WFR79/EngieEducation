@@ -92,6 +92,7 @@
     <Compile Include="Classes\MenuStrip.Designer.cs">
       <DependentUpon>MenuStrip.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\MyColumnCollectionDGAgentCertification.cs" />
     <Compile Include="Classes\MyColumnCollectionDGAgent.cs" />
     <Compile Include="Classes\MyColumnCollectionDGCertificateOPP.cs" />
     <Compile Include="Classes\MyColumnCollectionDGFormation.cs" />
@@ -112,11 +113,29 @@
     <Compile Include="Forms\FrmAgent.Designer.cs">
       <DependentUpon>FrmAgent.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmCertificate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmCertificate.Designer.cs">
+      <DependentUpon>FrmCertificate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmCertificateSynapse.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmCertificateSynapse.Designer.cs">
+      <DependentUpon>FrmCertificateSynapse.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmFormation.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmFormation.Designer.cs">
       <DependentUpon>FrmFormation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserControls\UC_Certification.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserControls\UC_Certification.Designer.cs">
+      <DependentUpon>UC_Certification.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\UserControls\UC_MatriceFormations.cs">
       <SubType>UserControl</SubType>
@@ -169,8 +188,10 @@
     <Compile Include="Repositories\AgentCertifElecFuncRepository.cs" />
     <Compile Include="Repositories\AgentCertifElecOPPRepository.cs" />
     <Compile Include="Repositories\AgentDataAccess.cs" />
+    <Compile Include="Repositories\AgentMatriceRepository.cs" />
     <Compile Include="Repositories\AgentPassportBusinessRepository.cs" />
     <Compile Include="Repositories\AgentPassportDesignRepository.cs" />
+    <Compile Include="Repositories\CertificateElecOPPRepository.cs" />
     <Compile Include="Repositories\CompetenceDataAccess.cs" />
     <Compile Include="Repositories\EquipeDataAccess.cs" />
     <Compile Include="Repositories\FormationCategoryDataAccess.cs" />
@@ -186,6 +207,10 @@
     <Compile Include="Repositories\InRouteRepository.cs" />
     <Compile Include="Repositories\InRouteFormationRepository.cs" />
     <Compile Include="Repositories\AgentPassportSafetyRepository.cs" />
+    <Compile Include="Repositories\CertificateElecFuncRepository.cs" />
+    <Compile Include="Repositories\PassportBusinessRepository.cs" />
+    <Compile Include="Repositories\PassportDesignRepository.cs" />
+    <Compile Include="Repositories\PassportSafetyRepository.cs" />
     <Compile Include="Repositories\ProviderDataRepository.cs" />
     <Compile Include="Repositories\RoleAstreinteDataAccess.cs" />
     <Compile Include="Repositories\RoleEPIDataAccess.cs" />
@@ -375,6 +400,12 @@
     <EmbeddedResource Include="Forms\FrmAgent.resx">
       <DependentUpon>FrmAgent.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmCertificate.resx">
+      <DependentUpon>FrmCertificate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmCertificateSynapse.resx">
+      <DependentUpon>FrmCertificateSynapse.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmFormation.resx">
       <DependentUpon>FrmFormation.cs</DependentUpon>
     </EmbeddedResource>
@@ -392,6 +423,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserControls\UC_Authentification.resx">
       <DependentUpon>UC_Authentification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserControls\UC_Certification.resx">
+      <DependentUpon>UC_Certification.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserControls\UC_Formation.resx">
       <DependentUpon>UC_Formation.cs</DependentUpon>
@@ -461,6 +495,7 @@
     <Content Include="Resources\Images\ColumnHeader_SavedFilters.png" />
     <Content Include="Resources\Images\ColumnHeader_UnFiltered.png" />
     <None Include="Resources\Images\Excel-icon.png" />
+    <None Include="Resources\Images\Hideshowmenu.png" />
     <Content Include="Resources\Images\MenuStrip_OrderASCbool.png" />
     <Content Include="Resources\Images\MenuStrip_OrderASCnum.png" />
     <Content Include="Resources\Images\MenuStrip_OrderASCtxt.png" />

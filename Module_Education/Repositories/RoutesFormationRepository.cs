@@ -33,11 +33,63 @@ namespace Module_Education.Repositories
             return newMatrice;
         }
 
-        public void SaveCurrencyOfFormation(string nameMatrice, int recurrency)
+        public Education_Matrice AddNewMatrice(string nameMatrice, int recurrency)
         {
-            var matriceDB =  db.Education_Matrice.Where(x => x.Matrice_Description == nameMatrice).FirstOrDefault();
-            matriceDB.Matrice_Recurrency = recurrency;
-            db.SaveChanges();
+
+            Education_Matrice matrice = db.Education_Matrice
+                 .Where(x => x.Matrice_Description == nameMatrice)
+                 .FirstOrDefault();
+            if (matrice == null)
+            {
+                Education_Matrice newRecord = new Education_Matrice
+                {
+
+                    Matrice_Recurrency = recurrency,
+                    Matrice_Description = nameMatrice
+                };
+                db.Education_Matrice.Add(newRecord);
+                db.SaveChanges();
+
+                return newRecord;
+            }
+            else
+            {
+                return null;
+            }
+
+        }
+
+        public Education_Matrice SaveDetailsRoute(string nameMatrice, int recurrency, string newMatriceName)
+        {
+            try
+            {
+                var matriceDB = db.Education_Matrice.Where(x => x.Matrice_Description == nameMatrice).FirstOrDefault();
+                if (matriceDB != null)
+                {
+                    if (nameMatrice != newMatriceName)
+                    {
+                        matriceDB.Matrice_Description = newMatriceName;
+                    }
+                    matriceDB.Matrice_Recurrency = recurrency;
+                    db.SaveChanges();
+                    return matriceDB;
+                }
+                else
+                {
+                    Education_Matrice newRecord = new Education_Matrice()
+                    {
+                        Matrice_Description = newMatriceName,
+                        Matrice_Recurrency = recurrency
+                    };
+                    db.Education_Matrice.Add(newRecord);
+                    db.SaveChanges();
+                    return matriceDB;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
     }
 }

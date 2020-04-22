@@ -7,18 +7,17 @@ using System.Threading.Tasks;
 
 namespace Module_Education.Repositories
 {
-    public class FormationResultatDataAccess
+    public class CertificateElecOPPRepository
     {
         private CFNEducation_FormationEntities db = new CFNEducation_FormationEntities();
 
-        public FormationResultatDataAccess()
+        public CertificateElecOPPRepository()
         {
 
         }
-        public List<Education_FormationResultat> LoadAllResultatByFormation(Education_Formation formation)
+        public List<Education_CertifElecOPP> LoadAllPassportSafety()
         {
-            return db.Education_FormationResultat
-                    .Where(x => x.FormationResultat_Formation == formation.Formation_Id)
+            return db.Education_CertifElecOPP
                     .ToList();
         }
     }

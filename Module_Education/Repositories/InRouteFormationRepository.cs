@@ -27,6 +27,8 @@ namespace Module_Education.Repositories
             return listMatriceFormation;
         }
 
+       
+
         public List<Education_Matrice_Formation> SaveMatriceFormation(Education_Matrice matriceF, int recurrency)
         {
             List<Education_Matrice_Formation> listMatriceFormation = db.Education_Matrice_Formation
@@ -106,6 +108,13 @@ namespace Module_Education.Repositories
             MatriceFormation.MatriceFormation_Recurrency = recurrency;
 
             db.SaveChanges();
+        }
+
+        public Education_Matrice_Formation LoadFormationOfRoute(string formationSAP, string routeName)
+        {
+           return db.Education_Matrice_Formation
+                            .Where(x => x.Education_Formation.Formation_SAP == formationSAP &&
+                            x.Education_Matrice.Matrice_Description == routeName).FirstOrDefault();
         }
     }
 }

@@ -21,6 +21,17 @@ namespace Module_Education
             return db.Education_Agent.ToList();
         }
 
+        public List<Education_Agent> LoadAllAgentsCertificate()
+        {
+            return db.Education_Agent
+                  .Include("Education_AgentPassportSafety")
+                        .Include("Education_AgentCertifElecFunc")
+                        .Include("Education_AgentCertifElecOPP")
+                        .Include("Education_AgentPassportBusiness")
+                        .Include("Education_AgentPassportDesign")
+                .ToList();
+        }
+
         public async void SaveAgent(Education_Agent userToUpdate)
         {
             if (userToUpdate != null)
@@ -70,7 +81,7 @@ namespace Module_Education
             return UserListFiltered;
         }
 
-        public Education_Agent LoadSingleUser(long userId)
+        public Education_Agent LoadSingleUser(long? userId)
         {
             var userTemp = db.Education_Agent.Where(x => x.Agent_Id == userId).FirstOrDefault();
             if (userTemp != null)

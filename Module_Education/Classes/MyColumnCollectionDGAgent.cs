@@ -14,8 +14,9 @@ namespace Module_Education.Classes
         [DisplayName("Matricule")]
         public int? Agent_Matricule { get; set; }
 
-        //[DisplayName("User ID")]
-        //public long ColumnUserId { get; set; }
+        [DisplayName("Nom Prénom")]
+        public string Agent_Fullname { get; internal set; }
+
         [DisplayName("Prénom")]
         public string Agent_FirstName { get; set; }
 
@@ -54,6 +55,8 @@ namespace Module_Education.Classes
 
         [DisplayName("En trajet")]
         public bool? Agent_InRoute { get; set; }
+
+       
 
         private Education_Agent _obj;
 

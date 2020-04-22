@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Module_Education
+namespace Module_Education.Repositories
 {
     public class Education_FormationDataAccess
     {

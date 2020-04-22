@@ -73,6 +73,10 @@
             this.tabPageCertificationsAgent = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.picShowDocAudit = new System.Windows.Forms.PictureBox();
+            this.lblDocAudit = new System.Windows.Forms.Label();
+            this.tbDocAudit = new System.Windows.Forms.TextBox();
+            this.btnDocAudit = new System.Windows.Forms.Button();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -129,6 +133,7 @@
             this.tabPageCertificationsAgent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picShowDocAudit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -632,6 +637,10 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.picShowDocAudit);
+            this.tabPage2.Controls.Add(this.lblDocAudit);
+            this.tabPage2.Controls.Add(this.tbDocAudit);
+            this.tabPage2.Controls.Add(this.btnDocAudit);
             this.tabPage2.Controls.Add(this.pictureBox4);
             this.tabPage2.Controls.Add(this.pictureBox3);
             this.tabPage2.Controls.Add(this.pictureBox2);
@@ -661,6 +670,52 @@
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Documents";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // picShowDocAudit
+            // 
+            this.picShowDocAudit.Image = global::Module_Education.Properties.Resources.baseline_visibility_black_18dp;
+            this.picShowDocAudit.Location = new System.Drawing.Point(518, 314);
+            this.picShowDocAudit.Name = "picShowDocAudit";
+            this.picShowDocAudit.Size = new System.Drawing.Size(21, 19);
+            this.picShowDocAudit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picShowDocAudit.TabIndex = 165;
+            this.picShowDocAudit.TabStop = false;
+            // 
+            // lblDocAudit
+            // 
+            this.lblDocAudit.AutoSize = true;
+            this.lblDocAudit.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Bold);
+            this.lblDocAudit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.lblDocAudit.Location = new System.Drawing.Point(6, 292);
+            this.lblDocAudit.Name = "lblDocAudit";
+            this.lblDocAudit.Size = new System.Drawing.Size(109, 16);
+            this.lblDocAudit.TabIndex = 164;
+            this.lblDocAudit.Text = "Document Audit";
+            // 
+            // tbDocAudit
+            // 
+            this.tbDocAudit.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tbDocAudit.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.tbDocAudit.Location = new System.Drawing.Point(6, 311);
+            this.tbDocAudit.Name = "tbDocAudit";
+            this.tbDocAudit.ReadOnly = true;
+            this.tbDocAudit.Size = new System.Drawing.Size(407, 20);
+            this.tbDocAudit.TabIndex = 163;
+            // 
+            // btnDocAudit
+            // 
+            this.btnDocAudit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            this.btnDocAudit.FlatAppearance.BorderSize = 0;
+            this.btnDocAudit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDocAudit.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Bold);
+            this.btnDocAudit.ForeColor = System.Drawing.Color.White;
+            this.btnDocAudit.Location = new System.Drawing.Point(419, 314);
+            this.btnDocAudit.Name = "btnDocAudit";
+            this.btnDocAudit.Size = new System.Drawing.Size(93, 23);
+            this.btnDocAudit.TabIndex = 162;
+            this.btnDocAudit.Text = "Parcourir";
+            this.btnDocAudit.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnDocAudit.UseVisualStyleBackColor = false;
             // 
             // pictureBox4
             // 
@@ -1216,7 +1271,7 @@
             this.Controls.Add(this.tabControl_Education_Formations);
             this.DoubleBuffered = true;
             this.Name = "UCEducation_Formation";
-            this.Size = new System.Drawing.Size(1067, 573);
+            this.Size = new System.Drawing.Size(1072, 573);
             this.toolTipAddProvider.SetToolTip(this, "\r\n");
             this.Load += new System.EventHandler(this.UC_Education_Formation_Load);
             this.MouseHover += new System.EventHandler(this.UCEducation_Formation_MouseHover);
@@ -1231,6 +1286,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picShowDocAudit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -1337,5 +1393,9 @@
         private System.Windows.Forms.ToolTip toolTipShowFichier;
         private System.Windows.Forms.ToolTip toolTip2;
         private System.Windows.Forms.PictureBox picViewProvider;
+        private System.Windows.Forms.PictureBox picShowDocAudit;
+        private System.Windows.Forms.TextBox tbDocAudit;
+        public System.Windows.Forms.Button btnDocAudit;
+        private System.Windows.Forms.Label lblDocAudit;
     }
 }

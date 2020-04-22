@@ -14,7 +14,16 @@ namespace Module_Education.Models
     
     public partial class Education_PassportSafety
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Education_PassportSafety()
+        {
+            this.Education_AgentPassportSafety = new HashSet<Education_AgentPassportSafety>();
+        }
+    
         public long PassportSafety_Id { get; set; }
         public int PassportSafety_LevelPS { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Education_AgentPassportSafety> Education_AgentPassportSafety { get; set; }
     }
 }
