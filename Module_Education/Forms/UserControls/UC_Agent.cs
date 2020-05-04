@@ -108,7 +108,7 @@ namespace Module_Education
         private bool alreadyLoadedForm = false;
 
         private static UC_Agent _instance;
-        private DataTable dtAgents;
+        public static DataTable dtAgents;
         public static long UserIDSelected;
         public static long Agent_Matricule;
 
@@ -128,7 +128,9 @@ namespace Module_Education
         public Delegate PointerAgentMenuButton;
         public Delegate userFunctionPointer;
         int pageNumber = 1;
-
+        TextBoxExtensions TbExtension = new TextBoxExtensions();
+        ComboBoxExt cbExtension = new ComboBoxExt();
+        public Point controlLocation = new Point();
         #endregion
 
         #region class properties
@@ -160,7 +162,6 @@ namespace Module_Education
             }
         }
 
-
         public UC_Agent()
         {
             InitializeComponent();
@@ -168,10 +169,11 @@ namespace Module_Education
             LoadDatagridAgentAsync();
             receiverFromFormationCard += new refreshForm(refreshFormAgent);
 
-
             TabPage page = (TabPage)this.tabControlAgentList.Controls[1];
             InitEventsReceiver();
             this.EnableTab(page, false);
+
+
         }
 
         public static void RefreshReceiver(long AgentId)
@@ -203,8 +205,8 @@ namespace Module_Education
             comboBoxEquipe.DisplayMember = "Equipe_Name";
 
             //Status
-            comboBoxStatut.DataSource = dbUserStatus.LoadAllStatus();
-            comboBoxStatut.DisplayMember = "AgentStatus_Name";
+            comboBoxStatut11.DataSource = dbUserStatus.LoadAllStatus();
+            comboBoxStatut11.DisplayMember = "AgentStatus_Name";
 
             //Line Manager
             comboBoxRespHierarchique.DataSource = MainWindow.globalListAgents;
@@ -239,6 +241,7 @@ namespace Module_Education
             List<Education_Agent> listAgent = new List<Education_Agent>();
             try
             {
+                Cursor.Current = Cursors.WaitCursor;
 
                 //List<User> lUsers = db.LoadAllAgents();
                 var progress = new Progress<ProgressReport>();
@@ -258,7 +261,7 @@ namespace Module_Education
                 dG_Agents.DataSource = GetDataSource(listUserPaged);
                 lblNbrRowsAgent.Text = "Nombre total d'Agents : " + listUserPaged.TotalItemCount.ToString();
                 //dG_Agents.DataSource = listUserPaged;
-                dG_Agents.Refresh();
+                //dG_Agents.Refresh();
             }
             catch (Exception ex)
             {
@@ -272,11 +275,13 @@ namespace Module_Education
         {
             if (!Regex.IsMatch(tbNbrRows.Text, @"^\d+$"))
             {
-                if (tbNbrRows.Text.Length > 0)
+                if (tbNbrRows.Text != "")
                 {
                     tbNbrRows.Text = tbNbrRows.Text.Remove(tbNbrRows.Text.Length - 1);
-                    pageSize = Convert.ToInt32(tbNbrRows.Text);
                 }
+            }
+            else {
+                pageSize = Convert.ToInt32(tbNbrRows.Text);
             }
         }
 
@@ -303,7 +308,7 @@ namespace Module_Education
             try
             {
                 List<Education_Agent> tempUserList = new List<Education_Agent>();
-                var progressReport = new ProgressReport();
+                //var progressReport = new ProgressReport();
                 if (pageNumber == 0)
                 {
                     pageNumber = 1;
@@ -314,7 +319,7 @@ namespace Module_Education
                     {
                         if (MainWindow.globalListAgents == null)
                         {
-                            progressReport.PercentCompleted = 0;
+                            //progressReport.PercentCompleted = 0;
                             return dbList.Education_Agent
                             .Include("Education_Equipe")
                             .Include("Education_Function")
@@ -328,9 +333,11 @@ namespace Module_Education
                             .Include("Education_Agent_Formation")
                             .Include("Education_Habilitation")
                             .Include("Education_Role")
+                            .Include("Education_Matrice_Agent")
+
                             //.Include("User2")
-                            .OrderBy(p => p.Agent_Id).ToPagedList(pagNumber, pageSize); ;
-                            progressReport.PercentCompleted = 100;
+                            .OrderBy(p => p.Agent_Id).ToPagedList(pagNumber, pageSize);
+                            //progressReport.PercentCompleted = 100;
                             //progress.Report(progressReport);
                         }
                         else
@@ -358,13 +365,13 @@ namespace Module_Education
         {
             if (listUserPaged.HasNextPage)
             {
-                var progress = new Progress<ProgressReport>();
-                progress.ProgressChanged += (o, report) =>
-                {
+                //var progress = new Progress<ProgressReport>();
+                //progress.ProgressChanged += (o, report) =>
+                //{
 
-                    //progressBarDgAgent.Value = report.PercentCompleted;
-                    //progressBarDgAgent.Update();
-                };
+                //    //progressBarDgAgent.Value = report.PercentCompleted;
+                //    //progressBarDgAgent.Update();
+                //};
 
                 listUserPaged = await LoadTaskDatagridAgent(++pageNumber, pageSize);
 
@@ -427,6 +434,7 @@ namespace Module_Education
         {
             object dataSource = listPassport.Select(o => new MyColumnCollectionDGPassportDesign(o)
             {
+                AgentPassportDesignId = o.Education_PassportDesign.PassportDesign_Id,
                 AgentPassportDesign = o.Education_PassportDesign.PassportDesign_Name,
                 AgentPassportSaferyIsCertifiied = o.AgentPassportDesign_IsCertified,
                 AgentPassportSafetyReturnDate = o.AgentPassportDesign_ReceivedDate,
@@ -444,6 +452,7 @@ namespace Module_Education
         {
             object dataSource = listPassport.Select(o => new MyColumnCollectionDGCertificateOPP(o)
             {
+                AgentCertificateLevelRId = o.Education_CertifElecOPP.CertifElecOPP_Id,
                 AgentCertificateLevelR = o.Education_CertifElecOPP.CertifElecOPP_LevelR,
                 AgentPassportSaferyIsCertifiied = o.AgentCertifElecOPP_IsCertified,
                 AgentPassportSafetyReturnDate = o.AgentCertifElecOPP_ReceivedDate,
@@ -462,6 +471,7 @@ namespace Module_Education
         {
             object dataSource = listPassport.Select(o => new MyColumnCollectionDGCertificateFunc(o)
             {
+                AgentCertifElecFuncId = o.Education_CertifElecFunc.CertifElecFunc_Id,
                 AgentCertificateLevelB = o.Education_CertifElecFunc.CertifElecFunc_LevelB,
                 AgentPassportSaferyIsCertifiied = o.AgentCertifElecFunc_IsCertified,
                 AgentPassportSafetyReturnDate = o.AgentCertifElecFunc_ReceivedDate,
@@ -480,7 +490,8 @@ namespace Module_Education
             object dataSource = listPassport.Select(o => new MyColumnCollectionDGPassportSafety(o)
             {
                 AgentPassportSafetyId = o.AgentPassportSafety_Id,
-                PassportSafety_LevelPS = o.Education_PassportSafety.PassportSafety_LevelPS,
+                PassportSafety_LevelPS = o.Education_PassportSafety == null ? "" : o.Education_PassportSafety.PassportSafety_LevelPS.ToString(),
+
                 AgentPassportSaferyIsCertifiied = o.AgentPassportSafety_HierarchyCertification,
                 AgentPassportSafetyReturnDate = o.AgentPassportSafety_ReturnDate,
                 AgentPassportSafetySendingDate = o.AgentPassportSafety_SendingDate,
@@ -495,31 +506,44 @@ namespace Module_Education
 
         private object GetDataSource(IPagedList<Education_Agent> listPaged)
         {
-            object dataSource = listPaged.Select(o => new MyColumnCollectionDGAgent(o)
+            try
             {
-                Agent_Matricule = o.Agent_Matricule,
-                Agent_FirstName = o.Agent_FirstName,
-                Agent_Name = o.Agent_Name,
+                object dataSource = listPaged.Select(o => new MyColumnCollectionDGAgent(o)
+                {
+                    Agent_Matricule = o.Agent_Matricule,
+                    Agent_FirstName = o.Agent_FirstName,
+                    Agent_Name = o.Agent_Name,
+                    Agent_Fullname = o.Agent_FullName,
+                    Function_Name = o.Agent_Function == null ? null : o.Education_Function.Function_Name,
 
-                Function_Name = o.Agent_Function == null ? null : dbEntities.Education_Function.Where(x => x.Function_Id == o.Agent_Function).FirstOrDefault().Function_Name,// If (o.Function == null) { null } else {o.Function.Function_Name}
-                Agent_Admin = o.Agent_Admin,
-                Agent_Responsable = o.Agent_LineManager == null ? null : dbEntities.Education_Agent.Where(x => x.Agent_Id == o.Agent_LineManager).FirstOrDefault().Agent_FullName,
-                Agent_InRoute = o.Agent_InRoute,
-                Agent_IsWorkManager = o.Agent_IsWorksManager,
-                Agent_DateSeniority = o.Agent_DateSeniority,
-                Agent_DateOfEntry = o.Agent_DateOfEntry,
-                Agent_DateFunction = o.Agent_DateFunction,
-                Agent_Habilitation = o.Education_Habilitation == null ? null : o.Education_Habilitation.Habilitation_Name,
-                Agent_Status = o.Education_AgentStatus == null ? null : o.Education_AgentStatus.AgentStatus_Name,
-                Agent_Etat = o.Agent_Etat
+                    //Function_Name = o.Agent_Function == null ? null : dbEntities.Education_Function.Where(x => x.Function_Id == o.Agent_Function).FirstOrDefault().Function_Name,// If (o.Function == null) { null } else {o.Function.Function_Name}
+                    Agent_Admin = o.Agent_Admin == null ? null : o.Agent_Admin,
+                    Agent_Responsable = o.Agent_LineManager == null ? null : o.Education_Agent2.Agent_FullName,
+
+                    //Agent_Responsable = o.Agent_LineManager == null ? null : dbEntities.Education_Agent.Where(x => x.Agent_Id == o.Agent_LineManager).FirstOrDefault().Agent_FullName,
+                    Agent_InRoute = o.Education_InRoute == null ? "" : o.Education_InRoute.InRoute_Name,
+                    Agent_IsWorkManager = o.Agent_IsWorksManager,
+                    Agent_DateSeniority = o.Agent_DateSeniority,
+                    Agent_DateOfEntry = o.Agent_DateOfEntry,
+                    Agent_DateFunction = o.Agent_DateFunction,
+                    Agent_Habilitation = o.Education_Habilitation == null ? null : o.Education_Habilitation.Habilitation_Name,
+                    Agent_Status = o.Education_AgentStatus == null ? null : o.Education_AgentStatus.AgentStatus_Name,
+                    Agent_Etat = o.Agent_Etat
 
 
-            }).ToList();
+                }).ToList();
 
-            lblMin.Text = listPaged.FirstItemOnPage.ToString();
-            lblMax.Text = listPaged.LastItemOnPage.ToString();
-            return dataSource;
+                lblMin.Text = listPaged.FirstItemOnPage.ToString();
+                lblMax.Text = listPaged.LastItemOnPage.ToString();
+                return dataSource;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
+
+       
 
         private object GetDataSource(IPagedList<Education_Formation> listPagedFormation)
         {
@@ -618,17 +642,30 @@ namespace Module_Education
 
         private void LoadPassportSafety()
         {
-            Label lblDgPassportSafety = new Label();
+            DataGridView dgPassportSafetyDyn = (DataGridView)this.tbFicheAgent.Controls.Find("dgPassportSafetyDyn", true).FirstOrDefault();
+            if (dgPassportSafetyDyn != null)
+            {
+                dgPassportSafetyDyn.Dispose();
+                this.tbFicheAgent.Controls.Remove(dgPassportSafetyDyn);
+            }
+            dgPassportSafetyDyn = new DataGridView();
+            
+            DataGridViewElementStates states = DataGridViewElementStates.None;
+
+            Label lblDgPassportSafety = (Label)this.tbFicheAgent.Controls.Find("lblDgPassportSafety", true).FirstOrDefault();
+            
+                lblDgPassportSafety = new Label();
+            
             lblDgPassportSafety.Text = "PASSEPORT SAFETY";
-            lblDgPassportSafety.Font = new Font("Arial", 14, FontStyle.Bold | FontStyle.Underline);
+            lblDgPassportSafety.Name = "lblDgPassportSafety";
+
+            lblDgPassportSafety.Font = new Font("Arial", 14, FontStyle.Bold);
             lblDgPassportSafety.ForeColor = Color.FromArgb(0, 105, 167);
 
             lblDgPassportSafety.AutoSize = true;
             lblDgPassportSafety.Location = new Point(155, 533);
             lblDgPassportSafety.Show();
 
-            DataGridView dgPassportSafetyDyn = new DataGridView();
-            DataGridViewElementStates states = DataGridViewElementStates.None;
             dgPassportSafetyDyn.MouseClick += dgPassportSafetyDynMouseClick;
             dgPassportSafetyDyn.CellFormatting += dgPassportSafetyDynCellFormating;
 
@@ -640,26 +677,266 @@ namespace Module_Education
             this.tbFicheAgent.Controls.Add(lblDgPassportSafety);
             this.tbFicheAgent.Controls.Add(dgPassportSafetyDyn);
 
+
             dgPassportSafetyDyn.Show();
+            dbAgentPassportSafety = new AgentPassportSafetyRepository();
             listAgentPassportSafety = dbAgentPassportSafety.LoadPassportSafety(CurrentUser);
             dgPassportSafetyDyn.DataSource = GetDataSource(listAgentPassportSafety);
             dgPassportSafetyDyn.Columns[0].Visible = false;
+
             var totalHeight = dgPassportSafetyDyn.Rows.GetRowsHeight(states) + dgPassportSafetyDyn.ColumnHeadersHeight + 30;
             var totalWidth = dgPassportSafetyDyn.Columns.GetColumnsWidth(states) + dgPassportSafetyDyn.RowHeadersWidth;
+
             dgPassportSafetyDyn.ClientSize = new Size(totalWidth, totalHeight);
             dgPassportSafetyDynSize = dgPassportSafetyDyn.Size;
+        }
+
+        private void LoadCertificationFunc()
+        {
+            DataGridView dgPassportBusinessDyn = this.Controls.Find("dgPassportBusinessDyn", true).FirstOrDefault() as DataGridView;
+
+            Label lblDgCertificateFunc = new Label();
+            lblDgCertificateFunc.Text = "CERTIFICAT ELECTRIQUE Fonction";
+            lblDgCertificateFunc.Font = new Font("Arial", 14, FontStyle.Bold | FontStyle.Underline);
+            lblDgCertificateFunc.ForeColor = Color.FromArgb(0, 105, 167);
+
+            lblDgCertificateFunc.AutoSize = true;
+            var yCalculated = dgPassportBusinessDyn.Location.Y + dgPassportBusinessDyn.Height;
+            lblDgCertificateFunc.Location = new Point(155, yCalculated);
+
+
+            lblDgCertificateFunc.Show();
+
+            DataGridView dgPassportElecFunc = new DataGridView();
+            DataGridViewElementStates states = DataGridViewElementStates.None;
+
+            dgPassportElecFunc.Location = new Point(155, (yCalculated + (lblDgCertificateFunc.Height + 10)));
+            dgPassportElecFunc.BackgroundColor = Color.White;
+            dgPassportElecFunc.ReadOnly = true;
+            dgPassportElecFunc.Name = "dgPassportElecFunc";
+            //dgPassportElecFunc.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+
+
+            dgPassportElecFunc.MouseClick += dgPassportElecFuncMouseClick;
+            dgPassportElecFunc.CellFormatting += dgPassportElecFuncCellFormating;
+
+            this.tbFicheAgent.Controls.Add(lblDgCertificateFunc);
+            this.tbFicheAgent.Controls.Add(dgPassportElecFunc);
+            dgPassportElecFunc.Show();
+            listAgentFuncCertif = dbAgentCerifElecFunc.LoadCertifElecFunc(CurrentUser);
+            dgPassportElecFunc.DataSource = GetDataSource(listAgentFuncCertif);
+            dgPassportElecFunc.Columns[0].Visible = false;
+
+            var totalHeight = dgPassportElecFunc.Rows.GetRowsHeight(states) + dgPassportElecFunc.ColumnHeadersHeight + 30;
+            var totalWidth = dgPassportElecFunc.Columns.GetColumnsWidth(states) + dgPassportElecFunc.RowHeadersWidth;
+            dgPassportElecFunc.ClientSize = new Size(totalWidth, totalHeight);
+            dgCertifFuncDynSize = dgPassportElecFunc.Size;
+
+        }
+
+        private void dgPassportElecFuncCellFormating(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+
+        }
+
+        private void dgPassportElecFuncMouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    //dgv.ClearSelection();
+                    DataGridView dgPassportElecFunc = this.Controls.Find("dgPassportElecFunc", true).FirstOrDefault() as DataGridView;
+
+                    ContextMenu m = new ContextMenu();
+
+                    int currentMouseOverRow = dgPassportElecFunc.HitTest(e.X, e.Y).RowIndex;
+                    if (currentMouseOverRow >= 0)
+                    {
+                        dgPassportElecFunc.Rows[dgPassportElecFunc.HitTest(e.X, e.Y).RowIndex].Selected = true;
+
+                        m.MenuItems.Add(new MenuItem(string.Format("Modifier la certification", currentMouseOverRow.ToString()),
+                           ShowEditCertificationForm));
+                        m.MenuItems.Add(new MenuItem(string.Format("Ajouter une certification safety", currentMouseOverRow.ToString()),
+                            ShowNewCertificationForm));
+
+                    }
+
+                    m.Show(dgPassportElecFunc, new Point(e.X, e.Y));
+                    PassportId = Convert.ToInt64(dgPassportElecFunc.SelectedCells[0].Value.ToString());
+                    typeOfCertificate = "Function";
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void LoadCertificationOPP()
+        {
+            DataGridView dgPassportElecFunc = this.Controls.Find("dgPassportElecFunc", true).FirstOrDefault() as DataGridView;
+
+            Label lblDgCertificateOPP = new Label();
+            lblDgCertificateOPP.Text = "CERTIFICAT ELECTRIQUE OPP";
+            lblDgCertificateOPP.Font = new Font("Arial", 14, FontStyle.Bold | FontStyle.Underline);
+            lblDgCertificateOPP.ForeColor = Color.FromArgb(0, 105, 167);
+
+            lblDgCertificateOPP.AutoSize = true;
+            var yCalculated = dgPassportElecFunc.Location.Y + dgPassportElecFunc.Height;
+            lblDgCertificateOPP.Location = new Point(155, yCalculated);
+            lblDgCertificateOPP.Show();
+
+            DataGridView dgPassportElecOPP = new DataGridView();
+            DataGridViewElementStates states = DataGridViewElementStates.None;
+
+            dgPassportElecOPP.Location = new Point(155, (yCalculated + (lblDgCertificateOPP.Height + 10)));
+            dgPassportElecOPP.BackgroundColor = Color.White;
+            dgPassportElecOPP.ReadOnly = true;
+            dgPassportElecOPP.Name = "dgPassportElecOPP";
+
+            dgPassportElecOPP.MouseClick += dgPassportElecOPPDynMouseClick;
+            dgPassportElecOPP.CellFormatting += dgPassportElecOPPDynCellFormating;
+
+            this.tbFicheAgent.Controls.Add(lblDgCertificateOPP);
+            this.tbFicheAgent.Controls.Add(dgPassportElecOPP);
+            dgPassportElecOPP.Show();
+            listAgentOPPCertif = dbAgentCertifElecOPP.LoadPassportBusinessAgent(CurrentUser);
+            dgPassportElecOPP.DataSource = GetDataSource(listAgentOPPCertif);
+
+            var totalHeight = dgPassportElecOPP.Rows.GetRowsHeight(states) + dgPassportElecOPP.ColumnHeadersHeight + 30;
+            var totalWidth = dgPassportElecOPP.Columns.GetColumnsWidth(states) + dgPassportElecOPP.RowHeadersWidth;
+            dgPassportElecOPP.ClientSize = new Size(totalWidth, totalHeight);
+            dgCertOPPyDynSize = dgPassportElecOPP.Size;
+
+        }
+
+        private void dgPassportElecOPPDynCellFormating(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+        }
+
+        private void dgPassportElecOPPDynMouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    //dgv.ClearSelection();
+                    DataGridView dgPassportElecOPP = this.Controls.Find("dgPassportElecOPP", true).FirstOrDefault() as DataGridView;
+
+                    ContextMenu m = new ContextMenu();
+
+                    int currentMouseOverRow = dgPassportElecOPP.HitTest(e.X, e.Y).RowIndex;
+                    if (currentMouseOverRow >= 0)
+                    {
+                        dgPassportElecOPP.Rows[dgPassportElecOPP.HitTest(e.X, e.Y).RowIndex].Selected = true;
+
+                        m.MenuItems.Add(new MenuItem(string.Format("Modifier la certification", currentMouseOverRow.ToString()),
+                           ShowEditCertificationForm));
+                        m.MenuItems.Add(new MenuItem(string.Format("Ajouter une certification safety", currentMouseOverRow.ToString()),
+                            ShowNewCertificationForm));
+
+                    }
+
+                    m.Show(dgPassportElecOPP, new Point(e.X, e.Y));
+                    PassportId = Convert.ToInt64(dgPassportElecOPP.SelectedCells[0].Value.ToString());
+                    typeOfCertificate = "OPP";
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        private void LoadPassportDesign()
+        {
+
+            DataGridView dgPassportElecOPP = this.Controls.Find("dgPassportElecOPP", true).FirstOrDefault() as DataGridView;
+
+            Label lblDgCertificateOPP = new Label();
+            lblDgCertificateOPP.Text = "PASSEPORT DESIGN";
+            lblDgCertificateOPP.Font = new Font("Arial", 14, FontStyle.Bold | FontStyle.Underline);
+            lblDgCertificateOPP.ForeColor = Color.FromArgb(0, 105, 167);
+
+            lblDgCertificateOPP.AutoSize = true;
+            var yCalculated = dgPassportElecOPP.Location.Y + dgPassportElecOPP.Height;
+            lblDgCertificateOPP.Location = new Point(155, yCalculated);
+            lblDgCertificateOPP.Show();
+
+            DataGridView dgPassportDesignDyn = new DataGridView();
+            DataGridViewElementStates states = DataGridViewElementStates.None;
+            DataGridView dgPassportSafetyDyn = this.Controls.Find("dgPassportSafetyDyn", true).FirstOrDefault() as DataGridView;
+
+            dgPassportDesignDyn.Location = new Point(155, (yCalculated + (lblDgCertificateOPP.Height + 10)));
+            dgPassportDesignDyn.BackgroundColor = Color.White;
+            dgPassportDesignDyn.ReadOnly = true;
+            dgPassportDesignDyn.Name = "dgPassportDesignDyn";
+
+            dgPassportDesignDyn.MouseClick += dgPassportDesignDynMouseClick;
+            dgPassportDesignDyn.CellFormatting += dgPassportDesignDynCellFormating;
+
+            this.tbFicheAgent.Controls.Add(lblDgCertificateOPP);
+            this.tbFicheAgent.Controls.Add(dgPassportDesignDyn);
+            dgPassportDesignDyn.Show();
+            listAgentPassportDesign = dbAgentPassportDesign.LoadPassportDesignAgent(CurrentUser);
+            dgPassportDesignDyn.DataSource = GetDataSource(listAgentPassportDesign);
+
+            var totalHeight = dgPassportDesignDyn.Rows.GetRowsHeight(states) + dgPassportDesignDyn.ColumnHeadersHeight + 30;
+            var totalWidth = dgPassportDesignDyn.Columns.GetColumnsWidth(states) + dgPassportDesignDyn.RowHeadersWidth;
+            dgPassportDesignDyn.ClientSize = new Size(totalWidth, totalHeight);
+            dgPassportDesignDynSize = dgPassportDesignDyn.Size;
+
+        }
+
+        private void dgPassportDesignDynCellFormating(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+        }
+
+        private void dgPassportDesignDynMouseClick(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    //dgv.ClearSelection();
+                    DataGridView dgPassportDesignDyn = this.Controls.Find("dgPassportDesignDyn", true).FirstOrDefault() as DataGridView;
+
+                    ContextMenu m = new ContextMenu();
+
+                    int currentMouseOverRow = dgPassportDesignDyn.HitTest(e.X, e.Y).RowIndex;
+                    if (currentMouseOverRow >= 0)
+                    {
+                        dgPassportDesignDyn.Rows[dgPassportDesignDyn.HitTest(e.X, e.Y).RowIndex].Selected = true;
+
+                        m.MenuItems.Add(new MenuItem(string.Format("Modifier la certification", currentMouseOverRow.ToString()),
+                           ShowEditCertificationForm));
+                        m.MenuItems.Add(new MenuItem(string.Format("Ajouter une certification safety", currentMouseOverRow.ToString()),
+                            ShowNewCertificationForm));
+
+                    }
+
+                    m.Show(dgPassportDesignDyn, new Point(e.X, e.Y));
+                    PassportId = Convert.ToInt64(dgPassportDesignDyn.SelectedCells[0].Value.ToString());
+                    typeOfCertificate = "Design";
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private void dgPassportSafetyDynCellFormating(object sender, DataGridViewCellFormattingEventArgs e)
         {
             //if (e.ColumnIndex == 5)
             //{
-                if (e.Value is bool)
-                {
-                    bool value = (bool)e.Value;
-                    e.Value = (value) ? "Oui" : "Non";
-                    e.FormattingApplied = true;
-                }
+            if (e.Value is bool)
+            {
+                bool value = (bool)e.Value;
+                e.Value = (value) ? "Oui" : "Non";
+                e.FormattingApplied = true;
+            }
             //}
         }
 
@@ -683,7 +960,7 @@ namespace Module_Education
                            ShowEditCertificationForm));
                         m.MenuItems.Add(new MenuItem(string.Format("Ajouter une certification safety", currentMouseOverRow.ToString()),
                             ShowNewCertificationForm));
-                        
+
                     }
 
                     m.Show(dgPassportSafetyDyn, new Point(e.X, e.Y));
@@ -692,8 +969,8 @@ namespace Module_Education
                 }
             }
             catch (Exception ex)
-            { 
-            
+            {
+                throw ex;
             }
         }
 
@@ -707,7 +984,7 @@ namespace Module_Education
             lblDgPassportBusiness.ForeColor = Color.FromArgb(0, 105, 167);
 
             lblDgPassportBusiness.AutoSize = true;
-            var yCalculated = dgPassportSafetyDyn.Location.Y + dgPassportSafetyDyn.Height ;
+            var yCalculated = dgPassportSafetyDyn.Location.Y + dgPassportSafetyDyn.Height;
             lblDgPassportBusiness.Location = new Point(155, yCalculated);
             lblDgPassportBusiness.Show();
 
@@ -765,125 +1042,54 @@ namespace Module_Education
             }
         }
 
-        private void LoadCertificationFunc()
-        {
-            DataGridView dgPassportBusinessDyn = this.Controls.Find("dgPassportBusinessDyn", true).FirstOrDefault() as DataGridView;
-
-            Label lblDgCertificateFunc = new Label();
-            lblDgCertificateFunc.Text = "CERTIFICAT ELECTRIQUE Fonction";
-            lblDgCertificateFunc.Font = new Font("Arial", 14, FontStyle.Bold | FontStyle.Underline);
-            lblDgCertificateFunc.ForeColor = Color.FromArgb(0, 105, 167);
-
-            lblDgCertificateFunc.AutoSize = true;
-            var yCalculated = dgPassportBusinessDyn.Location.Y + dgPassportBusinessDyn.Height;
-            lblDgCertificateFunc.Location = new Point(155, yCalculated);
-            
-
-            lblDgCertificateFunc.Show();
-
-            DataGridView dgPassportElecFunc = new DataGridView();
-            DataGridViewElementStates states = DataGridViewElementStates.None;
-
-            dgPassportElecFunc.Location = new Point(155, (yCalculated + (lblDgCertificateFunc.Height + 10)));
-            dgPassportElecFunc.BackgroundColor = Color.White;
-            dgPassportElecFunc.ReadOnly = true;
-            dgPassportElecFunc.Name = "dgPassportElecFunc";
-
-            this.tbFicheAgent.Controls.Add(lblDgCertificateFunc);
-            this.tbFicheAgent.Controls.Add(dgPassportElecFunc);
-            dgPassportElecFunc.Show();
-            listAgentFuncCertif = dbAgentCerifElecFunc.LoadPassportBusinessAgent(CurrentUser);
-            dgPassportElecFunc.DataSource = GetDataSource(listAgentFuncCertif);
-
-            var totalHeight = dgPassportElecFunc.Rows.GetRowsHeight(states) + dgPassportElecFunc.ColumnHeadersHeight + 30;
-            var totalWidth = dgPassportElecFunc.Columns.GetColumnsWidth(states) + dgPassportElecFunc.RowHeadersWidth;
-            dgPassportElecFunc.ClientSize = new Size(totalWidth, totalHeight);
-            dgCertifFuncDynSize = dgPassportElecFunc.Size;
-
-        }
-
-        private void LoadCertificationOPP()
-        {
-            DataGridView dgPassportElecFunc = this.Controls.Find("dgPassportElecFunc", true).FirstOrDefault() as DataGridView;
-
-            Label lblDgCertificateOPP = new Label();
-            lblDgCertificateOPP.Text = "CERTIFICAT ELECTRIQUE OPP";
-            lblDgCertificateOPP.Font = new Font("Arial", 14, FontStyle.Bold | FontStyle.Underline);
-            lblDgCertificateOPP.ForeColor = Color.FromArgb(0, 105, 167);
-
-            lblDgCertificateOPP.AutoSize = true;
-            var yCalculated = dgPassportElecFunc.Location.Y + dgPassportElecFunc.Height;
-            lblDgCertificateOPP.Location = new Point(155, yCalculated);
-            lblDgCertificateOPP.Show();
-
-            DataGridView dgPassportElecOPP = new DataGridView();
-            DataGridViewElementStates states = DataGridViewElementStates.None;
-
-            dgPassportElecOPP.Location = new Point(155, (yCalculated + (lblDgCertificateOPP.Height + 10)));
-            dgPassportElecOPP.BackgroundColor = Color.White;
-            dgPassportElecOPP.ReadOnly = true;
-            dgPassportElecOPP.Name = "dgPassportElecOPP";
-
-            this.tbFicheAgent.Controls.Add(lblDgCertificateOPP);
-            this.tbFicheAgent.Controls.Add(dgPassportElecOPP);
-            dgPassportElecOPP.Show();
-            listAgentOPPCertif = dbAgentCertifElecOPP.LoadPassportBusinessAgent(CurrentUser);
-            dgPassportElecOPP.DataSource = GetDataSource(listAgentOPPCertif);
-
-            var totalHeight = dgPassportElecOPP.Rows.GetRowsHeight(states) + dgPassportElecOPP.ColumnHeadersHeight + 30;
-            var totalWidth = dgPassportElecOPP.Columns.GetColumnsWidth(states) + dgPassportElecOPP.RowHeadersWidth;
-            dgPassportElecOPP.ClientSize = new Size(totalWidth, totalHeight);
-            dgCertOPPyDynSize = dgPassportElecOPP.Size;
-
-        }
-
-        private void LoadPassportDesign()
-        {
-
-            DataGridView dgPassportElecOPP = this.Controls.Find("dgPassportElecOPP", true).FirstOrDefault() as DataGridView;
-
-            Label lblDgCertificateOPP = new Label();
-            lblDgCertificateOPP.Text = "PASSEPORT DESIGN";
-            lblDgCertificateOPP.Font = new Font("Arial", 14, FontStyle.Bold | FontStyle.Underline);
-            lblDgCertificateOPP.ForeColor = Color.FromArgb(0, 105, 167);
-
-            lblDgCertificateOPP.AutoSize = true;
-            var yCalculated = dgPassportElecOPP.Location.Y + dgPassportElecOPP.Height;
-            lblDgCertificateOPP.Location = new Point(155, yCalculated);
-            lblDgCertificateOPP.Show();
-
-            DataGridView dgPassportDesignDyn = new DataGridView();
-            DataGridViewElementStates states = DataGridViewElementStates.None;
-            DataGridView dgPassportSafetyDyn = this.Controls.Find("dgPassportSafetyDyn", true).FirstOrDefault() as DataGridView;
-
-            dgPassportDesignDyn.Location = new Point(155, (yCalculated + (lblDgCertificateOPP.Height + 10)));
-            dgPassportDesignDyn.BackgroundColor = Color.White;
-            dgPassportDesignDyn.ReadOnly = true;
-            dgPassportDesignDyn.Name = "dgPassportDesignDyn";
-
-            this.tbFicheAgent.Controls.Add(lblDgCertificateOPP);
-            this.tbFicheAgent.Controls.Add(dgPassportDesignDyn);
-            dgPassportDesignDyn.Show();
-            listAgentPassportDesign = dbAgentPassportDesign.LoadPassportDesignAgent(CurrentUser);
-            dgPassportDesignDyn.DataSource = GetDataSource(listAgentPassportDesign);
-
-            var totalHeight = dgPassportDesignDyn.Rows.GetRowsHeight(states) + dgPassportDesignDyn.ColumnHeadersHeight + 30;
-            var totalWidth = dgPassportDesignDyn.Columns.GetColumnsWidth(states) + dgPassportDesignDyn.RowHeadersWidth;
-            dgPassportDesignDyn.ClientSize = new Size(totalWidth, totalHeight);
-            dgPassportDesignDynSize = dgPassportDesignDyn.Size;
-
-        }
-
         private void ShowNewCertificationForm(object sender, EventArgs e)
         {
-            FrmCertificate frmCertificate = new FrmCertificate(typeOfCertificate, true, PassportId);
+            FrmCertificate frmCertificate = new FrmCertificate(typeOfCertificate, false, PassportId);
             frmCertificate.ShowDialog();
+
+            switch (typeOfCertificate)
+            {
+                case "Safety":
+                    LoadPassportSafety();
+                    break;
+                case "Business":
+                    LoadPassportBusiness();
+                    break;
+                case "Function":
+                    LoadCertificationFunc();
+                    break;
+                case "OPP":
+                    LoadCertificationOPP();
+                    break;
+                case "Design":
+                    LoadPassportDesign();
+                    break;
+            }
         }
 
         private void ShowEditCertificationForm(object sender, EventArgs e)
         {
             FrmCertificate frmCertificate = new FrmCertificate(typeOfCertificate, false, PassportId);
             frmCertificate.ShowDialog();
+
+            switch (typeOfCertificate)
+            {
+                case "Safety":
+                    LoadPassportSafety();
+                    break;
+                case "Business":
+                    LoadPassportBusiness();
+                    break;
+                case "Function":
+                    LoadCertificationFunc();
+                    break;
+                case "OPP":
+                    LoadCertificationOPP();
+                    break;
+                case "Design":
+                    LoadPassportDesign();
+                    break;
+            }
         }
 
         private void UserRecord_LoadUserByMatricule(long agentMatricule)
@@ -1140,7 +1346,7 @@ namespace Module_Education
             List<Education_Formation> listEducation_Formation = dbEducation_Formation.LoadAllEducation_FormationOfSingleAgent(userRecord);
             dg_TABFormationsOfAgent.DataSource = GetDataSource(listEducation_Formation);
             dg_TABFormationsOfAgent.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            
+
 
         }
 
@@ -1148,10 +1354,11 @@ namespace Module_Education
         {
             // Creating and setting the properties of Button 
             Button ButtonSaveAgent = new Button();
-            ButtonSaveAgent.Location = new Point(147, 426);
+            ButtonSaveAgent.Location = new Point(147, 435);
             ButtonSaveAgent.Text = "Sauver";
             ButtonSaveAgent.Name = "ButtonSaveAgent";
             ButtonSaveAgent.FlatStyle = FlatStyle.Flat;
+            ButtonSaveAgent.TabIndex = 19;
 
             ButtonSaveAgent.FlatAppearance.BorderSize = 0;
             ButtonSaveAgent.AutoSize = true;
@@ -1170,12 +1377,12 @@ namespace Module_Education
 
             // Creating and setting the properties of Button 
             Button ButtonCancelModificationAgent = new Button();
-            ButtonCancelModificationAgent.Location = new Point(237, 426);
+            ButtonCancelModificationAgent.Location = new Point(257, 435);
             ButtonCancelModificationAgent.Text = "Annuler";
             ButtonCancelModificationAgent.Name = "ButtonCancel";
             ButtonCancelModificationAgent.FlatStyle = FlatStyle.Flat;
             ButtonCancelModificationAgent.FlatAppearance.BorderSize = 0;
-
+            ButtonCancelModificationAgent.TabIndex = 20;
             ButtonCancelModificationAgent.AutoSize = true;
             ButtonCancelModificationAgent.Enabled = false;
             //ButtonCancelModificationAgent.BackColor = Color.OrangeRed;
@@ -1548,21 +1755,6 @@ namespace Module_Education
             }
         }
 
-        private void textBoxAdmin_Leave(object sender, EventArgs e)
-        {
-            try
-            {
-                if (CurrentUser.Agent_Admin != textBoxAdmin.Text)
-                {
-                    CurrentUser.Agent_Admin = textBoxAdmin.Text;
-                    ActivateModification(true);
-                }
-            }
-            catch (Exception ex)
-            {
-                Logger.LogError(ex, Environment.UserName);
-            }
-        }
 
         private void comboBoxEPI_Leave(object sender, EventArgs e)
         {
@@ -1688,12 +1880,16 @@ namespace Module_Education
             if (filterEventArgs.Cancel == false)
             {
                 if (listAgentFiltered == null)
+                {
                     listAgentFiltered = MainWindow.globalListAgents;
-                else {
-
-                    dtAgents = ToDataTable<Education_Agent>(listAgentFiltered);
+                    if (dtAgents == null)
+                        dtAgents = ToDataTable<Education_Agent>(listAgentFiltered);
                 }
-                //listAgentFiltered = db.LoadAgentsFiltered(_filterString, listAgentFiltered);
+                else
+                {
+                    if (dtAgents == null)
+                        dtAgents = ToDataTable<Education_Agent>(listAgentFiltered);
+                }
 
                 if (_filterString == "")
                 {
@@ -1707,16 +1903,15 @@ namespace Module_Education
                         DataSource = dtAgents
                     };
                     bindingSource.Filter = _filterString;
-
                     dG_Agents.DataSource = bindingSource;
 
-
+                    //dG_Agents.DataSource = bindingSource;
                 }
                 btnClearFilters.Enabled = true;
-
-
             }
         }
+
+       
 
         public static DataTable ToDataTable<T>(List<T> items)
         {
@@ -1767,8 +1962,6 @@ namespace Module_Education
 
         }
 
-
-
         private void btnClearFilters_Click(object sender, EventArgs e)
         {
             listAgentFiltered = db.LoadAgentsFiltered("", listAgentFiltered);
@@ -1798,8 +1991,25 @@ namespace Module_Education
 
         private void textBoxAdmin_Enter(object sender, EventArgs e)
         {
-            TextBoxExtensions TbExtension = new TextBoxExtensions();
             TbExtension.OnFocusTextbox((TextBox)sender);
+        }
+
+        private void textBoxAdmin_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                TbExtension.DefautSizeTbFiche((TextBox)sender);
+
+                if (CurrentUser.Agent_Admin != textBoxAdmin.Text)
+                {
+                    CurrentUser.Agent_Admin = textBoxAdmin.Text;
+                    ActivateModification(true);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, Environment.UserName);
+            }
         }
 
         private void cbTrajet_CheckedChanged(object sender, EventArgs e)
@@ -1836,7 +2046,73 @@ namespace Module_Education
             }
         }
 
+        private void dG_Agents_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value is bool)
+            {
+                bool value = (bool)e.Value;
+                e.Value = (value) ? "OUI" : "NON";
+                e.FormattingApplied = true;
+            }
+        }
 
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadDatagridAgentAsync();
+        }
+
+        private void comboBoxStatut_Enter(object sender, EventArgs e)
+        {
+            Control ctrl = (Control)sender;
+            controlLocation = ctrl.Location;
+
+            cbExtension.OnFocusTextbox((ComboBox)sender);
+        }
+
+        private void comboBoxStatut_Leave(object sender, EventArgs e)
+        {
+            ComboBox cb = (ComboBox)sender;
+            cbExtension.DefautSizeTbFiche((ComboBox)cb);
+            cb.Location = controlLocation;
+
+        }
+
+        private void textBoxExtensions1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxExtensions1_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                TextBoxExtensions tbExt = (TextBoxExtensions)sender;
+                Regex regexCheckIfDigits = new Regex(@" ^[0 - 9]\d");
+
+                decimal numberTbExt = Convert.ToDecimal(tbExt.Text);
+                int countDecimal = BitConverter.GetBytes(decimal.GetBits(numberTbExt)[3])[2];
+                double numberBeforeComma = Convert.ToDouble(numberTbExt);
+                double numberofDigits = Math.Floor(Math.Log10(Convert.ToInt32(numberBeforeComma) + 1));
+
+                Regex newRegex = new Regex(@"^[0-9]\d{0," + numberofDigits + @"}(\.\d{0," + countDecimal + @"})*(,\d+)?$");
+                Match match = newRegex.Match(tbExt.Text.ToString());
+                if (match.Success)
+                {
+                    Console.WriteLine(match.Value);
+                }
+            }
+            catch (Exception ex) { }
+        }
+
+        private void tbNbrRows_ImeModeChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dG_Agents_MouseClick_1(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

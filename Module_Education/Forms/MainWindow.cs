@@ -2,17 +2,19 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Deployment.Application;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Module_Education.Forms.UserControls;
+using Module_Education.Helper;
 using Module_Education.Models;
 using Module_Education.Repositories;
 using Module_Education.UserControls;
-using Synapse;
 using SynapseCore.Controls;
 
 namespace Module_Education
@@ -78,8 +80,16 @@ namespace Module_Education
         {
             //panelMain.Controls.Add(UC_Education_Formation.Instance);
             //panelMain.Controls.Add(UC_Agent.Instance);
-            
+
             InitializeComponent();
+            if (ApplicationDeployment.IsNetworkDeployed)
+            {
+                ApplicationDeployment cd = ApplicationDeployment.CurrentDeployment;
+                this.Text = "Module Education Version : " + cd.CurrentVersion.ToString();
+
+
+
+            }
             this.Size = new Size(1366, 768);
 
             prevState = this.WindowState;
@@ -90,10 +100,16 @@ namespace Module_Education
             Thread y = new Thread(LoadEducation_FormationsThread);
             y.Start();
             LoadMainWindow();
-            //MenuBtnEducation_Formation.PerformClick();
+            //lblNoticeBeta.Left = (this.ClientSize.Width - lblNoticeBeta.Width) / 2;
+            //lblNoticeBeta.Top = (this.ClientSize.Height - lblNoticeBeta.Height) / 2;
+            //lblBetaVersion.Left = (this.ClientSize.Width - lblBetaVersion.Width) / 2;
+            //lblBetaVersion.Top = (this.ClientSize.Height - lblBetaVersion.Height) / 2;
+            //lblTitleApp.Left = (this.ClientSize.Width - lblTitleApp.Width) / 2;
+            //lblTitleApp.Top = (this.ClientSize.Height - lblTitleApp.Height) / 2;
         }
 
-        private void LoadMainWindow() {
+        private void LoadMainWindow()
+        {
             lblHelloUsername.Text = "Hello " + Environment.UserName;
 
         }
@@ -109,7 +125,7 @@ namespace Module_Education
                     //this.FormBorderStyle = FormBorderStyle.None;
                     //panel1.Size = this.ClientSize;
                     panelMain.Size = this.ClientSize;
-                   // flowPanelMenuSize.Height = this.Height;
+                    // flowPanelMenuSize.Height = this.Height;
 
 
                 }
@@ -118,7 +134,7 @@ namespace Module_Education
                     this.FormBorderStyle = FormBorderStyle.Sizable;
                     panel1.Size = panel1Size;
                     panelMain.Size = panelMainSize;
-                   // flowPanelMenuSize.Height = flowPanelMenuSize.Height;
+                    // flowPanelMenuSize.Height = flowPanelMenuSize.Height;
 
 
                 }
@@ -204,7 +220,7 @@ namespace Module_Education
                 ReceiverFromFicheFormation += new functioncall(AgentSelectedInFormationCard);
                 UCEducation_Formation.Instance.PointerFormation = ReceiverFromFicheFormation;
 
-                
+
 
                 ReceiverRefreshListeAgent += new refreshFicheAgent(refreshFormAgent);
                 UCEducation_Formation.Instance.PointerRefreshFicheAgent = ReceiverRefreshListeAgent;
@@ -236,6 +252,7 @@ namespace Module_Education
         private void MenuAgenClick(object sender, EventArgs e)
         {
             Button button = ((Button)sender);
+            ActiveUserControl = UC_Agent.Instance;
 
             //Add module1 to panel control
             if (!panelMain.Controls.Contains(UC_Agent.Instance))
@@ -300,142 +317,24 @@ namespace Module_Education
 
         private void MenuBtnAuthentification_Click(object sender, EventArgs e)
         {
-            if (!panelMain.Controls.Contains(UC_Authentification.Instance))
+            ActiveUserControl = UC_GrpAgents.Instance;
+            Button button = ((Button)sender);
+
+            if (!panelMain.Controls.Contains(UC_GrpAgents.Instance))
             {
-                panelMain.Controls.Add(UC_Authentification.Instance);
-                UC_Authentification.Instance.Dock = DockStyle.Fill;
-                UC_Authentification.Instance.BringToFront();
+                panelMain.Controls.Add(UC_GrpAgents.Instance);
+                UC_GrpAgents.Instance.Dock = DockStyle.Fill;
+                UC_GrpAgents.Instance.BringToFront();
             }
             else
-                UC_Authentification.Instance.BringToFront();
-        }
+                UC_GrpAgents.Instance.BringToFront();
 
-        /// <summary>
-        /// Change la couleur des autres bouttons quand l'user click sur un des bouttons du menu
-        /// </summary>
-        private void UnselectButtons()
-        {
-            foreach (Button btn in this.flowPanelMenu.Controls)
-            {
-                if (btn.Name != bouttonMenuPressed.Name)
-                {
-                    btn.BackColor = Color.FromArgb(0, 115, 204);
-                    btn.FlatAppearance.BorderSize = 0;
-
-                }
-            }
-        }
-
-        private void refreshFormAgent(long UserId)
-        {
-            UserIDSelected = UserId;
-            MenuBtnAgent.PerformClick();
-
-            UC_Agent.Instance.UserRecord_LoadUser(UserId);
-
-            //MessageBox.Show("REFRESH");
-        }
-
-        private void clickButtonAgentMenu(object sender, EventArgs e)
-        {
-            MenuBtnAgent.PerformClick();
-        }
-
-        private void clickButtonFormationMenu(string formationSAPNum)
-        {
-            UCEducation_Formation.FormationIDSelected = formationSAPNum;
-            UCEducation_Formation.Instance.LoadFicheEducation_Formation(formationSAPNum); 
-            MenuBtnEducation_Formation.PerformClick();
-
-
-        }
-
-        private void AgentSelectedInFormationCard(long matricule)
-        {
-            UC_Agent.Agent_Matricule = matricule;
-        }
-
-        #endregion
-
-        #region Timer
-        private void timerMenu_Tick(object sender, EventArgs e)
-        {
-            if (IsMenuShown)
-            {
-                if (flowPanelMenu.Width >= 210)
-                {
-                    timerMenu.Stop();
-                }
-                flowPanelMenu.Width += 35;
-            }
-            else
-            {
-                if (flowPanelMenu.Width <= 0)
-                {
-                    flowPanelMenu.Hide();
-                    timerMenu.Stop();
-                }
-                flowPanelMenu.Width -= 35;
-            }
-        }
-        #endregion
-
-        #region Threading
-        static void LoadEducation_FormationsThread()
-        {
-            Thread y = new Thread(LoadUsersThread);
-            y.Start();
-            Education_FormationDataAccess db = new Education_FormationDataAccess();
-            globalListEducation_Formations = db.LoadAllEducation_Formations();
-
-
-        }
-
-        static void LoadUsersThread()
-        {
-            Thread y = new Thread(LoadCertificateAgents);
-            y.Start();
-            AgentDataAccess db = new AgentDataAccess();
-            globalListAgents = db.LoadAllAgents();
-            
-
-        }
-
-        private static void LoadCertificateAgents()
-        {
-            globalListCertificateAgents = dbAgent.LoadAllAgentsCertificate();
-        }
-
-        #endregion
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show("Etes-vous sûr de vouloir quitter l'application?", "Confirmation", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                //do something else
-            }
-        }
-
-        private void pictureBoxExit_Click(object sender, EventArgs e)
-        {
-            DialogResult dialogResult = MessageBox.Show("Etes-vous sûr de vouloir quitter l'application?", "Confirmation", MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.Yes)
-            {
-                Application.Exit();
-            }
-            else if (dialogResult == DialogResult.No)
-            {
-                //do something else
-            }
-        }
-
-        private void lblHelloUsername_Click(object sender, EventArgs e)
-        {
+            button.BackColor = Color.FromArgb(67, 100, 214);
+            button.FlatStyle = FlatStyle.Flat;
+            button.FlatAppearance.BorderColor = Color.White;
+            button.FlatAppearance.BorderSize = 1;
+            bouttonMenuPressed = (Button)button;
+            UnselectButtons();
         }
 
         private void btnMatriceFormation_Click(object sender, EventArgs e)
@@ -498,37 +397,207 @@ namespace Module_Education
             UnselectButtons();
         }
 
+        /// <summary>
+        /// Change la couleur des autres bouttons quand l'user click sur un des bouttons du menu
+        /// </summary>
+        private void UnselectButtons()
+        {
+            foreach (Button btn in this.flowPanelMenu.Controls)
+            {
+                if (btn.Name != bouttonMenuPressed.Name)
+                {
+                    btn.BackColor = Color.FromArgb(0, 115, 204);
+                    btn.FlatAppearance.BorderSize = 0;
+
+                }
+            }
+        }
+
+        private void refreshFormAgent(long UserId)
+        {
+            UserIDSelected = UserId;
+            MenuBtnAgent.PerformClick();
+
+            UC_Agent.Instance.UserRecord_LoadUser(UserId);
+
+            //MessageBox.Show("REFRESH");
+        }
+
+        private void clickButtonAgentMenu(object sender, EventArgs e)
+        {
+            MenuBtnAgent.PerformClick();
+        }
+
+        private void clickButtonFormationMenu(string formationSAPNum)
+        {
+            UCEducation_Formation.FormationIDSelected = formationSAPNum;
+            UCEducation_Formation.Instance.LoadFicheEducation_Formation(formationSAPNum);
+            MenuBtnEducation_Formation.PerformClick();
+
+
+        }
+
+        private void AgentSelectedInFormationCard(long matricule)
+        {
+            UC_Agent.Agent_Matricule = matricule;
+        }
+
+        #endregion
+
+        #region Timer
+        private void timerMenu_Tick(object sender, EventArgs e)
+        {
+            if (IsMenuShown)
+            {
+                if (flowPanelMenu.Width >= 210)
+                {
+                    timerMenu.Stop();
+                }
+                flowPanelMenu.Width += 35;
+            }
+            else
+            {
+                if (flowPanelMenu.Width <= 0)
+                {
+                    flowPanelMenu.Hide();
+                    timerMenu.Stop();
+                }
+                flowPanelMenu.Width -= 35;
+            }
+        }
+        #endregion
+
+        #region Threading
+        static void LoadEducation_FormationsThread()
+        {
+            Thread y = new Thread(LoadUsersThread);
+            y.Start();
+            Education_FormationDataAccess db = new Education_FormationDataAccess();
+            globalListEducation_Formations = db.LoadAllEducation_Formations();
+
+
+        }
+
+        static void LoadUsersThread()
+        {
+            Thread y = new Thread(LoadCertificateAgents);
+            y.Start();
+            AgentDataAccess db = new AgentDataAccess();
+            globalListAgents = db.LoadAllAgents();
+            UC_Agent.dtAgents = ToDataTable<Education_Agent>(globalListAgents);
+
+
+        }
+
+        private static void LoadCertificateAgents()
+        {
+            globalListCertificateAgents = dbAgent.LoadAllAgentsCertificate();
+
+        }
+
+        public static DataTable ToDataTable<T>(List<T> items)
+        {
+            try
+            {
+                DataTable dataTable = new DataTable(typeof(T).Name);
+
+                //Get all the properties
+                PropertyInfo[] Props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+                foreach (PropertyInfo prop in Props)
+                {
+                    //Setting column names as Property names
+                    dataTable.Columns.Add(prop.Name);
+                }
+                foreach (T item in items)
+                {
+                    var values = new object[Props.Length];
+                    for (int i = 0; i < Props.Length; i++)
+                    {
+                        //inserting property values to datatable rows
+                        values[i] = Props[i].GetValue(item, null);
+                    }
+                    dataTable.Rows.Add(values);
+                }
+                //put a breakpoint here and check datatable
+                return dataTable;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, Environment.UserName);
+                return new DataTable();
+            }
+        }
+
+        #endregion
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Etes-vous sûr de vouloir quitter l'application?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+            }
+        }
+
+        private void pictureBoxExit_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Etes-vous sûr de vouloir quitter l'application?", "Confirmation", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+            }
+        }
+
+        private void lblHelloUsername_Click(object sender, EventArgs e)
+        {
+        }
+
+
+
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
-        //    if (flowPanelMenu.Visible && ActiveUserControl != null)
-        //    {
-        //        switch (ActiveUserControl.Name)
-        //        {
-        //            case "UCEducation_Formation":
-        //                this.panelMain.Dock = DockStyle.Fill;
-        //                //ActiveUserControl.Size = newSize;
-        //                UCEducation_Formation.Instance.Dock = DockStyle.Left;
-        //                break;
-        //        }
-        //        flowPanelMenu.Visible = false;
-        //    }
+            //    if (flowPanelMenu.Visible && ActiveUserControl != null)
+            //    {
+            //        switch (ActiveUserControl.Name)
+            //        {
+            //            case "UCEducation_Formation":
+            //                this.panelMain.Dock = DockStyle.Fill;
+            //                //ActiveUserControl.Size = newSize;
+            //                UCEducation_Formation.Instance.Dock = DockStyle.Left;
+            //                break;
+            //        }
+            //        flowPanelMenu.Visible = false;
+            //    }
 
-        //    else
-        //    {
-        //        if (ActiveUserControl != null)
-        //        {
-        //            switch (ActiveUserControl.Name)
-        //            {
-        //                case "UCEducation_Formation":
-        //                    UCEducation_Formation.Instance.Dock = DockStyle.Right;
-        //                    int xCalculated = (UCEducation_Formation.Instance.Location.X - 30);
-        //                    break;
-        //            }
-        //        }
-                
-        //        flowPanelMenu.Visible = true;
+            //    else
+            //    {
+            //        if (ActiveUserControl != null)
+            //        {
+            //            switch (ActiveUserControl.Name)
+            //            {
+            //                case "UCEducation_Formation":
+            //                    UCEducation_Formation.Instance.Dock = DockStyle.Right;
+            //                    int xCalculated = (UCEducation_Formation.Instance.Location.X - 30);
+            //                    break;
+            //            }
+            //        }
 
-        //    }
+            //        flowPanelMenu.Visible = true;
+
+            //    }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

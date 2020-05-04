@@ -20,5 +20,30 @@ namespace Module_Education.Repositories
             return db.Education_CertifElecOPP
                     .ToList();
         }
+
+        public Education_AgentCertifElecOPP LoadSinglePassport(long passportId)
+        {
+            return db.Education_AgentCertifElecOPP
+                .Where(w => w.AgentCertifElecOPP_Certification == passportId)
+                   .FirstOrDefault()
+                   ;
+        }
+
+        internal Education_AgentCertifElecOPP SaveExistingPs(Education_AgentCertifElecOPP agentCertifElecOPPSelected)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Education_CertifElecOPP SaveNewCertificatOPP(string lvlR)
+        {
+            Education_CertifElecOPP education_PassportSafety = new Education_CertifElecOPP
+            {
+
+                CertifElecOPP_LevelR = lvlR,
+            };
+            db.Education_CertifElecOPP.Add(education_PassportSafety);
+            db.SaveChanges();
+            return education_PassportSafety;
+        }
     }
 }

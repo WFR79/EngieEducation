@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Module_Education
+namespace Module_Education.Repositories
 {
     public class FormationCategoryDataAccess
     {

@@ -29,14 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle31 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle32 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle33 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle34 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle35 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle36 = new SynapseAdvancedControls.HeaderStateStyle();
             this.tabControlAgentList = new System.Windows.Forms.TabControl();
             this.tbListeAgents = new System.Windows.Forms.TabPage();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.lblMax = new System.Windows.Forms.Label();
             this.lblMin = new System.Windows.Forms.Label();
@@ -44,7 +39,6 @@
             this.btnClearFilters = new System.Windows.Forms.Button();
             this.tbNbrRows = new System.Windows.Forms.TextBox();
             this.lblNbrRows = new System.Windows.Forms.Label();
-            this.picExportExcel = new System.Windows.Forms.PictureBox();
             this.dG_Agents = new Zuby.ADGV.AdvancedDataGridView();
             this.btn_NextAgent = new System.Windows.Forms.Button();
             this.btn_PreviousAgent = new System.Windows.Forms.Button();
@@ -89,28 +83,28 @@
             this.dateTimePicker_DateOfEntry = new System.Windows.Forms.DateTimePicker();
             this.labelActif = new System.Windows.Forms.Label();
             this.labelMatricule = new System.Windows.Forms.Label();
-            this.pictureBox_ProfilePic = new System.Windows.Forms.PictureBox();
-            this.headerFormatStyle1 = new SynapseAdvancedControls.HeaderFormatStyle();
-            this.headerFormatStyle2 = new SynapseAdvancedControls.HeaderFormatStyle();
-            this.equipeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.toolTipExcel = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.picExportExcel = new System.Windows.Forms.PictureBox();
+            this.pictureBox_ProfilePic = new System.Windows.Forms.PictureBox();
+            this.textBoxExtensions1 = new Module_Education.Classes.TextBoxExtensions();
+            this.comboBoxStatut11 = new Module_Education.Classes.Extensions.ComboBoxExt();
             this.tabControlAgentList.SuspendLayout();
             this.tbListeAgents.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picExportExcel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dG_Agents)).BeginInit();
             this.tbFicheAgent.SuspendLayout();
             this.tabControl_Education_FormationAndCertificationsOfUser.SuspendLayout();
             this.tabPageEducation_FormationsAgent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dg_TABFormationsOfAgent)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picExportExcel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ProfilePic)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.equipeBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlAgentList
             // 
-            this.tabControlAgentList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.tabControlAgentList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlAgentList.Controls.Add(this.tbListeAgents);
             this.tabControlAgentList.Controls.Add(this.tbFicheAgent);
@@ -118,12 +112,13 @@
             this.tabControlAgentList.Location = new System.Drawing.Point(0, 3);
             this.tabControlAgentList.Name = "tabControlAgentList";
             this.tabControlAgentList.SelectedIndex = 0;
-            this.tabControlAgentList.Size = new System.Drawing.Size(1208, 657);
+            this.tabControlAgentList.Size = new System.Drawing.Size(1197, 657);
             this.tabControlAgentList.TabIndex = 0;
             // 
             // tbListeAgents
             // 
             this.tbListeAgents.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
+            this.tbListeAgents.Controls.Add(this.btnRefresh);
             this.tbListeAgents.Controls.Add(this.label4);
             this.tbListeAgents.Controls.Add(this.lblMax);
             this.tbListeAgents.Controls.Add(this.lblMin);
@@ -140,9 +135,21 @@
             this.tbListeAgents.Location = new System.Drawing.Point(4, 23);
             this.tbListeAgents.Name = "tbListeAgents";
             this.tbListeAgents.Padding = new System.Windows.Forms.Padding(3);
-            this.tbListeAgents.Size = new System.Drawing.Size(1200, 630);
+            this.tbListeAgents.Size = new System.Drawing.Size(1189, 630);
             this.tbListeAgents.TabIndex = 0;
             this.tbListeAgents.Text = "Liste";
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRefresh.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.btnRefresh.Location = new System.Drawing.Point(829, 576);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.TabIndex = 27;
+            this.btnRefresh.Text = "Rafaichir";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // label4
             // 
@@ -211,6 +218,7 @@
             this.tbNbrRows.Text = "50";
             this.tbNbrRows.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.tbNbrRows.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbNbrRows_KeyDown);
+            this.tbNbrRows.ImeModeChanged += new System.EventHandler(this.tbNbrRows_ImeModeChanged);
             // 
             // lblNbrRows
             // 
@@ -223,32 +231,24 @@
             this.lblNbrRows.TabIndex = 20;
             this.lblNbrRows.Text = "Nombre de lignes à afficher:";
             // 
-            // picExportExcel
-            // 
-            this.picExportExcel.Image = global::Module_Education.Properties.Resources.Excel_icon;
-            this.picExportExcel.Location = new System.Drawing.Point(1005, 9);
-            this.picExportExcel.Name = "picExportExcel";
-            this.picExportExcel.Size = new System.Drawing.Size(32, 32);
-            this.picExportExcel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picExportExcel.TabIndex = 19;
-            this.picExportExcel.TabStop = false;
-            this.toolTipExcel.SetToolTip(this.picExportExcel, "Exportez le tableau vers un fichier Excel");
-            this.picExportExcel.Click += new System.EventHandler(this.picExportExcel_Click);
-            // 
             // dG_Agents
             // 
-            this.dG_Agents.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.dG_Agents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dG_Agents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dG_Agents.BackgroundColor = System.Drawing.Color.White;
             this.dG_Agents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dG_Agents.FilterAndSortEnabled = true;
             this.dG_Agents.Location = new System.Drawing.Point(6, 47);
             this.dG_Agents.Name = "dG_Agents";
             this.dG_Agents.ReadOnly = true;
             this.dG_Agents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dG_Agents.Size = new System.Drawing.Size(1160, 501);
+            this.dG_Agents.Size = new System.Drawing.Size(1104, 501);
             this.dG_Agents.TabIndex = 18;
             this.dG_Agents.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.dG_Agents_FilterStringChanged_1);
+            this.dG_Agents.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dG_Agents_CellFormatting);
+            this.dG_Agents.DoubleClick += new System.EventHandler(this.dG_Agents_MouseClick_1);
             this.dG_Agents.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dG_Agents_MouseClick_1);
             // 
             // btn_NextAgent
@@ -279,7 +279,7 @@
             // 
             this.lblTiteLstAgent.AutoSize = true;
             this.lblTiteLstAgent.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTiteLstAgent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(101)))));
+            this.lblTiteLstAgent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
             this.lblTiteLstAgent.Location = new System.Drawing.Point(9, 11);
             this.lblTiteLstAgent.Name = "lblTiteLstAgent";
             this.lblTiteLstAgent.Size = new System.Drawing.Size(177, 24);
@@ -292,12 +292,15 @@
             this.tbFiltre.Name = "tbFiltre";
             this.tbFiltre.Size = new System.Drawing.Size(261, 20);
             this.tbFiltre.TabIndex = 7;
+            this.tbFiltre.Visible = false;
             this.tbFiltre.TextChanged += new System.EventHandler(this.tbFiltre_TextChanged);
             // 
             // tbFicheAgent
             // 
             this.tbFicheAgent.AutoScroll = true;
             this.tbFicheAgent.BackColor = System.Drawing.Color.White;
+            this.tbFicheAgent.Controls.Add(this.textBoxExtensions1);
+            this.tbFicheAgent.Controls.Add(this.comboBoxStatut11);
             this.tbFicheAgent.Controls.Add(this.textBox1);
             this.tbFicheAgent.Controls.Add(this.label11);
             this.tbFicheAgent.Controls.Add(this.labelInRoute);
@@ -339,7 +342,7 @@
             this.tbFicheAgent.Location = new System.Drawing.Point(4, 23);
             this.tbFicheAgent.Name = "tbFicheAgent";
             this.tbFicheAgent.Padding = new System.Windows.Forms.Padding(3);
-            this.tbFicheAgent.Size = new System.Drawing.Size(1200, 630);
+            this.tbFicheAgent.Size = new System.Drawing.Size(1189, 630);
             this.tbFicheAgent.TabIndex = 1;
             this.tbFicheAgent.Text = "Fiche";
             // 
@@ -383,7 +386,7 @@
             this.comboTrajet.Location = new System.Drawing.Point(368, 236);
             this.comboTrajet.Name = "comboTrajet";
             this.comboTrajet.Size = new System.Drawing.Size(185, 22);
-            this.comboTrajet.TabIndex = 96;
+            this.comboTrajet.TabIndex = 14;
             this.comboTrajet.Visible = false;
             this.comboTrajet.Leave += new System.EventHandler(this.comboTrajet_Leave);
             // 
@@ -395,7 +398,7 @@
             this.cbTrajet.Location = new System.Drawing.Point(370, 213);
             this.cbTrajet.Name = "cbTrajet";
             this.cbTrajet.Size = new System.Drawing.Size(79, 20);
-            this.cbTrajet.TabIndex = 95;
+            this.cbTrajet.TabIndex = 14;
             this.cbTrajet.Text = "En Trajet";
             this.cbTrajet.UseVisualStyleBackColor = true;
             this.cbTrajet.CheckedChanged += new System.EventHandler(this.cbTrajet_CheckedChanged);
@@ -515,7 +518,7 @@
             this.labelDurationInDays.AutoSize = true;
             this.labelDurationInDays.Font = new System.Drawing.Font("Arial", 9.25F);
             this.labelDurationInDays.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.labelDurationInDays.Location = new System.Drawing.Point(147, 39);
+            this.labelDurationInDays.Location = new System.Drawing.Point(147, 36);
             this.labelDurationInDays.Name = "labelDurationInDays";
             this.labelDurationInDays.Size = new System.Drawing.Size(43, 16);
             this.labelDurationInDays.TabIndex = 84;
@@ -529,7 +532,7 @@
             this.cbCheck_PrimeRescuer.Location = new System.Drawing.Point(368, 323);
             this.cbCheck_PrimeRescuer.Name = "cbCheck_PrimeRescuer";
             this.cbCheck_PrimeRescuer.Size = new System.Drawing.Size(127, 20);
-            this.cbCheck_PrimeRescuer.TabIndex = 16;
+            this.cbCheck_PrimeRescuer.TabIndex = 17;
             this.cbCheck_PrimeRescuer.Text = "Prime Secouriste";
             this.cbCheck_PrimeRescuer.UseVisualStyleBackColor = true;
             this.cbCheck_PrimeRescuer.CheckedChanged += new System.EventHandler(this.cbCheck_PrimeRescuer_CheckedChanged);
@@ -573,7 +576,7 @@
             this.dg_TABFormationsOfAgent.Name = "dg_TABFormationsOfAgent";
             this.dg_TABFormationsOfAgent.ReadOnly = true;
             this.dg_TABFormationsOfAgent.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dg_TABFormationsOfAgent.Size = new System.Drawing.Size(613, 215);
+            this.dg_TABFormationsOfAgent.Size = new System.Drawing.Size(468, 215);
             this.dg_TABFormationsOfAgent.TabIndex = 18;
             this.dg_TABFormationsOfAgent.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dg_TABFormationsOfAgent_MouseClick);
             // 
@@ -582,7 +585,7 @@
             this.labelNameOfUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.labelNameOfUser.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold);
             this.labelNameOfUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.labelNameOfUser.Location = new System.Drawing.Point(146, 11);
+            this.labelNameOfUser.Location = new System.Drawing.Point(146, 8);
             this.labelNameOfUser.Name = "labelNameOfUser";
             this.labelNameOfUser.Size = new System.Drawing.Size(261, 25);
             this.labelNameOfUser.TabIndex = 1;
@@ -604,8 +607,10 @@
             this.comboBoxStatut.FormattingEnabled = true;
             this.comboBoxStatut.Location = new System.Drawing.Point(147, 57);
             this.comboBoxStatut.Name = "comboBoxStatut";
-            this.comboBoxStatut.Size = new System.Drawing.Size(185, 22);
+            this.comboBoxStatut.Size = new System.Drawing.Size(186, 22);
             this.comboBoxStatut.TabIndex = 2;
+            this.comboBoxStatut.Enter += new System.EventHandler(this.comboBoxStatut_Enter);
+            this.comboBoxStatut.Leave += new System.EventHandler(this.comboBoxStatut_Leave);
             // 
             // comboBoxFunction
             // 
@@ -682,7 +687,7 @@
             this.checkBoxSecouriste.Location = new System.Drawing.Point(368, 299);
             this.checkBoxSecouriste.Name = "checkBoxSecouriste";
             this.checkBoxSecouriste.Size = new System.Drawing.Size(117, 20);
-            this.checkBoxSecouriste.TabIndex = 15;
+            this.checkBoxSecouriste.TabIndex = 16;
             this.checkBoxSecouriste.Text = "Rôle secouriste";
             this.checkBoxSecouriste.UseVisualStyleBackColor = true;
             this.checkBoxSecouriste.CheckedChanged += new System.EventHandler(this.checkBoxSecouriste_CheckedChanged);
@@ -696,7 +701,7 @@
             this.checkBox_IsWorkManager.Location = new System.Drawing.Point(368, 275);
             this.checkBox_IsWorkManager.Name = "checkBox_IsWorkManager";
             this.checkBox_IsWorkManager.Size = new System.Drawing.Size(131, 20);
-            this.checkBox_IsWorkManager.TabIndex = 14;
+            this.checkBox_IsWorkManager.TabIndex = 15;
             this.checkBox_IsWorkManager.Text = "Chargé de travaux";
             this.checkBox_IsWorkManager.UseVisualStyleBackColor = true;
             this.checkBox_IsWorkManager.CheckedChanged += new System.EventHandler(this.checkBox_IsWorkManager_CheckedChanged);
@@ -721,7 +726,7 @@
             this.richTextBoxRemarks.Location = new System.Drawing.Point(147, 376);
             this.richTextBoxRemarks.Name = "richTextBoxRemarks";
             this.richTextBoxRemarks.Size = new System.Drawing.Size(338, 51);
-            this.richTextBoxRemarks.TabIndex = 15;
+            this.richTextBoxRemarks.TabIndex = 18;
             this.richTextBoxRemarks.Text = "";
             this.richTextBoxRemarks.TextChanged += new System.EventHandler(this.richTextBoxRemarks_TextChanged);
             this.richTextBoxRemarks.Leave += new System.EventHandler(this.richTextBoxRemarks_Leave);
@@ -768,32 +773,6 @@
             this.labelMatricule.TabIndex = 3;
             this.labelMatricule.Text = "Matricule";
             // 
-            // pictureBox_ProfilePic
-            // 
-            this.pictureBox_ProfilePic.Image = global::Module_Education.Properties.Resources.baseline_person_black_36dp;
-            this.pictureBox_ProfilePic.Location = new System.Drawing.Point(11, 11);
-            this.pictureBox_ProfilePic.Name = "pictureBox_ProfilePic";
-            this.pictureBox_ProfilePic.Size = new System.Drawing.Size(112, 112);
-            this.pictureBox_ProfilePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox_ProfilePic.TabIndex = 0;
-            this.pictureBox_ProfilePic.TabStop = false;
-            // 
-            // headerFormatStyle1
-            // 
-            this.headerFormatStyle1.Hot = headerStateStyle31;
-            this.headerFormatStyle1.Normal = headerStateStyle32;
-            this.headerFormatStyle1.Pressed = headerStateStyle33;
-            // 
-            // headerFormatStyle2
-            // 
-            this.headerFormatStyle2.Hot = headerStateStyle34;
-            this.headerFormatStyle2.Normal = headerStateStyle35;
-            this.headerFormatStyle2.Pressed = headerStateStyle36;
-            // 
-            // equipeBindingSource
-            // 
-            this.equipeBindingSource.DataMember = "Equipe";
-            // 
             // toolTipExcel
             // 
             this.toolTipExcel.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
@@ -808,6 +787,45 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // picExportExcel
+            // 
+            this.picExportExcel.Image = global::Module_Education.Properties.Resources.Excel_icon;
+            this.picExportExcel.Location = new System.Drawing.Point(1005, 9);
+            this.picExportExcel.Name = "picExportExcel";
+            this.picExportExcel.Size = new System.Drawing.Size(32, 32);
+            this.picExportExcel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picExportExcel.TabIndex = 19;
+            this.picExportExcel.TabStop = false;
+            this.toolTipExcel.SetToolTip(this.picExportExcel, "Exportez le tableau vers un fichier Excel");
+            this.picExportExcel.Click += new System.EventHandler(this.picExportExcel_Click);
+            // 
+            // pictureBox_ProfilePic
+            // 
+            this.pictureBox_ProfilePic.Image = global::Module_Education.Properties.Resources.baseline_person_black_36dp;
+            this.pictureBox_ProfilePic.Location = new System.Drawing.Point(11, 11);
+            this.pictureBox_ProfilePic.Name = "pictureBox_ProfilePic";
+            this.pictureBox_ProfilePic.Size = new System.Drawing.Size(112, 112);
+            this.pictureBox_ProfilePic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox_ProfilePic.TabIndex = 0;
+            this.pictureBox_ProfilePic.TabStop = false;
+            // 
+            // textBoxExtensions1
+            // 
+            this.textBoxExtensions1.Location = new System.Drawing.Point(582, 389);
+            this.textBoxExtensions1.Name = "textBoxExtensions1";
+            this.textBoxExtensions1.Size = new System.Drawing.Size(221, 20);
+            this.textBoxExtensions1.TabIndex = 130;
+            this.textBoxExtensions1.TextChanged += new System.EventHandler(this.textBoxExtensions1_TextChanged);
+            this.textBoxExtensions1.Leave += new System.EventHandler(this.textBoxExtensions1_Leave);
+            // 
+            // comboBoxStatut11
+            // 
+            this.comboBoxStatut11.FormattingEnabled = true;
+            this.comboBoxStatut11.Location = new System.Drawing.Point(633, 357);
+            this.comboBoxStatut11.Name = "comboBoxStatut11";
+            this.comboBoxStatut11.Size = new System.Drawing.Size(186, 22);
+            this.comboBoxStatut11.TabIndex = 129;
+            // 
             // UC_Agent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -819,20 +837,19 @@
             this.DoubleBuffered = true;
             this.MinimumSize = new System.Drawing.Size(0, 573);
             this.Name = "UC_Agent";
-            this.Size = new System.Drawing.Size(1213, 666);
+            this.Size = new System.Drawing.Size(1202, 666);
             this.Enter += new System.EventHandler(this.UC_Agent_Enter);
             this.tabControlAgentList.ResumeLayout(false);
             this.tbListeAgents.ResumeLayout(false);
             this.tbListeAgents.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picExportExcel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dG_Agents)).EndInit();
             this.tbFicheAgent.ResumeLayout(false);
             this.tbFicheAgent.PerformLayout();
             this.tabControl_Education_FormationAndCertificationsOfUser.ResumeLayout(false);
             this.tabPageEducation_FormationsAgent.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dg_TABFormationsOfAgent)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picExportExcel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_ProfilePic)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.equipeBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -857,7 +874,6 @@
         private System.Windows.Forms.ComboBox comboBoxAstreinte;
         private System.Windows.Forms.ComboBox comboBoxEPI;
         private System.Windows.Forms.ComboBox comboBoxEquipe;
-        private System.Windows.Forms.BindingSource equipeBindingSource;
         private System.Windows.Forms.ComboBox comboBoxEducation_Habilitation;
         private System.Windows.Forms.ComboBox comboBoxRespHierarchique;
         private System.Windows.Forms.ComboBox comboBoxFunction;
@@ -877,8 +893,6 @@
         private System.Windows.Forms.Label lblRoleEPI;
         private System.Windows.Forms.Label lblFunction;
         private System.Windows.Forms.Label lblEquipe;
-        private SynapseAdvancedControls.HeaderFormatStyle headerFormatStyle1;
-        private SynapseAdvancedControls.HeaderFormatStyle headerFormatStyle2;
         private Zuby.ADGV.AdvancedDataGridView dG_Agents;
         private System.Windows.Forms.PictureBox picExportExcel;
         private System.Windows.Forms.ToolTip toolTipExcel;
@@ -900,5 +914,8 @@
         private System.Windows.Forms.Label labelInRoute;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnRefresh;
+        private Classes.Extensions.ComboBoxExt comboBoxStatut11;
+        private Classes.TextBoxExtensions textBoxExtensions1;
     }
 }

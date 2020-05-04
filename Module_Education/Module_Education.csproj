@@ -15,6 +15,25 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>\\nw1ebl1.eib.electrabel.be\HUBP_AD\MAN542W\App\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <PublisherName>Engie</PublisherName>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>13</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -34,6 +53,25 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>8053510BE56279F3F0D3839401CA827596008E60</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Module_Education_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWin32Manifest>true</NoWin32Manifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AdvancedDataGridView, Version=1.1.24312.6, Culture=neutral, processorArchitecture=MSIL">
@@ -87,6 +125,9 @@
     <Compile Include="Classes\ColumnHeaderCell.cs" />
     <Compile Include="Classes\ExportToExcel.cs" />
     <Compile Include="Classes\Extensions\AutoClosingMessageBox.cs" />
+    <Compile Include="Classes\Extensions\ComboBoxExt.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Classes\FileExtensions.cs" />
     <Compile Include="Classes\MenuStrip.cs" />
     <Compile Include="Classes\MenuStrip.Designer.cs">
@@ -101,9 +142,10 @@
     <Compile Include="Classes\MyColumnCollectionDGPassportDesign.cs" />
     <Compile Include="Classes\MyColumnCollectionDGPassportSafety.cs" />
     <Compile Include="Classes\MyColumnCollectionDGProvider.cs" />
+    <Compile Include="Classes\MyColumnCollectionDtAgent.cs" />
     <Compile Include="Classes\MyColumnCollectionFrmFormation.cs" />
     <Compile Include="Classes\ProgressReport.cs" />
-    <Compile Include="Classes\TextBoxExtensions.cs">
+    <Compile Include="Classes\Extensions\TextBoxExtensions.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Classes\TreeNodeItemSelector.cs" />
@@ -125,11 +167,29 @@
     <Compile Include="Forms\FrmCertificateSynapse.Designer.cs">
       <DependentUpon>FrmCertificateSynapse.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmEditCertificate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmEditCertificate.Designer.cs">
+      <DependentUpon>FrmEditCertificate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmEquivalenceComment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmEquivalenceComment.Designer.cs">
+      <DependentUpon>FrmEquivalenceComment.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmFormation.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmFormation.Designer.cs">
       <DependentUpon>FrmFormation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserControls\UC_GrpAgents.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserControls\UC_GrpAgents.Designer.cs">
+      <DependentUpon>UC_GrpAgents.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\UserControls\UC_Certification.cs">
       <SubType>UserControl</SubType>
@@ -149,10 +209,16 @@
     <Compile Include="Forms\UserControls\UC_Provider.Designer.cs">
       <DependentUpon>UC_Provider.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\Education_Agent.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Education_AgentCertifElecFunc.cs">
       <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Education_AgentCertifElecOPP.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_AgentCertificatDivers.cs">
       <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Education_AgentPassportBusiness.cs">
@@ -164,13 +230,109 @@
     <Compile Include="Models\Education_AgentPassportSafety.cs">
       <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Education_AgentStatus.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Agent_Formation.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_CategorieFormation.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Education_CertifElecFunc.cs">
       <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Education_CertifElecOPP.cs">
       <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Education_CertificatDivers.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Competence.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_CompetenceGroup.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_CompetenceSubGroup.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Departement.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Equipe.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Formation.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_FormationCategory.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_FormationDossier.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_FormationDossierType.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_FormationProvider.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_FormationResultat.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_FormationSession.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Former.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Function.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_GroupLearner.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_GroupLearner_Agent.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Habilitation.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Education_InRoute.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Log.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Matrice.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Matrice_Agent.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Matrice_AgentEquivalence.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Matrice_Formation.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Matrice_GrLearner.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_MovementAgent.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_MovementStatusStep.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_MovementStep.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_MovementStepAgent.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_MovementType.cs">
       <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Education_PassportBusiness.cs">
@@ -182,12 +344,37 @@
     <Compile Include="Models\Education_PassportSafety.cs">
       <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Education_PassportType.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Provider.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Education_ProviderContact.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Role.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_RoleAstreinte.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_RoleEPI.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_Service.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_SessionUnite.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education_UnitePrice.cs">
       <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Repositories\AgentCertifElecFuncRepository.cs" />
     <Compile Include="Repositories\AgentCertifElecOPPRepository.cs" />
     <Compile Include="Repositories\AgentDataAccess.cs" />
+    <Compile Include="Repositories\AgentMatriceEquivalenceRepository.cs" />
     <Compile Include="Repositories\AgentMatriceRepository.cs" />
     <Compile Include="Repositories\AgentPassportBusinessRepository.cs" />
     <Compile Include="Repositories\AgentPassportDesignRepository.cs" />
@@ -203,6 +390,8 @@
     <Compile Include="Repositories\FormationResultatDataAccess.cs" />
     <Compile Include="Repositories\FormationSessionDataAccess.cs" />
     <Compile Include="Repositories\FunctionDataAccess.cs" />
+    <Compile Include="Repositories\GrpAgentRepository.cs" />
+    <Compile Include="Repositories\GrpLearnearAgentRepository.cs" />
     <Compile Include="Repositories\HabilitationDataAccess.cs" />
     <Compile Include="Repositories\InRouteRepository.cs" />
     <Compile Include="Repositories\InRouteFormationRepository.cs" />
@@ -214,6 +403,7 @@
     <Compile Include="Repositories\ProviderDataRepository.cs" />
     <Compile Include="Repositories\RoleAstreinteDataAccess.cs" />
     <Compile Include="Repositories\RoleEPIDataAccess.cs" />
+    <Compile Include="Repositories\RouteAgentRepository.cs" />
     <Compile Include="Repositories\RoutesFormationRepository.cs" />
     <Compile Include="Repositories\SessionUniteDataAccess.cs" />
     <Compile Include="Repositories\UniteDataAccess.cs" />
@@ -278,122 +468,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>CFNFormationDataModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Education_Agent.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_AgentStatus.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_Agent_Formation.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_CategorieFormation.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_Competence.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_CompetenceGroup.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_CompetenceSubGroup.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_Departement.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_Equipe.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_Formation.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_FormationCategory.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_FormationDossier.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_FormationDossierType.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_FormationProvider.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_FormationResultat.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_FormationSession.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_Former.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_Function.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_GroupLearner.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_GroupLearner_Agent.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_Habilitation.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_Log.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_Matrice.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_Matrice_Agent.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_Matrice_Formation.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_Matrice_GrLearner.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_MovementAgent.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_MovementStatusStep.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_MovementStep.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_MovementStepAgent.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_MovementType.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_Provider.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_Role.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_RoleAstreinte.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_RoleEPI.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_Service.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_SessionUnite.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\Education_UnitePrice.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Classes\Extensions\ComboBoxExt.resx">
+      <DependentUpon>ComboBoxExt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Classes\Extensions\TextBoxExtensions.resx">
+      <DependentUpon>TextBoxExtensions.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormCustomFilter.resx">
       <DependentUpon>FormCustomFilter.cs</DependentUpon>
     </EmbeddedResource>
@@ -406,11 +488,20 @@
     <EmbeddedResource Include="Forms\FrmCertificateSynapse.resx">
       <DependentUpon>FrmCertificateSynapse.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmEditCertificate.resx">
+      <DependentUpon>FrmEditCertificate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmEquivalenceComment.resx">
+      <DependentUpon>FrmEquivalenceComment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmFormation.resx">
       <DependentUpon>FrmFormation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserControls\UC_GrpAgents.resx">
+      <DependentUpon>UC_GrpAgents.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
@@ -437,7 +528,7 @@
       <DependentUpon>UC_Provider.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -453,6 +544,7 @@
     <None Include="Models\CFNFormationDataModel.edmx.diagram">
       <DependentUpon>CFNFormationDataModel.edmx</DependentUpon>
     </None>
+    <None Include="Module_Education_TemporaryKey.pfx" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferences.cache" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="obj\Debug\Module_Education.csprojAssemblyReference.cache" />
@@ -484,6 +576,7 @@
     <Content Include="Resources\1x\baseline_reorder_black_18dp.png" />
     <None Include="Resources\Images\baseline_visibility_black_18dp.png" />
     <None Include="Resources\Images\baseline_library_add_black_18dp.png" />
+    <None Include="Resources\Images\baseline_double_arrow_black_18dp.png" />
     <Content Include="Resources\Images\engieICO.ico" />
     <None Include="Resources\Images\add-512.png" />
     <Content Include="Resources\Images\AdvancedDataGridView_logo.png" />
@@ -519,7 +612,6 @@
     <Content Include="Resources\img\engie.ico.png" />
     <Content Include="Resources\img\engieIco.jpg" />
     <Content Include="Resources\img\exit.png" />
-    <Content Include="Resources\img\Hideshowmenu.png" />
     <Content Include="Resources\img\outline_clear_black_24dp.png" />
     <None Include="Resources\Images\MenuStrip_OrderASCnum.bmp" />
     <Content Include="Resources\Images\RjPf8oan_reasonably_small.jpg" />
@@ -542,10 +634,22 @@
       <Project>{7fa90113-c38c-4325-8e08-ebae035cc562}</Project>
       <Name>SynapseCore</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Synapse\Synapse.csproj">
-      <Project>{2e707050-9861-4610-aa9d-412fc6b13846}</Project>
-      <Name>Synapse</Name>
+    <ProjectReference Include="..\SynapseRoomPicker\SynapseRoomPicker.csproj">
+      <Project>{CD18C584-FAF4-45EC-8D3B-DE4560AD876C}</Project>
+      <Name>SynapseRoomPicker</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

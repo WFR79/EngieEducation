@@ -19,7 +19,9 @@ namespace Module_Education.Repositories
 
         public List<Education_AgentPassportSafety> LoadPassportSafety(Education_Agent agent)
         {
-            return db.Education_AgentPassportSafety.Where(x => x.Education_Agent.Agent_Id == agent.Agent_Id)
+            return db.Education_AgentPassportSafety
+                .Include("Education_PassportSafety")
+                .Where(x => x.Education_Agent.Agent_Id == agent.Agent_Id)
                     .ToList();
         }
 

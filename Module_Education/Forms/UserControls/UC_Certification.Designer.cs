@@ -38,6 +38,7 @@
             this.lblTiteLstFormation = new System.Windows.Forms.Label();
             this.AdvDg_Certifications = new Zuby.ADGV.AdvancedDataGridView();
             this.picExportExcel = new System.Windows.Forms.PictureBox();
+            this.btnSaveProgressRoute = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.AdvDg_Certifications)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picExportExcel)).BeginInit();
             this.SuspendLayout();
@@ -108,6 +109,7 @@
             this.tbNbrRows.Size = new System.Drawing.Size(36, 20);
             this.tbNbrRows.TabIndex = 36;
             this.tbNbrRows.Text = "50";
+            this.tbNbrRows.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbNbrRows_KeyDown);
             // 
             // lblNbrRows
             // 
@@ -142,7 +144,8 @@
             this.AdvDg_Certifications.FilterAndSortEnabled = true;
             this.AdvDg_Certifications.Location = new System.Drawing.Point(29, 63);
             this.AdvDg_Certifications.Name = "AdvDg_Certifications";
-            this.AdvDg_Certifications.Size = new System.Drawing.Size(1012, 459);
+            this.AdvDg_Certifications.ReadOnly = true;
+            this.AdvDg_Certifications.Size = new System.Drawing.Size(1035, 459);
             this.AdvDg_Certifications.TabIndex = 32;
             this.AdvDg_Certifications.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.AdvDg_Certifications_FilterStringChanged);
             this.AdvDg_Certifications.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.AdvDg_Certifications_CellFormatting);
@@ -159,10 +162,27 @@
             this.picExportExcel.TabIndex = 34;
             this.picExportExcel.TabStop = false;
             // 
+            // btnSaveProgressRoute
+            // 
+            this.btnSaveProgressRoute.AllowDrop = true;
+            this.btnSaveProgressRoute.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            this.btnSaveProgressRoute.FlatAppearance.BorderSize = 0;
+            this.btnSaveProgressRoute.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveProgressRoute.Font = new System.Drawing.Font("Arial", 10F);
+            this.btnSaveProgressRoute.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSaveProgressRoute.Location = new System.Drawing.Point(278, 12);
+            this.btnSaveProgressRoute.Name = "btnSaveProgressRoute";
+            this.btnSaveProgressRoute.Size = new System.Drawing.Size(144, 45);
+            this.btnSaveProgressRoute.TabIndex = 95;
+            this.btnSaveProgressRoute.Text = "Gestion des certificats";
+            this.btnSaveProgressRoute.UseVisualStyleBackColor = false;
+            this.btnSaveProgressRoute.Click += new System.EventHandler(this.btnSaveProgressRoute_Click);
+            // 
             // UC_Certification
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnSaveProgressRoute);
             this.Controls.Add(this.lblMax);
             this.Controls.Add(this.lblMin);
             this.Controls.Add(this.lblNbrRowsFormations);
@@ -194,5 +214,6 @@
         private System.Windows.Forms.PictureBox picExportExcel;
         private System.Windows.Forms.Label lblTiteLstFormation;
         private Zuby.ADGV.AdvancedDataGridView AdvDg_Certifications;
+        private System.Windows.Forms.Button btnSaveProgressRoute;
     }
 }

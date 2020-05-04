@@ -21,6 +21,9 @@ namespace Module_Education.Classes
         {
             return _obj;
         }
+        //[DisplayName("Id")]
+        //public long? Formation_Id { get; set; }
+
         [DisplayName("Titre Court")]
         public string Formation_ShortTitle { get; set; }
 

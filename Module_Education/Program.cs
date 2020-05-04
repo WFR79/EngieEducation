@@ -22,4 +22,4 @@ namespace Module_Education
             Application.Run(new MainWindow());
         }
     }
-}
+}   

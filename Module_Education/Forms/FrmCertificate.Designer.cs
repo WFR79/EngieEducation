@@ -46,6 +46,8 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSaveCertification = new System.Windows.Forms.Button();
             this.synapseErrorProvider1 = new SynapseCore.Controls.SynapseErrorProvider();
+            this.lblValidityDate = new System.Windows.Forms.Label();
+            this.datePickValidity = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.synapseErrorProvider3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.synapseErrorProvider2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.synapseErrorProvider1)).BeginInit();
@@ -56,7 +58,7 @@
             this.lblReturnDate.AutoSize = true;
             this.lblReturnDate.Font = new System.Drawing.Font("Arial", 9.25F);
             this.lblReturnDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblReturnDate.Location = new System.Drawing.Point(51, 173);
+            this.lblReturnDate.Location = new System.Drawing.Point(29, 173);
             this.lblReturnDate.Name = "lblReturnDate";
             this.lblReturnDate.Size = new System.Drawing.Size(77, 16);
             this.lblReturnDate.TabIndex = 138;
@@ -67,7 +69,7 @@
             this.tbRemarksPay.AutoWordSelection = true;
             this.tbRemarksPay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(199)))), ((int)(((byte)(234)))));
             this.tbRemarksPay.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.tbRemarksPay.Location = new System.Drawing.Point(49, 381);
+            this.tbRemarksPay.Location = new System.Drawing.Point(27, 381);
             this.tbRemarksPay.Name = "tbRemarksPay";
             this.tbRemarksPay.Size = new System.Drawing.Size(377, 49);
             this.tbRemarksPay.TabIndex = 137;
@@ -79,7 +81,7 @@
             this.lblRemarksPayment.AutoSize = true;
             this.lblRemarksPayment.Font = new System.Drawing.Font("Arial", 10F);
             this.lblRemarksPayment.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblRemarksPayment.Location = new System.Drawing.Point(47, 360);
+            this.lblRemarksPayment.Location = new System.Drawing.Point(25, 360);
             this.lblRemarksPayment.Name = "lblRemarksPayment";
             this.lblRemarksPayment.Size = new System.Drawing.Size(143, 16);
             this.lblRemarksPayment.TabIndex = 136;
@@ -90,7 +92,7 @@
             this.lblSendingDate.AutoSize = true;
             this.lblSendingDate.Font = new System.Drawing.Font("Arial", 9.25F);
             this.lblSendingDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblSendingDate.Location = new System.Drawing.Point(51, 123);
+            this.lblSendingDate.Location = new System.Drawing.Point(29, 123);
             this.lblSendingDate.Name = "lblSendingDate";
             this.lblSendingDate.Size = new System.Drawing.Size(77, 16);
             this.lblSendingDate.TabIndex = 135;
@@ -98,7 +100,7 @@
             // 
             // datePickReturn
             // 
-            this.datePickReturn.Location = new System.Drawing.Point(54, 192);
+            this.datePickReturn.Location = new System.Drawing.Point(32, 192);
             this.datePickReturn.Name = "datePickReturn";
             this.datePickReturn.Size = new System.Drawing.Size(200, 20);
             this.datePickReturn.TabIndex = 134;
@@ -106,7 +108,7 @@
             // 
             // datePickSending
             // 
-            this.datePickSending.Location = new System.Drawing.Point(54, 142);
+            this.datePickSending.Location = new System.Drawing.Point(32, 142);
             this.datePickSending.Name = "datePickSending";
             this.datePickSending.Size = new System.Drawing.Size(200, 20);
             this.datePickSending.TabIndex = 133;
@@ -117,7 +119,7 @@
             this.tbRemarks.AutoWordSelection = true;
             this.tbRemarks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(199)))), ((int)(((byte)(234)))));
             this.tbRemarks.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.tbRemarks.Location = new System.Drawing.Point(50, 295);
+            this.tbRemarks.Location = new System.Drawing.Point(28, 295);
             this.tbRemarks.Name = "tbRemarks";
             this.tbRemarks.Size = new System.Drawing.Size(377, 49);
             this.tbRemarks.TabIndex = 132;
@@ -129,7 +131,7 @@
             this.lblRemarks.AutoSize = true;
             this.lblRemarks.Font = new System.Drawing.Font("Arial", 10F);
             this.lblRemarks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblRemarks.Location = new System.Drawing.Point(48, 274);
+            this.lblRemarks.Location = new System.Drawing.Point(26, 274);
             this.lblRemarks.Name = "lblRemarks";
             this.lblRemarks.Size = new System.Drawing.Size(81, 16);
             this.lblRemarks.TabIndex = 131;
@@ -140,7 +142,7 @@
             this.cbCertified.AutoSize = true;
             this.cbCertified.Font = new System.Drawing.Font("Arial", 9.25F);
             this.cbCertified.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.cbCertified.Location = new System.Drawing.Point(49, 241);
+            this.cbCertified.Location = new System.Drawing.Point(27, 241);
             this.cbCertified.Name = "cbCertified";
             this.cbCertified.Size = new System.Drawing.Size(155, 20);
             this.cbCertified.TabIndex = 130;
@@ -153,11 +155,11 @@
             this.lblTitlePassport.AutoSize = true;
             this.lblTitlePassport.Font = new System.Drawing.Font("Arial", 9.25F);
             this.lblTitlePassport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblTitlePassport.Location = new System.Drawing.Point(51, 70);
+            this.lblTitlePassport.Location = new System.Drawing.Point(29, 70);
             this.lblTitlePassport.Name = "lblTitlePassport";
-            this.lblTitlePassport.Size = new System.Drawing.Size(86, 16);
+            this.lblTitlePassport.Size = new System.Drawing.Size(146, 16);
             this.lblTitlePassport.TabIndex = 129;
-            this.lblTitlePassport.Text = "Title passport";
+            this.lblTitlePassport.Text = "Type Certificat/Passport";
             // 
             // synapseErrorProvider3
             // 
@@ -176,7 +178,7 @@
             this.comboTitlePassport.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboTitlePassport.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboTitlePassport.FormattingEnabled = true;
-            this.comboTitlePassport.Location = new System.Drawing.Point(54, 86);
+            this.comboTitlePassport.Location = new System.Drawing.Point(32, 86);
             this.comboTitlePassport.Name = "comboTitlePassport";
             this.comboTitlePassport.Size = new System.Drawing.Size(185, 21);
             this.comboTitlePassport.TabIndex = 128;
@@ -189,22 +191,23 @@
             this.lblTitleTypePassport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
             this.lblTitleTypePassport.Location = new System.Drawing.Point(36, 13);
             this.lblTitleTypePassport.Name = "lblTitleTypePassport";
-            this.lblTitleTypePassport.Size = new System.Drawing.Size(71, 26);
+            this.lblTitleTypePassport.Size = new System.Drawing.Size(193, 26);
             this.lblTitleTypePassport.TabIndex = 127;
-            this.lblTitleTypePassport.Text = "label1";
+            this.lblTitleTypePassport.Text = "Créer un certificat";
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(247, 469);
+            this.btnCancel.Location = new System.Drawing.Point(225, 469);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(135, 23);
             this.btnCancel.TabIndex = 126;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click_1);
             // 
             // btnSaveCertification
             // 
-            this.btnSaveCertification.Location = new System.Drawing.Point(90, 469);
+            this.btnSaveCertification.Location = new System.Drawing.Point(68, 469);
             this.btnSaveCertification.Name = "btnSaveCertification";
             this.btnSaveCertification.Size = new System.Drawing.Size(135, 23);
             this.btnSaveCertification.TabIndex = 125;
@@ -218,9 +221,30 @@
             this.synapseErrorProvider1.Icon = ((System.Drawing.Icon)(resources.GetObject("synapseErrorProvider1.Icon")));
             this.synapseErrorProvider1.ShowMessageBox = true;
             // 
+            // lblValidityDate
+            // 
+            this.lblValidityDate.AutoSize = true;
+            this.lblValidityDate.Font = new System.Drawing.Font("Arial", 9.25F);
+            this.lblValidityDate.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.lblValidityDate.Location = new System.Drawing.Point(246, 173);
+            this.lblValidityDate.Name = "lblValidityDate";
+            this.lblValidityDate.Size = new System.Drawing.Size(96, 16);
+            this.lblValidityDate.TabIndex = 140;
+            this.lblValidityDate.Text = "Date de validité";
+            // 
+            // datePickValidity
+            // 
+            this.datePickValidity.Location = new System.Drawing.Point(249, 192);
+            this.datePickValidity.Name = "datePickValidity";
+            this.datePickValidity.Size = new System.Drawing.Size(200, 20);
+            this.datePickValidity.TabIndex = 139;
+            // 
             // FrmCertificate
             // 
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(463, 505);
+            this.Controls.Add(this.lblValidityDate);
+            this.Controls.Add(this.datePickValidity);
             this.Controls.Add(this.lblReturnDate);
             this.Controls.Add(this.tbRemarksPay);
             this.Controls.Add(this.lblRemarksPayment);
@@ -235,6 +259,7 @@
             this.Controls.Add(this.lblTitleTypePassport);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSaveCertification);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmCertificate";
             this.ShowIcon = false;
             ((System.ComponentModel.ISupportInitialize)(this.synapseErrorProvider3)).EndInit();
@@ -264,5 +289,7 @@
         private System.Windows.Forms.Button btnSaveCertification;
         private SynapseCore.Controls.SynapseErrorProvider synapseErrorProvider2;
         private SynapseCore.Controls.SynapseErrorProvider synapseErrorProvider1;
+        private System.Windows.Forms.Label lblValidityDate;
+        private System.Windows.Forms.DateTimePicker datePickValidity;
     }
 }

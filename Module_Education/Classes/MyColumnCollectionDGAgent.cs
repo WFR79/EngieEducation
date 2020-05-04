@@ -54,7 +54,7 @@ namespace Module_Education.Classes
         public bool? Agent_Etat { get; set; }
 
         [DisplayName("En trajet")]
-        public bool? Agent_InRoute { get; set; }
+        public string Agent_InRoute { get; set; }
 
        
 

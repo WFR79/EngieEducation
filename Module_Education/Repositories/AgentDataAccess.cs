@@ -18,7 +18,20 @@ namespace Module_Education
         }
         public List<Education_Agent> LoadAllAgents()
         {
-            return db.Education_Agent.ToList();
+            return db.Education_Agent
+                 
+                        .Include("Education_Equipe")
+                  .Include("Education_Function")
+                  .Include("Education_GroupLearner_Agent")
+                  .Include("Education_MovementAgent")
+                  .Include("Education_MovementAgent1")
+                  .Include("Education_RoleAstreinte")
+                  .Include("Education_RoleEPI")
+                  .Include("Education_AgentStatus")
+                  .Include("Education_Agent_Formation")
+                  .Include("Education_Habilitation")
+                  .Include("Education_Role").
+                ToList();
         }
 
         public List<Education_Agent> LoadAllAgentsCertificate()
@@ -29,6 +42,7 @@ namespace Module_Education
                         .Include("Education_AgentCertifElecOPP")
                         .Include("Education_AgentPassportBusiness")
                         .Include("Education_AgentPassportDesign")
+
                 .ToList();
         }
 

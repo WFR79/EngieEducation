@@ -131,5 +131,32 @@ namespace Module_Education.Repositories
             }
         }
 
+        public Education_FormationDossier SaveAudit(Education_Formation formation, string filePath)
+        {
+            Education_FormationDossier newRecord;
+            var recordFound = db.Education_FormationDossier.Where(x => x.FormationDossier_Formation == formation.Formation_Id).FirstOrDefault();
+            if (recordFound == null)
+            {
+                newRecord = new Education_FormationDossier()
+                {
+                    FormationDossier_Formation = formation.Formation_Id,
+                    FormationDossier_DateUpdate = DateTime.Now,
+                    FormationDossier_AuditHyperLink = filePath,
+
+                };
+                db.Education_FormationDossier.Add(newRecord);
+                db.SaveChanges();
+                return newRecord;
+            }
+            else
+            {
+                recordFound.FormationDossier_DateUpdate = DateTime.Now;
+                recordFound.FormationDossier_AuditHyperLink = filePath;
+
+                //db.Education_FormationDossier.Add(recordFound);
+                db.SaveChanges();
+                return recordFound;
+            }
+        }
     }
 }

@@ -18,16 +18,17 @@ namespace Module_Education.Models
         public Education_Agent()
         {
             this.Education_Agent_Formation = new HashSet<Education_Agent_Formation>();
+            this.Education_AgentPassportSafety = new HashSet<Education_AgentPassportSafety>();
+            this.Education_AgentCertifElecFunc = new HashSet<Education_AgentCertifElecFunc>();
+            this.Education_AgentCertifElecOPP = new HashSet<Education_AgentCertifElecOPP>();
+            this.Education_AgentPassportBusiness = new HashSet<Education_AgentPassportBusiness>();
+            this.Education_AgentPassportDesign = new HashSet<Education_AgentPassportDesign>();
             this.Education_GroupLearner_Agent = new HashSet<Education_GroupLearner_Agent>();
             this.Education_Matrice_Agent = new HashSet<Education_Matrice_Agent>();
             this.Education_MovementAgent = new HashSet<Education_MovementAgent>();
             this.Education_MovementAgent1 = new HashSet<Education_MovementAgent>();
             this.Education_Agent1 = new HashSet<Education_Agent>();
-            this.Education_AgentCertifElecFunc = new HashSet<Education_AgentCertifElecFunc>();
-            this.Education_AgentCertifElecOPP = new HashSet<Education_AgentCertifElecOPP>();
-            this.Education_AgentPassportBusiness = new HashSet<Education_AgentPassportBusiness>();
-            this.Education_AgentPassportDesign = new HashSet<Education_AgentPassportDesign>();
-            this.Education_AgentPassportSafety = new HashSet<Education_AgentPassportSafety>();
+            this.Education_AgentCertificatDivers = new HashSet<Education_AgentCertificatDivers>();
         }
     
         public long Agent_Id { get; set; }
@@ -62,7 +63,17 @@ namespace Module_Education.Models
         public virtual Education_AgentStatus Education_AgentStatus { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_Agent_Formation> Education_Agent_Formation { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Education_AgentPassportSafety> Education_AgentPassportSafety { get; set; }
         public virtual Education_InRoute Education_InRoute { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Education_AgentCertifElecFunc> Education_AgentCertifElecFunc { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Education_AgentCertifElecOPP> Education_AgentCertifElecOPP { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Education_AgentPassportBusiness> Education_AgentPassportBusiness { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Education_AgentPassportDesign> Education_AgentPassportDesign { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_GroupLearner_Agent> Education_GroupLearner_Agent { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -80,14 +91,6 @@ namespace Module_Education.Models
         public virtual Education_Role Education_Role { get; set; }
         public virtual Education_RoleAstreinte Education_RoleAstreinte { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Education_AgentCertifElecFunc> Education_AgentCertifElecFunc { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Education_AgentCertifElecOPP> Education_AgentCertifElecOPP { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Education_AgentPassportBusiness> Education_AgentPassportBusiness { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Education_AgentPassportDesign> Education_AgentPassportDesign { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Education_AgentPassportSafety> Education_AgentPassportSafety { get; set; }
+        public virtual ICollection<Education_AgentCertificatDivers> Education_AgentCertificatDivers { get; set; }
     }
 }

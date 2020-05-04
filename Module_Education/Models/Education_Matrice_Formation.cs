@@ -14,6 +14,12 @@ namespace Module_Education.Models
     
     public partial class Education_Matrice_Formation
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Education_Matrice_Formation()
+        {
+            this.Education_Matrice_Agent = new HashSet<Education_Matrice_Agent>();
+        }
+    
         public long MatriceFormation_Id { get; set; }
         public Nullable<long> MatriceFormation_Formation { get; set; }
         public Nullable<long> MatriceFormation_Matrice { get; set; }
@@ -21,5 +27,7 @@ namespace Module_Education.Models
     
         public virtual Education_Formation Education_Formation { get; set; }
         public virtual Education_Matrice Education_Matrice { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Education_Matrice_Agent> Education_Matrice_Agent { get; set; }
     }
 }

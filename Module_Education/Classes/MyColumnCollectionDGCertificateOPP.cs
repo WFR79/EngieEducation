@@ -10,6 +10,9 @@ namespace Module_Education.Classes
 {
     public class MyColumnCollectionDGCertificateOPP
     {
+        [DisplayName("NiveauRId")]
+        public long? AgentCertificateLevelRId { get; set; }
+        
         [DisplayName("Niveau R")]
         public string AgentCertificateLevelR { get; set; }
 

@@ -133,13 +133,18 @@ namespace Module_Education
 
         public UCEducation_Formation()
         {
-            InitializeComponent();
-            LoadComboboxs();
+            try
+            {
+                InitializeComponent();
+                LoadComboboxs();
 
-            this.ActiveControl = this.comboBoxDurationhours;
-            InitVertScrollBarPanelDoc();
-            tabControl_Education_Formations.SelectedIndex = 2;
-            InitReceiverEventFromOtherUCs();
+                this.ActiveControl = this.comboBoxDurationhours;
+                InitVertScrollBarPanelDoc();
+                tabControl_Education_Formations.SelectedIndex = 2;
+                InitReceiverEventFromOtherUCs();
+            }
+            catch (Exception ex)
+            { Logger.LogError(ex, "UC_Formations"); }
         }
 
         private void InitReceiverEventFromOtherUCs()
@@ -263,7 +268,7 @@ namespace Module_Education
             //source.ResetBindings(true);
             AdvDg_Formations.DataSource = GetDataSource(listPaged);
             AdvDg_Formations.Refresh();
-            StylingDatagrid(advDv_AgentsOfFormation);
+            //StylingDatagrid(advDv_AgentsOfFormation);
 
         }
 
@@ -280,28 +285,28 @@ namespace Module_Education
                 {
                     //using (CFNEducation_FormationEntities dbList = new CFNEducation_FormationEntities())
                     //{
-                        pageSize = Int32.Parse(tbNbrRows.Text);
+                    pageSize = Int32.Parse(tbNbrRows.Text);
 
-                        if (MainWindow.globalListEducation_Formations == null)
-                        {
+                    if (MainWindow.globalListEducation_Formations == null)
+                    {
 
-                            return dbEntities.Education_Formation
-                            .Include("Education_CategorieFormation")
-                            .Include("Education_FormationProvider")
-                            .Include("Education_FormationResultat")
-                            .Include("Education_FormationSession")
-                            .Include("Education_Matrice_Formation")
-                            .Include("Education_UnitePrice")
-                            .Include("Education_FormationDossier")
+                        return dbEntities.Education_Formation
+                        .Include("Education_CategorieFormation")
+                        .Include("Education_FormationProvider")
+                        .Include("Education_FormationResultat")
+                        .Include("Education_FormationSession")
+                        .Include("Education_Matrice_Formation")
+                        .Include("Education_UnitePrice")
+                        .Include("Education_FormationDossier")
 
-                            .OrderBy(p => p.Formation_Id).ToPagedList(pagNumber, pageSize);
-                            //dG_Education_Formations.DataSource = lEducation_Formations.ToPagedList(1, 100); ;
-                        }
-                        else
-                        {
-                            return MainWindow.globalListEducation_Formations.ToPagedList(pagNumber, pageSize); ;
-                            //dG_Education_Formations.DataSource = MainWindow.globalListEducation_Formations.ToPagedList(1, 100); 
-                        }
+                        .OrderBy(p => p.Formation_Id).ToPagedList(pagNumber, pageSize);
+                        //dG_Education_Formations.DataSource = lEducation_Formations.ToPagedList(1, 100); ;
+                    }
+                    else
+                    {
+                        return MainWindow.globalListEducation_Formations.ToPagedList(pagNumber, pageSize); ;
+                        //dG_Education_Formations.DataSource = MainWindow.globalListEducation_Formations.ToPagedList(1, 100); 
+                    }
                     //}
 
 
@@ -394,7 +399,7 @@ namespace Module_Education
         private object GetDataSource(IPagedList<Education_Formation> listPaged)
         {
             //using (CFNEducation_FormationEntities dbTemp = new CFNEducation_FormationEntities())
-            //{
+            //{126, 20
             object dataSource = listPaged.Select(o => new MyColumnCollectionDGFormation(o)
             {
                 Formation_ShortTitle = o.Formation_ShortTitle,
@@ -585,7 +590,8 @@ namespace Module_Education
 
                     Education_FormationRecord_FillCbListPRoviders(CurrentFormation);
                     //Doc
-                    Education_FormationRecord_LoadDocInfoFiche(CurrentFormation);
+                    Education_FormationRecord_LoadDocInfoFiche(CurrentFormation); 
+                    Education_FormationRecord_LoadDocAudit(CurrentFormation);
                     Education_FormationRecord_LoadDocSyllabus(CurrentFormation);
                     Education_FormationRecord_LoadDocTest(CurrentFormation);
                     Education_FormationRecord_LoadDocScenario(CurrentFormation);
@@ -922,6 +928,21 @@ namespace Module_Education
             else
             {
                 tbInfoFiche.Text = "";
+
+
+            }
+        }
+
+        private void Education_FormationRecord_LoadDocAudit(Education_Formation Education_FormationRecord)
+        {
+            if (Education_FormationRecord.Education_FormationDossier.Count > 0)
+            {
+                tbDocAudit.Text = Education_FormationRecord.Education_FormationDossier
+                    .Where(w => w.FormationDossier_Formation == Education_FormationRecord.Formation_Id).FirstOrDefault().FormationDossier_AuditHyperLink;
+            }
+            else
+            {
+                tbDocAudit.Text = "";
 
 
             }
@@ -1702,6 +1723,43 @@ namespace Module_Education
         }
 
         #region Documents
+        private void btnDocAudit_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.CheckFileExists = true;
+            openFileDialog1.AddExtension = true; openFileDialog1.Title = "Audit";
+
+            openFileDialog1.Multiselect = true;
+            openFileDialog1.Filter = "All files (*.*)|*.*";
+
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                foreach (string fileName in openFileDialog1.FileNames)
+                {
+                    Process.Start(fileName);
+                    tbTest.Text = fileName;
+
+                    FileExtensions fileExtensions = new FileExtensions();
+                    string fileSavedPath = fileExtensions.SaveFile(fileName, CurrentFormation.Formation_SAP);
+                    dbFormationDossier.SaveAudit(CurrentFormation, fileSavedPath);
+                    tbDocAudit.Text = fileSavedPath;
+
+                }
+            }
+        }
+
+        private void picShowDocAudit_Click(object sender, EventArgs e)
+        {
+            if (tbDocAudit.Text != "")
+            {
+                Process.Start(tbDocAudit.Text);
+            }
+            else
+            {
+                AutoClosingMessageBox.Show("Aucun fichier à afficher", "Error", 1000, MessageBoxIcon.Error);
+            }
+        }
+
         private void btnScenario_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -1709,7 +1767,7 @@ namespace Module_Education
             openFileDialog1.Title = "Scénario";
             openFileDialog1.AddExtension = true;
             openFileDialog1.Multiselect = true;
-            openFileDialog1.Filter = "txt files (*.txt)|*.txt| PDF files (*.pdf)|*.pdf";
+            openFileDialog1.Filter = "All files (*.*)|*.*";
 
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -1735,7 +1793,7 @@ namespace Module_Education
             openFileDialog1.Title = "Syllabus";
 
             openFileDialog1.Multiselect = true;
-            openFileDialog1.Filter = "txt files (*.txt)|*.txt| PDF files (*.pdf)|*.pdf";
+            openFileDialog1.Filter = "All files (*.*)|*.*";
 
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -1760,7 +1818,7 @@ namespace Module_Education
             openFileDialog1.AddExtension = true; openFileDialog1.Title = "Test";
 
             openFileDialog1.Multiselect = true;
-            openFileDialog1.Filter = "txt files (*.txt)|*.txt| PDF files (*.pdf)|*.pdf";
+            openFileDialog1.Filter = "All files (*.*)|*.*";
 
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -1784,7 +1842,7 @@ namespace Module_Education
             openFileDialog1.CheckFileExists = true;
             openFileDialog1.AddExtension = true;
             openFileDialog1.Multiselect = true;
-            openFileDialog1.Filter = "txt files (*.txt)|*.txt| PDF files (*.pdf)|*.pdf";
+            openFileDialog1.Filter = "All files (*.*)|*.*";
 
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
@@ -2000,12 +2058,23 @@ namespace Module_Education
 
         }
 
+
         #region Tab Matrice
 
 
         #endregion
 
+        private void AdvDg_Certifications_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value is bool)
+            {
+                bool value = (bool)e.Value;
+                e.Value = (value) ? "OUI" : "NON";
+                e.FormattingApplied = true;
+            }
+        }
 
+       
     }
 }
 

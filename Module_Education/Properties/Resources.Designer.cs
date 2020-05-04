@@ -22,7 +22,7 @@ namespace Module_Education.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Module_Education.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Module_Education.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace Module_Education.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap add_512 {
+        public static System.Drawing.Bitmap add_512 {
             get {
                 object obj = ResourceManager.GetObject("add-512", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -73,7 +73,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap AdvancedDataGridView_logo {
+        public static System.Drawing.Bitmap AdvancedDataGridView_logo {
             get {
                 object obj = ResourceManager.GetObject("AdvancedDataGridView_logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -83,7 +83,17 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap baseline_library_add_black_18dp {
+        public static System.Drawing.Bitmap baseline_double_arrow_black_18dp {
+            get {
+                object obj = ResourceManager.GetObject("baseline_double_arrow_black_18dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap baseline_library_add_black_18dp {
             get {
                 object obj = ResourceManager.GetObject("baseline_library_add_black_18dp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -93,7 +103,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap baseline_person_black_18dp {
+        public static System.Drawing.Bitmap baseline_person_black_18dp {
             get {
                 object obj = ResourceManager.GetObject("baseline_person_black_18dp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -103,7 +113,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap baseline_person_black_36dp {
+        public static System.Drawing.Bitmap baseline_person_black_36dp {
             get {
                 object obj = ResourceManager.GetObject("baseline_person_black_36dp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -113,7 +123,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap baseline_visibility_black_18dp {
+        public static System.Drawing.Bitmap baseline_visibility_black_18dp {
             get {
                 object obj = ResourceManager.GetObject("baseline_visibility_black_18dp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -123,7 +133,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ColumnHeader_Filtered {
+        public static System.Drawing.Bitmap ColumnHeader_Filtered {
             get {
                 object obj = ResourceManager.GetObject("ColumnHeader_Filtered", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -133,7 +143,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ColumnHeader_FilteredAndOrderedASC {
+        public static System.Drawing.Bitmap ColumnHeader_FilteredAndOrderedASC {
             get {
                 object obj = ResourceManager.GetObject("ColumnHeader_FilteredAndOrderedASC", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -143,7 +153,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ColumnHeader_FilteredAndOrderedDESC {
+        public static System.Drawing.Bitmap ColumnHeader_FilteredAndOrderedDESC {
             get {
                 object obj = ResourceManager.GetObject("ColumnHeader_FilteredAndOrderedDESC", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -153,7 +163,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ColumnHeader_OrderedASC {
+        public static System.Drawing.Bitmap ColumnHeader_OrderedASC {
             get {
                 object obj = ResourceManager.GetObject("ColumnHeader_OrderedASC", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -163,7 +173,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ColumnHeader_OrderedDESC {
+        public static System.Drawing.Bitmap ColumnHeader_OrderedDESC {
             get {
                 object obj = ResourceManager.GetObject("ColumnHeader_OrderedDESC", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -173,7 +183,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ColumnHeader_SavedFilters {
+        public static System.Drawing.Bitmap ColumnHeader_SavedFilters {
             get {
                 object obj = ResourceManager.GetObject("ColumnHeader_SavedFilters", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -183,7 +193,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ColumnHeader_UnFiltered {
+        public static System.Drawing.Bitmap ColumnHeader_UnFiltered {
             get {
                 object obj = ResourceManager.GetObject("ColumnHeader_UnFiltered", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -193,7 +203,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Excel_icon {
+        public static System.Drawing.Bitmap Excel_icon {
             get {
                 object obj = ResourceManager.GetObject("Excel-icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -203,7 +213,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap exit {
+        public static System.Drawing.Bitmap exit {
             get {
                 object obj = ResourceManager.GetObject("exit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -213,7 +223,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Hideshowmenu {
+        public static System.Drawing.Bitmap Hideshowmenu {
             get {
                 object obj = ResourceManager.GetObject("Hideshowmenu", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -223,7 +233,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap MenuStrip_OrderASCbool {
+        public static System.Drawing.Bitmap MenuStrip_OrderASCbool {
             get {
                 object obj = ResourceManager.GetObject("MenuStrip_OrderASCbool", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -233,7 +243,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap MenuStrip_OrderASCnum {
+        public static System.Drawing.Bitmap MenuStrip_OrderASCnum {
             get {
                 object obj = ResourceManager.GetObject("MenuStrip_OrderASCnum", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -243,7 +253,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap MenuStrip_OrderASCtxt {
+        public static System.Drawing.Bitmap MenuStrip_OrderASCtxt {
             get {
                 object obj = ResourceManager.GetObject("MenuStrip_OrderASCtxt", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -253,7 +263,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap MenuStrip_OrderDESCbool {
+        public static System.Drawing.Bitmap MenuStrip_OrderDESCbool {
             get {
                 object obj = ResourceManager.GetObject("MenuStrip_OrderDESCbool", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -263,7 +273,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap MenuStrip_OrderDESCnum {
+        public static System.Drawing.Bitmap MenuStrip_OrderDESCnum {
             get {
                 object obj = ResourceManager.GetObject("MenuStrip_OrderDESCnum", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -273,7 +283,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap MenuStrip_OrderDESCtxt {
+        public static System.Drawing.Bitmap MenuStrip_OrderDESCtxt {
             get {
                 object obj = ResourceManager.GetObject("MenuStrip_OrderDESCtxt", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -283,7 +293,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap MenuStrip_ResizeGrip {
+        public static System.Drawing.Bitmap MenuStrip_ResizeGrip {
             get {
                 object obj = ResourceManager.GetObject("MenuStrip_ResizeGrip", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -293,7 +303,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap outline_clear_black_24dp {
+        public static System.Drawing.Bitmap outline_clear_black_24dp {
             get {
                 object obj = ResourceManager.GetObject("outline_clear_black_24dp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -303,7 +313,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap outline_clear_black_24dp1 {
+        public static System.Drawing.Bitmap outline_clear_black_24dp1 {
             get {
                 object obj = ResourceManager.GetObject("outline_clear_black_24dp1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -313,7 +323,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap outline_clear_black_24dp2 {
+        public static System.Drawing.Bitmap outline_clear_black_24dp2 {
             get {
                 object obj = ResourceManager.GetObject("outline_clear_black_24dp2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -323,7 +333,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SearchToolBar_ButtonCaseSensitive {
+        public static System.Drawing.Bitmap SearchToolBar_ButtonCaseSensitive {
             get {
                 object obj = ResourceManager.GetObject("SearchToolBar_ButtonCaseSensitive", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -333,7 +343,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SearchToolBar_ButtonClose {
+        public static System.Drawing.Bitmap SearchToolBar_ButtonClose {
             get {
                 object obj = ResourceManager.GetObject("SearchToolBar_ButtonClose", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -343,7 +353,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SearchToolBar_ButtonFromBegin {
+        public static System.Drawing.Bitmap SearchToolBar_ButtonFromBegin {
             get {
                 object obj = ResourceManager.GetObject("SearchToolBar_ButtonFromBegin", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -353,7 +363,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SearchToolBar_ButtonSearch {
+        public static System.Drawing.Bitmap SearchToolBar_ButtonSearch {
             get {
                 object obj = ResourceManager.GetObject("SearchToolBar_ButtonSearch", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
@@ -363,7 +373,7 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SearchToolBar_ButtonWholeWord {
+        public static System.Drawing.Bitmap SearchToolBar_ButtonWholeWord {
             get {
                 object obj = ResourceManager.GetObject("SearchToolBar_ButtonWholeWord", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));

@@ -35,10 +35,22 @@ namespace Module_Education.Repositories
             var certif = db.Education_AgentPassportSafety
                  .Where(w => w.AgentPassportSafety_Id == education_AgentPassportSafety.AgentPassportSafety_Id).FirstOrDefault();
 
-            certif = education_AgentPassportSafety;
+            certif.AgentPassportSafety_Passport = education_AgentPassportSafety.AgentPassportSafety_Passport;
 
             db.SaveChanges();
             return certif;
+        }
+
+        public Education_PassportSafety SaveNewPs(int lvlPs)
+        {
+            Education_PassportSafety education_PassportSafety = new Education_PassportSafety
+            {
+
+                PassportSafety_LevelPS = lvlPs,
+            };
+            db.Education_PassportSafety.Add(education_PassportSafety);
+            db.SaveChanges();
+            return education_PassportSafety;
         }
 
 

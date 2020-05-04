@@ -15,7 +15,7 @@ namespace Module_Education.Classes
         public long AgentPassportSafetyId { get; set; }
 
         [DisplayName("Niveau PS")]
-        public int? PassportSafety_LevelPS { get; set; }
+        public string PassportSafety_LevelPS { get; set; }
 
         [DisplayName("Date d'envoi")]
         public DateTime? AgentPassportSafetySendingDate { get; set; }

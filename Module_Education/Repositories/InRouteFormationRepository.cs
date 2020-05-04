@@ -116,5 +116,10 @@ namespace Module_Education.Repositories
                             .Where(x => x.Education_Formation.Formation_SAP == formationSAP &&
                             x.Education_Matrice.Matrice_Description == routeName).FirstOrDefault();
         }
+
+        public void LoadAllFormationAgent(Education_Matrice matriceSelected, long userIDSelected)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

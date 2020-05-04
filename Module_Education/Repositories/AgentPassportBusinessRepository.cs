@@ -19,5 +19,7 @@ namespace Module_Education.Repositories
             return db.Education_AgentPassportBusiness.Where(x => x.Education_Agent.Agent_Id == agent.Agent_Id)
                     .ToList();
         }
+
+
     }
 }

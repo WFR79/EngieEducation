@@ -14,7 +14,7 @@ namespace Module_Education.Repositories
         {
 
         }
-        public List<Education_AgentCertifElecFunc> LoadPassportBusinessAgent(Education_Agent agent)
+        public List<Education_AgentCertifElecFunc> LoadCertifElecFunc(Education_Agent agent)
         {
             return db.Education_AgentCertifElecFunc.Where(x => x.Education_Agent.Agent_Id == agent.Agent_Id)
                     .ToList();

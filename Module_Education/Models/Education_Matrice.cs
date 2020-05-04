@@ -19,7 +19,6 @@ namespace Module_Education.Models
         {
             this.Education_Matrice_Formation = new HashSet<Education_Matrice_Formation>();
             this.Education_Matrice_GrLearner = new HashSet<Education_Matrice_GrLearner>();
-            this.Education_Matrice_Agent = new HashSet<Education_Matrice_Agent>();
         }
     
         public long Matrice_Id { get; set; }
@@ -30,7 +29,5 @@ namespace Module_Education.Models
         public virtual ICollection<Education_Matrice_Formation> Education_Matrice_Formation { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_Matrice_GrLearner> Education_Matrice_GrLearner { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Education_Matrice_Agent> Education_Matrice_Agent { get; set; }
     }
 }

@@ -28,5 +28,28 @@ namespace Module_Education.Repositories
                    .FirstOrDefault()
                    ;
         }
+
+        public Education_AgentPassportBusiness SaveExistingPs(Education_AgentPassportBusiness agentPassportBusinessSelected)
+        {
+            var certif = db.Education_AgentPassportBusiness
+                            .Where(w => w.AgentPassportBusiness_Id == agentPassportBusinessSelected.AgentPassportBusiness_Id).FirstOrDefault();
+
+            certif = agentPassportBusinessSelected;
+
+            db.SaveChanges();
+            return certif;
+        }
+
+        public Education_PassportBusiness SaveNewPs(string description)
+        {
+            Education_PassportBusiness education_PassportSafety = new Education_PassportBusiness
+            {
+                
+                PassportBusiness_Name = description,
+            };
+            db.Education_PassportBusiness.Add(education_PassportSafety);
+            db.SaveChanges();
+            return education_PassportSafety;
+        }
     }
 }

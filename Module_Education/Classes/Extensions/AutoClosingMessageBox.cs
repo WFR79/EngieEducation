@@ -17,17 +17,17 @@ namespace Module_Education.Classes.Extensions
         [System.Runtime.InteropServices.DllImport("user32.dll", CharSet = System.Runtime.InteropServices.CharSet.Auto)]
         static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, IntPtr wParam, IntPtr lParam);
 
-        public AutoClosingMessageBox(string text, string caption, int timeout,MessageBoxIcon icon)
+        public AutoClosingMessageBox(string caption, string title, int timeout,MessageBoxIcon icon)
         {
             _caption = caption;
             _timeoutTimer = new System.Threading.Timer(OnTimerElapsed,
                 null, timeout, System.Threading.Timeout.Infinite);
             using (_timeoutTimer)
-                MessageBox.Show(text, caption,MessageBoxButtons.OK, icon);
+                MessageBox.Show(caption, title, MessageBoxButtons.OK, icon);
         }
-        public static void Show(string text, string caption, int timeout, MessageBoxIcon icon)
+        public static void Show(string caption, string title, int timeout, MessageBoxIcon icon)
         {
-            new AutoClosingMessageBox(text, caption, timeout, icon);
+            new AutoClosingMessageBox(caption, title, timeout, icon);
         }
         void OnTimerElapsed(object state)
         {

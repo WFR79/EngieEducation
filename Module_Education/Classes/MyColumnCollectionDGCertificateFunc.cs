@@ -10,6 +10,10 @@ namespace Module_Education.Classes
 {
     public class MyColumnCollectionDGCertificateFunc
     {
+
+        [DisplayName("IdElecFunc")]
+        public long? AgentCertifElecFuncId { get; set; }
+
         [DisplayName("Niveau B")]
         public string AgentCertificateLevelB { get; set; }
 

@@ -91,5 +91,34 @@ namespace Module_Education.Repositories
                 return null;
             }
         }
+
+        public List<Education_Agent>  LoadAllAgentsExcepted(Education_Matrice matriceSelected)
+        {
+            List<Education_Agent> listAgentInGrp = db.Education_Agent
+                         .Where(w => w.Education_Matrice_Agent.Any(x => x.Education_Matrice_Formation.MatriceFormation_Matrice == matriceSelected.Matrice_Id))
+                         .ToList();
+
+            List<Education_Agent> listAgent = db.Education_Agent
+               .ToList();
+
+            List<Education_Agent> listIntersect = listAgent.Except(listAgentInGrp).ToList();
+
+            return listIntersect;
+        }
+
+        public List<Education_GroupLearner> LoadAllGrpAgentsExcepted(Education_Matrice matriceSelected)
+        {
+            db = new CFNEducation_FormationEntities();
+            List<Education_GroupLearner> listAgentInGrp = db.Education_GroupLearner
+                         .Where(w => w.Education_Matrice_GrLearner.Any(x => x.MatriceGrLearner_Matrice == matriceSelected.Matrice_Id))
+                         .ToList();
+
+            List<Education_GroupLearner> listAgent = db.Education_GroupLearner
+               .ToList();
+
+            List<Education_GroupLearner> listIntersect = listAgent.Except(listAgentInGrp).ToList();
+
+            return listIntersect;
+        }
     }
 }

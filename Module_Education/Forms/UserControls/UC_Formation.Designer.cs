@@ -70,17 +70,11 @@
             this.tabControl_Education_FormationAndCertificationsOfUser = new System.Windows.Forms.TabControl();
             this.tabPageEducation_FormationsAgent = new System.Windows.Forms.TabPage();
             this.advDv_AgentsOfFormation = new Zuby.ADGV.AdvancedDataGridView();
-            this.tabPageCertificationsAgent = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.picShowDocAudit = new System.Windows.Forms.PictureBox();
             this.lblDocAudit = new System.Windows.Forms.Label();
             this.tbDocAudit = new System.Windows.Forms.TextBox();
             this.btnDocAudit = new System.Windows.Forms.Button();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label13 = new System.Windows.Forms.Label();
             this.tbTest = new System.Windows.Forms.TextBox();
             this.btnTest = new System.Windows.Forms.Button();
@@ -99,6 +93,10 @@
             this.lblPrioritéInfoFiche = new System.Windows.Forms.Label();
             this.lblTypeDssier = new System.Windows.Forms.Label();
             this.cbTypeDossier = new System.Windows.Forms.ComboBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.comboBoxDurationInDays = new System.Windows.Forms.ComboBox();
             this.comboBoxProvider = new System.Windows.Forms.ComboBox();
             this.comboBoxMinCapacity = new System.Windows.Forms.ComboBox();
@@ -130,8 +128,6 @@
             this.tabControl_Education_FormationAndCertificationsOfUser.SuspendLayout();
             this.tabPageEducation_FormationsAgent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.advDv_AgentsOfFormation)).BeginInit();
-            this.tabPageCertificationsAgent.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picShowDocAudit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -237,7 +233,7 @@
             this.tabPageEducation_FormationFiche.Location = new System.Drawing.Point(4, 23);
             this.tabPageEducation_FormationFiche.Name = "tabPageEducation_FormationFiche";
             this.tabPageEducation_FormationFiche.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageEducation_FormationFiche.Size = new System.Drawing.Size(1059, 543);
+            this.tabPageEducation_FormationFiche.Size = new System.Drawing.Size(1059, 457);
             this.tabPageEducation_FormationFiche.TabIndex = 2;
             this.tabPageEducation_FormationFiche.Tag = "Fiche de la Education_Formation";
             this.tabPageEducation_FormationFiche.Text = "Fiche";
@@ -248,9 +244,9 @@
             // picViewProvider
             // 
             this.picViewProvider.Image = global::Module_Education.Properties.Resources.baseline_visibility_black_18dp;
-            this.picViewProvider.Location = new System.Drawing.Point(205, 262);
+            this.picViewProvider.Location = new System.Drawing.Point(205, 282);
             this.picViewProvider.Name = "picViewProvider";
-            this.picViewProvider.Size = new System.Drawing.Size(21, 19);
+            this.picViewProvider.Size = new System.Drawing.Size(21, 20);
             this.picViewProvider.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picViewProvider.TabIndex = 160;
             this.picViewProvider.TabStop = false;
@@ -259,7 +255,7 @@
             // lblShowHidePanelDossierPed
             // 
             this.lblShowHidePanelDossierPed.AutoSize = true;
-            this.lblShowHidePanelDossierPed.Location = new System.Drawing.Point(459, 48);
+            this.lblShowHidePanelDossierPed.Location = new System.Drawing.Point(459, 52);
             this.lblShowHidePanelDossierPed.Name = "lblShowHidePanelDossierPed";
             this.lblShowHidePanelDossierPed.Size = new System.Drawing.Size(70, 16);
             this.lblShowHidePanelDossierPed.TabIndex = 130;
@@ -272,7 +268,7 @@
             this.panelDossierPedagogique.AutoScroll = true;
             this.panelDossierPedagogique.AutoSize = true;
             this.panelDossierPedagogique.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panelDossierPedagogique.Location = new System.Drawing.Point(211, 208);
+            this.panelDossierPedagogique.Location = new System.Drawing.Point(211, 224);
             this.panelDossierPedagogique.Name = "panelDossierPedagogique";
             this.panelDossierPedagogique.Size = new System.Drawing.Size(0, 0);
             this.panelDossierPedagogique.TabIndex = 129;
@@ -280,7 +276,7 @@
             // label11
             // 
             this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label11.Location = new System.Drawing.Point(449, 64);
+            this.label11.Location = new System.Drawing.Point(449, 69);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(565, 1);
             this.label11.TabIndex = 126;
@@ -288,7 +284,7 @@
             // 
             // tbVendor
             // 
-            this.tbVendor.Location = new System.Drawing.Point(236, 316);
+            this.tbVendor.Location = new System.Drawing.Point(236, 340);
             this.tbVendor.Name = "tbVendor";
             this.tbVendor.Size = new System.Drawing.Size(186, 22);
             this.tbVendor.TabIndex = 68;
@@ -296,7 +292,7 @@
             // 
             // txtYearOfCreation
             // 
-            this.txtYearOfCreation.Location = new System.Drawing.Point(14, 184);
+            this.txtYearOfCreation.Location = new System.Drawing.Point(14, 198);
             this.txtYearOfCreation.Name = "txtYearOfCreation";
             this.txtYearOfCreation.Size = new System.Drawing.Size(69, 22);
             this.txtYearOfCreation.TabIndex = 58;
@@ -311,7 +307,7 @@
             this.tbLongTitle.Enabled = false;
             this.tbLongTitle.Font = new System.Drawing.Font("Arial", 8.75F, System.Drawing.FontStyle.Bold);
             this.tbLongTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.tbLongTitle.Location = new System.Drawing.Point(14, 49);
+            this.tbLongTitle.Location = new System.Drawing.Point(14, 53);
             this.tbLongTitle.Name = "tbLongTitle";
             this.tbLongTitle.ReadOnly = true;
             this.tbLongTitle.Size = new System.Drawing.Size(63, 14);
@@ -325,7 +321,7 @@
             this.tbShortTitleEducation_Formation.Enabled = false;
             this.tbShortTitleEducation_Formation.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold);
             this.tbShortTitleEducation_Formation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.tbShortTitleEducation_Formation.Location = new System.Drawing.Point(14, 18);
+            this.tbShortTitleEducation_Formation.Location = new System.Drawing.Point(14, 19);
             this.tbShortTitleEducation_Formation.Name = "tbShortTitleEducation_Formation";
             this.tbShortTitleEducation_Formation.ReadOnly = true;
             this.tbShortTitleEducation_Formation.Size = new System.Drawing.Size(369, 25);
@@ -334,7 +330,7 @@
             // 
             // textBoxPrice
             // 
-            this.textBoxPrice.Location = new System.Drawing.Point(237, 95);
+            this.textBoxPrice.Location = new System.Drawing.Point(237, 102);
             this.textBoxPrice.Name = "textBoxPrice";
             this.textBoxPrice.Size = new System.Drawing.Size(83, 22);
             this.textBoxPrice.TabIndex = 60;
@@ -345,9 +341,9 @@
             this.richTextBoxRemarks.AutoWordSelection = true;
             this.richTextBoxRemarks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(199)))), ((int)(((byte)(234)))));
             this.richTextBoxRemarks.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.richTextBoxRemarks.Location = new System.Drawing.Point(13, 395);
+            this.richTextBoxRemarks.Location = new System.Drawing.Point(13, 425);
             this.richTextBoxRemarks.Name = "richTextBoxRemarks";
-            this.richTextBoxRemarks.Size = new System.Drawing.Size(417, 67);
+            this.richTextBoxRemarks.Size = new System.Drawing.Size(417, 72);
             this.richTextBoxRemarks.TabIndex = 82;
             this.richTextBoxRemarks.Text = "";
             // 
@@ -356,7 +352,7 @@
             this.lblVendor.AutoSize = true;
             this.lblVendor.Font = new System.Drawing.Font("Arial", 9.25F);
             this.lblVendor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblVendor.Location = new System.Drawing.Point(236, 300);
+            this.lblVendor.Location = new System.Drawing.Point(236, 323);
             this.lblVendor.Name = "lblVendor";
             this.lblVendor.Size = new System.Drawing.Size(55, 16);
             this.lblVendor.TabIndex = 118;
@@ -365,9 +361,9 @@
             // picAddProvider
             // 
             this.picAddProvider.Image = global::Module_Education.Properties.Resources.add_512;
-            this.picAddProvider.Location = new System.Drawing.Point(201, 228);
+            this.picAddProvider.Location = new System.Drawing.Point(201, 246);
             this.picAddProvider.Name = "picAddProvider";
-            this.picAddProvider.Size = new System.Drawing.Size(30, 24);
+            this.picAddProvider.Size = new System.Drawing.Size(30, 26);
             this.picAddProvider.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picAddProvider.TabIndex = 115;
             this.picAddProvider.TabStop = false;
@@ -377,7 +373,7 @@
             // cbListProvider
             // 
             this.cbListProvider.FormattingEnabled = true;
-            this.cbListProvider.Location = new System.Drawing.Point(14, 262);
+            this.cbListProvider.Location = new System.Drawing.Point(14, 282);
             this.cbListProvider.Name = "cbListProvider";
             this.cbListProvider.Size = new System.Drawing.Size(185, 89);
             this.cbListProvider.TabIndex = 113;
@@ -390,7 +386,7 @@
             this.labelCapOpt.AutoSize = true;
             this.labelCapOpt.Font = new System.Drawing.Font("Arial", 9.25F);
             this.labelCapOpt.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.labelCapOpt.Location = new System.Drawing.Point(234, 208);
+            this.labelCapOpt.Location = new System.Drawing.Point(234, 224);
             this.labelCapOpt.Name = "labelCapOpt";
             this.labelCapOpt.Size = new System.Drawing.Size(112, 16);
             this.labelCapOpt.TabIndex = 112;
@@ -401,7 +397,7 @@
             this.lblYearOfCreation.AutoSize = true;
             this.lblYearOfCreation.Font = new System.Drawing.Font("Arial", 9.25F);
             this.lblYearOfCreation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblYearOfCreation.Location = new System.Drawing.Point(11, 167);
+            this.lblYearOfCreation.Location = new System.Drawing.Point(11, 180);
             this.lblYearOfCreation.Name = "lblYearOfCreation";
             this.lblYearOfCreation.Size = new System.Drawing.Size(113, 16);
             this.lblYearOfCreation.TabIndex = 111;
@@ -412,7 +408,7 @@
             this.labelComptence.AutoSize = true;
             this.labelComptence.Font = new System.Drawing.Font("Arial", 9.25F);
             this.labelComptence.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.labelComptence.Location = new System.Drawing.Point(11, 120);
+            this.labelComptence.Location = new System.Drawing.Point(11, 129);
             this.labelComptence.Name = "labelComptence";
             this.labelComptence.Size = new System.Drawing.Size(81, 16);
             this.labelComptence.TabIndex = 109;
@@ -423,7 +419,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Arial", 9.25F);
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.label9.Location = new System.Drawing.Point(234, 254);
+            this.label9.Location = new System.Drawing.Point(234, 274);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(119, 16);
             this.label9.TabIndex = 108;
@@ -434,7 +430,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Arial", 9.25F);
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.label8.Location = new System.Drawing.Point(234, 163);
+            this.label8.Location = new System.Drawing.Point(234, 176);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(115, 16);
             this.label8.TabIndex = 107;
@@ -445,7 +441,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 9.25F);
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.label7.Location = new System.Drawing.Point(326, 119);
+            this.label7.Location = new System.Drawing.Point(326, 128);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(45, 16);
             this.label7.TabIndex = 106;
@@ -456,7 +452,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 9.25F);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.label6.Location = new System.Drawing.Point(234, 118);
+            this.label6.Location = new System.Drawing.Point(234, 127);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 16);
             this.label6.TabIndex = 105;
@@ -467,7 +463,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial", 9.25F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.label3.Location = new System.Drawing.Point(323, 76);
+            this.label3.Location = new System.Drawing.Point(323, 82);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 16);
             this.label3.TabIndex = 104;
@@ -478,7 +474,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial", 9.25F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.label2.Location = new System.Drawing.Point(234, 76);
+            this.label2.Location = new System.Drawing.Point(234, 82);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(31, 16);
             this.label2.TabIndex = 103;
@@ -489,7 +485,7 @@
             this.labelProvider.AutoSize = true;
             this.labelProvider.Font = new System.Drawing.Font("Arial", 9.25F);
             this.labelProvider.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.labelProvider.Location = new System.Drawing.Point(11, 211);
+            this.labelProvider.Location = new System.Drawing.Point(11, 227);
             this.labelProvider.Name = "labelProvider";
             this.labelProvider.Size = new System.Drawing.Size(76, 16);
             this.labelProvider.TabIndex = 102;
@@ -500,7 +496,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial", 9.25F);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.label5.Location = new System.Drawing.Point(89, 76);
+            this.label5.Location = new System.Drawing.Point(89, 82);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 16);
             this.label5.TabIndex = 84;
@@ -511,7 +507,7 @@
             this.labelDurationInDays.AutoSize = true;
             this.labelDurationInDays.Font = new System.Drawing.Font("Arial", 9.25F);
             this.labelDurationInDays.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.labelDurationInDays.Location = new System.Drawing.Point(11, 77);
+            this.labelDurationInDays.Location = new System.Drawing.Point(11, 83);
             this.labelDurationInDays.Name = "labelDurationInDays";
             this.labelDurationInDays.Size = new System.Drawing.Size(39, 16);
             this.labelDurationInDays.TabIndex = 83;
@@ -521,7 +517,7 @@
             // 
             this.comboBoxResultatYear.Font = new System.Drawing.Font("Arial", 8.25F);
             this.comboBoxResultatYear.FormattingEnabled = true;
-            this.comboBoxResultatYear.Location = new System.Drawing.Point(326, 136);
+            this.comboBoxResultatYear.Location = new System.Drawing.Point(326, 146);
             this.comboBoxResultatYear.Name = "comboBoxResultatYear";
             this.comboBoxResultatYear.Size = new System.Drawing.Size(96, 22);
             this.comboBoxResultatYear.TabIndex = 64;
@@ -531,7 +527,7 @@
             // 
             this.comboBoxResultatByYear.Font = new System.Drawing.Font("Arial", 8.25F);
             this.comboBoxResultatByYear.FormattingEnabled = true;
-            this.comboBoxResultatByYear.Location = new System.Drawing.Point(237, 136);
+            this.comboBoxResultatByYear.Location = new System.Drawing.Point(237, 146);
             this.comboBoxResultatByYear.Name = "comboBoxResultatByYear";
             this.comboBoxResultatByYear.Size = new System.Drawing.Size(83, 22);
             this.comboBoxResultatByYear.TabIndex = 63;
@@ -542,7 +538,7 @@
             // 
             this.comboBoxUnite.Font = new System.Drawing.Font("Arial", 8.25F);
             this.comboBoxUnite.FormattingEnabled = true;
-            this.comboBoxUnite.Location = new System.Drawing.Point(326, 95);
+            this.comboBoxUnite.Location = new System.Drawing.Point(326, 102);
             this.comboBoxUnite.Name = "comboBoxUnite";
             this.comboBoxUnite.Size = new System.Drawing.Size(96, 22);
             this.comboBoxUnite.TabIndex = 62;
@@ -553,7 +549,7 @@
             // 
             this.comboBoxCapaciteOptimale.Font = new System.Drawing.Font("Arial", 8.25F);
             this.comboBoxCapaciteOptimale.FormattingEnabled = true;
-            this.comboBoxCapaciteOptimale.Location = new System.Drawing.Point(237, 224);
+            this.comboBoxCapaciteOptimale.Location = new System.Drawing.Point(237, 241);
             this.comboBoxCapaciteOptimale.Name = "comboBoxCapaciteOptimale";
             this.comboBoxCapaciteOptimale.Size = new System.Drawing.Size(185, 22);
             this.comboBoxCapaciteOptimale.TabIndex = 66;
@@ -563,7 +559,7 @@
             // 
             this.comboBoxDurationhours.Font = new System.Drawing.Font("Arial", 8.25F);
             this.comboBoxDurationhours.FormattingEnabled = true;
-            this.comboBoxDurationhours.Location = new System.Drawing.Point(92, 93);
+            this.comboBoxDurationhours.Location = new System.Drawing.Point(92, 100);
             this.comboBoxDurationhours.Name = "comboBoxDurationhours";
             this.comboBoxDurationhours.Size = new System.Drawing.Size(72, 22);
             this.comboBoxDurationhours.TabIndex = 56;
@@ -572,13 +568,12 @@
             // tabControl_Education_FormationAndCertificationsOfUser
             // 
             this.tabControl_Education_FormationAndCertificationsOfUser.Controls.Add(this.tabPageEducation_FormationsAgent);
-            this.tabControl_Education_FormationAndCertificationsOfUser.Controls.Add(this.tabPageCertificationsAgent);
             this.tabControl_Education_FormationAndCertificationsOfUser.Controls.Add(this.tabPage2);
             this.tabControl_Education_FormationAndCertificationsOfUser.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.tabControl_Education_FormationAndCertificationsOfUser.Location = new System.Drawing.Point(454, 77);
+            this.tabControl_Education_FormationAndCertificationsOfUser.Location = new System.Drawing.Point(454, 83);
             this.tabControl_Education_FormationAndCertificationsOfUser.Name = "tabControl_Education_FormationAndCertificationsOfUser";
             this.tabControl_Education_FormationAndCertificationsOfUser.SelectedIndex = 0;
-            this.tabControl_Education_FormationAndCertificationsOfUser.Size = new System.Drawing.Size(577, 385);
+            this.tabControl_Education_FormationAndCertificationsOfUser.Size = new System.Drawing.Size(577, 415);
             this.tabControl_Education_FormationAndCertificationsOfUser.TabIndex = 76;
             // 
             // tabPageEducation_FormationsAgent
@@ -586,54 +581,22 @@
             this.tabPageEducation_FormationsAgent.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageEducation_FormationsAgent.Controls.Add(this.advDv_AgentsOfFormation);
             this.tabPageEducation_FormationsAgent.Font = new System.Drawing.Font("Arial", 10F);
-            this.tabPageEducation_FormationsAgent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(199)))), ((int)(((byte)(234)))));
+            this.tabPageEducation_FormationsAgent.ForeColor = System.Drawing.Color.Black;
             this.tabPageEducation_FormationsAgent.Location = new System.Drawing.Point(4, 28);
             this.tabPageEducation_FormationsAgent.Name = "tabPageEducation_FormationsAgent";
             this.tabPageEducation_FormationsAgent.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageEducation_FormationsAgent.Size = new System.Drawing.Size(569, 353);
+            this.tabPageEducation_FormationsAgent.Size = new System.Drawing.Size(569, 383);
             this.tabPageEducation_FormationsAgent.TabIndex = 0;
-            this.tabPageEducation_FormationsAgent.Text = "Agents de la formation";
+            this.tabPageEducation_FormationsAgent.Text = "Agents";
             // 
             // advDv_AgentsOfFormation
             // 
-            this.advDv_AgentsOfFormation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.advDv_AgentsOfFormation.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.advDv_AgentsOfFormation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.advDv_AgentsOfFormation.FilterAndSortEnabled = true;
-            this.advDv_AgentsOfFormation.Location = new System.Drawing.Point(6, 9);
+            this.advDv_AgentsOfFormation.Location = new System.Drawing.Point(6, 6);
             this.advDv_AgentsOfFormation.Name = "advDv_AgentsOfFormation";
-            this.advDv_AgentsOfFormation.Size = new System.Drawing.Size(550, 338);
+            this.advDv_AgentsOfFormation.Size = new System.Drawing.Size(557, 371);
             this.advDv_AgentsOfFormation.TabIndex = 0;
-            this.advDv_AgentsOfFormation.MouseClick += new System.Windows.Forms.MouseEventHandler(this.advDv_AgentsOfFormation_MouseClick);
-            // 
-            // tabPageCertificationsAgent
-            // 
-            this.tabPageCertificationsAgent.Controls.Add(this.dataGridView1);
-            this.tabPageCertificationsAgent.Font = new System.Drawing.Font("Arial", 10F);
-            this.tabPageCertificationsAgent.Location = new System.Drawing.Point(4, 28);
-            this.tabPageCertificationsAgent.Name = "tabPageCertificationsAgent";
-            this.tabPageCertificationsAgent.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageCertificationsAgent.Size = new System.Drawing.Size(569, 353);
-            this.tabPageCertificationsAgent.TabIndex = 1;
-            this.tabPageCertificationsAgent.Text = "Certifications";
-            this.tabPageCertificationsAgent.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(199)))), ((int)(((byte)(234)))));
-            this.dataGridView1.Location = new System.Drawing.Point(6, 9);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.Size = new System.Drawing.Size(557, 338);
-            this.dataGridView1.TabIndex = 20;
             // 
             // tabPage2
             // 
@@ -641,10 +604,6 @@
             this.tabPage2.Controls.Add(this.lblDocAudit);
             this.tabPage2.Controls.Add(this.tbDocAudit);
             this.tabPage2.Controls.Add(this.btnDocAudit);
-            this.tabPage2.Controls.Add(this.pictureBox4);
-            this.tabPage2.Controls.Add(this.pictureBox3);
-            this.tabPage2.Controls.Add(this.pictureBox2);
-            this.tabPage2.Controls.Add(this.pictureBox1);
             this.tabPage2.Controls.Add(this.label13);
             this.tabPage2.Controls.Add(this.tbTest);
             this.tabPage2.Controls.Add(this.btnTest);
@@ -663,10 +622,14 @@
             this.tabPage2.Controls.Add(this.lblPrioritéInfoFiche);
             this.tabPage2.Controls.Add(this.lblTypeDssier);
             this.tabPage2.Controls.Add(this.cbTypeDossier);
+            this.tabPage2.Controls.Add(this.pictureBox4);
+            this.tabPage2.Controls.Add(this.pictureBox3);
+            this.tabPage2.Controls.Add(this.pictureBox2);
+            this.tabPage2.Controls.Add(this.pictureBox1);
             this.tabPage2.Location = new System.Drawing.Point(4, 28);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(569, 353);
+            this.tabPage2.Size = new System.Drawing.Size(569, 383);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Documents";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -674,19 +637,20 @@
             // picShowDocAudit
             // 
             this.picShowDocAudit.Image = global::Module_Education.Properties.Resources.baseline_visibility_black_18dp;
-            this.picShowDocAudit.Location = new System.Drawing.Point(518, 314);
+            this.picShowDocAudit.Location = new System.Drawing.Point(518, 338);
             this.picShowDocAudit.Name = "picShowDocAudit";
-            this.picShowDocAudit.Size = new System.Drawing.Size(21, 19);
+            this.picShowDocAudit.Size = new System.Drawing.Size(21, 20);
             this.picShowDocAudit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picShowDocAudit.TabIndex = 165;
             this.picShowDocAudit.TabStop = false;
+            this.picShowDocAudit.Click += new System.EventHandler(this.picShowDocAudit_Click);
             // 
             // lblDocAudit
             // 
             this.lblDocAudit.AutoSize = true;
             this.lblDocAudit.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Bold);
             this.lblDocAudit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblDocAudit.Location = new System.Drawing.Point(6, 292);
+            this.lblDocAudit.Location = new System.Drawing.Point(6, 314);
             this.lblDocAudit.Name = "lblDocAudit";
             this.lblDocAudit.Size = new System.Drawing.Size(109, 16);
             this.lblDocAudit.TabIndex = 164;
@@ -696,7 +660,7 @@
             // 
             this.tbDocAudit.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tbDocAudit.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.tbDocAudit.Location = new System.Drawing.Point(6, 311);
+            this.tbDocAudit.Location = new System.Drawing.Point(6, 335);
             this.tbDocAudit.Name = "tbDocAudit";
             this.tbDocAudit.ReadOnly = true;
             this.tbDocAudit.Size = new System.Drawing.Size(407, 20);
@@ -709,65 +673,21 @@
             this.btnDocAudit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDocAudit.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Bold);
             this.btnDocAudit.ForeColor = System.Drawing.Color.White;
-            this.btnDocAudit.Location = new System.Drawing.Point(419, 314);
+            this.btnDocAudit.Location = new System.Drawing.Point(419, 338);
             this.btnDocAudit.Name = "btnDocAudit";
-            this.btnDocAudit.Size = new System.Drawing.Size(93, 23);
+            this.btnDocAudit.Size = new System.Drawing.Size(93, 25);
             this.btnDocAudit.TabIndex = 162;
             this.btnDocAudit.Text = "Parcourir";
             this.btnDocAudit.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnDocAudit.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::Module_Education.Properties.Resources.baseline_visibility_black_18dp;
-            this.pictureBox4.Location = new System.Drawing.Point(518, 255);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(21, 19);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox4.TabIndex = 161;
-            this.pictureBox4.TabStop = false;
-            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::Module_Education.Properties.Resources.baseline_visibility_black_18dp;
-            this.pictureBox3.Location = new System.Drawing.Point(518, 211);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(21, 19);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 160;
-            this.pictureBox3.TabStop = false;
-            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::Module_Education.Properties.Resources.baseline_visibility_black_18dp;
-            this.pictureBox2.Location = new System.Drawing.Point(518, 172);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(21, 19);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 159;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click_1);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Module_Education.Properties.Resources.baseline_visibility_black_18dp;
-            this.pictureBox1.Location = new System.Drawing.Point(518, 26);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(21, 19);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 158;
-            this.pictureBox1.TabStop = false;
-            this.toolTipShowFichier.SetToolTip(this.pictureBox1, "Afficher le fichier\r\n");
-            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
+            this.btnDocAudit.Click += new System.EventHandler(this.btnDocAudit_Click);
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Bold);
             this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.label13.Location = new System.Drawing.Point(6, 233);
+            this.label13.Location = new System.Drawing.Point(6, 251);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(33, 16);
             this.label13.TabIndex = 157;
@@ -777,7 +697,7 @@
             // 
             this.tbTest.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tbTest.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.tbTest.Location = new System.Drawing.Point(6, 252);
+            this.tbTest.Location = new System.Drawing.Point(6, 271);
             this.tbTest.Name = "tbTest";
             this.tbTest.ReadOnly = true;
             this.tbTest.Size = new System.Drawing.Size(407, 20);
@@ -790,9 +710,9 @@
             this.btnTest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTest.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Bold);
             this.btnTest.ForeColor = System.Drawing.Color.White;
-            this.btnTest.Location = new System.Drawing.Point(419, 255);
+            this.btnTest.Location = new System.Drawing.Point(419, 275);
             this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(93, 23);
+            this.btnTest.Size = new System.Drawing.Size(93, 25);
             this.btnTest.TabIndex = 155;
             this.btnTest.Text = "Parcourir";
             this.btnTest.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -804,7 +724,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Bold);
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.label10.Location = new System.Drawing.Point(6, 191);
+            this.label10.Location = new System.Drawing.Point(6, 206);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(62, 16);
             this.label10.TabIndex = 154;
@@ -814,7 +734,7 @@
             // 
             this.tbSyllabus.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tbSyllabus.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.tbSyllabus.Location = new System.Drawing.Point(6, 210);
+            this.tbSyllabus.Location = new System.Drawing.Point(6, 226);
             this.tbSyllabus.Name = "tbSyllabus";
             this.tbSyllabus.ReadOnly = true;
             this.tbSyllabus.Size = new System.Drawing.Size(407, 20);
@@ -827,9 +747,9 @@
             this.btnSyllabus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSyllabus.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Bold);
             this.btnSyllabus.ForeColor = System.Drawing.Color.White;
-            this.btnSyllabus.Location = new System.Drawing.Point(419, 210);
+            this.btnSyllabus.Location = new System.Drawing.Point(419, 226);
             this.btnSyllabus.Name = "btnSyllabus";
-            this.btnSyllabus.Size = new System.Drawing.Size(93, 23);
+            this.btnSyllabus.Size = new System.Drawing.Size(93, 25);
             this.btnSyllabus.TabIndex = 152;
             this.btnSyllabus.Text = "Parcourir";
             this.btnSyllabus.UseVisualStyleBackColor = false;
@@ -840,7 +760,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.label1.Location = new System.Drawing.Point(6, 149);
+            this.label1.Location = new System.Drawing.Point(6, 160);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 16);
             this.label1.TabIndex = 151;
@@ -861,7 +781,7 @@
             // 
             this.tbScenario.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tbScenario.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.tbScenario.Location = new System.Drawing.Point(6, 168);
+            this.tbScenario.Location = new System.Drawing.Point(6, 181);
             this.tbScenario.Name = "tbScenario";
             this.tbScenario.ReadOnly = true;
             this.tbScenario.Size = new System.Drawing.Size(407, 20);
@@ -874,9 +794,9 @@
             this.btnScenario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnScenario.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Bold);
             this.btnScenario.ForeColor = System.Drawing.Color.White;
-            this.btnScenario.Location = new System.Drawing.Point(419, 168);
+            this.btnScenario.Location = new System.Drawing.Point(419, 181);
             this.btnScenario.Name = "btnScenario";
-            this.btnScenario.Size = new System.Drawing.Size(93, 23);
+            this.btnScenario.Size = new System.Drawing.Size(93, 25);
             this.btnScenario.TabIndex = 144;
             this.btnScenario.Text = "Parcourir";
             this.btnScenario.UseVisualStyleBackColor = false;
@@ -886,7 +806,7 @@
             // 
             this.tbInfoFiche.BackColor = System.Drawing.Color.WhiteSmoke;
             this.tbInfoFiche.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.tbInfoFiche.Location = new System.Drawing.Point(6, 23);
+            this.tbInfoFiche.Location = new System.Drawing.Point(6, 25);
             this.tbInfoFiche.Name = "tbInfoFiche";
             this.tbInfoFiche.ReadOnly = true;
             this.tbInfoFiche.Size = new System.Drawing.Size(407, 20);
@@ -899,7 +819,7 @@
             this.checkHubbel.AutoSize = true;
             this.checkHubbel.Font = new System.Drawing.Font("Arial", 9.25F);
             this.checkHubbel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.checkHubbel.Location = new System.Drawing.Point(264, 84);
+            this.checkHubbel.Location = new System.Drawing.Point(264, 90);
             this.checkHubbel.Name = "checkHubbel";
             this.checkHubbel.Size = new System.Drawing.Size(67, 20);
             this.checkHubbel.TabIndex = 143;
@@ -914,9 +834,9 @@
             this.btnBrowseDoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBrowseDoc.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Bold);
             this.btnBrowseDoc.ForeColor = System.Drawing.Color.White;
-            this.btnBrowseDoc.Location = new System.Drawing.Point(419, 23);
+            this.btnBrowseDoc.Location = new System.Drawing.Point(419, 25);
             this.btnBrowseDoc.Name = "btnBrowseDoc";
-            this.btnBrowseDoc.Size = new System.Drawing.Size(93, 23);
+            this.btnBrowseDoc.Size = new System.Drawing.Size(93, 25);
             this.btnBrowseDoc.TabIndex = 136;
             this.btnBrowseDoc.Text = "Parcourir";
             this.btnBrowseDoc.UseVisualStyleBackColor = false;
@@ -927,7 +847,7 @@
             this.checkDossierOk.AutoSize = true;
             this.checkDossierOk.Font = new System.Drawing.Font("Arial", 9.25F);
             this.checkDossierOk.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.checkDossierOk.Location = new System.Drawing.Point(264, 60);
+            this.checkDossierOk.Location = new System.Drawing.Point(264, 65);
             this.checkDossierOk.Name = "checkDossierOk";
             this.checkDossierOk.Size = new System.Drawing.Size(99, 20);
             this.checkDossierOk.TabIndex = 142;
@@ -944,7 +864,7 @@
             "2",
             "3",
             "NA"});
-            this.cbPriority.Location = new System.Drawing.Point(6, 64);
+            this.cbPriority.Location = new System.Drawing.Point(6, 69);
             this.cbPriority.Name = "cbPriority";
             this.cbPriority.Size = new System.Drawing.Size(83, 22);
             this.cbPriority.TabIndex = 137;
@@ -955,7 +875,7 @@
             this.lblPrioritéInfoFiche.AutoSize = true;
             this.lblPrioritéInfoFiche.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Bold);
             this.lblPrioritéInfoFiche.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblPrioritéInfoFiche.Location = new System.Drawing.Point(3, 46);
+            this.lblPrioritéInfoFiche.Location = new System.Drawing.Point(3, 50);
             this.lblPrioritéInfoFiche.Name = "lblPrioritéInfoFiche";
             this.lblPrioritéInfoFiche.Size = new System.Drawing.Size(55, 16);
             this.lblPrioritéInfoFiche.TabIndex = 140;
@@ -966,7 +886,7 @@
             this.lblTypeDssier.AutoSize = true;
             this.lblTypeDssier.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Bold);
             this.lblTypeDssier.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblTypeDssier.Location = new System.Drawing.Point(3, 90);
+            this.lblTypeDssier.Location = new System.Drawing.Point(3, 97);
             this.lblTypeDssier.Name = "lblTypeDssier";
             this.lblTypeDssier.Size = new System.Drawing.Size(176, 16);
             this.lblTypeDssier.TabIndex = 141;
@@ -978,17 +898,62 @@
             this.cbTypeDossier.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbTypeDossier.Font = new System.Drawing.Font("Arial", 8.25F);
             this.cbTypeDossier.FormattingEnabled = true;
-            this.cbTypeDossier.Location = new System.Drawing.Point(6, 111);
+            this.cbTypeDossier.Location = new System.Drawing.Point(6, 120);
             this.cbTypeDossier.Name = "cbTypeDossier";
             this.cbTypeDossier.Size = new System.Drawing.Size(185, 22);
             this.cbTypeDossier.TabIndex = 138;
             this.cbTypeDossier.Leave += new System.EventHandler(this.cbTypeDossier_Leave);
             // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::Module_Education.Properties.Resources.baseline_visibility_black_18dp;
+            this.pictureBox4.Location = new System.Drawing.Point(518, 275);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(21, 20);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 161;
+            this.pictureBox4.TabStop = false;
+            this.pictureBox4.Click += new System.EventHandler(this.pictureBox4_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::Module_Education.Properties.Resources.baseline_visibility_black_18dp;
+            this.pictureBox3.Location = new System.Drawing.Point(518, 227);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(21, 20);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 160;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Module_Education.Properties.Resources.baseline_visibility_black_18dp;
+            this.pictureBox2.Location = new System.Drawing.Point(518, 185);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(21, 20);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 159;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click_1);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Module_Education.Properties.Resources.baseline_visibility_black_18dp;
+            this.pictureBox1.Location = new System.Drawing.Point(518, 28);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(21, 20);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 158;
+            this.pictureBox1.TabStop = false;
+            this.toolTipShowFichier.SetToolTip(this.pictureBox1, "Afficher le fichier\r\n");
+            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
+            // 
             // comboBoxDurationInDays
             // 
             this.comboBoxDurationInDays.Font = new System.Drawing.Font("Arial", 8.25F);
             this.comboBoxDurationInDays.FormattingEnabled = true;
-            this.comboBoxDurationInDays.Location = new System.Drawing.Point(14, 93);
+            this.comboBoxDurationInDays.Location = new System.Drawing.Point(14, 100);
             this.comboBoxDurationInDays.Name = "comboBoxDurationInDays";
             this.comboBoxDurationInDays.Size = new System.Drawing.Size(72, 22);
             this.comboBoxDurationInDays.TabIndex = 55;
@@ -1000,7 +965,7 @@
             this.comboBoxProvider.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxProvider.Font = new System.Drawing.Font("Arial", 8.25F);
             this.comboBoxProvider.FormattingEnabled = true;
-            this.comboBoxProvider.Location = new System.Drawing.Point(14, 228);
+            this.comboBoxProvider.Location = new System.Drawing.Point(14, 246);
             this.comboBoxProvider.Name = "comboBoxProvider";
             this.comboBoxProvider.Size = new System.Drawing.Size(185, 22);
             this.comboBoxProvider.TabIndex = 59;
@@ -1009,7 +974,7 @@
             // 
             this.comboBoxMinCapacity.Font = new System.Drawing.Font("Arial", 8.25F);
             this.comboBoxMinCapacity.FormattingEnabled = true;
-            this.comboBoxMinCapacity.Location = new System.Drawing.Point(237, 180);
+            this.comboBoxMinCapacity.Location = new System.Drawing.Point(237, 194);
             this.comboBoxMinCapacity.Name = "comboBoxMinCapacity";
             this.comboBoxMinCapacity.Size = new System.Drawing.Size(185, 22);
             this.comboBoxMinCapacity.TabIndex = 65;
@@ -1018,7 +983,7 @@
             // comboBoxMaxCapacity
             // 
             this.comboBoxMaxCapacity.FormattingEnabled = true;
-            this.comboBoxMaxCapacity.Location = new System.Drawing.Point(237, 270);
+            this.comboBoxMaxCapacity.Location = new System.Drawing.Point(237, 291);
             this.comboBoxMaxCapacity.Name = "comboBoxMaxCapacity";
             this.comboBoxMaxCapacity.Size = new System.Drawing.Size(185, 23);
             this.comboBoxMaxCapacity.TabIndex = 67;
@@ -1029,7 +994,7 @@
             this.comboBoxCompetence.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBoxCompetence.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBoxCompetence.FormattingEnabled = true;
-            this.comboBoxCompetence.Location = new System.Drawing.Point(14, 136);
+            this.comboBoxCompetence.Location = new System.Drawing.Point(14, 146);
             this.comboBoxCompetence.Name = "comboBoxCompetence";
             this.comboBoxCompetence.Size = new System.Drawing.Size(185, 23);
             this.comboBoxCompetence.TabIndex = 57;
@@ -1040,7 +1005,7 @@
             this.checkBoxIsInterne.AutoSize = true;
             this.checkBoxIsInterne.Font = new System.Drawing.Font("Arial", 9.25F);
             this.checkBoxIsInterne.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.checkBoxIsInterne.Location = new System.Drawing.Point(237, 370);
+            this.checkBoxIsInterne.Location = new System.Drawing.Point(237, 398);
             this.checkBoxIsInterne.Name = "checkBoxIsInterne";
             this.checkBoxIsInterne.Size = new System.Drawing.Size(66, 20);
             this.checkBoxIsInterne.TabIndex = 70;
@@ -1052,7 +1017,7 @@
             this.checkBox_AnnualOrder.AutoSize = true;
             this.checkBox_AnnualOrder.Font = new System.Drawing.Font("Arial", 9.25F);
             this.checkBox_AnnualOrder.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.checkBox_AnnualOrder.Location = new System.Drawing.Point(237, 346);
+            this.checkBox_AnnualOrder.Location = new System.Drawing.Point(237, 373);
             this.checkBox_AnnualOrder.Name = "checkBox_AnnualOrder";
             this.checkBox_AnnualOrder.Size = new System.Drawing.Size(146, 20);
             this.checkBox_AnnualOrder.TabIndex = 69;
@@ -1064,7 +1029,7 @@
             this.labelRemarks.AutoSize = true;
             this.labelRemarks.Font = new System.Drawing.Font("Arial", 10F);
             this.labelRemarks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.labelRemarks.Location = new System.Drawing.Point(11, 374);
+            this.labelRemarks.Location = new System.Drawing.Point(11, 403);
             this.labelRemarks.Name = "labelRemarks";
             this.labelRemarks.Size = new System.Drawing.Size(81, 16);
             this.labelRemarks.TabIndex = 46;
@@ -1075,7 +1040,7 @@
             this.labelActifEducation_Formation.AutoSize = true;
             this.labelActifEducation_Formation.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelActifEducation_Formation.ForeColor = System.Drawing.Color.OrangeRed;
-            this.labelActifEducation_Formation.Location = new System.Drawing.Point(679, 22);
+            this.labelActifEducation_Formation.Location = new System.Drawing.Point(679, 24);
             this.labelActifEducation_Formation.Name = "labelActifEducation_Formation";
             this.labelActifEducation_Formation.Size = new System.Drawing.Size(113, 19);
             this.labelActifEducation_Formation.TabIndex = 38;
@@ -1086,7 +1051,7 @@
             this.labelSAPEducation_Formation.AutoSize = true;
             this.labelSAPEducation_Formation.Enabled = false;
             this.labelSAPEducation_Formation.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSAPEducation_Formation.Location = new System.Drawing.Point(534, 22);
+            this.labelSAPEducation_Formation.Location = new System.Drawing.Point(534, 24);
             this.labelSAPEducation_Formation.Name = "labelSAPEducation_Formation";
             this.labelSAPEducation_Formation.Size = new System.Drawing.Size(41, 18);
             this.labelSAPEducation_Formation.TabIndex = 37;
@@ -1109,7 +1074,7 @@
             this.tabPage1.Controls.Add(this.AdvDg_Formations);
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1059, 543);
+            this.tabPage1.Size = new System.Drawing.Size(1059, 457);
             this.tabPage1.TabIndex = 3;
             this.tabPage1.Text = "Liste";
             // 
@@ -1117,7 +1082,7 @@
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(461, 521);
+            this.label12.Location = new System.Drawing.Point(461, 431);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(11, 14);
             this.label12.TabIndex = 32;
@@ -1128,7 +1093,7 @@
             this.lblMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblMax.AutoSize = true;
             this.lblMax.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.lblMax.Location = new System.Drawing.Point(471, 521);
+            this.lblMax.Location = new System.Drawing.Point(471, 431);
             this.lblMax.Name = "lblMax";
             this.lblMax.Size = new System.Drawing.Size(35, 14);
             this.lblMax.TabIndex = 31;
@@ -1140,7 +1105,7 @@
             this.lblMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblMin.AutoSize = true;
             this.lblMin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.lblMin.Location = new System.Drawing.Point(426, 521);
+            this.lblMin.Location = new System.Drawing.Point(426, 431);
             this.lblMin.Name = "lblMin";
             this.lblMin.Size = new System.Drawing.Size(35, 14);
             this.lblMin.TabIndex = 30;
@@ -1154,7 +1119,7 @@
             this.lblNbrRowsFormations.Enabled = false;
             this.lblNbrRowsFormations.Font = new System.Drawing.Font("Arial", 9.25F);
             this.lblNbrRowsFormations.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.lblNbrRowsFormations.Location = new System.Drawing.Point(17, 511);
+            this.lblNbrRowsFormations.Location = new System.Drawing.Point(17, 420);
             this.lblNbrRowsFormations.Name = "lblNbrRowsFormations";
             this.lblNbrRowsFormations.Size = new System.Drawing.Size(42, 16);
             this.lblNbrRowsFormations.TabIndex = 29;
@@ -1164,9 +1129,9 @@
             // 
             this.btn_Next.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_Next.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.btn_Next.Location = new System.Drawing.Point(509, 517);
+            this.btn_Next.Location = new System.Drawing.Point(509, 427);
             this.btn_Next.Name = "btn_Next";
-            this.btn_Next.Size = new System.Drawing.Size(75, 23);
+            this.btn_Next.Size = new System.Drawing.Size(75, 25);
             this.btn_Next.TabIndex = 28;
             this.btn_Next.Text = "Suivant";
             this.btn_Next.UseVisualStyleBackColor = true;
@@ -1176,9 +1141,9 @@
             // 
             this.btn_Previous.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_Previous.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.btn_Previous.Location = new System.Drawing.Point(349, 517);
+            this.btn_Previous.Location = new System.Drawing.Point(349, 427);
             this.btn_Previous.Name = "btn_Previous";
-            this.btn_Previous.Size = new System.Drawing.Size(75, 23);
+            this.btn_Previous.Size = new System.Drawing.Size(75, 25);
             this.btn_Previous.TabIndex = 27;
             this.btn_Previous.Text = "Précédent";
             this.btn_Previous.UseVisualStyleBackColor = true;
@@ -1186,7 +1151,7 @@
             // 
             // tbNbrRows
             // 
-            this.tbNbrRows.Location = new System.Drawing.Point(902, 16);
+            this.tbNbrRows.Location = new System.Drawing.Point(902, 17);
             this.tbNbrRows.Name = "tbNbrRows";
             this.tbNbrRows.Size = new System.Drawing.Size(36, 20);
             this.tbNbrRows.TabIndex = 23;
@@ -1198,8 +1163,8 @@
             // 
             this.lblNbrRows.AutoSize = true;
             this.lblNbrRows.Font = new System.Drawing.Font("Arial", 9.25F);
-            this.lblNbrRows.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(51)))), ((int)(((byte)(101)))));
-            this.lblNbrRows.Location = new System.Drawing.Point(735, 17);
+            this.lblNbrRows.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.lblNbrRows.Location = new System.Drawing.Point(735, 18);
             this.lblNbrRows.Name = "lblNbrRows";
             this.lblNbrRows.Size = new System.Drawing.Size(169, 16);
             this.lblNbrRows.TabIndex = 22;
@@ -1210,7 +1175,7 @@
             this.picExportExcel.Image = global::Module_Education.Properties.Resources.Excel_icon;
             this.picExportExcel.Location = new System.Drawing.Point(993, 6);
             this.picExportExcel.Name = "picExportExcel";
-            this.picExportExcel.Size = new System.Drawing.Size(32, 32);
+            this.picExportExcel.Size = new System.Drawing.Size(32, 34);
             this.picExportExcel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picExportExcel.TabIndex = 20;
             this.picExportExcel.TabStop = false;
@@ -1221,7 +1186,7 @@
             this.lblTiteLstFormation.AutoSize = true;
             this.lblTiteLstFormation.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTiteLstFormation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblTiteLstFormation.Location = new System.Drawing.Point(9, 11);
+            this.lblTiteLstFormation.Location = new System.Drawing.Point(9, 12);
             this.lblTiteLstFormation.Name = "lblTiteLstFormation";
             this.lblTiteLstFormation.Size = new System.Drawing.Size(217, 24);
             this.lblTiteLstFormation.TabIndex = 12;
@@ -1237,11 +1202,12 @@
             this.AdvDg_Formations.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.AdvDg_Formations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.AdvDg_Formations.FilterAndSortEnabled = true;
-            this.AdvDg_Formations.Location = new System.Drawing.Point(13, 48);
+            this.AdvDg_Formations.Location = new System.Drawing.Point(13, 52);
             this.AdvDg_Formations.Name = "AdvDg_Formations";
-            this.AdvDg_Formations.Size = new System.Drawing.Size(1012, 459);
+            this.AdvDg_Formations.Size = new System.Drawing.Size(1012, 364);
             this.AdvDg_Formations.TabIndex = 0;
             this.AdvDg_Formations.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.AdvDg_Formations_FilterStringChanged);
+            this.AdvDg_Formations.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.AdvDg_Certifications_CellFormatting);
             this.AdvDg_Formations.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.AdvDg_Formations_HelpRequested);
             this.AdvDg_Formations.MouseClick += new System.Windows.Forms.MouseEventHandler(this.AdvDg_Formations_MouseClick);
             // 
@@ -1255,7 +1221,7 @@
             this.tabControl_Education_Formations.Location = new System.Drawing.Point(3, 3);
             this.tabControl_Education_Formations.Name = "tabControl_Education_Formations";
             this.tabControl_Education_Formations.SelectedIndex = 0;
-            this.tabControl_Education_Formations.Size = new System.Drawing.Size(1067, 570);
+            this.tabControl_Education_Formations.Size = new System.Drawing.Size(1067, 484);
             this.tabControl_Education_Formations.TabIndex = 0;
             this.tabControl_Education_Formations.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl_Education_Formations_Selected);
             // 
@@ -1265,13 +1231,15 @@
             // 
             // UCEducation_Formation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.tabControl_Education_Formations);
             this.DoubleBuffered = true;
+            this.Font = new System.Drawing.Font("Arial", 8.25F);
             this.Name = "UCEducation_Formation";
-            this.Size = new System.Drawing.Size(1072, 573);
+            this.Size = new System.Drawing.Size(1072, 501);
             this.toolTipAddProvider.SetToolTip(this, "\r\n");
             this.Load += new System.EventHandler(this.UC_Education_Formation_Load);
             this.MouseHover += new System.EventHandler(this.UCEducation_Formation_MouseHover);
@@ -1282,8 +1250,6 @@
             this.tabControl_Education_FormationAndCertificationsOfUser.ResumeLayout(false);
             this.tabPageEducation_FormationsAgent.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.advDv_AgentsOfFormation)).EndInit();
-            this.tabPageCertificationsAgent.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picShowDocAudit)).EndInit();
@@ -1341,9 +1307,6 @@
         private System.Windows.Forms.ComboBox comboBoxDurationhours;
         private System.Windows.Forms.TabControl tabControl_Education_FormationAndCertificationsOfUser;
         private System.Windows.Forms.TabPage tabPageEducation_FormationsAgent;
-        private Zuby.ADGV.AdvancedDataGridView advDv_AgentsOfFormation;
-        private System.Windows.Forms.TabPage tabPageCertificationsAgent;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ComboBox comboBoxDurationInDays;
         private System.Windows.Forms.ComboBox comboBoxProvider;
@@ -1397,5 +1360,6 @@
         private System.Windows.Forms.TextBox tbDocAudit;
         public System.Windows.Forms.Button btnDocAudit;
         private System.Windows.Forms.Label lblDocAudit;
+        private Zuby.ADGV.AdvancedDataGridView advDv_AgentsOfFormation;
     }
 }

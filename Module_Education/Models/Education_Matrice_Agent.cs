@@ -16,9 +16,14 @@ namespace Module_Education.Models
     {
         public long MatriceAgent_Id { get; set; }
         public Nullable<long> MatriceAgent_Agent { get; set; }
-        public Nullable<long> MatriceAgent_Matrice { get; set; }
+        public Nullable<long> MatriceAgent_MatriceFormation { get; set; }
+        public Nullable<System.DateTime> MatriceAgent_DateFormationAttented { get; set; }
+        public Nullable<bool> MatriceAgent_IsAttented { get; set; }
+        public Nullable<bool> MatriceAgent_HasEquivalence { get; set; }
+        public Nullable<long> MatriceAgent_Equivalence { get; set; }
     
         public virtual Education_Agent Education_Agent { get; set; }
-        public virtual Education_Matrice Education_Matrice { get; set; }
+        public virtual Education_Matrice_AgentEquivalence Education_Matrice_AgentEquivalence { get; set; }
+        public virtual Education_Matrice_Formation Education_Matrice_Formation { get; set; }
     }
 }

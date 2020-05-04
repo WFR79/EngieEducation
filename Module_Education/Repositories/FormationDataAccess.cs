@@ -57,6 +57,8 @@ namespace Module_Education.Repositories
             catch (Exception ex) { throw ex; }
         }
 
+        
+
         public List<Education_Formation> LoadAllEducation_FormationsFiltered(string filter, string columnToFilter)
         {
             try
@@ -218,6 +220,11 @@ namespace Module_Education.Repositories
 
             return db.Education_Formation.Where(w => w.Formation_SAP == Education_FormationSAPSelected).FirstOrDefault();
 
+        }
+
+        internal Education_Formation LoadSingleEducation_Formation(long? matriceAgentEquivalence_Formation)
+        {
+            return db.Education_Formation.Where(w => w.Formation_Id == matriceAgentEquivalence_Formation).FirstOrDefault();
         }
         public async Task<Education_Formation> LoadSingleEducation_FormationAsync(string Education_FormationSAPSelected)
         {

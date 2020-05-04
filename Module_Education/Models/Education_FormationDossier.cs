@@ -31,6 +31,8 @@ namespace Module_Education.Models
         public string FormationDossier_ScenarioHyperLink { get; set; }
         public string FormationDossier_Test { get; set; }
         public string FormationDossier_TestHyperLink { get; set; }
+        public Nullable<bool> FormationDossier_Audit { get; set; }
+        public string FormationDossier_AuditHyperLink { get; set; }
     
         public virtual Education_Formation Education_Formation { get; set; }
         public virtual Education_FormationDossierType Education_FormationDossierType { get; set; }
