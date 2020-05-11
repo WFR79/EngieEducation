@@ -19,5 +19,10 @@ namespace Module_Education.Repositories
             return db.Education_AgentCertifElecFunc.Where(x => x.Education_Agent.Agent_Id == agent.Agent_Id)
                     .ToList();
         }
+
+        internal Education_AgentCertifElecFunc SaveNewCertifFunc(Education_AgentCertifElecFunc agentCertifElecFuncSelected)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -31,8 +31,17 @@ namespace Module_Education.Forms
         private InRouteFormationRepository dbMatriceFormation = new InRouteFormationRepository();
         private CertificateElecFuncRepository CertificateElecFuncRepository = new CertificateElecFuncRepository();
         private CertificateElecOPPRepository CertificateElecOPPRepository = new CertificateElecOPPRepository();
+        private CertificateDiversRepository CertificateDiversRepository = new CertificateDiversRepository();
 
         private PassportSafetyRepository PassportSafetyRepository = new PassportSafetyRepository();
+
+        private AgentPassportSafetyRepository AgentPassportSafetyRepository = new AgentPassportSafetyRepository();
+        private AgentPassportBusinessRepository AgentPassportBusinessRepository = new AgentPassportBusinessRepository();
+        private AgentPassportDesignRepository AgentPassportDesignRepository = new AgentPassportDesignRepository();
+        private AgentCertifElecFuncRepository agentCertifElecFuncRepository = new AgentCertifElecFuncRepository();
+        private AgentCertifElecOPPRepository AgentCertifElecOPPRepository = new AgentCertifElecOPPRepository();
+        private AgentCertifDiversRepository AgentCertifDiversRepository = new AgentCertifDiversRepository();
+
         private PassportBusinessRepository PassportBusinessRepository = new PassportBusinessRepository();
         private PassportDesignRepository PassportDesignRepository = new PassportDesignRepository();
 
@@ -40,6 +49,8 @@ namespace Module_Education.Forms
         private AgentMatriceRepository dbAgentMatrice = new AgentMatriceRepository();
         private List<Education_Matrice> listMatrice;
         public Education_Matrice MatriceSelected;
+        private Education_Agent CurrentUser = new Education_Agent();
+
         public Education_Agent AgentSelected;
         public Education_AgentPassportSafety AgentPassportSafetySelected;
         public Education_AgentPassportBusiness AgentPassportBusinessSelected;
@@ -47,11 +58,13 @@ namespace Module_Education.Forms
         public Education_AgentCertifElecOPP AgentCertifElecOPPSelected;
         public Education_AgentPassportDesign AgentPassportDesignSelected;
 
+        public Education_AgentCertificatDivers AgentPassportDiversSelected;
 
-        public FrmCertificate(string type, bool isNew, long PassportId)
+        public FrmCertificate(string type, bool isNew, long PassportId, Education_Agent agent)
         {
             InitializeComponent();
             typeCertificate = type;
+            AgentSelected = agent;
             isNewCertificate = isNew;
             if (isNewCertificate)
                 LoadNewForm(typeCertificate);
@@ -73,6 +86,9 @@ namespace Module_Education.Forms
                         break;
                     case "Design":
                         AgentPassportDesignSelected = PassportDesignRepository.LoadSinglePassport(PassportId);
+                        break;
+                    case "Divers":
+                        AgentPassportDiversSelected = AgentCertifDiversRepository.LoadSingleCertificate(PassportId);
                         break;
                 }
                 LoadForm(typeCertificate);
@@ -107,6 +123,8 @@ namespace Module_Education.Forms
                         datePickSending.Value = (DateTime)AgentPassportSafetySelected.AgentPassportSafety_SendingDate;
                         //Date return
                         datePickReturn.Value = (DateTime)AgentPassportSafetySelected.AgentPassportSafety_ReturnDate;
+                        // 
+                        datePickValidity.Visible = false;
                         break;
 
                     case "Business":
@@ -122,6 +140,12 @@ namespace Module_Education.Forms
                         //TitlePassport
                         comboTitlePassport.DataSource = PassportBusinessRepository.LoadAllPassportBusiness();
                         comboTitlePassport.DisplayMember = "PassportBusiness_Name";
+                        //Date Envoie
+                        datePickSending.Value = (DateTime)AgentPassportBusinessSelected.AgentPassportBusiness_SendingDate;
+                        //Date return
+                        datePickReturn.Value = (DateTime)AgentPassportBusinessSelected.AgentPassportBusiness_ReturnDate;
+                        datePickValidity.Visible = false;
+
                         break;
 
                     case "Function":
@@ -139,6 +163,12 @@ namespace Module_Education.Forms
                         //TitlePassport
                         comboTitlePassport.DataSource = CertificateElecFuncRepository.LoadAllCertificateFunc();
                         comboTitlePassport.DisplayMember = "CertifElecFunc_LevelB";
+                        //Date Envoie
+                        datePickSending.Value = (DateTime)AgentCertifElecFuncSelected.AgentCertifElecFunc_SendingDate;
+                        //Date return
+                        datePickReturn.Value = (DateTime)AgentCertifElecFuncSelected.AgentCertifElecFunc_ReceivedDate;
+                        datePickValidity.Visible = true;
+                        datePickValidity.Value = (DateTime)AgentCertifElecFuncSelected.AgentCertifElecFunc_ValidityDate;
                         break;
                     case "OPP":
                         lblTitleTypePassport.Text = "Certificat Electrique OPP";
@@ -155,6 +185,13 @@ namespace Module_Education.Forms
                         //TitlePassport
                         comboTitlePassport.DataSource = CertificateElecOPPRepository.LoadAllPassportSafety();
                         comboTitlePassport.DisplayMember = "CertifElecOPP_LevelR";
+                        //Date Envoie
+                        datePickSending.Value = (DateTime)AgentCertifElecOPPSelected.AgentCertifElecOPP_SendingDate;
+                        //Date return
+                        datePickReturn.Value = (DateTime)AgentCertifElecOPPSelected.AgentCertifElecOPP_ReceivedDate;
+                        datePickValidity.Visible = true;
+                        datePickValidity.Value = (DateTime)AgentCertifElecOPPSelected.AgentCertifElecOPP_ValidityDate;
+
                         break;
                     case "Design":
                         lblTitleTypePassport.Text = "Passport Design";
@@ -172,12 +209,37 @@ namespace Module_Education.Forms
                         //TitlePassport
                         comboTitlePassport.DataSource = PassportDesignRepository.LoadAllPassportDesign();
                         comboTitlePassport.DisplayMember = "PassportDesign_Name";
+                        datePickSending.Value = (DateTime)AgentPassportDesignSelected.AgentPassportDesign_SendingDate;
+                        //Date return
+                        datePickReturn.Value = (DateTime)AgentPassportDesignSelected.AgentPassportDesign_ReceivedDate;
+                        datePickValidity.Visible = false;
+                        break;
+                    case "Divers":
+                        lblTitleTypePassport.Text = "Certificat divers";
+                        lblTitlePassport.Text = "Type Passport";
+                        lblSendingDate.Text = "Date d'envoi";
+                        lblReturnDate.Text = "Date Retour";
+                        lblValidityDate.Visible = false;
+                        datePickValidity.Visible = false;
+
+                        cbCertified.Text = "Certifié : OUI/NON";
+                        lblRemarks.Text = "Remarques";
+                        lblRemarksPayment.Visible = false;
+                        tbRemarksPay.Visible = false;
+
+                        //TitlePassport
+                        comboTitlePassport.DataSource = CertificateDiversRepository.LoadAllCertificateDivers();
+                        comboTitlePassport.DisplayMember = "CertificatDivers_Name";
+                        datePickSending.Value = (DateTime)AgentPassportDesignSelected.AgentPassportDesign_SendingDate;
+                        //Date return
+                        datePickReturn.Value = (DateTime)AgentPassportDesignSelected.AgentPassportDesign_ReceivedDate;
+                        datePickValidity.Visible = false;
                         break;
                 }
             }
             catch (Exception ex)
-            { 
-                
+            {
+
             }
         }
 
@@ -201,7 +263,7 @@ namespace Module_Education.Forms
                     if (AgentPassportBusinessSelected.Education_PassportBusiness != null)
                         comboTitlePassport.SelectedIndex = comboTitlePassport.FindStringExact(dbEntities.
                             Education_PassportBusiness
-                            .Where(w => w.PassportBusiness_Id == AgentPassportBusinessSelected.AgentPassportBusiness_Id)
+                            .Where(w => w.PassportBusiness_Id == AgentPassportBusinessSelected.AgentPassportBusiness_Business)
                             .FirstOrDefault().PassportBusiness_Name.ToString());
                     break;
 
@@ -234,6 +296,16 @@ namespace Module_Education.Forms
                             .Where(w => w.PassportDesign_Id == AgentPassportDesignSelected.AgentPassportDesign_Passport)
                             .FirstOrDefault().PassportDesign_Name.ToString());
                     break;
+
+                case "Divers":
+                    FillLabels("Divers");
+
+                    if (AgentPassportDiversSelected.Education_CertificatDivers != null)
+                        comboTitlePassport.SelectedIndex = comboTitlePassport.FindStringExact(dbEntities.
+                            Education_CertificatDivers
+                            .Where(w => w.CertificatDivers_Id == AgentPassportDiversSelected.AgentCertificatDivers_Certificate)
+                            .FirstOrDefault().CertificatDivers_Name.ToString());
+                    break;
             }
         }
 
@@ -243,6 +315,58 @@ namespace Module_Education.Forms
             {
                 case "Safety":
                     FillLabels("Safety");
+                    AgentPassportSafetySelected = new Education_AgentPassportSafety();
+                    AgentPassportSafetySelected.AgentPassportSafety_Agent = AgentSelected.Agent_Id;
+                    AgentPassportSafetySelected.AgentPassportSafety_SendingDate = DateTime.Now;
+                    AgentPassportSafetySelected.AgentPassportSafety_ReturnDate = DateTime.Now;
+
+                 
+                    break;
+
+                case "Business":
+                    FillLabels("Business");
+                    AgentPassportBusinessSelected = new Education_AgentPassportBusiness();
+                    AgentPassportBusinessSelected.AgentPassportBusiness_Agent = AgentSelected.Agent_Id;
+                    AgentPassportBusinessSelected.AgentPassportBusiness_SendingDate = DateTime.Now;
+                    AgentPassportBusinessSelected.AgentPassportBusiness_ReturnDate = DateTime.Now;
+
+                  
+                    break;
+
+                case "Function":
+                    FillLabels("Function");
+                    AgentCertifElecFuncSelected = new Education_AgentCertifElecFunc();
+                    AgentCertifElecFuncSelected.AgentCertifElecFunc_Agent = AgentSelected.Agent_Id;
+                    AgentCertifElecFuncSelected.AgentCertifElecFunc_SendingDate = DateTime.Now;
+                    AgentCertifElecFuncSelected.AgentCertifElecFunc_ReceivedDate = DateTime.Now;
+                    
+                    break;
+
+                case "OPP":
+                    FillLabels("OPP");
+                    AgentCertifElecOPPSelected = new Education_AgentCertifElecOPP();
+                    AgentCertifElecOPPSelected.AgentCertifElecOPP_Agent = AgentSelected.Agent_Id;
+                    AgentCertifElecOPPSelected.AgentCertifElecOPP_ReceivedDate = DateTime.Now;
+                    AgentCertifElecOPPSelected.AgentCertifElecOPP_SendingDate = DateTime.Now;
+
+                    break;
+
+                case "Design":
+                    FillLabels("Design");
+                    AgentPassportDesignSelected = new Education_AgentPassportDesign();
+                    AgentPassportDesignSelected.AgentPassportDesign_Agent = AgentSelected.Agent_Id;
+                    AgentPassportDesignSelected.AgentPassportDesign_ReceivedDate = DateTime.Now;
+                    AgentPassportDesignSelected.AgentPassportDesign_SendingDate = DateTime.Now;
+                   
+                    break;
+
+                case "Divers":
+                    FillLabels("Divers");
+                    AgentPassportDiversSelected = new Education_AgentCertificatDivers();
+                    AgentPassportDiversSelected.AgentCertificatDivers_Agent = AgentSelected.Agent_Id;
+                    AgentPassportDiversSelected.AgentCertificatDivers_ReturnDate = DateTime.Now;
+                    AgentPassportDiversSelected.AgentCertificatDivers_SendingDate = DateTime.Now;
+
                     break;
             }
         }
@@ -257,6 +381,31 @@ namespace Module_Education.Forms
             if (isNewCertificate)
             {
 
+                switch (typeCertificate)
+                {
+                    case "Safety":
+                        AgentPassportSafetySelected = AgentPassportSafetyRepository.SaveNewSafetyPassport(AgentPassportSafetySelected);
+                        break;
+                    case "Business":
+                        AgentPassportBusinessSelected = AgentPassportBusinessRepository.SaveNewBusinessPassport(AgentPassportBusinessSelected);
+                        break;
+                    case "Function":
+                        AgentCertifElecFuncSelected = agentCertifElecFuncRepository.SaveNewCertifFunc(AgentCertifElecFuncSelected);
+
+                        break;
+                    case "OPP":
+                        AgentCertifElecOPPSelected = AgentCertifElecOPPRepository.NewPassportDivers(AgentCertifElecOPPSelected);
+
+                        break;
+                    case "Design":
+                        AgentPassportDesignSelected = AgentPassportDesignRepository.SaveExistingPs(AgentPassportDesignSelected);
+
+                        break;
+                    case "Divers":
+                        AgentPassportDiversSelected = AgentCertifDiversRepository.NewPassportDivers(AgentPassportDiversSelected);
+
+                        break;
+                }
             }
             else
             {
@@ -273,11 +422,16 @@ namespace Module_Education.Forms
 
                         break;
                     case "OPP":
-                        AgentCertifElecOPPSelected = CertificateElecOPPRepository.SaveExistingPs(AgentCertifElecOPPSelected);
+                        AgentCertifElecOPPSelected = AgentCertifElecOPPRepository.SaveExistingCertification(AgentCertifElecOPPSelected);
 
                         break;
                     case "Design":
                         AgentPassportDesignSelected = PassportDesignRepository.SaveExistingPs(AgentPassportDesignSelected);
+
+                        break;
+
+                    case "Divers":
+                        AgentPassportDiversSelected = AgentCertifDiversRepository.NewPassportDivers(AgentPassportDiversSelected);
 
                         break;
                 }
@@ -318,8 +472,14 @@ namespace Module_Education.Forms
                         AgentPassportDesignSelected.AgentPassportDesign_Passport = ((Education_PassportDesign)comboTitlePassport.SelectedItem).PassportDesign_Id;
                     }
                     break;
+                case "Divers":
+                    if (AgentPassportDiversSelected.AgentCertificatDivers_Certificate != ((Education_CertificatDivers)comboTitlePassport.SelectedItem).CertificatDivers_Id)
+                    {
+                        AgentPassportDiversSelected.AgentCertificatDivers_Certificate = ((Education_CertificatDivers)comboTitlePassport.SelectedItem).CertificatDivers_Id;
+                    }
+                    break;
             }
-           
+
         }
 
         private void datePickSending_ValueChanged(object sender, EventArgs e)
@@ -327,7 +487,13 @@ namespace Module_Education.Forms
             switch (typeCertificate)
             {
                 case "Safety":
+
                     AgentPassportSafetySelected.AgentPassportSafety_SendingDate = datePickSending.Value;
+                    break;
+
+                case "Divers":
+
+                    AgentPassportDiversSelected.AgentCertificatDivers_SendingDate = datePickSending.Value;
                     break;
             }
         }
@@ -339,6 +505,11 @@ namespace Module_Education.Forms
                 case "Safety":
                     AgentPassportSafetySelected.AgentPassportSafety_ReturnDate = datePickReturn.Value;
                     break;
+
+                case "Divers":
+
+                    AgentPassportDiversSelected.AgentCertificatDivers_ReturnDate = datePickReturn.Value;
+                    break;
             }
         }
 
@@ -348,6 +519,11 @@ namespace Module_Education.Forms
             {
                 case "Safety":
                     AgentPassportSafetySelected.AgentPassportSafety_Remarks = tbRemarks.Text;
+                    break;
+
+                case "Divers":
+
+                    AgentPassportDiversSelected.AgentCertificatDivers_Remarks = tbRemarks.Text;
                     break;
             }
         }
@@ -368,10 +544,15 @@ namespace Module_Education.Forms
             switch (typeCertificate)
             {
                 case "Safety":
-                    AgentPassportSafetySelected.AgentPassportSafety_HierarchyCertification = cb.Checked; 
+                    AgentPassportSafetySelected.AgentPassportSafety_HierarchyCertification = cb.Checked;
+                    break;
+
+                case "Divers":
+
+                    AgentPassportDiversSelected.AgentCertificatDivers_IsCertified = cb.Checked;
                     break;
             }
-            
+
         }
 
         private void btnCancel_Click_1(object sender, EventArgs e)

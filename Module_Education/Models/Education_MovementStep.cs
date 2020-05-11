@@ -21,8 +21,11 @@ namespace Module_Education.Models
         }
     
         public long MovementStep_Id { get; set; }
-        public string MovementStep_Intitule { get; set; }
+        public string MovementStep_Support { get; set; }
+        public string MovementStep_IntituleAction { get; set; }
         public Nullable<long> MovementStep_Type { get; set; }
+        public string MovementStep_Remarks { get; set; }
+        public string MovementStep_Who { get; set; }
     
         public virtual Education_MovementType Education_MovementType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

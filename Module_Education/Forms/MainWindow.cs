@@ -90,7 +90,7 @@ namespace Module_Education
 
 
             }
-            this.Size = new Size(1366, 768);
+            this.Size = new Size(1366, 720);
 
             prevState = this.WindowState;
             panel1Size = panel1.Size;
@@ -365,6 +365,38 @@ namespace Module_Education
             UnselectButtons();
         }
 
+        private void btnMenuMovement_Click(object sender, EventArgs e)
+        {
+            Button button = ((Button)sender);
+
+            //Add module1 to panel control
+            if (!panelMain.Controls.Contains(UC_MovementAgent.Instance))
+            {
+                panelMain.Controls.Add(UC_MovementAgent.Instance);
+                UC_MovementAgent.Instance.Dock = DockStyle.Fill;
+                UC_MovementAgent.Instance.BringToFront();
+
+                //ReceiverFromMatriceFormation += new ClickOnFormationMenuBtn(clickButtonFormationMenu);
+                //UC_Certification.Instance.PointerFormation = ReceiverFromMatriceFormation;
+
+                //ReceiverFromFicheFormation += new functioncall(AgentSelectedInFormationCard);
+                //UC_Certification.Instance.PointerFormation = ReceiverFromFicheFormation;
+
+                //ReceiverRefreshListeAgent += new refreshFicheAgent(refreshFormAgent);
+                //UC_Certification.Instance.MainWindowPointerMenuBtnAgent = ReceiverRefreshListeAgent;
+            }
+            else
+            {
+                UC_MovementAgent.Instance.BringToFront();
+            }
+            button.BackColor = Color.FromArgb(67, 100, 214);
+            button.FlatStyle = FlatStyle.Flat;
+            button.FlatAppearance.BorderColor = Color.White;
+            button.FlatAppearance.BorderSize = 1;
+            bouttonMenuPressed = (Button)button;
+            UnselectButtons();
+        }
+
         private void MenuBtnCertificate_Click(object sender, EventArgs e)
         {
             Button button = ((Button)sender);
@@ -599,5 +631,6 @@ namespace Module_Education
         {
 
         }
+
     }
 }

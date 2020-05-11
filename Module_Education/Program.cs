@@ -19,7 +19,15 @@ namespace Module_Education
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Application.ThreadException += new ThreadExceptionEventHandler(ThreadException);
+
             Application.Run(new MainWindow());
         }
+
+        static void ThreadException(object sender, ThreadExceptionEventArgs e)
+        {
+            MessageBox.Show(e.Exception.Message, "Unhandled Exception");
+        }
+
     }
 }   

@@ -12,6 +12,8 @@ namespace Module_Education.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class CFNEducation_FormationEntities : DbContext
     {
@@ -29,6 +31,9 @@ namespace Module_Education.Models
         public virtual DbSet<Education_Agent_Formation> Education_Agent_Formation { get; set; }
         public virtual DbSet<Education_AgentCertifElecFunc> Education_AgentCertifElecFunc { get; set; }
         public virtual DbSet<Education_AgentCertifElecOPP> Education_AgentCertifElecOPP { get; set; }
+
+       
+        public virtual DbSet<Education_AgentCertificatDivers> Education_AgentCertificatDivers { get; set; }
         public virtual DbSet<Education_AgentPassportBusiness> Education_AgentPassportBusiness { get; set; }
         public virtual DbSet<Education_AgentPassportDesign> Education_AgentPassportDesign { get; set; }
         public virtual DbSet<Education_AgentPassportSafety> Education_AgentPassportSafety { get; set; }
@@ -36,6 +41,7 @@ namespace Module_Education.Models
         public virtual DbSet<Education_CategorieFormation> Education_CategorieFormation { get; set; }
         public virtual DbSet<Education_CertifElecFunc> Education_CertifElecFunc { get; set; }
         public virtual DbSet<Education_CertifElecOPP> Education_CertifElecOPP { get; set; }
+        public virtual DbSet<Education_CertificatDivers> Education_CertificatDivers { get; set; }
         public virtual DbSet<Education_Competence> Education_Competence { get; set; }
         public virtual DbSet<Education_CompetenceGroup> Education_CompetenceGroup { get; set; }
         public virtual DbSet<Education_CompetenceSubGroup> Education_CompetenceSubGroup { get; set; }
@@ -60,14 +66,13 @@ namespace Module_Education.Models
         public virtual DbSet<Education_Matrice_AgentEquivalence> Education_Matrice_AgentEquivalence { get; set; }
         public virtual DbSet<Education_Matrice_Formation> Education_Matrice_Formation { get; set; }
         public virtual DbSet<Education_Matrice_GrLearner> Education_Matrice_GrLearner { get; set; }
-        public virtual DbSet<Education_MovementAgent> Education_MovementAgent { get; set; }
-        public virtual DbSet<Education_MovementStatusStep> Education_MovementStatusStep { get; set; }
         public virtual DbSet<Education_MovementStep> Education_MovementStep { get; set; }
         public virtual DbSet<Education_MovementStepAgent> Education_MovementStepAgent { get; set; }
         public virtual DbSet<Education_MovementType> Education_MovementType { get; set; }
         public virtual DbSet<Education_PassportBusiness> Education_PassportBusiness { get; set; }
         public virtual DbSet<Education_PassportDesign> Education_PassportDesign { get; set; }
         public virtual DbSet<Education_PassportSafety> Education_PassportSafety { get; set; }
+        public virtual DbSet<Education_PassportType> Education_PassportType { get; set; }
         public virtual DbSet<Education_Provider> Education_Provider { get; set; }
         public virtual DbSet<Education_ProviderContact> Education_ProviderContact { get; set; }
         public virtual DbSet<Education_Role> Education_Role { get; set; }
@@ -76,8 +81,19 @@ namespace Module_Education.Models
         public virtual DbSet<Education_Service> Education_Service { get; set; }
         public virtual DbSet<Education_SessionUnite> Education_SessionUnite { get; set; }
         public virtual DbSet<Education_UnitePrice> Education_UnitePrice { get; set; }
-        public virtual DbSet<Education_PassportType> Education_PassportType { get; set; }
-        public virtual DbSet<Education_AgentCertificatDivers> Education_AgentCertificatDivers { get; set; }
-        public virtual DbSet<Education_CertificatDivers> Education_CertificatDivers { get; set; }
+        public virtual DbSet<Education_MovementAgent> Education_MovementAgent { get; set; }
+    
+        public virtual ObjectResult<UpdateStatutMovementAgent_Result> UpdateStatutMovementAgent(Nullable<long> idAgent, Nullable<long> idType)
+        {
+            var idAgentParameter = idAgent.HasValue ?
+                new ObjectParameter("IdAgent", idAgent) :
+                new ObjectParameter("IdAgent", typeof(long));
+    
+            var idTypeParameter = idType.HasValue ?
+                new ObjectParameter("IdType", idType) :
+                new ObjectParameter("IdType", typeof(long));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UpdateStatutMovementAgent_Result>("UpdateStatutMovementAgent", idAgentParameter, idTypeParameter);
+        }
     }
 }

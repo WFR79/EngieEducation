@@ -33,7 +33,7 @@ namespace Module_Education.Forms
         private PassportDesignRepository PassportDesignRepository = new PassportDesignRepository();
         private CertificateElecFuncRepository CertificateElecFuncRepository = new CertificateElecFuncRepository();
         private CertificateElecOPPRepository CertificateElecOPPRepository = new CertificateElecOPPRepository();
-
+        private CertificateDiversRepository CertificateDiversRepository = new CertificateDiversRepository();
         CFNEducation_FormationEntities dbEntities = new CFNEducation_FormationEntities();
 
         public long PassportId { get; private set; }
@@ -361,9 +361,20 @@ namespace Module_Education.Forms
 
                     break;
                 case "Certificat Divers":
-                    dgListPassport.DataSource = dbEntities.Education_CertifElecOPP.ToList();
-
-                    dgListPassport.Name = "Certificat Divers";
+                    Education_CertificatDivers itemDiversDb = dbEntities.Education_CertificatDivers
+                   .Where(x => x.CertificatDivers_Name == tbExt_NameCertificate.Text)
+                   .FirstOrDefault();
+                    if (itemDiversDb == null)
+                    {
+                        CertificateDiversRepository.SaveNew(tbExt_NameCertificate.Text);
+                        dgListPassport.DataSource = dbEntities.Education_CertificatDivers.ToList();
+                        tbExt_NameCertificate.Text = "";
+                    }
+                    else
+                    {
+                        errorProvider1.SetError(tbExt_NameCertificate, "Nom du certificat déja présent");
+                        btnSaveCertificate.Enabled = false;
+                    }
 
                     break;
             }

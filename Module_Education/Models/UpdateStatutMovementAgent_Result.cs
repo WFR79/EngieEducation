@@ -10,17 +10,21 @@
 namespace Module_Education.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Education_MovementStepAgent
+    public partial class UpdateStatutMovementAgent_Result
     {
         public long MovementStepAgent_Id { get; set; }
         public Nullable<long> MovementStepAgent_Step { get; set; }
         public Nullable<bool> MovementStepAgent_Status { get; set; }
         public Nullable<long> MovementStepAgent_Agent { get; set; }
         public string MovementStepAgent_Remarks { get; set; }
-    
-        public virtual Education_Agent Education_Agent { get; set; }
-        public virtual Education_MovementStep Education_MovementStep { get; set; }
+        public long MovementStep_Id { get; set; }
+        public string MovementStep_Support { get; set; }
+        public string MovementStep_IntituleAction { get; set; }
+        public Nullable<long> MovementStep_Type { get; set; }
+        public string MovementStep_Remarks { get; set; }
+        public string MovementStep_Who { get; set; }
+        public long MovementType_Id { get; set; }
+        public string MovementType_Name { get; set; }
     }
 }

@@ -21,7 +21,9 @@ namespace Module_Education.Models
         public Nullable<System.DateTime> AgentCertificatDivers_ValidityDate { get; set; }
         public Nullable<bool> AgentCertificatDivers_IsCertified { get; set; }
         public string AgentCertificatDivers_Remarks { get; set; }
+        public Nullable<long> AgentCertificatDivers_Certificate { get; set; }
     
         public virtual Education_Agent Education_Agent { get; set; }
+        public virtual Education_CertificatDivers Education_CertificatDivers { get; set; }
     }
 }

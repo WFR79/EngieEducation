@@ -36,7 +36,7 @@ namespace Module_Education.Classes
         public string Agent_Habilitation { get; set; }
 
         [DisplayName("Chargé de travaux")]
-        public bool? Agent_IsWorkManager { get; set; }
+        public bool? Agent_IsWorksManager { get; set; }
 
         [DisplayName("Date d'entrée")]
         public DateTime? Agent_DateOfEntry { get; set; }

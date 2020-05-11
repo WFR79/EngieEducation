@@ -14,9 +14,19 @@ namespace Module_Education.Models
     
     public partial class Education_MovementType
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Education_MovementType()
+        {
+            this.Education_MovementStep = new HashSet<Education_MovementStep>();
+            this.Education_MovementAgent = new HashSet<Education_MovementAgent>();
+        }
+    
         public long MovementType_Id { get; set; }
         public string MovementType_Name { get; set; }
     
-        public virtual Education_MovementStep Education_MovementStep { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Education_MovementStep> Education_MovementStep { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Education_MovementAgent> Education_MovementAgent { get; set; }
     }
 }

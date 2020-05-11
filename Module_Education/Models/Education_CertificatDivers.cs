@@ -14,7 +14,16 @@ namespace Module_Education.Models
     
     public partial class Education_CertificatDivers
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Education_CertificatDivers()
+        {
+            this.Education_AgentCertificatDivers = new HashSet<Education_AgentCertificatDivers>();
+        }
+    
         public long CertificatDivers_Id { get; set; }
         public string CertificatDivers_Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Education_AgentCertificatDivers> Education_AgentCertificatDivers { get; set; }
     }
 }

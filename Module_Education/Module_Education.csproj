@@ -133,8 +133,10 @@
     <Compile Include="Classes\MenuStrip.Designer.cs">
       <DependentUpon>MenuStrip.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\MyColumnCollectionDGMvtAgent.cs" />
     <Compile Include="Classes\MyColumnCollectionDGAgentCertification.cs" />
     <Compile Include="Classes\MyColumnCollectionDGAgent.cs" />
+    <Compile Include="Classes\MyColumnCollectionDGCertificateDivers.cs" />
     <Compile Include="Classes\MyColumnCollectionDGCertificateOPP.cs" />
     <Compile Include="Classes\MyColumnCollectionDGFormation.cs" />
     <Compile Include="Classes\MyColumnCollectionDGPassportBusiness.cs" />
@@ -202,6 +204,12 @@
     </Compile>
     <Compile Include="Forms\UserControls\UC_MatriceFormations.Designer.cs">
       <DependentUpon>UC_MatriceFormations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserControls\UC_MovementAgent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserControls\UC_MovementAgent.Designer.cs">
+      <DependentUpon>UC_MovementAgent.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\UserControls\UC_Provider.cs">
       <SubType>UserControl</SubType>
@@ -323,9 +331,6 @@
     <Compile Include="Models\Education_MovementAgent.cs">
       <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Education_MovementStatusStep.cs">
-      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Education_MovementStep.cs">
       <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
     </Compile>
@@ -371,13 +376,18 @@
     <Compile Include="Models\Education_UnitePrice.cs">
       <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\UpdateStatutMovementAgent_Result.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Repositories\AgentCertifElecFuncRepository.cs" />
+    <Compile Include="Repositories\AgentCertifDiversRepository.cs" />
     <Compile Include="Repositories\AgentCertifElecOPPRepository.cs" />
     <Compile Include="Repositories\AgentDataAccess.cs" />
     <Compile Include="Repositories\AgentMatriceEquivalenceRepository.cs" />
     <Compile Include="Repositories\AgentMatriceRepository.cs" />
     <Compile Include="Repositories\AgentPassportBusinessRepository.cs" />
     <Compile Include="Repositories\AgentPassportDesignRepository.cs" />
+    <Compile Include="Repositories\CertificateDiversRepository.cs" />
     <Compile Include="Repositories\CertificateElecOPPRepository.cs" />
     <Compile Include="Repositories\CompetenceDataAccess.cs" />
     <Compile Include="Repositories\EquipeDataAccess.cs" />
@@ -397,6 +407,10 @@
     <Compile Include="Repositories\InRouteFormationRepository.cs" />
     <Compile Include="Repositories\AgentPassportSafetyRepository.cs" />
     <Compile Include="Repositories\CertificateElecFuncRepository.cs" />
+    <Compile Include="Repositories\MovementAgentRepository.cs" />
+    <Compile Include="Repositories\MovementAgentStepRepository.cs" />
+    <Compile Include="Repositories\MovementStepRepository.cs" />
+    <Compile Include="Repositories\MovementTypeRepository.cs" />
     <Compile Include="Repositories\PassportBusinessRepository.cs" />
     <Compile Include="Repositories\PassportDesignRepository.cs" />
     <Compile Include="Repositories\PassportSafetyRepository.cs" />
@@ -405,6 +419,7 @@
     <Compile Include="Repositories\RoleEPIDataAccess.cs" />
     <Compile Include="Repositories\RouteAgentRepository.cs" />
     <Compile Include="Repositories\RoutesFormationRepository.cs" />
+    <Compile Include="Repositories\ServiceRepository.cs" />
     <Compile Include="Repositories\SessionUniteDataAccess.cs" />
     <Compile Include="Repositories\UniteDataAccess.cs" />
     <Compile Include="Repositories\UnitePriceRepository.cs" />
@@ -524,6 +539,9 @@
     <EmbeddedResource Include="Forms\UserControls\UC_MatriceFormations.resx">
       <DependentUpon>UC_MatriceFormations.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserControls\UC_MovementAgent.resx">
+      <DependentUpon>UC_MovementAgent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserControls\UC_Provider.resx">
       <DependentUpon>UC_Provider.cs</DependentUpon>
     </EmbeddedResource>
@@ -589,6 +607,7 @@
     <Content Include="Resources\Images\ColumnHeader_UnFiltered.png" />
     <None Include="Resources\Images\Excel-icon.png" />
     <None Include="Resources\Images\Hideshowmenu.png" />
+    <Content Include="Resources\Images\iconfinder_sign-error_299045.ico" />
     <Content Include="Resources\Images\MenuStrip_OrderASCbool.png" />
     <Content Include="Resources\Images\MenuStrip_OrderASCnum.png" />
     <Content Include="Resources\Images\MenuStrip_OrderASCtxt.png" />
@@ -596,6 +615,8 @@
     <Content Include="Resources\Images\MenuStrip_OrderDESCnum.png" />
     <Content Include="Resources\Images\MenuStrip_OrderDESCtxt.png" />
     <Content Include="Resources\Images\MenuStrip_ResizeGrip.png" />
+    <None Include="Resources\Images\outline_save_black_24dp.png" />
+    <Content Include="Resources\Images\round_check_circle_outline_black_18dp.png" />
     <Content Include="Resources\Images\SearchToolBar_ButtonCaseSensitive.png" />
     <Content Include="Resources\Images\SearchToolBar_ButtonClose.png" />
     <Content Include="Resources\Images\SearchToolBar_ButtonFromBegin.png" />

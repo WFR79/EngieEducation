@@ -105,7 +105,7 @@ namespace Module_Education
                 Agent_Admin = o.Education_Agent.Agent_Admin,
                 //Agent_Responsable = o.Agent_LineManager == null ? null : dbEntities.Education_Agent.Where(x => x.Agent_Id == o.Agent_LineManager).FirstOrDefault().Agent_FullName,
                 Agent_InRoute = o.Education_Agent.Education_InRoute == null ? "" : o.Education_Agent.Education_InRoute.InRoute_Name,
-                Agent_IsWorkManager = o.Education_Agent.Agent_IsWorksManager,
+                Agent_IsWorksManager = o.Education_Agent.Agent_IsWorksManager,
                 Agent_DateSeniority = o.Education_Agent.Agent_DateSeniority,
                 Agent_DateOfEntry = o.Education_Agent.Agent_DateOfEntry,
                 Agent_DateFunction = o.Education_Agent.Agent_DateFunction,

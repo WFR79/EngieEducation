@@ -435,7 +435,7 @@ namespace Module_Education
                 Agent_Admin = o.Agent_Admin,
                 Agent_Responsable = o.Agent_LineManager == null ? null : dbEntities.Education_Agent.Where(x => x.Agent_Id == o.Agent_LineManager).FirstOrDefault().Agent_FullName,
 
-                Agent_IsWorkManager = o.Agent_IsWorksManager,
+                Agent_IsWorksManager = o.Agent_IsWorksManager,
                 Agent_DateSeniority = o.Agent_DateSeniority,
                 Agent_DateOfEntry = o.Agent_DateOfEntry,
                 Agent_DateFunction = o.Agent_DateFunction,

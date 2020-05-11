@@ -97,13 +97,13 @@ namespace Module_Education.Forms.UserControls
         {
             InitializeComponent();
             LoadDatagridAgentAsync();
-            if (MainWindow.globalListCertificateAgents != null)
-                dtAgentsCertificate = ToDataTable<Education_Agent>(MainWindow.globalListCertificateAgents);
-            else
-            {
-                dtAgentsCertificate = ToDataTable<Education_Agent>(dbAgent.LoadAllAgentsCertificate());
+            //if (MainWindow.globalListCertificateAgents != null)
+            //    dtAgentsCertificate = ToDataTable<Education_Agent>(MainWindow.globalListCertificateAgents);
+            //else
+            //{
+            //    dtAgentsCertificate = ToDataTable<Education_Agent>(dbAgent.LoadAllAgentsCertificate());
 
-            }
+            //}
 
         }
 

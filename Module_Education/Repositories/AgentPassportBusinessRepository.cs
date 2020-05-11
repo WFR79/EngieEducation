@@ -20,6 +20,9 @@ namespace Module_Education.Repositories
                     .ToList();
         }
 
-
+        internal Education_AgentPassportBusiness SaveNewBusinessPassport(Education_AgentPassportBusiness agentPassportBusinessSelected)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

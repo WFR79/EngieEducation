@@ -333,6 +333,36 @@ namespace Module_Education.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap outline_save_black_24dp {
+            get {
+                object obj = ResourceManager.GetObject("outline_save_black_24dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap outline_save_black_24dp1 {
+            get {
+                object obj = ResourceManager.GetObject("outline_save_black_24dp1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap round_check_circle_outline_black_18dp {
+            get {
+                object obj = ResourceManager.GetObject("round_check_circle_outline_black_18dp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap SearchToolBar_ButtonCaseSensitive {
             get {
                 object obj = ResourceManager.GetObject("SearchToolBar_ButtonCaseSensitive", resourceCulture);

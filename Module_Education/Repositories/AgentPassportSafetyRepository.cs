@@ -131,6 +131,9 @@ namespace Module_Education.Repositories
 
         }
 
-
+        internal Education_AgentPassportSafety SaveNewSafetyPassport(Education_AgentPassportSafety agentPassportSafetySelected)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
