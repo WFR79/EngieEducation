@@ -63,6 +63,7 @@
             this.l_PopUp.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.l_PopUp.Size = new System.Drawing.Size(271, 315);
             this.l_PopUp.TabIndex = 3;
+            this.l_PopUp.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.l_PopUp_FilterStringChanged);
             // 
             // FrmFormation
             // 

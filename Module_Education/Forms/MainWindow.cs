@@ -53,6 +53,10 @@ namespace Module_Education
         public delegate void controlcall(object sender, EventArgs e);
         public delegate void menuAgentClick(string formationSAPNum);
         public delegate void menuProviderClick(long providerId);
+        public delegate void menuGrpAgentClick(string grpAgentName);
+        public delegate void menuAgentFromRouteClick(long agentMatricule);
+
+        
 
 
         public delegate void functioncall(long message);
@@ -63,6 +67,9 @@ namespace Module_Education
         private event menuProviderClick ReceiverClickButtonProvider;
 
         private event menuAgentClick ReceiverClickButtonFormation;
+        private event menuGrpAgentClick ReceiverClickBtnGrpAgent;
+        private event menuAgentFromRouteClick ReceiverClickBtnAgentRoute;
+
 
         private event controlcall ReceiverClickButton;
         private event refreshFicheAgent ReceiverRefreshListeAgent;
@@ -199,7 +206,7 @@ namespace Module_Education
 
         }
 
-        public void MenuBtnEducation_Formation_Click(object sender, EventArgs e)
+        public void MenuBtnFormation_Click(object sender, EventArgs e)
         {
             Button button = ((Button)sender);
             //Add module1 to panel control
@@ -226,7 +233,7 @@ namespace Module_Education
                 UCEducation_Formation.Instance.PointerRefreshFicheAgent = ReceiverRefreshListeAgent;
 
 
-                ReceiverClickProvider += new menuProviderClick(clickProviderMenuButton);
+                ReceiverClickProvider += new menuProviderClick(MenuBtnProvider_Click);
                 UCEducation_Formation.Instance.MainWindowPointerMenuBtnProvider = ReceiverClickProvider;
             }
             else
@@ -243,13 +250,40 @@ namespace Module_Education
             // Add the control to the panel  
         }
 
-        private void clickProviderMenuButton(long providerId)
+        private void MenuBtnProvider_Click(long providerId)
         {
             UC_Provider.Instance.providerSelected = dbEntities.Education_Provider.Where(w => w.Provider_Id == providerId).FirstOrDefault();
             btnMenu_Provider.PerformClick();
         }
+        private void MenuBtnServices_Click(object sender, EventArgs e)
+        {
+            Button button = ((Button)sender);
+            ActiveUserControl = UC_Services.Instance;
 
-        private void MenuAgenClick(object sender, EventArgs e)
+            //Add module1 to panel control
+            if (!panelMain.Controls.Contains(UC_Services.Instance))
+            {
+                panelMain.Controls.Add(UC_Services.Instance);
+                UC_Services.Instance.Dock = DockStyle.Fill;
+                UC_Services.Instance.BringToFront();
+
+                ReceiverClickBtnAgentRoute += new menuAgentFromRouteClick(clickBtnAgent);
+                UC_Services.Instance.PointMenuBtnAgent = ReceiverClickBtnAgentRoute;
+
+
+            }
+            else
+            {
+                UC_Services.Instance.BringToFront();
+            }
+            button.BackColor = Color.FromArgb(67, 100, 214);
+            button.FlatStyle = FlatStyle.Flat;
+            button.FlatAppearance.BorderColor = Color.White;
+            button.FlatAppearance.BorderSize = 1;
+            bouttonMenuPressed = (Button)button;
+            UnselectButtons();
+        }
+        private void MenuBtnAgent_Click(object sender, EventArgs e)
         {
             Button button = ((Button)sender);
             ActiveUserControl = UC_Agent.Instance;
@@ -299,7 +333,7 @@ namespace Module_Education
                 //ReceiverRefreshListeAgent += new refreshFicheAgent(refreshFormAgent);
                 //UC_Provider.Instance.PointerUCAgent_Refresh = ReceiverRefreshListeAgent;
 
-                ReceiverClickProvider += new menuProviderClick(clickProviderMenuButton);
+                ReceiverClickProvider += new menuProviderClick(MenuBtnProvider_Click);
                 UC_Provider.Instance.MainWindowPointerMenuBtnProvider = ReceiverClickProvider;
 
             }
@@ -315,7 +349,7 @@ namespace Module_Education
             UnselectButtons();
         }
 
-        private void MenuBtnAuthentification_Click(object sender, EventArgs e)
+        private void MenuBtnGrpAgent_Click(object sender, EventArgs e)
         {
             ActiveUserControl = UC_GrpAgents.Instance;
             Button button = ((Button)sender);
@@ -325,6 +359,10 @@ namespace Module_Education
                 panelMain.Controls.Add(UC_GrpAgents.Instance);
                 UC_GrpAgents.Instance.Dock = DockStyle.Fill;
                 UC_GrpAgents.Instance.BringToFront();
+
+                ReceiverClickBtnAgentRoute += new menuAgentFromRouteClick(clickBtnAgent);
+                UC_GrpAgents.Instance.PointMenuBtnAgent = ReceiverClickBtnAgentRoute;
+
             }
             else
                 UC_GrpAgents.Instance.BringToFront();
@@ -351,6 +389,12 @@ namespace Module_Education
                 ReceiverFromMatriceFormation += new ClickOnFormationMenuBtn(clickButtonFormationMenu);
                 UC_MatriceFormations.Instance.PointerFormation = ReceiverFromMatriceFormation;
 
+                ReceiverClickBtnGrpAgent += new menuGrpAgentClick(clickBtnGrpAgent);
+                UC_MatriceFormations.Instance.PointMenuBtnGrpAgent = ReceiverClickBtnGrpAgent;
+
+                ReceiverClickBtnAgentRoute += new menuAgentFromRouteClick(clickBtnAgent);
+                UC_MatriceFormations.Instance.PointMenuBtnAgent = ReceiverClickBtnAgentRoute;
+
 
             }
             else
@@ -363,6 +407,12 @@ namespace Module_Education
             button.FlatAppearance.BorderSize = 1;
             bouttonMenuPressed = (Button)button;
             UnselectButtons();
+        }
+
+        private void clickBtnAgent(long agentMatricule)
+        {
+            UC_Agent.Instance.UserRecord_LoadUser(agentMatricule);
+            MenuBtnAgent.PerformClick();
         }
 
         private void btnMenuMovement_Click(object sender, EventArgs e)
@@ -465,8 +515,13 @@ namespace Module_Education
             UCEducation_Formation.FormationIDSelected = formationSAPNum;
             UCEducation_Formation.Instance.LoadFicheEducation_Formation(formationSAPNum);
             MenuBtnEducation_Formation.PerformClick();
+        }
 
-
+        private void clickBtnGrpAgent(string grpAgentName)
+        {
+            //UCEducation_Formation.FormationIDSelected = formationSAPNum;
+            UC_GrpAgents.Instance.SelectGroup(grpAgentName);
+            MenuBtnGrpAgent.PerformClick();
         }
 
         private void AgentSelectedInFormationCard(long matricule)
@@ -632,5 +687,6 @@ namespace Module_Education
 
         }
 
+       
     }
 }

@@ -104,6 +104,8 @@ namespace Module_Education
 
         #endregion
         List<long> ListOfMatriculeSelected = new List<long>();
+        List<Label> ListLabelCertification = new List<Label>();
+        private List<DataGridView> ListDgCertification = new List<DataGridView>();
 
 
         private Education_Agent CurrentUser = new Education_Agent();
@@ -326,11 +328,11 @@ namespace Module_Education
                         {
                             //progressReport.PercentCompleted = 0;
                             return dbEntities.Education_Agent
-                          .Include("Education_Equipe")
+                          //.Include("Education_Equipe")
                   .Include("Education_Function")
                   .Include("Education_GroupLearner_Agent")
                   .Include("Education_MovementAgent")
-                  .Include("Education_MovementAgent1")
+                  //.Include("Education_MovementAgent1")
                   .Include("Education_RoleAstreinte")
                   .Include("Education_RoleEPI")
                   .Include("Education_AgentStatus")
@@ -419,7 +421,7 @@ namespace Module_Education
         {
             object dataSource = listPassport.Select(o => new MyColumnCollectionDGPassportBusiness(o)
             {
-                AgentPassportBusinessId = o.AgentPassportBusiness_Id,
+                AgentPassportBusinessId = o.Education_PassportBusiness.PassportBusiness_Id,
                 AgentPassportBusinessDesc = o.Education_PassportBusiness.PassportBusiness_Name,
                 AgentPassportBusinessIsCertifiied = o.AgentPassportBusiness_HierarchyCertification,
                 AgentPassportBusinessReturnDate = o.AgentPassportBusiness_ReturnDate,
@@ -511,7 +513,7 @@ namespace Module_Education
         {
             object dataSource = listAgentDivers.Select(o => new MyColumnCollectionDGCertificateDivers(o)
             {
-                AgentPassportDiversId = o.AgentCertificatDivers_Id,
+                AgentPassportDiversId = /*o.Education_CertificatDivers == null ? null :*/ o.Education_CertificatDivers.CertificatDivers_Id,
                 AgentPassportDiversCertificate = o.AgentCertificatDivers_Certificate == null ? "" : o.Education_CertificatDivers.CertificatDivers_Name.ToString(),
 
                 AgentPassportDiversIsCertified = o.AgentCertificatDivers_IsCertified,
@@ -689,12 +691,28 @@ namespace Module_Education
 
         private void LoadCertifications()
         {
+            RemoveAllCertificationsControls();
             LoadPassportSafety();
             LoadPassportBusiness();
             LoadCertificationFunc();
             LoadCertificationOPP();
             LoadPassportDesign();
             LoadCertificateDivers();
+        }
+
+        private void RemoveAllCertificationsControls()
+        {
+            foreach (Label labelItem in ListLabelCertification)
+            {
+                tbFicheAgent.Controls.Remove(labelItem);
+                labelItem.Dispose();
+            }
+
+            foreach (DataGridView dg in ListDgCertification)
+            {
+                tbFicheAgent.Controls.Remove(dg);
+                dg.Dispose();
+            }
         }
 
         private void LoadPassportSafety()
@@ -735,7 +753,7 @@ namespace Module_Education
 
             this.tbFicheAgent.Controls.Add(lblDgPassportSafety);
             this.tbFicheAgent.Controls.Add(dgPassportSafetyDyn);
-
+            ListLabelCertification.Add(lblDgPassportSafety);
 
             dgPassportSafetyDyn.Show();
             dbAgentPassportSafety = new AgentPassportSafetyRepository();
@@ -748,6 +766,7 @@ namespace Module_Education
 
             dgPassportSafetyDyn.ClientSize = new Size(totalWidth, totalHeight);
             dgPassportSafetyDynSize = dgPassportSafetyDyn.Size;
+            ListDgCertification.Add(dgPassportSafetyDyn);
         }
 
         private void LoadCertificationFunc()
@@ -791,6 +810,8 @@ namespace Module_Education
             var totalWidth = dgPassportElecFunc.Columns.GetColumnsWidth(states) + dgPassportElecFunc.RowHeadersWidth;
             dgPassportElecFunc.ClientSize = new Size(totalWidth, totalHeight);
             dgCertifFuncDynSize = dgPassportElecFunc.Size;
+            ListLabelCertification.Add(lblDgCertificateFunc);
+            ListDgCertification.Add(dgPassportElecFunc);
 
         }
 
@@ -831,6 +852,8 @@ namespace Module_Education
             var totalWidth = dgPassportElecOPP.Columns.GetColumnsWidth(states) + dgPassportElecOPP.RowHeadersWidth;
             dgPassportElecOPP.ClientSize = new Size(totalWidth, totalHeight);
             dgCertOPPyDynSize = dgPassportElecOPP.Size;
+            ListLabelCertification.Add(lblDgCertificateOPP);
+            ListDgCertification.Add(dgPassportElecOPP);
 
         }
 
@@ -873,6 +896,8 @@ namespace Module_Education
             if (dgPassportBusinessDyn.Columns.Count > 0)
                 dgPassportBusinessDyn.Columns[0].Visible = false;
 
+            ListLabelCertification.Add(lblDgPassportBusiness);
+            ListDgCertification.Add(dgPassportBusinessDyn);
 
 
         }
@@ -915,6 +940,8 @@ namespace Module_Education
             var totalWidth = dgPassportDesignDyn.Columns.GetColumnsWidth(states) + dgPassportDesignDyn.RowHeadersWidth;
             dgPassportDesignDyn.ClientSize = new Size(totalWidth, totalHeight);
             dgPassportDesignDynSize = dgPassportDesignDyn.Size;
+            ListLabelCertification.Add(lblDgCertificateOPP);
+            ListDgCertification.Add(dgPassportDesignDyn);
 
         }
 
@@ -956,6 +983,9 @@ namespace Module_Education
             var totalWidth = dgPassportDesignDyn.Columns.GetColumnsWidth(states) + dgPassportDesignDyn.RowHeadersWidth;
             dgPassportDiversDyn.ClientSize = new Size(totalWidth, totalHeight);
             dgPassportDiversDynSize = dgPassportDiversDyn.Size;
+
+            ListLabelCertification.Add(lblDgCertificateOPP);
+            ListDgCertification.Add(dgPassportDiversDyn);
         }
 
 
@@ -1434,8 +1464,8 @@ namespace Module_Education
 
         public void UserRecord_SelectEquipe(Education_Agent userRecord)
         {
-            if (userRecord.Education_Equipe != null)
-                comboBoxEquipe.SelectedIndex = comboBoxEquipe.FindStringExact(userRecord.Education_Equipe.Equipe_Name);
+            if (userRecord.Education_SousService != null)
+                comboBoxEquipe.SelectedIndex = comboBoxEquipe.FindStringExact(userRecord.Education_SousService.SousService_Name);
         }
 
         private void UserRecord_SelectFunction(Education_Agent userRecord)
@@ -1453,7 +1483,7 @@ namespace Module_Education
         public void UserRecord_SelectStatut(Education_Agent userRecord)
         {
             if (userRecord.Education_AgentStatus != null)
-                comboBoxStatut.SelectedIndex = comboBoxStatut.FindStringExact(userRecord.Education_AgentStatus.AgentStatus_Name);
+                comboBoxStatut1.SelectedIndex = comboBoxStatut1.FindStringExact(userRecord.Education_AgentStatus.AgentStatus_Name);
         }
 
         public void UserRecord_SelectInRoute(Education_Agent userRecord)
@@ -1740,7 +1770,7 @@ namespace Module_Education
             //Pointer.DynamicInvoke(formationMatriculeSelected);
         }
 
-        private void dG_Agents_MouseClick_1(object sender, MouseEventArgs e)
+        private void dG_Agents_MouseClick(object sender, MouseEventArgs e)
         {
             try
             {
@@ -2054,20 +2084,6 @@ namespace Module_Education
             //sort datasource
             if (filterEventArgs.Cancel == false)
             {
-                //if (listAgentFiltered == null)
-                //{
-                //    listAgentFiltered = MainWindow.globalListAgents;
-                //    if (dtAgents == null)
-                //    {
-                //        //dtAgents = ToDataTable<Education_Agent>(listAgentFiltered);
-                //    }
-                //}
-                //else
-                //{
-                //    if (dtAgents == null) { 
-                //        //dtAgents = ToDataTable<Education_Agent>(listAgentFiltered);
-                //    }
-                //}
 
                 if (_filterString == "")
                 {
@@ -2091,13 +2107,6 @@ namespace Module_Education
                     {
                         listAgentFiltered = MainWindow.globalListAgents;
                     }
-                    //BindingSource bindingSource = new BindingSource()
-                    //{
-                    //    DataMember = dtAgents.TableName,
-                    //    DataSource = dtAgents
-                    //};
-                    //bindingSource.Filter = _filterString;
-                    //dG_Agents.DataSource = bindingSource;
 
                     listUserPaged = await LoadTaskDatagridAgent(1, listUserPaged.TotalItemCount);
                     listAgentFiltered = db.LoadAgentsFiltered(_filterString, listAgentFiltered);
@@ -2309,11 +2318,6 @@ namespace Module_Education
 
         }
 
-        private void dG_Agents_MouseClick_1(object sender, EventArgs e)
-        {
-
-        }
-
         private void tbFicheAgent_Click(object sender, EventArgs e)
         {
 
@@ -2321,11 +2325,14 @@ namespace Module_Education
 
         private async void btnSaveProgressRoute_Click(object sender, EventArgs e)
         {
-            tbNbrRows.Text = listUserPaged.TotalItemCount.ToString();
+            if (listUserPaged != null)
+            {
+                tbNbrRows.Text = listUserPaged.TotalItemCount.ToString();
 
-            listUserPaged = await LoadTaskDatagridAgent(1, listUserPaged.TotalItemCount);
-            dG_Agents.DataSource = GetDataSource(listUserPaged);
-            dG_Agents.Refresh();
+                listUserPaged = await LoadTaskDatagridAgent(1, listUserPaged.TotalItemCount);
+                dG_Agents.DataSource = GetDataSource(listUserPaged);
+                dG_Agents.Refresh();
+            }
         }
     }
 

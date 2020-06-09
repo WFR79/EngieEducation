@@ -17,7 +17,7 @@ namespace Module_Education.Repositories
         }
         public List<Education_PassportSafety> LoadAllPassportSafety()
         {
-            return db.Education_PassportSafety
+            return db.Education_PassportSafety.Where(x => x.PassportSafety_Actif == true)
                     .ToList();
         }
 

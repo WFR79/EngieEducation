@@ -66,24 +66,25 @@ namespace Module_Education.Forms
 
         private void LoadListOfExistingPassports(Education_PassportType selectedItem)
         {
+            
             switch (selectedItem.PassportType_Name)
             {
                 case "Passport Safety":
-                    dgListPassport.DataSource = dbEntities.Education_PassportSafety.ToList();
+                    dgListPassport.DataSource = passportSafetyRepository.LoadAllPassportSafety();
                     dgListPassport.Name = "Passport Safety";
                     tbExt_NameCertificate.TextChanged += TextChangedSafety;
                     //tbExt_NameCertificate.Validating += ValidatingSafety;
                     break;
                 case "Passport Métier":
-                    dgListPassport.DataSource = dbEntities.Education_PassportBusiness.ToList();
-                    dgListPassport.Name = "Passport Safety";
+                    dgListPassport.DataSource = PassportBusinessRepository.LoadAllPassportBusiness();
+                    dgListPassport.Name = "Passport Métier";
                     tbExt_NameCertificate.TextChanged -= TextChangedSafety;
 
                     tbExt_NameCertificate.TextChanged += TextChangedBusiness;
 
                     break;
                 case "Passport Design":
-                    dgListPassport.DataSource = dbEntities.Education_PassportDesign.ToList();
+                    dgListPassport.DataSource = PassportDesignRepository.LoadAllPassportDesign();
                     dgListPassport.Name = "Passport Design";
 
                     tbExt_NameCertificate.TextChanged -= TextChangedSafety;
@@ -91,7 +92,7 @@ namespace Module_Education.Forms
                     tbExt_NameCertificate.TextChanged += TextChangedBusiness;
                     break;
                 case "Certificat Electrique Fonction":
-                    dgListPassport.DataSource = dbEntities.Education_CertifElecFunc.ToList();
+                    dgListPassport.DataSource = CertificateElecFuncRepository.LoadAllCertificateFunc();
 
                     tbExt_NameCertificate.TextChanged -= TextChangedSafety;
 
@@ -100,7 +101,7 @@ namespace Module_Education.Forms
 
                     break;
                 case "Certificat Electrique OPP":
-                    dgListPassport.DataSource = dbEntities.Education_CertifElecOPP.ToList();
+                    dgListPassport.DataSource = CertificateElecOPPRepository.LoadAllCertificateOPP();
 
                     tbExt_NameCertificate.TextChanged -= TextChangedSafety;
 
@@ -109,7 +110,7 @@ namespace Module_Education.Forms
 
                     break;
                 case "Certificat Divers":
-                    dgListPassport.DataSource = dbEntities.Education_CertificatDivers.ToList();
+                    dgListPassport.DataSource = CertificateDiversRepository.LoadAllCertificateDivers();
 
                     tbExt_NameCertificate.TextChanged -= TextChangedSafety;
 
@@ -149,6 +150,7 @@ namespace Module_Education.Forms
                 return true;
             }
         }
+
         //private void ValidatingSafety(object sender, CancelEventArgs e)
         //{
         //    TextBox txt = sender as TextBox;
@@ -230,40 +232,70 @@ namespace Module_Education.Forms
             switch (typeDgv)
             {
                 case "Passport Safety":
-                    Education_PassportSafety item = dbEntities.Education_PassportSafety
+                    Education_PassportSafety itemSafety = dbEntities.Education_PassportSafety
                         .Where(x => x.PassportSafety_Id == PassportId)
                         .FirstOrDefault();
-
-                    dbEntities.Education_PassportSafety.Remove(item);
+                    itemSafety.PassportSafety_Actif = false;
                     dbEntities.SaveChanges();
+                    dgListPassport.DataSource = passportSafetyRepository.LoadAllPassportSafety();
+
                     break;
                 case "Passport Métier":
-                    dgListPassport.DataSource = dbEntities.Education_PassportBusiness.ToList();
-                    dgListPassport.Name = "Passport Métier";
+                    Education_PassportBusiness itemBusiness = dbEntities.Education_PassportBusiness
+                       .Where(x => x.PassportBusiness_Id == PassportId)
+                       .FirstOrDefault();
+                    itemBusiness.PassportBusiness_Actif = false;
+                    dbEntities.SaveChanges();
+                    dgListPassport.DataSource = PassportBusinessRepository.LoadAllPassportBusiness();
 
                     break;
                 case "Passport Design":
-                    dgListPassport.DataSource = dbEntities.Education_PassportDesign.ToList();
-                    dgListPassport.Name = "Passport Design";
+                    Education_PassportDesign itemBDes = dbEntities.Education_PassportDesign
+                      .Where(x => x.PassportDesign_Id == PassportId)
+                      .FirstOrDefault();
+                    itemBDes.PassportDesign_Actif = false;
+                    dbEntities.SaveChanges();
+                    dgListPassport.DataSource = PassportDesignRepository.LoadAllPassportDesign();
 
                     break;
                 case "Certificat Electrique Fonction":
-                    dgListPassport.DataSource = dbEntities.Education_CertifElecFunc.ToList();
-                    dgListPassport.Name = "Certificat Electrique Fonction";
+                    Education_CertifElecFunc itemFunc = dbEntities.Education_CertifElecFunc
+                     .Where(x => x.CertifElecFunc_Id == PassportId)
+                     .FirstOrDefault();
+                    itemFunc.CertifElecFunc_Actif = false;
+                    dbEntities.SaveChanges();
+                    dgListPassport.DataSource = CertificateElecFuncRepository.LoadAllCertificateFunc();
 
                     break;
                 case "Certificat Electrique OPP":
-                    dgListPassport.DataSource = dbEntities.Education_CertifElecOPP.ToList();
-                    dgListPassport.Name = "Certificat Electrique OPP";
+                    Education_CertifElecOPP itemOpp = dbEntities.Education_CertifElecOPP
+                    .Where(x => x.CertifElecOPP_Id == PassportId)
+                    .FirstOrDefault();
+                    itemOpp.CertifElecOPP_Actif = false;
+                    dbEntities.SaveChanges();
+                    dgListPassport.DataSource = CertificateElecOPPRepository.LoadAllCertificateOPP();
 
                     break;
                 case "Certificat Divers":
-                    dgListPassport.DataSource = dbEntities.Education_CertifElecOPP.ToList();
+                    Education_CertificatDivers itemDivers = dbEntities.Education_CertificatDivers
+                   .Where(x => x.CertificatDivers_Id == PassportId)
+                   .FirstOrDefault();
+                    itemDivers.CertificatDivers_Actif = false;
+                    dbEntities.SaveChanges();
+                    dgListPassport.DataSource = CertificateDiversRepository.LoadAllCertificateDivers();
 
-                    dgListPassport.Name = "Certificat Divers";
 
                     break;
             }
+
+            dgListPassport.Columns[0].Visible = false;
+            if (dgListPassport.Columns.Count > 2)
+                dgListPassport.Columns[2].Visible = false;
+        }
+
+        private object GetDataSource(List<Education_PassportSafety> list)
+        {
+            throw new NotImplementedException();
         }
 
         private void btnSaveCertificate_Click(object sender, EventArgs e)

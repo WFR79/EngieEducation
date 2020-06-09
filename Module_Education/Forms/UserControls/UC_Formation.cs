@@ -340,24 +340,18 @@ namespace Module_Education
                         foreach (var itemUserEducation_Formation in listUsersEducation_Formation)
                         {
                             tempUserList.Add(dbList.Education_Agent
-                                 .Include("Education_Equipe")
+                             
                             .Include("Education_Function")
                             .Include("Education_Habilitation")
                             .Include("Education_GroupLearner_Agent")
                             .Include("Education_Matrice_Agent")
                             .Include("Education_MovementAgent")
-                            .Include("Education_MovementAgent1")
                             .Include("Education_Role")
                             .Include("Education_RoleAstreinte")
-
                             .Include("Education_RoleEPI")
-                            //.Include("User1")
-                            //.Include("User2")
                             .Include("Education_AgentStatus")
                             .Include("Education_Agent_Formation")
-
-
-                                .Where(w => w.Agent_Id == itemUserEducation_Formation.AgentFormation_Agent).FirstOrDefault());
+                            .Where(w => w.Agent_Id == itemUserEducation_Formation.AgentFormation_Agent).FirstOrDefault());
                         }
                         return tempUserList.OrderByDescending(p => p.Agent_Id).ToPagedList(pagNumber, pageSize);
 

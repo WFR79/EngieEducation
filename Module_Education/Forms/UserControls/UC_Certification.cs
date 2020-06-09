@@ -92,7 +92,6 @@ namespace Module_Education.Forms.UserControls
         //BindingSource  bindingSource;
         #endregion
 
-
         public UC_Certification()
         {
             InitializeComponent();
@@ -116,7 +115,6 @@ namespace Module_Education.Forms.UserControls
                 return _instance;
             }
         }
-
 
         public async Task LoadDatagridAgentAsync()
         {
@@ -231,6 +229,8 @@ namespace Module_Education.Forms.UserControls
                         if (MainWindow.globalListCertificateAgents == null)
                         {
                             return dbEntities.Education_Agent
+                            .Include("Education_Service")
+
                         .Include("Education_AgentPassportSafety")
                         .Include("Education_AgentCertifElecFunc")
                         .Include("Education_AgentCertifElecOPP")
@@ -265,8 +265,21 @@ namespace Module_Education.Forms.UserControls
                 object dataSource = listPaged.Select(o => new MyColumnCollectionDGAgentCertification(o)
                 {
                     Agent_Matricule = o.Agent_Matricule,
+                    Agent_Fullname = o.Agent_FullName,
                     Agent_FirstName = o.Agent_FirstName,
                     Agent_Name = o.Agent_Name,
+                    Agent_Departement = o.Education_Service.Education_Departement.Departement_Name,
+                    Agent_Service = o.Education_Service.Service_Name,
+                    Agent_SousService = o.Education_SousService.SousService_Name,
+                    Agent_Etat = o.Agent_Etat,
+                    Agent_EntryDate = o.Agent_DateOfEntry,
+                    Agent_LastFunctionDate = o.Agent_DateFunction,
+                    Agent_Statut = o.Education_AgentStatus.AgentStatus_Name,
+                    Agent_Fonction = o.Education_Function.Function_Name,
+                    Agent_Admin = o.Agent_Admin,
+
+
+
 
                     //Passport Safety
                     PassportSafety_LevelPS = o.Education_AgentPassportSafety.FirstOrDefault().AgentPassportSafety_LevelPS,

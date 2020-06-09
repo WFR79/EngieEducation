@@ -70,7 +70,7 @@
             this.dg_TABFormationsOfAgent = new System.Windows.Forms.DataGridView();
             this.labelNameOfUser = new System.Windows.Forms.TextBox();
             this.textBoxAdmin = new System.Windows.Forms.TextBox();
-            this.comboBoxStatut = new System.Windows.Forms.ComboBox();
+            this.comboBoxStatut1 = new System.Windows.Forms.ComboBox();
             this.comboBoxFunction = new System.Windows.Forms.ComboBox();
             this.comboBoxRespHierarchique = new System.Windows.Forms.ComboBox();
             this.comboBoxEducation_Habilitation = new System.Windows.Forms.ComboBox();
@@ -277,8 +277,8 @@
             this.dG_Agents.TabIndex = 18;
             this.dG_Agents.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.dG_Agents_FilterStringChanged_1);
             this.dG_Agents.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dG_Agents_CellFormatting);
-            this.dG_Agents.DoubleClick += new System.EventHandler(this.dG_Agents_MouseClick_1);
-            this.dG_Agents.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dG_Agents_MouseClick_1);
+            //this.dG_Agents.DoubleClick += new System.EventHandler(this.dG_Agents_MouseClick);
+            this.dG_Agents.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dG_Agents_MouseClick);
             // 
             // btn_NextAgent
             // 
@@ -341,7 +341,7 @@
             this.tbFicheAgent.Controls.Add(this.tabControl_Education_FormationAndCertificationsOfUser);
             this.tbFicheAgent.Controls.Add(this.labelNameOfUser);
             this.tbFicheAgent.Controls.Add(this.textBoxAdmin);
-            this.tbFicheAgent.Controls.Add(this.comboBoxStatut);
+            this.tbFicheAgent.Controls.Add(this.comboBoxStatut1);
             this.tbFicheAgent.Controls.Add(this.comboBoxFunction);
             this.tbFicheAgent.Controls.Add(this.comboBoxRespHierarchique);
             this.tbFicheAgent.Controls.Add(this.comboBoxEducation_Habilitation);
@@ -373,16 +373,18 @@
             this.textBoxExtensions1.Name = "textBoxExtensions1";
             this.textBoxExtensions1.Size = new System.Drawing.Size(221, 20);
             this.textBoxExtensions1.TabIndex = 130;
+            this.textBoxExtensions1.Visible = false;
             this.textBoxExtensions1.TextChanged += new System.EventHandler(this.textBoxExtensions1_TextChanged);
             this.textBoxExtensions1.Leave += new System.EventHandler(this.textBoxExtensions1_Leave);
             // 
             // comboBoxStatut11
             // 
             this.comboBoxStatut11.FormattingEnabled = true;
-            this.comboBoxStatut11.Location = new System.Drawing.Point(633, 370);
+            this.comboBoxStatut11.Location = new System.Drawing.Point(148, 68);
             this.comboBoxStatut11.Name = "comboBoxStatut11";
             this.comboBoxStatut11.Size = new System.Drawing.Size(186, 22);
             this.comboBoxStatut11.TabIndex = 129;
+            this.comboBoxStatut11.Leave += new System.EventHandler(this.comboBoxStatut_Leave);
             // 
             // textBox1
             // 
@@ -578,11 +580,11 @@
             // tabControl_Education_FormationAndCertificationsOfUser
             // 
             this.tabControl_Education_FormationAndCertificationsOfUser.Controls.Add(this.tabPageEducation_FormationsAgent);
-            this.tabControl_Education_FormationAndCertificationsOfUser.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.tabControl_Education_FormationAndCertificationsOfUser.Location = new System.Drawing.Point(561, 69);
+            this.tabControl_Education_FormationAndCertificationsOfUser.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.tabControl_Education_FormationAndCertificationsOfUser.Location = new System.Drawing.Point(561, 50);
             this.tabControl_Education_FormationAndCertificationsOfUser.Name = "tabControl_Education_FormationAndCertificationsOfUser";
             this.tabControl_Education_FormationAndCertificationsOfUser.SelectedIndex = 0;
-            this.tabControl_Education_FormationAndCertificationsOfUser.Size = new System.Drawing.Size(488, 263);
+            this.tabControl_Education_FormationAndCertificationsOfUser.Size = new System.Drawing.Size(608, 306);
             this.tabControl_Education_FormationAndCertificationsOfUser.TabIndex = 35;
             // 
             // tabPageEducation_FormationsAgent
@@ -591,10 +593,10 @@
             this.tabPageEducation_FormationsAgent.Controls.Add(this.dg_TABFormationsOfAgent);
             this.tabPageEducation_FormationsAgent.Font = new System.Drawing.Font("Arial", 10F);
             this.tabPageEducation_FormationsAgent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(199)))), ((int)(((byte)(234)))));
-            this.tabPageEducation_FormationsAgent.Location = new System.Drawing.Point(4, 28);
+            this.tabPageEducation_FormationsAgent.Location = new System.Drawing.Point(4, 25);
             this.tabPageEducation_FormationsAgent.Name = "tabPageEducation_FormationsAgent";
             this.tabPageEducation_FormationsAgent.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageEducation_FormationsAgent.Size = new System.Drawing.Size(480, 231);
+            this.tabPageEducation_FormationsAgent.Size = new System.Drawing.Size(600, 277);
             this.tabPageEducation_FormationsAgent.TabIndex = 0;
             this.tabPageEducation_FormationsAgent.Text = "Formations";
             // 
@@ -614,7 +616,7 @@
             this.dg_TABFormationsOfAgent.Name = "dg_TABFormationsOfAgent";
             this.dg_TABFormationsOfAgent.ReadOnly = true;
             this.dg_TABFormationsOfAgent.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dg_TABFormationsOfAgent.Size = new System.Drawing.Size(468, 215);
+            this.dg_TABFormationsOfAgent.Size = new System.Drawing.Size(591, 261);
             this.dg_TABFormationsOfAgent.TabIndex = 18;
             this.dg_TABFormationsOfAgent.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dg_TABFormationsOfAgent_MouseClick);
             // 
@@ -639,16 +641,17 @@
             this.textBoxAdmin.Enter += new System.EventHandler(this.textBoxAdmin_Enter);
             this.textBoxAdmin.Leave += new System.EventHandler(this.textBoxAdmin_Leave);
             // 
-            // comboBoxStatut
+            // comboBoxStatut1
             // 
-            this.comboBoxStatut.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.comboBoxStatut.FormattingEnabled = true;
-            this.comboBoxStatut.Location = new System.Drawing.Point(147, 70);
-            this.comboBoxStatut.Name = "comboBoxStatut";
-            this.comboBoxStatut.Size = new System.Drawing.Size(186, 22);
-            this.comboBoxStatut.TabIndex = 2;
-            this.comboBoxStatut.Enter += new System.EventHandler(this.comboBoxStatut_Enter);
-            this.comboBoxStatut.Leave += new System.EventHandler(this.comboBoxStatut_Leave);
+            this.comboBoxStatut1.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.comboBoxStatut1.FormattingEnabled = true;
+            this.comboBoxStatut1.Location = new System.Drawing.Point(617, 449);
+            this.comboBoxStatut1.Name = "comboBoxStatut1";
+            this.comboBoxStatut1.Size = new System.Drawing.Size(186, 22);
+            this.comboBoxStatut1.TabIndex = 2;
+            this.comboBoxStatut1.Visible = false;
+            this.comboBoxStatut1.Enter += new System.EventHandler(this.comboBoxStatut_Enter);
+            this.comboBoxStatut1.Leave += new System.EventHandler(this.comboBoxStatut_Leave);
             // 
             // comboBoxFunction
             // 
@@ -885,7 +888,7 @@
         private System.Windows.Forms.ComboBox comboBoxEducation_Habilitation;
         private System.Windows.Forms.ComboBox comboBoxRespHierarchique;
         private System.Windows.Forms.ComboBox comboBoxFunction;
-        private System.Windows.Forms.ComboBox comboBoxStatut;
+        private System.Windows.Forms.ComboBox comboBoxStatut1;
         private System.Windows.Forms.TextBox textBoxAdmin;
         private System.Windows.Forms.TextBox labelNameOfUser;
         private System.Windows.Forms.TabControl tabControl_Education_FormationAndCertificationsOfUser;

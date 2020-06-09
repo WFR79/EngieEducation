@@ -18,6 +18,7 @@ namespace Module_Education.Models
         public Nullable<long> MatriceGrLearner_Matrice { get; set; }
         public Nullable<long> MatriceGrLearner_GroupeLearner { get; set; }
         public Nullable<int> MatriceGrLearner_Recurrency { get; set; }
+        public Nullable<bool> MatriceGrLearner_Actif { get; set; }
     
         public virtual Education_GroupLearner Education_GroupLearner { get; set; }
         public virtual Education_Matrice Education_Matrice { get; set; }

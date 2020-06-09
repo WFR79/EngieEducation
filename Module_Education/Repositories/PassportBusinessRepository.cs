@@ -17,7 +17,7 @@ namespace Module_Education.Repositories
         }
         public List<Education_PassportBusiness> LoadAllPassportBusiness()
         {
-            return db.Education_PassportBusiness
+            return db.Education_PassportBusiness.Where(w => w.PassportBusiness_Actif == true)
                     .ToList();
         }
 

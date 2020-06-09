@@ -48,7 +48,7 @@ namespace Module_Education.Repositories
 
         internal List<Education_CertificatDivers> LoadAllCertificateDivers()
         {
-            return db.Education_CertificatDivers
+            return db.Education_CertificatDivers.Where(w => w.CertificatDivers_Actif == true)
                     .ToList();
         }
     }

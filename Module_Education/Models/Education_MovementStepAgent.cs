@@ -20,7 +20,7 @@ namespace Module_Education.Models
         public Nullable<long> MovementStepAgent_Agent { get; set; }
         public string MovementStepAgent_Remarks { get; set; }
     
-        public virtual Education_Agent Education_Agent { get; set; }
         public virtual Education_MovementStep Education_MovementStep { get; set; }
+        public virtual Education_Agent Education_Agent { get; set; }
     }
 }

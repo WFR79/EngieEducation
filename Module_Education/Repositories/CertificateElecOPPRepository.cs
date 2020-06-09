@@ -15,9 +15,9 @@ namespace Module_Education.Repositories
         {
 
         }
-        public List<Education_CertifElecOPP> LoadAllPassportSafety()
+        public List<Education_CertifElecOPP> LoadAllCertificateOPP()
         {
-            return db.Education_CertifElecOPP
+            return db.Education_CertifElecOPP.Where(w => w.CertifElecOPP_Actif == true)
                     .ToList();
         }
 

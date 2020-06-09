@@ -28,7 +28,7 @@ namespace Module_Education.Repositories
 
             if (itemdb != null)
             {
-                itemdb = db.Education_AgentCertificatDivers.Add(newRecord);
+                itemdb = db.Education_AgentCertificatDivers.Add(itemdb);
                 db.SaveChanges();
             }
 

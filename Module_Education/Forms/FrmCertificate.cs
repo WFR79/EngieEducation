@@ -183,7 +183,7 @@ namespace Module_Education.Forms
                         tbRemarksPay.Visible = false;
 
                         //TitlePassport
-                        comboTitlePassport.DataSource = CertificateElecOPPRepository.LoadAllPassportSafety();
+                        comboTitlePassport.DataSource = CertificateElecOPPRepository.LoadAllCertificateOPP();
                         comboTitlePassport.DisplayMember = "CertifElecOPP_LevelR";
                         //Date Envoie
                         datePickSending.Value = (DateTime)AgentCertifElecOPPSelected.AgentCertifElecOPP_SendingDate;

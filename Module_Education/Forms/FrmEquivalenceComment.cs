@@ -127,7 +127,7 @@ namespace Module_Education.Forms
                 dbEntities.Education_Matrice_AgentEquivalence.Add(newRecord);
                 dbEntities.SaveChanges();
                 AgentMatriceEquivalenceRepository.SaveEquivalence(CurrentMatriceAgent, newRecord);
-                AutoClosingMessageBox.Show("Title", "Caption", 1500, MessageBoxIcon.Information); 
+                AutoClosingMessageBox.Show("Equivalence enregistrée.", "Information", 1500, MessageBoxIcon.Information); 
             }
 
 

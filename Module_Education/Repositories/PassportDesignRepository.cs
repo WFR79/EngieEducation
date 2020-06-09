@@ -17,7 +17,7 @@ namespace Module_Education.Repositories
         }
         public List<Education_PassportDesign> LoadAllPassportDesign()
         {
-            return db.Education_PassportDesign
+            return db.Education_PassportDesign.Where(w => w.PassportDesign_Actif == true)
                     .ToList();
         }
 

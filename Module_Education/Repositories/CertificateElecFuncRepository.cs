@@ -17,7 +17,7 @@ namespace Module_Education.Repositories
         }
         public List<Education_CertifElecFunc> LoadAllCertificateFunc()
         {
-            return db.Education_CertifElecFunc
+            return db.Education_CertifElecFunc.Where(w => w.CertifElecFunc_Actif == true)
                     .ToList();
         }
 

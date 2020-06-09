@@ -24,6 +24,7 @@ namespace Module_Education.Models
         public long GroupLearner_Id { get; set; }
         public string GroupLearner_Name { get; set; }
         public string GroupLearner_SAP { get; set; }
+        public Nullable<bool> GroupLearner_Actif { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_GroupLearner_Agent> Education_GroupLearner_Agent { get; set; }

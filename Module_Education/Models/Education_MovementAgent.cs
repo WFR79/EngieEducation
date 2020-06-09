@@ -27,9 +27,9 @@ namespace Module_Education.Models
         public Nullable<System.DateTime> MovementAgent_Date { get; set; }
         public Nullable<int> MovementAgent_Statut { get; set; }
     
-        public virtual Education_Agent Education_Agent { get; set; }
         public virtual Education_MovementType Education_MovementType { get; set; }
         public virtual Education_Service Education_Service { get; set; }
         public virtual Education_Service Education_Service1 { get; set; }
+        public virtual Education_Agent Education_Agent { get; set; }
     }
 }

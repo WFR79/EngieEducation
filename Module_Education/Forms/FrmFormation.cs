@@ -67,5 +67,10 @@ namespace Module_Education.Forms
             }
             this.Close();
         }
+
+        private void l_PopUp_FilterStringChanged(object sender, Zuby.ADGV.AdvancedDataGridView.FilterEventArgs e)
+        {
+
+        }
     }
 }

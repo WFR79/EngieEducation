@@ -75,9 +75,9 @@
             this.lblTitleTypePassport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
             this.lblTitleTypePassport.Location = new System.Drawing.Point(21, 19);
             this.lblTitleTypePassport.Name = "lblTitleTypePassport";
-            this.lblTitleTypePassport.Size = new System.Drawing.Size(193, 26);
+            this.lblTitleTypePassport.Size = new System.Drawing.Size(239, 26);
             this.lblTitleTypePassport.TabIndex = 130;
-            this.lblTitleTypePassport.Text = "Créer un certificat";
+            this.lblTitleTypePassport.Text = "Gestion des certificats";
             // 
             // label1
             // 

@@ -376,6 +376,7 @@
             this.button1.TabIndex = 110;
             this.button1.Text = "Enregistrer";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblStatut
             // 
@@ -575,6 +576,7 @@
             this.cbServiceActual.Size = new System.Drawing.Size(185, 22);
             this.cbServiceActual.TabIndex = 102;
             this.cbServiceActual.Text = "Equipe/Affectation";
+            this.cbServiceActual.SelectedIndexChanged += new System.EventHandler(this.cbServiceActual_SelectedIndexChanged);
             // 
             // lblAdminAction
             // 
@@ -640,6 +642,7 @@
             this.cbServiceFutur.Size = new System.Drawing.Size(185, 22);
             this.cbServiceFutur.TabIndex = 103;
             this.cbServiceFutur.Text = "Equipe/Affectation";
+            this.cbServiceFutur.SelectedIndexChanged += new System.EventHandler(this.cbServiceFutur_SelectedIndexChanged);
             // 
             // datePRequest
             // 
@@ -647,6 +650,7 @@
             this.datePRequest.Name = "datePRequest";
             this.datePRequest.Size = new System.Drawing.Size(200, 20);
             this.datePRequest.TabIndex = 104;
+            this.datePRequest.ValueChanged += new System.EventHandler(this.datePRequest_ValueChanged);
             // 
             // panel1
             // 
@@ -843,6 +847,7 @@
             this.tbActionOPP.Name = "tbActionOPP";
             this.tbActionOPP.Size = new System.Drawing.Size(185, 20);
             this.tbActionOPP.TabIndex = 107;
+            this.tbActionOPP.TextChanged += new System.EventHandler(this.tbActionOPP_TextChanged);
             // 
             // tbTCAction
             // 
@@ -850,6 +855,7 @@
             this.tbTCAction.Name = "tbTCAction";
             this.tbTCAction.Size = new System.Drawing.Size(185, 20);
             this.tbTCAction.TabIndex = 106;
+            this.tbTCAction.TextChanged += new System.EventHandler(this.tbTCAction_TextChanged);
             // 
             // tbLHFutur
             // 
@@ -857,6 +863,7 @@
             this.tbLHFutur.Name = "tbLHFutur";
             this.tbLHFutur.Size = new System.Drawing.Size(185, 20);
             this.tbLHFutur.TabIndex = 109;
+            this.tbLHFutur.TextChanged += new System.EventHandler(this.tbLHFutur_TextChanged);
             // 
             // tbLHActuel
             // 
@@ -864,6 +871,7 @@
             this.tbLHActuel.Name = "tbLHActuel";
             this.tbLHActuel.Size = new System.Drawing.Size(185, 20);
             this.tbLHActuel.TabIndex = 108;
+            this.tbLHActuel.TextChanged += new System.EventHandler(this.tbLHActuel_TextChanged);
             // 
             // textBoxAdmin
             // 
@@ -871,6 +879,7 @@
             this.textBoxAdmin.Name = "textBoxAdmin";
             this.textBoxAdmin.Size = new System.Drawing.Size(185, 20);
             this.textBoxAdmin.TabIndex = 101;
+            this.textBoxAdmin.TextChanged += new System.EventHandler(this.textBoxAdmin_TextChanged);
             // 
             // UC_MovementAgent
             // 

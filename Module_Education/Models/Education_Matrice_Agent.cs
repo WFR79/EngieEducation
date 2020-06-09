@@ -21,9 +21,10 @@ namespace Module_Education.Models
         public Nullable<bool> MatriceAgent_IsAttented { get; set; }
         public Nullable<bool> MatriceAgent_HasEquivalence { get; set; }
         public Nullable<long> MatriceAgent_Equivalence { get; set; }
+        public Nullable<bool> MatriceAgent_Actif { get; set; }
     
-        public virtual Education_Agent Education_Agent { get; set; }
         public virtual Education_Matrice_AgentEquivalence Education_Matrice_AgentEquivalence { get; set; }
         public virtual Education_Matrice_Formation Education_Matrice_Formation { get; set; }
+        public virtual Education_Agent Education_Agent { get; set; }
     }
 }

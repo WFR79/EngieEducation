@@ -22,6 +22,7 @@ namespace Module_Education.Models
     
         public long PassportBusiness_Id { get; set; }
         public string PassportBusiness_Name { get; set; }
+        public Nullable<bool> PassportBusiness_Actif { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_AgentPassportBusiness> Education_AgentPassportBusiness { get; set; }

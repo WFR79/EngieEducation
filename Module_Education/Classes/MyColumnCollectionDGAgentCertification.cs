@@ -11,6 +11,9 @@ namespace Module_Education.Classes
 {
     class MyColumnCollectionDGAgentCertification
     {
+        /// <summary>
+        /// Agent 
+        /// </summary>
         [DisplayName("Matricule")]
         public int? Agent_Matricule { get; set; }
 
@@ -22,6 +25,30 @@ namespace Module_Education.Classes
 
         [DisplayName("Nom")]
         public string Agent_Name { get; set; }
+
+        [DisplayName("Département")]
+        public string Agent_Departement { get; set; }
+
+        [DisplayName("Service")]
+        public string Agent_Service { get; set; }
+
+        [DisplayName("Affectation")]
+        public string Agent_SousService { get; set; }
+
+        [DisplayName("Etat")]
+        public bool? Agent_Etat { get; set; }
+
+        [DisplayName("Date Entrée")]
+        public DateTime? Agent_EntryDate { get; set; }
+
+        [DisplayName("Date dernière prise de fonction")]
+        public DateTime? Agent_LastFunctionDate { get; set; }
+        [DisplayName("Statut")]
+        public string Agent_Statut { get; set; }
+        [DisplayName("Fonction")]
+        public string Agent_Fonction { get; set; }
+        [DisplayName("Admin")]
+        public string Agent_Admin { get; set; }
 
         /// <summary>
         /// Passport Safety

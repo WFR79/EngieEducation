@@ -22,6 +22,7 @@ namespace Module_Education.Models
     
         public long PassportSafety_Id { get; set; }
         public int PassportSafety_LevelPS { get; set; }
+        public Nullable<bool> PassportSafety_Actif { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_AgentPassportSafety> Education_AgentPassportSafety { get; set; }

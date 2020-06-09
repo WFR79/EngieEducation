@@ -32,10 +32,10 @@
             this.lblTiteLstFormation = new System.Windows.Forms.Label();
             this.lblNbrRows = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnDeleteGrp = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.comboGrpAgents = new System.Windows.Forms.ComboBox();
             this.panelAgents = new System.Windows.Forms.Panel();
-            this.dgGrpAgent = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tbGrpAgentSAP = new System.Windows.Forms.TextBox();
@@ -44,11 +44,12 @@
             this.tbGrpAgentName = new System.Windows.Forms.TextBox();
             this.lblGrpAgentNew = new System.Windows.Forms.Label();
             this.lblSelectedGrp = new System.Windows.Forms.Label();
+            this.dgGrpAgent = new Zuby.ADGV.AdvancedDataGridView();
             this.panel1.SuspendLayout();
             this.panelAgents.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgGrpAgent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgGrpAgent)).BeginInit();
             this.SuspendLayout();
             // 
             // comboAgents
@@ -89,12 +90,29 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.panel1.Controls.Add(this.btnDeleteGrp);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.comboGrpAgents);
             this.panel1.Location = new System.Drawing.Point(286, 73);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 326);
             this.panel1.TabIndex = 31;
+            // 
+            // btnDeleteGrp
+            // 
+            this.btnDeleteGrp.AllowDrop = true;
+            this.btnDeleteGrp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnDeleteGrp.FlatAppearance.BorderSize = 0;
+            this.btnDeleteGrp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteGrp.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnDeleteGrp.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDeleteGrp.Location = new System.Drawing.Point(11, 59);
+            this.btnDeleteGrp.Name = "btnDeleteGrp";
+            this.btnDeleteGrp.Size = new System.Drawing.Size(117, 29);
+            this.btnDeleteGrp.TabIndex = 89;
+            this.btnDeleteGrp.Text = "Supprimer groupe";
+            this.btnDeleteGrp.UseVisualStyleBackColor = false;
+            this.btnDeleteGrp.Click += new System.EventHandler(this.btnDeleteGrp_Click);
             // 
             // label1
             // 
@@ -129,18 +147,6 @@
             this.panelAgents.Name = "panelAgents";
             this.panelAgents.Size = new System.Drawing.Size(200, 326);
             this.panelAgents.TabIndex = 29;
-            // 
-            // dgGrpAgent
-            // 
-            this.dgGrpAgent.BackgroundColor = System.Drawing.Color.White;
-            this.dgGrpAgent.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dgGrpAgent.CausesValidation = false;
-            this.dgGrpAgent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgGrpAgent.Location = new System.Drawing.Point(515, 73);
-            this.dgGrpAgent.Name = "dgGrpAgent";
-            this.dgGrpAgent.Size = new System.Drawing.Size(588, 472);
-            this.dgGrpAgent.TabIndex = 32;
-            this.dgGrpAgent.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgGrpAgent_CellFormatting);
             // 
             // pictureBox1
             // 
@@ -224,31 +230,50 @@
             this.lblSelectedGrp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
             this.lblSelectedGrp.Location = new System.Drawing.Point(512, 54);
             this.lblSelectedGrp.Name = "lblSelectedGrp";
-            this.lblSelectedGrp.Size = new System.Drawing.Size(63, 16);
+            this.lblSelectedGrp.Size = new System.Drawing.Size(52, 16);
             this.lblSelectedGrp.TabIndex = 34;
-            this.lblSelectedGrp.Text = "Groupes";
+            this.lblSelectedGrp.Text = "Agents";
+            // 
+            // dgGrpAgent
+            // 
+            this.dgGrpAgent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgGrpAgent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgGrpAgent.BackgroundColor = System.Drawing.Color.White;
+            this.dgGrpAgent.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgGrpAgent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgGrpAgent.FilterAndSortEnabled = true;
+            this.dgGrpAgent.Location = new System.Drawing.Point(506, 73);
+            this.dgGrpAgent.Name = "dgGrpAgent";
+            this.dgGrpAgent.ReadOnly = true;
+            this.dgGrpAgent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgGrpAgent.Size = new System.Drawing.Size(587, 472);
+            this.dgGrpAgent.TabIndex = 35;
+            this.dgGrpAgent.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.dgGrpAgent_FilterStringChanged);
+            this.dgGrpAgent.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgGrpAgent_MouseClick_1);
             // 
             // UC_GrpAgents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.dgGrpAgent);
             this.Controls.Add(this.lblSelectedGrp);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblTiteLstFormation);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panelAgents);
-            this.Controls.Add(this.dgGrpAgent);
             this.Name = "UC_GrpAgents";
             this.Size = new System.Drawing.Size(1108, 583);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panelAgents.ResumeLayout(false);
             this.panelAgents.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgGrpAgent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgGrpAgent)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -264,7 +289,6 @@
         private System.Windows.Forms.ComboBox comboGrpAgents;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panelAgents;
-        private System.Windows.Forms.DataGridView dgGrpAgent;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblGrpAgentNew;
         private System.Windows.Forms.TextBox tbGrpAgentName;
@@ -272,5 +296,7 @@
         private System.Windows.Forms.TextBox tbGrpAgentSAP;
         private System.Windows.Forms.Label lblCodeSAP;
         private System.Windows.Forms.Label lblSelectedGrp;
+        private System.Windows.Forms.Button btnDeleteGrp;
+        private Zuby.ADGV.AdvancedDataGridView dgGrpAgent;
     }
 }

@@ -22,6 +22,7 @@ namespace Module_Education.Models
     
         public long CertificatDivers_Id { get; set; }
         public string CertificatDivers_Name { get; set; }
+        public Nullable<bool> CertificatDivers_Actif { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_AgentCertificatDivers> Education_AgentCertificatDivers { get; set; }

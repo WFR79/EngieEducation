@@ -29,14 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle13 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle14 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle15 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle16 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle17 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle18 = new SynapseAdvancedControls.HeaderStateStyle();
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Trajets");
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle1 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle2 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle3 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle4 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle5 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle6 = new SynapseAdvancedControls.HeaderStateStyle();
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Trajets");
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.picViewEquivalence = new System.Windows.Forms.PictureBox();
             this.headerFormatStyle1 = new SynapseAdvancedControls.HeaderFormatStyle();
             this.headerFormatStyle2 = new SynapseAdvancedControls.HeaderFormatStyle();
             this.toolTipExcel = new System.Windows.Forms.ToolTip(this.components);
@@ -46,13 +47,12 @@
             this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.tabControlRoutes = new System.Windows.Forms.TabControl();
             this.tabRoute = new System.Windows.Forms.TabPage();
-            this.lblListAgentRoute = new System.Windows.Forms.Label();
-            this.panelListAgentOfRoute = new System.Windows.Forms.Panel();
-            this.adDG_AgentsRoute = new Zuby.ADGV.AdvancedDataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.lblSearchRoutes = new System.Windows.Forms.Label();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.lblFormation = new System.Windows.Forms.Label();
             this.lblFilerMatrice = new System.Windows.Forms.Label();
-            this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnSaveRoutes = new System.Windows.Forms.Button();
             this.lblFormationMatrice = new System.Windows.Forms.Label();
             this.lblDetailsMatrice = new System.Windows.Forms.Label();
             this.panelFormationDetails = new System.Windows.Forms.Panel();
@@ -73,12 +73,15 @@
             this.lblrecurrenceSemaine = new System.Windows.Forms.Label();
             this.lblReccurencyMatrice = new System.Windows.Forms.Label();
             this.cbRecurrency = new System.Windows.Forms.ComboBox();
-            this.btnSaveRoutes = new System.Windows.Forms.Button();
             this.lblAddMatriceFormation = new System.Windows.Forms.Label();
             this.picAddMatrice = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.treeW_Routes = new System.Windows.Forms.TreeView();
             this.tabcontrolTrajet = new System.Windows.Forms.TabPage();
+            this.lblEquivalence = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblheaderFormation = new System.Windows.Forms.Label();
             this.btnSaveProgressRoute = new System.Windows.Forms.Button();
             this.panelFormationM = new System.Windows.Forms.Panel();
             this.datePFormationM = new System.Windows.Forms.DateTimePicker();
@@ -91,16 +94,17 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblAgentM = new System.Windows.Forms.Label();
             this.lblMatriceNameM = new System.Windows.Forms.Label();
+            this.tabGrpAgent = new System.Windows.Forms.TabPage();
+            this.lblGrpAgentMatrice = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dgGrpAgentsMatrice = new Zuby.ADGV.AdvancedDataGridView();
+            this.lblAgentTitle = new System.Windows.Forms.Label();
+            this.panelDgAgentMatrice = new System.Windows.Forms.Panel();
+            this.dgAgentsMatrice = new Zuby.ADGV.AdvancedDataGridView();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.picViewEquivalence = new System.Windows.Forms.PictureBox();
-            this.lblheaderFormation = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lblEquivalence = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.picViewEquivalence)).BeginInit();
             this.tabControlRoutes.SuspendLayout();
             this.tabRoute.SuspendLayout();
-            this.panelListAgentOfRoute.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.adDG_AgentsRoute)).BeginInit();
             this.panel2.SuspendLayout();
             this.panelFormationDetails.SuspendLayout();
             this.PanelDetailsMatrice.SuspendLayout();
@@ -109,7 +113,11 @@
             this.panelFormationM.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picViewEquivalence)).BeginInit();
+            this.tabGrpAgent.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgGrpAgentsMatrice)).BeginInit();
+            this.panelDgAgentMatrice.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgAgentsMatrice)).BeginInit();
             this.SuspendLayout();
             // 
             // toolTip1
@@ -118,17 +126,29 @@
             this.toolTip1.ShowAlways = true;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // picViewEquivalence
+            // 
+            this.picViewEquivalence.Image = global::Module_Education.Properties.Resources.baseline_visibility_black_18dp;
+            this.picViewEquivalence.Location = new System.Drawing.Point(842, 15);
+            this.picViewEquivalence.Name = "picViewEquivalence";
+            this.picViewEquivalence.Size = new System.Drawing.Size(21, 20);
+            this.picViewEquivalence.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picViewEquivalence.TabIndex = 161;
+            this.picViewEquivalence.TabStop = false;
+            this.toolTip1.SetToolTip(this.picViewEquivalence, "Afficher les informations d\'équivalence");
+            this.picViewEquivalence.Click += new System.EventHandler(this.picViewProvider_Click);
+            // 
             // headerFormatStyle1
             // 
-            this.headerFormatStyle1.Hot = headerStateStyle13;
-            this.headerFormatStyle1.Normal = headerStateStyle14;
-            this.headerFormatStyle1.Pressed = headerStateStyle15;
+            this.headerFormatStyle1.Hot = headerStateStyle1;
+            this.headerFormatStyle1.Normal = headerStateStyle2;
+            this.headerFormatStyle1.Pressed = headerStateStyle3;
             // 
             // headerFormatStyle2
             // 
-            this.headerFormatStyle2.Hot = headerStateStyle16;
-            this.headerFormatStyle2.Normal = headerStateStyle17;
-            this.headerFormatStyle2.Pressed = headerStateStyle18;
+            this.headerFormatStyle2.Hot = headerStateStyle4;
+            this.headerFormatStyle2.Normal = headerStateStyle5;
+            this.headerFormatStyle2.Pressed = headerStateStyle6;
             // 
             // toolTipExcel
             // 
@@ -141,11 +161,12 @@
             this.cbFilterFormation.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbFilterFormation.Font = new System.Drawing.Font("Arial", 8.25F);
             this.cbFilterFormation.FormattingEnabled = true;
-            this.cbFilterFormation.Location = new System.Drawing.Point(196, 23);
+            this.cbFilterFormation.Location = new System.Drawing.Point(199, 58);
             this.cbFilterFormation.Name = "cbFilterFormation";
             this.cbFilterFormation.Size = new System.Drawing.Size(175, 22);
             this.cbFilterFormation.TabIndex = 88;
             this.tooltipFilterMatrice.SetToolTip(this.cbFilterFormation, "Tapez \'Entrer\' pour filtrer les trajets");
+            this.cbFilterFormation.TextChanged += new System.EventHandler(this.cbFilterFormation_TextChanged);
             this.cbFilterFormation.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbFilterFormation_KeyDown);
             // 
             // cbFilterMatrice
@@ -154,17 +175,23 @@
             this.cbFilterMatrice.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbFilterMatrice.Font = new System.Drawing.Font("Arial", 8.25F);
             this.cbFilterMatrice.FormattingEnabled = true;
-            this.cbFilterMatrice.Location = new System.Drawing.Point(8, 22);
+            this.cbFilterMatrice.Location = new System.Drawing.Point(11, 57);
             this.cbFilterMatrice.Name = "cbFilterMatrice";
             this.cbFilterMatrice.Size = new System.Drawing.Size(175, 22);
             this.cbFilterMatrice.TabIndex = 86;
             this.tooltipFilterMatrice.SetToolTip(this.cbFilterMatrice, "Tapez \'Entrer\' pour filtrer les trajets");
+            this.cbFilterMatrice.SelectedIndexChanged += new System.EventHandler(this.cbFilterMatrice_SelectedIndexChanged);
+            this.cbFilterMatrice.TextChanged += new System.EventHandler(this.cbFilterMatrice_TextChanged);
             this.cbFilterMatrice.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbFilterMatrice_KeyDown);
             // 
             // tabControlRoutes
             // 
+            this.tabControlRoutes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlRoutes.Controls.Add(this.tabRoute);
             this.tabControlRoutes.Controls.Add(this.tabcontrolTrajet);
+            this.tabControlRoutes.Controls.Add(this.tabGrpAgent);
             this.tabControlRoutes.Location = new System.Drawing.Point(4, 4);
             this.tabControlRoutes.Name = "tabControlRoutes";
             this.tabControlRoutes.SelectedIndex = 0;
@@ -174,15 +201,11 @@
             // tabRoute
             // 
             this.tabRoute.AutoScroll = true;
-            this.tabRoute.Controls.Add(this.lblListAgentRoute);
-            this.tabRoute.Controls.Add(this.panelListAgentOfRoute);
             this.tabRoute.Controls.Add(this.panel2);
-            this.tabRoute.Controls.Add(this.btnRefresh);
             this.tabRoute.Controls.Add(this.lblFormationMatrice);
             this.tabRoute.Controls.Add(this.lblDetailsMatrice);
             this.tabRoute.Controls.Add(this.panelFormationDetails);
             this.tabRoute.Controls.Add(this.PanelDetailsMatrice);
-            this.tabRoute.Controls.Add(this.btnSaveRoutes);
             this.tabRoute.Controls.Add(this.lblAddMatriceFormation);
             this.tabRoute.Controls.Add(this.picAddMatrice);
             this.tabRoute.Controls.Add(this.label4);
@@ -196,57 +219,55 @@
             this.tabRoute.UseVisualStyleBackColor = true;
             this.tabRoute.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
-            // lblListAgentRoute
-            // 
-            this.lblListAgentRoute.AutoSize = true;
-            this.lblListAgentRoute.Font = new System.Drawing.Font("Arial", 10.25F, System.Drawing.FontStyle.Bold);
-            this.lblListAgentRoute.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblListAgentRoute.Location = new System.Drawing.Point(439, 273);
-            this.lblListAgentRoute.Name = "lblListAgentRoute";
-            this.lblListAgentRoute.Size = new System.Drawing.Size(59, 16);
-            this.lblListAgentRoute.TabIndex = 46;
-            this.lblListAgentRoute.Text = "Détails ";
-            // 
-            // panelListAgentOfRoute
-            // 
-            this.panelListAgentOfRoute.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panelListAgentOfRoute.Controls.Add(this.adDG_AgentsRoute);
-            this.panelListAgentOfRoute.Location = new System.Drawing.Point(442, 292);
-            this.panelListAgentOfRoute.Name = "panelListAgentOfRoute";
-            this.panelListAgentOfRoute.Size = new System.Drawing.Size(596, 159);
-            this.panelListAgentOfRoute.TabIndex = 45;
-            // 
-            // adDG_AgentsRoute
-            // 
-            this.adDG_AgentsRoute.BackgroundColor = System.Drawing.Color.White;
-            this.adDG_AgentsRoute.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.adDG_AgentsRoute.FilterAndSortEnabled = true;
-            this.adDG_AgentsRoute.Location = new System.Drawing.Point(6, 5);
-            this.adDG_AgentsRoute.Name = "adDG_AgentsRoute";
-            this.adDG_AgentsRoute.ReadOnly = true;
-            this.adDG_AgentsRoute.Size = new System.Drawing.Size(587, 147);
-            this.adDG_AgentsRoute.TabIndex = 0;
-            this.adDG_AgentsRoute.MouseClick += new System.Windows.Forms.MouseEventHandler(this.adDG_AgentsRoute_MouseClick);
-            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightSkyBlue;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.lblSearchRoutes);
+            this.panel2.Controls.Add(this.btnRefresh);
             this.panel2.Controls.Add(this.lblFormation);
             this.panel2.Controls.Add(this.cbFilterFormation);
             this.panel2.Controls.Add(this.lblFilerMatrice);
             this.panel2.Controls.Add(this.cbFilterMatrice);
-            this.panel2.Location = new System.Drawing.Point(20, 89);
+            this.panel2.Controls.Add(this.btnSaveRoutes);
+            this.panel2.Location = new System.Drawing.Point(17, 78);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(385, 48);
+            this.panel2.Size = new System.Drawing.Size(385, 332);
             this.panel2.TabIndex = 44;
+            // 
+            // lblSearchRoutes
+            // 
+            this.lblSearchRoutes.AutoSize = true;
+            this.lblSearchRoutes.Font = new System.Drawing.Font("Arial", 10.25F, System.Drawing.FontStyle.Bold);
+            this.lblSearchRoutes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.lblSearchRoutes.Location = new System.Drawing.Point(9, 13);
+            this.lblSearchRoutes.Name = "lblSearchRoutes";
+            this.lblSearchRoutes.Size = new System.Drawing.Size(85, 16);
+            this.lblSearchRoutes.TabIndex = 90;
+            this.lblSearchRoutes.Text = "Recherche";
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.AllowDrop = true;
+            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            this.btnRefresh.FlatAppearance.BorderSize = 0;
+            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefresh.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefresh.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnRefresh.Location = new System.Drawing.Point(143, 280);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(96, 23);
+            this.btnRefresh.TabIndex = 43;
+            this.btnRefresh.Text = "Rafaichir";
+            this.btnRefresh.UseVisualStyleBackColor = false;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // lblFormation
             // 
             this.lblFormation.AutoSize = true;
             this.lblFormation.Font = new System.Drawing.Font("Arial", 9.25F);
             this.lblFormation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblFormation.Location = new System.Drawing.Point(193, 4);
+            this.lblFormation.Location = new System.Drawing.Point(196, 39);
             this.lblFormation.Name = "lblFormation";
             this.lblFormation.Size = new System.Drawing.Size(73, 16);
             this.lblFormation.TabIndex = 89;
@@ -257,33 +278,34 @@
             this.lblFilerMatrice.AutoSize = true;
             this.lblFilerMatrice.Font = new System.Drawing.Font("Arial", 9.25F);
             this.lblFilerMatrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblFilerMatrice.Location = new System.Drawing.Point(9, 4);
+            this.lblFilerMatrice.Location = new System.Drawing.Point(12, 39);
             this.lblFilerMatrice.Name = "lblFilerMatrice";
             this.lblFilerMatrice.Size = new System.Drawing.Size(58, 16);
             this.lblFilerMatrice.TabIndex = 87;
             this.lblFilerMatrice.Text = "Matrices";
             // 
-            // btnRefresh
+            // btnSaveRoutes
             // 
-            this.btnRefresh.AllowDrop = true;
-            this.btnRefresh.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefresh.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefresh.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnRefresh.Location = new System.Drawing.Point(144, 613);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(96, 23);
-            this.btnRefresh.TabIndex = 43;
-            this.btnRefresh.Text = "Rafaichir";
-            this.btnRefresh.UseVisualStyleBackColor = false;
-            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            this.btnSaveRoutes.AllowDrop = true;
+            this.btnSaveRoutes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
+            this.btnSaveRoutes.FlatAppearance.BorderSize = 0;
+            this.btnSaveRoutes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSaveRoutes.Font = new System.Drawing.Font("Arial", 9F);
+            this.btnSaveRoutes.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnSaveRoutes.Location = new System.Drawing.Point(19, 280);
+            this.btnSaveRoutes.Name = "btnSaveRoutes";
+            this.btnSaveRoutes.Size = new System.Drawing.Size(96, 23);
+            this.btnSaveRoutes.TabIndex = 38;
+            this.btnSaveRoutes.Text = "Sauver ";
+            this.btnSaveRoutes.UseVisualStyleBackColor = false;
+            this.btnSaveRoutes.Click += new System.EventHandler(this.SaveRoutesFormation);
             // 
             // lblFormationMatrice
             // 
             this.lblFormationMatrice.AutoSize = true;
             this.lblFormationMatrice.Font = new System.Drawing.Font("Arial", 10.25F, System.Drawing.FontStyle.Bold);
             this.lblFormationMatrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblFormationMatrice.Location = new System.Drawing.Point(439, 457);
+            this.lblFormationMatrice.Location = new System.Drawing.Point(14, 426);
             this.lblFormationMatrice.Name = "lblFormationMatrice";
             this.lblFormationMatrice.Size = new System.Drawing.Size(200, 16);
             this.lblFormationMatrice.TabIndex = 42;
@@ -294,7 +316,7 @@
             this.lblDetailsMatrice.AutoSize = true;
             this.lblDetailsMatrice.Font = new System.Drawing.Font("Arial", 10.25F, System.Drawing.FontStyle.Bold);
             this.lblDetailsMatrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblDetailsMatrice.Location = new System.Drawing.Point(439, 60);
+            this.lblDetailsMatrice.Location = new System.Drawing.Point(405, 426);
             this.lblDetailsMatrice.Name = "lblDetailsMatrice";
             this.lblDetailsMatrice.Size = new System.Drawing.Size(229, 16);
             this.lblDetailsMatrice.TabIndex = 41;
@@ -307,9 +329,9 @@
             this.panelFormationDetails.Controls.Add(this.btnSaveFormationRecurrence);
             this.panelFormationDetails.Controls.Add(this.label2);
             this.panelFormationDetails.Controls.Add(this.cbRecurrencyFormation);
-            this.panelFormationDetails.Location = new System.Drawing.Point(442, 478);
+            this.panelFormationDetails.Location = new System.Drawing.Point(17, 450);
             this.panelFormationDetails.Name = "panelFormationDetails";
-            this.panelFormationDetails.Size = new System.Drawing.Size(596, 120);
+            this.panelFormationDetails.Size = new System.Drawing.Size(385, 177);
             this.panelFormationDetails.TabIndex = 40;
             // 
             // label1
@@ -331,7 +353,7 @@
             this.btnSaveFormationRecurrence.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveFormationRecurrence.Font = new System.Drawing.Font("Arial", 9F);
             this.btnSaveFormationRecurrence.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSaveFormationRecurrence.Location = new System.Drawing.Point(20, 71);
+            this.btnSaveFormationRecurrence.Location = new System.Drawing.Point(20, 140);
             this.btnSaveFormationRecurrence.Name = "btnSaveFormationRecurrence";
             this.btnSaveFormationRecurrence.Size = new System.Drawing.Size(96, 23);
             this.btnSaveFormationRecurrence.TabIndex = 88;
@@ -374,9 +396,9 @@
             this.PanelDetailsMatrice.Controls.Add(this.lblrecurrenceSemaine);
             this.PanelDetailsMatrice.Controls.Add(this.lblReccurencyMatrice);
             this.PanelDetailsMatrice.Controls.Add(this.cbRecurrency);
-            this.PanelDetailsMatrice.Location = new System.Drawing.Point(442, 88);
+            this.PanelDetailsMatrice.Location = new System.Drawing.Point(413, 450);
             this.PanelDetailsMatrice.Name = "PanelDetailsMatrice";
-            this.PanelDetailsMatrice.Size = new System.Drawing.Size(596, 177);
+            this.PanelDetailsMatrice.Size = new System.Drawing.Size(625, 177);
             this.PanelDetailsMatrice.TabIndex = 39;
             // 
             // btnGrpAssignAgent
@@ -485,7 +507,7 @@
             this.btnSaveRoute.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSaveRoute.Font = new System.Drawing.Font("Arial", 9F);
             this.btnSaveRoute.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSaveRoute.Location = new System.Drawing.Point(20, 124);
+            this.btnSaveRoute.Location = new System.Drawing.Point(20, 140);
             this.btnSaveRoute.Name = "btnSaveRoute";
             this.btnSaveRoute.Size = new System.Drawing.Size(96, 23);
             this.btnSaveRoute.TabIndex = 87;
@@ -524,27 +546,12 @@
             this.cbRecurrency.Size = new System.Drawing.Size(72, 22);
             this.cbRecurrency.TabIndex = 84;
             // 
-            // btnSaveRoutes
-            // 
-            this.btnSaveRoutes.AllowDrop = true;
-            this.btnSaveRoutes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.btnSaveRoutes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaveRoutes.Font = new System.Drawing.Font("Arial", 9F);
-            this.btnSaveRoutes.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSaveRoutes.Location = new System.Drawing.Point(20, 613);
-            this.btnSaveRoutes.Name = "btnSaveRoutes";
-            this.btnSaveRoutes.Size = new System.Drawing.Size(96, 23);
-            this.btnSaveRoutes.TabIndex = 38;
-            this.btnSaveRoutes.Text = "Sauver ";
-            this.btnSaveRoutes.UseVisualStyleBackColor = false;
-            this.btnSaveRoutes.Click += new System.EventHandler(this.SaveRoutesFormation);
-            // 
             // lblAddMatriceFormation
             // 
             this.lblAddMatriceFormation.AutoSize = true;
             this.lblAddMatriceFormation.Font = new System.Drawing.Font("Arial", 10.25F, System.Drawing.FontStyle.Bold);
             this.lblAddMatriceFormation.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblAddMatriceFormation.Location = new System.Drawing.Point(63, 60);
+            this.lblAddMatriceFormation.Location = new System.Drawing.Point(19, 33);
             this.lblAddMatriceFormation.Name = "lblAddMatriceFormation";
             this.lblAddMatriceFormation.Size = new System.Drawing.Size(224, 16);
             this.lblAddMatriceFormation.TabIndex = 37;
@@ -554,7 +561,7 @@
             // 
             this.picAddMatrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picAddMatrice.Image = global::Module_Education.Properties.Resources.baseline_library_add_black_18dp;
-            this.picAddMatrice.Location = new System.Drawing.Point(20, 45);
+            this.picAddMatrice.Location = new System.Drawing.Point(242, 22);
             this.picAddMatrice.Name = "picAddMatrice";
             this.picAddMatrice.Size = new System.Drawing.Size(38, 38);
             this.picAddMatrice.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -567,7 +574,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.label4.Location = new System.Drawing.Point(16, 18);
+            this.label4.Location = new System.Drawing.Point(12, 6);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(224, 24);
             this.label4.TabIndex = 35;
@@ -576,19 +583,20 @@
             // treeW_Routes
             // 
             this.treeW_Routes.BackColor = System.Drawing.Color.LightSkyBlue;
-            this.treeW_Routes.Font = new System.Drawing.Font("Arial", 10.25F);
+            this.treeW_Routes.Font = new System.Drawing.Font("Arial", 10F);
             this.treeW_Routes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.treeW_Routes.Location = new System.Drawing.Point(20, 143);
+            this.treeW_Routes.Location = new System.Drawing.Point(413, 33);
             this.treeW_Routes.Name = "treeW_Routes";
-            treeNode3.Name = "Node0";
-            treeNode3.NodeFont = new System.Drawing.Font("Arial", 12.25F, System.Drawing.FontStyle.Bold);
-            treeNode3.Text = "Trajets";
+            treeNode1.Name = "Node0";
+            treeNode1.NodeFont = new System.Drawing.Font("Arial", 12.25F, System.Drawing.FontStyle.Bold);
+            treeNode1.Text = "Trajets";
             this.treeW_Routes.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3});
-            this.treeW_Routes.Size = new System.Drawing.Size(385, 464);
+            treeNode1});
+            this.treeW_Routes.Size = new System.Drawing.Size(625, 377);
             this.treeW_Routes.TabIndex = 34;
-            this.treeW_Routes.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeW_Provider_AfterSelect);
+            this.treeW_Routes.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeW_Provider_AfterSelectAsync);
             this.treeW_Routes.MouseClick += new System.Windows.Forms.MouseEventHandler(this.treeW_Provider_MouseClick);
+            this.treeW_Routes.Validating += new System.ComponentModel.CancelEventHandler(this.treeW_Routes_Validating);
             // 
             // tabcontrolTrajet
             // 
@@ -602,12 +610,57 @@
             this.tabcontrolTrajet.Controls.Add(this.panelFormationM);
             this.tabcontrolTrajet.Controls.Add(this.panel5);
             this.tabcontrolTrajet.Controls.Add(this.panel3);
+            this.tabcontrolTrajet.Font = new System.Drawing.Font("Arial", 9.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabcontrolTrajet.Location = new System.Drawing.Point(4, 22);
             this.tabcontrolTrajet.Name = "tabcontrolTrajet";
             this.tabcontrolTrajet.Padding = new System.Windows.Forms.Padding(3);
             this.tabcontrolTrajet.Size = new System.Drawing.Size(1055, 639);
             this.tabcontrolTrajet.TabIndex = 1;
-            this.tabcontrolTrajet.Text = "Agents";
+            this.tabcontrolTrajet.Text = "Détails trajet de l\'agent";
+            // 
+            // lblEquivalence
+            // 
+            this.lblEquivalence.AutoSize = true;
+            this.lblEquivalence.Font = new System.Drawing.Font("Arial", 14.25F);
+            this.lblEquivalence.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblEquivalence.Location = new System.Drawing.Point(762, 164);
+            this.lblEquivalence.Name = "lblEquivalence";
+            this.lblEquivalence.Size = new System.Drawing.Size(113, 22);
+            this.lblEquivalence.TabIndex = 98;
+            this.lblEquivalence.Text = "Equivalence";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 14.25F);
+            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label6.Location = new System.Drawing.Point(635, 164);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(92, 22);
+            this.label6.TabIndex = 97;
+            this.label6.Text = "Date suivi";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Arial", 14.25F);
+            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label5.Location = new System.Drawing.Point(496, 164);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 22);
+            this.label5.TabIndex = 96;
+            this.label5.Text = "Statut";
+            // 
+            // lblheaderFormation
+            // 
+            this.lblheaderFormation.AutoSize = true;
+            this.lblheaderFormation.Font = new System.Drawing.Font("Arial", 14.25F);
+            this.lblheaderFormation.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.lblheaderFormation.Location = new System.Drawing.Point(68, 164);
+            this.lblheaderFormation.Name = "lblheaderFormation";
+            this.lblheaderFormation.Size = new System.Drawing.Size(95, 22);
+            this.lblheaderFormation.TabIndex = 95;
+            this.lblheaderFormation.Text = "Formation";
             // 
             // btnSaveProgressRoute
             // 
@@ -752,65 +805,99 @@
             this.lblMatriceNameM.TabIndex = 20;
             this.lblMatriceNameM.Text = "Trajet DCM Surveillant de conduite ";
             // 
+            // tabGrpAgent
+            // 
+            this.tabGrpAgent.Controls.Add(this.lblGrpAgentMatrice);
+            this.tabGrpAgent.Controls.Add(this.panel1);
+            this.tabGrpAgent.Controls.Add(this.lblAgentTitle);
+            this.tabGrpAgent.Controls.Add(this.panelDgAgentMatrice);
+            this.tabGrpAgent.Location = new System.Drawing.Point(4, 22);
+            this.tabGrpAgent.Name = "tabGrpAgent";
+            this.tabGrpAgent.Padding = new System.Windows.Forms.Padding(3);
+            this.tabGrpAgent.Size = new System.Drawing.Size(1055, 639);
+            this.tabGrpAgent.TabIndex = 2;
+            this.tabGrpAgent.Text = "Agents et Groupes agent";
+            this.tabGrpAgent.UseVisualStyleBackColor = true;
+            // 
+            // lblGrpAgentMatrice
+            // 
+            this.lblGrpAgentMatrice.AutoSize = true;
+            this.lblGrpAgentMatrice.Font = new System.Drawing.Font("Arial", 10.25F, System.Drawing.FontStyle.Bold);
+            this.lblGrpAgentMatrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.lblGrpAgentMatrice.Location = new System.Drawing.Point(12, 406);
+            this.lblGrpAgentMatrice.Name = "lblGrpAgentMatrice";
+            this.lblGrpAgentMatrice.Size = new System.Drawing.Size(243, 16);
+            this.lblGrpAgentMatrice.TabIndex = 50;
+            this.lblGrpAgentMatrice.Text = "Groupe(s) d\'agents lié(s) au trajet";
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.Controls.Add(this.dgGrpAgentsMatrice);
+            this.panel1.Location = new System.Drawing.Point(9, 425);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(987, 196);
+            this.panel1.TabIndex = 49;
+            // 
+            // dgGrpAgentsMatrice
+            // 
+            this.dgGrpAgentsMatrice.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgGrpAgentsMatrice.BackgroundColor = System.Drawing.Color.White;
+            this.dgGrpAgentsMatrice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgGrpAgentsMatrice.FilterAndSortEnabled = true;
+            this.dgGrpAgentsMatrice.Location = new System.Drawing.Point(6, 5);
+            this.dgGrpAgentsMatrice.Name = "dgGrpAgentsMatrice";
+            this.dgGrpAgentsMatrice.ReadOnly = true;
+            this.dgGrpAgentsMatrice.Size = new System.Drawing.Size(978, 178);
+            this.dgGrpAgentsMatrice.TabIndex = 0;
+            this.dgGrpAgentsMatrice.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgGrpAgentsMatrice_MouseClick);
+            // 
+            // lblAgentTitle
+            // 
+            this.lblAgentTitle.AutoSize = true;
+            this.lblAgentTitle.Font = new System.Drawing.Font("Arial", 10.25F, System.Drawing.FontStyle.Bold);
+            this.lblAgentTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
+            this.lblAgentTitle.Location = new System.Drawing.Point(12, 13);
+            this.lblAgentTitle.Name = "lblAgentTitle";
+            this.lblAgentTitle.Size = new System.Drawing.Size(67, 16);
+            this.lblAgentTitle.TabIndex = 48;
+            this.lblAgentTitle.Text = "Agent(s)";
+            // 
+            // panelDgAgentMatrice
+            // 
+            this.panelDgAgentMatrice.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panelDgAgentMatrice.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panelDgAgentMatrice.Controls.Add(this.dgAgentsMatrice);
+            this.panelDgAgentMatrice.Location = new System.Drawing.Point(9, 41);
+            this.panelDgAgentMatrice.Name = "panelDgAgentMatrice";
+            this.panelDgAgentMatrice.Size = new System.Drawing.Size(987, 345);
+            this.panelDgAgentMatrice.TabIndex = 47;
+            // 
+            // dgAgentsMatrice
+            // 
+            this.dgAgentsMatrice.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgAgentsMatrice.BackgroundColor = System.Drawing.Color.White;
+            this.dgAgentsMatrice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgAgentsMatrice.FilterAndSortEnabled = true;
+            this.dgAgentsMatrice.Location = new System.Drawing.Point(6, 5);
+            this.dgAgentsMatrice.Name = "dgAgentsMatrice";
+            this.dgAgentsMatrice.ReadOnly = true;
+            this.dgAgentsMatrice.Size = new System.Drawing.Size(978, 327);
+            this.dgAgentsMatrice.TabIndex = 0;
+            this.dgAgentsMatrice.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.dgAgentsMatrice_FilterStringChanged);
+            this.dgAgentsMatrice.MouseClick += new System.Windows.Forms.MouseEventHandler(this.adDG_AgentsRoute_MouseClick);
+            // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timerClick);
-            // 
-            // picViewEquivalence
-            // 
-            this.picViewEquivalence.Image = global::Module_Education.Properties.Resources.baseline_visibility_black_18dp;
-            this.picViewEquivalence.Location = new System.Drawing.Point(842, 15);
-            this.picViewEquivalence.Name = "picViewEquivalence";
-            this.picViewEquivalence.Size = new System.Drawing.Size(21, 20);
-            this.picViewEquivalence.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picViewEquivalence.TabIndex = 161;
-            this.picViewEquivalence.TabStop = false;
-            this.toolTip1.SetToolTip(this.picViewEquivalence, "Afficher les informations d\'équivalence");
-            this.picViewEquivalence.Click += new System.EventHandler(this.picViewProvider_Click);
-            // 
-            // lblheaderFormation
-            // 
-            this.lblheaderFormation.AutoSize = true;
-            this.lblheaderFormation.Font = new System.Drawing.Font("Arial", 14.25F);
-            this.lblheaderFormation.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblheaderFormation.Location = new System.Drawing.Point(68, 164);
-            this.lblheaderFormation.Name = "lblheaderFormation";
-            this.lblheaderFormation.Size = new System.Drawing.Size(95, 22);
-            this.lblheaderFormation.TabIndex = 95;
-            this.lblheaderFormation.Text = "Formation";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Arial", 14.25F);
-            this.label5.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label5.Location = new System.Drawing.Point(496, 164);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 22);
-            this.label5.TabIndex = 96;
-            this.label5.Text = "Statut";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Arial", 14.25F);
-            this.label6.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label6.Location = new System.Drawing.Point(635, 164);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(92, 22);
-            this.label6.TabIndex = 97;
-            this.label6.Text = "Date suivi";
-            // 
-            // lblEquivalence
-            // 
-            this.lblEquivalence.AutoSize = true;
-            this.lblEquivalence.Font = new System.Drawing.Font("Arial", 14.25F);
-            this.lblEquivalence.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblEquivalence.Location = new System.Drawing.Point(762, 164);
-            this.lblEquivalence.Name = "lblEquivalence";
-            this.lblEquivalence.Size = new System.Drawing.Size(113, 22);
-            this.lblEquivalence.TabIndex = 98;
-            this.lblEquivalence.Text = "Equivalence";
             // 
             // UC_MatriceFormations
             // 
@@ -821,11 +908,10 @@
             this.Controls.Add(this.tabControlRoutes);
             this.Name = "UC_MatriceFormations";
             this.Size = new System.Drawing.Size(1070, 691);
+            ((System.ComponentModel.ISupportInitialize)(this.picViewEquivalence)).EndInit();
             this.tabControlRoutes.ResumeLayout(false);
             this.tabRoute.ResumeLayout(false);
             this.tabRoute.PerformLayout();
-            this.panelListAgentOfRoute.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.adDG_AgentsRoute)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panelFormationDetails.ResumeLayout(false);
@@ -841,7 +927,12 @@
             this.panel5.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picViewEquivalence)).EndInit();
+            this.tabGrpAgent.ResumeLayout(false);
+            this.tabGrpAgent.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgGrpAgentsMatrice)).EndInit();
+            this.panelDgAgentMatrice.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgAgentsMatrice)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -856,9 +947,6 @@
         private System.Windows.Forms.ToolTip toolTip2;
         private System.Windows.Forms.TabControl tabControlRoutes;
         private System.Windows.Forms.TabPage tabRoute;
-        private System.Windows.Forms.Label lblListAgentRoute;
-        private System.Windows.Forms.Panel panelListAgentOfRoute;
-        private Zuby.ADGV.AdvancedDataGridView adDG_AgentsRoute;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblFormation;
         private System.Windows.Forms.ComboBox cbFilterFormation;
@@ -909,5 +997,13 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblEquivalence;
+        private System.Windows.Forms.TabPage tabGrpAgent;
+        private System.Windows.Forms.Label lblAgentTitle;
+        private System.Windows.Forms.Panel panelDgAgentMatrice;
+        private Zuby.ADGV.AdvancedDataGridView dgAgentsMatrice;
+        private System.Windows.Forms.Label lblGrpAgentMatrice;
+        private System.Windows.Forms.Panel panel1;
+        private Zuby.ADGV.AdvancedDataGridView dgGrpAgentsMatrice;
+        private System.Windows.Forms.Label lblSearchRoutes;
     }
 }

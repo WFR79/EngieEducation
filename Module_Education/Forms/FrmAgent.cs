@@ -124,8 +124,8 @@ namespace Module_Education.Forms
 
         public void UserRecord_SelectEquipe(Education_Agent userRecord)
         {
-            if (userRecord.Education_Equipe != null)
-                comboBoxEquipe.SelectedIndex = comboBoxEquipe.FindStringExact(userRecord.Education_Equipe.Equipe_Name);
+            if (userRecord.Education_SousService != null)
+                comboBoxEquipe.SelectedIndex = comboBoxEquipe.FindStringExact(userRecord.Education_SousService.SousService_Name);
         }
 
         private void UserRecord_SelectFunction(Education_Agent userRecord)

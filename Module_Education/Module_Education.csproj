@@ -29,7 +29,7 @@
     <PublisherName>Engie</PublisherName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>13</ApplicationRevision>
+    <ApplicationRevision>17</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -133,6 +133,9 @@
     <Compile Include="Classes\MenuStrip.Designer.cs">
       <DependentUpon>MenuStrip.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\MyColumnCollectionDGDepartement.cs" />
+    <Compile Include="Classes\MyColumnCollectionDGSubServices.cs" />
+    <Compile Include="Classes\MyColumnCollectionDGServices.cs" />
     <Compile Include="Classes\MyColumnCollectionDGMvtAgent.cs" />
     <Compile Include="Classes\MyColumnCollectionDGAgentCertification.cs" />
     <Compile Include="Classes\MyColumnCollectionDGAgent.cs" />
@@ -144,6 +147,7 @@
     <Compile Include="Classes\MyColumnCollectionDGPassportDesign.cs" />
     <Compile Include="Classes\MyColumnCollectionDGPassportSafety.cs" />
     <Compile Include="Classes\MyColumnCollectionDGProvider.cs" />
+    <Compile Include="Classes\MyColumnCollectionDGGrpAgent.cs" />
     <Compile Include="Classes\MyColumnCollectionDtAgent.cs" />
     <Compile Include="Classes\MyColumnCollectionFrmFormation.cs" />
     <Compile Include="Classes\ProgressReport.cs" />
@@ -216,6 +220,12 @@
     </Compile>
     <Compile Include="Forms\UserControls\UC_Provider.Designer.cs">
       <DependentUpon>UC_Provider.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UserControls\UC_Services.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\UserControls\UC_Services.Designer.cs">
+      <DependentUpon>UC_Services.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Education_Agent.cs">
       <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
@@ -373,6 +383,9 @@
     <Compile Include="Models\Education_SessionUnite.cs">
       <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Education_SousService.cs">
+      <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Education_UnitePrice.cs">
       <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
     </Compile>
@@ -382,6 +395,7 @@
     <Compile Include="Repositories\AgentCertifElecFuncRepository.cs" />
     <Compile Include="Repositories\AgentCertifDiversRepository.cs" />
     <Compile Include="Repositories\AgentCertifElecOPPRepository.cs" />
+    <Compile Include="Repositories\DepartementsRepository.cs" />
     <Compile Include="Repositories\AgentDataAccess.cs" />
     <Compile Include="Repositories\AgentMatriceEquivalenceRepository.cs" />
     <Compile Include="Repositories\AgentMatriceRepository.cs" />
@@ -407,6 +421,7 @@
     <Compile Include="Repositories\InRouteFormationRepository.cs" />
     <Compile Include="Repositories\AgentPassportSafetyRepository.cs" />
     <Compile Include="Repositories\CertificateElecFuncRepository.cs" />
+    <Compile Include="Repositories\MatriceGrpLearnerRepository.cs" />
     <Compile Include="Repositories\MovementAgentRepository.cs" />
     <Compile Include="Repositories\MovementAgentStepRepository.cs" />
     <Compile Include="Repositories\MovementStepRepository.cs" />
@@ -544,6 +559,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UserControls\UC_Provider.resx">
       <DependentUpon>UC_Provider.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UserControls\UC_Services.resx">
+      <DependentUpon>UC_Services.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

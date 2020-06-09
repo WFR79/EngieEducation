@@ -22,6 +22,7 @@ namespace Module_Education.Models
     
         public long CertifElecFunc_Id { get; set; }
         public string CertifElecFunc_LevelB { get; set; }
+        public Nullable<bool> CertifElecFunc_Actif { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_AgentCertifElecFunc> Education_AgentCertifElecFunc { get; set; }

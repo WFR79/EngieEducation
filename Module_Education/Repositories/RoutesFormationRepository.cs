@@ -94,6 +94,7 @@ namespace Module_Education.Repositories
 
         public List<Education_Agent>  LoadAllAgentsExcepted(Education_Matrice matriceSelected)
         {
+            db = new CFNEducation_FormationEntities();
             List<Education_Agent> listAgentInGrp = db.Education_Agent
                          .Where(w => w.Education_Matrice_Agent.Any(x => x.Education_Matrice_Formation.MatriceFormation_Matrice == matriceSelected.Matrice_Id))
                          .ToList();
@@ -110,10 +111,11 @@ namespace Module_Education.Repositories
         {
             db = new CFNEducation_FormationEntities();
             List<Education_GroupLearner> listAgentInGrp = db.Education_GroupLearner
-                         .Where(w => w.Education_Matrice_GrLearner.Any(x => x.MatriceGrLearner_Matrice == matriceSelected.Matrice_Id))
+                         .Where(w => w.Education_Matrice_GrLearner.Any(x => x.MatriceGrLearner_Matrice == matriceSelected.Matrice_Id 
+                         && x.MatriceGrLearner_Actif == true))
                          .ToList();
 
-            List<Education_GroupLearner> listAgent = db.Education_GroupLearner
+            List<Education_GroupLearner> listAgent = db.Education_GroupLearner.Where(x => x.GroupLearner_Actif == true)
                .ToList();
 
             List<Education_GroupLearner> listIntersect = listAgent.Except(listAgentInGrp).ToList();

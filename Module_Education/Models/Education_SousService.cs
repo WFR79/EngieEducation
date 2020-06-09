@@ -12,19 +12,22 @@ namespace Module_Education.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Education_PassportDesign
+    public partial class Education_SousService
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Education_PassportDesign()
+        public Education_SousService()
         {
-            this.Education_AgentPassportDesign = new HashSet<Education_AgentPassportDesign>();
+            this.Education_Agent = new HashSet<Education_Agent>();
         }
     
-        public long PassportDesign_Id { get; set; }
-        public string PassportDesign_Name { get; set; }
-        public Nullable<bool> PassportDesign_Actif { get; set; }
+        public long SousService_Id { get; set; }
+        public string SousService_Name { get; set; }
+        public Nullable<long> SousService_Departement { get; set; }
+        public Nullable<long> SousService_Service { get; set; }
     
+        public virtual Education_Departement Education_Departement { get; set; }
+        public virtual Education_Service Education_Service { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Education_AgentPassportDesign> Education_AgentPassportDesign { get; set; }
+        public virtual ICollection<Education_Agent> Education_Agent { get; set; }
     }
 }

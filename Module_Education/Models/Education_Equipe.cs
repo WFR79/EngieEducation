@@ -14,18 +14,10 @@ namespace Module_Education.Models
     
     public partial class Education_Equipe
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Education_Equipe()
-        {
-            this.Education_Agent = new HashSet<Education_Agent>();
-        }
-    
         public long Equipe_Id { get; set; }
         public Nullable<long> Equipe_Service { get; set; }
         public string Equipe_Name { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Education_Agent> Education_Agent { get; set; }
         public virtual Education_Service Education_Service { get; set; }
     }
 }

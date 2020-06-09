@@ -22,10 +22,46 @@ namespace Module_Education.Forms.UserControls
         private static UC_MatriceFormations _instance;
         #region Treeview
         TreeNode mySelectedNode;
+        TreeNode myPreviousSelectedNode;
         string CurrentMatriceName = string.Empty;
         public List<Education_Formation> lFormationToAddToMatrice;
         string oldLabel = String.Empty;
         #endregion
+
+        public class SortEventArgs : EventArgs
+        {
+            public string SortString { get; set; }
+            public bool Cancel { get; set; }
+
+            public SortEventArgs()
+            {
+                SortString = null;
+                Cancel = false;
+            }
+        }
+
+        public class FilterEventArgs : EventArgs
+        {
+            public string FilterString { get; set; }
+            public bool Cancel { get; set; }
+
+            public FilterEventArgs()
+            {
+                FilterString = null;
+                Cancel = false;
+            }
+        }
+
+        private string _filterString = null;
+
+
+        public event EventHandler<SortEventArgs> SortStringChanged;
+
+        public event EventHandler<FilterEventArgs> FilterStringChanged;
+
+        public Delegate PointMenuBtnGrpAgent;
+        public Delegate PointMenuBtnAgent;
+        public Delegate PointerFormation;
 
         public BindingSource ds_Education_Formations = new BindingSource();
         private Education_FormationDataAccess db = new Education_FormationDataAccess();
@@ -37,22 +73,31 @@ namespace Module_Education.Forms.UserControls
         private FormationDossierTypeRepository dbFormationDossierType = new FormationDossierTypeRepository();
         private RoutesFormationRepository dbMatrice = new RoutesFormationRepository();
         private InRouteFormationRepository dbMatriceFormation = new InRouteFormationRepository();
+        private MatriceGrpLearnerRepository dbMatriceGrpAgent = new MatriceGrpLearnerRepository();
+        private GrpLearnearAgentRepository grpLearnearAgentRepository = new GrpLearnearAgentRepository();
         private RouteAgentRepository routeAgentRepository = new RouteAgentRepository();
         private AgentDataAccess dbAgent = new AgentDataAccess();
         private AgentMatriceRepository dbAgentMatrice = new AgentMatriceRepository();
         private List<Education_Matrice> listMatrice;
-        public Education_Matrice MatriceSelected;
-        public Delegate PointerFormation;
 
         CFNEducation_FormationEntities dbEntities = new CFNEducation_FormationEntities();
-        public static List<Education_Matrice_Formation> listMatriceFormationSelected;
         private long UserIDSelected;
+        public Education_Matrice MatriceSelected;
+
+        public static List<Education_Matrice_Formation> listMatriceFormationSelected;
         private List<Education_Matrice_Formation> ListFormationMatriceSelected;
         public List<Education_Matrice_Agent> matriceAgentList;
         public Education_Matrice_Agent SelectedMatriceAgent;
         public List<Panel> listPanelRoutesFormation = new List<Panel>();
-
         private ControlCollection liscontrolOfPanel;
+        public Education_Matrice_Formation Formationselected { get; private set; }
+        public bool matriceAgentUpdated { get; private set; }
+        public string NameGrpAgentSelected { get; private set; }
+        public TreeNodeCollection ListFormationOriginalNodes { get; private set; }
+        public TreeNodeCollection ListRouteOriginalNodes;
+
+        public List<TreeNode> ListNodeFiltered = new List<TreeNode>();
+        private List<Education_Agent> listAgentFiltered;
 
         public UC_MatriceFormations()
         {
@@ -73,7 +118,9 @@ namespace Module_Education.Forms.UserControls
             }
         }
 
-        public Education_Matrice_Formation Formationselected { get; private set; }
+        public List<Education_Agent> distinctList { get; private set; }
+
+
 
         #region
 
@@ -104,7 +151,9 @@ namespace Module_Education.Forms.UserControls
                     };
                     treeW_Routes.SelectedNode.Nodes[i].Nodes.Add(newNode);
                 }
+                //ListRouteOriginalNodes.Add(newNodeMatrice);
             }
+            ListRouteOriginalNodes = treeW_Routes.Nodes[0].Nodes;
             treeW_Routes.SelectedNode.Expand();
         }
 
@@ -118,7 +167,7 @@ namespace Module_Education.Forms.UserControls
             if (mySelectedNode != null)
                 treeW_Routes.SelectedNode = mySelectedNode;
             else
-                treeW_Routes.SelectedNode = treeW_Routes.Nodes[0];
+                treeW_Routes.SelectedNode = treeW_Routes.TopNode;
 
 
             TreeNode tn1 = new TreeNode();
@@ -146,30 +195,7 @@ namespace Module_Education.Forms.UserControls
 
         private void AddFormationToMatrice(object sender, EventArgs e)
         {
-            //lFormationToAddToMatrice.Clear();
-            listMatriceFormationSelected = dbMatriceFormation.LoadMatriceFormation(treeW_Routes.SelectedNode.Text);
 
-            FrmFormation frmFormation = new FrmFormation();
-            frmFormation.ShowDialog();
-            if (lFormationToAddToMatrice != null)
-            {
-                if (lFormationToAddToMatrice.Count > 0)
-                {
-                    foreach (var formation in lFormationToAddToMatrice)
-                    {
-                        TreeNode newNode = new TreeNode()
-                        {
-                            Name = formation.Formation_SAP,
-                            Text = formation.Formation_ShortTitle,
-
-                        };
-                        treeW_Routes.SelectedNode.Nodes.Add(newNode);
-
-                    }
-
-                }
-            }
-            treeW_Routes.SelectedNode.Expand();
         }
 
         private void treeW_Provider_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
@@ -266,22 +292,34 @@ namespace Module_Education.Forms.UserControls
             }
         }
 
-        private void AdvDg_Formations_SelectionChanged(object sender, EventArgs e)
-        {
-        }
-
         private void tabControl_Education_Formations_SelectedIndexChanged(object sender, EventArgs e)
         {
-            TabControl tabcontrol = (TabControl)sender;
-            if (tabcontrol.SelectedIndex == 2)
-                LoadAllMatrice();
 
         }
 
-        private void treeW_Provider_AfterSelect(object sender, TreeViewEventArgs e)
+        private void treeW_Provider_AfterSelectAsync(object sender, TreeViewEventArgs e)
         {
             Cursor.Current = Cursors.WaitCursor;
             var selectedNode = treeW_Routes.SelectedNode;
+            if (myPreviousSelectedNode != null)
+            {
+                myPreviousSelectedNode.BackColor = treeW_Routes.BackColor;
+                myPreviousSelectedNode.ForeColor = treeW_Routes.ForeColor;
+
+            }
+            else
+            {
+                if (selectedNode.Level != 0)
+                    myPreviousSelectedNode = selectedNode;
+                //myPreviousSelectedNode.BackColor = Color.FromArgb(67, 100, 214);
+                //myPreviousSelectedNode.ForeColor = Color.White;
+
+            }
+
+
+            mySelectedNode = selectedNode;
+
+
             if (selectedNode.Level == 0)
             {
                 lblDetailsMatrice.Text = "Sélectionnez un trajet à gauche";
@@ -326,7 +364,9 @@ namespace Module_Education.Forms.UserControls
                 btnSaveFormationRecurrence.Enabled = false;
                 cbRecurrencyFormation.Enabled = false;
                 LoadComboAgent();
+
                 LoadComboGrpAgent();
+
                 Blink(selectedNode.Level);
 
             }
@@ -347,10 +387,11 @@ namespace Module_Education.Forms.UserControls
 
                     btnSaveFormationRecurrence.Enabled = true;
                     cbRecurrencyFormation.Enabled = true;
+                    Blink(selectedNode.Level);
+
                 }
                 LoadComboAgent();
                 LoadComboGrpAgent();
-                Blink(selectedNode.Level);
 
             }
 
@@ -363,26 +404,26 @@ namespace Module_Education.Forms.UserControls
             if (level == 1)
             {
                 PanelDetailsMatrice.BackColor = PanelDetailsMatrice.BackColor == Color.FromArgb(0, 115, 204) ? Color.LightSkyBlue : Color.FromArgb(0, 115, 204);
-                await Task.Delay(1000);
+                await Task.Delay(500);
                 PanelDetailsMatrice.BackColor = PanelDetailsMatrice.BackColor == Color.LightSkyBlue ? Color.FromArgb(0, 115, 204) : Color.LightSkyBlue;
 
-                await Task.Delay(1000);
+                await Task.Delay(500);
                 PanelDetailsMatrice.BackColor = PanelDetailsMatrice.BackColor == Color.FromArgb(0, 115, 204) ? Color.LightSkyBlue : Color.FromArgb(0, 115, 204);
 
-                await Task.Delay(1000);
+                await Task.Delay(500);
                 PanelDetailsMatrice.BackColor = PanelDetailsMatrice.BackColor == Color.LightSkyBlue ? Color.LightSkyBlue : Color.LightSkyBlue;
 
             }
             else
             {
                 panelFormationDetails.BackColor = panelFormationDetails.BackColor == Color.FromArgb(0, 115, 204) ? Color.LightSkyBlue : Color.FromArgb(0, 115, 204);
-                await Task.Delay(1000);
+                await Task.Delay(500);
                 panelFormationDetails.BackColor = panelFormationDetails.BackColor == Color.LightSkyBlue ? Color.FromArgb(0, 115, 204) : Color.LightSkyBlue;
 
-                await Task.Delay(1000);
+                await Task.Delay(500);
                 panelFormationDetails.BackColor = panelFormationDetails.BackColor == Color.FromArgb(0, 115, 204) ? Color.LightSkyBlue : Color.FromArgb(0, 115, 204);
 
-                await Task.Delay(1000);
+                await Task.Delay(500);
                 panelFormationDetails.BackColor = panelFormationDetails.BackColor == Color.LightSkyBlue ? Color.LightSkyBlue : Color.LightSkyBlue;
             }
 
@@ -440,9 +481,10 @@ namespace Module_Education.Forms.UserControls
                         ContextMenu m = new ContextMenu();
                         m.MenuItems.Add(new MenuItem("Modifier le nom du trajet", EditFormationToMatrice));
                         m.MenuItems.Add(new MenuItem("Ajouter une formation au trajet", AddFormationToMatrice));
-                        m.MenuItems.Add(new MenuItem("Attribuer le trajet à un utilisateur", EditFormationToMatrice));
-                        m.MenuItems.Add(new MenuItem("Attribuer le trajet à un groupe d'utilisateur", EditFormationToMatrice));
+                        //m.MenuItems.Add(new MenuItem("Attribuer le trajet à un utilisateur", EditFormationToMatrice));
+                        //m.MenuItems.Add(new MenuItem("Attribuer le trajet à un groupe d'utilisateur", EditFormationToMatrice));
                         m.MenuItems.Add(new MenuItem("Supprimer le trajet de formation", RemoveAllMatrice));
+                        m.MenuItems.Add(new MenuItem("Goto Agent(s) et groupe(s) d'agent lié(s) au trajet", GotoLinkedCardAgentGrp));
 
 
 
@@ -475,16 +517,18 @@ namespace Module_Education.Forms.UserControls
             }
         }
 
+        private void GotoLinkedCardAgentGrp(object sender, EventArgs e)
+        {
+            this.tabControlRoutes.SelectedIndex = 2;
+            LoadDatagridAgentRoute();
+            LoadDatagridGrpAgentRoute();
+
+        }
+
+
+
         private void RemoveAllMatrice(object sender, EventArgs e)
         {
-            var result = MessageBox.Show("Etes-vous sûr de vouloir supprimer le trajets de formations?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (result == System.Windows.Forms.DialogResult.Yes)
-            {
-                dbMatriceFormation.RemoveAllMatriceForamtion(mySelectedNode.Nodes, mySelectedNode.Text);
-                RefreshTreeView();
-            }
-            else
-            { }
 
         }
 
@@ -540,6 +584,7 @@ namespace Module_Education.Forms.UserControls
                     //treeW_Routes.SelectedNode = node;
                     node.BackColor = Color.Yellow;
                     node.Parent.Expand();
+                    ListNodeFiltered.Add(node);
                 }
                 else
                 {
@@ -564,7 +609,6 @@ namespace Module_Education.Forms.UserControls
                     {
                         //treeW_Routes.SelectedNode = node;
                         node.BackColor = Color.Yellow;
-
                     }
                     else
                     {
@@ -608,43 +652,32 @@ namespace Module_Education.Forms.UserControls
             AutoClosingMessageBox.Show("Récurrence de la formation enregistrée.", "Info", 2000, MessageBoxIcon.Information);
         }
 
-        private void SaveRecurrencyMatrice(object sender, EventArgs e)
-        {
-            if (cbRecurrency.Text != "")
-            {
-                MatriceSelected = dbMatrice.SaveDetailsRoute(mySelectedNode.Text, Convert.ToInt32(cbRecurrency.Text), tbTrajetName.Text);
-                treeW_Routes.SelectedNode.Text = MatriceSelected.Matrice_Description;
-            }
-
-            else
-                MessageBox.Show("Spécifiez la récurrence du trajet de formation");
-
-        }
-
         private void LoadComboAgent()
         {
+
             if (MatriceSelected != null)
             {
                 tbTrajetName.Text = MatriceSelected.Matrice_Description;
                 comboAgent.DataSource = dbMatrice.LoadAllAgentsExcepted(MatriceSelected);
                 comboAgent.DisplayMember = "Agent_FullName";
 
-                List<Education_Matrice_Agent> listAgentAlreadyAssignedToMatrice = dbAgentMatrice.LoadAllTrajetAgent(MatriceSelected);
-                LoadDatagridAgentRoute();
-                for (int i = 0; i < listAgentAlreadyAssignedToMatrice.Count; i++)
-                {
-                    if (listAgentAlreadyAssignedToMatrice[i].MatriceAgent_Agent != null)
-                    {
-                        Education_Agent agent = dbAgent.LoadSingleUser(listAgentAlreadyAssignedToMatrice[i].MatriceAgent_Agent);
-                        int index = comboAgent.FindString(agent.Agent_FullName);
+                //List<Education_Matrice_Agent> listAgentAlreadyAssignedToMatrice = dbAgentMatrice.LoadAllTrajetAgent(MatriceSelected);
+                ////LoadDatagridAgentRoute();
+                //for (int i = 0; i < listAgentAlreadyAssignedToMatrice.Count; i++)
+                //{
+                //    if (listAgentAlreadyAssignedToMatrice[i].MatriceAgent_Agent != null)
+                //    {
+                //        Education_Agent agent = dbAgent.LoadSingleUser(listAgentAlreadyAssignedToMatrice[i].MatriceAgent_Agent);
+                //        int index = comboAgent.FindString(agent.Agent_FullName);
 
-                        Font font = new System.Drawing.Font(comboAgent.Font, FontStyle.Bold);
-                        SolidBrush brush = new SolidBrush(comboAgent.ForeColor);
-                        this.comboAgent.DrawItem += new DrawItemEventHandler(comboAgent_DrawItem);
+                //        //Font font = new System.Drawing.Font(comboAgent.Font, FontStyle.Bold);
+                //        //SolidBrush brush = new SolidBrush(comboAgent.ForeColor);
+                //        //this.comboAgent.DrawItem += new DrawItemEventHandler(comboAgent_DrawItem);
 
-                    }
-                }
+                //    }
+                //}
             }
+
         }
 
         private void LoadComboGrpAgent()
@@ -653,38 +686,48 @@ namespace Module_Education.Forms.UserControls
             {
                 comboGrpAgent.DataSource = dbMatrice.LoadAllGrpAgentsExcepted(MatriceSelected);
                 comboGrpAgent.DisplayMember = "GroupLearner_Name";
-
-                //List<Education_Matrice_Agent> listAgentAlreadyAssignedToMatrice = dbAgentMatrice.LoadAllTrajetAgent(MatriceSelected);
-                //LoadDatagridAgentRoute();
-                //for (int i = 0; i < listAgentAlreadyAssignedToMatrice.Count; i++)
-                //{
-                //    if (listAgentAlreadyAssignedToMatrice[i].MatriceAgent_Agent != null)
-                //    {
-                //        Education_Agent agent = dbAgent.LoadSingleUser(listAgentAlreadyAssignedToMatrice[i].MatriceAgent_Agent);
-                //        int index = comboAgent.FindString(agent.Agent_FullName);
-
-                //        Font font = new System.Drawing.Font(comboAgent.Font, FontStyle.Bold);
-                //        SolidBrush brush = new SolidBrush(comboAgent.ForeColor);
-                //        this.comboAgent.DrawItem += new DrawItemEventHandler(comboAgent_DrawItem);
-
-                //    }
-                //}
             }
         }
+
+        private void LoadDatagridGrpAgentRoute()
+        {
+            List<Education_Matrice_GrLearner> listGrpAgentLinkedToMatrice = dbMatriceGrpAgent.LoadGrpAgentOfMatriceSelected(MatriceSelected);
+            if (listGrpAgentLinkedToMatrice.Count > 0)
+                lblGrpAgentMatrice.Text = "Groupes d'agents liés à la matrice " + listGrpAgentLinkedToMatrice[0].Education_Matrice.Matrice_Description;
+            else
+                lblGrpAgentMatrice.Text = "Aucun groupe assigné au trajet de formation";
+            dgGrpAgentsMatrice.DataSource = GetDataSource(listGrpAgentLinkedToMatrice);
+        }
+
+
 
         private void LoadDatagridAgentRoute()
         {
             List<Education_Matrice_Agent> listAgentAlreadyAssignedToMatrice = dbAgentMatrice.LoadAllAgentOfTheRoute(MatriceSelected);
-            List<Education_Matrice_Agent> distinctList = new List<Education_Matrice_Agent>();
+            distinctList = new List<Education_Agent>();
             foreach (Education_Matrice_Agent agent in listAgentAlreadyAssignedToMatrice)
             {
-                var existAlready = distinctList.Where(x => x.MatriceAgent_Agent == agent.MatriceAgent_Agent).FirstOrDefault();
+                var existAlready = distinctList.Where(x => x?.Agent_Id == agent.MatriceAgent_Agent
+                ).FirstOrDefault();
                 if (existAlready == null)
-                    distinctList.Add(agent);
+                    distinctList.Add(agent.Education_Agent);
             }
 
-            adDG_AgentsRoute.DataSource = GetDataSource(distinctList);
-
+            //adDG_AgentsRoute.DataSource = GetDataSource(distinctList);
+            dgAgentsMatrice.DataSource = GetDataSource(distinctList);
+            if (listAgentAlreadyAssignedToMatrice.Count > 0)
+            {
+                lblAgentTitle.Text = "Agents liés à la matrice " + listAgentAlreadyAssignedToMatrice[0].Education_Matrice_Formation.Education_Matrice.Matrice_Description;
+            }
+        }
+        private object GetDataSource(List<Education_Matrice_GrLearner> listGrpAgentLinkedToMatrice)
+        {
+            object dataSource = listGrpAgentLinkedToMatrice.Select(o => new MyColumnCollectionDGGrpAgent(o.Education_GroupLearner)
+            {
+                Grp_Description = o.Education_GroupLearner.GroupLearner_Name,
+                Grp_Code = o.Education_GroupLearner.GroupLearner_SAP
+            }).ToList();
+            return dataSource;
         }
 
         private object GetDataSource(List<Education_Matrice_Agent> listPaged)
@@ -698,16 +741,16 @@ namespace Module_Education.Forms.UserControls
 
                 Function_Name = o.Education_Agent.Agent_Function == null ? null : dbEntities.Education_Function
                 .Where(x => x.Function_Id == o.Education_Agent.Agent_Function).FirstOrDefault().Function_Name,// If (o.Function == null) { null } else {o.Function.Function_Name}
-                //Agent_Admin = o.Agent_Admin,
-                //Agent_Responsable = o.Agent_LineManager == null ? null : dbEntities.Education_Agent.Where(x => x.Agent_Id == o.Agent_LineManager).FirstOrDefault().Agent_FullName,
-                //Agent_InRoute = o.Agent_InRoute,
-                //Agent_IsWorkManager = o.Agent_IsWorksManager,
-                //Agent_DateSeniority = o.Agent_DateSeniority,
-                //Agent_DateOfEntry = o.Agent_DateOfEntry,
-                //Agent_DateFunction = o.Agent_DateFunction,
-                //Agent_Habilitation = o.Education_Habilitation == null ? null : o.Education_Habilitation.Habilitation_Name,
-                //Agent_Status = o.Education_AgentStatus == null ? null : o.Education_AgentStatus.AgentStatus_Name,
-                //Agent_Etat = o.Agent_Etat
+                Agent_Admin = o.Education_Agent.Agent_Admin,
+                Agent_Responsable = o.Education_Agent.Agent_LineManager == null ? null : dbEntities.Education_Agent.Where(x => x.Agent_Id == o.Education_Agent.Agent_LineManager).FirstOrDefault().Agent_FullName,
+                //Agent_InRoute = o.Education_Agent.Education_InRoute.InRoute_Name,
+                Agent_IsWorksManager = o.Education_Agent.Agent_IsWorksManager,
+                Agent_DateSeniority = o.Education_Agent.Agent_DateSeniority,
+                Agent_DateOfEntry = o.Education_Agent.Agent_DateOfEntry,
+                Agent_DateFunction = o.Education_Agent.Agent_DateFunction,
+                Agent_Habilitation = o.Education_Agent.Education_Habilitation == null ? null : o.Education_Agent.Education_Habilitation.Habilitation_Name,
+                Agent_Status = o.Education_Agent.Education_AgentStatus == null ? null : o.Education_Agent.Education_AgentStatus.AgentStatus_Name,
+                Agent_Etat = o.Education_Agent.Agent_Etat
             }).ToList();
             return dataSource;
         }
@@ -742,7 +785,8 @@ namespace Module_Education.Forms.UserControls
                     dbAgentMatrice.AssignAgentToRoute(MatriceSelected, agent.Education_Agent);
 
                 }
-                MessageBox.Show("Trajet assigné au groupe :  " + agentGrpSelected.GroupLearner_Name);
+                MessageBox.Show("Trajet " + MatriceSelected.Matrice_Description + " assigné au groupe :  " + agentGrpSelected.GroupLearner_Name);
+                LoadComboGrpAgent();
                 LoadDatagridAgentRoute();
             }
         }
@@ -779,11 +823,15 @@ namespace Module_Education.Forms.UserControls
 
                     ContextMenu m = new ContextMenu();
                     m.MenuItems.Add(new MenuItem("Afficher le statut du trajet de formation de l'agent", ShowAgentRouteCard));
+                    m.MenuItems.Add(new MenuItem("Goto fiche de l'agent", ShowAgentCard));
+                    m.MenuItems.Add(new MenuItem("--------------------------------------------"));
+
+                    m.MenuItems.Add(new MenuItem("Retirer l'agent du trajet de formation", RemoveAgentFromRoute));
 
 
                     UserIDSelected = Convert.ToInt64(dgv.SelectedCells[0].Value);
 
-                    m.Show(adDG_AgentsRoute, new Point(e.X, e.Y));
+                    m.Show(dgAgentsMatrice, new Point(e.X, e.Y));
                 }
             }
             catch (Exception ex)
@@ -792,33 +840,100 @@ namespace Module_Education.Forms.UserControls
             }
         }
 
+        private void dgGrpAgentsMatrice_MouseClick(object sender, MouseEventArgs e)
+        {
+
+            try
+            {
+                DataGridView dgv = (DataGridView)sender;
+                if (e.Button == MouseButtons.Right)
+                {
+                    dgv.Rows[dgv.HitTest(e.X, e.Y).RowIndex].Selected = true;
+
+                    ContextMenu m = new ContextMenu();
+                    m.MenuItems.Add(new MenuItem("Goto fiche groupe d'agents", ShowGrpAgentCard));
+                    m.MenuItems.Add(new MenuItem("--------------------------------------------"));
+
+                    m.MenuItems.Add(new MenuItem("Retirer le groupe d'agent du trajet de formation", RemoveGrpAgentFromRoute));
+
+                    NameGrpAgentSelected = dgv.SelectedCells[0].Value.ToString();
+
+                    m.Show(dgGrpAgentsMatrice, new Point(e.X, e.Y));
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+
+        }
+
+        private void RemoveGrpAgentFromRoute(object sender, EventArgs e)
+        {
+            dbMatriceGrpAgent.RemoveAgentFromRoute(MatriceSelected, NameGrpAgentSelected);
+            LoadDatagridGrpAgentRoute();
+        }
+
+        private void RemoveAgentFromRoute(object sender, EventArgs e)
+        {
+            dbAgentMatrice.RemoveAgentFromRoute(MatriceSelected, UserIDSelected);
+            LoadDatagridAgentRoute();
+
+        }
+
+        private void ShowAgentCard(object sender, EventArgs e)
+        {
+            object[] arr = { UserIDSelected, null };
+
+            PointMenuBtnAgent.DynamicInvoke(UserIDSelected);
+        }
+
         private void ShowAgentRouteCard(object sender, EventArgs e)
         {
-            this.tabControlRoutes.SelectedIndex = 1;
-            if (listPanelRoutesFormation.Count > 0)
+            DialogResult result = new DialogResult();
+
+            if (matriceAgentUpdated)
             {
-                foreach (Panel itemPanel in listPanelRoutesFormation)
+                result = MessageBox.Show("Le trajet de l'agent " + lblAgentM.Text + " n'a pas été enregistré. Etes-vous sûr de vouloir continuer?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            }
+
+            if (result == DialogResult.Yes || matriceAgentUpdated == false)
+            {
+                this.tabControlRoutes.SelectedIndex = 1;
+                if (listPanelRoutesFormation.Count > 0)
                 {
-                    itemPanel.Dispose();
+                    foreach (Panel itemPanel in listPanelRoutesFormation)
+                    {
+                        itemPanel.Dispose();
+                    }
+                    listPanelRoutesFormation.Clear();
                 }
-                listPanelRoutesFormation.Clear();
+                liscontrolOfPanel = this.panelFormationM.Controls;
+
+                matriceAgentList = dbAgentMatrice.LoadAllTrajetSingleAgent(MatriceSelected, UserIDSelected);
+
+                lblAgentM.Text = matriceAgentList[0].Education_Agent.Agent_FullName;
+                lblMatriceNameM.Text = matriceAgentList[0].Education_Matrice_Formation.Education_Matrice.Matrice_Description;
+                lblRecurrencyM.Text = "Récurrence : " + matriceAgentList[0].Education_Matrice_Formation.Education_Matrice.Matrice_Recurrency + " semaines";
+
+                for (int i = 0; i < matriceAgentList.Count; i++)
+                {
+                    //lblFormationM.Text =  ListFormationMatriceSelected[i].Education_Formation.Formation_ShortTitle;
+                    InsertCopyPanelFormation(i + 1, matriceAgentList[i]);
+                }
+
+                panelFormationM.Dispose();
+                CreateButtonSavingAgent();
+                ActiveModification(false);
             }
-            liscontrolOfPanel = this.panelFormationM.Controls;
-
-            matriceAgentList = dbAgentMatrice.LoadAllTrajetSingleAgent(MatriceSelected, UserIDSelected);
-
-            lblAgentM.Text = matriceAgentList[0].Education_Agent.Agent_FullName;
-            lblMatriceNameM.Text = matriceAgentList[0].Education_Matrice_Formation.Education_Matrice.Matrice_Description;
-            lblRecurrencyM.Text = "Récurrence : " + matriceAgentList[0].Education_Matrice_Formation.Education_Matrice.Matrice_Recurrency + " semaines";
-
-            for (int i = 0; i < matriceAgentList.Count; i++)
+            else
             {
-                //lblFormationM.Text =  ListFormationMatriceSelected[i].Education_Formation.Formation_ShortTitle;
-                InsertCopyPanelFormation(i + 1, matriceAgentList[i]);
+                this.tabControlRoutes.SelectedIndex = 1;
+
             }
 
-            panelFormationM.Dispose();
-            CreateButtonSavingAgent();
+
         }
 
         private void InsertCopyPanelFormation(int index, Education_Matrice_Agent Matriceformation)
@@ -891,6 +1006,8 @@ namespace Module_Education.Forms.UserControls
             newCheckBoxEquivalence.Visible = Matriceformation.MatriceAgent_HasEquivalence == null ? false : true;
             newCheckBoxEquivalence.Size = cbEquivalence.Size; newCheckBoxEquivalence.Text = "Equivalence";
             newCheckBoxEquivalence.Font = cbEquivalence.Font;
+            newCheckBoxEquivalence.Visible = true;
+
             //newCheckBoxEquivalence.ForeColor = Color.FromArgb(0, 115, 204);
             newCheckBoxEquivalence.Checked = Matriceformation.MatriceAgent_HasEquivalence == null ? false : true;
             newCheckBoxEquivalence.CheckedChanged += this.cbEquivalence_CheckedChanged;
@@ -917,10 +1034,15 @@ namespace Module_Education.Forms.UserControls
             PictureBox newPicEquivalence = new PictureBox();
             newPicEquivalence.Paint += new PaintEventHandler(this.PainttbEquivalence);
             newPicEquivalence.Click += new EventHandler(this.ClickPicBoxEquivalence);
+
             newPicEquivalence.Name = "newPicEquivalence_" + index;
             ToolTip tt = new ToolTip();
             tt.SetToolTip(newPicEquivalence, "Afficher les informations d'équivalence");
-            newPicEquivalence.Visible = false;
+            if (newCheckBoxEquivalence.Checked)
+                newPicEquivalence.Visible = true;
+            else
+                newPicEquivalence.Visible = false;
+
             newPicEquivalence.Image = Module_Education.Properties.Resources.baseline_visibility_black_18dp;
             newPicEquivalence.SizeMode = PictureBoxSizeMode.Zoom;
             newPicEquivalence.Size = picViewEquivalence.Size;
@@ -1013,6 +1135,7 @@ namespace Module_Education.Forms.UserControls
                 if (i.ToString() == spiltRbName[1])
                 {
                     matriceAgentList[i - 1].MatriceAgent_IsAttented = true;
+                    ActiveModification(true);
                 }
             }
             Panel currentPanel = listPanelRoutesFormation.Where(x => x.Name == "panelFormationM_" + spiltRbName[1]).FirstOrDefault();
@@ -1025,12 +1148,12 @@ namespace Module_Education.Forms.UserControls
                         if (rb.Checked)
                         {
                             cbEquivalence = (CheckBox)ctrl;
-                            cbEquivalence.Visible = false;
+                            cbEquivalence.Visible = true;
                             cbEquivalence.Checked = false;
                         }
                         else
                         {
-                            
+
 
                         }
                     }
@@ -1044,6 +1167,11 @@ namespace Module_Education.Forms.UserControls
                 }
 
             }
+        }
+
+        private void ActiveModification(bool IsModified)
+        {
+            matriceAgentUpdated = IsModified;
         }
 
         public void CreateButtonSavingAgent()
@@ -1138,6 +1266,7 @@ namespace Module_Education.Forms.UserControls
         private void btnSaveProgressRoute_Click(object sender, EventArgs e)
         {
             matriceAgentList = routeAgentRepository.SaveRouteAgentProgress(matriceAgentList);
+            ActiveModification(false);
         }
 
         private void rbDone_CheckedChanged(object sender, EventArgs e)
@@ -1165,7 +1294,7 @@ namespace Module_Education.Forms.UserControls
         private void cbEquivalence_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox cb = (CheckBox)sender;
-            PictureBox picBoxCurrent = new PictureBox(); 
+            PictureBox picBoxCurrent = new PictureBox();
 
             string[] spiltCbName = cb.Name.Split('_').ToArray();
             Panel currentPanel = listPanelRoutesFormation.Where(x => x.Name == "panelFormationM_" + spiltCbName[1]).FirstOrDefault();
@@ -1200,5 +1329,213 @@ namespace Module_Education.Forms.UserControls
         {
 
         }
+
+        private void treeW_Routes_Validating(object sender, CancelEventArgs e)
+        {
+            //if (myPreviousSelectedNode != null)
+            //{
+            //    myPreviousSelectedNode.BackColor = Color.FromArgb(67, 100, 214);
+            //    myPreviousSelectedNode.ForeColor = Color.White;
+            //}
+
+
+        }
+
+
+        private void ShowGrpAgentCard(object sender, EventArgs e)
+        {
+            object[] arr = { NameGrpAgentSelected, null };
+
+            PointMenuBtnGrpAgent.DynamicInvoke(NameGrpAgentSelected);
+        }
+
+        private void cbFilterMatrice_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //cbFilterFormation.Text = "";
+
+
+        }
+
+        private void cbFilterMatrice_TextChanged(object sender, EventArgs e)
+        {
+            ListNodeFiltered.Clear();
+            if (cbFilterMatrice.Text != "")
+            {
+                //foreach (TreeNode node in treeW_Routes.Nodes)
+                for (int i = 0; i < ListRouteOriginalNodes?.Count; i++)
+                {
+                    if (ListRouteOriginalNodes[i].Text.ToUpper().Contains(cbFilterMatrice.Text.ToUpper()))
+                    {
+                        //treeW_Routes.SelectedNode = node;
+                        ListNodeFiltered.Add(ListRouteOriginalNodes[i]);
+                        //ListRouteOriginalNodes[i].BackColor = Color.Yellow;
+                    }
+                    else
+                    {
+                        ListRouteOriginalNodes[i].BackColor = Color.LightSkyBlue;
+                    }
+                    //if (SearchRecursive(node.Nodes, textBox1.Text))
+                    //    return true;
+                    //SearchRecursive(ListRouteOriginalNodes[i].Nodes, cbFilterMatrice.Text);
+                }
+                if (ListNodeFiltered.Count > 0)
+                {
+                    treeW_Routes.Nodes.Clear();
+                    foreach (TreeNode nodeFiltered in ListNodeFiltered)
+                    {
+                        //if (nodeFiltered.Level == 0)
+                        treeW_Routes.Nodes.Add(nodeFiltered);
+                    }
+                }
+            }
+            else
+            {
+                if (ListRouteOriginalNodes?.Count > 0)
+                {
+                    treeW_Routes.Nodes.Clear();
+                    foreach (TreeNode node in ListRouteOriginalNodes)
+                    {
+                        //if (nodeFiltered.Level == 0)
+                        treeW_Routes.Nodes.Add(node);
+                    }
+                }
+            }
+        }
+
+        private void cbFilterFormation_TextChanged(object sender, EventArgs e)
+        {
+            ListNodeFiltered.Clear();
+            if (cbFilterFormation.Text != "")
+            {
+                //foreach (TreeNode node in treeW_Routes.Nodes)
+                for (int i = 0; i < ListRouteOriginalNodes?.Count; i++)
+                {
+                    bool found = false;
+                    for (int j = 0; j < ListRouteOriginalNodes[i].Nodes.Count; j++)
+                    {
+
+                        if (ListRouteOriginalNodes[i].Nodes[j].Text.ToUpper().Contains(cbFilterFormation.Text.ToUpper()))
+                        {
+                            if (!found)
+                                ListNodeFiltered.Add(ListRouteOriginalNodes[i]);
+
+                            found = true;
+                            ListRouteOriginalNodes[i].Nodes[j].BackColor = Color.Yellow;
+                        }
+                        else
+                        {
+                            //ListRouteOriginalNodes[i].Nodes[j].BackColor = Color.Yellow;
+                            ListRouteOriginalNodes[i].Nodes[j].BackColor = Color.LightSkyBlue;
+
+                        }
+
+
+                    }
+
+                }
+                if (ListNodeFiltered.Count > 0)
+                {
+                    treeW_Routes.Nodes.Clear();
+                    foreach (TreeNode nodeFiltered in ListNodeFiltered)
+                    {
+                        //if (nodeFiltered.Level == 0)
+                        treeW_Routes.Nodes.Add(nodeFiltered);
+                    }
+                    treeW_Routes.ExpandAll();
+                }
+            }
+            else
+            {
+                if (ListRouteOriginalNodes?.Count > 0)
+                {
+                    treeW_Routes.Nodes.Clear();
+                    for (int i = 0; i < ListRouteOriginalNodes.Count; i++)
+                    {
+                        for (int j = 0; j < ListRouteOriginalNodes[i].Nodes.Count; j++)
+                        {
+
+                            if (ListRouteOriginalNodes[i].Nodes[j].Text.ToUpper().Contains(cbFilterFormation.Text.ToUpper()))
+                            {
+                                ListRouteOriginalNodes[i].Nodes[j].BackColor = Color.LightSkyBlue;
+
+                            }
+                            //if (nodeFiltered.Level == 0)
+                            treeW_Routes.Nodes[i].Expand();
+                        }
+                        treeW_Routes.Nodes.Add(ListRouteOriginalNodes[i]);
+
+                    }
+                }
+                treeW_Routes.ExpandAll();
+
+            }
+        }
+
+        private void dgAgentsMatrice_FilterStringChanged(object sender, Zuby.ADGV.AdvancedDataGridView.FilterEventArgs e)
+        {
+            _filterString = e.FilterString;
+            TriggerFilterStringChanged();
+        }
+
+        public async void TriggerFilterStringChanged()
+        {
+            //call event handler if one is attached
+            FilterEventArgs filterEventArgs = new FilterEventArgs
+            {
+                FilterString = _filterString,
+                Cancel = false
+            };
+            if (FilterStringChanged != null)
+                FilterStringChanged.Invoke(this, filterEventArgs);
+            //sort datasource
+            if (filterEventArgs.Cancel == false)
+            {
+                distinctList = dbAgent.LoadAgentsFiltered(_filterString, distinctList);
+            }
+            dgAgentsMatrice.DataSource = GetDataSource(distinctList);
+
+
+        }
+
+        private object GetDataSource(List<Education_Agent> listAgentFiltered)
+        {
+            try
+            {
+                object dataSource = listAgentFiltered.Select(o => new MyColumnCollectionDGAgent(o)
+                {
+                    Agent_Matricule = o.Agent_Matricule,
+                    Agent_FirstName = o.Agent_FirstName,
+                    Agent_Name = o.Agent_Name,
+                    Agent_Fullname = o.Agent_FullName,
+                    Function_Name = o.Agent_Function == null ? null : dbEntities.Education_Function.Where(w => w.Function_Id == o.Agent_Function).FirstOrDefault().Function_Name,
+
+                    ////Function_Name = o.Agent_Function == null ? null : dbEntities.Education_Function.Where(x => x.Function_Id == o.Agent_Function).FirstOrDefault().Function_Name,// If (o.Function == null) { null } else {o.Function.Function_Name}
+                    Agent_Admin = o.Agent_Admin == null ? null : o.Agent_Admin,
+                    Agent_Responsable = o.Agent_LineManager == null ? null : dbEntities.Education_Agent.Where(w => w.Agent_Id == o.Agent_LineManager).FirstOrDefault().Agent_FullName,
+
+                    ////Agent_Responsable = o.Agent_LineManager == null ? null : dbEntities.Education_Agent.Where(x => x.Agent_Id == o.Agent_LineManager).FirstOrDefault().Agent_FullName,
+                    Agent_InRoute = o.Agent_InRoute == null ? "" : dbEntities.Education_InRoute.Where(w => w.InRoute_Id == o.Agent_InRouteId).FirstOrDefault().InRoute_Name,
+                    Agent_IsWorksManager = o.Agent_IsWorksManager,
+                    Agent_DateSeniority = o.Agent_DateSeniority,
+                    Agent_DateOfEntry = o.Agent_DateOfEntry,
+                    Agent_DateFunction = o.Agent_DateFunction,
+                    Agent_Habilitation = o.Agent_Habilitation == null ? null : dbEntities.Education_Habilitation.Where(w => w.Habilitation_Id == o.Agent_Habilitation).FirstOrDefault().Habilitation_Name,
+                    Agent_Status = o.Agent_Status == null ? null : dbEntities.Education_AgentStatus.Where(w => w.AgentStatus_Id == o.Agent_Status).FirstOrDefault().AgentStatus_Name,
+                    Agent_Etat = o.Agent_Etat
+
+
+                }).OrderBy(p => p.Agent_Matricule)
+                    .ToList();
+
+
+                return dataSource;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
     }
 }

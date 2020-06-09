@@ -22,6 +22,7 @@ namespace Module_Education.Models
     
         public long CertifElecOPP_Id { get; set; }
         public string CertifElecOPP_LevelR { get; set; }
+        public Nullable<bool> CertifElecOPP_Actif { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_AgentCertifElecOPP> Education_AgentCertifElecOPP { get; set; }

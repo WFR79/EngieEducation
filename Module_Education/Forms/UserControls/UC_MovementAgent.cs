@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Module_Education.Repositories;
 using Module_Education.Models;
 using Module_Education.Classes.Extensions;
+using Module_Education.Helper;
 
 namespace Module_Education.Forms.UserControls
 {
@@ -143,7 +144,7 @@ namespace Module_Education.Forms.UserControls
 
             List<Education_MovementStepAgent> listMovementStepAgents = new List<Education_MovementStepAgent>();
             Education_MovementAgent mvtAgentSelected = MovementAgentRepository.LoadSingleMvtAgent(AgentId, mvttypeId);
-
+            CurrentMovementAgent = mvtAgentSelected;
             lblTypemvt.Text = mvtAgentSelected.Education_MovementType.MovementType_Name;
             tbAgentName.Text = mvtAgentSelected.Education_Agent.Agent_FullName;
             tbPercentage.Text = mvtAgentSelected.MovementAgent_Statut + "%";
@@ -155,6 +156,7 @@ namespace Module_Education.Forms.UserControls
             tbTCAction.Text = mvtAgentSelected.MovementAgent_TCAction;
             tbActionOPP.Text = mvtAgentSelected.MovementAgent_AdminOPP;
             tbLHActuel.Text = mvtAgentSelected.MovementAgent_LHActual;
+            textBoxAdmin.Text = mvtAgentSelected.MovementAgent_Admin;
             tbLHFutur.Text = mvtAgentSelected.MovementAgent_LHFutur;
             LoadAllStepsOfAgent();
 
@@ -765,8 +767,84 @@ namespace Module_Education.Forms.UserControls
 
 
 
+
         #endregion
 
+        #region Details
 
+        private void textBoxAdmin_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            CurrentMovementAgent.MovementAgent_Admin = tb.Text;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+        private void tbActionOPP_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            CurrentMovementAgent.MovementAgent_AdminOPP = tb.Text;
+        }
+
+        private void tbLHActuel_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            CurrentMovementAgent.MovementAgent_LHActual = tb.Text;
+        }
+
+        private void tbLHFutur_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            CurrentMovementAgent.MovementAgent_LHFutur = tb.Text;
+        }
+
+        private void tbTCAction_TextChanged(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            CurrentMovementAgent.MovementAgent_TCAction = tb.Text;
+        }
+
+        private void datePRequest_ValueChanged(object sender, EventArgs e)
+        {
+            DateTimePicker dtPick = (DateTimePicker)sender;
+            CurrentMovementAgent.MovementAgent_Date = dtPick.Value;
+        }
+
+        private void cbServiceFutur_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CurrentMovementAgent.MovementAgent_ServiceFutur != ((Education_Service)cbServiceFutur.SelectedItem).Service_Id)
+                {
+                    CurrentMovementAgent.MovementAgent_ServiceFutur = ((Education_Service)cbServiceFutur.SelectedItem).Service_Id;
+                    //ActivateModification(true);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, Environment.UserName);
+            }
+        }
+
+        private void cbServiceActual_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (CurrentMovementAgent.MovementAgent_ServiceActual != ((Education_Service)cbServiceActual.SelectedItem).Service_Id)
+                {
+                    CurrentMovementAgent.MovementAgent_ServiceActual = ((Education_Service)cbServiceActual.SelectedItem).Service_Id;
+                    //ActivateModification(true);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, Environment.UserName);
+            }
+        }
     }
 }

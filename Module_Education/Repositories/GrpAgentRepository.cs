@@ -16,9 +16,10 @@ namespace Module_Education.Repositories
 
         }
 
-        public List<Education_GroupLearner> LoadAllGrpAgents()
+        public List<Education_GroupLearner> LoadAllGrpAgentsActif()
         {
-            return db.Education_GroupLearner.ToList();
+            return db.Education_GroupLearner.Where(x => x.GroupLearner_Actif == true)
+                .ToList();
         }
 
         public Education_GroupLearner AddGrpAgent(string grpName, string SAPName)
