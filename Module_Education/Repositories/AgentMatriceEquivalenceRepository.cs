@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Module_Education.Repositories
 {
-    public class AgentMatriceEquivalenceRepository
+    public class AgentMatriceEquivalenceRepository : RepositoryBase
     {
         private CFNEducation_FormationEntities db = new CFNEducation_FormationEntities();
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Module_Education.Repositories
 {
-    public class GrpLearnearAgentRepository
+    public class GrpLearnearAgentRepository : RepositoryBase
     {
         private CFNEducation_FormationEntities db = new CFNEducation_FormationEntities();
 
@@ -86,6 +86,18 @@ namespace Module_Education.Repositories
            
             db.SaveChanges();
             return true;
+        }
+
+        internal void RemoveAgentFromGroup(Education_Agent agent, Education_GroupLearner selectedGrpLearner)
+        {
+            var agentGrp = db.Education_GroupLearner_Agent
+                                                     //.Include("Education_Matrice")
+                                                     .Where(x => x.GroupLearnerAgent_Agent == agent.Agent_Id &&
+                                                     x.GroupLearnerAgent_GroupeLearner == selectedGrpLearner.GroupLearner_Id)
+                                                     .FirstOrDefault();
+            db.Education_GroupLearner_Agent.Remove(agentGrp);
+            db.SaveChanges();
+
         }
     }
 }

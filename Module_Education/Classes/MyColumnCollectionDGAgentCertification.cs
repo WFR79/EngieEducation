@@ -154,7 +154,12 @@ namespace Module_Education.Classes
 
         public MyColumnCollectionDGAgentCertification(Education_Agent obj)
         {
-            _obj = obj;
+            try
+            {
+                _obj = obj;
+            }
+            catch (Exception ex) {
+            }
         }
 
         public Education_Agent GetModel()

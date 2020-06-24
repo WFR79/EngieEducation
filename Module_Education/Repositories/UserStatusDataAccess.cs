@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Module_Education
 {
-    public class UserStatusDataAccess
+    public class UserStatusDataAccess : RepositoryBase
     {
         private CFNEducation_FormationEntities db = new CFNEducation_FormationEntities();
 

@@ -123,8 +123,8 @@ namespace Module_Education.Forms.UserControls
                     Agent_DateSeniority = o.Agent_DateSeniority,
                     Agent_DateOfEntry = o.Agent_DateOfEntry,
                     Agent_DateFunction = o.Agent_DateFunction,
-                    Agent_Habilitation = o.Education_Habilitation == null ? null : o.Education_Habilitation.Habilitation_Name,
-                    Agent_Status = o.Education_AgentStatus == null ? null : o.Education_AgentStatus.AgentStatus_Name,
+                    Habilitation_Name = o.Education_Habilitation == null ? null : o.Education_Habilitation.Habilitation_Name,
+                    AgentStatus_Name = o.Education_AgentStatus == null ? null : o.Education_AgentStatus.AgentStatus_Name,
                     Agent_Etat = o.Agent_Etat
 
 
@@ -372,6 +372,16 @@ namespace Module_Education.Forms.UserControls
         }
 
         private void btnSaveRoutes_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgService_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void lblServices_Click(object sender, EventArgs e)
         {
 
         }

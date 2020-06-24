@@ -23,9 +23,9 @@ namespace Module_Education.Models
         public long Role_Id { get; set; }
         public string Role_Name { get; set; }
     
-        public virtual Education_Role Education_Role1 { get; set; }
-        public virtual Education_Role Education_Role2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_Agent> Education_Agent { get; set; }
+        public virtual Education_Role Education_Role1 { get; set; }
+        public virtual Education_Role Education_Role2 { get; set; }
     }
 }

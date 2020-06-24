@@ -66,9 +66,10 @@ namespace Module_Education
         #endregion
         public long UserIDSelected { get; private set; }
         public List<long> ListOfMatriculeSelected = new List<long>();
+        IPagedList<Education_GroupLearner_Agent> listAgentPaged;
         public UC_GrpAgents()
         {
-            InitializeComponent(); 
+            InitializeComponent();
             LoadComboGrpAgents();
             LoadComboAgents();
 
@@ -133,7 +134,7 @@ namespace Module_Education
         private void comboGrpAgents_SelectedIndexChanged(object sender, EventArgs e)
         {
             SelectedGrpLearner = (Education_GroupLearner)comboGrpAgents.SelectedItem;
-            IPagedList<Education_GroupLearner_Agent> listAgentPaged = grpLearnearAgentRepository.LoadAgentOfSelectedGroup(SelectedGrpLearner).ToPagedList(1,50);
+            listAgentPaged = grpLearnearAgentRepository.LoadAgentOfSelectedGroup(SelectedGrpLearner).ToPagedList(1, 50);
 
             List<Education_Agent> listAgentNotInTheGroupSelected = grpLearnearAgentRepository.GetAgentNotInTheSelectedGroup(SelectedGrpLearner);
             comboAgents.DataSource = listAgentNotInTheGroupSelected;
@@ -160,8 +161,8 @@ namespace Module_Education
                 Agent_DateSeniority = o.Education_Agent.Agent_DateSeniority,
                 Agent_DateOfEntry = o.Education_Agent.Agent_DateOfEntry,
                 Agent_DateFunction = o.Education_Agent.Agent_DateFunction,
-                Agent_Habilitation = o.Education_Agent.Education_Habilitation == null ? null : o.Education_Agent.Education_Habilitation.Habilitation_Name,
-                Agent_Status = o.Education_Agent.Education_AgentStatus == null ? null : o.Education_Agent.Education_AgentStatus.AgentStatus_Name,
+                Habilitation_Name = o.Education_Agent.Education_Habilitation == null ? null : o.Education_Agent.Education_Habilitation.Habilitation_Name,
+                AgentStatus_Name = o.Education_Agent.Education_AgentStatus == null ? null : o.Education_Agent.Education_AgentStatus.AgentStatus_Name,
                 Agent_Etat = o.Education_Agent.Agent_Etat
 
 
@@ -191,8 +192,8 @@ namespace Module_Education
                     Agent_DateSeniority = o.Agent_DateSeniority,
                     Agent_DateOfEntry = o.Agent_DateOfEntry,
                     Agent_DateFunction = o.Agent_DateFunction,
-                    Agent_Habilitation = o.Agent_Habilitation == null ? null : dbEntities.Education_Habilitation.Where(w => w.Habilitation_Id == o.Agent_Habilitation).FirstOrDefault().Habilitation_Name,
-                    Agent_Status = o.Agent_Status == null ? null : dbEntities.Education_AgentStatus.Where(w => w.AgentStatus_Id == o.Agent_Status).FirstOrDefault().AgentStatus_Name,
+                    Habilitation_Name = o.Agent_Habilitation == null ? null : dbEntities.Education_Habilitation.Where(w => w.Habilitation_Id == o.Agent_Habilitation).FirstOrDefault().Habilitation_Name,
+                    AgentStatus_Name = o.Agent_Status == null ? null : dbEntities.Education_AgentStatus.Where(w => w.AgentStatus_Id == o.Agent_Status).FirstOrDefault().AgentStatus_Name,
                     Agent_Etat = o.Agent_Etat
 
 
@@ -244,7 +245,7 @@ namespace Module_Education
 
                     ContextMenu m = new ContextMenu();
                     m.MenuItems.Add(new MenuItem("Afficher le statut du trajet de formation de l'agent", ShowAgentRouteCard));
-                  
+
 
 
                     UserIDSelected = Convert.ToInt64(dgv.SelectedCells[0].Value);
@@ -274,49 +275,32 @@ namespace Module_Education
         public async void TriggerFilterStringChanged()
         {
             //call event handler if one is attached
-            FilterEventArgs filterEventArgs = new FilterEventArgs
+            if (_filterString == "")
             {
-                FilterString = _filterString,
-                Cancel = false
-            };
-            if (FilterStringChanged != null)
-                FilterStringChanged.Invoke(this, filterEventArgs);
-            //sort datasource
-            if (filterEventArgs.Cancel == false)
+                dgGrpAgent.DataSource = GetDataSource(listAgentPaged);
+            }
+            else
             {
-
-                if (_filterString == "")
+                FilterEventArgs filterEventArgs = new FilterEventArgs
                 {
-                    if (MainWindow.globalListAgents == null)
-                    {
-                        listAgentFiltered = AgentDataAccess.LoadAllAgents();
-                    }
-                    else
-                    {
-                        listAgentFiltered = MainWindow.globalListAgents;
-                    }
-                }
-                else
+                    FilterString = _filterString,
+                    Cancel = false
+                };
+                if (FilterStringChanged != null)
+                    FilterStringChanged.Invoke(this, filterEventArgs);
+                //sort datasource
+                if (filterEventArgs.Cancel == false)
                 {
-
-                    if (MainWindow.globalListAgents == null)
-                    {
-                        listAgentFiltered = AgentDataAccess.LoadAllAgents();
-                    }
-                    else
-                    {
-                        listAgentFiltered = MainWindow.globalListAgents;
-                    }
-
+                    List<Education_Agent> listAgent = new List<Education_Agent>();
                     //listUserPaged = await LoadTaskDatagridAgent(1, listUserPaged.TotalItemCount);
-                    listAgentFiltered = AgentDataAccess.LoadAgentsFiltered(_filterString, listAgentFiltered);
-
-                    //db.LoadAgentsFiltered(_filterString, LoadTaskDatagridAgent(1, listUserPaged.TotalItemCount));
-                    //dG_Agents.DataSource = bindingSource;
+                    List<MyColumnCollectionDGAgent> listgrpAgent = ((List<MyColumnCollectionDGAgent>)dgGrpAgent.DataSource).Cast<MyColumnCollectionDGAgent>().ToList();
+                    foreach (var item in listgrpAgent)
+                    {
+                        listAgent.Add(item.GetModel());
+                    }
+                    listAgentFiltered = AgentDataAccess.LoadAgentsFiltered(_filterString, listAgent);
+                    dgGrpAgent.DataSource = GetDataSource(listAgentFiltered);
                 }
-                dgGrpAgent.DataSource = GetDataSource(listAgentFiltered);
-
-                //btnClearFilters.Enabled = true;
             }
         }
 
@@ -376,6 +360,9 @@ namespace Module_Education
 
                             ContextMenu m = new ContextMenu();
                             m.MenuItems.Add(new MenuItem("Goto fiche de l'agent", EditUser_CLick));
+                            m.MenuItems.Add(new MenuItem("-----------------------------"));
+                            m.MenuItems.Add(new MenuItem("Retirer l'agent du groupe", RemoveUserFromGroup_CLick));
+
                             //m.MenuItems.Add(new MenuItem("Visualisation de l'agent", VisualisationUser_CLick));
 
                             int currentMouseOverRow = dgv.HitTest(e.X, e.Y).RowIndex;
@@ -394,6 +381,24 @@ namespace Module_Education
             }
             catch (Exception ex)
             {
+
+            }
+        }
+
+        private void RemoveUserFromGroup_CLick(object sender, EventArgs e)
+        {
+            AgentDataAccess agentDataAccess = new AgentDataAccess();
+            var agent = AgentDataAccess.LoadSingleUserWithMatricule(UserIDSelected);
+            DialogResult res = MessageBox.Show("Etes-vous certain de vouloir retirer l'agent " + agent.Agent_FullName + "du groupe?",
+                "Confirmation",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if(res == DialogResult.Yes)
+            {
+                grpLearnearAgentRepository.RemoveAgentFromGroup(agent, SelectedGrpLearner);
+                listAgentPaged = grpLearnearAgentRepository.LoadAgentOfSelectedGroup(SelectedGrpLearner).ToPagedList(1, 50);
+                dgGrpAgent.DataSource = GetDataSource(listAgentPaged);
+
 
             }
         }

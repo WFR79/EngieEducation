@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Module_Education.Helper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -21,12 +22,17 @@ namespace Module_Education
             Application.SetCompatibleTextRenderingDefault(false);
             Application.ThreadException += new ThreadExceptionEventHandler(ThreadException);
 
-            Application.Run(new MainWindow());
+            Application.Run(new FrmMain());
         }
 
         static void ThreadException(object sender, ThreadExceptionEventArgs e)
         {
             MessageBox.Show(e.Exception.Message, "Unhandled Exception");
+
+            Logger.LogError(e.Exception, Environment.UserName);
+            FrmError frmError = new FrmError(e.Exception.Message, e.Exception.StackTrace);
+            frmError.ShowDialog();
+            
         }
 
     }

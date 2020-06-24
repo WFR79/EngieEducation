@@ -17,7 +17,7 @@ namespace Module_Education.Forms
 {
     public partial class FrmFormation : Form
     {
-        public Education_FormationDataAccess dbFormation = new Education_FormationDataAccess();
+        public FormationRepository dbFormation = new FormationRepository();
         public FrmFormation()
         {
             InitializeComponent();
@@ -56,7 +56,7 @@ namespace Module_Education.Forms
                                    .OfType<DataGridViewRow>()
                                    .Where(row => !row.IsNewRow)
                                    .ToArray();
-                Education_FormationDataAccess db = new Education_FormationDataAccess();
+                FormationRepository db = new FormationRepository();
                 UC_MatriceFormations.Instance.lFormationToAddToMatrice = new List<Education_Formation>();
 
                 foreach (DataGridViewRow row in selectedRows)

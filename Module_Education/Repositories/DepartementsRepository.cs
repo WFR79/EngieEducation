@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Module_Education.Repositories
 {
-    public class DepartementsRepository
+    public class DepartementsRepository : RepositoryBase
     {
         private CFNEducation_FormationEntities db = new CFNEducation_FormationEntities();
 

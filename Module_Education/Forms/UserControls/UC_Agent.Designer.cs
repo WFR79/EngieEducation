@@ -46,10 +46,6 @@
             this.btn_PreviousAgent = new System.Windows.Forms.Button();
             this.lblTiteLstAgent = new System.Windows.Forms.Label();
             this.tbFicheAgent = new System.Windows.Forms.TabPage();
-            this.textBoxExtensions1 = new Module_Education.Classes.TextBoxExtensions();
-            this.comboBoxStatut11 = new Module_Education.Classes.Extensions.ComboBoxExt();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
             this.labelInRoute = new System.Windows.Forms.Label();
             this.comboTrajet = new System.Windows.Forms.ComboBox();
             this.cbTrajet = new System.Windows.Forms.CheckBox();
@@ -90,6 +86,8 @@
             this.toolTipExcel = new System.Windows.Forms.ToolTip(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.textBoxExtensions1 = new Module_Education.Classes.TextBoxExtensions();
+            this.comboBoxStatut11 = new Module_Education.Classes.Extensions.ComboBoxExt();
             this.tabControlAgentList.SuspendLayout();
             this.tbListeAgents.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picExportExcel)).BeginInit();
@@ -112,7 +110,7 @@
             this.tabControlAgentList.Location = new System.Drawing.Point(0, 3);
             this.tabControlAgentList.Name = "tabControlAgentList";
             this.tabControlAgentList.SelectedIndex = 0;
-            this.tabControlAgentList.Size = new System.Drawing.Size(1199, 566);
+            this.tabControlAgentList.Size = new System.Drawing.Size(1199, 644);
             this.tabControlAgentList.TabIndex = 0;
             // 
             // tbListeAgents
@@ -135,7 +133,7 @@
             this.tbListeAgents.Location = new System.Drawing.Point(4, 23);
             this.tbListeAgents.Name = "tbListeAgents";
             this.tbListeAgents.Padding = new System.Windows.Forms.Padding(3);
-            this.tbListeAgents.Size = new System.Drawing.Size(1191, 539);
+            this.tbListeAgents.Size = new System.Drawing.Size(1191, 617);
             this.tbListeAgents.TabIndex = 0;
             this.tbListeAgents.Text = "Liste";
             // 
@@ -159,7 +157,7 @@
             // 
             this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnRefresh.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.btnRefresh.Location = new System.Drawing.Point(962, 495);
+            this.btnRefresh.Location = new System.Drawing.Point(962, 576);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(75, 23);
             this.btnRefresh.TabIndex = 27;
@@ -171,7 +169,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(545, 499);
+            this.label4.Location = new System.Drawing.Point(545, 580);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(11, 14);
             this.label4.TabIndex = 26;
@@ -182,7 +180,7 @@
             this.lblMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblMax.AutoSize = true;
             this.lblMax.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.lblMax.Location = new System.Drawing.Point(557, 499);
+            this.lblMax.Location = new System.Drawing.Point(557, 580);
             this.lblMax.Name = "lblMax";
             this.lblMax.Size = new System.Drawing.Size(35, 14);
             this.lblMax.TabIndex = 25;
@@ -194,7 +192,7 @@
             this.lblMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblMin.AutoSize = true;
             this.lblMin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.lblMin.Location = new System.Drawing.Point(512, 499);
+            this.lblMin.Location = new System.Drawing.Point(512, 580);
             this.lblMin.Name = "lblMin";
             this.lblMin.Size = new System.Drawing.Size(35, 14);
             this.lblMin.TabIndex = 24;
@@ -208,7 +206,7 @@
             this.lblNbrRowsAgent.Enabled = false;
             this.lblNbrRowsAgent.Font = new System.Drawing.Font("Arial", 9.25F);
             this.lblNbrRowsAgent.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.lblNbrRowsAgent.Location = new System.Drawing.Point(10, 496);
+            this.lblNbrRowsAgent.Location = new System.Drawing.Point(10, 577);
             this.lblNbrRowsAgent.Name = "lblNbrRowsAgent";
             this.lblNbrRowsAgent.Size = new System.Drawing.Size(42, 16);
             this.lblNbrRowsAgent.TabIndex = 23;
@@ -266,25 +264,23 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dG_Agents.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dG_Agents.BackgroundColor = System.Drawing.Color.White;
-            this.dG_Agents.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dG_Agents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dG_Agents.FilterAndSortEnabled = true;
-            this.dG_Agents.Location = new System.Drawing.Point(6, 47);
+            this.dG_Agents.Location = new System.Drawing.Point(14, 47);
             this.dG_Agents.Name = "dG_Agents";
             this.dG_Agents.ReadOnly = true;
             this.dG_Agents.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dG_Agents.Size = new System.Drawing.Size(1106, 428);
+            this.dG_Agents.Size = new System.Drawing.Size(1106, 495);
             this.dG_Agents.TabIndex = 18;
             this.dG_Agents.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.dG_Agents_FilterStringChanged_1);
             this.dG_Agents.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dG_Agents_CellFormatting);
-            //this.dG_Agents.DoubleClick += new System.EventHandler(this.dG_Agents_MouseClick);
             this.dG_Agents.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dG_Agents_MouseClick);
             // 
             // btn_NextAgent
             // 
             this.btn_NextAgent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_NextAgent.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.btn_NextAgent.Location = new System.Drawing.Point(593, 495);
+            this.btn_NextAgent.Location = new System.Drawing.Point(593, 576);
             this.btn_NextAgent.Name = "btn_NextAgent";
             this.btn_NextAgent.Size = new System.Drawing.Size(75, 23);
             this.btn_NextAgent.TabIndex = 16;
@@ -296,7 +292,7 @@
             // 
             this.btn_PreviousAgent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_PreviousAgent.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.btn_PreviousAgent.Location = new System.Drawing.Point(433, 495);
+            this.btn_PreviousAgent.Location = new System.Drawing.Point(433, 576);
             this.btn_PreviousAgent.Name = "btn_PreviousAgent";
             this.btn_PreviousAgent.Size = new System.Drawing.Size(75, 23);
             this.btn_PreviousAgent.TabIndex = 15;
@@ -321,8 +317,6 @@
             this.tbFicheAgent.BackColor = System.Drawing.Color.White;
             this.tbFicheAgent.Controls.Add(this.textBoxExtensions1);
             this.tbFicheAgent.Controls.Add(this.comboBoxStatut11);
-            this.tbFicheAgent.Controls.Add(this.textBox1);
-            this.tbFicheAgent.Controls.Add(this.label11);
             this.tbFicheAgent.Controls.Add(this.labelInRoute);
             this.tbFicheAgent.Controls.Add(this.comboTrajet);
             this.tbFicheAgent.Controls.Add(this.cbTrajet);
@@ -362,49 +356,10 @@
             this.tbFicheAgent.Location = new System.Drawing.Point(4, 23);
             this.tbFicheAgent.Name = "tbFicheAgent";
             this.tbFicheAgent.Padding = new System.Windows.Forms.Padding(3);
-            this.tbFicheAgent.Size = new System.Drawing.Size(1191, 539);
+            this.tbFicheAgent.Size = new System.Drawing.Size(1191, 617);
             this.tbFicheAgent.TabIndex = 1;
             this.tbFicheAgent.Text = "Fiche";
             this.tbFicheAgent.Click += new System.EventHandler(this.tbFicheAgent_Click);
-            // 
-            // textBoxExtensions1
-            // 
-            this.textBoxExtensions1.Location = new System.Drawing.Point(582, 402);
-            this.textBoxExtensions1.Name = "textBoxExtensions1";
-            this.textBoxExtensions1.Size = new System.Drawing.Size(221, 20);
-            this.textBoxExtensions1.TabIndex = 130;
-            this.textBoxExtensions1.Visible = false;
-            this.textBoxExtensions1.TextChanged += new System.EventHandler(this.textBoxExtensions1_TextChanged);
-            this.textBoxExtensions1.Leave += new System.EventHandler(this.textBoxExtensions1_Leave);
-            // 
-            // comboBoxStatut11
-            // 
-            this.comboBoxStatut11.FormattingEnabled = true;
-            this.comboBoxStatut11.Location = new System.Drawing.Point(148, 68);
-            this.comboBoxStatut11.Name = "comboBoxStatut11";
-            this.comboBoxStatut11.Size = new System.Drawing.Size(186, 22);
-            this.comboBoxStatut11.TabIndex = 129;
-            this.comboBoxStatut11.Leave += new System.EventHandler(this.comboBoxStatut_Leave);
-            // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Arial", 16.75F, System.Drawing.FontStyle.Bold);
-            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.textBox1.Location = new System.Drawing.Point(151, 497);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(261, 26);
-            this.textBox1.TabIndex = 128;
-            this.textBox1.Text = "Certifications";
-            // 
-            // label11
-            // 
-            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label11.Location = new System.Drawing.Point(148, 528);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(771, 1);
-            this.label11.TabIndex = 127;
-            this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // labelInRoute
             // 
@@ -581,10 +536,10 @@
             // 
             this.tabControl_Education_FormationAndCertificationsOfUser.Controls.Add(this.tabPageEducation_FormationsAgent);
             this.tabControl_Education_FormationAndCertificationsOfUser.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-            this.tabControl_Education_FormationAndCertificationsOfUser.Location = new System.Drawing.Point(561, 50);
+            this.tabControl_Education_FormationAndCertificationsOfUser.Location = new System.Drawing.Point(146, 384);
             this.tabControl_Education_FormationAndCertificationsOfUser.Name = "tabControl_Education_FormationAndCertificationsOfUser";
             this.tabControl_Education_FormationAndCertificationsOfUser.SelectedIndex = 0;
-            this.tabControl_Education_FormationAndCertificationsOfUser.Size = new System.Drawing.Size(608, 306);
+            this.tabControl_Education_FormationAndCertificationsOfUser.Size = new System.Drawing.Size(1015, 227);
             this.tabControl_Education_FormationAndCertificationsOfUser.TabIndex = 35;
             // 
             // tabPageEducation_FormationsAgent
@@ -596,7 +551,7 @@
             this.tabPageEducation_FormationsAgent.Location = new System.Drawing.Point(4, 25);
             this.tabPageEducation_FormationsAgent.Name = "tabPageEducation_FormationsAgent";
             this.tabPageEducation_FormationsAgent.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageEducation_FormationsAgent.Size = new System.Drawing.Size(600, 277);
+            this.tabPageEducation_FormationsAgent.Size = new System.Drawing.Size(1007, 198);
             this.tabPageEducation_FormationsAgent.TabIndex = 0;
             this.tabPageEducation_FormationsAgent.Text = "Formations";
             // 
@@ -611,12 +566,11 @@
             this.dg_TABFormationsOfAgent.BackgroundColor = System.Drawing.Color.White;
             this.dg_TABFormationsOfAgent.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dg_TABFormationsOfAgent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dg_TABFormationsOfAgent.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(199)))), ((int)(((byte)(234)))));
             this.dg_TABFormationsOfAgent.Location = new System.Drawing.Point(6, 10);
             this.dg_TABFormationsOfAgent.Name = "dg_TABFormationsOfAgent";
             this.dg_TABFormationsOfAgent.ReadOnly = true;
             this.dg_TABFormationsOfAgent.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dg_TABFormationsOfAgent.Size = new System.Drawing.Size(591, 261);
+            this.dg_TABFormationsOfAgent.Size = new System.Drawing.Size(995, 182);
             this.dg_TABFormationsOfAgent.TabIndex = 18;
             this.dg_TABFormationsOfAgent.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dg_TABFormationsOfAgent_MouseClick);
             // 
@@ -645,7 +599,7 @@
             // 
             this.comboBoxStatut1.Font = new System.Drawing.Font("Arial", 8.25F);
             this.comboBoxStatut1.FormattingEnabled = true;
-            this.comboBoxStatut1.Location = new System.Drawing.Point(617, 449);
+            this.comboBoxStatut1.Location = new System.Drawing.Point(582, 333);
             this.comboBoxStatut1.Name = "comboBoxStatut1";
             this.comboBoxStatut1.Size = new System.Drawing.Size(186, 22);
             this.comboBoxStatut1.TabIndex = 2;
@@ -753,7 +707,7 @@
             // 
             this.labelRemarks.AutoSize = true;
             this.labelRemarks.Font = new System.Drawing.Font("Arial", 9.25F);
-            this.labelRemarks.Location = new System.Drawing.Point(144, 370);
+            this.labelRemarks.Location = new System.Drawing.Point(579, 50);
             this.labelRemarks.Name = "labelRemarks";
             this.labelRemarks.Size = new System.Drawing.Size(74, 16);
             this.labelRemarks.TabIndex = 16;
@@ -764,7 +718,7 @@
             this.richTextBoxRemarks.AutoWordSelection = true;
             this.richTextBoxRemarks.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(199)))), ((int)(((byte)(234)))));
             this.richTextBoxRemarks.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.richTextBoxRemarks.Location = new System.Drawing.Point(147, 389);
+            this.richTextBoxRemarks.Location = new System.Drawing.Point(582, 69);
             this.richTextBoxRemarks.Name = "richTextBoxRemarks";
             this.richTextBoxRemarks.Size = new System.Drawing.Size(338, 51);
             this.richTextBoxRemarks.TabIndex = 18;
@@ -838,6 +792,25 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // textBoxExtensions1
+            // 
+            this.textBoxExtensions1.Location = new System.Drawing.Point(664, 157);
+            this.textBoxExtensions1.Name = "textBoxExtensions1";
+            this.textBoxExtensions1.Size = new System.Drawing.Size(221, 20);
+            this.textBoxExtensions1.TabIndex = 130;
+            this.textBoxExtensions1.Visible = false;
+            this.textBoxExtensions1.TextChanged += new System.EventHandler(this.textBoxExtensions1_TextChanged);
+            this.textBoxExtensions1.Leave += new System.EventHandler(this.textBoxExtensions1_Leave);
+            // 
+            // comboBoxStatut11
+            // 
+            this.comboBoxStatut11.FormattingEnabled = true;
+            this.comboBoxStatut11.Location = new System.Drawing.Point(148, 68);
+            this.comboBoxStatut11.Name = "comboBoxStatut11";
+            this.comboBoxStatut11.Size = new System.Drawing.Size(186, 22);
+            this.comboBoxStatut11.TabIndex = 129;
+            this.comboBoxStatut11.Leave += new System.EventHandler(this.comboBoxStatut_Leave);
+            // 
             // UC_Agent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -849,7 +822,7 @@
             this.DoubleBuffered = true;
             this.MinimumSize = new System.Drawing.Size(0, 573);
             this.Name = "UC_Agent";
-            this.Size = new System.Drawing.Size(1202, 573);
+            this.Size = new System.Drawing.Size(1202, 650);
             this.Enter += new System.EventHandler(this.UC_Agent_Enter);
             this.tabControlAgentList.ResumeLayout(false);
             this.tbListeAgents.ResumeLayout(false);
@@ -923,8 +896,6 @@
         private System.Windows.Forms.ComboBox comboTrajet;
         private System.Windows.Forms.CheckBox cbTrajet;
         private System.Windows.Forms.Label labelInRoute;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button btnRefresh;
         private Classes.Extensions.ComboBoxExt comboBoxStatut11;
         private Classes.TextBoxExtensions textBoxExtensions1;

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Module_Education.Repositories
 {
-    public class InRouteFormationRepository
+    public class InRouteFormationRepository : RepositoryBase
     {
         private CFNEducation_FormationEntities db = new CFNEducation_FormationEntities();
 

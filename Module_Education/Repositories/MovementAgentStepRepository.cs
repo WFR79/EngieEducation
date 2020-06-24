@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Module_Education.Repositories
 {
-    class MovementAgentStepRepository
+    class MovementAgentStepRepository : RepositoryBase
     {
         private CFNEducation_FormationEntities db ;
 

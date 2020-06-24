@@ -5,104 +5,66 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="21c23dfb54e746c6b7e92a028688022d" Name="Diagram1" ZoomLevel="55">
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_Agent_Formation" Width="1.5" PointX="15.75" PointY="17.25" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_AgentCertifElecFunc" Width="1.5" PointX="9.75" PointY="12.75" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_AgentCertifElecOPP" Width="1.5" PointX="9.75" PointY="16.75" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_AgentCertificatDivers" Width="1.5" PointX="15.75" PointY="20.75" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_AgentPassportBusiness" Width="1.5" PointX="9.75" PointY="20.875" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_AgentPassportDesign" Width="1.5" PointX="12.75" PointY="16.875" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_AgentPassportSafety" Width="1.5" PointX="12.75" PointY="24.625" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_AgentStatus" Width="1.5" PointX="5.25" PointY="29.25" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_CategorieFormation" Width="1.5" PointX="15.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_CertifElecFunc" Width="1.5" PointX="7.5" PointY="13.375" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_CertifElecOPP" Width="1.5" PointX="7.5" PointY="10.375" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_CertificatDivers" Width="1.5" PointX="13.5" PointY="29.375" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_Competence" Width="1.5" PointX="11.25" PointY="6.125" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_CompetenceGroup" Width="1.5" PointX="6.75" PointY="6.375" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_CompetenceSubGroup" Width="1.5" PointX="9" PointY="6.25" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_Departement" Width="1.5" PointX="0.75" PointY="21.25" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_Equipe" Width="1.5" PointX="5.25" PointY="21.25" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_Formation" Width="1.5" PointX="13.5" PointY="3.875" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_FormationCategory" Width="1.5" PointX="11.25" PointY="9" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_FormationDossier" Width="1.5" PointX="15.75" PointY="9.625" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_FormationDossierType" Width="1.5" PointX="13.5" PointY="1.25" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_FormationProvider" Width="1.5" PointX="21" PointY="5.25" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_FormationResultat" Width="1.5" PointX="15.75" PointY="28.375" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_FormationSession" Width="1.5" PointX="18.75" PointY="8" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_Former" Width="1.5" PointX="18" PointY="11.875" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_Function" Width="1.5" PointX="5.25" PointY="31.625" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_GroupLearner" Width="1.5" PointX="13.5" PointY="32.25" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_GroupLearner_Agent" Width="1.5" PointX="15.75" PointY="25.25" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_Habilitation" Width="1.5" PointX="5.25" PointY="18.875" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_InRoute" Width="1.5" PointX="5.25" PointY="27" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_Log" Width="1.5" PointX="0.75" PointY="1.25" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_Matrice" Width="1.5" PointX="5.25" PointY="35" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_Matrice_Agent" Width="1.5" PointX="9.75" PointY="24.75" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_Matrice_AgentEquivalence" Width="1.5" PointX="7.5" PointY="37.875" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_Matrice_Formation" Width="1.5" PointX="7.5" PointY="34.75" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_MovementStep" Width="1.5" PointX="10.5" PointY="31.875" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_MovementStepAgent" Width="1.5" PointX="12.75" PointY="21" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_MovementType" Width="1.5" PointX="8.25" PointY="32.375" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_PassportBusiness" Width="1.5" PointX="7.5" PointY="28.375" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_PassportDesign" Width="1.5" PointX="10.5" PointY="29.375" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_PassportSafety" Width="1.5" PointX="10.5" PointY="35.375" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_PassportType" Width="1.5" PointX="2.75" PointY="1.25" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_Provider" Width="1.5" PointX="15.75" PointY="6.875" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_ProviderContact" Width="1.5" PointX="18" PointY="4.25" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_Role" Width="1.5" PointX="5.25" PointY="24.25" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_RoleAstreinte" Width="1.5" PointX="5.25" PointY="14.125" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_RoleEPI" Width="1.5" PointX="5.25" PointY="16.5" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_Service" Width="1.5" PointX="3" PointY="21" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_SessionUnite" Width="1.5" PointX="16.5" PointY="36.375" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_UnitePrice" Width="1.5" PointX="11.25" PointY="3.75" />
-        <AssociationConnector Association="SYNAPSEModel.FK_AgentFormation_Formation" />
-        <AssociationConnector Association="SYNAPSEModel.FK_Education_AgentCertifElecFunc_Education_CertifElecFunc" />
-        <AssociationConnector Association="SYNAPSEModel.FK_Education_AgentCertifElecOPP_Education_CertifElecOPP" />
-        <AssociationConnector Association="SYNAPSEModel.FK_Education_AgentCertificatDivers_Education_CertificatDivers" />
-        <AssociationConnector Association="SYNAPSEModel.FK_Education_AgentPassportBusiness_Education_PassportBusiness" />
-        <AssociationConnector Association="SYNAPSEModel.FK_Education_AgentPassportDesign_Education_PassportDesign" />
-        <AssociationConnector Association="SYNAPSEModel.FK_Education_AgentPassportSafety_Education_PassportSafety" />
-        <AssociationConnector Association="SYNAPSEModel.FK_CategorieFormation_Formation" />
-        <AssociationConnector Association="SYNAPSEModel.FK_Competence_Competence" />
-        <AssociationConnector Association="SYNAPSEModel.FK_Formation_Competence" />
-        <AssociationConnector Association="SYNAPSEModel.FK_CompetenceSubGroup_CompetenceGroup" />
-        <AssociationConnector Association="SYNAPSEModel.FK_Service_Departement" />
-        <AssociationConnector Association="SYNAPSEModel.FK_Equipe_Equipe" />
-        <AssociationConnector Association="SYNAPSEModel.FK_Education_Formation_Category" />
-        <AssociationConnector Association="SYNAPSEModel.FK_Education_Formation_Education_UnitePrice" />
-        <AssociationConnector Association="SYNAPSEModel.FK_FormationDossier_Formation" />
-        <AssociationConnector Association="SYNAPSEModel.FK_FormationProvider_FormationProvider" />
-        <AssociationConnector Association="SYNAPSEModel.FK_FormationResultat_Formation" />
-        <AssociationConnector Association="SYNAPSEModel.FK_FormationSession_Formation" />
-        <AssociationConnector Association="SYNAPSEModel.FK_MatriceFormation_Formation" />
-        <AssociationConnector Association="SYNAPSEModel.FK_FormationDossier_FormationDossierType" />
-        <AssociationConnector Association="SYNAPSEModel.FK_FormationProvider_Provider" />
-        <AssociationConnector Association="SYNAPSEModel.FK_FormationSession_SessionUnite" />
-        <AssociationConnector Association="SYNAPSEModel.FK_Former_Provider" />
-        <AssociationConnector Association="SYNAPSEModel.FK_GroupLearnerAgent_GroupLearner" />
-        <AssociationConnector Association="SYNAPSEModel.FK_MatriceFormation_Matrice" />
-        <AssociationConnector Association="SYNAPSEModel.FK_Education_Matrice_Agent_Education_Matrice_AgentEquivalence" />
-        <AssociationConnector Association="SYNAPSEModel.FK_Education_Matrice_Agent_Education_Matrice_Formation" />
-        <AssociationConnector Association="SYNAPSEModel.FK_MovementStep_MovementType" />
-        <AssociationConnector Association="SYNAPSEModel.FK_MovementStepAgent_MovementStep" />
-        <AssociationConnector Association="SYNAPSEModel.FK_Education_ProviderContact_Education_Provider" />
-        <AssociationConnector Association="SYNAPSEModel.FK_Role_Role" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_MovementAgent" Width="1.5" PointX="18.5" PointY="23.625" />
-        <AssociationConnector Association="SYNAPSEModel.FK_Education_MovementAgent_Education_MovementType" />
-        <AssociationConnector Association="SYNAPSEModel.FK_MovementUser_ServiceActual" />
-        <AssociationConnector Association="SYNAPSEModel.FK_MovementUser_ServiceFutur" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_Matrice_GrLearner" Width="1.5" PointX="15.75" PointY="32.5" />
-        <AssociationConnector Association="SYNAPSEModel.FK_MatriceGrLearner_GroupLearner" />
-        <AssociationConnector Association="SYNAPSEModel.FK_MatriceGrLearner_Matrice" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_SousService" Width="1.5" PointX="12.25" PointY="13.25" />
-        <AssociationConnector Association="SYNAPSEModel.FK_Education_SousService_Education_Departement" />
-        <AssociationConnector Association="SYNAPSEModel.FK_Education_SousService_Education_Service" />
-        <EntityTypeShape EntityType="SYNAPSEModel.Education_Agent" Width="1.5" PointX="20.5" PointY="12" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Agent" Width="1.5" PointX="7.5" PointY="22.625" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Agent_Formation" Width="1.5" PointX="12.75" PointY="30.875" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_AgentCertifElecFunc" Width="1.5" PointX="9.75" PointY="22.5" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_AgentCertifElecOPP" Width="1.5" PointX="15.75" PointY="30.5" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_AgentCertificatDivers" Width="1.5" PointX="9.75" PointY="30.5" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_AgentPassportBusiness" Width="1.5" PointX="9.75" PointY="26.5" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_AgentPassportDesign" Width="1.5" PointX="15.75" PointY="19.5" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_AgentPassportSafety" Width="1.5" PointX="12.75" PointY="22.375" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_AgentStatus" Width="1.5" PointX="5.25" PointY="22.25" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_CategorieFormation" Width="1.5" PointX="10.5" PointY="12.125" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_CertifElecFunc" Width="1.5" PointX="7.5" PointY="20" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_CertifElecOPP" Width="1.5" PointX="13.5" PointY="42" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_CertificatDivers" Width="1.5" PointX="7.5" PointY="37" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Competence" Width="1.5" PointX="6" PointY="4.875" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_CompetenceGroup" Width="1.5" PointX="1.5" PointY="5.125" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_CompetenceSubGroup" Width="1.5" PointX="3.75" PointY="5" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Departement" Width="1.5" PointX="0.75" PointY="25.375" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Equipe" Width="1.5" PointX="5.25" PointY="28.625" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Formation" Width="1.5" PointX="8.25" PointY="5" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_FormationCategory" Width="1.5" PointX="6" PointY="7.75" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_FormationDossier" Width="1.5" PointX="13.5" PointY="0.75" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_FormationDossierType" Width="1.5" PointX="11.25" PointY="2.875" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_FormationProvider" Width="1.5" PointX="18" PointY="5.375" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_FormationResultat" Width="1.5" PointX="10.5" PointY="5.5" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_FormationSession" Width="1.5" PointX="13.5" PointY="7.125" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Former" Width="1.5" PointX="18" PointY="10.875" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Function" Width="1.5" PointX="5.25" PointY="38.625" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_GroupLearner" Width="1.5" PointX="13.5" PointY="38.875" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_GroupLearner_Agent" Width="1.5" PointX="15.75" PointY="26.875" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Habilitation" Width="1.5" PointX="5.25" PointY="36.25" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_InRoute" Width="1.5" PointX="5.25" PointY="31.625" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Log" Width="1.5" PointX="0.75" PointY="8.25" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Matrice" Width="1.5" PointX="8.25" PointY="12.5" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Matrice_Agent" Width="1.5" PointX="12.75" PointY="26.375" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Matrice_AgentEquivalence" Width="1.5" PointX="10.5" PointY="34.25" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Matrice_Formation" Width="1.5" PointX="10.5" PointY="8.5" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Matrice_GrLearner" Width="1.5" PointX="18.75" PointY="25.5" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_MovementAgent" Width="1.5" PointX="12.75" PointY="33.875" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_MovementStep" Width="1.5" PointX="13.5" PointY="15.625" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_MovementStepAgent" Width="1.5" PointX="15.75" PointY="23.75" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_MovementType" Width="1.5" PointX="11.25" PointY="16" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_PassportBusiness" Width="1.5" PointX="7.5" PointY="34" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_PassportDesign" Width="1.5" PointX="13.5" PointY="19" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_PassportSafety" Width="1.5" PointX="10.5" PointY="19" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_PassportType" Width="1.5" PointX="2.75" PointY="8.25" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Provider" Width="1.5" PointX="15.75" PointY="8.75" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_ProviderContact" Width="1.5" PointX="18" PointY="15.875" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Role" Width="1.5" PointX="5.25" PointY="41" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_RoleAstreinte" Width="1.5" PointX="5.25" PointY="19.875" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_RoleEPI" Width="1.5" PointX="5.25" PointY="33.875" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_Service" Width="1.5" PointX="3" PointY="28.125" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_SessionUnite" Width="1.5" PointX="11.25" PointY="39.5" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_SousService" Width="1.5" PointX="5.25" PointY="25" />
+        <EntityTypeShape EntityType="SYNAPSEModel.Education_UnitePrice" Width="1.5" PointX="6" PointY="10.125" />
         <AssociationConnector Association="SYNAPSEModel.FK_Agent_AgentEPI" />
         <AssociationConnector Association="SYNAPSEModel.FK_Agent_AgentStatus" />
         <AssociationConnector Association="SYNAPSEModel.FK_AgentFormation_Agent" />
         <AssociationConnector Association="SYNAPSEModel.FK_AgentPassportSafety_Education_Agent" />
         <AssociationConnector Association="SYNAPSEModel.FK_Education_Agent_Education_Agent" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Education_Agent_Education_Service" />
         <AssociationConnector Association="SYNAPSEModel.FK_Education_Agent_Education_SousService" />
         <AssociationConnector Association="SYNAPSEModel.FK_Education_AgentCertifElecFunc_Education_Agent" />
         <AssociationConnector Association="SYNAPSEModel.FK_Education_AgentCertifElecOPP_Education_Agent" />
@@ -118,7 +80,45 @@
         <AssociationConnector Association="SYNAPSEModel.FK_User_LineManager" />
         <AssociationConnector Association="SYNAPSEModel.FK_User_Role" />
         <AssociationConnector Association="SYNAPSEModel.FK_User_RoleAstreinte" />
-        <AssociationConnector Association="SYNAPSEModel.FK_Education_Agent_Education_Service" />
+        <AssociationConnector Association="SYNAPSEModel.FK_AgentFormation_Formation" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Education_AgentCertifElecFunc_Education_CertifElecFunc" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Education_AgentCertifElecOPP_Education_CertifElecOPP" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Education_AgentCertificatDivers_Education_CertificatDivers" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Education_AgentPassportBusiness_Education_PassportBusiness" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Education_AgentPassportDesign_Education_PassportDesign" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Education_AgentPassportSafety_Education_PassportSafety" />
+        <AssociationConnector Association="SYNAPSEModel.FK_CategorieFormation_Formation" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Competence_Competence" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Formation_Competence" />
+        <AssociationConnector Association="SYNAPSEModel.FK_CompetenceSubGroup_CompetenceGroup" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Education_SousService_Education_Departement" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Service_Departement" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Equipe_Equipe" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Education_Formation_Category" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Education_Formation_Education_UnitePrice" />
+        <AssociationConnector Association="SYNAPSEModel.FK_FormationDossier_Formation" />
+        <AssociationConnector Association="SYNAPSEModel.FK_FormationProvider_FormationProvider" />
+        <AssociationConnector Association="SYNAPSEModel.FK_FormationResultat_Formation" />
+        <AssociationConnector Association="SYNAPSEModel.FK_FormationSession_Formation" />
+        <AssociationConnector Association="SYNAPSEModel.FK_MatriceFormation_Formation" />
+        <AssociationConnector Association="SYNAPSEModel.FK_FormationDossier_FormationDossierType" />
+        <AssociationConnector Association="SYNAPSEModel.FK_FormationProvider_Provider" />
+        <AssociationConnector Association="SYNAPSEModel.FK_FormationSession_SessionUnite" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Former_Provider" />
+        <AssociationConnector Association="SYNAPSEModel.FK_GroupLearnerAgent_GroupLearner" />
+        <AssociationConnector Association="SYNAPSEModel.FK_MatriceGrLearner_GroupLearner" />
+        <AssociationConnector Association="SYNAPSEModel.FK_MatriceFormation_Matrice" />
+        <AssociationConnector Association="SYNAPSEModel.FK_MatriceGrLearner_Matrice" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Education_Matrice_Agent_Education_Matrice_AgentEquivalence" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Education_Matrice_Agent_Education_Matrice_Formation" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Education_MovementAgent_Education_MovementType" />
+        <AssociationConnector Association="SYNAPSEModel.FK_MovementUser_ServiceActual" />
+        <AssociationConnector Association="SYNAPSEModel.FK_MovementUser_ServiceFutur" />
+        <AssociationConnector Association="SYNAPSEModel.FK_MovementStep_MovementType" />
+        <AssociationConnector Association="SYNAPSEModel.FK_MovementStepAgent_MovementStep" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Education_ProviderContact_Education_Provider" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Role_Role" />
+        <AssociationConnector Association="SYNAPSEModel.FK_Education_SousService_Education_Service" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

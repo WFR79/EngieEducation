@@ -17,17 +17,19 @@ namespace Module_Education.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Education_Service()
         {
+            this.Education_Agent = new HashSet<Education_Agent>();
             this.Education_Equipe = new HashSet<Education_Equipe>();
             this.Education_MovementAgent = new HashSet<Education_MovementAgent>();
             this.Education_MovementAgent1 = new HashSet<Education_MovementAgent>();
             this.Education_SousService = new HashSet<Education_SousService>();
-            this.Education_Agent = new HashSet<Education_Agent>();
         }
     
         public long Service_Id { get; set; }
         public string Service_Name { get; set; }
         public Nullable<long> Service_Departement { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Education_Agent> Education_Agent { get; set; }
         public virtual Education_Departement Education_Departement { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_Equipe> Education_Equipe { get; set; }
@@ -37,7 +39,5 @@ namespace Module_Education.Models
         public virtual ICollection<Education_MovementAgent> Education_MovementAgent1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_SousService> Education_SousService { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Education_Agent> Education_Agent { get; set; }
     }
 }

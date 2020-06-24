@@ -14,7 +14,10 @@ namespace Module_Education.Models
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-    
+    using System.Data.SqlClient;
+    using System.Data;
+    using SynapseCore.Database;
+
     public partial class CFNEducation_FormationEntities : DbContext
     {
         public CFNEducation_FormationEntities()
@@ -27,6 +30,7 @@ namespace Module_Education.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Education_Agent> Education_Agent { get; set; }
         public virtual DbSet<Education_Agent_Formation> Education_Agent_Formation { get; set; }
         public virtual DbSet<Education_AgentCertifElecFunc> Education_AgentCertifElecFunc { get; set; }
         public virtual DbSet<Education_AgentCertifElecOPP> Education_AgentCertifElecOPP { get; set; }
@@ -62,6 +66,8 @@ namespace Module_Education.Models
         public virtual DbSet<Education_Matrice_Agent> Education_Matrice_Agent { get; set; }
         public virtual DbSet<Education_Matrice_AgentEquivalence> Education_Matrice_AgentEquivalence { get; set; }
         public virtual DbSet<Education_Matrice_Formation> Education_Matrice_Formation { get; set; }
+        public virtual DbSet<Education_Matrice_GrLearner> Education_Matrice_GrLearner { get; set; }
+        public virtual DbSet<Education_MovementAgent> Education_MovementAgent { get; set; }
         public virtual DbSet<Education_MovementStep> Education_MovementStep { get; set; }
         public virtual DbSet<Education_MovementStepAgent> Education_MovementStepAgent { get; set; }
         public virtual DbSet<Education_MovementType> Education_MovementType { get; set; }
@@ -76,11 +82,8 @@ namespace Module_Education.Models
         public virtual DbSet<Education_RoleEPI> Education_RoleEPI { get; set; }
         public virtual DbSet<Education_Service> Education_Service { get; set; }
         public virtual DbSet<Education_SessionUnite> Education_SessionUnite { get; set; }
-        public virtual DbSet<Education_UnitePrice> Education_UnitePrice { get; set; }
-        public virtual DbSet<Education_MovementAgent> Education_MovementAgent { get; set; }
-        public virtual DbSet<Education_Matrice_GrLearner> Education_Matrice_GrLearner { get; set; }
         public virtual DbSet<Education_SousService> Education_SousService { get; set; }
-        public virtual DbSet<Education_Agent> Education_Agent { get; set; }
+        public virtual DbSet<Education_UnitePrice> Education_UnitePrice { get; set; }
     
         public virtual ObjectResult<UpdateStatutMovementAgent_Result> UpdateStatutMovementAgent(Nullable<long> idAgent, Nullable<long> idType)
         {
@@ -94,5 +97,7 @@ namespace Module_Education.Models
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UpdateStatutMovementAgent_Result>("UpdateStatutMovementAgent", idAgentParameter, idTypeParameter);
         }
+
+       
     }
 }

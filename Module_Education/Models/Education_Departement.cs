@@ -17,8 +17,8 @@ namespace Module_Education.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Education_Departement()
         {
-            this.Education_Service = new HashSet<Education_Service>();
             this.Education_SousService = new HashSet<Education_SousService>();
+            this.Education_Service = new HashSet<Education_Service>();
         }
     
         public long Departement_Id { get; set; }
@@ -26,8 +26,8 @@ namespace Module_Education.Models
         public string Departement_Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Education_Service> Education_Service { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_SousService> Education_SousService { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Education_Service> Education_Service { get; set; }
     }
 }

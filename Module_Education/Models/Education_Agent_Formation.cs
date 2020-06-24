@@ -18,7 +18,7 @@ namespace Module_Education.Models
         public long AgentFormation_Agent { get; set; }
         public long AgentFormation_Formation { get; set; }
     
-        public virtual Education_Formation Education_Formation { get; set; }
         public virtual Education_Agent Education_Agent { get; set; }
+        public virtual Education_Formation Education_Formation { get; set; }
     }
 }

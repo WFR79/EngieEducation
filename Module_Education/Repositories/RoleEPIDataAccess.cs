@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Module_Education
 {
-    public class RoleEPIDataAccess
+    public class RoleEPIDataAccess : RepositoryBase
     {
         private CFNEducation_FormationEntities db = new CFNEducation_FormationEntities();
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Module_Education.Repositories
 {
-    class AgentCertifDiversRepository
+    class AgentCertifDiversRepository : RepositoryBase
     {
         private CFNEducation_FormationEntities db = new CFNEducation_FormationEntities();
 

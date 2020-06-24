@@ -67,6 +67,7 @@ namespace Module_Education.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_AgentPassportSafety> Education_AgentPassportSafety { get; set; }
         public virtual Education_InRoute Education_InRoute { get; set; }
+        public virtual Education_Service Education_Service { get; set; }
         public virtual Education_SousService Education_SousService { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_AgentCertifElecFunc> Education_AgentCertifElecFunc { get; set; }
@@ -93,6 +94,5 @@ namespace Module_Education.Models
         public virtual Education_Agent Education_Agent2 { get; set; }
         public virtual Education_Role Education_Role { get; set; }
         public virtual Education_RoleAstreinte Education_RoleAstreinte { get; set; }
-        public virtual Education_Service Education_Service { get; set; }
     }
 }

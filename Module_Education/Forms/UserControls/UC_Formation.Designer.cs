@@ -108,6 +108,7 @@
             this.labelActifEducation_Formation = new System.Windows.Forms.Label();
             this.labelSAPEducation_Formation = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnRefresh = new System.Windows.Forms.Button();
             this.label12 = new System.Windows.Forms.Label();
             this.lblMax = new System.Windows.Forms.Label();
             this.lblMin = new System.Windows.Forms.Label();
@@ -233,7 +234,7 @@
             this.tabPageEducation_FormationFiche.Location = new System.Drawing.Point(4, 23);
             this.tabPageEducation_FormationFiche.Name = "tabPageEducation_FormationFiche";
             this.tabPageEducation_FormationFiche.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageEducation_FormationFiche.Size = new System.Drawing.Size(1059, 457);
+            this.tabPageEducation_FormationFiche.Size = new System.Drawing.Size(1343, 630);
             this.tabPageEducation_FormationFiche.TabIndex = 2;
             this.tabPageEducation_FormationFiche.Tag = "Fiche de la Education_Formation";
             this.tabPageEducation_FormationFiche.Text = "Fiche";
@@ -275,6 +276,8 @@
             // 
             // label11
             // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label11.Location = new System.Drawing.Point(449, 69);
             this.label11.Name = "label11";
@@ -567,6 +570,8 @@
             // 
             // tabControl_Education_FormationAndCertificationsOfUser
             // 
+            this.tabControl_Education_FormationAndCertificationsOfUser.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl_Education_FormationAndCertificationsOfUser.Controls.Add(this.tabPageEducation_FormationsAgent);
             this.tabControl_Education_FormationAndCertificationsOfUser.Controls.Add(this.tabPage2);
             this.tabControl_Education_FormationAndCertificationsOfUser.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
@@ -591,6 +596,8 @@
             // 
             // advDv_AgentsOfFormation
             // 
+            this.advDv_AgentsOfFormation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.advDv_AgentsOfFormation.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.advDv_AgentsOfFormation.FilterAndSortEnabled = true;
             this.advDv_AgentsOfFormation.Location = new System.Drawing.Point(6, 6);
@@ -1061,6 +1068,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.Controls.Add(this.btnRefresh);
             this.tabPage1.Controls.Add(this.label12);
             this.tabPage1.Controls.Add(this.lblMax);
             this.tabPage1.Controls.Add(this.lblMin);
@@ -1074,15 +1082,27 @@
             this.tabPage1.Controls.Add(this.AdvDg_Formations);
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(1059, 457);
+            this.tabPage1.Size = new System.Drawing.Size(1343, 630);
             this.tabPage1.TabIndex = 3;
             this.tabPage1.Text = "Liste";
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRefresh.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.btnRefresh.Location = new System.Drawing.Point(798, 600);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(75, 23);
+            this.btnRefresh.TabIndex = 33;
+            this.btnRefresh.Text = "Rafaichir";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // label12
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(461, 431);
+            this.label12.Location = new System.Drawing.Point(461, 604);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(11, 14);
             this.label12.TabIndex = 32;
@@ -1093,7 +1113,7 @@
             this.lblMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblMax.AutoSize = true;
             this.lblMax.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.lblMax.Location = new System.Drawing.Point(471, 431);
+            this.lblMax.Location = new System.Drawing.Point(471, 604);
             this.lblMax.Name = "lblMax";
             this.lblMax.Size = new System.Drawing.Size(35, 14);
             this.lblMax.TabIndex = 31;
@@ -1105,7 +1125,7 @@
             this.lblMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblMin.AutoSize = true;
             this.lblMin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.lblMin.Location = new System.Drawing.Point(426, 431);
+            this.lblMin.Location = new System.Drawing.Point(426, 604);
             this.lblMin.Name = "lblMin";
             this.lblMin.Size = new System.Drawing.Size(35, 14);
             this.lblMin.TabIndex = 30;
@@ -1119,7 +1139,7 @@
             this.lblNbrRowsFormations.Enabled = false;
             this.lblNbrRowsFormations.Font = new System.Drawing.Font("Arial", 9.25F);
             this.lblNbrRowsFormations.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.lblNbrRowsFormations.Location = new System.Drawing.Point(17, 420);
+            this.lblNbrRowsFormations.Location = new System.Drawing.Point(17, 593);
             this.lblNbrRowsFormations.Name = "lblNbrRowsFormations";
             this.lblNbrRowsFormations.Size = new System.Drawing.Size(42, 16);
             this.lblNbrRowsFormations.TabIndex = 29;
@@ -1129,7 +1149,7 @@
             // 
             this.btn_Next.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_Next.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.btn_Next.Location = new System.Drawing.Point(509, 427);
+            this.btn_Next.Location = new System.Drawing.Point(509, 600);
             this.btn_Next.Name = "btn_Next";
             this.btn_Next.Size = new System.Drawing.Size(75, 25);
             this.btn_Next.TabIndex = 28;
@@ -1141,7 +1161,7 @@
             // 
             this.btn_Previous.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_Previous.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.btn_Previous.Location = new System.Drawing.Point(349, 427);
+            this.btn_Previous.Location = new System.Drawing.Point(349, 600);
             this.btn_Previous.Name = "btn_Previous";
             this.btn_Previous.Size = new System.Drawing.Size(75, 25);
             this.btn_Previous.TabIndex = 27;
@@ -1204,7 +1224,7 @@
             this.AdvDg_Formations.FilterAndSortEnabled = true;
             this.AdvDg_Formations.Location = new System.Drawing.Point(13, 52);
             this.AdvDg_Formations.Name = "AdvDg_Formations";
-            this.AdvDg_Formations.Size = new System.Drawing.Size(1012, 364);
+            this.AdvDg_Formations.Size = new System.Drawing.Size(1170, 459);
             this.AdvDg_Formations.TabIndex = 0;
             this.AdvDg_Formations.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.AdvDg_Formations_FilterStringChanged);
             this.AdvDg_Formations.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.AdvDg_Certifications_CellFormatting);
@@ -1213,15 +1233,16 @@
             // 
             // tabControl_Education_Formations
             // 
-            this.tabControl_Education_Formations.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.tabControl_Education_Formations.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl_Education_Formations.Controls.Add(this.tabPage1);
             this.tabControl_Education_Formations.Controls.Add(this.tabPageEducation_FormationFiche);
             this.tabControl_Education_Formations.Font = new System.Drawing.Font("Arial", 8.25F);
             this.tabControl_Education_Formations.Location = new System.Drawing.Point(3, 3);
             this.tabControl_Education_Formations.Name = "tabControl_Education_Formations";
             this.tabControl_Education_Formations.SelectedIndex = 0;
-            this.tabControl_Education_Formations.Size = new System.Drawing.Size(1067, 484);
+            this.tabControl_Education_Formations.Size = new System.Drawing.Size(1351, 657);
             this.tabControl_Education_Formations.TabIndex = 0;
             this.tabControl_Education_Formations.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl_Education_Formations_Selected);
             // 
@@ -1239,7 +1260,7 @@
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Arial", 8.25F);
             this.Name = "UCEducation_Formation";
-            this.Size = new System.Drawing.Size(1072, 501);
+            this.Size = new System.Drawing.Size(1392, 682);
             this.toolTipAddProvider.SetToolTip(this, "\r\n");
             this.Load += new System.EventHandler(this.UC_Education_Formation_Load);
             this.MouseHover += new System.EventHandler(this.UCEducation_Formation_MouseHover);
@@ -1361,5 +1382,6 @@
         public System.Windows.Forms.Button btnDocAudit;
         private System.Windows.Forms.Label lblDocAudit;
         private Zuby.ADGV.AdvancedDataGridView advDv_AgentsOfFormation;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

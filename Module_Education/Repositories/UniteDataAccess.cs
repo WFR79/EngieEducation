@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Module_Education
 {
-    public class UniteDataAccess
+    public class UniteDataAccess : RepositoryBase
     {
         private CFNEducation_FormationEntities db = new CFNEducation_FormationEntities();
 

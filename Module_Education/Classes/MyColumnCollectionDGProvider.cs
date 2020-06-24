@@ -21,6 +21,8 @@ namespace Module_Education.Classes
         {
             return _obj;
         }
+        public long? Provider_Id { get; set; }
+
         [DisplayName("Nom")]
         public string Provider_Name { get; set; }
 

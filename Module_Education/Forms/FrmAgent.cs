@@ -15,7 +15,7 @@ namespace Module_Education.Forms
     public partial class FrmAgent : Form
     {
         Education_Agent CurrentAgent = new Education_Agent();
-        private Education_FormationDataAccess dbEducation_Formation = new Education_FormationDataAccess();
+        private FormationRepository dbEducation_Formation = new FormationRepository();
 
 
         public FrmAgent(long AgentMatricule)

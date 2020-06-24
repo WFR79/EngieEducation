@@ -22,7 +22,7 @@ namespace Module_Education.Models
         public Nullable<long> AgentPassportDesign_Agent { get; set; }
         public Nullable<long> AgentPassportDesign_Passport { get; set; }
     
-        public virtual Education_PassportDesign Education_PassportDesign { get; set; }
         public virtual Education_Agent Education_Agent { get; set; }
+        public virtual Education_PassportDesign Education_PassportDesign { get; set; }
     }
 }

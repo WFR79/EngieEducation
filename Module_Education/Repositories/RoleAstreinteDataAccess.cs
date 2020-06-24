@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Module_Education
 {
-    public class RoleAstreinteDataAccess
+    public class RoleAstreinteDataAccess : RepositoryBase
     {
         private CFNEducation_FormationEntities db = new CFNEducation_FormationEntities();
 

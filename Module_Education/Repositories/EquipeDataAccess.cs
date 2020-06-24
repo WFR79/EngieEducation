@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Module_Education
 {
-    public class EquipeDataAccess
+    public class EquipeDataAccess : RepositoryBase
     {
         private CFNEducation_FormationEntities db = new CFNEducation_FormationEntities();
 

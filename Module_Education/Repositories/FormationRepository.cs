@@ -10,7 +10,7 @@ using System.Web;
 
 namespace Module_Education.Repositories
 {
-    public class Education_FormationDataAccess
+    public class FormationRepository : RepositoryBase
     {
         private CFNEducation_FormationEntities db = new CFNEducation_FormationEntities();
 

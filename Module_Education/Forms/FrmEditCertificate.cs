@@ -16,7 +16,7 @@ namespace Module_Education.Forms
     public partial class FrmEditCertificate : Form
     {
         #region Déclarations
-        private Education_FormationDataAccess db = new Education_FormationDataAccess();
+        private FormationRepository db = new FormationRepository();
         private SessionUniteDataAccess dbSessionUnite = new SessionUniteDataAccess();
         private ProviderDataRepository dbProvider = new ProviderDataRepository();
         private CompetenceDataAccess dbCompetence = new CompetenceDataAccess();

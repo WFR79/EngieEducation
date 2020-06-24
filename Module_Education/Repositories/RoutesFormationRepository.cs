@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Module_Education.Repositories
 {
-    public class RoutesFormationRepository
+    public class RoutesFormationRepository : RepositoryBase
     {
         CFNEducation_FormationEntities db = new CFNEducation_FormationEntities();
 

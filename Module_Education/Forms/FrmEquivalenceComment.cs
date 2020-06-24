@@ -17,7 +17,7 @@ namespace Module_Education.Forms
 {
     public partial class FrmEquivalenceComment : Form
     {
-        public Education_FormationDataAccess dbFormation = new Education_FormationDataAccess();
+        public FormationRepository dbFormation = new FormationRepository();
         public Education_Matrice_Agent CurrentMatriceAgent;
         public Education_Matrice_AgentEquivalence newRecord = new Education_Matrice_AgentEquivalence();
 

@@ -25,9 +25,9 @@ namespace Module_Education.Models
         public Nullable<long> SousService_Departement { get; set; }
         public Nullable<long> SousService_Service { get; set; }
     
-        public virtual Education_Departement Education_Departement { get; set; }
-        public virtual Education_Service Education_Service { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Education_Agent> Education_Agent { get; set; }
+        public virtual Education_Departement Education_Departement { get; set; }
+        public virtual Education_Service Education_Service { get; set; }
     }
 }

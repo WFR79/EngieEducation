@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Module_Education.DataAccessLayer
 {
-    public class FormationSessionDataAccess
+    public class FormationSessionDataAccess : RepositoryBase
     {
         private CFNEducation_FormationEntities db = new CFNEducation_FormationEntities();
 

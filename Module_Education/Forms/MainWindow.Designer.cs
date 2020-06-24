@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.panelMain = new System.Windows.Forms.Panel();
             this.lblNoticeBeta = new System.Windows.Forms.Label();
             this.lblBetaVersion = new System.Windows.Forms.Label();
@@ -50,6 +51,7 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.timerMenu = new System.Windows.Forms.Timer(this.components);
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.panelMain.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -361,6 +363,11 @@
             this.timerMenu.Interval = 70;
             this.timerMenu.Tick += new System.EventHandler(this.timerMenu_Tick);
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -372,6 +379,7 @@
             this.Controls.Add(this.panelMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.HelpButton = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainWindow";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -410,6 +418,7 @@
         private System.Windows.Forms.Label lblBetaVersion;
         private System.Windows.Forms.Button btnMenuMovement;
         private System.Windows.Forms.Button MenuBtnServices;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 

@@ -60,7 +60,7 @@ namespace Module_Education
         CFNEducation_FormationEntities dbEntities = new CFNEducation_FormationEntities();
         private AgentDataAccess db = new AgentDataAccess();
         private EquipeDataAccess dbEquipe = new EquipeDataAccess();
-        private Education_FormationDataAccess dbEducation_Formation = new Education_FormationDataAccess();
+        private FormationRepository dbEducation_Formation = new FormationRepository();
 
 
         private UserStatusDataAccess dbUserStatus = new UserStatusDataAccess();
@@ -315,7 +315,6 @@ namespace Module_Education
             try
             {
                 List<Education_Agent> tempUserList = new List<Education_Agent>();
-                //var progressReport = new ProgressReport();
                 if (pageNumber == 0)
                 {
                     pageNumber = 1;
@@ -324,36 +323,24 @@ namespace Module_Education
                 {
                     using (CFNEducation_FormationEntities dbList = new CFNEducation_FormationEntities())
                     {
-                        if (MainWindow.globalListAgents == null)
+                        if (FrmMain.globalListAgents == null)
                         {
                             //progressReport.PercentCompleted = 0;
-                            return dbEntities.Education_Agent
-                          //.Include("Education_Equipe")
-                  .Include("Education_Function")
-                  .Include("Education_GroupLearner_Agent")
-                  .Include("Education_MovementAgent")
-                  //.Include("Education_MovementAgent1")
-                  .Include("Education_RoleAstreinte")
-                  .Include("Education_RoleEPI")
-                  .Include("Education_AgentStatus")
-                  .Include("Education_Agent_Formation")
-                  .Include("Education_Habilitation")
-                  .Include("Education_Role")
-
-                            //.Include("User2")
-                            .OrderBy(p => p.Agent_Id).ToPagedList(pagNumber, pageSize);
-                            //progressReport.PercentCompleted = 100;
-                            //progress.Report(progressReport);
+                            //return dbEntities.Education_Agent
+                            //.OrderBy(p => p.Agent_Id).ToPagedList(pagNumber, pageSize);
+                            using (AgentDataAccess dbRep = new AgentDataAccess())
+                            {
+                                List<Education_Agent> listAgent = dbRep.LoadAllAgents();
+                                return listAgent.OrderBy(p => p.Agent_Id).ToPagedList(pagNumber, listAgent.Count());
+                            };
                         }
                         else
                         {
-                            return MainWindow.globalListAgents.ToPagedList(pagNumber, pageSize); ;
+                            return FrmMain.globalListAgents.ToPagedList(pagNumber, pageSize); ;
 
                         }
 
                     }
-
-
                 });
 
             }
@@ -535,20 +522,15 @@ namespace Module_Education
                     Agent_FirstName = o.Agent_FirstName,
                     Agent_Name = o.Agent_Name,
                     Agent_Fullname = o.Agent_FullName,
-                    Function_Name = o.Agent_Function == null ? null : o.Education_Function.Function_Name,
-
-                    //Function_Name = o.Agent_Function == null ? null : dbEntities.Education_Function.Where(x => x.Function_Id == o.Agent_Function).FirstOrDefault().Function_Name,// If (o.Function == null) { null } else {o.Function.Function_Name}
-                    Agent_Admin = o.Agent_Admin == null ? null : o.Agent_Admin,
-                    Agent_Responsable = o.Agent_LineManager == null ? null : o.Education_Agent2.Agent_FullName,
-
-                    //Agent_Responsable = o.Agent_LineManager == null ? null : dbEntities.Education_Agent.Where(x => x.Agent_Id == o.Agent_LineManager).FirstOrDefault().Agent_FullName,
+                    Function_Name = o.Agent_Function == null ? null : o.Education_Function.Function_Name, Agent_Admin = o.Agent_Admin == null ? null : o.Agent_Admin,
+                    Agent_Responsable = o.Education_Agent2 == null ? "" : o.Education_Agent2.Agent_FullName.ToString(),
                     Agent_InRoute = o.Education_InRoute == null ? "" : o.Education_InRoute.InRoute_Name,
                     Agent_IsWorksManager = o.Agent_IsWorksManager,
                     Agent_DateSeniority = o.Agent_DateSeniority,
                     Agent_DateOfEntry = o.Agent_DateOfEntry,
                     Agent_DateFunction = o.Agent_DateFunction,
-                    Agent_Habilitation = o.Education_Habilitation == null ? null : o.Education_Habilitation.Habilitation_Name,
-                    Agent_Status = o.Education_AgentStatus == null ? null : o.Education_AgentStatus.AgentStatus_Name,
+                    Habilitation_Name = o.Education_Habilitation == null ? null : o.Education_Habilitation.Habilitation_Name,
+                    AgentStatus_Name = o.Education_AgentStatus == null ? null : o.Education_AgentStatus.AgentStatus_Name,
                     Agent_Etat = o.Agent_Etat
 
 
@@ -586,8 +568,8 @@ namespace Module_Education
                     Agent_DateSeniority = o.Agent_DateSeniority,
                     Agent_DateOfEntry = o.Agent_DateOfEntry,
                     Agent_DateFunction = o.Agent_DateFunction,
-                    Agent_Habilitation = o.Agent_Habilitation == null ? null : dbEntities.Education_Habilitation.Where(w => w.Habilitation_Id == o.Agent_Habilitation).FirstOrDefault().Habilitation_Name,
-                    Agent_Status = o.Agent_Status == null ? null : dbEntities.Education_AgentStatus.Where(w => w.AgentStatus_Id == o.Agent_Status).FirstOrDefault().AgentStatus_Name,
+                    Habilitation_Name = o.Agent_Habilitation == null ? null : dbEntities.Education_Habilitation.Where(w => w.Habilitation_Id == o.Agent_Habilitation).FirstOrDefault().Habilitation_Name,
+                    AgentStatus_Name = o.Agent_Status == null ? null : dbEntities.Education_AgentStatus.Where(w => w.AgentStatus_Id == o.Agent_Status).FirstOrDefault().AgentStatus_Name,
                     Agent_Etat = o.Agent_Etat
 
 
@@ -717,7 +699,7 @@ namespace Module_Education
 
         private void LoadPassportSafety()
         {
-            DataGridView dgPassportSafetyDyn = (DataGridView)this.tbFicheAgent.Controls.Find("dgPassportSafetyDyn", true).FirstOrDefault();
+            DataGridView dgPassportSafetyDyn = (DataGridView)this.tabControl_Education_FormationAndCertificationsOfUser.Controls.Find("dgPassportSafetyDyn", true).FirstOrDefault();
             if (dgPassportSafetyDyn != null)
             {
                 dgPassportSafetyDyn.Dispose();
@@ -727,7 +709,7 @@ namespace Module_Education
 
             DataGridViewElementStates states = DataGridViewElementStates.None;
 
-            Label lblDgPassportSafety = (Label)this.tbFicheAgent.Controls.Find("lblDgPassportSafety", true).FirstOrDefault();
+            Label lblDgPassportSafety = (Label)this.tabControl_Education_FormationAndCertificationsOfUser.Controls.Find("lblDgPassportSafety", true).FirstOrDefault();
 
             lblDgPassportSafety = new Label();
 
@@ -739,18 +721,20 @@ namespace Module_Education
 
             lblDgPassportSafety.AutoSize = true;
 
-            lblDgPassportSafety.Location = new Point(155, 533);
+            lblDgPassportSafety.Location = new Point(155, 615);
             lblDgPassportSafety.Show();
 
             dgPassportSafetyDyn.MouseClick += dgPassportSafetyDynMouseClick;
             dgPassportSafetyDyn.CellFormatting += dgPassportSafetyDynCellFormating;
             dgPassportSafetyDyn.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            dgPassportSafetyDyn.Location = new Point(155, 560);
+            dgPassportSafetyDyn.Location = new Point(155, 645);
             dgPassportSafetyDyn.BackgroundColor = Color.White;
             dgPassportSafetyDyn.Name = "dgPassportSafetyDyn";
             dgPassportSafetyDyn.ReadOnly = true;
             dgPassportSafetyDyn.BorderStyle = BorderStyle.None;
 
+            //this.tabControl_Education_FormationAndCertificationsOfUser.TabPages[1].Controls.Add(lblDgPassportSafety);
+            //this.tabControl_Education_FormationAndCertificationsOfUser.TabPages[1].Controls.Add(dgPassportSafetyDyn);
             this.tbFicheAgent.Controls.Add(lblDgPassportSafety);
             this.tbFicheAgent.Controls.Add(dgPassportSafetyDyn);
             ListLabelCertification.Add(lblDgPassportSafety);
@@ -1559,7 +1543,7 @@ namespace Module_Education
         {
             // Creating and setting the properties of Button 
             Button ButtonSaveAgent = new Button();
-            ButtonSaveAgent.Location = new Point(147, 440);
+            ButtonSaveAgent.Location = new Point(689, 333);
             ButtonSaveAgent.Text = "Sauver";
             ButtonSaveAgent.Name = "ButtonSaveAgent";
             ButtonSaveAgent.FlatStyle = FlatStyle.Flat;
@@ -1582,7 +1566,7 @@ namespace Module_Education
 
             // Creating and setting the properties of Button 
             Button ButtonCancelModificationAgent = new Button();
-            ButtonCancelModificationAgent.Location = new Point(257, 440);
+            ButtonCancelModificationAgent.Location = new Point(582, 333);
             ButtonCancelModificationAgent.Text = "Annuler";
             ButtonCancelModificationAgent.Name = "ButtonCancel";
             ButtonCancelModificationAgent.FlatStyle = FlatStyle.Flat;
@@ -2067,6 +2051,7 @@ namespace Module_Education
 
         private void dG_Agents_FilterStringChanged_1(object sender, Zuby.ADGV.AdvancedDataGridView.FilterEventArgs e)
         {
+            Cursor.Current = Cursors.WaitCursor;
             _filterString = e.FilterString;
             TriggerFilterStringChanged();
         }

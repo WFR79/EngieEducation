@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace Module_Education.Repositories
 {
-    class AgentCertifElecFuncRepository
+    class AgentCertifElecFuncRepository : RepositoryBase
     {
         private CFNEducation_FormationEntities db = new CFNEducation_FormationEntities();
 

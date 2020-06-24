@@ -37,7 +37,7 @@ namespace Module_Education
         public Delegate PointerProvider;
         public Delegate MainWindowPointerMenuBtnProvider;
         public event providerEditLoad ReceiverLoadEditProvider;
-        public  event providerEditLoad ReceiverLoadEditProviderFromFormation;
+        public event providerEditLoad ReceiverLoadEditProviderFromFormation;
 
         public delegate void providerEditLoad(long FormationProviderID);
 
@@ -58,34 +58,6 @@ namespace Module_Education
             comboPersonneContact.DataSource = db.LoadAllFormationProvider(providerSelected);
             comboPersonneContact.DisplayMember = "FormationProvider_ContactName";
 
-            //Status
-            //comboBoxStatut.DataSource = dbUserStatus.LoadAllStatus();
-            //comboBoxStatut.DisplayMember = "AgentStatus_Name";
-
-            ////Line Manager
-            //comboBoxRespHierarchique.DataSource = MainWindow.globalListAgents;
-            //comboBoxRespHierarchique.ValueMember = "Agent_Id";
-            //comboBoxRespHierarchique.DisplayMember = "User_FullName";
-
-            ////Education_Habilitation
-            //comboBoxEducation_Habilitation.DataSource = dbEducation_Habilitation.LoadAllEducation_Habilitation();
-            //comboBoxEducation_Habilitation.ValueMember = "Habilitation_Name";
-
-            ////Function
-            //comboBoxFunction.DataSource = dbFunction.LoadAllFunctions();
-            //comboBoxFunction.ValueMember = "Function_Name";
-
-            ////EPI
-            //comboBoxEPI.DataSource = dbEPI.LoadAllRoleEPI();
-            //comboBoxEPI.ValueMember = "RoleEPI_Name";
-
-            ////Astreinte
-            //comboBoxAstreinte.DataSource = dbAstreinte.LoadAllRoleAstreinte();
-            //comboBoxAstreinte.ValueMember = "RoleAstreinte_Name";
-
-            //// En trajet
-            //comboTrajet.DataSource = dbInRoute.LoadAllInRoute();
-            //comboTrajet.ValueMember = "InRoute_Name";
         }
 
 
@@ -96,7 +68,7 @@ namespace Module_Education
                 if (_instance == null)
                 {
                     _instance = new UC_Provider();
-                   
+
                 }
                 return _instance;
             }
@@ -109,14 +81,14 @@ namespace Module_Education
                 ReceiverLoadEditProvider += new providerEditLoad(LoadProviderCard);
                 UC_Provider.Instance.PointerProvider = ReceiverLoadEditProvider;
 
-                
+
 
             }
         }
 
         public void LoadProviderCard(long FormationProvider)
         {
-            LoadComboboxs(); 
+            LoadComboboxs();
             DeleteButtonSavingAgent();
             TabPage page = (TabPage)this.tabControlProvider.Controls[1];
             this.tabControlProvider.SelectedTab = page;
@@ -274,16 +246,18 @@ namespace Module_Education
             listProvidersPaged = await LoadDatagriEducation_Providers(1, pageSize);
             dG_Providers.DataSource = GetDataSource(listProvidersPaged);
             dG_Providers.Refresh();
+            dG_Providers.Columns[0].Visible = false;
             dG_Providers.SelectionChanged += dG_Education_Provider_SelectionChanged; // ReAdd the handler.
             lblNbrProviders.Text = "Nombre total de formations : " + listProvidersPaged.TotalItemCount.ToString();
         }
 
         private object GetDataSource(IPagedList<Education_Provider> listPaged)
-        {                                
+        {
             object dataSource = listPaged.Select(o => new MyColumnCollectionDGProvider(o)
             {
+                Provider_Id = o.Provider_Id,
+                
                 Provider_Name = o.Provider_Name,
-
                 Provider_Contact = o.Education_FormationProvider.Count == 0 ? null : dbEntities.Education_FormationProvider.
                 Where(x => x.FormationProvider_Provider == o.Provider_Id).FirstOrDefault().FormationProvider_ContactName,
                 Provider_EmailContact = o.Education_FormationProvider.Count == 0 ? null : dbEntities.Education_FormationProvider.
@@ -295,7 +269,7 @@ namespace Module_Education
                 Where(x => x.FormationProvider_Provider == o.Provider_Id).FirstOrDefault().FormationProvider_Former,
                 Provider_FormerContactEmail = o.Education_FormationProvider.Count == 0 ? null : dbEntities.Education_FormationProvider.
                 Where(x => x.FormationProvider_Provider == o.Provider_Id).FirstOrDefault().FormationProvider_Contact_Email,
-                
+
 
 
             }).ToList();
@@ -345,21 +319,49 @@ namespace Module_Education
                 ProviderDataRepository providerRep = new ProviderDataRepository();
 
 
-                providerSelected = providerRep.GetProvider(dgv.SelectedCells[0].Value.ToString());
+                providerSelected = providerRep.GetProvider(Convert.ToInt64(dgv.SelectedCells[0].Value));
 
             }
         }
+
 
         private void EditProvider_CLick(object sender, EventArgs e)
         {
             object[] arr = { providerSelected, null };
 
             this.tabControlProvider.SelectedIndex = 1;
-            //CurrentProvider = db.LoadFormationProviderById(providerSelected.Provider_Id);
-            ReceiverLoadEditProvider += new providerEditLoad(LoadProviderCard);
-            UC_Provider.Instance.PointerProvider = ReceiverLoadEditProvider;
-            PointerProvider.DynamicInvoke(providerSelected.Provider_Id);
-            //PointerRefreshFicheAgent.DynamicInvoke(Convert.ToInt64(ProviderId));
+            LoadProviderCard(providerSelected.Provider_Id);
+
+            //ReceiverLoadEditProvider += new providerEditLoad(LoadProviderCard);
+            //UC_Provider.Instance.PointerProvider = ReceiverLoadEditProvider;
+            //PointerProvider.DynamicInvoke(providerSelected.Provider_Id);
+        }
+
+        private void dG_Providers_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                DataGridView dgv = (DataGridView)sender;
+                if (e.RowIndex > 0)
+                {
+                    var providerId = dgv.Rows[e.RowIndex].Cells[0].Value;
+                    Form parentForm = this.Parent.FindForm() as Form;
+                    var matches = parentForm.Controls.Find("flowPanelMenu", true);
+
+                    ProviderDataRepository providerRep = new ProviderDataRepository();
+                    providerSelected = providerRep.GetProvider(Convert.ToInt64(dgv.SelectedCells[0].Value));
+
+                    Console.WriteLine(matches);
+                    this.tabControlProvider.SelectedIndex = 1;
+
+                    LoadProviderCard(providerSelected.Provider_Id);
+                }
+            }
+            catch (Exception ex)
+            {
+                Logger.LogError(ex, "UC_Education_FormationS");
+                throw ex;
+            }
         }
     }
 }

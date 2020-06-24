@@ -23,7 +23,7 @@ namespace Module_Education.Models
         public string AgentCertificatDivers_Remarks { get; set; }
         public Nullable<long> AgentCertificatDivers_Certificate { get; set; }
     
-        public virtual Education_CertificatDivers Education_CertificatDivers { get; set; }
         public virtual Education_Agent Education_Agent { get; set; }
+        public virtual Education_CertificatDivers Education_CertificatDivers { get; set; }
     }
 }

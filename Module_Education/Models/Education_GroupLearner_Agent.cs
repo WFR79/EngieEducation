@@ -18,7 +18,7 @@ namespace Module_Education.Models
         public long GroupLearnerAgent_Agent { get; set; }
         public long GroupLearnerAgent_GroupeLearner { get; set; }
     
-        public virtual Education_GroupLearner Education_GroupLearner { get; set; }
         public virtual Education_Agent Education_Agent { get; set; }
+        public virtual Education_GroupLearner Education_GroupLearner { get; set; }
     }
 }

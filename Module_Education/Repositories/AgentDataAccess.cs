@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Module_Education
 {
-    public class AgentDataAccess
+    public class AgentDataAccess : RepositoryBase
     {
         private CFNEducation_FormationEntities db = new CFNEducation_FormationEntities();
 
@@ -34,11 +34,23 @@ namespace Module_Education
         public List<Education_Agent> LoadAllAgentsCertificate()
         {
             return db.Education_Agent
-                  .Include("Education_AgentPassportSafety")
-                        .Include("Education_AgentCertifElecFunc")
-                        .Include("Education_AgentCertifElecOPP")
-                        .Include("Education_AgentPassportBusiness")
-                        .Include("Education_AgentPassportDesign")
+                .Include("Education_Service")
+                .Include("Education_AgentPassportSafety")
+                .Include("Education_AgentCertifElecFunc")
+                .Include("Education_AgentCertifElecOPP")
+                .Include("Education_AgentPassportBusiness")
+                .Include("Education_AgentPassportDesign")
+                .Include("Education_AgentCertificatDivers")
+
+                .Include("Education_Function")
+                .Include("Education_GroupLearner_Agent")
+                .Include("Education_MovementAgent")
+                .Include("Education_RoleAstreinte")
+                .Include("Education_RoleEPI")
+                .Include("Education_AgentStatus")
+                .Include("Education_Agent_Formation")
+                .Include("Education_Habilitation")
+                .Include("Education_Role")
 
                 .ToList();
         }
@@ -117,6 +129,7 @@ namespace Module_Education
 
         public List<Education_Agent> LoadAgentsFiltered(string filter, List<Education_Agent> listAgentFiltered)
         {
+            
             IPagedList<Education_Agent> userTemp;
             int StartIndex = filter.IndexOf("[");
             int EndIndex = filter.IndexOf("]");
@@ -176,12 +189,11 @@ namespace Module_Education
                     sequenceMaxQuery += " WHERE t2.InRoute_Name " + filterValue;
                     sequenceQueryResult = db.Database.SqlQuery<Education_Agent>(sequenceMaxQuery).ToList();
 
-                    sequenceQueryResult = db.Database.SqlQuery<Education_Agent>(sequenceMaxQuery)
-                        .ToList();
                     sequenceQueryResult = listAgentFiltered.Where(x => sequenceQueryResult.Any(c => c.Agent_Matricule.Equals(x.Agent_Matricule))).ToList();
 
                 }
 
+                #region Function
                 if (filter.Contains("Function_Name"))
                 {
 
@@ -213,113 +225,71 @@ namespace Module_Education
 
                 }
 
-                //var query = db.Education_Formation.Find(filter);
+                #endregion
+
+                if (filter.Contains("Habilitation_Name"))
+                {
+
+                    var sequenceFunctQuery = "SELECT * " +
+                                      " FROM dbo.Education_Habilitation t1 ";
+                    sequenceFunctQuery += "WHERE t1.Habilitation_Name" + " " + filterValue;
+                    var sequenceQueryFunction = db.Database.SqlQuery<Education_Habilitation>(sequenceFunctQuery).ToList();
+
+                    filterValue = " IN ( ";
+                    List<Education_Agent> listTemp = new List<Education_Agent>();
+                    for (int i = 0; i < sequenceQueryFunction.Count; i++)
+                    {
+                        if (i < sequenceQueryFunction.Count - 1)
+                            filterValue += "'" + sequenceQueryFunction[i].Habilitation_Name + "'" + " ,";
+                        else
+                            filterValue += "'" + sequenceQueryFunction[i].Habilitation_Name + "'";
+
+                    }
+
+                    filterValue += " )";
+                    sequenceMaxQuery += "INNER JOIN dbo.Education_Habilitation t2 on t2.Habilitation_Id = t1.Agent_Habilitation ";
+                    sequenceMaxQuery += " WHERE " + filterColumn + " " + filterValue;
+                    sequenceQueryResult = db.Database.SqlQuery<Education_Agent>(sequenceMaxQuery).ToList();
+
+                    sequenceQueryResult = db.Database.SqlQuery<Education_Agent>(sequenceMaxQuery)
+                        .ToList();
+                    sequenceQueryResult = listAgentFiltered.Where(x => sequenceQueryResult.Any(c => c.Agent_Matricule.Equals(x.Agent_Matricule))).ToList();
+                }
+
+                if (filter.Contains("Status_Name"))
+                {
+
+                    var sequenceFunctQuery = "SELECT * " +
+                                      " FROM dbo.Education_AgentStatus t1 ";
+                    sequenceFunctQuery += "WHERE t1.AgentStatus_Name" + " " + filterValue;
+                    var sequenceQueryFunction = db.Database.SqlQuery<Education_AgentStatus>(sequenceFunctQuery).ToList();
+
+                    filterValue = " IN ( ";
+                    List<Education_Agent> listTemp = new List<Education_Agent>();
+                    for (int i = 0; i < sequenceQueryFunction.Count; i++)
+                    {
+                        if (i < sequenceQueryFunction.Count - 1)
+                            filterValue += "'" + sequenceQueryFunction[i].AgentStatus_Name + "'" + " ,";
+                        else
+                            filterValue += "'" + sequenceQueryFunction[i].AgentStatus_Name + "'";
+
+                    }
+
+                    filterValue += " )";
+                    sequenceMaxQuery += "INNER JOIN dbo.Education_AgentStatus t2 on t2.AgentStatus_id = t1.Agent_Status ";
+                    sequenceMaxQuery += " WHERE " + filterColumn + " " + filterValue;
+                    sequenceQueryResult = db.Database.SqlQuery<Education_Agent>(sequenceMaxQuery).ToList();
+
+                    sequenceQueryResult = db.Database.SqlQuery<Education_Agent>(sequenceMaxQuery)
+                        .ToList();
+                    sequenceQueryResult = listAgentFiltered.Where(x => sequenceQueryResult.Any(c => c.Agent_Matricule.Equals(x.Agent_Matricule))).ToList();
+                }
+
+
                 return sequenceQueryResult;
             }
 
         }
 
-        //    internal List<Education_Matrice_Agent> LoadMatriceAgentsFiltered(string filterString, List<Education_Matrice_Agent> distinctList)
-        //    {
-        //        IPagedList<Education_Agent> userTemp;
-        //        int StartIndex = filterString.IndexOf("[");
-        //        int EndIndex = filterString.IndexOf("]");
-        //        var sequenceQueryResult = listAgentFiltered;
-        //        if (filter == "")
-        //        {
-        //            var sequenceMaxQuery = "SELECT * " +
-        //                                  " FROM dbo.Education_Agent t1 ";
-        //            listAgentFiltered = db.Database.SqlQuery<Education_Agent>(sequenceMaxQuery).ToList();
-
-        //            sequenceQueryResult = listAgentFiltered;
-        //            return sequenceQueryResult;
-
-        //        }
-        //        else
-        //        {
-        //            var filterColumn = filter.Substring(StartIndex + 1, EndIndex - StartIndex - 1);
-
-        //            int StartIndexValue = filter.IndexOf("IN");
-        //            int EndIndexValue = filter.LastIndexOf(')'); ;
-        //            var filterValue = filter.Substring(StartIndexValue, EndIndexValue - StartIndexValue);
-
-
-        //            var sequenceMaxQuery = "SELECT * " +
-        //                                  " FROM dbo.Education_Agent t1 ";
-        //            if (filter.Contains("Agent_DateOfEntry") || filter.Contains("Agent_DateSeniority") || filter.Contains("Agent_DateFunction") ||
-        //                filter.Contains("Agent_Etat") || filter.Contains("Agent_Fullname") || filter.Contains("Agent_FirstName") || filter.Contains("Agent_Name") ||
-        //                filter.Contains("Agent_Matricule") || filter.Contains("Agent_Admin") || filter.Contains("Agent_Name") || filter.Contains("Agent_IsWorksManager"))
-        //            {
-        //                sequenceMaxQuery += " WHERE " + filterColumn + " " + filterValue;
-        //                sequenceQueryResult = db.Database.SqlQuery<Education_Agent>(sequenceMaxQuery).ToList();
-
-        //                sequenceQueryResult = listAgentFiltered.Where(x => sequenceQueryResult.Any(c => c.Agent_Matricule.Equals(x.Agent_Matricule))).ToList();
-        //                //sequenceQueryResult = sequenceQueryResult.Except(listAgentFiltered).ToList();
-        //            }
-
-        //            if (filter.Contains("Agent_InRoute"))
-        //            {
-        //                var sequenceInRouteQuery = "SELECT * " +
-        //                                 " FROM dbo.Education_InRoute t1 ";
-        //                sequenceInRouteQuery += "WHERE t1.InRoute_Name" + " " + filterValue;
-        //                var sequenceQueryFunction = db.Database.SqlQuery<Education_InRoute>(sequenceInRouteQuery).ToList();
-
-        //                filterValue = " IN ( ";
-        //                List<Education_Agent> listTemp = new List<Education_Agent>();
-        //                for (int i = 0; i < sequenceQueryFunction.Count; i++)
-        //                {
-        //                    if (i < sequenceQueryFunction.Count - 1)
-        //                        filterValue += "'" + sequenceQueryFunction[i].InRoute_Name + "'" + " ,";
-        //                    else
-        //                        filterValue += "'" + sequenceQueryFunction[i].InRoute_Name + "'";
-
-        //                }
-
-        //                filterValue += " )";
-        //                sequenceMaxQuery += "INNER JOIN dbo.Education_InRoute t2 on t2.InRoute_Id = t1.Agent_InRouteId ";
-        //                sequenceMaxQuery += " WHERE t2.InRoute_Name " + filterValue;
-        //                sequenceQueryResult = db.Database.SqlQuery<Education_Agent>(sequenceMaxQuery).ToList();
-
-        //                sequenceQueryResult = db.Database.SqlQuery<Education_Agent>(sequenceMaxQuery)
-        //                    .ToList();
-        //                sequenceQueryResult = listAgentFiltered.Where(x => sequenceQueryResult.Any(c => c.Agent_Matricule.Equals(x.Agent_Matricule))).ToList();
-
-        //            }
-
-        //            if (filter.Contains("Function_Name"))
-        //            {
-
-        //                var sequenceFunctQuery = "SELECT * " +
-        //                                  " FROM dbo.Education_Function t1 ";
-        //                sequenceFunctQuery += "WHERE t1.Function_Name" + " " + filterValue;
-        //                var sequenceQueryFunction = db.Database.SqlQuery<Education_Function>(sequenceFunctQuery).ToList();
-
-        //                filterValue = " IN ( ";
-        //                List<Education_Agent> listTemp = new List<Education_Agent>();
-        //                for (int i = 0; i < sequenceQueryFunction.Count; i++)
-        //                {
-        //                    if (i < sequenceQueryFunction.Count - 1)
-        //                        filterValue += "'" + sequenceQueryFunction[i].Function_Name + "'" + " ,";
-        //                    else
-        //                        filterValue += "'" + sequenceQueryFunction[i].Function_Name + "'";
-
-        //                }
-
-        //                filterValue += " )";
-        //                sequenceMaxQuery += "INNER JOIN dbo.Education_Function t2 on t2.function_Id = t1.Agent_Function ";
-        //                sequenceMaxQuery += " WHERE " + filterColumn + " " + filterValue;
-        //                sequenceQueryResult = db.Database.SqlQuery<Education_Agent>(sequenceMaxQuery).ToList();
-
-        //                sequenceQueryResult = db.Database.SqlQuery<Education_Agent>(sequenceMaxQuery)
-        //                    .ToList();
-        //                sequenceQueryResult = listAgentFiltered.Where(x => sequenceQueryResult.Any(c => c.Agent_Matricule.Equals(x.Agent_Matricule))).ToList();
-
-
-        //            }
-
-        //            //var query = db.Education_Formation.Find(filter);
-        //            return sequenceQueryResult;
-        //        }
-        //}
     }
 }

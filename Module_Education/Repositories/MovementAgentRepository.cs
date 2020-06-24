@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Module_Education.Repositories
 {
-    class MovementAgentRepository
+    class MovementAgentRepository : RepositoryBase
     {
         private CFNEducation_FormationEntities db ;
 

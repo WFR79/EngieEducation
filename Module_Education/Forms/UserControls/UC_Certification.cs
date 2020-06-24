@@ -23,7 +23,7 @@ namespace Module_Education.Forms.UserControls
         private static UC_Certification _instance;
 
         public BindingSource ds_Education_Formations = new BindingSource();
-        private Education_FormationDataAccess db = new Education_FormationDataAccess();
+        private FormationRepository db = new FormationRepository();
         private SessionUniteDataAccess dbSessionUnite = new SessionUniteDataAccess();
         private ProviderDataRepository dbProvider = new ProviderDataRepository();
         private CompetenceDataAccess dbCompetence = new CompetenceDataAccess();
@@ -44,6 +44,10 @@ namespace Module_Education.Forms.UserControls
         private int pageNumber;
         private int pageSize;
         private IPagedList<Education_Agent> listUserPaged;
+        public static IPagedList<Education_Agent> staticlistUserPaged;
+        public static object staticDataSource;
+
+
         private List<Education_Agent> listAgentFiltered;
         private DataTable dtAgentsCertificate;
         public DataTable staticdtAgentsCertificate;
@@ -88,22 +92,12 @@ namespace Module_Education.Forms.UserControls
         public event EventHandler<SortEventArgs> SortStringChanged;
 
         public event EventHandler<FilterEventArgs> FilterStringChanged;
-
-        //BindingSource  bindingSource;
         #endregion
 
         public UC_Certification()
         {
             InitializeComponent();
             LoadDatagridAgentAsync();
-            //if (MainWindow.globalListCertificateAgents != null)
-            //    dtAgentsCertificate = ToDataTable<Education_Agent>(MainWindow.globalListCertificateAgents);
-            //else
-            //{
-            //    dtAgentsCertificate = ToDataTable<Education_Agent>(dbAgent.LoadAllAgentsCertificate());
-
-            //}
-
         }
 
         public static UC_Certification Instance
@@ -118,32 +112,36 @@ namespace Module_Education.Forms.UserControls
 
         public async Task LoadDatagridAgentAsync()
         {
+            Cursor.Current = Cursors.WaitCursor;
+
             List<Education_Agent> listAgent = new List<Education_Agent>();
             try
             {
                 pageSize = Int32.Parse(tbNbrRows.Text);
-                listUserPaged = await LoadTaskDatagridAgent();
+                if (staticDataSource == null)
+                {
+                    listUserPaged = await LoadTaskDatagridAgent();
+                    AdvDg_Certifications.DataSource = GetDataSource(listUserPaged);
+                }
+                else
+                {
+                    listUserPaged = staticlistUserPaged;
+                    AdvDg_Certifications.DataSource = staticDataSource;
+                }
 
-                //lblMin.Text = listUserPaged.FirstItemOnPage.ToString();
-                //lblMax.Text = listUserPaged.LastItemOnPage.ToString();
 
-                AdvDg_Certifications.DataSource = GetDataSource(listUserPaged);
-                //bindingSource = new BindingSource()
-                //{
-                //    DataSource = AdvDg_Certifications.DataSource
-
-                //};
                 lblNbrRowsFormations.Text = "Nombre total de lignes : " + listUserPaged.TotalItemCount.ToString();
                 //dG_Agents.DataSource = listUserPaged;
                 PaintCellHeaders(AdvDg_Certifications);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
-                Logger.LogError(ex, Environment.UserName);
+                throw ex;
             }
 
         }
+
+
 
         private void PaintCellHeaders(DataGridView AdvDg_Certifications)
         {
@@ -217,6 +215,7 @@ namespace Module_Education.Forms.UserControls
             {
                 //Cursor.Current = Cursors.WaitCursor;
                 List<Education_Agent> tempUserList = new List<Education_Agent>();
+                Cursor.Current = Cursors.WaitCursor;
 
                 if (pageNumber == 0)
                 {
@@ -226,21 +225,22 @@ namespace Module_Education.Forms.UserControls
                 {
                     try
                     {
-                        if (MainWindow.globalListCertificateAgents == null)
+                        if (FrmMain.globalListCertificateAgents == null)
                         {
-                            return dbEntities.Education_Agent
-                            .Include("Education_Service")
+                            //return dbEntities.Education_Agent
+                            //.Include("Education_Service")
 
-                        .Include("Education_AgentPassportSafety")
-                        .Include("Education_AgentCertifElecFunc")
-                        .Include("Education_AgentCertifElecOPP")
-                        .Include("Education_AgentPassportBusiness")
-                        .Include("Education_AgentPassportDesign")
-                        .OrderBy(p => p.Agent_Id).ToPagedList(pagNumber, pageSize);
+                            // .OrderBy(p => p.Agent_Id).ToPagedList(pagNumber, dbEntities.Education_Agent.Count());
+
+                            using (AgentDataAccess dbRep = new AgentDataAccess())
+                            {
+                                List<Education_Agent> listAgent = dbRep.LoadAllAgents();
+                                return listAgent.OrderBy(p => p.Agent_Id).ToPagedList(pagNumber, listAgent.Count());
+                            };
                         }
                         else
                         {
-                            return MainWindow.globalListCertificateAgents.ToPagedList(pagNumber, pageSize); ;
+                            return FrmMain.globalListCertificateAgents.ToPagedList(pagNumber, FrmMain.globalListCertificateAgents.Count); ;
 
                         }
                     }
@@ -257,12 +257,11 @@ namespace Module_Education.Forms.UserControls
                 throw;
             }
         }
-
-        private object GetDataSource(IPagedList<Education_Agent> listPaged)
+        private object GetDataSource(List<Education_Agent> listAgent)
         {
             try
             {
-                object dataSource = listPaged.Select(o => new MyColumnCollectionDGAgentCertification(o)
+                object dataSource = listAgent.Select(o => new MyColumnCollectionDGAgentCertification(o)
                 {
                     Agent_Matricule = o.Agent_Matricule,
                     Agent_Fullname = o.Agent_FullName,
@@ -328,13 +327,176 @@ namespace Module_Education.Forms.UserControls
 
                 }).ToList();
 
+
+                return dataSource;
+            }
+            catch (Exception ex)
+            {
+                return ex;
+            }
+        }
+        public static object GetDataSourceStatic(IPagedList<Education_Agent> staticlistPaged)
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                object dataSource = staticlistPaged.Select(o => new MyColumnCollectionDGAgentCertification(o)
+                {
+                    Agent_Matricule = o.Agent_Matricule,
+                    Agent_Fullname = o.Agent_FullName,
+                    Agent_FirstName = o.Agent_FirstName,
+                    Agent_Name = o.Agent_Name,
+                    Agent_Departement = o.Education_Service.Education_Departement.Departement_Name == null ? null : o.Education_Service.Education_Departement.Departement_Name,
+                    Agent_Service = o.Education_Service.Service_Name,
+                    Agent_SousService = o.Education_SousService.SousService_Name == null ? null : o.Education_SousService.SousService_Name,
+                    Agent_Etat = o.Agent_Etat,
+                    Agent_EntryDate = o.Agent_DateOfEntry,
+                    Agent_LastFunctionDate = o.Agent_DateFunction,
+                    Agent_Statut = o.Education_AgentStatus.AgentStatus_Name == null ? null : o.Education_AgentStatus.AgentStatus_Name,
+                    Agent_Fonction = o.Education_Function.Function_Name == null ? null : o.Education_Function.Function_Name,
+                    Agent_Admin = o.Agent_Admin,
+
+
+
+
+                    //Passport Safety
+                    PassportSafety_LevelPS = o.Education_AgentPassportSafety == null ? null : o.Education_AgentPassportSafety.FirstOrDefault().AgentPassportSafety_LevelPS,
+                    Certif_Hierarchie = o.Education_AgentPassportSafety == null ? null : o.Education_AgentPassportSafety.FirstOrDefault().AgentPassportSafety_HierarchyCertification,
+                    SendingDate = o.Education_AgentPassportSafety == null ? null : o.Education_AgentPassportSafety.FirstOrDefault().AgentPassportSafety_SendingDate,
+                    ReturnDate = o.Education_AgentPassportSafety == null ? null : o.Education_AgentPassportSafety.FirstOrDefault().AgentPassportSafety_ReturnDate,
+                    PassportRemarks = o.Education_AgentPassportSafety == null ? null : o.Education_AgentPassportSafety.FirstOrDefault().AgentPassportSafety_Remarks,
+                    PassportRemarkPay = o.Education_AgentPassportSafety == null ? null : o.Education_AgentPassportSafety.FirstOrDefault().AgentPassportSafety_PayRemarks,
+
+                    //Passport Business
+
+                    Description = o.Education_AgentPassportBusiness == null ? null : o.Education_AgentPassportBusiness.FirstOrDefault().Education_PassportBusiness.PassportBusiness_Name,
+                    SendingDatePassportBusiness = o.Education_AgentPassportBusiness == null ? null : o.Education_AgentPassportBusiness.FirstOrDefault().AgentPassportBusiness_SendingDate,
+                    ReturnDatePassportBusiness = o.Education_AgentPassportBusiness == null ? null : o.Education_AgentPassportBusiness.FirstOrDefault().AgentPassportBusiness_ReturnDate,
+                    Certif_HierarchiePassportBusiness = o.Education_AgentPassportBusiness == null ? null : o.Education_AgentPassportBusiness.FirstOrDefault().AgentPassportBusiness_HierarchyCertification,
+                    PassportRemarksPassportBusiness = o.Education_AgentPassportBusiness == null ? null : o.Education_AgentPassportBusiness.FirstOrDefault().AgentPassportBusiness_Remark,
+
+
+                    //Certification Electrique Role Function
+
+                    NiveauB = o.Education_AgentCertifElecFunc == null ? null : o.Education_AgentCertifElecFunc.FirstOrDefault().Education_CertifElecFunc.CertifElecFunc_LevelB,
+                    SendingDateCertifElecFunc = o.Education_AgentCertifElecFunc == null ? null : o.Education_AgentCertifElecFunc.FirstOrDefault().AgentCertifElecFunc_SendingDate,
+                    ReturnDateCertifElecFunc = o.Education_AgentCertifElecFunc == null ? null : o.Education_AgentCertifElecFunc.FirstOrDefault().AgentCertifElecFunc_ReceivedDate,
+                    Certif_HierarchieCertifElecFunc = o.Education_AgentCertifElecFunc == null ? null : o.Education_AgentCertifElecFunc.FirstOrDefault().AgentCertifElecFunc_IsCertified,
+                    ValidityDateCertifElecFunc = o.Education_AgentCertifElecFunc == null ? null : o.Education_AgentCertifElecFunc.FirstOrDefault().AgentCertifElecFunc_ValidityDate,
+                    RemarksCertifElecFunc = o.Education_AgentCertifElecFunc == null ? null : o.Education_AgentCertifElecFunc.FirstOrDefault().AgentCertifElecFunc_Remark,
+
+                    //Certification Electrique Role OPP
+
+                    NiveauR = o.Education_AgentCertifElecOPP.FirstOrDefault().Education_CertifElecOPP == null ? null : o.Education_AgentCertifElecOPP.FirstOrDefault().Education_CertifElecOPP.CertifElecOPP_LevelR,
+                    SendingDateCertifElecOPP = o.Education_AgentCertifElecOPP == null ? null : o.Education_AgentCertifElecOPP.FirstOrDefault().AgentCertifElecOPP_SendingDate,
+                    ReturnDateCertifElecOPP = o.Education_AgentCertifElecOPP == null ? null : o.Education_AgentCertifElecOPP.FirstOrDefault().AgentCertifElecOPP_ReceivedDate,
+                    Certif_HierarchieCertifElecOPP = o.Education_AgentCertifElecOPP == null ? null : o.Education_AgentCertifElecOPP.FirstOrDefault().AgentCertifElecOPP_IsCertified,
+                    ValidityDateCertifElecOPP = o.Education_AgentCertifElecOPP == null ? null : o.Education_AgentCertifElecOPP.FirstOrDefault().AgentCertifElecOPP_ValidityDate,
+                    RemarksCertifElecOPP = o.Education_AgentCertifElecOPP == null ? null : o.Education_AgentCertifElecOPP.FirstOrDefault().AgentCertifElecOPP_Remark,
+
+                    //Passport Design
+
+                    TypePAssport = o.Education_AgentPassportDesign == null ? null : o.Education_AgentPassportDesign.FirstOrDefault().Education_PassportDesign.PassportDesign_Name,
+                    SendingDatePassportDesign = o.Education_AgentPassportDesign == null ? null : o.Education_AgentPassportDesign.FirstOrDefault().AgentPassportDesign_SendingDate,
+                    ReturnDatePassportDesign = o.Education_AgentPassportDesign == null ? null : o.Education_AgentPassportDesign.FirstOrDefault().AgentPassportDesign_ReceivedDate,
+                    Certif_HierarchiePassportDesign = o.Education_AgentPassportDesign == null ? null : o.Education_AgentPassportDesign.FirstOrDefault().AgentPassportDesign_IsCertified,
+                    RemarksPassportDesign = o.Education_AgentPassportDesign == null ? null : o.Education_AgentPassportDesign.FirstOrDefault().AgentPassportDesign_Remark,
+
+
+
+                }).ToList();
+
+
+                return dataSource;
+            }
+            catch (Exception ex)
+            {
+                FrmError frmError = new FrmError(ex.Message, ex.StackTrace);
+                frmError.ShowDialog();
+                return null;
+            }
+        }
+
+        private object GetDataSource(IPagedList<Education_Agent> listPaged)
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                object dataSource = listPaged.Select(o => new MyColumnCollectionDGAgentCertification(o)
+                {
+                    Agent_Matricule = o.Agent_Matricule,
+                    Agent_Fullname = o.Agent_FullName,
+                    Agent_FirstName = o.Agent_FirstName,
+                    Agent_Name = o.Agent_Name,
+                    Agent_Departement = o.Education_Service.Education_Departement.Departement_Name == null ? null :  o.Education_Service.Education_Departement.Departement_Name,
+                    Agent_Service = o.Education_Service.Service_Name,
+                    Agent_SousService = o.Education_SousService.SousService_Name == null ? null :  o.Education_SousService.SousService_Name,
+                    Agent_Etat = o.Agent_Etat,
+                    Agent_EntryDate = o.Agent_DateOfEntry,
+                    Agent_LastFunctionDate = o.Agent_DateFunction,
+                    Agent_Statut = o.Education_AgentStatus.AgentStatus_Name == null ? null : o.Education_AgentStatus.AgentStatus_Name,
+                    Agent_Fonction = o.Education_Function.Function_Name == null ? null :  o.Education_Function.Function_Name,
+                    Agent_Admin = o.Agent_Admin,
+
+
+
+
+                    //Passport Safety
+                    PassportSafety_LevelPS = o.Education_AgentPassportSafety == null ? null : o.Education_AgentPassportSafety.FirstOrDefault().AgentPassportSafety_LevelPS,
+                    Certif_Hierarchie = o.Education_AgentPassportSafety == null ? null : o.Education_AgentPassportSafety.FirstOrDefault().AgentPassportSafety_HierarchyCertification,
+                    SendingDate = o.Education_AgentPassportSafety == null ? null : o.Education_AgentPassportSafety.FirstOrDefault().AgentPassportSafety_SendingDate,
+                    ReturnDate = o.Education_AgentPassportSafety == null ? null : o.Education_AgentPassportSafety.FirstOrDefault().AgentPassportSafety_ReturnDate,
+                    PassportRemarks = o.Education_AgentPassportSafety == null ? null : o.Education_AgentPassportSafety.FirstOrDefault().AgentPassportSafety_Remarks,
+                    PassportRemarkPay = o.Education_AgentPassportSafety == null ? null : o.Education_AgentPassportSafety.FirstOrDefault().AgentPassportSafety_PayRemarks,
+
+                    //Passport Business
+
+                    Description = o.Education_AgentPassportBusiness == null ? null : o.Education_AgentPassportBusiness.FirstOrDefault().Education_PassportBusiness.PassportBusiness_Name,
+                    SendingDatePassportBusiness = o.Education_AgentPassportBusiness == null ? null : o.Education_AgentPassportBusiness.FirstOrDefault().AgentPassportBusiness_SendingDate,
+                    ReturnDatePassportBusiness = o.Education_AgentPassportBusiness == null ? null : o.Education_AgentPassportBusiness.FirstOrDefault().AgentPassportBusiness_ReturnDate,
+                    Certif_HierarchiePassportBusiness = o.Education_AgentPassportBusiness == null ? null : o.Education_AgentPassportBusiness.FirstOrDefault().AgentPassportBusiness_HierarchyCertification,
+                    PassportRemarksPassportBusiness = o.Education_AgentPassportBusiness == null ? null : o.Education_AgentPassportBusiness.FirstOrDefault().AgentPassportBusiness_Remark,
+
+
+                    //Certification Electrique Role Function
+
+                    NiveauB = o.Education_AgentCertifElecFunc == null ? null : o.Education_AgentCertifElecFunc.FirstOrDefault().Education_CertifElecFunc.CertifElecFunc_LevelB,
+                    SendingDateCertifElecFunc = o.Education_AgentCertifElecFunc == null ? null : o.Education_AgentCertifElecFunc.FirstOrDefault().AgentCertifElecFunc_SendingDate,
+                    ReturnDateCertifElecFunc = o.Education_AgentCertifElecFunc == null ? null : o.Education_AgentCertifElecFunc.FirstOrDefault().AgentCertifElecFunc_ReceivedDate,
+                    Certif_HierarchieCertifElecFunc = o.Education_AgentCertifElecFunc == null ? null : o.Education_AgentCertifElecFunc.FirstOrDefault().AgentCertifElecFunc_IsCertified,
+                    ValidityDateCertifElecFunc = o.Education_AgentCertifElecFunc == null ? null : o.Education_AgentCertifElecFunc.FirstOrDefault().AgentCertifElecFunc_ValidityDate,
+                    RemarksCertifElecFunc = o.Education_AgentCertifElecFunc == null ? null : o.Education_AgentCertifElecFunc.FirstOrDefault().AgentCertifElecFunc_Remark,
+
+                    //Certification Electrique Role OPP
+
+                    NiveauR = o.Education_AgentCertifElecOPP.FirstOrDefault().Education_CertifElecOPP == null ? null : o.Education_AgentCertifElecOPP.FirstOrDefault().Education_CertifElecOPP.CertifElecOPP_LevelR,
+                    SendingDateCertifElecOPP = o.Education_AgentCertifElecOPP == null ? null : o.Education_AgentCertifElecOPP.FirstOrDefault().AgentCertifElecOPP_SendingDate,
+                    ReturnDateCertifElecOPP = o.Education_AgentCertifElecOPP == null ? null : o.Education_AgentCertifElecOPP.FirstOrDefault().AgentCertifElecOPP_ReceivedDate,
+                    Certif_HierarchieCertifElecOPP = o.Education_AgentCertifElecOPP == null ? null : o.Education_AgentCertifElecOPP.FirstOrDefault().AgentCertifElecOPP_IsCertified,
+                    ValidityDateCertifElecOPP = o.Education_AgentCertifElecOPP == null ? null : o.Education_AgentCertifElecOPP.FirstOrDefault().AgentCertifElecOPP_ValidityDate,
+                    RemarksCertifElecOPP = o.Education_AgentCertifElecOPP == null ? null : o.Education_AgentCertifElecOPP.FirstOrDefault().AgentCertifElecOPP_Remark,
+
+                    //Passport Design
+
+                    TypePAssport = o.Education_AgentPassportDesign == null ? null : o.Education_AgentPassportDesign.FirstOrDefault().Education_PassportDesign.PassportDesign_Name,
+                    SendingDatePassportDesign = o.Education_AgentPassportDesign == null ? null : o.Education_AgentPassportDesign.FirstOrDefault().AgentPassportDesign_SendingDate,
+                    ReturnDatePassportDesign = o.Education_AgentPassportDesign == null ? null : o.Education_AgentPassportDesign.FirstOrDefault().AgentPassportDesign_ReceivedDate,
+                    Certif_HierarchiePassportDesign = o.Education_AgentPassportDesign == null ? null : o.Education_AgentPassportDesign.FirstOrDefault().AgentPassportDesign_IsCertified,
+                    RemarksPassportDesign = o.Education_AgentPassportDesign == null ? null : o.Education_AgentPassportDesign.FirstOrDefault().AgentPassportDesign_Remark,
+
+
+
+                }).ToList();
+
                 lblMin.Text = listPaged.FirstItemOnPage.ToString();
                 lblMax.Text = listPaged.LastItemOnPage.ToString();
                 return dataSource;
             }
             catch (Exception ex)
             {
-                return listPaged;
+                throw ex;
             }
         }
 
@@ -558,6 +720,46 @@ namespace Module_Education.Forms.UserControls
         {
             FrmEditCertificate frmEditCertificate = new FrmEditCertificate();
             frmEditCertificate.ShowDialog();
+        }
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            if (listUserPaged != null)
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                tbNbrRows.Text = listUserPaged.TotalItemCount.ToString();
+
+                listUserPaged = await LoadTaskDatagridAgent(1, listUserPaged.TotalItemCount);
+                AdvDg_Certifications.DataSource = GetDataSource(listUserPaged);
+                PaintCellHeaders(AdvDg_Certifications);
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadDatagridAgentAsync();
+        }
+
+        private async void btn_Next_Click(object sender, EventArgs e)
+        {
+            if (listUserPaged.HasNextPage)
+            {
+
+                listUserPaged = await LoadTaskDatagridAgent(++pageNumber, pageSize);
+
+                btn_NextCertification.Enabled = listUserPaged.HasPreviousPage;
+                btn_Previous.Enabled = listUserPaged.HasNextPage;
+
+                AdvDg_Certifications.DataSource = GetDataSource(listUserPaged);
+                //dG_Agents.DataSource = listUserPaged;
+                AdvDg_Certifications.Refresh();
+            }
+        }
+
+        private void btn_Previous_Click(object sender, EventArgs e)
+        {
+          
         }
     }
 }

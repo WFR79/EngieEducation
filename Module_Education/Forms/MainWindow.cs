@@ -33,6 +33,8 @@ namespace Module_Education
         public static List<Education_Agent> globalListCertificateAgents;
         public static AgentDataAccess dbAgent = new AgentDataAccess();
 
+        static CFNEducation_FormationEntities StaticdbEntities = new CFNEducation_FormationEntities();
+
         CFNEducation_FormationEntities dbEntities = new CFNEducation_FormationEntities();
 
         private Button bouttonMenuPressed;
@@ -94,25 +96,32 @@ namespace Module_Education
                 ApplicationDeployment cd = ApplicationDeployment.CurrentDeployment;
                 this.Text = "Module Education Version : " + cd.CurrentVersion.ToString();
 
-
-
             }
-            this.Size = new Size(1366, 720);
+
+            //this.Top = Screen.PrimaryScreen.WorkingArea.Top + 30;
+
+            //this.Height = Screen.PrimaryScreen.WorkingArea.Height - (30 * 2);
+
+            this.Size = new Size(Screen.PrimaryScreen.WorkingArea.Width - 80 
+                , Screen.PrimaryScreen.WorkingArea.Height - 120);
+            //this.Location = Screen.AllScreens[1].WorkingArea.Location;
 
             prevState = this.WindowState;
             panel1Size = panel1.Size;
             panelMainSize = panelMain.Size;
             //flowPanelMenuSize = flowPanelMenu.Size;
-
+            ShowIconTaskbar();
             Thread y = new Thread(LoadEducation_FormationsThread);
             y.Start();
             LoadMainWindow();
-            //lblNoticeBeta.Left = (this.ClientSize.Width - lblNoticeBeta.Width) / 2;
-            //lblNoticeBeta.Top = (this.ClientSize.Height - lblNoticeBeta.Height) / 2;
-            //lblBetaVersion.Left = (this.ClientSize.Width - lblBetaVersion.Width) / 2;
-            //lblBetaVersion.Top = (this.ClientSize.Height - lblBetaVersion.Height) / 2;
-            //lblTitleApp.Left = (this.ClientSize.Width - lblTitleApp.Width) / 2;
-            //lblTitleApp.Top = (this.ClientSize.Height - lblTitleApp.Height) / 2;
+        }
+
+        private void ShowIconTaskbar()
+        {
+            //notifyIcon1.Icon =
+            //   new System.Drawing.Icon(System.Reflection.Assembly.GetExecutingAssembly()
+            //       .Location + @"\..\..\Resources\engie1.ico");
+            //notifyIcon1.Visible = true;
         }
 
         private void LoadMainWindow()
@@ -154,7 +163,6 @@ namespace Module_Education
             //UC_Education_Formation.LoadDatagriEducation_Formations();
 
         }
-
 
         private void test1_Load(object sender, EventArgs e)
         {
@@ -559,7 +567,7 @@ namespace Module_Education
         {
             Thread y = new Thread(LoadUsersThread);
             y.Start();
-            Education_FormationDataAccess db = new Education_FormationDataAccess();
+            FormationRepository db = new FormationRepository();
             globalListEducation_Formations = db.LoadAllEducation_Formations();
 
 
@@ -571,15 +579,13 @@ namespace Module_Education
             y.Start();
             AgentDataAccess db = new AgentDataAccess();
             globalListAgents = db.LoadAllAgents();
-            UC_Agent.dtAgents = ToDataTable<Education_Agent>(globalListAgents);
-
-
         }
 
         private static void LoadCertificateAgents()
         {
-            globalListCertificateAgents = dbAgent.LoadAllAgentsCertificate();
-
+            globalListCertificateAgents = StaticdbEntities.Education_Agent
+                        //    .Include("Education_Service")
+                        .ToList();
         }
 
         public static DataTable ToDataTable<T>(List<T> items)

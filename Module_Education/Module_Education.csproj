@@ -16,9 +16,9 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>\\nw1ebl1.eib.electrabel.be\HUBP_AD\MAN542W\App\</PublishUrl>
+    <PublishUrl>V:\CORP001\Applaunch\XP\Synapse\1.2\Dev\Module_Education\</PublishUrl>
     <Install>true</Install>
-    <InstallFrom>Unc</InstallFrom>
+    <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
     <UpdateInterval>7</UpdateInterval>
@@ -27,7 +27,6 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <PublisherName>Engie</PublisherName>
-    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <ApplicationRevision>17</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
@@ -66,13 +65,11 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
-    <NoWin32Manifest>true</NoWin32Manifest>
+    <ApplicationIcon>engieIco.ico</ApplicationIcon>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
-  </PropertyGroup>
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="AdvancedDataGridView, Version=1.1.24312.6, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DG.AdvancedDataGridView.1.1.24312.6\lib\net40\AdvancedDataGridView.dll</HintPath>
@@ -96,14 +93,11 @@
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
-    <Reference Include="SynapseListView, Version=3.5.0.24390, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\SynapseListView\bin\Debug\SynapseListView.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web" />
@@ -185,6 +179,12 @@
     <Compile Include="Forms\FrmEquivalenceComment.Designer.cs">
       <DependentUpon>FrmEquivalenceComment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmError.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmError.Designer.cs">
+      <DependentUpon>FrmError.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmFormation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -227,6 +227,7 @@
     <Compile Include="Forms\UserControls\UC_Services.Designer.cs">
       <DependentUpon>UC_Services.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\EducationHelper.cs" />
     <Compile Include="Models\Education_Agent.cs">
       <DependentUpon>CFNFormationDataModel.tt</DependentUpon>
     </Compile>
@@ -406,7 +407,7 @@
     <Compile Include="Repositories\CompetenceDataAccess.cs" />
     <Compile Include="Repositories\EquipeDataAccess.cs" />
     <Compile Include="Repositories\FormationCategoryDataAccess.cs" />
-    <Compile Include="Repositories\FormationDataAccess.cs" />
+    <Compile Include="Repositories\FormationRepository.cs" />
     <Compile Include="Repositories\FormationDossierRepository.cs" />
     <Compile Include="Repositories\FormationDossierTypeRepository.cs" />
     <Compile Include="Repositories\FormationProvider.cs" />
@@ -430,6 +431,7 @@
     <Compile Include="Repositories\PassportDesignRepository.cs" />
     <Compile Include="Repositories\PassportSafetyRepository.cs" />
     <Compile Include="Repositories\ProviderDataRepository.cs" />
+    <Compile Include="Repositories\RepositoryBase.cs" />
     <Compile Include="Repositories\RoleAstreinteDataAccess.cs" />
     <Compile Include="Repositories\RoleEPIDataAccess.cs" />
     <Compile Include="Repositories\RouteAgentRepository.cs" />
@@ -524,6 +526,9 @@
     <EmbeddedResource Include="Forms\FrmEquivalenceComment.resx">
       <DependentUpon>FrmEquivalenceComment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmError.resx">
+      <DependentUpon>FrmError.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmFormation.resx">
       <DependentUpon>FrmFormation.cs</DependentUpon>
     </EmbeddedResource>
@@ -599,6 +604,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="engieIco.ico" />
     <Content Include="Models\CFNFormationDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CFNFormationDataModel.edmx</DependentUpon>
@@ -649,6 +655,7 @@
     <Content Include="Resources\img\baseline_person_black_36dp.png" />
     <Content Include="Resources\img\engie-digital.jpg" />
     <Content Include="Resources\img\engie.ico.png" />
+    <Content Include="Resources\img\engieIco.ico" />
     <Content Include="Resources\img\engieIco.jpg" />
     <Content Include="Resources\img\exit.png" />
     <Content Include="Resources\img\outline_clear_black_24dp.png" />
@@ -672,6 +679,10 @@
     <ProjectReference Include="..\SuiteSecurity\SynapseCore.csproj">
       <Project>{7fa90113-c38c-4325-8e08-ebae035cc562}</Project>
       <Name>SynapseCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SynapseListView\SynapseListView.csproj">
+      <Project>{18feda0c-d147-4286-b39a-01204808106a}</Project>
+      <Name>SynapseListView</Name>
     </ProjectReference>
     <ProjectReference Include="..\SynapseRoomPicker\SynapseRoomPicker.csproj">
       <Project>{CD18C584-FAF4-45EC-8D3B-DE4560AD876C}</Project>
@@ -699,4 +710,8 @@
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+  <PropertyGroup>
+    <PreBuildEvent>"$(SolutionDir)\SynapseResourceBuilder\bin\debug\SynapseResourceBuilder.exe" "scan:$(ProjectDir)*" "target:$(ProjectDir)*" db:no
+xcopy "$(ProjectDir)Resources\*.*" "$(TargetDir)Resources\*.*" /Y</PreBuildEvent>
+  </PropertyGroup>
 </Project>

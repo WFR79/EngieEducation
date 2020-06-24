@@ -18,7 +18,7 @@ namespace Module_Education.Forms
     {
         public string typeCertificate;
         CFNEducation_FormationEntities dbEntities = new CFNEducation_FormationEntities();
-        private Education_FormationDataAccess db = new Education_FormationDataAccess();
+        private FormationRepository db = new FormationRepository();
         private SessionUniteDataAccess dbSessionUnite = new SessionUniteDataAccess();
         private ProviderDataRepository dbProvider = new ProviderDataRepository();
         private CompetenceDataAccess dbCompetence = new CompetenceDataAccess();

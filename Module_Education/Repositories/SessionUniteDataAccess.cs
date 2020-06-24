@@ -6,8 +6,8 @@ using System.Web;
  
 namespace Module_Education
 {
-    public class SessionUniteDataAccess
-    {
+    public class SessionUniteDataAccess : RepositoryBase
+    { 
         private CFNEducation_FormationEntities db = new CFNEducation_FormationEntities();
 
         public SessionUniteDataAccess()

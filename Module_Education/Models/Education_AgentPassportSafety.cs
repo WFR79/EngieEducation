@@ -24,7 +24,7 @@ namespace Module_Education.Models
         public string AgentPassportSafety_PayRemarks { get; set; }
         public Nullable<long> AgentPassportSafety_Passport { get; set; }
     
-        public virtual Education_PassportSafety Education_PassportSafety { get; set; }
         public virtual Education_Agent Education_Agent { get; set; }
+        public virtual Education_PassportSafety Education_PassportSafety { get; set; }
     }
 }

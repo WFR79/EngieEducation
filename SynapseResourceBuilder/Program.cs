@@ -14,7 +14,7 @@
 
     public class Program
     {
-        private static Dictionary<string, Dictionary<string, string>> dic= new Dictionary<string, Dictionary<string, string>>();
+        private static Dictionary<string, Dictionary<string, string>> dic = new Dictionary<string, Dictionary<string, string>>();
         private static IList<SynapseLanguage> Languages = SynapseLanguage.Load();
         private static ILog logger = LogManager.GetLogger("SynapseResourcesLogger");
 
@@ -22,10 +22,10 @@
         {
             Console.WriteLine("<Loading existing control resource>");
             Console.WriteLine("-----------------------------------");
-            string[] filePaths = Directory.GetFiles(c_directory+@"\Resources\", "*.txt", SearchOption.AllDirectories);
+            string[] filePaths = Directory.GetFiles(c_directory + @"\Resources\", "*.txt", SearchOption.AllDirectories);
             foreach (string filename in filePaths)
             {
-                Regex regex = new Regex(@".*\x2E(?<Culture>.*)\x2E.*",RegexOptions.Compiled | RegexOptions.Multiline);
+                Regex regex = new Regex(@".*\x2E(?<Culture>.*)\x2E.*", RegexOptions.Compiled | RegexOptions.Multiline);
 
                 string culture = null;
                 Match match = regex.Match(filename);
@@ -39,7 +39,7 @@
 
                 dic[culture] = new Dictionary<string, string>();
 
-                Console.WriteLine("Loading "+Path.GetFileName(filename));
+                Console.WriteLine("Loading " + Path.GetFileName(filename));
                 StreamReader re = File.OpenText(filename);
                 string input = null;
                 while ((input = re.ReadLine()) != null)
@@ -57,7 +57,7 @@
             if (!dic.ContainsKey("Default"))
                 dic["Default"] = new Dictionary<string, string>();
             foreach (SynapseLanguage lang in Languages)
-            { 
+            {
                 if (!dic.ContainsKey(lang.CULTURE))
                     dic[lang.CULTURE] = new Dictionary<string, string>();
             }
@@ -164,7 +164,7 @@
                 }
                 else
                     if (dbvalue.Substring(0, 1).ToUpper() == "Y")
-                        GenerateDBFields();
+                    GenerateDBFields();
                 Console.WriteLine("\n");
                 Console.WriteLine("<Saving text files>");
                 Console.WriteLine("-------------------");
@@ -176,7 +176,7 @@
 
                 foreach (SynapseLanguage lang in Languages)
                 {
-                    Console.WriteLine("Saving "+lang+" text file");
+                    Console.WriteLine("Saving " + lang + " text file");
                     writeStringResources(Path.Combine(resourceDirectory, "formLabels." + lang.CULTURE + ".txt"), dic[lang.CULTURE]);
                 }
 
@@ -198,8 +198,11 @@
                     else
                         if (System.IO.File.Exists(@"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin\resgen.exe"))
                             proc.StartInfo.FileName = @"C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\Bin\resgen.exe";
-                        else
-                            throw (new Exception("No resgen found"));
+                    else
+                        if (System.IO.File.Exists(@"C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\ResGen.exe"))
+                         proc.StartInfo.FileName = @"C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\ResGen.exe";
+                    else
+                        throw (new Exception("No resgen found"));
 
 
                     proc.StartInfo.WorkingDirectory = resourceDirectory;

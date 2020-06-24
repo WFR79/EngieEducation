@@ -95,7 +95,7 @@
             this.panel1.Controls.Add(this.comboGrpAgents);
             this.panel1.Location = new System.Drawing.Point(286, 73);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 326);
+            this.panel1.Size = new System.Drawing.Size(200, 118);
             this.panel1.TabIndex = 31;
             // 
             // btnDeleteGrp
@@ -145,13 +145,13 @@
             this.panelAgents.Controls.Add(this.comboAgents);
             this.panelAgents.Location = new System.Drawing.Point(17, 73);
             this.panelAgents.Name = "panelAgents";
-            this.panelAgents.Size = new System.Drawing.Size(200, 326);
+            this.panelAgents.Size = new System.Drawing.Size(200, 118);
             this.panelAgents.TabIndex = 29;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Module_Education.Properties.Resources.baseline_double_arrow_black_18dp;
-            this.pictureBox1.Location = new System.Drawing.Point(233, 205);
+            this.pictureBox1.Location = new System.Drawing.Point(232, 132);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(39, 40);
             this.pictureBox1.TabIndex = 30;
@@ -166,7 +166,7 @@
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.tbGrpAgentName);
             this.panel2.Controls.Add(this.lblGrpAgentNew);
-            this.panel2.Location = new System.Drawing.Point(17, 427);
+            this.panel2.Location = new System.Drawing.Point(515, 73);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(469, 118);
             this.panel2.TabIndex = 33;
@@ -228,7 +228,7 @@
             this.lblSelectedGrp.AutoSize = true;
             this.lblSelectedGrp.Font = new System.Drawing.Font("Arial", 10.25F);
             this.lblSelectedGrp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
-            this.lblSelectedGrp.Location = new System.Drawing.Point(512, 54);
+            this.lblSelectedGrp.Location = new System.Drawing.Point(20, 237);
             this.lblSelectedGrp.Name = "lblSelectedGrp";
             this.lblSelectedGrp.Size = new System.Drawing.Size(52, 16);
             this.lblSelectedGrp.TabIndex = 34;
@@ -239,16 +239,16 @@
             this.dgGrpAgent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgGrpAgent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgGrpAgent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgGrpAgent.BackgroundColor = System.Drawing.Color.White;
             this.dgGrpAgent.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgGrpAgent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgGrpAgent.FilterAndSortEnabled = true;
-            this.dgGrpAgent.Location = new System.Drawing.Point(506, 73);
+            this.dgGrpAgent.Location = new System.Drawing.Point(23, 267);
             this.dgGrpAgent.Name = "dgGrpAgent";
             this.dgGrpAgent.ReadOnly = true;
             this.dgGrpAgent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgGrpAgent.Size = new System.Drawing.Size(587, 472);
+            this.dgGrpAgent.Size = new System.Drawing.Size(1025, 285);
             this.dgGrpAgent.TabIndex = 35;
             this.dgGrpAgent.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.dgGrpAgent_FilterStringChanged);
             this.dgGrpAgent.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgGrpAgent_MouseClick_1);
@@ -257,6 +257,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.Controls.Add(this.dgGrpAgent);
             this.Controls.Add(this.lblSelectedGrp);
             this.Controls.Add(this.panel2);

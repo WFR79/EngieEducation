@@ -127,6 +127,7 @@
             this.Font = new System.Drawing.Font("Arial", 8.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmEquivalenceComment";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FrmEquivalenceComment";
             ((System.ComponentModel.ISupportInitialize)(this.l_PopUp)).EndInit();
             this.ResumeLayout(false);

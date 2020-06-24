@@ -51,8 +51,8 @@
                 {
                     Config clConfig = new Config(SynapseCore.Database.DBFunction.ConnectionName);
                     NewConnection = new DBConnection(0, ConnectionName);
-                    NewConnection.ConnectionString = "server=localhost\\SQLEXPRESS; database=SYNAPSE;integrated security=True;Pooling=false;MultipleActiveResultSets=True;";
-                    /* NewConnection.ConnectionString = "server=" + clConfig.ServerName + ";database=" + clConfig.DatabaseName + ";integrated security=True;Pooling=false;MultipleActiveResultSets=True;";*/ //Persist Security Info=false;Integrated Security=SSPI;
+                    //NewConnection.ConnectionString = "server=localhost\\SQLEXPRESS; database=SYNAPSE;integrated security=True;Pooling=false;MultipleActiveResultSets=True;";
+                    NewConnection.ConnectionString = "server=" + clConfig.ServerName + ";database=" + clConfig.DatabaseName + ";integrated security=True;Pooling=false;MultipleActiveResultSets=True;"; //Persist Security Info=false;Integrated Security=SSPI;
                 }
                 else
                 {

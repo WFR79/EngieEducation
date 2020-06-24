@@ -38,7 +38,7 @@ namespace Module_Education
         #endregion
 
         public BindingSource ds_Education_Formations = new BindingSource();
-        private Education_FormationDataAccess db = new Education_FormationDataAccess();
+        private FormationRepository db = new FormationRepository();
         private SessionUniteDataAccess dbSessionUnite = new SessionUniteDataAccess();
         private ProviderDataRepository dbProvider = new ProviderDataRepository();
         private CompetenceDataAccess dbCompetence = new CompetenceDataAccess();
@@ -46,7 +46,7 @@ namespace Module_Education
         private FormationDossierRepository dbFormationDossier = new FormationDossierRepository();
         private FormationDossierTypeRepository dbFormationDossierType = new FormationDossierTypeRepository();
         private UnitePriceRepository dbUnitePrice = new UnitePriceRepository();
-
+        private FormationRepository dbFormation= new FormationRepository();
         private RoutesFormationRepository dbMatrice = new RoutesFormationRepository();
         private InRouteFormationRepository dbMatriceFormation = new InRouteFormationRepository();
 
@@ -287,24 +287,28 @@ namespace Module_Education
                     //{
                     pageSize = Int32.Parse(tbNbrRows.Text);
 
-                    if (MainWindow.globalListEducation_Formations == null)
+                    if (FrmMain.globalListEducation_Formations == null)
                     {
+                        using (FormationRepository dbRep = new FormationRepository())
+                        {
+                            List<Education_Formation> listFormation = dbRep.LoadAllEducation_Formations();
+                            return listFormation.OrderBy(p => p.Formation_Id).ToPagedList(pagNumber, pageSize);
+                        };
+                        //return dbEntities.Education_Formation
+                        //.Include("Education_CategorieFormation")
+                        //.Include("Education_FormationProvider")
+                        //.Include("Education_FormationResultat")
+                        //.Include("Education_FormationSession")
+                        //.Include("Education_Matrice_Formation")
+                        //.Include("Education_UnitePrice")
+                        //.Include("Education_FormationDossier")
 
-                        return dbEntities.Education_Formation
-                        .Include("Education_CategorieFormation")
-                        .Include("Education_FormationProvider")
-                        .Include("Education_FormationResultat")
-                        .Include("Education_FormationSession")
-                        .Include("Education_Matrice_Formation")
-                        .Include("Education_UnitePrice")
-                        .Include("Education_FormationDossier")
-
-                        .OrderBy(p => p.Formation_Id).ToPagedList(pagNumber, pageSize);
+                        //.OrderBy(p => p.Formation_Id).ToPagedList(pagNumber, pageSize);
                         //dG_Education_Formations.DataSource = lEducation_Formations.ToPagedList(1, 100); ;
                     }
                     else
                     {
-                        return MainWindow.globalListEducation_Formations.ToPagedList(pagNumber, pageSize); ;
+                        return FrmMain.globalListEducation_Formations.ToPagedList(pagNumber, pageSize); ;
                         //dG_Education_Formations.DataSource = MainWindow.globalListEducation_Formations.ToPagedList(1, 100); 
                     }
                     //}
@@ -404,8 +408,9 @@ namespace Module_Education
                 Formation_YearOfCreation = o.Formation_YearOfCreation,
                 Formation_CapaciteMin = o.Formation_MinCapacity,
                 Formation_CapaciteMax = o.Formation_MaxCapacity,
-                FormationDossier = o.Education_FormationDossier.Count < 1 ? "" : dbEntities.Education_FormationDossier
-                    .Where(x => x.FormationDossier_Formation == o.Formation_Id).FirstOrDefault().FormationDossier_InfoFicheHyperLink,// If (o.Function == null) { null } else {o.Function.Function_Name}
+                FormationDossier = o.Education_FormationDossier.Count == 0 ? null : o.Education_FormationDossier.FirstOrDefault().FormationDossier_InfoFicheHyperLink,
+                //FormationDossier = o.Education_FormationDossier.Count < 1 ? "" : dbEntities.Education_FormationDossier
+                //    .Where(x => x.FormationDossier_Formation == o.Formation_Id).FirstOrDefault().FormationDossier_InfoFicheHyperLink,// If (o.Function == null) { null } else {o.Function.Function_Name}
                 Formation_CapaciteOptimale = o.Formation_OptimalCapacity,
 
 
@@ -433,8 +438,8 @@ namespace Module_Education
                 Agent_DateSeniority = o.Agent_DateSeniority,
                 Agent_DateOfEntry = o.Agent_DateOfEntry,
                 Agent_DateFunction = o.Agent_DateFunction,
-                Agent_Habilitation = o.Education_Habilitation == null ? null : o.Education_Habilitation.Habilitation_Name,
-                Agent_Status = o.Education_AgentStatus == null ? null : o.Education_AgentStatus.AgentStatus_Name,
+                Habilitation_Name = o.Education_Habilitation == null ? null : o.Education_Habilitation.Habilitation_Name,
+                AgentStatus_Name = o.Education_AgentStatus == null ? null : o.Education_AgentStatus.AgentStatus_Name,
                 Agent_Etat = o.Agent_Etat
 
 
@@ -697,12 +702,19 @@ namespace Module_Education
             try
             {
                 listUserPaged = await LoadDatagriUsers(CurrentFormation.Formation_SAP.ToString());
-                BindingSource source = new BindingSource
-                {
-                    DataSource = listUserPaged.ToList()
-                };
+                //BindingSource source = new BindingSource
+                //{
+                //    DataSource = listUserPaged.ToList()
+                //};
                 //source.ResetBindings(true);
-                advDv_AgentsOfFormation.DataSource = GetDataSource(listUserPaged);
+                List<Education_Agent> listAgentDistinct = new List<Education_Agent>();
+                foreach (var item in listUserPaged.ToList())
+                {
+                    var itemFound = listAgentDistinct.Where(i => i.Agent_FullName == item.Agent_FullName).FirstOrDefault();
+                    if(itemFound == null)
+                        listAgentDistinct.Add(item);
+                }
+                advDv_AgentsOfFormation.DataSource = GetDataSource(listAgentDistinct.ToPagedList(1, listAgentDistinct.Count));
                 advDv_AgentsOfFormation.Refresh();
             }
             catch (Exception ex)
@@ -1041,7 +1053,7 @@ namespace Module_Education
         private void CreateButtonSavingAgent()
         {
             Button ButtonSaveAgent = new Button();
-            ButtonSaveAgent.Location = new Point(16, 489);
+            ButtonSaveAgent.Location = new Point(16, 499);
             ButtonSaveAgent.Text = "Sauver";
             ButtonSaveAgent.Name = "ButtonSaveAgent";
 
@@ -1061,7 +1073,7 @@ namespace Module_Education
 
             // 
             Button ButtonCancelModificationAgent = new Button();
-            ButtonCancelModificationAgent.Location = new Point(116, 489);
+            ButtonCancelModificationAgent.Location = new Point(116, 499);
             ButtonCancelModificationAgent.Text = "Annuler";
             ButtonCancelModificationAgent.Name = "ButtonCancel";
             ButtonCancelModificationAgent.TabIndex = 91;
@@ -2068,7 +2080,10 @@ namespace Module_Education
             }
         }
 
-       
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadDatagriEducation_Formations();
+        }
     }
 }
 

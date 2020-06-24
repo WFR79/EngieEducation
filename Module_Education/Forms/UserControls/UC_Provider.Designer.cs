@@ -96,7 +96,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControlProvider.Controls.Add(this.tbListeAgents);
             this.tabControlProvider.Controls.Add(this.tbFicheAgent);
-            this.tabControlProvider.Font = new System.Drawing.Font("Arial", 8.25F);
+            this.tabControlProvider.Font = new System.Drawing.Font("Arial", 9.25F);
             this.tabControlProvider.Location = new System.Drawing.Point(0, 0);
             this.tabControlProvider.Name = "tabControlProvider";
             this.tabControlProvider.SelectedIndex = 0;
@@ -120,10 +120,10 @@
             this.tbListeAgents.Controls.Add(this.btn_PreviousAgent);
             this.tbListeAgents.Controls.Add(this.lblTiteLstAgent);
             this.tbListeAgents.Controls.Add(this.tbFiltre);
-            this.tbListeAgents.Location = new System.Drawing.Point(4, 23);
+            this.tbListeAgents.Location = new System.Drawing.Point(4, 24);
             this.tbListeAgents.Name = "tbListeAgents";
             this.tbListeAgents.Padding = new System.Windows.Forms.Padding(3);
-            this.tbListeAgents.Size = new System.Drawing.Size(1059, 528);
+            this.tbListeAgents.Size = new System.Drawing.Size(1059, 527);
             this.tbListeAgents.TabIndex = 0;
             this.tbListeAgents.Text = "Liste";
             // 
@@ -131,9 +131,9 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(457, 483);
+            this.label4.Location = new System.Drawing.Point(457, 482);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(11, 14);
+            this.label4.Size = new System.Drawing.Size(12, 16);
             this.label4.TabIndex = 26;
             this.label4.Text = "-";
             // 
@@ -142,9 +142,9 @@
             this.lblMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblMax.AutoSize = true;
             this.lblMax.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.lblMax.Location = new System.Drawing.Point(467, 483);
+            this.lblMax.Location = new System.Drawing.Point(467, 482);
             this.lblMax.Name = "lblMax";
-            this.lblMax.Size = new System.Drawing.Size(35, 14);
+            this.lblMax.Size = new System.Drawing.Size(42, 16);
             this.lblMax.TabIndex = 25;
             this.lblMax.Text = "label3";
             this.lblMax.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -154,9 +154,9 @@
             this.lblMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblMin.AutoSize = true;
             this.lblMin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.lblMin.Location = new System.Drawing.Point(422, 483);
+            this.lblMin.Location = new System.Drawing.Point(422, 482);
             this.lblMin.Name = "lblMin";
-            this.lblMin.Size = new System.Drawing.Size(35, 14);
+            this.lblMin.Size = new System.Drawing.Size(42, 16);
             this.lblMin.TabIndex = 24;
             this.lblMin.Text = "label2";
             this.lblMin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -168,7 +168,7 @@
             this.lblNbrProviders.Enabled = false;
             this.lblNbrProviders.Font = new System.Drawing.Font("Arial", 9.25F);
             this.lblNbrProviders.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(115)))), ((int)(((byte)(204)))));
-            this.lblNbrProviders.Location = new System.Drawing.Point(13, 473);
+            this.lblNbrProviders.Location = new System.Drawing.Point(13, 472);
             this.lblNbrProviders.Name = "lblNbrProviders";
             this.lblNbrProviders.Size = new System.Drawing.Size(42, 16);
             this.lblNbrProviders.TabIndex = 23;
@@ -188,7 +188,7 @@
             // 
             this.tbNbrRowsProviders.Location = new System.Drawing.Point(904, 15);
             this.tbNbrRowsProviders.Name = "tbNbrRowsProviders";
-            this.tbNbrRowsProviders.Size = new System.Drawing.Size(36, 20);
+            this.tbNbrRowsProviders.Size = new System.Drawing.Size(36, 22);
             this.tbNbrRowsProviders.TabIndex = 21;
             this.tbNbrRowsProviders.Text = "50";
             // 
@@ -215,9 +215,10 @@
             // 
             // dG_Providers
             // 
-            this.dG_Providers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.dG_Providers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dG_Providers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dG_Providers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dG_Providers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dG_Providers.FilterAndSortEnabled = true;
             this.dG_Providers.Location = new System.Drawing.Point(13, 47);
@@ -225,14 +226,15 @@
             this.dG_Providers.ReadOnly = true;
             this.dG_Providers.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dG_Providers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dG_Providers.Size = new System.Drawing.Size(1040, 419);
+            this.dG_Providers.Size = new System.Drawing.Size(1040, 418);
             this.dG_Providers.TabIndex = 18;
+            this.dG_Providers.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dG_Providers_CellContentDoubleClick);
             this.dG_Providers.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dG_Providers_MouseClick);
             // 
             // progressBarDgAgent
             // 
             this.progressBarDgAgent.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.progressBarDgAgent.Location = new System.Drawing.Point(969, 483);
+            this.progressBarDgAgent.Location = new System.Drawing.Point(969, 482);
             this.progressBarDgAgent.Name = "progressBarDgAgent";
             this.progressBarDgAgent.Size = new System.Drawing.Size(55, 23);
             this.progressBarDgAgent.TabIndex = 17;
@@ -242,7 +244,7 @@
             // 
             this.btn_NextAgent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_NextAgent.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.btn_NextAgent.Location = new System.Drawing.Point(505, 479);
+            this.btn_NextAgent.Location = new System.Drawing.Point(505, 478);
             this.btn_NextAgent.Name = "btn_NextAgent";
             this.btn_NextAgent.Size = new System.Drawing.Size(75, 23);
             this.btn_NextAgent.TabIndex = 16;
@@ -253,7 +255,7 @@
             // 
             this.btn_PreviousAgent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_PreviousAgent.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.btn_PreviousAgent.Location = new System.Drawing.Point(345, 479);
+            this.btn_PreviousAgent.Location = new System.Drawing.Point(345, 478);
             this.btn_PreviousAgent.Name = "btn_PreviousAgent";
             this.btn_PreviousAgent.Size = new System.Drawing.Size(75, 23);
             this.btn_PreviousAgent.TabIndex = 15;
@@ -275,7 +277,7 @@
             // 
             this.tbFiltre.Location = new System.Drawing.Point(386, 17);
             this.tbFiltre.Name = "tbFiltre";
-            this.tbFiltre.Size = new System.Drawing.Size(261, 20);
+            this.tbFiltre.Size = new System.Drawing.Size(261, 22);
             this.tbFiltre.TabIndex = 7;
             // 
             // tbFicheAgent
@@ -309,10 +311,10 @@
             this.tbFicheAgent.Controls.Add(this.labelActif);
             this.tbFicheAgent.Controls.Add(this.labelMatricule);
             this.tbFicheAgent.Font = new System.Drawing.Font("Arial", 8.25F);
-            this.tbFicheAgent.Location = new System.Drawing.Point(4, 23);
+            this.tbFicheAgent.Location = new System.Drawing.Point(4, 24);
             this.tbFicheAgent.Name = "tbFicheAgent";
             this.tbFicheAgent.Padding = new System.Windows.Forms.Padding(3);
-            this.tbFicheAgent.Size = new System.Drawing.Size(1059, 528);
+            this.tbFicheAgent.Size = new System.Drawing.Size(1059, 527);
             this.tbFicheAgent.TabIndex = 1;
             this.tbFicheAgent.Text = "Fiche";
             this.tbFicheAgent.UseVisualStyleBackColor = true;

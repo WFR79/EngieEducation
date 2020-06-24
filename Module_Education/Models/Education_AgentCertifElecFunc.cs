@@ -23,7 +23,7 @@ namespace Module_Education.Models
         public Nullable<long> AgentCertifElecFunc_Agent { get; set; }
         public Nullable<long> AgentCertifElecFunc_Certification { get; set; }
     
-        public virtual Education_CertifElecFunc Education_CertifElecFunc { get; set; }
         public virtual Education_Agent Education_Agent { get; set; }
+        public virtual Education_CertifElecFunc Education_CertifElecFunc { get; set; }
     }
 }

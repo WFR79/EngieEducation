@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Module_Education.Repositories
 {
-    public class RouteAgentRepository
+    public class RouteAgentRepository : RepositoryBase
     {
         private CFNEducation_FormationEntities db = new CFNEducation_FormationEntities();
 

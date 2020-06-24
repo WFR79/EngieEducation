@@ -33,7 +33,7 @@ namespace Module_Education.Classes
         public string Agent_Admin { get; set; }
 
         [DisplayName("Habilitation")]
-        public string Agent_Habilitation { get; set; }
+        public string Habilitation_Name { get; set; }
 
         [DisplayName("Chargé de travaux")]
         public bool? Agent_IsWorksManager { get; set; }
@@ -48,7 +48,7 @@ namespace Module_Education.Classes
         public DateTime? Agent_DateFunction { get; set; }
 
         [DisplayName("Statut")]
-        public string Agent_Status { get; set; }
+        public string AgentStatus_Name { get; set; }
 
         [DisplayName("Etat")]
         public bool? Agent_Etat { get; set; }

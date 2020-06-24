@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle1 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle2 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle3 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle4 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle5 = new SynapseAdvancedControls.HeaderStateStyle();
-            SynapseAdvancedControls.HeaderStateStyle headerStateStyle6 = new SynapseAdvancedControls.HeaderStateStyle();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Trajets");
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle49 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle50 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle51 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle52 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle53 = new SynapseAdvancedControls.HeaderStateStyle();
+            SynapseAdvancedControls.HeaderStateStyle headerStateStyle54 = new SynapseAdvancedControls.HeaderStateStyle();
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Trajets");
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.picViewEquivalence = new System.Windows.Forms.PictureBox();
             this.headerFormatStyle1 = new SynapseAdvancedControls.HeaderFormatStyle();
@@ -140,15 +140,15 @@
             // 
             // headerFormatStyle1
             // 
-            this.headerFormatStyle1.Hot = headerStateStyle1;
-            this.headerFormatStyle1.Normal = headerStateStyle2;
-            this.headerFormatStyle1.Pressed = headerStateStyle3;
+            this.headerFormatStyle1.Hot = headerStateStyle49;
+            this.headerFormatStyle1.Normal = headerStateStyle50;
+            this.headerFormatStyle1.Pressed = headerStateStyle51;
             // 
             // headerFormatStyle2
             // 
-            this.headerFormatStyle2.Hot = headerStateStyle4;
-            this.headerFormatStyle2.Normal = headerStateStyle5;
-            this.headerFormatStyle2.Pressed = headerStateStyle6;
+            this.headerFormatStyle2.Hot = headerStateStyle52;
+            this.headerFormatStyle2.Normal = headerStateStyle53;
+            this.headerFormatStyle2.Pressed = headerStateStyle54;
             // 
             // toolTipExcel
             // 
@@ -192,6 +192,7 @@
             this.tabControlRoutes.Controls.Add(this.tabRoute);
             this.tabControlRoutes.Controls.Add(this.tabcontrolTrajet);
             this.tabControlRoutes.Controls.Add(this.tabGrpAgent);
+            this.tabControlRoutes.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControlRoutes.Location = new System.Drawing.Point(4, 4);
             this.tabControlRoutes.Name = "tabControlRoutes";
             this.tabControlRoutes.SelectedIndex = 0;
@@ -442,7 +443,7 @@
             this.comboGrpAgent.FormattingEnabled = true;
             this.comboGrpAgent.Location = new System.Drawing.Point(315, 113);
             this.comboGrpAgent.Name = "comboGrpAgent";
-            this.comboGrpAgent.Size = new System.Drawing.Size(226, 21);
+            this.comboGrpAgent.Size = new System.Drawing.Size(226, 23);
             this.comboGrpAgent.TabIndex = 95;
             // 
             // comboAgent
@@ -452,7 +453,7 @@
             this.comboAgent.FormattingEnabled = true;
             this.comboAgent.Location = new System.Drawing.Point(315, 34);
             this.comboAgent.Name = "comboAgent";
-            this.comboAgent.Size = new System.Drawing.Size(226, 21);
+            this.comboAgent.Size = new System.Drawing.Size(226, 23);
             this.comboAgent.TabIndex = 94;
             // 
             // label3
@@ -582,16 +583,18 @@
             // 
             // treeW_Routes
             // 
+            this.treeW_Routes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.treeW_Routes.BackColor = System.Drawing.Color.LightSkyBlue;
             this.treeW_Routes.Font = new System.Drawing.Font("Arial", 10F);
             this.treeW_Routes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(105)))), ((int)(((byte)(167)))));
             this.treeW_Routes.Location = new System.Drawing.Point(413, 33);
             this.treeW_Routes.Name = "treeW_Routes";
-            treeNode1.Name = "Node0";
-            treeNode1.NodeFont = new System.Drawing.Font("Arial", 12.25F, System.Drawing.FontStyle.Bold);
-            treeNode1.Text = "Trajets";
+            treeNode9.Name = "Node0";
+            treeNode9.NodeFont = new System.Drawing.Font("Arial", 12.25F, System.Drawing.FontStyle.Bold);
+            treeNode9.Text = "Trajets";
             this.treeW_Routes.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1});
+            treeNode9});
             this.treeW_Routes.Size = new System.Drawing.Size(625, 377);
             this.treeW_Routes.TabIndex = 34;
             this.treeW_Routes.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeW_Provider_AfterSelectAsync);
@@ -811,10 +814,11 @@
             this.tabGrpAgent.Controls.Add(this.panel1);
             this.tabGrpAgent.Controls.Add(this.lblAgentTitle);
             this.tabGrpAgent.Controls.Add(this.panelDgAgentMatrice);
-            this.tabGrpAgent.Location = new System.Drawing.Point(4, 22);
+            this.tabGrpAgent.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabGrpAgent.Location = new System.Drawing.Point(4, 24);
             this.tabGrpAgent.Name = "tabGrpAgent";
             this.tabGrpAgent.Padding = new System.Windows.Forms.Padding(3);
-            this.tabGrpAgent.Size = new System.Drawing.Size(1055, 639);
+            this.tabGrpAgent.Size = new System.Drawing.Size(1055, 637);
             this.tabGrpAgent.TabIndex = 2;
             this.tabGrpAgent.Text = "Agents et Groupes agent";
             this.tabGrpAgent.UseVisualStyleBackColor = true;
@@ -832,14 +836,13 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel1.Controls.Add(this.dgGrpAgentsMatrice);
             this.panel1.Location = new System.Drawing.Point(9, 425);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(987, 196);
+            this.panel1.Size = new System.Drawing.Size(458, 194);
             this.panel1.TabIndex = 49;
             // 
             // dgGrpAgentsMatrice
@@ -847,13 +850,15 @@
             this.dgGrpAgentsMatrice.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgGrpAgentsMatrice.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgGrpAgentsMatrice.BackgroundColor = System.Drawing.Color.White;
+            this.dgGrpAgentsMatrice.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgGrpAgentsMatrice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgGrpAgentsMatrice.FilterAndSortEnabled = true;
             this.dgGrpAgentsMatrice.Location = new System.Drawing.Point(6, 5);
             this.dgGrpAgentsMatrice.Name = "dgGrpAgentsMatrice";
             this.dgGrpAgentsMatrice.ReadOnly = true;
-            this.dgGrpAgentsMatrice.Size = new System.Drawing.Size(978, 178);
+            this.dgGrpAgentsMatrice.Size = new System.Drawing.Size(449, 186);
             this.dgGrpAgentsMatrice.TabIndex = 0;
             this.dgGrpAgentsMatrice.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgGrpAgentsMatrice_MouseClick);
             // 
@@ -885,6 +890,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgAgentsMatrice.BackgroundColor = System.Drawing.Color.White;
+            this.dgAgentsMatrice.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgAgentsMatrice.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgAgentsMatrice.FilterAndSortEnabled = true;
             this.dgAgentsMatrice.Location = new System.Drawing.Point(6, 5);

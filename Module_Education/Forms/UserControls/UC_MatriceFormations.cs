@@ -64,7 +64,7 @@ namespace Module_Education.Forms.UserControls
         public Delegate PointerFormation;
 
         public BindingSource ds_Education_Formations = new BindingSource();
-        private Education_FormationDataAccess db = new Education_FormationDataAccess();
+        private FormationRepository db = new FormationRepository();
         private SessionUniteDataAccess dbSessionUnite = new SessionUniteDataAccess();
         private ProviderDataRepository dbProvider = new ProviderDataRepository();
         private CompetenceDataAccess dbCompetence = new CompetenceDataAccess();
@@ -748,8 +748,8 @@ namespace Module_Education.Forms.UserControls
                 Agent_DateSeniority = o.Education_Agent.Agent_DateSeniority,
                 Agent_DateOfEntry = o.Education_Agent.Agent_DateOfEntry,
                 Agent_DateFunction = o.Education_Agent.Agent_DateFunction,
-                Agent_Habilitation = o.Education_Agent.Education_Habilitation == null ? null : o.Education_Agent.Education_Habilitation.Habilitation_Name,
-                Agent_Status = o.Education_Agent.Education_AgentStatus == null ? null : o.Education_Agent.Education_AgentStatus.AgentStatus_Name,
+                Habilitation_Name = o.Education_Agent.Education_Habilitation == null ? null : o.Education_Agent.Education_Habilitation.Habilitation_Name,
+                AgentStatus_Name = o.Education_Agent.Education_AgentStatus == null ? null : o.Education_Agent.Education_AgentStatus.AgentStatus_Name,
                 Agent_Etat = o.Education_Agent.Agent_Etat
             }).ToList();
             return dataSource;
@@ -1519,8 +1519,8 @@ namespace Module_Education.Forms.UserControls
                     Agent_DateSeniority = o.Agent_DateSeniority,
                     Agent_DateOfEntry = o.Agent_DateOfEntry,
                     Agent_DateFunction = o.Agent_DateFunction,
-                    Agent_Habilitation = o.Agent_Habilitation == null ? null : dbEntities.Education_Habilitation.Where(w => w.Habilitation_Id == o.Agent_Habilitation).FirstOrDefault().Habilitation_Name,
-                    Agent_Status = o.Agent_Status == null ? null : dbEntities.Education_AgentStatus.Where(w => w.AgentStatus_Id == o.Agent_Status).FirstOrDefault().AgentStatus_Name,
+                    Habilitation_Name = o.Agent_Habilitation == null ? null : dbEntities.Education_Habilitation.Where(w => w.Habilitation_Id == o.Agent_Habilitation).FirstOrDefault().Habilitation_Name,
+                    AgentStatus_Name = o.Agent_Status == null ? null : dbEntities.Education_AgentStatus.Where(w => w.AgentStatus_Id == o.Agent_Status).FirstOrDefault().AgentStatus_Name,
                     Agent_Etat = o.Agent_Etat
 
 
